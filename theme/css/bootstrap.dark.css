@@ -41,7 +41,8 @@ img {
     border: 0;
     -ms-interpolation-mode: bicubic;
     vertical-align: middle;
-    display: inline-block;
+    margin: 20px 20px 20px 20px;
+    float:left;
 }
 button, input, select, textarea {
     margin: 0;
