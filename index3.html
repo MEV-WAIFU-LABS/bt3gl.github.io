@@ -84,6 +84,44 @@
       <div class="row">
         <div class="span9" id="content">
         <div class="article">
+                <h1><a href="./functional-python-stuff-super-quick.html">Functional Python Stuff Super Quick</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2015-03-01T00:00:00">
+      Sun 01 March 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><h3>Python has <strong>First Class Functions</strong></h3>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">create_adder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
+</pre></div>
+
+
+<p>Such that:</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span> <span class="o">=</span> <span class="n">create_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  
+<span class="mi">13</span>
+</pre></div>
+
+
+<h3>Python has <strong>Anonymous Functions</strong></h3>
+<div class="highlight"><pre><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="n">True</span>
+</pre></div>
+
+
+<h3>Python has Built-in <strong>Higher Order Functions</strong></h3>
+<div class="highlight"><pre><span class="n">map</span><span class="p">(</span><span class="n">add_10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">lambda ...</span></pre></div>
+                        <a class="btn primary xsmall" href="./functional-python-stuff-super-quick.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
                 <h1><a href="./getting-started-with-lamp-and-codeigniter.html">Getting started with LAMP and CodeIgniter</a></h1>
                 <div class="well small"><footer class="post-info">
 <abbr class="published" title="2015-02-25T00:00:00">
@@ -315,40 +353,6 @@
 
     <span class="nl">ip ...</span></pre></div>
                         <a class="btn primary xsmall" href="./on-redis-aes-encryption-in-the-9447s-ctf.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./the-first-stripe-ctf.html">The First Stripe CTF</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-11-24T04:20:00">
-      Mon 24 November 2014 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/vulnerabilities.html"><i class="icon-folder-open"></i>Vulnerabilities</a>
-
-
-<span class="label">Tags</span>
-	<a href="./tag/sqli.html"><i class="icon-tag"></i>SQLi</a>
-	<a href="./tag/php.html"><i class="icon-tag"></i>PHP</a>
-	<a href="./tag/wargames.html"><i class="icon-tag"></i>Wargames</a>
-	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
-	<a href="./tag/burp.html"><i class="icon-tag"></i>Burp</a>
-	<a href="./tag/curl.html"><i class="icon-tag"></i>curl</a>
-	<a href="./tag/assembly.html"><i class="icon-tag"></i>assembly</a>
-	<a href="./tag/shellcode.html"><i class="icon-tag"></i>shellcode</a>
-	<a href="./tag/gdb.html"><i class="icon-tag"></i>gdb</a>
-	<a href="./tag/c.html"><i class="icon-tag"></i>C</a>
-	<a href="./tag/objdump.html"><i class="icon-tag"></i>objdump</a>
-	<a href="./tag/timing_attack.html"><i class="icon-tag"></i>Timing_attack</a>
-	<a href="./tag/buffer_overflow.html"><i class="icon-tag"></i>Buffer_overflow</a>
-	<a href="./tag/stack_overflow.html"><i class="icon-tag"></i>Stack_overflow</a>
-	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
-	<a href="./tag/stripe.html"><i class="icon-tag"></i>Stripe</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>Although I did not have the chance of playing in neither of the <a href="https://stripe.com/blog/capture-the-flag">three</a> <a href="https://stripe.com/blog/capture-the-flag-20">Stripe</a> <a href="https://stripe.com/blog/ctf3-launch">CTFs</a>, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.</p>
-<p>This post is about the first <a href="https://stripe.com/">Stripe</a> CTF ...</p>
-                        <a class="btn primary xsmall" href="./the-first-stripe-ctf.html">more ...</a>
                 </div>
         </div>
         <hr />
