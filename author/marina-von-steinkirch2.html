@@ -245,6 +245,27 @@ value function which determines the outcome of the game".</em> , Basically:</p>
         </div>
         <hr />
         <div class="article">
+                <h1><a href="../deploying-a-flask-app-at-heroku.html">Deploying a Flask App at Heroku</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2015-03-21T00:00:00">
+      Sat 21 March 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="../category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p><img alt="antisocial" height="150px" src="./cyberpunk/anti-social.png" width="200px" /></p>
+<p>I was playing with Flask and I wrote my own <a href="https://anti-social.herokuapp.com/">Anti-Social Network</a>. </p>
+<p>Heroku platform is very flexible and it supports several programming languages. To
+deploy an application to Heroku, use Git to push the application to Heroku’s server.</p>
+<h1>Running in a Production Server</h1>
+<p>Heroku does not provide a web ...</p>
+                        <a class="btn primary xsmall" href="../deploying-a-flask-app-at-heroku.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
                 <h1><a href="../functional-python-stuff-super-quick.html">Functional Python Stuff Super Quick</a></h1>
                 <div class="well small"><footer class="post-info">
 <abbr class="published" title="2015-03-01T00:00:00">
@@ -260,32 +281,24 @@ value function which determines the outcome of the game".</em> , Basically:</p>
     <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
     <span class="k">return</span> <span class="n">adder</span>
-<span class="err">````</span>
-
-<span class="n">Such</span> <span class="n">that</span><span class="o">:</span>
 </pre></div>
 
 
-<blockquote>
-<blockquote>
-<blockquote>
-<p>add_10 = create_adder(10)
-add_10(3)<br />
-13</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="highlight"><pre><span class="c">### Python has **Anonymous Functions**</span>
+<p>Such that:</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span> <span class="o">=</span> <span class="n">create_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  
+<span class="mi">13</span>
 </pre></div>
 
 
-<p>(lambda x: x &gt; 2)(3)   # =&gt; True</p>
-<div class="highlight"><pre><span class="c">### Python has Built-in **Higher Order Functions**</span>
+<h3>Python has <strong>Anonymous Functions</strong></h3>
+<div class="highlight"><pre><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="n">True</span>
 </pre></div>
 
 
-<p>map(add_10, [1, 2, 3])   # =&gt; [11, 12, 13]
-filter(lambda ...</p>
+<h3>Python has Built-in <strong>Higher Order Functions</strong></h3>
+<div class="highlight"><pre><span class="n">map</span><span class="p">(</span><span class="n">add_10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">lambda ...</span></pre></div>
                         <a class="btn primary xsmall" href="../functional-python-stuff-super-quick.html">more ...</a>
                 </div>
         </div>
@@ -308,26 +321,6 @@ filter(lambda ...</p>
 <li>
 <p>Log in with your root login ...</p></li></ul>
                         <a class="btn primary xsmall" href="../getting-started-with-lamp-and-codeigniter.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="../javascript-crash-course.html">JavaScript: Crash Course</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-02-15T00:00:00">
-      Sun 15 February 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="../category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><h1>Installing &amp; Setting up</h1>
-<p>JavaScript (JS) is a dynamic computer programming language. Install <a href="https://developer.chrome.com/devtools/index">Google Dev Tools</a> to proceed. </p>
-<h1>JavaScript 101</h1>
-<p>To include your example.js in an HTML page (usually placed right before </body> will guarantee that elements are defined when the script is executed):</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;/path/to/example.js&quot;</span><span class="nt">&gt;&lt;/script ...</span></pre></div>
-                        <a class="btn primary xsmall" href="../javascript-crash-course.html">more ...</a>
                 </div>
         </div>
         <hr />
