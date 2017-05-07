@@ -114,20 +114,17 @@
 
 
 <p>Variables can be defined using multiple var statements, or in a single combined var statement. The value of a variable declared without a value is undefined.</p>
-<h2>Types in JavaScript fall into two categories:</h2>
-<ul>
-<li>Primitive:
-    String
-    Number
-    Boolean
-    null
-    undefined</li>
-</ul>
-<p>Null types are values that represent the absence of a value, similar to many other programming languages. 
-Undefined types represent a state in which no value has been assigned at all.</p>
-<ul>
-<li>Objects:</li>
-</ul>
+<h2>Types in JavaScript</h2>
+<h3>Primitive:</h3>
+<div class="highlight"><pre><span class="o">-</span> <span class="n">String</span>
+<span class="o">-</span> <span class="n">Number</span>
+<span class="o">-</span> <span class="n">Boolean</span>
+<span class="o">-</span> <span class="n">null</span> <span class="p">(</span><span class="n">represent</span> <span class="n">the</span> <span class="n">absence</span> <span class="n">of</span> <span class="n">a</span> <span class="n">value</span><span class="p">,</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">many</span> <span class="n">other</span> <span class="n">programming</span> <span class="n">languages</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">undefined</span> <span class="p">(</span><span class="n">represent</span> <span class="n">a</span> <span class="n">state</span> <span class="n">in</span> <span class="n">which</span> <span class="n">no</span> <span class="n">value</span> <span class="n">has</span> <span class="n">been</span> <span class="n">assigned</span> <span class="n">at</span> <span class="n">all</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Objects:</h3>
 <div class="highlight"><pre><span class="c1">// Creating an object with the constructor:</span>
 <span class="k">var</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="p">;</span>
 
@@ -174,9 +171,8 @@ Undefined types represent a state in which no value has been assigned at all.</p
 </pre></div>
 
 
-<ul>
-<li>Switch</li>
-</ul>
+<h3>Flow Control</h3>
+<h4>switch</h4>
 <div class="highlight"><pre><span class="k">switch</span> <span class="p">(</span> <span class="n">foo</span> <span class="p">)</span> <span class="p">{</span>
 
     <span class="k">case</span> <span class="s">&quot;bar&quot;</span>:
@@ -191,15 +187,19 @@ Undefined types represent a state in which no value has been assigned at all.</p
         <span class="n">alert</span><span class="p">(</span> <span class="s">&quot;everything else is just ok&quot;</span> <span class="p">);</span>
 
 <span class="p">}</span>
-<span class="k">for</span>
+</pre></div>
 
-<span class="k">for</span> <span class="p">(</span> <span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+
+<h4>for</h4>
+<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span> <span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Logs &quot;try 0&quot;, &quot;try 1&quot;, ..., &quot;try 4&quot;.</span>
     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="s">&quot;try &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="p">);</span>
 <span class="p">}</span>
-<span class="k">while</span>
+</pre></div>
 
-<span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<h4>while</h4>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">while</span> <span class="p">(</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">)</span> <span class="p">{</span>
     <span class="c1">// This block will be executed 100 times.</span>
     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="s">&quot;Currently at &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="p">);</span>
@@ -212,9 +212,11 @@ Undefined types represent a state in which no value has been assigned at all.</p
     <span class="c1">// This block will be executed 100 times.</span>
     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="s">&quot;Currently at &quot;</span> <span class="o">+</span> <span class="n">i</span> <span class="p">);</span>
 <span class="p">}</span>
-<span class="k">do</span><span class="o">-</span><span class="k">while</span>
+</pre></div>
 
-<span class="k">do</span> <span class="p">{</span>
+
+<h4>do-while</h4>
+<div class="highlight"><pre><span class="k">do</span> <span class="p">{</span>
     <span class="c1">// Even though the condition evaluates to false</span>
     <span class="c1">// this loop&#39;s body will still execute once.</span>
     <span class="n">alert</span><span class="p">(</span> <span class="s">&quot;Hi there!&quot;</span> <span class="p">);</span>
@@ -223,49 +225,47 @@ Undefined types represent a state in which no value has been assigned at all.</p
 </pre></div>
 
 
-<ul>
-<li>Ternary Operator</li>
-</ul>
+<h3>Ternary Operator</h3>
 <div class="highlight"><pre><span class="c1">// Set foo to 1 if bar is true; otherwise, set foo to 0:</span>
 <span class="k">var</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">bar</span> <span class="o">?</span> <span class="mh">1</span> <span class="o">:</span> <span class="mh">0</span><span class="p">;</span>
-<span class="n">Arrays</span>
+</pre></div>
 
-<span class="p">.</span><span class="n">length</span>
 
-<span class="k">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span> <span class="p">];</span>
+<h3>Arrays</h3>
+<div class="highlight"><pre><span class="p">.</span><span class="n">length</span>
 
-<span class="k">for</span> <span class="p">(</span> <span class="k">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mh">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myArray</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mh">1</span> <span class="p">)</span> <span class="p">{</span>
+<span class="n">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span> <span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span> <span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myArray</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">{</span>
 
     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">[</span> <span class="n">i</span> <span class="p">]</span> <span class="p">);</span>
 
 <span class="p">}</span>
 <span class="p">.</span><span class="n">concat</span><span class="p">()</span>
 
-<span class="k">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="mh">2</span><span class="p">,</span> <span class="mh">3</span><span class="p">,</span> <span class="mh">4</span> <span class="p">];</span>
-<span class="k">var</span> <span class="n">myOtherArray</span> <span class="o">=</span> <span class="p">[</span> <span class="mh">5</span><span class="p">,</span> <span class="mh">6</span><span class="p">,</span> <span class="mh">7</span> <span class="p">];</span>
-<span class="k">var</span> <span class="n">wholeArray</span> <span class="o">=</span> <span class="n">myArray</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span> <span class="n">myOtherArray</span> <span class="p">);</span>
-<span class="p">.</span><span class="k">join</span><span class="p">()</span>
+<span class="n">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">];</span>
+<span class="n">var</span> <span class="n">myOtherArray</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">];</span>
+<span class="n">var</span> <span class="n">wholeArray</span> <span class="o">=</span> <span class="n">myArray</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span> <span class="n">myOtherArray</span> <span class="p">);</span>
+<span class="p">.</span><span class="n">join</span><span class="p">()</span>
 
  <span class="c1">// Joining elements</span>
 
-<span class="k">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span> <span class="p">];</span>
+<span class="n">var</span> <span class="n">myArray</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">,</span> <span class="s">&quot;!&quot;</span> <span class="p">];</span>
 
 <span class="c1">// The default separator is a comma.</span>
-<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="k">join</span><span class="p">()</span> <span class="p">);</span>     <span class="c1">// &quot;hello,world,!&quot;</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="n">join</span><span class="p">()</span> <span class="p">);</span>     <span class="c1">// &quot;hello,world,!&quot;</span>
 
 <span class="c1">// Any string can be used as separator...</span>
-<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="k">join</span><span class="p">(</span> <span class="s">&quot; &quot;</span> <span class="p">)</span> <span class="p">);</span>  <span class="c1">// &quot;hello world !&quot;;</span>
-<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="k">join</span><span class="p">(</span> <span class="s">&quot;!!&quot;</span> <span class="p">)</span> <span class="p">);</span> <span class="c1">// &quot;hello!!world!!!&quot;;</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="n">join</span><span class="p">(</span> <span class="s">&quot; &quot;</span> <span class="p">)</span> <span class="p">);</span>  <span class="c1">// &quot;hello world !&quot;;</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="n">join</span><span class="p">(</span> <span class="s">&quot;!!&quot;</span> <span class="p">)</span> <span class="p">);</span> <span class="c1">// &quot;hello!!world!!!&quot;;</span>
 
 <span class="c1">// ...including an empty one.</span>
-<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="k">join</span><span class="p">(</span> <span class="s">&quot;&quot;</span> <span class="p">)</span> <span class="p">);</span>
-<span class="p">.</span><span class="n">pop</span><span class="p">()</span> <span class="k">and</span> <span class="p">.</span><span class="n">push</span><span class="p">()</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span> <span class="n">myArray</span><span class="p">.</span><span class="n">join</span><span class="p">(</span> <span class="s">&quot;&quot;</span> <span class="p">)</span> <span class="p">);</span>
+<span class="p">.</span><span class="n">pop</span><span class="p">()</span> <span class="n">and</span> <span class="p">.</span><span class="n">push</span><span class="p">()</span>
 </pre></div>
 
 
-<ul>
-<li>Remove or add last element.</li>
-</ul>
+<h4>Remove or add last element</h4>
 <p>Extracts a part of the array and returns that part in a new array. This method takes one parameter, which is the starting index:</p>
 <div class="highlight"><pre><span class="p">.</span><span class="n">reverse</span><span class="p">()</span>
 
@@ -283,13 +283,10 @@ Undefined types represent a state in which no value has been assigned at all.</p
 </pre></div>
 
 
+<h4>Remove a certain amount of elements</h4>
+<p>Abd adds new ones at the given index. It takes at least three parameters:</p>
 <ul>
-<li>
-<p>Remove a certain amount of elements and adds new ones at the given index. It takes at least three parameters:</p>
-</li>
-<li>
-<p>Index – The starting index.</p>
-</li>
+<li>Index – The starting index.</li>
 <li>Length – The number of elements to remove.</li>
 <li>Values – The values to be inserted at the index position.</li>
 </ul>
@@ -300,9 +297,8 @@ Undefined types represent a state in which no value has been assigned at all.</p
 </pre></div>
 
 
-<ul>
-<li>Sorts an array. It takes one parameter, which is a comparing function. If this function is not given, the array is sorted ascending.</li>
-</ul>
+<h4>Sorts an array</h4>
+<p>It takes one parameter, which is a comparing function. If this function is not given, the array is sorted ascending:</p>
 <div class="highlight"><pre><span class="c1">// Sorting with comparing function.</span>
 
 <span class="k">function</span> <span class="n">descending</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">)</span> <span class="p">{</span>
@@ -316,9 +312,7 @@ Undefined types represent a state in which no value has been assigned at all.</p
 </pre></div>
 
 
-<ul>
-<li>Inserts an element at the first position of the array.</li>
-</ul>
+<h4>Inserts an element at the first position of the array</h4>
 <div class="highlight"><pre><span class="p">.</span><span class="nx">forEach</span><span class="p">()</span>
 <span class="kd">function</span> <span class="nx">printElement</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">elem</span> <span class="p">);</span>
