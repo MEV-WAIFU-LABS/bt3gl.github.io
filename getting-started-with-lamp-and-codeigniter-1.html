@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Getting started with LAMP and CodeIgniter - #1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Marina von Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">About</a></li>
+                                <li><a href="./archives.html">Archives</a></li>
+                                <li>
+                                  <a href="https://github.com/bt3gl">Github
+                                  <!--<i class="icon-github-sign icon-large" ></i>-->
+                                </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Astrophysics
+                                </a></li>
+                                 <li><a href="http://marinavonstein.com">Cinema
+                                </a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Getting started with LAMP and CodeIgniter - #1">
+                                        Getting started with LAMP and CodeIgniter - #1
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2016-02-25T00:00:00">
+      Thu 25 February 2016 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/3.gif" width="400px" /></p>
+<p>LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.</p>
+<h2>Building a MySQL Database</h2>
+<p>We will use a web interface to access data in our database:</p>
+<ul>
+<li>
+<p>Log in with your root login/password (set in the installation above): <code>http://localhost/phpmyadmin</code>.
+The left hand column contains a list of all of the databases you currently have.</p>
+<ul>
+<li>mysql: contains information about the MySQL database server.</li>
+<li>information_schema: contains information about all of the other databases on your computer.</li>
+</ul>
+</li>
+<li>
+<p>In the Databases interface you are presented with a list of all of the databases.</p>
+</li>
+<li>Above that list there should be a form labeled “Create new database” with a text field.</li>
+<li>Create tables within. Chose the types of your data.  Every table should always have an id column (auto-incrementing integer, meaning that each new record will be automatically assigned an id value, starting at 1). You can do this by selecting A_I checkbox.</li>
+<li>Add some data (using insert). The database is located at 
+<code>/var/lib/mysql</code>.</li>
+</ul>
+<h3>MySQL Query Basis</h3>
+<p>Selecting items:</p>
+<div class="highlight"><pre><span class="n">Retrieve</span> <span class="n">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">records</span> <span class="p">(</span><span class="o">*</span> <span class="n">means</span> <span class="n">columns</span><span class="p">)</span><span class="o">:</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">db_name</span><span class="p">;</span>
+<span class="n">Select</span> <span class="n">only</span> <span class="n">some</span> <span class="n">columns</span><span class="o">:</span>
+<span class="n">SELECT</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="n">FROM</span> <span class="n">db_name</span><span class="p">;</span>
+<span class="n">Select</span> <span class="n">only</span> <span class="n">some</span> <span class="n">values</span> <span class="n">from</span> <span class="n">some</span> <span class="n">column</span><span class="o">:</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">db_name</span> <span class="n">WHERE</span> <span class="n">col1</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="n">Select</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">10</span> <span class="n">items</span><span class="o">:</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">cars</span> <span class="n">WHERE</span> <span class="n">make</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">Porsche</span><span class="err">&#39;</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+
+
+<p>Inserting an item:</p>
+<div class="highlight"><pre><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">db_name</span> <span class="p">(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">)</span> <span class="n">VALUES</span> <span class="p">(</span><span class="err">&#39;</span><span class="n">item1</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">item2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">item3</span><span class="err">&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Updating an item:</p>
+<div class="highlight"><pre><span class="n">UPDATE</span> <span class="n">db_name</span> <span class="n">SET</span> <span class="n">col1</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item</span><span class="err">&#39;</span> <span class="n">WHERE</span> <span class="n">col2</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item2</span><span class="err">&#39;</span> <span class="n">AND</span> <span class="n">col3</span><span class="o">=</span><span class="err">&#39;</span><span class="n">item3</span><span class="err">&#39;</span>
+</pre></div>
+
+
+<p>Deleting items:</p>
+<div class="highlight"><pre><span class="n">DELETE</span> <span class="n">db_name</span> <span class="n">WHERE</span> <span class="n">col1</span> <span class="o">=</span> <span class="n">item</span><span class="s">&quot;</span>
+</pre></div>
+
+
+<h2>PHP Basics</h2>
+<p>Variables:</p>
+<div class="highlight"><pre><span class="o">&lt;?</span> <span class="nx">php</span> 
+<span class="nx">$result</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">8</span><span class="p">;</span> 
+<span class="o">?&gt;</span>
+<span class="nx">Comments</span> <span class="kd">with</span> <span class="sr">/ or ./</span><span class="o">*</span> <span class="o">*</span><span class="err">/.</span>
+<span class="nx">Print</span> <span class="kd">function</span><span class="o">:</span>
+<span class="o">&lt;?</span> <span class="nx">php</span>
+<span class="nx">echo</span> <span class="s2">&quot;that&#39;s a print&quot;</span><span class="p">;</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p>Functions:</p>
+<div class="highlight"><pre><span class="o">&lt;?</span> <span class="nx">php</span>
+<span class="kd">function</span> <span class="nx">print_this</span><span class="p">(</span><span class="nx">$name</span><span class="p">){</span>
+    <span class="nx">echo</span> <span class="s1">&#39;Print this &#39;</span> <span class="p">.</span> <span class="nx">$name</span> <span class="p">.</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s1">&#39;nice printing&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">extra_print</span> <span class="o">=</span> <span class="nx">print_this</span><span class="p">(</span><span class="s1">&#39;aaaaa&#39;</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">extra_print</span><span class="p">);</span>
+<span class="o">?&gt;</span>
+</pre></div>
+
+
+<p>When a PHP file is accessed, all of its functions are initialized before any of the other lines of code are executed. As long as a function is defined in the same file, it can be called from anywhere within that file.</p>
+<p>The scope of a variable refers to the domain within which it can be referenced. In PHP, any variables initialized and contained within a function itself are only available within that function.</p>
+<h3>Arrays</h3>
+<p>Creating an empty array:</p>
+<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span> <span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>Adding elements:</p>
+<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>Creating an array with values already:</p>
+<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$other_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</pre></div>
+
+
+<p>In PHP, arrays are like dictionaries:. If you add item likes above, it will increment from 0. You can also give the key:</p>
+<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="cp">?&gt;</span> <span class="nx">echo</span> <span class="nx">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">];</span>
+</pre></div>
+
+
+<p>Multi-arrays:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="n">cars</span> <span class="o">=</span> <span class="n">array</span>
+  <span class="p">(</span>
+  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+  <span class="n">array</span><span class="p">(</span><span class="s">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
+  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+  <span class="p">);</span>
+</pre></div>
+
+
+<p>Loops</p>
+<div class="highlight"><pre><span class="nx">foreach</span><span class="o">:</span>
+<span class="cp">&lt;?</span> <span class="nx">php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$array_number</span> <span class="k">as</span> <span class="nv">$variable_representing_current_item</span><span class="p">){</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+
+<span class="k">for</span><span class="o">:</span>
+<span class="cp">&lt;?</span>
+<span class="nv">$other_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+<span class="nv">$other_array</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="p">}</span> <span class="cp">?&gt;</span>
+</pre></div>
+
+
+<h2>The Model-View-Controller Pattern (MVC)</h2>
+<p>In high level, the flow of a web app is:</p>
+<ul>
+<li>User request to view a certain page by typing a URL in the browser.</li>
+<li>The app determines what needs to be displayed.</li>
+<li>The data required for the page is requested and retrieved from the database.</li>
+<li>The resulting data is used to render the page's display to the user.</li>
+<li>The MVC structure is based on the presence of 3 main components: models, views, and controllers.</li>
+</ul>
+<h3>Models: Representing the Data Object</h3>
+<p>Responsible for communicating with the database. Composed of two parts:</p>
+<ul>
+<li>fields: Responsible for representing the various pieces of data within an object (the information within the database).</li>
+<li>methods: Provide extra functionality within our models. Allow the manipulation of the model's initial information or perform additional actions related to the data.</li>
+</ul>
+<h3>Controllers: Workhorses</h3>
+<p>Determine what objects to retrieve and how to organize them.</p>
+<p>Handle user request, retrieve proper information, and pass it to the proper view.</p>
+<p>Different request are handled by different controller actions.</p>
+<h3>Views: What the User Sees</h3>
+<p>Responsible for the presentation layer, the actual visual display.</p>
+<p>Each individual page within a web app has its own view.
+Views contain HTML code and PHP (if this is the backend language) to inject objects' information, passed to the view via a controller.</p>
+<p>A simplified version of Facebook profile view:</p>
+<div class="highlight"><pre><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;personal_info&quot;</span><span class="nt">&gt;</span> <span class="cp">&lt;?php // some code ?&gt;</span> <span class="nt">&lt;/section&gt;</span> <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;photos&quot;</span><span class="nt">&gt;</span> <span class="cp">&lt;?php // some code ?&gt;</span> <span class="nt">&lt;/section&gt;</span>
+</pre></div>
+
+
+<h2>Frameworks</h2>
+<p>The basis/foundation of your web app.</p>
+<p>For PHP, we can download CodeIgniter, rename to our project name, copy it to the /var/ww folder and open it in the localhost/folder. We can modify the files for our app now.</p>
+<p>If you get the 403 forbidden error, check the permissions and then type:</p>
+<div class="highlight"><pre><span class="n">restorecon</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+
+
+<p>(restorecon is used to reset the security context (type) (extended attributes) on one or more files).</p>
+<p>The use guide can be seen at 
+<code>http://localhost/APP_NAME/user_guide/</code></p>
+<h3>CodeIgniter Basics</h3>
+<p>The system folder contains all of the inner-working.
+The application folder is where all the code specific to our app will live, include models, controllers, and view.</p>
+<p>Controllers (<code>application/controllers/welcome.php</code>)
+The welcome class is inherent from the CI_Controller class.</p>
+<p>An index refers to a main/default location.
+The index action is responsible for loading the view that renders the welcome message:
+public function index() { $this-&gt;load-&gt;view('welcome_message'); }
+In the case of controllers, each action is frequently associated with a URL.</p>
+<p>The <code>'welcomemessage'</code> view is at <code>applications/views/welcomemessage.php</code>.</p>
+<h3>Routes</h3>
+<p>The way that our web app knows where to direct our users, based on the URLs they enter, is by establishing routes. Routes are a mapping between URLs and specific controller actions.</p>
+<p>We can configure routes at <code>application/config/routes.php</code>:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="n">route</span><span class="p">[</span><span class="err">&#39;</span><span class="n">desired</span><span class="o">-</span><span class="n">url</span><span class="o">-</span><span class="n">fragment</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;controller-name/action-name”;</span>
+</pre></div>
+
+
+<p>Some routes work automatically: you can reference any controller action using the following URL format:
+<code>http://localhost/APP_NAME/index.php/[controller-name]/[action-name]</code></p>
+<p>For example:
+<code>http://localhost/APP_NAME/index.php/welcome/index/</code></p>
+<h3>Configuring our app to use the Database</h3>
+<p>CI has a built-in support for interacting with a database.
+In our application, the database configuration file is store at application/config/database.php</p>
+<p>To connect our app to the MySQL database, update this file to:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">hostname</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">username</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">root</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">password</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">root</span><span class="o">-</span><span class="n">password</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">database</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">before</span><span class="err">&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>To have access to the database functionality throughout the entire web app, auto-load the database library by changing the file <code>application/config/autoload.php</code> with:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">template</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span> <span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span>
+<span class="n">Check</span> <span class="k">if</span> <span class="n">the</span> <span class="n">page</span> <span class="n">is</span> <span class="n">still</span> <span class="n">working</span> <span class="nf">fine</span> 
+<span class="p">(</span><span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">template</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span> <span class="n">does</span> <span class="n">not</span> <span class="n">work</span> <span class="n">yet</span><span class="p">).</span>
+</pre></div>
+
+
+<h3>Models</h3>
+<p>Each model starts the same, as they intend to serve the same general function.</p>
+<p>We create a new file in application/models folder named todomodel.php with the code:</p>
+<div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span> 
+<span class="k">class</span> <span class="nc">Todomodel</span> <span class="k">extends</span> <span class="nx">CIModel</span> <span class="p">{</span>
+<span class="k">function</span> <span class="nf">_construct</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">parent</span><span class="o">::</span><span class="na">_construct</span><span class="p">();</span>
+<span class="p">}</span> 
+</pre></div>
+
+
+<p>The second responsibility of models is to interact with our database. We need to implement a way for our todomodel to retrieve all of the todos in our database. We add a getallentries function bellow the constructor:</p>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">get_all_entries</span><span class="p">()</span> <span class="p">{</span> <span class="c1">//$query = $this-&gt;db-&gt;get(&#39;todos&#39;); $query = $this-&gt;db-&gt;order_by(&#39;order&#39;,&#39;ASC&#39;)-&gt;get(&#39;todos&#39;); $results = array(); foreach ($query-&gt;result() as $result) { $results</span><span class="cp">[]</span><span class="c1"> = $result; } return $results; }</span>
+</pre></div>
+
+
+<p>In this snippet we query our database by order, using ascending order.</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "getting-started-with-lamp-and-codeigniter-1.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://bt3gl.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
