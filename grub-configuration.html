@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Grub Configuration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Marina von Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">About</a></li>
+                                <li><a href="./archives.html">Archives</a></li>
+                                <li>
+                                  <a href="https://github.com/bt3gl">Github
+                                  <!--<i class="icon-github-sign icon-large" ></i>-->
+                                </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Astrophysics
+                                </a></li>
+                                 <li><a href="http://marinavonstein.com">Cinema
+                                </a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Grub Configuration">
+                                        Grub Configuration
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-01-29T00:00:00">
+      Thu 29 January 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <h2>Understanding MBR and EFI</h2>
+<p>BIOS/MBR is an older partition table type also referred to as Legacy mode. Nowadays, UEFI is in most of the new computer (specially those that came with W8 or W8.1 pre-installed). UEFI always use the gpt partition table type.</p>
+<p>To find out each one your computer uses, you can boot into your computers Bios/firmware. In addition, to see if it is UEFI:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">efibootmgr</span> 
+</pre></div>
+
+
+<p>In a UEFI install, the <code>grub.cfg</code> file belongs in <code>/boot/efi/EFI/fedora/grub.cfg</code>. In a msdos/MBR install, <code>grub.cfg</code> belongs in <code>/boot/grub2/grub.cfg</code>.</p>
+<p>Extra: to see your partitions, you can type:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">gdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda</span> 
+</pre></div>
+
+
+<h2>Modifying Grub Options</h2>
+<p>Edit <code>/etc/default/grub</code>. For example, setting:</p>
+<div class="highlight"><pre><span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+</pre></div>
+
+
+<p>After that, type the <code>grub2-mkconfig</code> command. In a MBR boot:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">grub2</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub2</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+</pre></div>
+
+
+<p>In an EFI boot:</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">grub2</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">efi</span><span class="o">/</span><span class="n">EFI</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+</pre></div>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "grub-configuration.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://bt3gl.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
