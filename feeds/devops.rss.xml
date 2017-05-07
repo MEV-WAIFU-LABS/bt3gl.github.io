@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/devops.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 25 Feb 2016 00:00:00 -0500</lastBuildDate><item><title>Getting started with LAMP and CodeIgniter - #1</title><link>http://bt3gl.github.io/getting-started-with-lamp-and-codeigniter-1.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/3.gif" width="400px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/devops.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 25 Feb 2016 00:00:00 -0500</lastBuildDate><item><title>Getting started with LAMP and CodeIgniter</title><link>http://bt3gl.github.io/getting-started-with-lamp-and-codeigniter.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/3.gif" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.&lt;/p&gt;
 &lt;h2&gt;Building a MySQL Database&lt;/h2&gt;
 &lt;p&gt;We will use a web interface to access data in our database:&lt;/p&gt;
@@ -217,4 +217,6 @@ In our application, the database configuration file is store at application/conf
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;In this snippet we query our database by order, using ascending order.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Thu, 25 Feb 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-02-25:getting-started-with-lamp-and-codeigniter-1.html</guid></item></channel></rss>
+&lt;p&gt;Enjoy!
+&lt;a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter"&gt;I post this originally here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this snippet we query our database by order, using ascending order.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Thu, 25 Feb 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-02-25:getting-started-with-lamp-and-codeigniter.html</guid></item></channel></rss>
