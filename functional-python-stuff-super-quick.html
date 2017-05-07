@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>chmod +x singularity.sh</title>
+    <title>Functional Python Stuff Super Quick</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Marina von Steinkirch">
@@ -84,87 +84,76 @@
       <div class="row">
         <div class="span9" id="content">
 <section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Functional Python Stuff Super Quick">
+                                        Functional Python Stuff Super Quick
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-03-01T00:00:00">
+      Sun 01 March 2015 </abbr>
 
-<!-- Move this to CSS later -->
-<style>
-img {
-    float: center;
-    margin: 0px 0px 15px 20px;
-    max-width: 50%;
-    max-height: 50%
-}
-</style>
-
-<h1><b>Bt3</b></h1>
-
-<dl>
-
-
-<h2><b>Life 1: Cyber 1337 Hacker - Status: Online</b></h2>
-  
-
-I am a <b>Senior Software Security Engineer</b> at <b><a href="https://codeascraft.com/">Etsy</a></b>. 
-<br>
-Before that, I was a <b>Software Engineer</b> at <b><a href="https://developer.apple.com/">Apple</a></b> and at <b><a href="https://engineeringblog.yelp.com/">Yelp</a></b>. 
-<br>
-I am a <b><a href="https://www.recurse.com/">Recurse Center'14</a></b> alumni (former Hacker School).
-<br>
-I have been hacking and coding since high school. Then one year I went to <b><a href="https://www.defcon.org/">DEF CON</a></b>.
-<br>
-I build tools focusing two fields: <b>Security</b> and <b>Artificial Intelligence/Machine Learning/Deep Learning</b>.
-
-<br><br>
-
-<h2><b>Life 4: Extreme Athlete - Status: Online</b></h2>
-
-I spend a lot of my free time <b>surfing, skateboarding, and snowboarding</b>. 
-<br>
-Traveling the world looking for rad new spots, working on sick new tricks.
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
 
 
-<br><br>
+</footer><!-- /.post-info -->                </div>
+                <h3>Python has <strong>First Class Functions</strong></h3>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">create_adder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
+<span class="err">````</span>
+
+<span class="n">Such</span> <span class="n">that</span><span class="o">:</span>
+</pre></div>
 
 
-
-<h3><b>Life 3: Photographer & Filmmaker - Status: Iddle</b></h3>
-
-<b><a href="https://marinavonstein.com">Filmmaking</a></b> and <b><a href="https://500px.com/BeatrixClyde">Photography</a></b> have been my hobby since I was a kid. I started with a film camera when I was seven.
-<br>
-In 2016, I spent an powerful time at the <b>San Francisco School of Digital Filmmaking</b>. 
-
-
-<br><br>
-
-
-<h3><b>Life 2: Theoretical (Astro)Physicist - Status: Offline</b></h3>
-
-I need to know what the universe and reality and life are about. 
-<br>
-I looked for answers while in my <a href="http://bt3gl.github.io/projects_page/index.html"><b>PhD in Astrophysics</b></a>, in New York. 
-<br>
-I have done research in places such as <b><a href="http://www.lanl.gov/">Los Alamos</a></b>, <b><a href="https://www.bnl.gov/world/">BNL</a></b>, and <b><a href="https://www.nasa.gov/goddard">NASA</a></b>.
+<blockquote>
+<blockquote>
+<blockquote>
+<p>add_10 = create_adder(10)
+add_10(3)<br />
+13</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre><span class="c">### Python has **Anonymous Functions**</span>
+</pre></div>
 
 
-<br><br>
+<p>(lambda x: x &gt; 2)(3)   # =&gt; True</p>
+<div class="highlight"><pre><span class="c">### Python has Built-in **Higher Order Functions**</span>
+</pre></div>
 
-<h2>Misc</h2>
-       <ul>
-           <li>If you are a <b>physicist</b>, <b><a href="https://en.wikipedia.org/wiki/Gravitational_singularity">this</a></b> is the <b>singularity</b> I am talking about. If you are a <b>computer scientist</b>, then it is <b><a href="https://en.wikipedia.org/wiki/Technological_singularity">this</a></b>. They are equally fascinating. &#9786</li>
-           <li><b>My PGP: </b> 145A 15D9 3393 4416 F7EA  0B9E E26F 1C8E 27D9 8506.</li>
-           <li><b>License</b>: This blog is licensed under the <b><a href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-Noncommercial 3.0 license</a></b>.</li>
-           <li> They seem to be a hit so...
-           <ul>
-              <li>My <b> DEF CON 23 talk</b>  on <b><a href="projects_page/qc.pdf">Hacking Quantum Cryptography</a></b>.</li>
-              <li>My <b><a href="http://astro.sunysb.edu/steinkirch/books/group.pdf">book in Group Theory</a></b>.</li>
-              <li>My <b><a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures">book in Python and Algorithms</a></b>.</li>
-            </ul>
-          </li>
-           <li>Talk <b>Post-Rock</b> with me.</li>
-           <li><b><i> Opinions are my own and not the views of my employer.</b></i></li>
-           <li><b><i>Kindness is wisdom.</b></i></li>
-       </ul>
-       </p>
-  </dl>
+
+<p>map(add_10, [1, 2, 3])   # =&gt; [11, 12, 13]
+filter(lambda x: x &gt; 5, [3, 4, 5, 6, 7])   # =&gt; [6, 7]
+```</p>
+                </div><!-- /.entry-content -->
+                <div class="comments">
+                <h2>Comments !</h2>
+                        <div id="disqus_thread"></div>
+                        <script type="text/javascript">
+                           var disqus_identifier = "functional-python-stuff-super-quick.html";
+                           (function() {
+                                var dsq = document.createElement('script');
+                                dsq.type = 'text/javascript'; dsq.async = true;
+                                dsq.src = 'http://bt3gl.disqus.com/embed.js';
+                                (document.getElementsByTagName('head')[0] ||
+                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
+                          })();
+                        </script>
+                </div>
+        </article>
+</section>
         </div><!--/span-->
 
 
