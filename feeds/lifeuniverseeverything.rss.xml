@@ -392,7 +392,7 @@
 &lt;p&gt;&lt;strong&gt;~/.bashrc&lt;/strong&gt; contains scripts and variables that are executed when bash is invoked.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;It's a good experience to customize your &lt;strong&gt;~/.bashrc&lt;/strong&gt;. Just google for samples, or take a look at this &lt;a href="http://dotfiles.org"&gt;site dedicated for sharing dot-files&lt;/a&gt;, or at  &lt;a href="https://github.com/mariwahl/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc"&gt;mine&lt;/a&gt;. Don't forget to &lt;code&gt;source&lt;/code&gt; your &lt;strong&gt;./bashrc&lt;/strong&gt; file every time you make a change (opening a new terminal has the same effect):&lt;/p&gt;
+&lt;p&gt;It's a good experience to customize your &lt;strong&gt;~/.bashrc&lt;/strong&gt;. Just google for samples, or take a look at this &lt;a href="http://dotfiles.org"&gt;site dedicated for sharing dot-files&lt;/a&gt;, or at  &lt;a href="https://github.com/bt3gl/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc"&gt;mine&lt;/a&gt;. Don't forget to &lt;code&gt;source&lt;/code&gt; your &lt;strong&gt;./bashrc&lt;/strong&gt; file every time you make a change (opening a new terminal has the same effect):&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bashrc&lt;/span&gt;
