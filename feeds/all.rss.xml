@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 01 Mar 2018 00:00:00 -0500</lastBuildDate><item><title>All the Ss of Shredding</title><link>http://bt3gl.github.io/all-the-ss-of-shredding.html</link><description>&lt;p&gt;&lt;img alt="skate1" height="150px" src="./cyberpunk/skate.png" width="200px" /&gt;&lt;/p&gt;
-&lt;p&gt;Hi there, fam!&lt;/p&gt;
-&lt;p&gt;Curious about some other hobbies I might have? I do a lot of surfing, skateboarding, and snowboarding. And traveling. And taking pictures :).&lt;/p&gt;
-&lt;p&gt;Interested? Go take a look at my new portifolio at &lt;a href="www.miasteinkirch.com"&gt;miasteinkirch.com&lt;/a&gt; and follow me in &lt;a href="https://www.instagram.com/miashreds/"&gt;my instagram&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;xx, bt3&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Thu, 01 Mar 2018 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2018-03-01:all-the-ss-of-shredding.html</guid></item><item><title>I'm being translated to Korean!</title><link>http://bt3gl.github.io/im-being-translated-to-korean.html</link><description>&lt;p&gt;Hello all!&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 07 May 2017 00:00:00 -0400</lastBuildDate><item><title>I'm being translated to Korean!</title><link>http://bt3gl.github.io/im-being-translated-to-korean.html</link><description>&lt;p&gt;Hello all!&lt;/p&gt;
 &lt;p&gt;In today's hottest news: I'm very glad to announce that I've signed with &lt;a href="http://www.hanbit.co.kr/"&gt;Hanbit Media, Inc.&lt;/a&gt; to have my &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;book in Python and Algorithms&lt;/a&gt; publish in Korean!&lt;/p&gt;
 &lt;p&gt;More soon!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sun, 07 May 2017 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2017-05-07:im-being-translated-to-korean.html</guid></item><item><title>All That Cyberpunk Dystopian Future that Us Millennials were Waiting For</title><link>http://bt3gl.github.io/all-that-cyberpunk-dystopian-future-that-us-millennials-were-waiting-for.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="150px" src="./cyberpunk/3.gif" width="200px" /&gt;&lt;/p&gt;
 &lt;h3&gt;Have you ever wondered what will happen to humans in the first years after the Singularity? &lt;/h3&gt;
@@ -77,4 +73,35 @@ What type of life would the machine allows us to live? Or supplies to us? Which 
 &lt;li&gt;&lt;a href="https://github.com/iassael/learning-to-communicate"&gt;Learning to Communicate with Deep Multi-Agent Reinforcement Learning&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/alxndrkalinin/awesome-deepneuroimage"&gt;A curated list of awesome deep learning applications in the field of neurological image analysis&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=""&gt;Learning to Communicate with Deep Multi-Agent Reinforcement Learning&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sun, 25 Sep 2016 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2016-09-25:studies-in-machine-learning-ai-11.html</guid></item></channel></rss>
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sun, 25 Sep 2016 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2016-09-25:studies-in-machine-learning-ai-11.html</guid></item><item><title>Studies in Machine Learning &amp; AI - #10</title><link>http://bt3gl.github.io/studies-in-machine-learning-ai-10.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/10.jpg" width="400px" /&gt;&lt;/p&gt;
+&lt;h2&gt;Papers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://drive.google.com/file/d/0B3cxcnOkPx9AeWpLVXhkTDJINDQ/view"&gt;WaveNet: A Generative Model for Raw Audio&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://arxiv.org/pdf/1609.02993v1.pdf"&gt;Episodic Exploration for Deep Deterministic Policies:
+An Application to StarCraft Micromanagement Tasks&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://arxiv.org/abs/1609.00408"&gt;Defeating Image Obfuscation with Deep Learning&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://arxiv.org/abs/1609.04802"&gt;Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;News&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://deepmind.com/blog/wavenet-generative-model-raw-audio/"&gt;WaveNet: A Generative Model for Raw Audio&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://distill.pub/2016/augmented-rnns/"&gt;Attention and Augmented Recurrent Neural Networks&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.janexwang.com/blog/2016/9/10/attractor-state-part-1"&gt;Attractor State, Part 1&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.nextplatform.com/2016/09/13/nvidia-pushes-deep-learning-inference-new-pascal-gpus/"&gt;NVIDIA Announces Tesla P40 &amp;amp; Tesla P4 - Neural Network Inference, Big &amp;amp; Small&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.nextplatform.com/2016/09/07/next-wave-deep-learning-architectures/"&gt;The Next Wave of Deep Learning Architectures&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@katecrawford/artificial-intelligence-is-hard-to-see-a71e74f386db#.icgq55dzd"&gt;Artificial intelligence is hard to see&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.technologyreview.com/s/602344/the-extraordinary-link-between-deep-neural-networks-and-the-nature-of-the-universe/"&gt;The Extraordinary Link Between Deep Neural Networks and the Nature of the Universe&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://aiimpacts.org/what-if-you-turned-the-worlds-hardware-into-ai-minds/"&gt;What if you turned the world’s hardware into AI minds?&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.technologyreview.com/s/602274/three-grand-challenges-for-brain-science-that-can-be-solved-in-10-years/"&gt;Three Grand Challenges for Brain Science That Can Be Solved in 10 Years&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Videos&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Xogn6veSyxA"&gt;Ian Goodfellow's lecture about Batch Normalization and Convolutional Networks.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=x1kf4Zojtb0"&gt;Nando de Freita's Learning to learn and compositionality with deep recurrent neural networks&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=9c4z6YsBGQ0&amp;amp;feature=youtu.be"&gt;Generative Visual Manipulation on the Natural Image Manifold&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://cmusatyalab.github.io/openface/demo-4-sphere/"&gt;CMU's Real-Time Face Embedding Visualization&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/yaringal/DropoutUncertaintyExps#updated-results-compared-to-the-original-paper"&gt;Experiments used in "Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning"&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sat, 17 Sep 2016 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2016-09-17:studies-in-machine-learning-ai-10.html</guid></item></channel></rss>
