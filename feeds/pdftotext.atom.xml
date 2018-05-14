@@ -3,7 +3,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;see or do not see&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf"&gt;pdf.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf"&gt;pdf.pdf&lt;/a&gt;
+&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Hacking PDFs, what fun!&lt;/p&gt;
 &lt;p&gt;In general, when dealing with reverse-engineering malicious documents, we follow these steps:&lt;/p&gt;
