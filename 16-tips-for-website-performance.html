@@ -127,7 +127,7 @@
 <h2>5. Clean up your JS and CSS</h2>
 <ul>
 <li>Remove unnecessary characters (whitespace, new line, comments).</li>
-<li>Some useful tools are <a href="https://www.npmjs.com/package/gulp-uglify">grunt ugligy</a> and <a href="https://www.npmjs.com/package/gulp-minify-css">gulp-minify-css</a>.</li>
+<li>Some useful tools are <a href="https://www.npmjs.com/package/gulp-uglify">grunt ugligy</a> and <a href="https://www.npmjs.com/package/gulp-clean-css">gulp-clean-css</a>.</li>
 </ul>
 <h2>6.  Avoid Redirects</h2>
 <p>301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.</p>
@@ -143,7 +143,7 @@
 <li>
 <p>CSS</p>
 <ul>
-<li>Use <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css_">media queries</a>.</li>
+<li>Use <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path">media queries</a>.</li>
 <li>Concatenate all CSS files in one.</li>
 <li>Remove extra spaces, characters, comments, etc.</li>
 </ul>
@@ -163,7 +163,7 @@
 <p>Content Delivery Networks are servers that maintain cached copies of the content of a website (images, CSS, JS, fonts), so that they can be retrieved from the closest physical location for reduced latency. Here some nice guides for <a href="https://www.keycdn.com/support/google-cloud-storage-cdn-integration/">google cloud storage</a> and <a href="https://www.keycdn.com/support/aws-s3-cdn-integration/">AWS S3</a>.</p>
 <h2>10. Time to first byte (TTFB)</h2>
 <p>TTFB is the measurement of the responsiveness of a web server, as the time that takes for the browser to start receiving information after it has requested it from the server.</p>
-<p>TTFB is calculated as <strong>HTTP request time + Process request time + HTTP response time</strong>, and can be check at the <a href="https://www.keycdn.com/blog/chrome-devtools/">Chrome Dev Tools</a> (the green bar).</p>
+<p>TTFB is calculated as <strong>HTTP request time + Process request time + HTTP response time</strong>, and can be check at the <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome Dev Tools</a> (the green bar).</p>
 <h2>11. Browser Cache</h2>
 <p>Let the browser cache some data (with a max-age of a week) by using HTTP headers such as <strong><em>Cache-control</em></strong> and <strong><em>Expires</em></strong>.</p>
 <h2>12. Prefetching</h2>
@@ -191,7 +191,7 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 
 <h2>16. Enable Gzip Compression</h2>
 <p>Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enable in the <code>.htaccess</code> file (Apache) or <code>nginx.conf</code> (Nginx).</p>
-<p><strong><em>Thank you for reading and That's it for today :)</em></strong>*</p>
+<p><strong><em>Thank you for reading :)</em></strong>*</p>
                 </div><!-- /.entry-content -->
                 <div class="comments">
                 <h2>Comments !</h2>

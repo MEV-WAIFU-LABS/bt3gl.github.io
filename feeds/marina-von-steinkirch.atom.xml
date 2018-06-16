@@ -25,7 +25,7 @@
 &lt;h2&gt;5. Clean up your JS and CSS&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Remove unnecessary characters (whitespace, new line, comments).&lt;/li&gt;
-&lt;li&gt;Some useful tools are &lt;a href="https://www.npmjs.com/package/gulp-uglify"&gt;grunt ugligy&lt;/a&gt; and &lt;a href="https://www.npmjs.com/package/gulp-minify-css"&gt;gulp-minify-css&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Some useful tools are &lt;a href="https://www.npmjs.com/package/gulp-uglify"&gt;grunt ugligy&lt;/a&gt; and &lt;a href="https://www.npmjs.com/package/gulp-clean-css"&gt;gulp-clean-css&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;6.  Avoid Redirects&lt;/h2&gt;
 &lt;p&gt;301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.&lt;/p&gt;
@@ -41,7 +41,7 @@
 &lt;li&gt;
 &lt;p&gt;CSS&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css_"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Concatenate all CSS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
 &lt;/ul&gt;
@@ -61,7 +61,7 @@
 &lt;p&gt;Content Delivery Networks are servers that maintain cached copies of the content of a website (images, CSS, JS, fonts), so that they can be retrieved from the closest physical location for reduced latency. Here some nice guides for &lt;a href="https://www.keycdn.com/support/google-cloud-storage-cdn-integration/"&gt;google cloud storage&lt;/a&gt; and &lt;a href="https://www.keycdn.com/support/aws-s3-cdn-integration/"&gt;AWS S3&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;10. Time to first byte (TTFB)&lt;/h2&gt;
 &lt;p&gt;TTFB is the measurement of the responsiveness of a web server, as the time that takes for the browser to start receiving information after it has requested it from the server.&lt;/p&gt;
-&lt;p&gt;TTFB is calculated as &lt;strong&gt;HTTP request time + Process request time + HTTP response time&lt;/strong&gt;, and can be check at the &lt;a href="https://www.keycdn.com/blog/chrome-devtools/"&gt;Chrome Dev Tools&lt;/a&gt; (the green bar).&lt;/p&gt;
+&lt;p&gt;TTFB is calculated as &lt;strong&gt;HTTP request time + Process request time + HTTP response time&lt;/strong&gt;, and can be check at the &lt;a href="https://developers.google.com/web/tools/chrome-devtools/"&gt;Chrome Dev Tools&lt;/a&gt; (the green bar).&lt;/p&gt;
 &lt;h2&gt;11. Browser Cache&lt;/h2&gt;
 &lt;p&gt;Let the browser cache some data (with a max-age of a week) by using HTTP headers such as &lt;strong&gt;&lt;em&gt;Cache-control&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;Expires&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;12. Prefetching&lt;/h2&gt;
@@ -89,4 +89,4 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 
 &lt;h2&gt;16. Enable Gzip Compression&lt;/h2&gt;
 &lt;p&gt;Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enable in the &lt;code&gt;.htaccess&lt;/code&gt; file (Apache) or &lt;code&gt;nginx.conf&lt;/code&gt; (Nginx).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading and That's it for today :)&lt;/em&gt;&lt;/strong&gt;*&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :)&lt;/em&gt;&lt;/strong&gt;*&lt;/p&gt;</content></entry></feed>
