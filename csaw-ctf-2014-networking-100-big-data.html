@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-22T08:20:00">
+<abbr class="published" title="2014-09-22T08:20:00-04:00">
       Mon 22 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -120,48 +120,48 @@
 <h2>Inspecting the Wireshark File</h2>
 <p>The file extension <a href="https://appliance.cloudshark.org/blog/5-reasons-to-move-to-pcapng/">.pcapng</a> correspond to files for <em>packet capture</em>. They usually contain a dump of data packets captured over a network. This type of files holds blocks or data, and they can be used to rebuild captured packets into recognizable data.</p>
 <p>We can open this file with <a href="https://www.wireshark.org/">Wireshark</a>, which is an open-source packet analyzer, or using <a href="http://chaosreader.sourceforge.net/">chaosreader</a>, a freeware tool to trace TCP and UDP sessions. We choose the first. There are several things that we could explore and look for in this file:</p>
-<div class="highlight"><pre>    <span class="o">-</span> <span class="n">We</span> <span class="n">could</span> <span class="n">search</span> <span class="k">for</span> <span class="n">all</span> <span class="n">the</span> <span class="n">the</span> <span class="n">interesting</span> <span class="n">protocols</span> <span class="n">inside</span> <span class="n">and</span> <span class="n">analyze</span> <span class="n">them</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>    - We could search for all the the interesting protocols inside and analyze them.
 
-    <span class="o">-</span> <span class="n">We</span> <span class="n">could</span> <span class="n">go</span> <span class="n">to</span> <span class="o">*</span><span class="n">Statistics</span><span class="o">*-&gt;</span> <span class="o">*</span><span class="n">Protocol</span> <span class="n">Hierarchy</span><span class="o">*</span> <span class="n">and</span> <span class="n">look</span> <span class="n">at</span> <span class="n">the</span> <span class="n">traffic</span> <span class="n">patterns</span><span class="p">.</span>
+    - We could go to *Statistics*-&gt; *Protocol Hierarchy* and look at the traffic patterns.
 
-    <span class="o">-</span> <span class="n">We</span> <span class="n">could</span> <span class="n">search</span> <span class="n">in</span> <span class="n">packet</span> <span class="n">bytes</span><span class="p">,</span> <span class="n">looking</span> <span class="k">for</span> <span class="n">specific</span> <span class="n">strings</span> <span class="n">such</span> <span class="n">as</span> <span class="n">login</span> <span class="n">or</span> <span class="n">password</span><span class="p">.</span>
+    - We could search in packet bytes, looking for specific strings such as login or password.
 
-    <span class="o">-</span> <span class="n">We</span> <span class="n">could</span> <span class="n">try</span> <span class="n">to</span> <span class="n">find</span> <span class="n">something</span> <span class="n">interesting</span> <span class="n">in</span> <span class="o">*</span><span class="n">Conversations</span><span class="o">*</span><span class="p">.</span>
+    - We could try to find something interesting in *Conversations*.
 </pre></div>
 
 
 <h2>Searching for the String <em>Password</em></h2>
 <p>It turned out that all we need was to look for the string <em>password</em>. To do this we followed these steps in Wireshark:</p>
-<div class="highlight"><pre>     <span class="mf">1.</span> <span class="n">Go</span> <span class="n">to</span> <span class="o">*</span><span class="n">Edit</span><span class="o">*</span>
+<div class="highlight"><pre><span></span>     1. Go to *Edit*
 
-     <span class="mf">2.</span> <span class="n">Go</span> <span class="n">to</span> <span class="o">*</span><span class="n">Find</span> <span class="n">Packet</span><span class="o">*</span>
+     2. Go to *Find Packet*
 
-     <span class="mf">3.</span> <span class="n">Search</span> <span class="k">for</span> <span class="o">**</span><span class="n">password</span><span class="o">**</span> <span class="n">choosing</span> <span class="n">the</span> <span class="n">options</span> <span class="o">*</span><span class="n">string</span><span class="o">*</span> <span class="n">and</span> <span class="o">*</span><span class="n">packet</span> <span class="n">bytes</span><span class="o">*</span><span class="p">.</span>
+     3. Search for **password** choosing the options *string* and *packet bytes*.
 </pre></div>
 
 
 <p>Yay! We found something over a <strong>telnet</strong> protocol:</p>
-<p><img alt="" src="http://i.imgur.com/mUN4b1n.png" /></p>
-<hr />
+<p><img alt="" src="http://i.imgur.com/mUN4b1n.png"></p>
+<hr>
 <h2>Following the TCP Stream</h2>
 <p>Now, all we need to do is to right-click in the line and choose <em>Follow TCP Stream</em>. This  returns:</p>
-<div class="highlight"><pre><span class="p">.....</span> <span class="p">.....</span><span class="err">&#39;</span><span class="p">...........</span><span class="o">%</span><span class="p">..</span><span class="o">&amp;</span><span class="p">.....</span> <span class="p">..</span><span class="err">#</span><span class="p">..</span><span class="err">&#39;</span><span class="p">..</span><span class="err">$</span><span class="p">..</span><span class="o">%</span><span class="p">..</span><span class="o">&amp;</span><span class="p">..</span><span class="err">#</span><span class="p">..............</span><span class="err">$</span><span class="p">..</span> <span class="p">.....</span><span class="err">&#39;</span><span class="p">.............</span><span class="n">P</span><span class="p">......</span> <span class="mf">.38400</span><span class="p">,</span><span class="mf">38400.</span><span class="p">...</span><span class="err">&#39;</span><span class="p">.......</span><span class="n">XTERM</span><span class="p">.......</span><span class="s">&quot;.....!.....&quot;</span><span class="p">.....</span><span class="o">!</span><span class="p">............</span>
-<span class="n">Linux</span> <span class="mf">3.13.0</span><span class="o">-</span><span class="mi">32</span><span class="o">-</span><span class="n">generic</span> <span class="p">(</span><span class="n">ubuntu</span><span class="p">)</span> <span class="p">(</span><span class="n">pts</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>..... .....&#39;...........%..&amp;..... ..#..&#39;..$..%..&amp;..#..............$.. .....&#39;.............P...... .38400,38400....&#39;.......XTERM.......&quot;.....!.....&quot;.....!............
+Linux 3.13.0-32-generic (ubuntu) (pts/0)
 
-<span class="p">..</span><span class="n">ubuntu</span> <span class="n">login</span><span class="o">:</span> <span class="n">j</span><span class="p">.</span><span class="n">ju</span><span class="p">.</span><span class="n">ul</span><span class="p">.</span><span class="n">li</span><span class="p">.</span><span class="n">ia</span><span class="p">.</span><span class="n">an</span><span class="p">.</span><span class="n">n</span>
-<span class="p">.</span>
-<span class="p">..</span><span class="n">Password</span><span class="o">:</span> <span class="n">flag</span><span class="p">{</span><span class="n">bigdataisaproblemnotasolution</span><span class="p">}</span>
-<span class="p">.</span>
-<span class="p">.</span>
-<span class="n">Login</span> <span class="n">incorrect</span>
-<span class="p">..</span><span class="n">ubuntu</span> <span class="n">login</span><span class="o">:</span>
+..ubuntu login: j.ju.ul.li.ia.an.n
+.
+..Password: flag{bigdataisaproblemnotasolution}
+.
+.
+Login incorrect
+..ubuntu login:
 </pre></div>
 
 
 <p>And we find our flag: <strong>bigdataisaproblemnotasolution</strong>!</p>
 <p><strong>Hack all the things!</strong></p>
 <p>Edited: If you had decided to use <em>chaosreader</em> to process the pcapng file instead, the solution <a href="http://evandrix.github.io/ctf/2014-csaw-networking-100-bigdata.html">from this write-up</a> is also cool:</p>
-<div class="highlight"><pre><span class="k">for </span>f in pcap.pcapng-chaosreader/*.html; <span class="k">do </span>cat <span class="s2">&quot;${f}&quot;</span> | w3m -dump -T text/html <span class="s2">&quot;${f}&quot;</span>; <span class="k">done</span> | egrep <span class="s2">&quot;flag{&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">for</span> f in pcap.pcapng-chaosreader/*.html<span class="p">;</span> <span class="k">do</span> cat <span class="s2">&quot;</span><span class="si">${</span><span class="nv">f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> w3m -dump -T text/html <span class="s2">&quot;</span><span class="si">${</span><span class="nv">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> egrep <span class="s2">&quot;flag{&quot;</span>
 </pre></div>
                 </div><!-- /.entry-content -->
                 <div class="comments">

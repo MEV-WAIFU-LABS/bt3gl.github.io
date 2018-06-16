@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-12-16T00:00:00">
+<abbr class="published" title="2014-12-16T00:00:00-05:00">
       Tue 16 December 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -120,80 +120,80 @@
 <p>The cool thing about <strong>raw sockets</strong> is that they allow access to low-level networking information. For example, we can use it to check <strong>IP</strong> and <strong>ICMP</strong> headers, which are in the layer 3 of the OSI model (the network layer).</p>
 <p>The cool thing about using <strong>UDP datagrams</strong> is that, differently from <strong>TCP</strong>, they do not bring much overhead when sent across an entire subnet (remember the TCP <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">handshaking</a>). All we need to do is wait for the <strong>ICMP</strong> responses saying whether the hosts are available or closed (unreachable).
 Remember that ICMP is essentially a special control protocol that issues error reports and can control the behavior of machines in data transfer.</p>
-<hr />
+<hr>
 <h2>Writing a Packet Sniffer</h2>
 <p>We start with a  very simple task: with Python's  <a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html">socket</a> library, we will write a very simple packet sniffer.</p>
 <p>In this sniffer we create a raw socket and then we bind it to the public interface. The interface should be in <strong>promiscuous mode</strong>, which means that every packet that the network card sees is captured, even those that are not destined to the host.</p>
 <p>One detail to remember is that things are slightly different if we are using Windows: in this case we need to send a <a href="http://en.wikipedia.org/wiki/Ioctl">IOCTL</a> package to set the interface to <strong>promiscuous mode</strong>. In addition, while Linux needs to use ICMP, Windows allow us to sniff the incoming packets independently of the protocol:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="c"># host to listen</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;192.168.1.114&#39;</span>
+<span class="c1"># host to listen</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.114&#39;</span>
 
 <span class="k">def</span> <span class="nf">sniffing</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">win</span><span class="p">,</span> <span class="n">socket_prot</span><span class="p">):</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">sniffer</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_RAW</span><span class="p">,</span> <span class="n">socket_prot</span><span class="p">)</span>
         <span class="n">sniffer</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
-        <span class="c"># include the IP headers in the captured packets</span>
+        <span class="c1"># include the IP headers in the captured packets</span>
         <span class="n">sniffer</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_HDRINCL</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">win</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">sniffer</span><span class="o">.</span><span class="n">ioctl</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SIO_RCVALL</span><span class="p">,</span> <span class="n">socket_RCVALL_ON</span><span class="p">)</span>
 
-        <span class="c"># read in a single packet</span>
+        <span class="c1"># read in a single packet</span>
         <span class="k">print</span> <span class="n">sniffer</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">65565</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;nt&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
         <span class="n">sniffing</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">sniffing</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_ICMP</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">(</span><span class="n">HOST</span><span class="p">)</span>
 </pre></div>
 
 
 <p>To test this script, we run the following command in one terminal window:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python sniffer.py
+<div class="highlight"><pre><span></span>$ sudo python sniffer.py
 </pre></div>
 
 
 <p>Then, in a second  window, we can  <a href="http://en.wikipedia.org/wiki/Ping_(networking_utility)">ping</a> or <a href="http://en.wikipedia.org/wiki/Traceroute">traceroute</a> some address, for example <a href="www.google.com">www.google.com</a>. The results will look like this:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python raw_socket.py
-<span class="o">(</span><span class="s1">&#39;E\x00\x00T\xb3\xec\x00\x005\x01\xe4\x13J}\xe1\x11\xc0\xa8\x01r\x00\x00v\xdfx\xa2\x00\x01sr\x98T\x00\x00\x00\x008\xe3\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&quot;#$%&amp;\&#39;()*+,-./01234567&#39;</span>, <span class="o">(</span><span class="s1">&#39;74.125.225.17&#39;</span>, 0<span class="o">))</span>
-<span class="o">(</span><span class="s1">&#39;E\x00\x00T\xb4\x1b\x00\x005\x01\xe3\xe4J}\xe1\x11\xc0\xa8\x01r\x00\x00~\xd7x\xa2\x00\x02tr\x98T\x00\x00\x00\x00/\xea\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&quot;#$%&amp;\&#39;()*+,-./01234567&#39;</span>, <span class="o">(</span><span class="s1">&#39;74.125.225.17&#39;</span>, 0<span class="o">))</span>
+<div class="highlight"><pre><span></span>$ sudo python raw_socket.py
+<span class="o">(</span><span class="s1">&#39;E\x00\x00T\xb3\xec\x00\x005\x01\xe4\x13J}\xe1\x11\xc0\xa8\x01r\x00\x00v\xdfx\xa2\x00\x01sr\x98T\x00\x00\x00\x008\xe3\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&quot;#$%&amp;\&#39;</span><span class="o">()</span>*+,-./01234567<span class="s1">&#39;, (&#39;</span><span class="m">74</span>.125.225.17<span class="s1">&#39;, 0))</span>
+<span class="s1">(&#39;</span>E<span class="se">\x</span><span class="m">00</span><span class="se">\x</span>00T<span class="se">\x</span>b4<span class="se">\x</span>1b<span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">005</span><span class="se">\x</span><span class="m">01</span><span class="se">\x</span>e3<span class="se">\x</span>e4J<span class="o">}</span><span class="se">\x</span>e1<span class="se">\x</span><span class="m">11</span><span class="se">\x</span>c0<span class="se">\x</span>a8<span class="se">\x</span>01r<span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span>~<span class="se">\x</span>d7x<span class="se">\x</span>a2<span class="se">\x</span><span class="m">00</span><span class="se">\x</span>02tr<span class="se">\x</span>98T<span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span>/<span class="se">\x</span>ea<span class="se">\r\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">00</span><span class="se">\x</span><span class="m">10</span><span class="se">\x</span><span class="m">11</span><span class="se">\x</span><span class="m">12</span><span class="se">\x</span><span class="m">13</span><span class="se">\x</span><span class="m">14</span><span class="se">\x</span><span class="m">15</span><span class="se">\x</span><span class="m">16</span><span class="se">\x</span><span class="m">17</span><span class="se">\x</span><span class="m">18</span><span class="se">\x</span><span class="m">19</span><span class="se">\x</span>1a<span class="se">\x</span>1b<span class="se">\x</span>1c<span class="se">\x</span>1d<span class="se">\x</span>1e<span class="se">\x</span>1f !<span class="s2">&quot;#</span>$<span class="s2">%&amp;\&#39;()*+,-./01234567&#39;, (&#39;74.125.225.17&#39;, 0))</span>
 </pre></div>
 
 
 <p>Now it's pretty obvious that we need to decode these headers.</p>
-<hr />
+<hr>
 <h2>Decoding the IP and ICMP Layers</h2>
 <h3>The IP Header</h3>
 <p>A typical IP header has the following structure, where each field belongs to a variable (this header is originally <a href="http://minirighi.sourceforge.net/html/structip.html">written in C</a>):</p>
-<p><img alt="" src="http://i.imgur.com/3fmVLJS.jpg" /></p>
+<p><img alt="" src="http://i.imgur.com/3fmVLJS.jpg"></p>
 <h3>The ICMP Header</h3>
 <p>In the same way, ICMP can vary in its content but each message contains three elements that are consistent: <strong>type</strong> and <strong>code</strong> (tells the receiving host what type of ICMP message is arriving for decoding) and <strong>checksum</strong> fields.</p>
-<p><img alt="" src="http://i.imgur.com/gsUPKRa.gif" /></p>
+<p><img alt="" src="http://i.imgur.com/gsUPKRa.gif"></p>
 <p>For our scanner, we are looking for a <strong>type value of 3</strong> and a <strong>code value of 3</strong>, which are the <strong>Destination Unreachable</strong> class and <strong>Port Unreachable</strong> <a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages">errors in ICMP messages</a>.</p>
 <p>To represent this header, we create a class, with the help of Python's <a href="https://docs.python.org/2/library/ctypes.html">ctypes</a> library:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">ctypes</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
 
 <span class="k">class</span> <span class="nc">ICMP</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
     <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">&#39;type&#39;</span><span class="p">,</span>        <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;code&#39;</span><span class="p">,</span>        <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;checksum&#39;</span><span class="p">,</span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;unused&#39;</span><span class="p">,</span>      <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">),</span>
-    <span class="p">(</span><span class="s">&#39;next_hop_mtu&#39;</span><span class="p">,</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">)</span>
+    <span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span>        <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span>        <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;checksum&#39;</span><span class="p">,</span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;unused&#39;</span><span class="p">,</span>      <span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;next_hop_mtu&#39;</span><span class="p">,</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">)</span>
     <span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket_buffer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket_buffer</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_buffer_copy</span><span class="p">(</span><span class="n">socket_buffer</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket_buffer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket_buffer</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 
@@ -201,14 +201,14 @@ Remember that ICMP is essentially a special control protocol that issues error r
 <h3>Writing the Header Decoder</h3>
 <p>Now we are ready to write our IP/ICMP header decoder. The script below creates a sniffer socket (just as we did before) and then it runs a loop to continually read in packets and decode their information.</p>
 <p>Notice that for the IP header, the code reads the packet, unpacks the first 20 bytes to the raw buffer, and then prints the header variables. The ICMP header data comes right after it:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">struct</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">from</span> <span class="nn">ICMPHeader</span> <span class="kn">import</span> <span class="n">ICMP</span>
 
-<span class="c"># host to listen on</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;192.168.1.114&#39;</span>
+<span class="c1"># host to listen on</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.114&#39;</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">socket_protocol</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_ICMP</span>
@@ -219,9 +219,9 @@ Remember that ICMP is essentially a special control protocol that issues error r
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">raw_buffer</span> <span class="o">=</span> <span class="n">sniffer</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">65565</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">ip_header</span> <span class="o">=</span> <span class="n">raw_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
-        <span class="n">iph</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;!BBHHHBBH4s4s&#39;</span> <span class="p">,</span> <span class="n">ip_header</span><span class="p">)</span>
+        <span class="n">iph</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!BBHHHBBH4s4s&#39;</span> <span class="p">,</span> <span class="n">ip_header</span><span class="p">)</span>
 
-        <span class="c"># Create our IP structure</span>
+        <span class="c1"># Create our IP structure</span>
         <span class="n">version_ihl</span> <span class="o">=</span> <span class="n">iph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">version</span> <span class="o">=</span> <span class="n">version_ihl</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span>
         <span class="n">ihl</span> <span class="o">=</span> <span class="n">version_ihl</span> <span class="o">&amp;</span> <span class="mh">0xF</span>
@@ -231,32 +231,32 @@ Remember that ICMP is essentially a special control protocol that issues error r
         <span class="n">s_addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">iph</span><span class="p">[</span><span class="mi">8</span><span class="p">]);</span>
         <span class="n">d_addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">iph</span><span class="p">[</span><span class="mi">9</span><span class="p">]);</span>
 
-        <span class="k">print</span> <span class="s">&#39;IP -&gt; Version:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;, Header Length:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ihl</span><span class="p">)</span> <span class="o">+</span> \
-        <span class="s">&#39;, TTL:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ttl</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;, Protocol:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;, Source:&#39;</span>\
-         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">s_addr</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;, Destination:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d_addr</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s1">&#39;IP -&gt; Version:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Header Length:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ihl</span><span class="p">)</span> <span class="o">+</span> \
+        <span class="s1">&#39;, TTL:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ttl</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Protocol:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">protocol</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Source:&#39;</span>\
+         <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">s_addr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, Destination:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d_addr</span><span class="p">)</span>
 
-        <span class="c"># Create our ICMP structure</span>
+        <span class="c1"># Create our ICMP structure</span>
         <span class="n">buf</span> <span class="o">=</span> <span class="n">raw_buffer</span><span class="p">[</span><span class="n">iph_length</span><span class="p">:</span><span class="n">iph_length</span> <span class="o">+</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ICMP</span><span class="p">)]</span>
         <span class="n">icmp_header</span> <span class="o">=</span> <span class="n">ICMP</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
 
-        <span class="k">print</span> <span class="s">&quot;ICMP -&gt; Type:</span><span class="si">%d</span><span class="s">, Code:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">icmp_header</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">icmp_header</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">print</span> <span class="s2">&quot;ICMP -&gt; Type:</span><span class="si">%d</span><span class="s2">, Code:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">icmp_header</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">icmp_header</span><span class="o">.</span><span class="n">code</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>Testing the Decoder</h3>
 <p>Running the script in one terminal and sending a <strong>ping</strong>  in other will return something like this (notice the ICMP type 0):</p>
-<div class="highlight"><pre><span class="nv">$ </span>ping www.google.com
-PING www.google.com <span class="o">(</span>74.125.226.16<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
-64 bytes from lga15s42-in-f16.1e100.net <span class="o">(</span>74.125.226.16<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>56 <span class="nb">time</span><span class="o">=</span>15.7 ms
-64 bytes from lga15s42-in-f16.1e100.net <span class="o">(</span>74.125.226.16<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span>2 <span class="nv">ttl</span><span class="o">=</span>56 <span class="nb">time</span><span class="o">=</span>15.0 ms
+<div class="highlight"><pre><span></span>$ ping www.google.com
+PING www.google.com <span class="o">(</span><span class="m">74</span>.125.226.16<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from lga15s42-in-f16.1e100.net <span class="o">(</span><span class="m">74</span>.125.226.16<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">56</span> <span class="nv">time</span><span class="o">=</span><span class="m">15</span>.7 ms
+<span class="m">64</span> bytes from lga15s42-in-f16.1e100.net <span class="o">(</span><span class="m">74</span>.125.226.16<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">56</span> <span class="nv">time</span><span class="o">=</span><span class="m">15</span>.0 ms
 <span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span class="nv">$ </span>sudo python ip_header_decode.py
+<div class="highlight"><pre><span></span>$ sudo python ip_header_decode.py
 IP -&gt; Version:4, Header Length:5, TTL:56, Protocol:1, Source:74.125.226.16, Destination:192.168.1.114
 ICMP -&gt; Type:0, Code:0
 IP -&gt; Version:4, Header Length:5, TTL:56, Protocol:1, Source:74.125.226.16, Destination:192.168.1.114
@@ -266,22 +266,22 @@ ICMP -&gt; Type:0, Code:0
 
 
 <p>In the other hand, if we run <strong>traceroute</strong> instead:</p>
-<div class="highlight"><pre><span class="nv">$ </span>traceroute www.google.com
-traceroute to www.google.com <span class="o">(</span>74.125.226.50<span class="o">)</span>, 30 hops max, 60 byte packets
- 1  * * *
- 2  * * *
- 3  67.59.255.137 <span class="o">(</span>67.59.255.137<span class="o">)</span>  17.183 ms 67.59.255.129 <span class="o">(</span>67.59.255.129<span class="o">)</span>  70.563 ms 67.59.255.137 <span class="o">(</span>67.59.255.137<span class="o">)</span>  21.480 ms
- 4  451be075.cst.lightpath.net <span class="o">(</span>65.19.99.117<span class="o">)</span>  14.639 ms rtr102.wan.hcvlny.cv.net <span class="o">(</span>65.19.99.205<span class="o">)</span>  24.086 ms 451be075.cst.lightpath.net <span class="o">(</span>65.19.107.117<span class="o">)</span>  24.025 ms
- 5  64.15.3.246 <span class="o">(</span>64.15.3.246<span class="o">)</span>  24.005 ms 64.15.0.218 <span class="o">(</span>64.15.0.218<span class="o">)</span>  23.961 ms 451be0c2.cst.lightpath.net <span class="o">(</span>65.19.120.194<span class="o">)</span>  23.935 ms
- 6  72.14.215.203 <span class="o">(</span>72.14.215.203<span class="o">)</span>  23.872 ms  46.943 ms *
- 7  216.239.50.141 <span class="o">(</span>216.239.50.141<span class="o">)</span>  48.906 ms  46.138 ms  46.122 ms
- 8  209.85.245.179 <span class="o">(</span>209.85.245.179<span class="o">)</span>  46.108 ms  46.095 ms  46.074 ms
- 9  lga15s43-in-f18.1e100.net <span class="o">(</span>74.125.226.50<span class="o">)</span>  45.997 ms  19.507 ms  16.607 ms
+<div class="highlight"><pre><span></span>$ traceroute www.google.com
+traceroute to www.google.com <span class="o">(</span><span class="m">74</span>.125.226.50<span class="o">)</span>, <span class="m">30</span> hops max, <span class="m">60</span> byte packets
+ <span class="m">1</span>  * * *
+ <span class="m">2</span>  * * *
+ <span class="m">3</span>  <span class="m">67</span>.59.255.137 <span class="o">(</span><span class="m">67</span>.59.255.137<span class="o">)</span>  <span class="m">17</span>.183 ms <span class="m">67</span>.59.255.129 <span class="o">(</span><span class="m">67</span>.59.255.129<span class="o">)</span>  <span class="m">70</span>.563 ms <span class="m">67</span>.59.255.137 <span class="o">(</span><span class="m">67</span>.59.255.137<span class="o">)</span>  <span class="m">21</span>.480 ms
+ <span class="m">4</span>  451be075.cst.lightpath.net <span class="o">(</span><span class="m">65</span>.19.99.117<span class="o">)</span>  <span class="m">14</span>.639 ms rtr102.wan.hcvlny.cv.net <span class="o">(</span><span class="m">65</span>.19.99.205<span class="o">)</span>  <span class="m">24</span>.086 ms 451be075.cst.lightpath.net <span class="o">(</span><span class="m">65</span>.19.107.117<span class="o">)</span>  <span class="m">24</span>.025 ms
+ <span class="m">5</span>  <span class="m">64</span>.15.3.246 <span class="o">(</span><span class="m">64</span>.15.3.246<span class="o">)</span>  <span class="m">24</span>.005 ms <span class="m">64</span>.15.0.218 <span class="o">(</span><span class="m">64</span>.15.0.218<span class="o">)</span>  <span class="m">23</span>.961 ms 451be0c2.cst.lightpath.net <span class="o">(</span><span class="m">65</span>.19.120.194<span class="o">)</span>  <span class="m">23</span>.935 ms
+ <span class="m">6</span>  <span class="m">72</span>.14.215.203 <span class="o">(</span><span class="m">72</span>.14.215.203<span class="o">)</span>  <span class="m">23</span>.872 ms  <span class="m">46</span>.943 ms *
+ <span class="m">7</span>  <span class="m">216</span>.239.50.141 <span class="o">(</span><span class="m">216</span>.239.50.141<span class="o">)</span>  <span class="m">48</span>.906 ms  <span class="m">46</span>.138 ms  <span class="m">46</span>.122 ms
+ <span class="m">8</span>  <span class="m">209</span>.85.245.179 <span class="o">(</span><span class="m">209</span>.85.245.179<span class="o">)</span>  <span class="m">46</span>.108 ms  <span class="m">46</span>.095 ms  <span class="m">46</span>.074 ms
+ <span class="m">9</span>  lga15s43-in-f18.1e100.net <span class="o">(</span><span class="m">74</span>.125.226.50<span class="o">)</span>  <span class="m">45</span>.997 ms  <span class="m">19</span>.507 ms  <span class="m">16</span>.607 ms
 </pre></div>
 
 
 <p>We get something like this (notice the <a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages">several types of ICMP responses</a>):</p>
-<div class="highlight"><pre>sudo python ip_header_decode.py
+<div class="highlight"><pre><span></span>sudo python ip_header_decode.py
 IP -&gt; Version:4, Header Length:5, TTL:252, Protocol:1, Source:65.19.99.117, Destination:192.168.1.114
 ICMP -&gt; Type:11, Code:0
 <span class="o">(</span>...<span class="o">)</span>
@@ -297,28 +297,28 @@ ICMP -&gt; Type:3, Code:3
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Writing the Scanner</h2>
 <h3>Installing netaddr</h3>
 <p>We are ready to write our full scanner. But, first, let's install <a href="https://pypi.python.org/pypi/netaddr">netaddr</a>, which is a Python library for representing and manipulating network addresses.</p>
 <p>Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem, since we want to be able to use a subnet mask such as 192.168.1.0/24.</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo pip install netaddr
+<div class="highlight"><pre><span></span>$ sudo pip install netaddr
 </pre></div>
 
 
 <p>We can quickly test this library with the following snippet (which should print "OK"):</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">netaddr</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">netaddr</span>
 
-<span class="n">ip</span> <span class="o">=</span> <span class="s">&#39;192.168.1.114&#39;</span>
-<span class="k">if</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">netaddr</span><span class="o">.</span><span class="n">IPNetwork</span><span class="p">(</span><span class="s">&#39;192.168.1.0/24&#39;</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;OK!&#39;</span><span class="p">)</span>
+<span class="n">ip</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.114&#39;</span>
+<span class="k">if</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">netaddr</span><span class="o">.</span><span class="n">IPNetwork</span><span class="p">(</span><span class="s1">&#39;192.168.1.0/24&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;OK!&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <h3>Enter the Scanner</h3>
 <p>To write our scanner we are going to put together everything we have, and then add a loop to spray UDP datagrams with a string signature to all the address within our target subnet.</p>
 <p>To make this work, each packet will be sent in a separated thread, to make sure that we are not interfering with the sniff responses:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">threading</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -327,20 +327,20 @@ ICMP -&gt; Type:3, Code:3
 <span class="kn">from</span> <span class="nn">ICMPHeader</span> <span class="kn">import</span> <span class="n">ICMP</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 
-<span class="c"># host to listen on</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;192.168.1.114&#39;</span>
-<span class="c"># subnet to target (iterates through all IP address in this subnet)</span>
-<span class="n">SUBNET</span> <span class="o">=</span> <span class="s">&#39;192.168.1.0/24&#39;</span>
-<span class="c"># string signature</span>
-<span class="n">MESSAGE</span> <span class="o">=</span> <span class="s">&#39;hellooooo&#39;</span>
+<span class="c1"># host to listen on</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.114&#39;</span>
+<span class="c1"># subnet to target (iterates through all IP address in this subnet)</span>
+<span class="n">SUBNET</span> <span class="o">=</span> <span class="s1">&#39;192.168.1.0/24&#39;</span>
+<span class="c1"># string signature</span>
+<span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;hellooooo&#39;</span>
 
-<span class="c"># sprays out the udp datagram</span>
+<span class="c1"># sprays out the udp datagram</span>
 <span class="k">def</span> <span class="nf">udp_sender</span><span class="p">(</span><span class="n">SUBNET</span><span class="p">,</span> <span class="n">MESSAGE</span><span class="p">):</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">sender</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">SUBNET</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">sender</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">ip</span><span class="p">,</span> <span class="mi">65212</span><span class="p">))</span>
+            <span class="n">sender</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ip</span><span class="p">,</span> <span class="mi">65212</span><span class="p">))</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
 
@@ -353,43 +353,43 @@ ICMP -&gt; Type:3, Code:3
     <span class="n">sniffer</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span> <span class="n">HOST</span><span class="p">,</span> <span class="mi">0</span> <span class="p">))</span>
     <span class="n">sniffer</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_IP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">IP_HDRINCL</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-    <span class="c"># continually read in packets and parse their information</span>
+    <span class="c1"># continually read in packets and parse their information</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">raw_buffer</span> <span class="o">=</span> <span class="n">sniffer</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">65565</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">ip_header</span> <span class="o">=</span> <span class="n">raw_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
-        <span class="n">iph</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;!BBHHHBBH4s4s&#39;</span> <span class="p">,</span> <span class="n">ip_header</span><span class="p">)</span>
+        <span class="n">iph</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;!BBHHHBBH4s4s&#39;</span> <span class="p">,</span> <span class="n">ip_header</span><span class="p">)</span>
 
-        <span class="c"># Create our IP structure</span>
+        <span class="c1"># Create our IP structure</span>
         <span class="n">version_ihl</span> <span class="o">=</span> <span class="n">iph</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">ihl</span> <span class="o">=</span> <span class="n">version_ihl</span> <span class="o">&amp;</span> <span class="mh">0xF</span>
         <span class="n">iph_length</span> <span class="o">=</span> <span class="n">ihl</span> <span class="o">*</span> <span class="mi">4</span>
         <span class="n">src_addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">inet_ntoa</span><span class="p">(</span><span class="n">iph</span><span class="p">[</span><span class="mi">8</span><span class="p">]);</span>
 
-        <span class="c"># Create our ICMP structure</span>
+        <span class="c1"># Create our ICMP structure</span>
         <span class="n">buf</span> <span class="o">=</span> <span class="n">raw_buffer</span><span class="p">[</span><span class="n">iph_length</span><span class="p">:</span><span class="n">iph_length</span> <span class="o">+</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ICMP</span><span class="p">)]</span>
         <span class="n">icmp_header</span> <span class="o">=</span> <span class="n">ICMP</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
 
-        <span class="c"># check for the type 3 and code and within our target subnet</span>
+        <span class="c1"># check for the type 3 and code and within our target subnet</span>
         <span class="k">if</span> <span class="n">icmp_header</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">icmp_header</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">IPAddress</span><span class="p">(</span><span class="n">src_addr</span><span class="p">)</span> <span class="ow">in</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">SUBNET</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">raw_buffer</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">raw_buffer</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">):]</span> <span class="o">==</span> <span class="n">MESSAGE</span><span class="p">:</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Host up: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">src_addr</span><span class="p">)</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Host up: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">src_addr</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
 
 <p>Finally, running the scanner  gives a result similar to this:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python scanner.py
-Host up: 192.168.1.114
+<div class="highlight"><pre><span></span>$ sudo python scanner.py
+Host up: <span class="m">192</span>.168.1.114
 <span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 
 
 <p>Pretty neat!</p>
 <p>By the way, the results from our scanner can be checked against the values of the IP addresses in your router's <strong>DHCP table</strong>. They should match!</p>
-<hr />
+<hr>
 <p>That's all, folks. Hope you had fun.</p>
 <h2>Further References:</h2>
 <ul>

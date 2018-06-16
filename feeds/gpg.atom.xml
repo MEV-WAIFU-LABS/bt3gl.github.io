@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/gpg.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-28T05:20:00-04:00</updated><entry><title>Quick and Dirty intro to OpenPGP &amp; GPG</title><link href="http://bt3gl.github.io/quick-and-dirty-intro-to-openpgp-gpg.html" rel="alternate"></link><updated>2014-10-28T05:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-28:quick-and-dirty-intro-to-openpgp-gpg.html</id><summary type="html">&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy"&gt;Pretty Good Privacy&lt;/a&gt; (PGP) is a model that provides cryptographic privacy and authentication for data communication. It was created by &lt;a href="http://en.wikipedia.org/wiki/Phil_Zimmermann"&gt;Phil Zimmermann&lt;/a&gt; in 1991. Today, PGP is a &lt;a href="http://en.wikipedia.org/wiki/PGP_Corporation"&gt;company&lt;/a&gt; that sells a proprietary encryption program, &lt;a href="http://www.openpgp.org/"&gt;OpenPGP&lt;/a&gt; is the open protocol that defines how PGP encryption works, and &lt;a href="https://www.gnupg.org/"&gt;GnuGP&lt;/a&gt; is the free software.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - GPG</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/gpg.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-28T05:20:00-04:00</updated><entry><title>Quick and Dirty intro to OpenPGP &amp; GPG</title><link href="http://bt3gl.github.io/quick-and-dirty-intro-to-openpgp-gpg.html" rel="alternate"></link><published>2014-10-28T05:20:00-04:00</published><updated>2014-10-28T05:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-28:/quick-and-dirty-intro-to-openpgp-gpg.html</id><summary type="html">&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy"&gt;Pretty Good Privacy&lt;/a&gt; (PGP) is a model that provides cryptographic privacy and authentication for data communication. It was created by &lt;a href="http://en.wikipedia.org/wiki/Phil_Zimmermann"&gt;Phil Zimmermann&lt;/a&gt; in 1991. Today, PGP is a &lt;a href="http://en.wikipedia.org/wiki/PGP_Corporation"&gt;company&lt;/a&gt; that sells a proprietary encryption program, &lt;a href="http://www.openpgp.org/"&gt;OpenPGP&lt;/a&gt; is the open protocol that defines how PGP encryption works, and &lt;a href="https://www.gnupg.org/"&gt;GnuGP&lt;/a&gt; is the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy"&gt;Pretty Good Privacy&lt;/a&gt; (PGP) is a model that provides cryptographic privacy and authentication for data communication. It was created by &lt;a href="http://en.wikipedia.org/wiki/Phil_Zimmermann"&gt;Phil Zimmermann&lt;/a&gt; in 1991. Today, PGP is a &lt;a href="http://en.wikipedia.org/wiki/PGP_Corporation"&gt;company&lt;/a&gt; that sells a proprietary encryption program, &lt;a href="http://www.openpgp.org/"&gt;OpenPGP&lt;/a&gt; is the open protocol that defines how PGP encryption works, and &lt;a href="https://www.gnupg.org/"&gt;GnuGP&lt;/a&gt; is the free software.&lt;/p&gt;
 &lt;p&gt;The distribution of PGP keys can be done using the concept of &lt;a href="http://en.wikipedia.org/wiki/Web_of_trust"&gt;web of trust&lt;/a&gt;. This is a decentralized way of establishing the authenticity  of a public key and its owner. If you want a cute (ludic) picture of the web of trust, check &lt;a href="https://twitter.com/doctorow"&gt;Cory Doctorow&lt;/a&gt;'s book &lt;a href="http://craphound.com/littlebrother/"&gt;Little Brother&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Almost 15 years after its creation, &lt;a href="https://firstlook.org/theintercept/2014/10/28/smuggling-snowden-secrets/"&gt;PGP continues to be &lt;em&gt;pretty good&lt;/em&gt;&lt;/a&gt;. But there is  still a &lt;a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html"&gt;need for new solutions&lt;/a&gt; (and they appear to be &lt;a href="http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html"&gt;coming soon&lt;/a&gt;). Perhaps the main issue with PGP is its persistence. If one key is compromised, any message from the past can be read.  That's where the concept of &lt;a href="http://en.wikipedia.org/wiki/Forward_secrecy"&gt;perfect forward secrecy &lt;/a&gt; comes in play, but this is a subject to another post. Meanwhile, I wrote this tutorial and I hope you find it fun.&lt;/p&gt;
 &lt;h3&gt;I. Creating  GPG keys&lt;/h3&gt;
 &lt;p&gt;Simply type the following in the terminal:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --gen-key
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --gen-key
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Chose &lt;a href="http://en.wikipedia.org/wiki/RSA_(cryptosystem)"&gt;RSA&lt;/a&gt; with  4096 bits long and expiration up to 5 years. Use a &lt;a href="https://www.eff.org/wp/defending-privacy-us-border-guide-travelers-carrying-digital-devices#passphrase"&gt;strong passphrase&lt;/a&gt; (keep it safe since it cannot be recovered).&lt;/p&gt;
 &lt;h3&gt;II. Backup your Private Key&lt;/h3&gt;
 &lt;p&gt;Save it with your soul:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --export-secret-keys --armor YOUR_EMAIL &amp;gt; YOUR_NAME-privkey.asc
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --export-secret-keys --armor YOUR_EMAIL &amp;gt; YOUR_NAME-privkey.asc
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -20,24 +20,24 @@
 &lt;h4&gt;By sharing the key's fingerprint&lt;/h4&gt;
 &lt;p&gt;The key's fingerprint is the same as its signature. Each PGP key has a unique fingerprint that allows you to confirm to others that they have received your actual public key without tampering. A fingerprint is a more convenient way to uniquely represent a key.&lt;/p&gt;
 &lt;p&gt;To check the fingerprint of any key that you have in your keyring, type:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --fingerprint EMAIL
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --fingerprint EMAIL
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;By sending the ASCII file&lt;/h4&gt;
 &lt;p&gt;You can copy your key to an file to be shared:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --export --armor  YOUR_EMAIL &amp;gt; YOUR_NAME-pubkey.asc
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --export --armor  YOUR_EMAIL &amp;gt; YOUR_NAME-pubkey.asc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;By  publishing it in a public key server&lt;/h4&gt;
 &lt;p&gt;You can export your key to the &lt;a href="keys.gnupg.net"&gt;GnuPG public key server&lt;/a&gt;. For this,  use your key's name (the hexadecimal number in front of the key):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --send-key KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --send-key KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You can also export it to  &lt;a href="pgp.mit.edu"&gt;pgp.mit.edu&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --keyserver hkp://pgp.mit.edu --send-key KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --keyserver hkp://pgp.mit.edu --send-key KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -45,13 +45,13 @@
 &lt;p&gt;There are many ways you can import someone's public key:&lt;/p&gt;
 &lt;h4&gt;By a shared file&lt;/h4&gt;
 &lt;p&gt;If you have the ASCII file, you can type:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --import PUBKEY_FILE
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --import PUBKEY_FILE
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;By Public Key Server&lt;/h4&gt;
 &lt;p&gt;To search for someone's key in the public key server,  type:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --search-keys NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --search-keys NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -59,49 +59,49 @@
 &lt;h3&gt;V. Signing a key: The Web of Trust&lt;/h3&gt;
 &lt;p&gt;Signing a key tells your software that you trust the key that you have been provided (you have verified that it is associated with the person in question).&lt;/p&gt;
 &lt;p&gt;To sign a key type:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --sign-key  PERSON_EMAIL
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --sign-key  PERSON_EMAIL
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You should allow the person whose key you are signing to enjoy the advantages of your trusted relationship. This is done by sending her back the signed key:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --export --armor PERSON_EMAIL
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --export --armor PERSON_EMAIL
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;When you received similar &lt;em&gt;trusted&lt;/em&gt; key, you can import it  into your GPG database:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --import FILENAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --import FILENAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;VI. Other Useful Commands&lt;/h3&gt;
 &lt;h4&gt;To delete a key from your keyring:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --delete-key-name KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --delete-key-name KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;To  edit a key (for example, the expiration date):&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; gpg --edit KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  gpg --edit KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;If you have more than one key:&lt;/h4&gt;
 &lt;p&gt;Edit &lt;code&gt;~/.gnupg/gpg.conf&lt;/code&gt; with your favorite key:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;KEY_NAME&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;default-key KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Keep your keys fresh:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --refresh-keys
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --refresh-keys
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;To list your keys:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --list-keys
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --list-keys
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;And of course:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;man gpg
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ man gpg
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -110,41 +110,41 @@
 &lt;p&gt;In the other hand, with your secret key you can &lt;strong&gt;decrypt&lt;/strong&gt; messages that were encrypted using your public key. You can also and  &lt;strong&gt;sign messages&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;With GPG, you  encrypt messages using the &lt;code&gt;--encrypt&lt;/code&gt; flag.&lt;/p&gt;
 &lt;p&gt;The command below encrypts the message signing with your private key (to guarantee that is coming from you). It also generates the message in a text format, instead of raw bytes:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --encrypt --sign --armor -r PERSON_EMAIL FILE_TO_BE_ENCRYPTED
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --encrypt --sign --armor -r PERSON_EMAIL FILE_TO_BE_ENCRYPTED
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If you want to be able to read this message with your own email address, you should add another recipient flag &lt;code&gt;-r&lt;/code&gt; with your email address.&lt;/p&gt;
 &lt;p&gt;To decrypt a message, type:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg FILENAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg FILENAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;VIII. Revoking a key&lt;/h3&gt;
 &lt;p&gt;Whenever you need to revoke a key (because it might be compromised, for example), you can generate a revocation certificate with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --output my_revocation.asc --gen-revoke KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --output my_revocation.asc --gen-revoke KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;To import the revocation into your keyring:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --import my_revocation.asc
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --import my_revocation.asc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Finally, this command sends the revoked key to the public key server:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;gpg --keyserver pgp.mit.edu --send-keys KEY_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gpg --keyserver pgp.mit.edu --send-keys KEY_NAME
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Final Comments&lt;/h2&gt;
 &lt;p&gt;If you prefer a GUI instead of the command line, I strongly recommend  &lt;a href="https://apps.fedoraproject.org/packages/seahorse/bugs"&gt;seahorse&lt;/a&gt;. It makes really easy to manage all your keys (not only OpenPGP) and passwords.&lt;/p&gt;
 &lt;p&gt;Another nice (alpha) project is &lt;a href="https://keybase.io/"&gt;keybase.io&lt;/a&gt;. It's kind of a web of trust social network, where you can sign your key with your public profiles. Check &lt;a href="https://keybase.io/bt3"&gt;mine here&lt;/a&gt;. Encryption and decryption can be done in the command line with their &lt;a href="https://keybase.io/docs/command_line"&gt;node.js&lt;/a&gt; application. I don't trust uploading my private key anywhere, but I do think that the idea is better than a simple public key server.&lt;/p&gt;
 &lt;p&gt;Finally, a word about browser plugins. Although there are several of them to encrypt webmail with OpenPGP,  such as &lt;a href="https://chrome.google.com/webstore/detail/mymail-crypt-for-gmail/jcaobjhdnlpmopmjhijplpjhlplfkhba?hl=en-US"&gt;mymail-crypt&lt;/a&gt; or  &lt;a href="https://www.mailvelope.com/"&gt;Mailvelope&lt;/a&gt;, I particularly don't recommend this solution if your message is very sensitive.&lt;/p&gt;
 &lt;p&gt;If you are serious about ensuring your long-term privacy, the safest way to go is to use a text editor to write your email message, encrypting the message outside of the web browser, and then cutting and pasting into your webmail interface. This will guarantee that only the recipient will be able to read your email.&lt;/p&gt;
 &lt;p&gt;If you really need something in your browser,  the creator of &lt;a href="https://crypto.cat/"&gt;Cryptocat&lt;/a&gt; recently released &lt;a href="https://minilock.io/"&gt;minilock&lt;/a&gt;. This tool  uses  &lt;a href="http://en.wikipedia.org/wiki/Curve25519"&gt;Curve25519 elliptic curve cryptography&lt;/a&gt; (the sames as in Cryptocat) so that the public keys are much shorter (and easier to share). Remember,  it's a new app, so it might not yet be the best choice for high-stakes environment (but  it's  worth keeping tabs on this project).&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Further Readings&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.gnupg.org/gph/en/manual.html"&gt;The GNU Privacy Handbook&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="PGP"></category><category term="GPG"></category></entry></feed>
+&lt;/ul&gt;</content><category term="PGP"></category><category term="GPG"></category></entry></feed>

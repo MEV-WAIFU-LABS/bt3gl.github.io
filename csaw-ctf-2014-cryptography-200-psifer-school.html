@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-21T00:20:00">
+<abbr class="published" title="2014-09-21T00:20:00-04:00">
       Sun 21 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -121,11 +121,11 @@
 <p>nc 54.209.5.48 12345</p>
 <p>Written by psifertex</p>
 </blockquote>
-<hr />
+<hr>
 <h2>Stage One: Caesar Cipher</h2>
 <h4>Connecting to the Server</h4>
 <p>We start typing the <strong>netcat</strong> command in the terminal:</p>
-<div class="highlight"><pre>nc 54.209.5.48 12345
+<div class="highlight"><pre><span></span>nc <span class="m">54</span>.209.5.48 <span class="m">12345</span>
 </pre></div>
 
 
@@ -142,14 +142,14 @@
 <p>The famous roman is <strong>Caesar</strong>, and <a href="http://en.wikipedia.org/wiki/Caesar_cipher">his cryptographic scheme</a> is one of the simplest possible. This cipher is also known as  <strong>rotation cipher</strong>, because all we do is rotating the letters by some value (the <strong>key</strong>). A modern version of it is called <strong>ROT13</strong>, meaning <strong>rotation by 13 places</strong>. This is a simple letter substitution cipher which replaces each letter with the 13th letter after it in the alphabet. In this case, we say that the <em>key is 13</em>.</p>
 <p>In our problem, we don't know the key. However there is a method to circumvent it: we can count how many times each letter appears in the text and then we use some previous knowledge about the frequency of each letter in the English words. For example, in the English language, <em>e</em>, <em>t</em>, <em>a</em>, <em>o</em>, and <em>n</em> are frequent letters while <em>z</em> or <em>v</em> are not. This means that we can analyse the frequency of each character to determine what's the most probable rotation key.</p>
 <p>To count the frequency of characters in our cipher, we write a snippet that creates a counter <a href="https://docs.python.org/2/tutorial/datastructures.html#dictionaries">dictionary (hash table)</a> with all the (lowercase) characters as the dictionary's keys. Note that we could have used Python's <a href="https://docs.python.org/2/library/collections.html#collections.Counter">Counter() data-structure</a> as well. We then iterate through each character in the message, counting their frequency, and returning a sorted list of these values:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 
 <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="c"># Compute the word frequencies</span>
+    <span class="c1"># Compute the word frequencies</span>
     <span class="n">dict_freq</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">c</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">lowercase</span><span class="p">])</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="k">if</span> <span class="s">&#39;a&#39;</span><span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s">&#39;z&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;a&#39;</span><span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span>
             <span class="n">diff</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">dict_freq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">list_freq</span> <span class="o">=</span> <span class="n">dict_freq</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -164,15 +164,15 @@
 <li>First, for each of the 26 letters, we subtract its known frequency value from the  frequency obtained from our message.</li>
 <li>Second, we find what is the minimum value from those subtractions. The closest value is the most probable value for the rotation key.</li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="n">freq_word</span><span class="p">,</span> <span class="n">freq_eng</span><span class="p">):</span>
-    <span class="c"># zip together the value from the text and the value from FREQ</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="n">freq_word</span><span class="p">,</span> <span class="n">freq_eng</span><span class="p">):</span>
+    <span class="c1"># zip together the value from the text and the value from FREQ</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">freq_word</span><span class="p">,</span> <span class="n">freq_eng</span><span class="p">):</span>
         <span class="n">diff</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">diff</span>
 
 <span class="k">def</span> <span class="nf">decipher</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-    <span class="c"># Decipher by frequency</span>
+    <span class="c1"># Decipher by frequency</span>
     <span class="n">min_delta</span><span class="p">,</span> <span class="n">best_rotation</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.0</span>
     <span class="n">freq</span> <span class="o">=</span> <span class="n">frequency</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
@@ -193,12 +193,12 @@
 <li>Finally, we just need the value of the shift to the Unicode of <em>a</em> to get the position of the character in the cipher.</li>
 <li>Remember we are using <em>-key</em>, so instead of making a new cipher we are using the same steps to rotate the cipher to the other side to recover the message.</li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">cipher</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-    <span class="c"># Make the cipher</span>
-    <span class="n">dec</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cipher</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="c1"># Make the cipher</span>
+    <span class="n">dec</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="k">if</span> <span class="s">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s">&#39;z&#39;</span><span class="p">:</span>
-             <span class="n">dec</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span>
+             <span class="n">dec</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
              <span class="n">dec</span> <span class="o">+=</span> <span class="n">c</span>
     <span class="k">return</span> <span class="n">dec</span>
@@ -213,10 +213,10 @@
 <h4>Automating the Response</h4>
 <p>To advance forward, we need to send one of the above answers to the socket. However, we only <strong>have 10 seconds</strong> to do this! It's clear that we need to automate this problem with a script.</p>
 <p>We can do this in many ways. In Python, for example, we can use the libraries <a href="https://docs.python.org/2/library/telnetlib.html">telnetlib</a> or <a href="https://docs.python.org/2/library/socket.html">socket</a> or even writing our <a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py">own netcat script</a>. We will use the former  for this exploit. Let us create a telnet connection with:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">telnetlib</span> <span class="kn">import</span> <span class="n">Telnet</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">telnetlib</span> <span class="kn">import</span> <span class="n">Telnet</span>
 
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;54.209.5.48&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;54.209.5.48&#39;</span>
 
 <span class="n">tn</span> <span class="o">=</span> <span class="n">Telnet</span><span class="p">(</span><span class="n">HOST</span> <span class="p">,</span><span class="n">PORT</span><span class="p">)</span>
 </pre></div>
@@ -225,7 +225,7 @@
 <p>In this case, socket reading can be done with <code>tn.read_until(b'psifer text: ')</code>, which reads until a given string is encountered,  or <code>tn.read_all()</code>, which reads all data until EOF.</p>
 <p>To write a string to the socket we do <code>tn.write(mystring.encode() + b'\n')</code>. Here, the method <a href="https://docs.python.org/2/library/stdtypes.html#str.encode">encode()</a> returns an encoded version of the string, <em>i.e</em> a translation of a sequence of bytes to a Unicode string.</p>
 <p>As a side note, if we had decided to use the <a href="https://docs.python.org/2/library/socket.html">socket</a> library to create a <em>TCP socket</em>, the process would be easy as well:</p>
-<div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">HOST</span><span class="p">)</span>
 </pre></div>
 
@@ -234,23 +234,23 @@
 <p>To read the socket stream we would use commands such as <code>s.recv(2048)</code> and for writing we could use <code>s.sendall(answer)</code>.</p>
 <h4>Decrypting and Sending the Answer</h4>
 <p>Now, back to our problem. After creating the telnet connection, we read whatever comes in:</p>
-<div class="highlight"><pre><span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;psifer text: &#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;psifer text: &#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>We decode and decrypt the text, and then encode it again:</p>
-<div class="highlight"><pre><span class="n">msg_in1</span> <span class="o">=</span> <span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">msg_in1</span> <span class="o">=</span> <span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 <span class="n">dec_msg_in1</span> <span class="o">=</span> <span class="n">decipher</span><span class="p">(</span><span class="n">msg_in1</span><span class="p">)</span>
-<span class="n">answer1</span> <span class="o">=</span> <span class="n">dec_msg_in1</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="n">b</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+<span class="n">answer1</span> <span class="o">=</span> <span class="n">dec_msg_in1</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 </pre></div>
 
 
 <p>Finally, we send our answer to the telnet session (the same answer obtained before):</p>
-<div class="highlight"><pre><span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">answer1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">tn</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">answer1</span><span class="p">)</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Stage Two: Offset with Special Characters</h2>
 <p>The second stage starts with the following message:</p>
 <blockquote>
@@ -275,11 +275,11 @@ not length that matters.</p>
 <p>Back to the first loop, we add all the characters so far from our list into a the message string. But when should we stop doing this? Until we make sure that had a rotation that produces real words. I tried a few of common words, and 'you' worked just fine!</p>
 </li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">solve2</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
-  <span class="c"># Shift cypher, but dealing with special characters</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve2</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+  <span class="c1"># Shift cypher, but dealing with special characters</span>
   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)):</span>
 
-    <span class="n">dec_msg</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;0&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="n">dec_msg</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="n">idec_msg</span><span class="p">,</span> <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)):</span>
@@ -289,9 +289,9 @@ not length that matters.</p>
       <span class="k">if</span> <span class="n">idec_msg</span> <span class="o">&gt;</span>  <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">shift</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">idec_msg</span> <span class="o">=</span> <span class="n">shift</span>
-    <span class="n">dec_msg</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dec_msg</span><span class="p">)</span>
+    <span class="n">dec_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dec_msg</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="s">&quot;you&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dec_msg</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="k">if</span> <span class="s2">&quot;you&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dec_msg</span><span class="p">:</span> <span class="k">continue</span>
     <span class="k">return</span> <span class="n">dec_msg</span>
 </pre></div>
 
@@ -300,7 +300,7 @@ not length that matters.</p>
 <blockquote>
 <p>I hope you don't have a problem with this challenge. It should be fairly straight forward if you have done lots of basic crypto. The magic phrase for your efforts is "<strong>not not wrong</strong>". For your efforts, you will get another challenge!</p>
 </blockquote>
-<hr />
+<hr>
 <h2>Stage Three: Vigenere Cipher</h2>
 <p>The next message lets us know that we are close to the end:</p>
 <blockquote>
@@ -308,22 +308,22 @@ not length that matters.</p>
 Last one.</p>
 </blockquote>
 <p>And comes with the following cipher:</p>
-<div class="highlight"><pre><span class="n">MVJJN</span> <span class="n">BQXKF</span> <span class="n">NCEPZ</span> <span class="n">WWVSH</span> <span class="n">YFCSV</span> <span class="n">JEEBB</span> <span class="n">UVRMX</span> <span class="n">HKPIE</span> <span class="n">PMMVZ</span> <span class="n">FOPME</span> <span class="n">ZQIIU</span> <span class="n">EUZZW</span> <span class="n">CGHMV</span> <span class="n">BKBTZ</span> <span class="n">BBHVR</span> <span class="n">MVTQP</span> <span class="n">ENXRM</span> <span class="n">HIRNB</span> <span class="n">WTGDZ</span> <span class="n">CFEDS</span> <span class="n">TKBBW</span> <span class="n">HBFDI</span> <span class="n">KILCM</span> <span class="n">MUUPX</span> <span class="n">WUNIN</span> <span class="n">PWPFJ</span> <span class="n">IEZTP</span> <span class="n">MVQBX</span> <span class="n">ACVKN</span> <span class="n">AEMPV</span> <span class="n">KQXAB</span> <span class="n">ZMDUD</span> <span class="n">ILISV</span> <span class="n">NHKBJ</span> <span class="n">FCIMW</span> <span class="n">HTUVR</span> <span class="n">MNNGU</span> <span class="n">KIFED</span> <span class="n">STLLX</span> <span class="n">XAOUN</span> <span class="n">YVEGV</span> <span class="n">BEXEI</span> <span class="n">BHJNI</span> <span class="n">GHXFI</span> <span class="n">FQFYV</span> <span class="n">VXZFE</span> <span class="n">FXFFH</span> <span class="n">OBVXR</span> <span class="n">MVNLT</span> <span class="n">NHUYY</span> <span class="n">FEZWD</span> <span class="n">GBKEL</span> <span class="n">SGFLM</span> <span class="n">LXBFO</span> <span class="n">NEIOS</span> <span class="n">MZHML</span> <span class="n">XAJUX</span> <span class="n">EIKWH</span> <span class="n">YNAIK</span> <span class="n">SOFLF</span> <span class="n">EEKPI</span> <span class="n">XLSDB</span> <span class="n">PNGHV</span> <span class="n">XHFON</span> <span class="n">MSFOL</span> <span class="n">VMNVX</span> <span class="n">HIRNB</span> <span class="n">XBGTF</span> <span class="n">FOEUZ</span> <span class="n">FZMAS</span> <span class="n">NZEGL</span> <span class="n">HFTPM</span> <span class="n">PDNWM</span> <span class="n">DVKCG</span> <span class="n">WHAFE</span> <span class="n">OKWXF</span> <span class="n">ZIBRQ</span> <span class="n">XCSJI</span> <span class="n">FIMVJ</span> <span class="n">EAFEK</span> <span class="n">MIRXT</span> <span class="n">PBHUC</span> <span class="n">YEEFP</span> <span class="n">MZNMP</span> <span class="n">XZBDV</span> <span class="n">EMMHM</span> <span class="n">VFTQU</span> <span class="n">ABISA</span> <span class="n">EWOMZ</span> <span class="n">NMPXZ</span> <span class="n">BDVPL</span> <span class="n">HGFWF</span> <span class="n">XISSX</span> <span class="n">RMPLB</span> <span class="n">HFRML</span> <span class="n">RHKJU</span> <span class="n">IGXPO</span> <span class="n">OKNHQ</span> <span class="n">TYFKB</span> <span class="n">BWAOS</span> <span class="n">UYKXA</span> <span class="n">OOZNG</span> <span class="n">IXRTK</span> <span class="n">IUIBT</span> <span class="n">ZFOOI</span> <span class="n">LCMMY</span> <span class="n">WEECU</span> <span class="n">FZLMF</span> <span class="n">DMVWK</span> <span class="n">CIHPT</span> <span class="n">BTPES</span> <span class="n">OXYLC</span> <span class="n">HIQII</span> <span class="n">UEUZZ</span> <span class="n">RFKIT</span> <span class="n">RZYUO</span> <span class="n">IMVFT</span> <span class="n">IWITB</span> <span class="n">ENCEP</span> <span class="n">UFFVT</span> <span class="n">XVBUI</span> <span class="n">KNAVH</span> <span class="n">IHYCM</span> <span class="n">MYWUY</span> <span class="n">YETLA</span> <span class="n">PJNHJ</span> <span class="n">MVFGF</span> <span class="n">TMGHF</span> <span class="n">ONBWL</span> <span class="n">HBKCV</span> <span class="n">EMSBT</span> <span class="n">BHJMV</span> <span class="n">FCYOI</span> <span class="n">EGJDH</span> <span class="n">HXTAB</span> <span class="n">JIVLB</span> <span class="n">GUKBX</span> <span class="n">JNBOP</span> <span class="n">NAMGU</span> <span class="n">JJNAE</span> <span class="n">MRFGY</span> <span class="n">GHBBH</span> <span class="n">FHPLB</span> <span class="n">QIIUG</span> <span class="n">HHALV</span> <span class="n">SRSNU</span> <span class="n">FKNAE</span> <span class="n">MDPVG</span> <span class="n">FMZVU</span> <span class="n">SYXBT</span> <span class="n">QUCSM</span> <span class="n">LXFJX</span> <span class="n">BMSYT</span> <span class="n">TVNMS</span> <span class="n">LIDTY</span> <span class="n">LWY</span>
+<div class="highlight"><pre><span></span>MVJJN BQXKF NCEPZ WWVSH YFCSV JEEBB UVRMX HKPIE PMMVZ FOPME ZQIIU EUZZW CGHMV BKBTZ BBHVR MVTQP ENXRM HIRNB WTGDZ CFEDS TKBBW HBFDI KILCM MUUPX WUNIN PWPFJ IEZTP MVQBX ACVKN AEMPV KQXAB ZMDUD ILISV NHKBJ FCIMW HTUVR MNNGU KIFED STLLX XAOUN YVEGV BEXEI BHJNI GHXFI FQFYV VXZFE FXFFH OBVXR MVNLT NHUYY FEZWD GBKEL SGFLM LXBFO NEIOS MZHML XAJUX EIKWH YNAIK SOFLF EEKPI XLSDB PNGHV XHFON MSFOL VMNVX HIRNB XBGTF FOEUZ FZMAS NZEGL HFTPM PDNWM DVKCG WHAFE OKWXF ZIBRQ XCSJI FIMVJ EAFEK MIRXT PBHUC YEEFP MZNMP XZBDV EMMHM VFTQU ABISA EWOMZ NMPXZ BDVPL HGFWF XISSX RMPLB HFRML RHKJU IGXPO OKNHQ TYFKB BWAOS UYKXA OOZNG IXRTK IUIBT ZFOOI LCMMY WEECU FZLMF DMVWK CIHPT BTPES OXYLC HIQII UEUZZ RFKIT RZYUO IMVFT IWITB ENCEP UFFVT XVBUI KNAVH IHYCM MYWUY YETLA PJNHJ MVFGF TMGHF ONBWL HBKCV EMSBT BHJMV FCYOI EGJDH HXTAB JIVLB GUKBX JNBOP NAMGU JJNAE MRFGY GHBBH FHPLB QIIUG HHALV SRSNU FKNAE MDPVG FMZVU SYXBT QUCSM LXFJX BMSYT TVNMS LIDTY LWY
 </pre></div>
 
 
 <p>This is a <strong><a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenere Cipher</a></strong>, which is basically several Caesar ciphers in sequence, with different shift values, given by a key-word. Finding these shifts when we don't know the key can be done by writing the alphabet 26 times in different rows. In this case, each alphabet is shifted cyclically to the left compared to the previous alphabet (26 Caesar ciphers).</p>
 <p>Although we could use some <a href="http://smurfoncrack.com/pygenere/">online Vigenere cracker</a> to extract the flag from this text, we will instead write a code. We  use Python's library <a href="http://smurfoncrack.com/pygenere/pygenere.php">pygenere</a>, which has the methods  <code>crack_message()</code> to decipher the message and <code>crack_codeword()</code> to find the key (useful because we don't have the key). We then send our cipher to the following function:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">solve3</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve3</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
   <span class="n">key</span> <span class="o">=</span>  <span class="n">VigCrack</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">.</span><span class="n">crack_codeword</span><span class="p">()</span>
   <span class="n">dec_msg</span> <span class="o">=</span> <span class="n">VigCrack</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">.</span><span class="n">crack_message</span><span class="p">()</span>
-  <span class="n">dec_msg</span> <span class="o">=</span>  <span class="n">dec_msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+  <span class="n">dec_msg</span> <span class="o">=</span>  <span class="n">dec_msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">dec_msg</span>
 </pre></div>
 
 
 <p>This will give us the <strong>key = TOBRUTE</strong> and the deciphered text. After fixing the spaces between the words, we get:</p>
-<div class="highlight"><pre><span class="n">THIS</span> <span class="n">TIME</span> <span class="n">WE</span> <span class="n">WILL</span> <span class="n">GIVE</span> <span class="n">YOU</span> <span class="n">MORE</span> <span class="n">PLAINTEXT</span> <span class="n">TO</span> <span class="n">WORK</span> <span class="n">WITH</span> <span class="n">YOU</span> <span class="n">WILL</span> <span class="n">PROBABLY</span> <span class="n">FIND</span> <span class="n">THAT</span> <span class="n">HAVING</span> <span class="n">EXTRA</span> <span class="n">CONTENT</span> <span class="n">THAT</span> <span class="n">IS</span> <span class="n">ASCII</span> <span class="n">MAKES</span> <span class="n">THIS</span> <span class="n">ONE</span> <span class="n">MORE</span> <span class="n">SOLVABLE</span> <span class="n">IT</span> <span class="n">WOULD</span> <span class="n">BE</span> <span class="n">SOLVABLE</span> <span class="n">WITHOUT</span> <span class="n">THAT</span> <span class="n">BUT</span> <span class="n">WE</span> <span class="n">WILL</span> <span class="n">MAKE</span> <span class="n">SURE</span> <span class="n">TO</span> <span class="n">GIVE</span> <span class="n">LOTS</span> <span class="n">OF</span> <span class="n">TEXT</span> <span class="n">JUST</span> <span class="n">TO</span> <span class="n">MAKE</span> <span class="n">SURE</span> <span class="n">THAT</span> <span class="n">WE</span> <span class="n">CAN</span> <span class="n">HANDLE</span> <span class="n">IT</span> <span class="n">I</span> <span class="n">WONDER</span> <span class="n">HOW</span> <span class="n">MUCH</span> <span class="n">WILL</span> <span class="n">BE</span> <span class="n">REQUIRED</span> <span class="n">LETS</span> <span class="n">PUT</span> <span class="n">THE</span> <span class="n">MAGIC</span> <span class="n">PHRASE</span> <span class="n">FOR</span> <span class="n">THE</span> <span class="n">NEXT</span> <span class="n">LEVEL</span> <span class="n">IN</span> <span class="n">THE</span> <span class="n">MIDDLE</span> <span class="n">RIGHT</span> <span class="n">HERE</span> <span class="n">NORMALWORD</span> <span class="n">OK</span> <span class="n">NOW</span> <span class="n">MORE</span> <span class="n">TEXT</span> <span class="n">TO</span> <span class="n">MAKE</span> <span class="n">SURE</span> <span class="n">THAT</span> <span class="n">IT</span> <span class="n">IS</span> <span class="n">SOLVABLE</span> <span class="n">I</span> <span class="n">SHOULD</span> <span class="n">PROBABLY</span> <span class="n">JUST</span> <span class="n">PUT</span> <span class="n">IN</span> <span class="n">SOME</span> <span class="n">NURSERY</span> <span class="n">RHYME</span> <span class="n">OR</span> <span class="n">SOMETHING</span> <span class="n">MARY</span> <span class="n">HADA</span> <span class="n">LITTLE</span> <span class="n">LAMB</span> <span class="n">LITTLE</span> <span class="n">LAMB</span> <span class="n">LITTLE</span> <span class="n">LAMB</span> <span class="n">MARY</span> <span class="n">HADA</span> <span class="n">LITTLE</span> <span class="n">LAMB</span> <span class="n">WHOSE</span> <span class="n">FLEEZE</span> <span class="n">WAS</span> <span class="n">WHITE</span> <span class="n">AS</span> <span class="n">SNOW</span> <span class="n">I</span> <span class="n">DONT</span> <span class="n">WANT</span> <span class="n">TO</span> <span class="n">MAKE</span> <span class="n">THIS</span> <span class="n">HARDER</span> <span class="n">THAN</span> <span class="n">IT</span> <span class="n">NEEDS</span> <span class="n">TO</span> <span class="n">BE</span> <span class="n">IF</span> <span class="n">YOU</span> <span class="n">VE</span> <span class="n">SOLVED</span> <span class="n">A</span> <span class="n">LOT</span> <span class="n">OF</span> <span class="n">SIMPLE</span> <span class="n">CRYPTO</span> <span class="n">CHALLENGES</span> <span class="n">YOU</span> <span class="n">PROBABLY</span> <span class="n">ALREADY</span> <span class="n">HAVE</span> <span class="n">THE</span> <span class="n">CODE</span> <span class="n">AND</span> <span class="n">WILL</span> <span class="n">BREEZE</span> <span class="n">RIGHT</span> <span class="n">THROUGH</span> <span class="n">IT</span> <span class="n">IF</span> <span class="n">IT</span> <span class="n">HELPS</span> <span class="n">MOST</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">PLAINTEXT</span> <span class="n">IS</span> <span class="n">STATIC</span> <span class="n">AT</span> <span class="n">EACH</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">LEVELS</span> <span class="n">I</span> <span class="n">M</span> <span class="n">NOT</span> <span class="n">A</span> <span class="n">MASOCHIST</span> <span class="n">THE</span> <span class="n">FUNNY</span> <span class="n">THING</span> <span class="n">IS</span> <span class="n">THAT</span> <span class="n">DEPENDING</span> <span class="n">ON</span> <span class="n">WHICH</span> <span class="n">RANDOMKEY</span> <span class="n">YOU</span> <span class="n">GET</span> <span class="n">THAT</span> <span class="n">POEM</span> <span class="n">MIGHT</span> <span class="n">BE</span> <span class="n">EXACTLY</span> <span class="n">THE</span> <span class="n">RIGHT</span> <span class="n">OFFSET</span> <span class="n">TO</span> <span class="n">SUCCESSFULLY</span> <span class="n">MOUNT</span> <span class="n">AN</span> <span class="n">ATTACK</span> <span class="n">WE</span> <span class="n">LL</span> <span class="n">SEE</span> <span class="n">LITTLE</span> <span class="n">BIT</span> <span class="n">MORE</span> <span class="n">LITTLE</span> <span class="n">BIT</span> <span class="n">MORE</span> <span class="n">THERE</span><span class="p">,</span>
+<div class="highlight"><pre><span></span>THIS TIME WE WILL GIVE YOU MORE PLAINTEXT TO WORK WITH YOU WILL PROBABLY FIND THAT HAVING EXTRA CONTENT THAT IS ASCII MAKES THIS ONE MORE SOLVABLE IT WOULD BE SOLVABLE WITHOUT THAT BUT WE WILL MAKE SURE TO GIVE LOTS OF TEXT JUST TO MAKE SURE THAT WE CAN HANDLE IT I WONDER HOW MUCH WILL BE REQUIRED LETS PUT THE MAGIC PHRASE FOR THE NEXT LEVEL IN THE MIDDLE RIGHT HERE NORMALWORD OK NOW MORE TEXT TO MAKE SURE THAT IT IS SOLVABLE I SHOULD PROBABLY JUST PUT IN SOME NURSERY RHYME OR SOMETHING MARY HADA LITTLE LAMB LITTLE LAMB LITTLE LAMB MARY HADA LITTLE LAMB WHOSE FLEEZE WAS WHITE AS SNOW I DONT WANT TO MAKE THIS HARDER THAN IT NEEDS TO BE IF YOU VE SOLVED A LOT OF SIMPLE CRYPTO CHALLENGES YOU PROBABLY ALREADY HAVE THE CODE AND WILL BREEZE RIGHT THROUGH IT IF IT HELPS MOST OF THE PLAINTEXT IS STATIC AT EACH OF THE LEVELS I M NOT A MASOCHIST THE FUNNY THING IS THAT DEPENDING ON WHICH RANDOMKEY YOU GET THAT POEM MIGHT BE EXACTLY THE RIGHT OFFSET TO SUCCESSFULLY MOUNT AN ATTACK WE LL SEE LITTLE BIT MORE LITTLE BIT MORE THERE,
 </pre></div>
 
 

@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-22T05:20:00">
+<abbr class="published" title="2014-09-22T05:20:00-04:00">
       Mon 22 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -119,7 +119,7 @@
 <p><a href="https://ctf.isis.poly.edu/static/uploads/7831788f2ab94feddc72ce53e80fda5f/traffic-5.pcap">traffic-5.pcap</a>
 </p>
 </blockquote>
-<hr />
+<hr>
 <h2>Analyzing the PCAP File</h2>
 <p>Now let's search for the flag! We open the <a href="http://en.wikipedia.org/wiki/Pcap">pcap</a> file in <a href="https://www.wireshark.org/">Wireshark</a> (an open-source packet analyzer). There are several things that we could search for in this file, for instance we could look for FTP transactions or we could search for strings such as <em>password</em> or <em>flag</em>. We show both approaches.</p>
 <h2>Solution 1: Searching for the string <em>flag</em></h2>
@@ -131,40 +131,40 @@
 <li>Search for password choosing the options string and packet bytes.</li>
 </ol>
 <p>Clicking on <em>Follow TCP Stream</em> gives:
-<img alt="" src="http://i.imgur.com/c61P5Aj.png" /></p>
+<img alt="" src="http://i.imgur.com/c61P5Aj.png"></p>
 <p>Nope. This is a misleading information!</p>
-<hr />
+<hr>
 <h4>But We Were Almost There!</h4>
 <p>Now, if we search for <em>flag</em> we actually find something:</p>
-<p><img alt="" src="http://i.imgur.com/knuwJFq.png" /></p>
+<p><img alt="" src="http://i.imgur.com/knuwJFq.png"></p>
 <p>We find the packet with a file named flag! Awesome.</p>
-<hr />
+<hr>
 <h2>Solution 2: Looking for the FTP Protocols</h2>
 <p>All right, let's use another information we have: it should be something related to the FTP protocol. In Wireshark, we can find specific protocol with filters. We want to filter for FTP with some data. We start trying the usual FTP-DATA port:</p>
-<div class="highlight"><pre><span class="n">tcp</span><span class="p">.</span><span class="n">port</span><span class="o">==</span><span class="mi">21</span>
+<div class="highlight"><pre><span></span>tcp.port==21
 </pre></div>
 
 
 <p>Nope. The results should be another port. Let's search explicitly for:</p>
-<div class="highlight"><pre><span class="n">ftp</span><span class="o">-</span><span class="n">data</span>
+<div class="highlight"><pre><span></span>ftp-data
 </pre></div>
 
 
 <p>Cool, we found a few packets:
-<img alt="" src="http://i.imgur.com/cWhiXZD.png" /></p>
+<img alt="" src="http://i.imgur.com/cWhiXZD.png"></p>
 <p>We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.</p>
-<hr />
+<hr>
 <h2>Extracting the File</h2>
 <p>Once we find the packet with any of the methods above, we right-click it selecting <em>Follow TCP Stream</em>. This leads to:</p>
-<p><img alt="" src="http://i.imgur.com/LZTse2s.png" /></p>
+<p><img alt="" src="http://i.imgur.com/LZTse2s.png"></p>
 <p>The file <em>flag.png</em> is our flag. To extract it we  click in the <em>Save as</em> button, then in the terminal we can use the command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
-<div class="highlight"><pre><span class="nv">$ </span>file s.whatever
+<div class="highlight"><pre><span></span>$ file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
 </pre></div>
 
 
 <p>Awesome, so all we need is to <em>unzip</em> this file and we get <em>flag.png</em>:</p>
-<p><img alt="" src="http://i.imgur.com/WcxyITv.png" /></p>
+<p><img alt="" src="http://i.imgur.com/WcxyITv.png"></p>
 <h4>Extra: Finding files with <em>File Signatures</em></h4>
 <p>If we don't know the name of the file we are looking for, but we know its type, we can search for its <a href="http://en.wikipedia.org/wiki/File_signature">file signature</a>, which can be found <a href="http://en.wikipedia.org/wiki/List_of_file_signatures">here</a> (a hex value).</p>
 <p><strong>Hack all the Things!</strong></p>

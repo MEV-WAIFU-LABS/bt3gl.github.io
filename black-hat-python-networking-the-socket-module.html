@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-12-10T00:00:00">
+<abbr class="published" title="2014-12-10T00:00:00-05:00">
       Wed 10 December 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -119,22 +119,22 @@
                 <p>Last week I got my copy of <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>, the new <a href="https://twitter.com/jms_dot_py">Justin Seitz</a>'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!</p>
 <p>I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's <a href="https://docs.python.org/2/library/socket.html">socket</a> module, which  contains all the tools to write <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a>/<a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> clients and servers, including <a href="http://en.wikipedia.org/wiki/Raw_socket">raw sockets</a>. It's really nice! <strong>T-1000</strong> is loving it!</p>
 <p>Ah, by the way, all the source codes in this post are available at <a href="https://github.com/bt3gl/My-Gray-Hacker-Resources">my repo</a>.</p>
-<p><img alt="" src="http://i.imgur.com/l3iyyOO.jpg" /></p>
-<hr />
+<p><img alt="" src="http://i.imgur.com/l3iyyOO.jpg"></p>
+<hr>
 <h2>A TCP Client</h2>
 <p>Let's start from the beginning. Whenever you want to create a TCP connection with the <strong>socket</strong> module, you do two things: create a socket object and then connect to a host in some port:</p>
-<div class="highlight"><pre><span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span> <span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span> <span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span> <span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span> <span class="p">))</span>
 </pre></div>
 
 
 <p>The <strong>AF_INET</strong> parameter is used to define the standard IPv4 address (other options are <em>AF_UNIX</em> and <em>AF_INET6</em>). The <strong>SOCK_STREAM</strong> parameters indicate it is a <strong>TCP</strong> connection (other options are <em>SOCK_DGRAM</em>,  <em>SOCK_RAW</em>, <em>SOCK_RDM</em>, <em>SOCK_SEQPACKET</em>).</p>
 <p>All right, so the next thing you want to do is to send and receive data using socket's <strong>send</strong> and <strong>recv</strong> methods. And this should be good enough for a first script! Let's put everything together to create our TCP client:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;www.google.com&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;www.google.com&#39;</span>
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="n">DATA</span> <span class="o">=</span> <span class="s">&#39;GET / HTTP/1.1</span><span class="se">\r\n</span><span class="s">Host: google.com</span><span class="se">\r\n\r\n</span><span class="s">&#39;</span>
+<span class="n">DATA</span> <span class="o">=</span> <span class="s1">&#39;GET / HTTP/1.1</span><span class="se">\r\n</span><span class="s1">Host: google.com</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span>
 
 <span class="k">def</span> <span class="nf">tcp_client</span><span class="p">():</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
@@ -143,7 +143,7 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">response</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">tcp_client</span><span class="p">()</span>
 </pre></div>
 
@@ -155,18 +155,18 @@
 <li>the server will always send us data back in a <em>short time</em>.</li>
 </ul>
 <p>Let's run this script (notice that we get <em>Moved Permanently</em> because Google  issues HTTPS connections):</p>
-<div class="highlight"><pre><span class="nv">$ </span> python tcp_client.py
-HTTP/1.1 301 Moved Permanently
+<div class="highlight"><pre><span></span>$  python tcp_client.py
+HTTP/1.1 <span class="m">301</span> Moved Permanently
 Location: http://www.google.com/
-Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>UTF-8
-Date: Mon, 15 Dec 2014 16:52:46 GMT
-Expires: Wed, 14 Jan 2015 16:52:46 GMT
-Cache-Control: public, max-age<span class="o">=</span>2592000
+Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>UTF-8
+Date: Mon, <span class="m">15</span> Dec <span class="m">2014</span> <span class="m">16</span>:52:46 GMT
+Expires: Wed, <span class="m">14</span> Jan <span class="m">2015</span> <span class="m">16</span>:52:46 GMT
+Cache-Control: public, max-age<span class="o">=</span><span class="m">2592000</span>
 Server: gws
-Content-Length: 219
-X-XSS-Protection: 1; <span class="nv">mode</span><span class="o">=</span>block
+Content-Length: <span class="m">219</span>
+X-XSS-Protection: <span class="m">1</span><span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
 X-Frame-Options: SAMEORIGIN
-Alternate-Protocol: 80:quic,p<span class="o">=</span>0.02
+Alternate-Protocol: <span class="m">80</span>:quic,p<span class="o">=</span><span class="m">0</span>.02
 
 &lt;HTML&gt;&lt;HEAD&gt;&lt;meta http-equiv<span class="o">=</span><span class="s2">&quot;content-type&quot;</span> <span class="nv">content</span><span class="o">=</span><span class="s2">&quot;text/html;charset=utf-8&quot;</span>&gt;
 &lt;TITLE&gt;301 Moved&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;
@@ -178,63 +178,63 @@ The document has moved
 
 
 <p>Simple like that.</p>
-<hr />
+<hr>
 <h2>A TCP Server</h2>
 <p>Let's move on and write a <em>multi-threaded</em> TCP server. For this we will use Python's <a href="https://docs.python.org/2/library/threading.html">threading</a> module.</p>
 <p>First we define the IP address and port that we want the server to listen on.  We then define a <strong>handle_client</strong> function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending a <strong>ACK</strong> message.</p>
 <p>The main function for our server, <strong>tcp_server</strong>, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections  to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the <strong>addr</strong> variable).</p>
 <p>At this point, the program creates a thread object for the function <strong>handle_client</strong> which we mentioned above:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 
-<span class="n">BIND_IP</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
+<span class="n">BIND_IP</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
 <span class="n">BIND_PORT</span> <span class="o">=</span> <span class="mi">9090</span>
 
 <span class="k">def</span> <span class="nf">handle_client</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">&quot;[*] Received: &quot;</span> <span class="o">+</span> <span class="n">request</span>
-    <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;ACK&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;[*] Received: &quot;</span> <span class="o">+</span> <span class="n">request</span>
+    <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;ACK&#39;</span><span class="p">)</span>
     <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">tcp_server</span><span class="p">():</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span> <span class="n">BIND_IP</span><span class="p">,</span> <span class="n">BIND_PORT</span><span class="p">))</span>
     <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-    <span class="k">print</span><span class="s">&quot;[*] Listening on </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">BIND_IP</span><span class="p">,</span> <span class="n">BIND_PORT</span><span class="p">)</span>
+    <span class="k">print</span><span class="s2">&quot;[*] Listening on </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">BIND_IP</span><span class="p">,</span> <span class="n">BIND_PORT</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">client</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&quot;[*] Accepted connection from: </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s2">&quot;[*] Accepted connection from: </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">client_handler</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">handle_client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client</span><span class="p">,))</span>
         <span class="n">client_handler</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">tcp_server</span><span class="p">()</span>
 </pre></div>
 
 
 <p>We can run this script in one terminal and the client script (like the one we saw before) in a second terminal. Running the server:</p>
-<div class="highlight"><pre><span class="nv">$ </span>python tcp_server.py
-<span class="o">[</span>*<span class="o">]</span> Listening on 0.0.0.0:9090
+<div class="highlight"><pre><span></span>$ python tcp_server.py
+<span class="o">[</span>*<span class="o">]</span> Listening on <span class="m">0</span>.0.0.0:9090
 </pre></div>
 
 
 <p>Running the client script (we changed it to connect at 127.0.0.1:9090):</p>
-<div class="highlight"><pre><span class="nv">$ </span>python tcp_client.py
+<div class="highlight"><pre><span></span>$ python tcp_client.py
 ACK
 </pre></div>
 
 
 <p>Now, back to the server  terminal, we successfully see the established connection:</p>
-<div class="highlight"><pre><span class="nv">$ </span>python tcp_server.py
-<span class="o">[</span>*<span class="o">]</span> Listening on 0.0.0.0:9090
-<span class="o">[</span>*<span class="o">]</span> Accepted connection from: 127.0.0.1:44864
+<div class="highlight"><pre><span></span>$ python tcp_server.py
+<span class="o">[</span>*<span class="o">]</span> Listening on <span class="m">0</span>.0.0.0:9090
+<span class="o">[</span>*<span class="o">]</span> Accepted connection from: <span class="m">127</span>.0.0.1:44864
 <span class="o">[</span>*<span class="o">]</span> Received: GET / HTTP/1.1
 </pre></div>
 
 
 <p>Awesome!</p>
-<hr />
+<hr>
 <h2>A UDP Client</h2>
 <p>UDP is an alternative protocol to TCP. Like TCP, it is used for packet transfer from one host to another. Unlike TCP, it is a <em>connectionless</em> and <em>non-stream oriented protocol</em>. This means that a UDP server receives incoming packets from any host without establishing a reliable pipe type of connection.</p>
 <p>We can make a few changes in the previous script to create a UDP client connection:</p>
@@ -243,11 +243,11 @@ ACK
 <li>because UDP is a connectionless protocol, we don't need to establish a connection beforehand, and</li>
 <li>we use <strong>sendto</strong> and <strong>recvfrom</strong> instead of <strong>send</strong> and <strong>recv</strong>.</li>
 </ul>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;127.0.0.1&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span>
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">9000</span>
-<span class="n">DATA</span> <span class="o">=</span> <span class="s">&#39;AAAAAAAAAA&#39;</span>
+<span class="n">DATA</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAAAAA&#39;</span>
 
 <span class="k">def</span> <span class="nf">udp_client</span><span class="p">():</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
@@ -255,44 +255,44 @@ ACK
     <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">data</span><span class="p">,</span> <span class="n">adr</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">udp_client</span><span class="p">()</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>A UDP Server</h2>
 <p>Below is an example of a very simple  UDP server. Notice that there is no <strong>listen</strong> or <strong>accept</strong>:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="n">BIND_IP</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
+<span class="n">BIND_IP</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
 <span class="n">BIND_PORT</span> <span class="o">=</span> <span class="mi">9000</span>
 
 <span class="k">def</span> <span class="nf">udp_server</span><span class="p">():</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span> <span class="n">BIND_IP</span><span class="p">,</span> <span class="n">BIND_PORT</span><span class="p">))</span>
-    <span class="k">print</span> <span class="s">&quot;Waiting on port: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">BIND_PORT</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Waiting on port: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">BIND_PORT</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">data</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">udp_server</span><span class="p">()</span>
 </pre></div>
 
 
 <p>You can test it by running the server in one terminal and the client in another. It works and it's fun!</p>
-<hr />
+<hr>
 <h2>A Very Simple Netcat Client</h2>
 <p>Sometimes when you are penetrating a system, you wish you have <a href="http://netcat.sourceforge.net/">netcat</a>, which might be not installed. However, if you have Python, you can create a netcat network client and server.</p>
 <p>The following script is the simplest netcat client setup one can have, extended from our TCP client script to support a loop.</p>
 <p>In addition, now we use the <strong>sendall</strong> method. Unlike <strong>send</strong>, it will continue to send data until either all data has been sent or an error occurs (None is returned on success).</p>
 <p>We also use <strong>close</strong> to release the resource. This does not necessarily close the connection immediately so we use <strong>shutdown</strong>  to close the connection in a timely fashion:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
-<span class="n">HOSTNAME</span> <span class="o">=</span> <span class="s">&#39;54.209.5.48&#39;</span>
+<span class="n">HOSTNAME</span> <span class="o">=</span> <span class="s1">&#39;54.209.5.48&#39;</span>
 
 <span class="k">def</span> <span class="nf">netcat</span><span class="p">(</span><span class="n">text_to_send</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
@@ -310,38 +310,38 @@ ACK
     <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">rec_data</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">text_to_send</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">text_to_send</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">text_recved</span> <span class="o">=</span> <span class="n">netcat</span><span class="p">(</span> <span class="n">text_to_send</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">text_recved</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>A Complete Netcat Client and Server</h2>
 <p>Let's extend our previous example to write a full program for a netcat server and client.</p>
 <p>For this task we are going to use two special Python modules: <a href="https://docs.python.org/2/library/getopt.html">getopt</a>, which is a parser for command line options (familiar to users of the C getopt()), and <a href="https://docs.python.org/2/library/subprocess.html">subprocess</a>, which allows you to spawn new processes.</p>
 <h3>The Usage Menu</h3>
 <p>The first function we write is  <strong>usage</strong>, with the options we want for our tool:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s">&quot;Usage: netcat_awesome.py -t &lt;HOST&gt; -p &lt;PORT&gt;&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;  -l --listen                  listen on HOST:PORT&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;  -e --execute=file            execute the given file&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;  -c --command                 initialize a command shell&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;  -u --upload=destination      upload file and write to destination&quot;</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s2">&quot;Usage: netcat_awesome.py -t &lt;HOST&gt; -p &lt;PORT&gt;&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;  -l --listen                  listen on HOST:PORT&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;  -e --execute=file            execute the given file&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;  -c --command                 initialize a command shell&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;  -u --upload=destination      upload file and write to destination&quot;</span>
     <span class="k">print</span>
-    <span class="k">print</span> <span class="s">&quot;Examples:&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;netcat_awesome.py -t localhost -p 5000 -l -c&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;netcat_awesome.py -t localhost -p 5000 -l -u=example.exe&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;netcat_awesome.py -t localhost -p 5000 -l -e=&#39;ls&#39;&quot;</span>
-    <span class="k">print</span> <span class="s">&quot;echo &#39;AAAAAA&#39; | ./netcat_awesome.py -t localhost -p 5000&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;Examples:&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;netcat_awesome.py -t localhost -p 5000 -l -c&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;netcat_awesome.py -t localhost -p 5000 -l -u=example.exe&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;netcat_awesome.py -t localhost -p 5000 -l -e=&#39;ls&#39;&quot;</span>
+    <span class="k">print</span> <span class="s2">&quot;echo &#39;AAAAAA&#39; | ./netcat_awesome.py -t localhost -p 5000&quot;</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
 
 <h2>Parsing Arguments in the Main Function</h2>
 <p>Now, before we dive in each specific functions, let's see what the <strong>main</strong> function does. First it reads the arguments and parses them using <strong>getopt</strong>. Then, it processes them. Finally, the program decides if it is a client or a server, with the constant <strong>LISTEN</strong>:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
 <span class="kn">import</span> <span class="nn">threading</span>
@@ -350,9 +350,9 @@ ACK
 <span class="n">LISTEN</span>   <span class="o">=</span> <span class="bp">False</span>
 <span class="n">COMMAND</span>  <span class="o">=</span> <span class="bp">False</span>
 <span class="n">UPLOAD</span>   <span class="o">=</span> <span class="bp">False</span>
-<span class="n">EXECUTE</span>  <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">TARGET</span>   <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">UP_DEST</span>  <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">EXECUTE</span>  <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">TARGET</span>   <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">UP_DEST</span>  <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="n">PORT</span>     <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -367,62 +367,62 @@ ACK
         <span class="n">usage</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="s">&quot;hle:t:p:cu&quot;</span><span class="p">,</span> \
-            <span class="p">[</span><span class="s">&quot;help&quot;</span><span class="p">,</span> <span class="s">&quot;LISTEN&quot;</span><span class="p">,</span> <span class="s">&quot;EXECUTE&quot;</span><span class="p">,</span> <span class="s">&quot;TARGET&quot;</span><span class="p">,</span> <span class="s">&quot;PORT&quot;</span><span class="p">,</span> <span class="s">&quot;COMMAND&quot;</span><span class="p">,</span> <span class="s">&quot;UPLOAD&quot;</span><span class="p">])</span>
+        <span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="s2">&quot;hle:t:p:cu&quot;</span><span class="p">,</span> \
+            <span class="p">[</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;LISTEN&quot;</span><span class="p">,</span> <span class="s2">&quot;EXECUTE&quot;</span><span class="p">,</span> <span class="s2">&quot;TARGET&quot;</span><span class="p">,</span> <span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMAND&quot;</span><span class="p">,</span> <span class="s2">&quot;UPLOAD&quot;</span><span class="p">])</span>
     <span class="k">except</span> <span class="n">getopt</span><span class="o">.</span><span class="n">GetoptError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="n">usage</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-h&#39;</span><span class="p">,</span> <span class="s">&#39;--help&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">,</span> <span class="s1">&#39;--help&#39;</span><span class="p">):</span>
             <span class="n">usage</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-l&#39;</span><span class="p">,</span> <span class="s">&#39;--listen&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="s1">&#39;--listen&#39;</span><span class="p">):</span>
             <span class="n">LISTEN</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-e&#39;</span><span class="p">,</span> <span class="s">&#39;--execute&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;--execute&#39;</span><span class="p">):</span>
             <span class="n">EXECUTE</span> <span class="o">=</span> <span class="n">a</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-c&#39;</span><span class="p">,</span> <span class="s">&#39;--commandshell&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;--commandshell&#39;</span><span class="p">):</span>
             <span class="n">COMMAND</span> <span class="o">=</span> <span class="bp">True</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-u&#39;</span><span class="p">,</span> <span class="s">&#39;--upload&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">,</span> <span class="s1">&#39;--upload&#39;</span><span class="p">):</span>
             <span class="n">UP_DEST</span> <span class="o">=</span> <span class="n">a</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-t&#39;</span><span class="p">,</span> <span class="s">&#39;--target&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--target&#39;</span><span class="p">):</span>
             <span class="n">TARGET</span> <span class="o">=</span> <span class="n">a</span>
-        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-p&#39;</span><span class="p">,</span> <span class="s">&#39;--port&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--port&#39;</span><span class="p">):</span>
             <span class="n">PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&quot;Unhandled option&quot;</span>
+            <span class="k">assert</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;Unhandled option&quot;</span>
 
-    <span class="c"># NETCAT client</span>
+    <span class="c1"># NETCAT client</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">LISTEN</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">TARGET</span><span class="p">)</span> <span class="ow">and</span> <span class="n">PORT</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">buffer</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="n">client_sender</span><span class="p">(</span><span class="nb">buffer</span><span class="p">)</span>
 
-    <span class="c"># NETCAT server</span>
+    <span class="c1"># NETCAT server</span>
     <span class="k">if</span> <span class="n">LISTEN</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">TARGET</span><span class="p">):</span>
-            <span class="n">TARGET</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
+            <span class="n">TARGET</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
         <span class="n">server_loop</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>The Client Function</h3>
 <p>The <strong>client_sender</strong> function is very similar to the netcat client snippet we have seen above. It creates a socket object and then it goes to a loop to send/receive data:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">client_sender</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">client_sender</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span> <span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span> <span class="n">TARGET</span><span class="p">,</span> <span class="n">PORT</span> <span class="p">))</span>
 
-        <span class="c"># test to see if received any data</span>
+        <span class="c1"># test to see if received any data</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
             <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">buffer</span><span class="p">)</span>
 
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="c"># wait for data</span>
+            <span class="c1"># wait for data</span>
             <span class="n">recv_len</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">response</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
             <span class="k">while</span> <span class="n">recv_len</span><span class="p">:</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
@@ -432,21 +432,21 @@ ACK
                     <span class="k">break</span>
             <span class="k">print</span> <span class="n">response</span>
 
-            <span class="c"># wait for more input until there is no more data</span>
-            <span class="nb">buffer</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
-            <span class="nb">buffer</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+            <span class="c1"># wait for more input until there is no more data</span>
+            <span class="nb">buffer</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="nb">buffer</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 
             <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">buffer</span><span class="p">)</span>
 
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;[*] Exception. Exiting.&#39;</span>
+        <span class="k">print</span> <span class="s1">&#39;[*] Exception. Exiting.&#39;</span>
         <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>The Server Functions</h3>
 <p>Now, let's take a look into the  <strong>server_loop</strong>  function, which is very similar to the TCP server script we saw before:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">server_loop</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">server_loop</span><span class="p">():</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span> <span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span> <span class="n">TARGET</span><span class="p">,</span> <span class="n">PORT</span> <span class="p">))</span>
     <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -460,16 +460,16 @@ ACK
 
 
 <p>The <strong>threading</strong> function calls <strong>client_handler</strong> which will either upload a file, or execute a command (in a special shell named <em>NETCAT</em>):</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">client_handler</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">client_handler</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">UPLOAD</span>
     <span class="k">global</span> <span class="n">EXECUTE</span>
     <span class="k">global</span> <span class="n">COMMAND</span>
 
-    <span class="c"># check for upload</span>
+    <span class="c1"># check for upload</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">UP_DEST</span><span class="p">):</span>
-        <span class="n">file_buf</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">file_buf</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
-        <span class="c"># keep reading data until no more data is available</span>
+        <span class="c1"># keep reading data until no more data is available</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
@@ -477,57 +477,57 @@ ACK
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">break</span>
 
-        <span class="c"># try to write the bytes (wb for binary mode)</span>
+        <span class="c1"># try to write the bytes (wb for binary mode)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">UP_DEST</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">UP_DEST</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_buffer</span><span class="p">)</span>
-                <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;File saved to </span><span class="si">%s</span><span class="se">\r\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">UP_DEST</span><span class="p">)</span>
+                <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;File saved to </span><span class="si">%s</span><span class="se">\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">UP_DEST</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;Failed to save file to </span><span class="si">%s</span><span class="se">\r\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">UP_DEST</span><span class="p">)</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Failed to save file to </span><span class="si">%s</span><span class="se">\r\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">UP_DEST</span><span class="p">)</span>
 
-    <span class="c"># Check for command execution:</span>
+    <span class="c1"># Check for command execution:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">EXECUTE</span><span class="p">):</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">EXECUTE</span><span class="p">)</span>
         <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
-    <span class="c"># Go into a loop if a command shell was requested</span>
+    <span class="c1"># Go into a loop if a command shell was requested</span>
     <span class="k">if</span> <span class="n">COMMAND</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="c"># show a prompt:</span>
-            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;NETCAT: &#39;</span><span class="p">)</span>
-            <span class="n">cmd_buffer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+            <span class="c1"># show a prompt:</span>
+            <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;NETCAT: &#39;</span><span class="p">)</span>
+            <span class="n">cmd_buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
-            <span class="c"># scans for a newline character to determine when to process a command</span>
-            <span class="k">while</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cmd_buffer</span><span class="p">:</span>
+            <span class="c1"># scans for a newline character to determine when to process a command</span>
+            <span class="k">while</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cmd_buffer</span><span class="p">:</span>
                 <span class="n">cmd_buffer</span> <span class="o">+=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
 
-            <span class="c"># send back the command output</span>
+            <span class="c1"># send back the command output</span>
             <span class="n">response</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">cmd_buffer</span><span class="p">)</span>
             <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Observe the two last lines above. The program calls the function <strong>run_command</strong> which use the <strong>subprocess</strong> library to allow a process-creation interface. This gives a number of ways to start and interact with client programs:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
     <span class="n">command</span> <span class="o">=</span> <span class="n">command</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
     <span class="k">print</span> <span class="n">command</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> \
                 <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
-       <span class="n">output</span> <span class="o">=</span> <span class="s">&quot;Failed to execute command.</span><span class="se">\r\n</span><span class="s">&quot;</span>
+       <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;Failed to execute command.</span><span class="se">\r\n</span><span class="s2">&quot;</span>
     <span class="k">return</span> <span class="n">output</span>
 </pre></div>
 
 
 <h3>Firing Up a Server and a Client</h3>
 <p>Now we can put everything together and run the script as a server in a terminal and as a client in another. Running as a server:</p>
-<div class="highlight"><pre><span class="nv">$ </span>netcat_awesome.py -l -p 9000 -c
+<div class="highlight"><pre><span></span>$ netcat_awesome.py -l -p <span class="m">9000</span> -c
 </pre></div>
 
 
 <p>And as a client (to get the shell, press CTRL+D for EOF):</p>
-<div class="highlight"><pre><span class="nv">$ </span>python socket/netcat_awesome.py -t localhost -p 9000
+<div class="highlight"><pre><span></span>$ python socket/netcat_awesome.py -t localhost -p <span class="m">9000</span>
 NETCAT:
 ls
 crack_linksys.py
@@ -543,39 +543,39 @@ NETCAT:
 
 <h3>The Good 'n' Old Request</h3>
 <p>Additionally, we can use our client to send out requests:</p>
-<div class="highlight"><pre><span class="nv">$ </span> <span class="nb">echo</span> -ne <span class="s2">&quot;GET / HTTP/1.1\nHost: www.google.com\r\n\r\n&quot;</span> | python socket/netcat_awesome.py -t www.google.com -p 80
-HTTP/1.1 200 OK
-Date: Tue, 16 Dec 2014 21:04:27 GMT
+<div class="highlight"><pre><span></span>$  <span class="nb">echo</span> -ne <span class="s2">&quot;GET / HTTP/1.1\nHost: www.google.com\r\n\r\n&quot;</span> <span class="p">|</span> python socket/netcat_awesome.py -t www.google.com -p <span class="m">80</span>
+HTTP/1.1 <span class="m">200</span> OK
+Date: Tue, <span class="m">16</span> Dec <span class="m">2014</span> <span class="m">21</span>:04:27 GMT
 Expires: -1
-Cache-Control: private, max-age<span class="o">=</span>0
-Content-Type: text/html; <span class="nv">charset</span><span class="o">=</span>ISO-8859-1
-Set-Cookie: <span class="nv">PREF</span><span class="o">=</span><span class="nv">ID</span><span class="o">=</span>56f21d7bf67d66e0:FF<span class="o">=</span>0:TM<span class="o">=</span>1418763867:LM<span class="o">=</span>1418763867:S<span class="o">=</span>cI2xRwXGjb6bGx1u; <span class="nv">expires</span><span class="o">=</span>Thu, 15-Dec-2016 21:04:27 GMT; <span class="nv">path</span><span class="o">=</span>/; <span class="nv">domain</span><span class="o">=</span>.google.com
-Set-Cookie: <span class="nv">NID</span><span class="o">=</span><span class="nv">67</span><span class="o">=</span>ZGlY0-8CjkGDtTz4WwR7fEHOXGw-VvdI9f92oJKdelRgCxllAXoWfCC5vuQ5lJRFZIwghNRSxYbxKC0Z7ve132WTeBHOCHFB47Ic14ke1wdYGzevz8qFDR80fpiqHwMf; <span class="nv">expires</span><span class="o">=</span>Wed, 17-Jun-2015 21:04:27 GMT; <span class="nv">path</span><span class="o">=</span>/; <span class="nv">domain</span><span class="o">=</span>.google.com; HttpOnly
+Cache-Control: private, max-age<span class="o">=</span><span class="m">0</span>
+Content-Type: text/html<span class="p">;</span> <span class="nv">charset</span><span class="o">=</span>ISO-8859-1
+Set-Cookie: <span class="nv">PREF</span><span class="o">=</span><span class="nv">ID</span><span class="o">=</span>56f21d7bf67d66e0:FF<span class="o">=</span><span class="m">0</span>:TM<span class="o">=</span><span class="m">1418763867</span>:LM<span class="o">=</span><span class="m">1418763867</span>:S<span class="o">=</span>cI2xRwXGjb6bGx1u<span class="p">;</span> <span class="nv">expires</span><span class="o">=</span>Thu, <span class="m">15</span>-Dec-2016 <span class="m">21</span>:04:27 GMT<span class="p">;</span> <span class="nv">path</span><span class="o">=</span>/<span class="p">;</span> <span class="nv">domain</span><span class="o">=</span>.google.com
+Set-Cookie: <span class="nv">NID</span><span class="o">=</span><span class="nv">67</span><span class="o">=</span>ZGlY0-8CjkGDtTz4WwR7fEHOXGw-VvdI9f92oJKdelRgCxllAXoWfCC5vuQ5lJRFZIwghNRSxYbxKC0Z7ve132WTeBHOCHFB47Ic14ke1wdYGzevz8qFDR80fpiqHwMf<span class="p">;</span> <span class="nv">expires</span><span class="o">=</span>Wed, <span class="m">17</span>-Jun-2015 <span class="m">21</span>:04:27 GMT<span class="p">;</span> <span class="nv">path</span><span class="o">=</span>/<span class="p">;</span> <span class="nv">domain</span><span class="o">=</span>.google.com<span class="p">;</span> HttpOnly
 P3P: <span class="nv">CP</span><span class="o">=</span><span class="s2">&quot;This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&amp;answer=151657 for more info.&quot;</span>
 Server: gws
-X-XSS-Protection: 1; <span class="nv">mode</span><span class="o">=</span>block
+X-XSS-Protection: <span class="m">1</span><span class="p">;</span> <span class="nv">mode</span><span class="o">=</span>block
 X-Frame-Options: SAMEORIGIN
-Alternate-Protocol: 80:quic,p<span class="o">=</span>0.02
+Alternate-Protocol: <span class="m">80</span>:quic,p<span class="o">=</span><span class="m">0</span>.02
 Transfer-Encoding: chunked
 <span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 
 
 <p>Cool, huh?</p>
-<hr />
+<hr>
 <h2>A TCP Proxy</h2>
 <p>A TCP proxy can be very useful for forwarding traffic and when assessing network-based softwares (for example, when you cannot run <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">Wireshark</a> or you cannot load drivers or tools in the machine you are exploiting).</p>
 <p>To create a proxy we need to verify if we need to <em>first initiate a connection</em> to the remote side. This will request data before going into our main loop and some server daemons expect you to do this first (for instance, FTP servers send a banner first).  We call this information <strong>receive_first</strong>.</p>
 <h3>The Main Function</h3>
 <p>So let us start with our <strong>main</strong> function. First we define the usage, which should have four more arguments together with  <strong>receive_first</strong>. Then we check these arguments to variables and start a listening socket:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;Usage: ./proxy.py &lt;localhost&gt; &lt;localport&gt; &lt;remotehost&gt; &lt;remoteport&gt; &lt;receive_first&gt;&quot;</span>
-        <span class="k">print</span> <span class="s">&quot;Example: ./proxy.py 127.0.0.1 9000 10.12.122.1 9999 True&quot;</span>
+        <span class="k">print</span> <span class="s2">&quot;Usage: ./proxy.py &lt;localhost&gt; &lt;localport&gt; &lt;remotehost&gt; &lt;remoteport&gt; &lt;receive_first&gt;&quot;</span>
+        <span class="k">print</span> <span class="s2">&quot;Example: ./proxy.py 127.0.0.1 9000 10.12.122.1 9999 True&quot;</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
     <span class="n">local_host</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -583,7 +583,7 @@ Transfer-Encoding: chunked
     <span class="n">remote_host</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
     <span class="n">remote_port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 
-    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;True&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;True&#39;</span><span class="p">:</span>
         <span class="n">receive_first</span> <span class="o">=</span> <span class="bp">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">receive_first</span> <span class="o">=</span> <span class="bp">False</span>
@@ -594,23 +594,23 @@ Transfer-Encoding: chunked
 
 <h3>The Server Loop Function</h3>
 <p>Like before we start creating a socket and binding this to a port and a host. Then we start a loop that accepts incoming connections and spawns a thread to the new connection:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">server_loop</span><span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">,</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span><span class="p">,</span> <span class="n">receive_first</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">server_loop</span><span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">,</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span><span class="p">,</span> <span class="n">receive_first</span><span class="p">):</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span> <span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;[!!] Failed to listen on </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;[!!] Failed to listen on </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
-    <span class="k">print</span> <span class="s">&quot;[*] Listening on </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;[*] Listening on </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">local_host</span><span class="p">,</span> <span class="n">local_port</span><span class="p">)</span>
     <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">client_socket</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&quot;[==&gt;] Received incoming connection from </span><span class="si">%s</span><span class="s">:</span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">print</span> <span class="s2">&quot;[==&gt;] Received incoming connection from </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-        <span class="c"># start a thread to talk to the remote host</span>
+        <span class="c1"># start a thread to talk to the remote host</span>
         <span class="n">proxy</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">proxy_handler</span><span class="p">,</span> \
             <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span><span class="p">,</span> <span class="n">receive_first</span><span class="p">))</span>
         <span class="n">proxy</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
@@ -628,7 +628,7 @@ Transfer-Encoding: chunked
 <li>sends to local host (with the function <strong>response_handler</strong> and <strong>send</strong>).</li>
 </ol>
 <p>This keeps going until the loop is stopped, which happens when both local and remote buffers are empty. Let's take a look:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">proxy_handler</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span><span class="p">,</span> <span class="n">receive_first</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proxy_handler</span><span class="p">(</span><span class="n">client_socket</span><span class="p">,</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span><span class="p">,</span> <span class="n">receive_first</span><span class="p">):</span>
     <span class="n">remote_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span> <span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">remote_socket</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span> <span class="n">remote_host</span><span class="p">,</span> <span class="n">remote_port</span> <span class="p">))</span>
 
@@ -637,39 +637,39 @@ Transfer-Encoding: chunked
         <span class="n">hexdump</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
         <span class="n">remote_buffer</span> <span class="o">=</span> <span class="n">response_handler</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
 
-        <span class="c"># if we have data to send to client, send it:</span>
+        <span class="c1"># if we have data to send to client, send it:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">):</span>
-            <span class="k">print</span> <span class="s">&quot;[&lt;==] Sending </span><span class="si">%d</span><span class="s"> bytes to localhost.&quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s2">&quot;[&lt;==] Sending </span><span class="si">%d</span><span class="s2"> bytes to localhost.&quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
             <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
 
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">local_buffer</span> <span class="o">=</span> <span class="n">receive_from</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">):</span>
-            <span class="k">print</span> <span class="s">&quot;[==&gt;] Received </span><span class="si">%d</span><span class="s"> bytes from localhost.&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s2">&quot;[==&gt;] Received </span><span class="si">%d</span><span class="s2"> bytes from localhost.&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span>
             <span class="n">hexdump</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span>
             <span class="n">local_buffer</span> <span class="o">=</span> <span class="n">request_handler</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span>
             <span class="n">remote_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span>
-            <span class="k">print</span> <span class="s">&quot;[==&gt;] Sent to remote.&quot;</span>
+            <span class="k">print</span> <span class="s2">&quot;[==&gt;] Sent to remote.&quot;</span>
 
         <span class="n">remote_buffer</span> <span class="o">=</span> <span class="n">receive_from</span><span class="p">(</span><span class="n">remote_socket</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">):</span>
-            <span class="k">print</span> <span class="s">&quot;[==&gt;] Received </span><span class="si">%d</span><span class="s"> bytes from remote.&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s2">&quot;[==&gt;] Received </span><span class="si">%d</span><span class="s2"> bytes from remote.&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
             <span class="n">hexdump</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
             <span class="n">remote_buffer</span> <span class="o">=</span> <span class="n">response_handler</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
             <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">)</span>
-            <span class="k">print</span> <span class="s">&quot;[==&gt;] Sent to localhost.&quot;</span>
+            <span class="k">print</span> <span class="s2">&quot;[==&gt;] Sent to localhost.&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">local_buffer</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">remote_buffer</span><span class="p">):</span>
             <span class="n">client_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="n">remote_socket</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">print</span> <span class="s">&quot;[*] No more data. Closing connections&quot;</span>
+            <span class="k">print</span> <span class="s2">&quot;[*] No more data. Closing connections&quot;</span>
             <span class="k">break</span>
 </pre></div>
 
 
 <p>The <strong>receive_from</strong> function takes a socket object and performs the receive, dumping the contents of the packet:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">receive_from</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
-    <span class="nb">buffer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">receive_from</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+    <span class="nb">buffer</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="n">connection</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -684,38 +684,38 @@ Transfer-Encoding: chunked
 
 
 <p>The <strong>response_handler</strong> function is used to modify the packet contents from the inbound traffic (for example, to  perform fuzzing, test for authentication, etc). The function <strong>request_handler</strong> does the same for outbound traffic:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">request_handler</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
-    <span class="c"># perform packet modifications</span>
-    <span class="nb">buffer</span> <span class="o">+=</span> <span class="s">&#39; Yaeah!&#39;</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">request_handler</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
+    <span class="c1"># perform packet modifications</span>
+    <span class="nb">buffer</span> <span class="o">+=</span> <span class="s1">&#39; Yaeah!&#39;</span>
     <span class="k">return</span> <span class="nb">buffer</span>
 
 <span class="k">def</span> <span class="nf">response_handler</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
-    <span class="c"># perform packet modifications</span>
+    <span class="c1"># perform packet modifications</span>
     <span class="k">return</span> <span class="nb">buffer</span>
 </pre></div>
 
 
 <p>Finally, the function <strong>hexdump</strong> outputs the packet details with hexadecimal and ASCII characters:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">hexdump</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hexdump</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">digists</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">)</span> <span class="k">else</span> <span class="mi">2</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">),</span> <span class="n">lenght</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">length</span><span class="p">]</span>
-        <span class="n">hexa</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s">&#39;</span><span class="si">%0*X</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">])</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">b</span><span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span> <span class="k">if</span> <span class="mh">0x20</span> <span class="o">&lt;=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mh">0x7F</span> <span class="k">else</span> <span class="n">b</span><span class="s">&#39;.&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">])</span>
-        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="s">&quot;</span><span class="si">%04X</span><span class="s"> </span><span class="si">%-*s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">length</span><span class="o">*</span><span class="p">(</span><span class="n">digits</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">hexa</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
+        <span class="n">hexa</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">%0*X</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">])</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">x</span> <span class="k">if</span> <span class="mh">0x20</span> <span class="o">&lt;=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mh">0x7F</span> <span class="k">else</span> <span class="sa">b</span><span class="s1">&#39;.&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="p">])</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="si">%04X</span><span class="s2"> </span><span class="si">%-*s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">length</span><span class="o">*</span><span class="p">(</span><span class="n">digits</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">hexa</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>
 </pre></div>
 
 
 <h3>Firing Up our Proxy</h3>
 <p>Now we just need to run our script with some server. For example, for a FTP server at the standard port 21:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo ./tcp_proxy.py localhost 21 ftp.target 21 True
+<div class="highlight"><pre><span></span>$ sudo ./tcp_proxy.py localhost <span class="m">21</span> ftp.target <span class="m">21</span> True
 <span class="o">[</span>*<span class="o">]</span> Listening on localhost:21
 <span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Extra Stuff: The socket Object Methods</h2>
 <p>Additionally, let's  take a quick look to all the methods available with the <strong>socket</strong> object from the <strong>socket</strong> module. I think it's useful to have an idea of this list:</p>
 <ul>
@@ -789,7 +789,7 @@ Transfer-Encoding: chunked
 <p><strong>socket.proto</strong>: The socket protocol.</p>
 </li>
 </ul>
-<hr />
+<hr>
 <p><strong> Fun, isn't? Now check the next post about Python's <a href="http://bt3gl.github.io/black-hat-python-infinite-possibilities-with-the-scapy-module.html">scapy module</a> and <a href="http://bt3gl.github.io/black-hat-python-the-paramiko-module.html">paramiko module</a>!</strong></p>
 <h2>Further References:</h2>
 <ul>
@@ -801,7 +801,7 @@ Transfer-Encoding: chunked
 <li><a href="https://github.com/OffensivePython/Sniffy/blob/master/Sniffy.py">A network sniffer at the Network Layer</a>.</li>
 <li><a href="http://beej.us/guide/bgnet/output/html/multipage/index.html">A Guide to Network Programming in C++</a>.</li>
 </ul>
-<hr />
+<hr>
                 </div><!-- /.entry-content -->
                 <div class="comments">
                 <h2>Comments !</h2>

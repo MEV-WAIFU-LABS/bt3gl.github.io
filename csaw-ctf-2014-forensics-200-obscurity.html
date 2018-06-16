@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-22T07:20:00">
+<abbr class="published" title="2014-09-22T07:20:00-04:00">
       Mon 22 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -119,75 +119,75 @@
 </blockquote>
 <p>Hacking PDFs, what fun!</p>
 <p>In general, when dealing with reverse-engineering malicious documents, we follow these steps:</p>
-<div class="highlight"><pre> <span class="mf">1.</span> <span class="n">We</span> <span class="n">search</span> <span class="k">for</span> <span class="n">malicious</span> <span class="n">embedded</span> <span class="n">code</span> <span class="p">(</span><span class="n">shell</span> <span class="n">code</span><span class="p">,</span> <span class="n">JavaScript</span><span class="p">).</span>
+<div class="highlight"><pre><span></span> 1. We search for malicious embedded code (shell code, JavaScript).
 
- <span class="mf">2.</span> <span class="n">We</span> <span class="n">extract</span> <span class="n">any</span> <span class="n">suspicious</span> <span class="n">code</span> <span class="n">segments</span>
+ 2. We extract any suspicious code segments
 
- <span class="mf">3.</span> <span class="n">If</span> <span class="n">we</span> <span class="n">see</span> <span class="n">shell</span> <span class="n">code</span><span class="p">,</span> <span class="n">we</span> <span class="n">disassemble</span> <span class="n">or</span> <span class="n">debug</span> <span class="n">it</span><span class="p">.</span> <span class="n">If</span> <span class="n">we</span> <span class="n">see</span> <span class="n">JavaScript</span> <span class="p">(</span><span class="n">or</span> <span class="n">ActionScript</span> <span class="n">or</span> <span class="n">VB</span> <span class="n">macro</span> <span class="n">code</span><span class="p">),</span> <span class="n">we</span> <span class="n">try</span> <span class="n">to</span> <span class="n">examine</span> <span class="n">it</span><span class="p">.</span>
+ 3. If we see shell code, we disassemble or debug it. If we see JavaScript (or ActionScript or VB macro code), we try to examine it.
 </pre></div>
 
 
 <p>However, this problem turned out to be very simple...</p>
-<hr />
+<hr>
 <h2>Finding the Flag in 10 Seconds</h2>
 <p>Yeap, this easy:</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="n">Download</span> <span class="n">the</span> <span class="n">PDF</span> <span class="n">file</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>1. Download the PDF file.
 
-<span class="mf">2.</span> <span class="n">Open</span> <span class="n">it</span> <span class="n">in</span> <span class="n">any</span> <span class="n">PDF</span> <span class="n">viewer</span><span class="p">.</span>
+2. Open it in any PDF viewer.
 
-<span class="mf">3.</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">A</span> <span class="p">(</span><span class="n">select</span> <span class="n">all</span> <span class="n">the</span> <span class="n">contend</span><span class="p">).</span>
+3. CTRL+A (select all the contend).
 
-<span class="mf">4.</span> <span class="n">You</span> <span class="n">see</span> <span class="n">the</span> <span class="n">flag</span><span class="o">!</span>
+4. You see the flag!
 </pre></div>
 
 
-<p><img alt="" src="http://i.imgur.com/b03EehK.png" /></p>
+<p><img alt="" src="http://i.imgur.com/b03EehK.png"></p>
 <p>OK, we were luck. Keep reading if you think this was too easy.</p>
-<hr />
+<hr>
 <h2>Analyzing the ID and the Streams in a PDF File</h2>
 <p>Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task we use the <a href="http://blog.didierstevens.com/programs/pdf-tools/">PDF Tool</a> suite, which is written in Python.</p>
 <h4>pdfid</h4>
 <p>We start with <em>pdfid.py</em>, which parses the PDF  looking for certain  keywords. We download and unzip that script, and then we make it an executable:</p>
-<div class="highlight"><pre><span class="nv">$ </span>unzip pdfid_v0_1_2.zip
-<span class="nv">$ </span>chmod a+x pdfid.py
+<div class="highlight"><pre><span></span>$ unzip pdfid_v0_1_2.zip
+$ chmod a+x pdfid.py
 </pre></div>
 
 
 <p>Running over our file gives:</p>
-<div class="highlight"><pre><span class="nv">$ </span>./pdfid.py pdf.pdf
-PDFiD 0.1.2 pdf.pdf
+<div class="highlight"><pre><span></span>$ ./pdfid.py pdf.pdf
+PDFiD <span class="m">0</span>.1.2 pdf.pdf
  PDF Header: %PDF-1.3
- obj                   20
- endobj                19
- stream                10
- endstream             10
- xref                   1
- trailer                1
- startxref              1
- /Page                  1
- /Encrypt               0
- /ObjStm                0
- /JS                    0
- /JavaScript            0
- /AA                    0
- /OpenAction            0
- /AcroForm              0
- /JBIG2Decode           0
- /RichMedia             0
- /Launch                0
- /EmbeddedFile          0
- /XFA                   0
- /Colors &gt; 2^24         0
+ obj                   <span class="m">20</span>
+ endobj                <span class="m">19</span>
+ stream                <span class="m">10</span>
+ endstream             <span class="m">10</span>
+ xref                   <span class="m">1</span>
+ trailer                <span class="m">1</span>
+ startxref              <span class="m">1</span>
+ /Page                  <span class="m">1</span>
+ /Encrypt               <span class="m">0</span>
+ /ObjStm                <span class="m">0</span>
+ /JS                    <span class="m">0</span>
+ /JavaScript            <span class="m">0</span>
+ /AA                    <span class="m">0</span>
+ /OpenAction            <span class="m">0</span>
+ /AcroForm              <span class="m">0</span>
+ /JBIG2Decode           <span class="m">0</span>
+ /RichMedia             <span class="m">0</span>
+ /Launch                <span class="m">0</span>
+ /EmbeddedFile          <span class="m">0</span>
+ /XFA                   <span class="m">0</span>
+ /Colors &gt; <span class="m">2</span>^24         <span class="m">0</span>
 </pre></div>
 
 
 <p>All right, no funny stuff going on here. We need to look deeper into each of the these streams.</p>
 <h4>pdf-parser</h4>
 <p>We download <em>pdf-parser.py</em>, which is used to search for all the fundamental elements in a PDF file. Let's take a closer look:</p>
-<div class="highlight"><pre><span class="nv">$ </span>unzip pdf-parser_V0_4_3.zip
-<span class="nv">$ </span>chmod a+x pdf-parser.py
-<span class="nv">$ </span>./pdf-parser.py
-Usage: pdf-parser.py <span class="o">[</span>options<span class="o">]</span> pdf-file|zip-file|url
+<div class="highlight"><pre><span></span>$ unzip pdf-parser_V0_4_3.zip
+$ chmod a+x pdf-parser.py
+$ ./pdf-parser.py
+Usage: pdf-parser.py <span class="o">[</span>options<span class="o">]</span> pdf-file<span class="p">|</span>zip-file<span class="p">|</span>url
 pdf-parser, use it to parse a PDF document
 
 Options:
@@ -203,44 +203,44 @@ Options:
                         id of indirect object being referenced <span class="o">(</span>version
                         independent<span class="o">)</span>
   -e ELEMENTS, --elements<span class="o">=</span>ELEMENTS
-                        <span class="nb">type </span>of elements to <span class="k">select</span> <span class="o">(</span>cxtsi<span class="o">)</span>
-  -w, --raw             raw output <span class="k">for </span>data and filters
-  -a, --stats           display stats <span class="k">for </span>pdf document
-  -t TYPE, --type<span class="o">=</span>TYPE  <span class="nb">type </span>of indirect object to <span class="k">select</span>
+                        <span class="nb">type</span> of elements to <span class="k">select</span> <span class="o">(</span>cxtsi<span class="o">)</span>
+  -w, --raw             raw output <span class="k">for</span> data and filters
+  -a, --stats           display stats <span class="k">for</span> pdf document
+  -t TYPE, --type<span class="o">=</span>TYPE  <span class="nb">type</span> of indirect object to <span class="k">select</span>
   -v, --verbose         display malformed PDF elements
   -x EXTRACT, --extract<span class="o">=</span>EXTRACT
                         filename to extract malformed content to
-  -H, --hash            display <span class="nb">hash </span>of objects
+  -H, --hash            display <span class="nb">hash</span> of objects
   -n, --nocanonicalizedoutput
-                        <span class="k">do </span>not canonicalize the output
+                        <span class="k">do</span> not canonicalize the output
   -d DUMP, --dump<span class="o">=</span>DUMP  filename to dump stream content to
   -D, --debug           display debug info
-  -c, --content         display the content <span class="k">for </span>objects without streams or
+  -c, --content         display the content <span class="k">for</span> objects without streams or
                         with streams without filters
   --searchstream<span class="o">=</span>SEARCHSTREAM
                         string to search in streams
   --unfiltered          search in unfiltered streams
-  --casesensitive       <span class="k">case </span>sensitive search in streams
+  --casesensitive       <span class="k">case</span> sensitive search in streams
   --regex               use regex to search in streams
 </pre></div>
 
 
 <p>Very interesting! We run it with our file, searching for the string <em>/ProcSet</em>:</p>
-<div class="highlight"><pre><span class="nv">$ </span>./pdf-parser.py  pdf.pdf | grep  /ProcSet
+<div class="highlight"><pre><span></span>$ ./pdf-parser.py  pdf.pdf <span class="p">|</span> grep  /ProcSet
         /ProcSet <span class="o">[</span> /ImageC /Text /PDF /ImageI /ImageB <span class="o">]</span>
 </pre></div>
 
 
 <p>Awesome! Even though we don't see any text in the file (when we opened it in the PDF viewer), there is text somewhere!</p>
-<hr />
+<hr>
 <h2>Getting Text from PDF</h2>
 <p>A good way to extract text from a pdf is using <a href="http://en.wikipedia.org/wiki/Pdftotext">pdftotext</a>:</p>
-<div class="highlight"><pre><span class="nv">$ </span>pdftotext pdf.pdf
+<div class="highlight"><pre><span></span>$ pdftotext pdf.pdf
 </pre></div>
 
 
 <p>You should get a <code>pdf.txt</code> file. Reading it with Linux's commands <code>cat</code> or <code>strings</code>gives you the flag:</p>
-<div class="highlight"><pre><span class="nv">$ </span>strings pdf.txt
+<div class="highlight"><pre><span></span>$ strings pdf.txt
 flag<span class="o">{</span>security_through_obscurity<span class="o">}</span>
 </pre></div>
 

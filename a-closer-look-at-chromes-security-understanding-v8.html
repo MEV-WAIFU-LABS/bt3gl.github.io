@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-11-01T04:20:00">
+<abbr class="published" title="2014-11-01T04:20:00-04:00">
       Sat 01 November 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -122,11 +122,11 @@
 <p><strong>Interpreters</strong> execute instructions without compiling into machine language first. They are first translated into a lower level intermediate representations such as <strong>byte code</strong> or <strong>abstract syntax trees</strong> (ASTs). Then they are interpreted by a  <strong>virtual machine</strong>.</p>
 <p>The truth is that things are generally mixed.  For example, when you type some instruction in  Python's REPL, <a href="http://akaptur.com/blog/2013/11/17/introduction-to-the-python-interpreter-3/">the language executes four steps</a>: <em>lexing</em> (breaks the code into pieces), <em>parsing</em> (generates an AST with those pieces - it is the syntax analysis), <em>compiling</em> (converts the AST into code objects - which are attributes of the function objects), and <em>interpreting</em> (executes the code objects).</p>
 <p>In Python, byte-compiled code, in form of <strong>.pyc</strong> files, is used by the compiler to speed-up the start-up time (load time) for short programs that use a lot of standard modules. And, by the way, byte codes are attributes of the code object so to see them, you just need to call <code>func_code</code> (code object) and <code>co_code</code>(bytecode)[1]:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">some_function</span><span class="p">():</span>
 <span class="o">...</span>     <span class="k">return</span>
 <span class="o">...</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">some_function</span><span class="o">.</span><span class="n">func_code</span><span class="o">.</span><span class="n">co_code</span>
-<span class="s">&#39;d</span><span class="se">\x00\x00</span><span class="s">S&#39;</span>
+<span class="s1">&#39;d</span><span class="se">\x00\x00</span><span class="s1">S&#39;</span>
 </pre></div>
 
 
@@ -138,14 +138,14 @@
 <p><strong>Method JITs</strong> emit native code for every block (method) of code and update references dynamically. Method JITs can implement an <em>inline cache</em> for rewriting type lookups at runtime.</p>
 <p>In <strong>tracing JITs</strong>, native code is only emitted when a certain block (method) is considered <em>important</em>. An example is given by traditional JavaScript: if you load a script with functions that are never used, they are never compiled. Additionally, in JavaScript a  <em>cache</em> is usually implemented due to the nature of its <em>dynamic typing system</em>.</p>
 <p>As we will see below, V8 performs direct JIT compilation from  (JavaScript) source code to native machine code (IA-32, x86-64, ARM, or MIPS ISAs),  <strong>without transforming it to bytecode first</strong>. In addition, V8 performs  dynamic several optimizations at runtime (including <strong>inline caching</strong>). But let's not get ahead of ourselves! Also,  as a note, Google has implemented a technology called <a href="http://code.google.com/p/nativeclient/"><strong>Native Client</strong></a> (NaCl), which  allows one to provide compiled code to the  Chrome browser.</p>
-<hr />
+<hr>
 <h2>The way JavaScript rolls...</h2>
 <p>JavaScript's integration with <a href="http://en.wikipedia.org/wiki/Netscape_Navigator">Netscape Navigator</a> in the mid-90s made it easier for developers to access HTML page elements such as <em>forms</em>, <em>frames</em>, and <em>images</em>. This was essential for JavaScript's accession to become the most popular scripting engine for the web.</p>
 <p>However, the language's high dynamical behavior (that I'm briefly discussing here) came with a price: in the mid-2000s browsers had very slow  implementations that did not scale with code size or <em>object allocation</em>. Issues such as <em>memory leaks</em> when running web apps were becoming mainstream. It was clear that things would only get worse and a new JavaScript engine was a need.</p>
 <h3>JavaScript's Structure</h3>
 <p>In JavaScript, every object has a <em>prototype</em>, and the prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype.</p>
 <p>So, for example, supposing an application that has an object <em>Point</em> (borrowed from the <a href="https://developers.google.com/v8/design">official documentation</a>):</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">Point</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">){</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">x</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
 <span class="p">}</span>
@@ -153,14 +153,14 @@
 
 
 <p>We can create several objects:</p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">a</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">var</span> <span class="n">b</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Point</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
 </pre></div>
 
 
 <p>And we can access the propriety <code>x</code> in these object by:</p>
-<div class="highlight"><pre><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
-<span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>a.x;
+b.x;
 </pre></div>
 
 
@@ -181,15 +181,15 @@
 </li>
 </ol>
 <p>As one could guess, JavaScript has automatic memory management. Actually, the core design flaw of traditional JavaScript engines is <strong>bad garbage collection behavior</strong>. The problem is that JavaScript engines do not know exactly where all the pointers are, and they will search through the entire execution stack to see what data looks like pointers (for instance, integers can look like a pointer to an address in the heap).</p>
-<hr />
+<hr>
 <h2>Introducing V8</h2>
 <p>A solution for the issues presented above came from Google,  with  the <strong>V8 Engine</strong>. V8 is an <a href="https://code.google.com/p/v8/">open source JavaScript engine</a> written in C++ that gave birth to Chrome. V8 has a way to categorize the highly-dynamic JavaScript objects into classes, bringing techniques from static class-based languages. In addition, as I mentioned in the the beginning, V8 compiles JavaScript to native machine code before executing it.</p>
 <p>In terms of performance, besides direct compilation to native code, three main features in V8 are fundamental:</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="n">Hidden</span> <span class="n">classes</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>1. Hidden classes.
 
-<span class="mf">2.</span> <span class="n">In</span><span class="o">-</span><span class="n">line</span> <span class="n">caching</span> <span class="n">as</span> <span class="n">an</span> <span class="n">optimization</span> <span class="n">technique</span><span class="p">.</span>
+2. In-line caching as an optimization technique.
 
-<span class="mf">3.</span> <span class="n">Efficient</span> <span class="n">memory</span> <span class="n">management</span> <span class="n">system</span> <span class="p">(</span><span class="n">garbage</span> <span class="n">collection</span><span class="p">).</span>
+3. Efficient memory management system (garbage collection).
 </pre></div>
 
 
@@ -210,10 +210,10 @@
 </li>
 </ol>
 <p>Instead of having a generic lookup for a propriety, V8  generates an efficient machine code to search the propriety. The machine code generated for accessing <code>x</code> is something like this:</p>
-<div class="highlight"><pre><span class="cp"># ebx = the point object</span>
-<span class="n">cmp</span> <span class="p">[</span><span class="n">ebx</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">class</span> <span class="n">offset</span><span class="o">&gt;</span><span class="p">],</span> <span class="o">&lt;</span><span class="n">cached</span> <span class="n">class</span><span class="o">&gt;</span>
-<span class="n">jne</span> <span class="o">&lt;</span><span class="kr">inline</span> <span class="n">cache</span> <span class="n">miss</span><span class="o">&gt;</span>
-<span class="n">mv</span> <span class="n">eax</span><span class="p">,</span> <span class="p">[</span><span class="n">ebx</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">cached</span> <span class="n">x</span> <span class="n">offset</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span># ebx = the point object
+cmp [ebx, &lt;class offset&gt;], &lt;cached class&gt;
+jne &lt;inline cache miss&gt;
+mv eax, [ebx, &lt;cached x offset&gt;]
 </pre></div>
 
 
@@ -241,15 +241,15 @@
 <h3>V8's Efficient Garbage Collecting</h3>
 <p>In V8, a <strong>precise garbage collection</strong> is used. <em>Every pointer's location are known on the execution stack</em>, so V8 is able to implement incremental garbage collection. V8 can migrate an object to another place and just rewire the pointer.</p>
 <p>In summary, <a href="https://developers.google.com/v8/design#garb_coll">V8's garbage collection</a>:</p>
-<div class="highlight"><pre><span class="mf">1.</span> <span class="n">stops</span> <span class="n">program</span> <span class="n">execution</span> <span class="n">when</span> <span class="n">performing</span> <span class="n">a</span> <span class="n">garbage</span> <span class="n">collection</span> <span class="n">cycle</span><span class="p">,</span>
+<div class="highlight"><pre><span></span>1. stops program execution when performing a garbage collection cycle,
 
-<span class="mf">2.</span> <span class="n">processes</span> <span class="n">only</span> <span class="n">part</span> <span class="n">of</span> <span class="n">the</span> <span class="n">object</span> <span class="n">heap</span> <span class="n">in</span> <span class="n">most</span> <span class="n">collection</span> <span class="n">cycles</span> <span class="p">(</span><span class="n">minimizing</span> <span class="n">the</span> <span class="n">impact</span> <span class="n">of</span> <span class="n">stopping</span> <span class="n">the</span> <span class="n">application</span><span class="p">),</span>
+2. processes only part of the object heap in most collection cycles (minimizing the impact of stopping the application),
 
-<span class="mf">3.</span> <span class="n">always</span> <span class="n">knows</span> <span class="n">exactly</span> <span class="n">where</span> <span class="n">all</span> <span class="n">objects</span> <span class="n">and</span> <span class="n">pointers</span> <span class="n">are</span> <span class="n">in</span> <span class="n">memory</span> <span class="p">(</span><span class="n">avoiding</span> <span class="n">falsely</span> <span class="n">identifying</span> <span class="n">objects</span> <span class="n">as</span> <span class="n">pointers</span><span class="p">).</span>
+3. always knows exactly where all objects and pointers are in memory (avoiding falsely identifying objects as pointers).
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Further Readings:</h2>
 <ul>
 <li><a href="https://noncombatant.org/2014/03/11/privacy-and-security-settings-in-chrome/">Privacy And Security Settings in Chrome</a></li>

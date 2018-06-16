@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-22T06:20:00">
+<abbr class="published" title="2014-09-22T06:20:00-04:00">
       Mon 22 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -118,24 +118,24 @@
 </blockquote>
 <h2>Unziping firefox.mem.zip</h2>
 <p>The given file has a funny extension <em>.mem.zip</em>. Before we go ahead and unzip it, let's try to learn more about this file. To do this we choose to use the Linux's command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
-<div class="highlight"><pre><span class="nv">$ </span>file --help
+<div class="highlight"><pre><span></span>$ file --help
 Usage: file <span class="o">[</span>OPTION...<span class="o">]</span> <span class="o">[</span>FILE...<span class="o">]</span>
-Determine <span class="nb">type </span>of FILEs.
+Determine <span class="nb">type</span> of FILEs.
 
-      --help                 display this <span class="nb">help </span>and <span class="nb">exit</span>
+      --help                 display this <span class="nb">help</span> and <span class="nb">exit</span>
   -v, --version              output version information and <span class="nb">exit</span>
   -m, --magic-file LIST      use LIST as a colon-separated list of magic
                                number files
   -z, --uncompress           try to look inside compressed files
-  -b, --brief                <span class="k">do </span>not prepend filenames to output lines
+  -b, --brief                <span class="k">do</span> not prepend filenames to output lines
   -c, --checking-printout    print the parsed form of the magic file, use in
                                conjunction with -m to debug a new magic file
                                before installing it
-  -e, --exclude TEST         exclude TEST from the list of <span class="nb">test </span>to be
-                               performed <span class="k">for </span>file. Valid tests are:
+  -e, --exclude TEST         exclude TEST from the list of <span class="nb">test</span> to be
+                               performed <span class="k">for</span> file. Valid tests are:
                                apptype, ascii, cdf, compress, elf, encoding,
                                soft, tar, text, tokens
-  -f, --files-from FILE      <span class="nb">read </span>the filenames to be examined from FILE
+  -f, --files-from FILE      <span class="nb">read</span> the filenames to be examined from FILE
   -F, --separator STRING     use string as separator instead of <span class="sb">`</span>:<span class="s1">&#39;</span>
 <span class="s1">  -i, --mime                 output MIME type strings (--mime-type and</span>
 <span class="s1">                               --mime-encoding)</span>
@@ -159,13 +159,13 @@ Determine <span class="nb">type </span>of FILEs.
 
 
 <p>We find the flag <code>-z</code>, which allows us to look inside the zipped files:</p>
-<div class="highlight"><pre><span class="nv">$ </span> file -z firefox.mem.zip
-firefox.mem.zip: ELF 64-bit LSB core file x86-64, version 1 <span class="o">(</span>SYSV<span class="o">)</span> <span class="o">(</span>Zip archive data, at least v2.0 to extract<span class="o">)</span>
+<div class="highlight"><pre><span></span>$  file -z firefox.mem.zip
+firefox.mem.zip: ELF <span class="m">64</span>-bit LSB core file x86-64, version <span class="m">1</span> <span class="o">(</span>SYSV<span class="o">)</span> <span class="o">(</span>Zip archive data, at least v2.0 to extract<span class="o">)</span>
 </pre></div>
 
 
 <p>Cool! So let's go ahead and unzip this file:</p>
-<div class="highlight"><pre><span class="nv">$ </span>unzip firefox.mem.zip nzip firefox.mem.zip
+<div class="highlight"><pre><span></span>$ unzip firefox.mem.zip nzip firefox.mem.zip
 Archive:  firefox.mem.zip
   inflating: firefox.mem
    creating: __MACOSX/
@@ -173,41 +173,41 @@ Archive:  firefox.mem.zip
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Extra: Learning More about the <em>.mem</em> File</h2>
 <p>This is a very weird file extension. If you google <em>.mem</em>, you don't find much, it's clear it's a memory file, but what now?  From the <em>file</em> command, we learned that this is an <em>ELF 64-bit LSB core</em>. Let's understand this  by parts.</p>
 <p>An <a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF</a> file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.</p>
 <p>In Linux, we can use the command <a href="http://linux.die.net/man/1/readelf">readelf</a> to displays information about ELF files:</p>
-<div class="highlight"><pre><span class="nv">$ </span>readelf firefox.mem
+<div class="highlight"><pre><span></span>$ readelf firefox.mem
 Usage: readelf &lt;option<span class="o">(</span>s<span class="o">)</span>&gt; elf-file<span class="o">(</span>s<span class="o">)</span>
  Display information about the contents of ELF format files
  Options are:
   -a --all               Equivalent to: -h -l -S -s -r -d -V -A -I
   -h --file-header       Display the ELF file header
   -l --program-headers   Display the program headers
-     --segments          An <span class="nb">alias </span><span class="k">for</span> --program-headers
+     --segments          An <span class="nb">alias</span> <span class="k">for</span> --program-headers
   -S --section-headers   Display the sections<span class="err">&#39;</span> header
-     --sections          An <span class="nb">alias </span><span class="k">for</span> --section-headers
+     --sections          An <span class="nb">alias</span> <span class="k">for</span> --section-headers
   -g --section-groups    Display the section groups
   -t --section-details   Display the section details
   -e --headers           Equivalent to: -h -l -S
   -s --syms              Display the symbol table
-     --symbols           An <span class="nb">alias </span><span class="k">for</span> --syms
+     --symbols           An <span class="nb">alias</span> <span class="k">for</span> --syms
   --dyn-syms             Display the dynamic symbol table
-  -n --notes             Display the core notes <span class="o">(</span><span class="k">if </span>present<span class="o">)</span>
-  -r --relocs            Display the relocations <span class="o">(</span><span class="k">if </span>present<span class="o">)</span>
-  -u --unwind            Display the unwind info <span class="o">(</span><span class="k">if </span>present<span class="o">)</span>
-  -d --dynamic           Display the dynamic section <span class="o">(</span><span class="k">if </span>present<span class="o">)</span>
-  -V --version-info      Display the version sections <span class="o">(</span><span class="k">if </span>present<span class="o">)</span>
-  -A --arch-specific     Display architecture specific information <span class="o">(</span><span class="k">if </span>any<span class="o">)</span>
+  -n --notes             Display the core notes <span class="o">(</span><span class="k">if</span> present<span class="o">)</span>
+  -r --relocs            Display the relocations <span class="o">(</span><span class="k">if</span> present<span class="o">)</span>
+  -u --unwind            Display the unwind info <span class="o">(</span><span class="k">if</span> present<span class="o">)</span>
+  -d --dynamic           Display the dynamic section <span class="o">(</span><span class="k">if</span> present<span class="o">)</span>
+  -V --version-info      Display the version sections <span class="o">(</span><span class="k">if</span> present<span class="o">)</span>
+  -A --arch-specific     Display architecture specific information <span class="o">(</span><span class="k">if</span> any<span class="o">)</span>
   -c --archive-index     Display the symbol/file index in an archive
   -D --use-dynamic       Use the dynamic section info when displaying symbols
-  -x --hex-dump<span class="o">=</span>&lt;number|name&gt;
-                         Dump the contents of section &lt;number|name&gt; as bytes
-  -p --string-dump<span class="o">=</span>&lt;number|name&gt;
-                         Dump the contents of section &lt;number|name&gt; as strings
-  -R --relocated-dump<span class="o">=</span>&lt;number|name&gt;
-                         Dump the contents of section &lt;number|name&gt; as relocated bytes
+  -x --hex-dump<span class="o">=</span>&lt;number<span class="p">|</span>name&gt;
+                         Dump the contents of section &lt;number<span class="p">|</span>name&gt; as bytes
+  -p --string-dump<span class="o">=</span>&lt;number<span class="p">|</span>name&gt;
+                         Dump the contents of section &lt;number<span class="p">|</span>name&gt; as strings
+  -R --relocated-dump<span class="o">=</span>&lt;number<span class="p">|</span>name&gt;
+                         Dump the contents of section &lt;number<span class="p">|</span>name&gt; as relocated bytes
   -w<span class="o">[</span>lLiaprmfFsoRt<span class="o">]</span> or
   --debug-dump<span class="o">[=</span>rawline,<span class="o">=</span>decodedline,<span class="o">=</span>info,<span class="o">=</span>abbrev,<span class="o">=</span>pubnames,<span class="o">=</span>aranges,<span class="o">=</span>macro,<span class="o">=</span>frames,
                <span class="o">=</span>frames-interp,<span class="o">=</span>str,<span class="o">=</span>loc,<span class="o">=</span>Ranges,<span class="o">=</span>pubtypes,
@@ -217,7 +217,7 @@ Usage: readelf &lt;option<span class="o">(</span>s<span class="o">)</span>&gt; e
   --dwarf-start<span class="o">=</span>N        Display DIEs starting with N, at the same depth
                          or deeper
   -I --histogram         Display histogram of bucket list lengths
-  -W --wide              Allow output width to exceed 80 characters
+  -W --wide              Allow output width to exceed <span class="m">80</span> characters
   @&lt;file&gt;                Read options from &lt;file&gt;
   -H --help              Display this information
   -v --version           Display the version number of readelf
@@ -225,10 +225,10 @@ Usage: readelf &lt;option<span class="o">(</span>s<span class="o">)</span>&gt; e
 
 
 <p>In addition, <a href="http://en.wikipedia.org/wiki/Linux_Standard_Base">LSB</a> stands for <em>Linux Standard Base</em>, which is a joint project by several Linux distributions. It specifies standard libraries, a number of commands and utilities that extend the POSIX standard, the layout of the file system hierarchy, run levels, the printing system, etc.</p>
-<hr />
+<hr>
 <h2>Extracting Information from the <em>.mem</em> File</h2>
 <p>It turned out that we don't even need to know anything about the file to find the flag. All we need to do is to search for the <em>flag</em> string:</p>
-<div class="highlight"><pre><span class="nv">$ </span>cat firefox.mem | grep -a <span class="s1">&#39;flag{&#39;</span>
+<div class="highlight"><pre><span></span>$ cat firefox.mem <span class="p">|</span> grep -a <span class="s1">&#39;flag{&#39;</span>
 P��negativeone_or_fdZZZZZZZZZZZZnegativeone_or_nothingZZnegativeone_or_ssize_tZZd_name_extra_sizeZZZZZZZZZZZZnull_or_dirent_ptrZZZZZZZZZZOSFILE_SIZEOF_DIRZZZZZZZZZZZZ���� 3���������ZZZZZZZH�f�L��L��ZZ����@�m���������ZZZZZZZAG�@r���y��ZZZZZZZZflag<span class="o">{</span>cd69b4957f06cd818d7bf3d61980e291<span class="o">}</span>
 </pre></div>
 

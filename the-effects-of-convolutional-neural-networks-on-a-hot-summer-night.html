@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2016-08-01T00:00:00">
+<abbr class="published" title="2016-08-01T00:00:00-04:00">
       Mon 01 August 2016 </abbr>
 
 <span class="label"> Category</span>
@@ -105,7 +105,7 @@
 
 
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="dream" height="300px" src="./dream/d1.jpg" width="400px" /></p>
+                <p><img alt="dream" height="300px" src="./dream/d1.jpg" width="400px"></p>
 <p>About an year ago, Google published a seminal paper named <a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">ImageNet Classification with Deep Convolutional Neural Networks</a>, together with a <a href="https://research.googleblog.com/2015/07/deepdream-code-example-for-visualizing.html">blog post</a>, which became known as <strong>Inceptionism</strong>. This work unveiled not only a new way of composing hallucinating artistic pictures, but astonishing new insights on <strong>how convolutional neural networks work</strong>. Now we are able to see what each hidden layer in the net has learned, or in a more philosophical explanation, what the <strong>machine sees</strong>.</p>
 <p>Convolutional Neural Networks take an image (a vector of pixels) as input, and transform the image through several layers of nonlinear functions (kind of how <a href="https://en.wikipedia.org/wiki/Kernel_(image_processing)">kernels</a> work). The <strong>dream images</strong> are just a <strong>gradient ascent process</strong> that minimizes the <strong>L2 norm</strong> of activation functions of some deep neural network layer. </p>
 <p>More specifically, in the task of image classification, the neurons have the follow functions:</p>
@@ -117,14 +117,14 @@
 <p>Google released the code of its <a href="https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet">GoogLeNet model</a>, which is trained trained on <a href="http://www.image-net.org/">ImageNet dataset</a>.  I slightly adapted it <a href="https://github.com/bt3gl/Machine-Learning-Resources/tree/master/Deep_Art/deepdream">here</a>, adding some instructions on how one can play with it in a AWS GPU instance.</p>
 <p>Examples of <strong>deep dream</strong> with the following layers:</p>
 <h4><em>inception_3b/5x5_reduce</em> (lower levels):</h4>
-<p><img alt="dream" height="450px" src="./dream/d12.jpeg" width="550px" /></p>
+<p><img alt="dream" height="450px" src="./dream/d12.jpeg" width="550px"></p>
 <h4><em>inception_4c/output</em> (higher levels):</h4>
-<p><img alt="dream" height="450px" src="./dream/d11.jpeg" width="550px" /></p>
+<p><img alt="dream" height="450px" src="./dream/d11.jpeg" width="550px"></p>
 <h4><em>inception_3b/output</em> (controlled dreams):</h4>
-<p><img alt="dream" height="450px" src="./dream/d3.jpg" width="550px" />
-<img alt="dream" height="450px" src="./dream/d13.jpeg" width="550px" /></p>
+<p><img alt="dream" height="450px" src="./dream/d3.jpg" width="550px">
+<img alt="dream" height="450px" src="./dream/d13.jpeg" width="550px"></p>
 <h3>Enjoy!</h3>
-<p><img alt="dream" height="300px" src="./dream/1.jpg" width="400px" /></p>
+<p><img alt="dream" height="300px" src="./dream/1.jpg" width="400px"></p>
                 </div><!-- /.entry-content -->
                 <div class="comments">
                 <h2>Comments !</h2>

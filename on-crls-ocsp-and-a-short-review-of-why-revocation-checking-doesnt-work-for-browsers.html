@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-11-03T04:20:00">
+<abbr class="published" title="2014-11-03T04:20:00-05:00">
       Mon 03 November 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -125,7 +125,7 @@
 </li>
 </ul>
 <p>While CRLs are long lists and OCSP only deals with a single certificate, they are both methods of getting signed statements about the status of a certificate; and they both present issues concerning privacy, integrity, and availability. In this post I discuss some of these issues and I review possible alternatives.</p>
-<hr />
+<hr>
 <h2>Broken Models</h2>
 <h3>Certificate Revocation Lists (CRLs)</h3>
 <p>A CRL is a list of  serial numbers (such as <code>54:99:05:bd:ca:2a:ad:e3:82:21:95:d6:aa:ee:b6:5a</code>) of unexpired security certificates which have been revoked by their issuer and should not be trusted.</p>
@@ -147,7 +147,7 @@
 <p>One attempt to circumvent the lack of assurance of a server's reliability was issuing OCSP checks with a <strong>soft-fail</strong> option. In this case, online revocation checks which result in a <em>network error would be ignored</em>.</p>
 <p>This brings serious issues. A simple example is when an <a href="http://www.thoughtcrime.org/papers/ocsp-attack.pdf">attacker can intercept HTTPS traffic and make online revocation checks appear to fail, bypassing OCSP checks</a>.</p>
 <p>On the flip side, it's also not a good idea to enforce a <strong>hard-fail</strong> check:  OCSP servers are pretty flaky/slow and you do not want to relay on their capabilities (DDoS attackers would love this though).</p>
-<hr />
+<hr>
 <h2>Some Light in a Solution</h2>
 <p>There are several attempts of a solution for the revocation problem but none of them has been regarded as the definitive one. Here some of them:</p>
 <h3>CRLSets</h3>
@@ -159,11 +159,11 @@
 <p>In a simple example, the certificate holder is the one who periodically queries the OCSP server, obtaining a <em>signed time-stamped OCSP response</em>. When users attempt to connect to the website, the response is signed with the SSL/TLS handshake via the Certificate Status Request extension response. Since the stapled response is signed by the CA, it cannot be forged (without the CA's signing key).</p>
 <p>If the stapled OCSP has the <a href="http://tools.ietf.org/html/draft-hallambaker-muststaple-00">Must Staple</a> capability, it becomes hard-fail if a valid OCSP response is not stapled. To make a browser know this option, one can add a "must staple" assertion to the site's security certificate and/or create a new HTTP response header similar to <a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a>.</p>
 <p>Some fixable issue is that OCSP stapling supports only one response at a time. This is insufficient for sites that use several different certificates for a single page. Nevertheless, OCSP stapling is the most promising solution for the problem for now. The idea has been implemented by the servers for years, and recently, a <a href="https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/">few browsers are adopting it</a>. If this solution is going to become mainstream, only time will show.</p>
-<hr />
+<hr>
 <p><strong>tl;dr:</strong> The security of the Internet depends on the agent's ability to revoke compromised certificates, but the status quo is broken. There is  a urgent  need for rethinking the way things have been done!</p>
-<hr />
+<hr>
 <p><strong>Edited, 11/19/2014:</strong> The <strong>EFF</strong> just announced an attempt to help the CA  problem:  <a href="https://www.eff.org/deeplinks/2014/11/certificate-authority-encrypt-entire-web">Let's Encrypt</a>, "a new certificate authority (CA) initiative that aims to clear the remaining roadblocks to transition the Web from HTTP to HTTPS". The initiative is planned to be released in 2015. These are good news, but it is still not clear whether they are going to address the revocation problem with new solutions.</p>
-<hr />
+<hr>
 <h3>References:</h3>
 <p><a href="https://www.imperialviolet.org/2011/03/18/revocation.html">Imperial Violet: Revocation Doesn't work</a></p>
 <p><a href="https://www.imperialviolet.org/2014/04/19/revchecking.html">Imperial Violet: Don't Enable Revocation Checking</a></p>

