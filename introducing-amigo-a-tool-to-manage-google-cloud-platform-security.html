@@ -112,7 +112,7 @@
 <h4>Amigo perform two types of analysis:</h4>
 <p><strong>i)</strong> For each attribute in a project, Amigo creates a up to date report. Amigo then checks the previous report for differences (or checking when the data was modified). If there is a diff, Amigo logs a report for this diff.</p>
 <p><strong>ii)</strong> Amigo saves the resources data in a database. Amigo then checks the custom rules specified in <code>rules.yaml</code> and reports everything that violates those rules.
-Amigo performs two types of analytics, generating reports that can be fed in ELK/411:</p>
+Amigo performs two types of analytics, generating reports that can be fed in ELK.</p>
 <h2>Setting up and Running Amigo</h2>
 <h3>Setting a Virtual Environment to install Amigo</h3>
 <div class="highlight"><pre><span></span>$ make venv
@@ -280,13 +280,6 @@ gcp_attributes:
           &quot;https://www.googleapis.com/auth/compute.readonly&quot;
         ],
         &quot;email&quot;: &lt;service-account-email&gt;
-      }
-    ],
-    &quot;networkInterfaces&quot;: [
-      {
-        &quot;kind&quot;: &quot;compute#networkInterface&quot;,
-        &quot;network&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;shared-vpn-name&gt;/global/networks/etsy&quot;,
-        &quot;subnetwork&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;shared-vpn-name&gt;/regions/us-central1/subnetworks/migration-test&quot;
       }
     ],
     &quot;metadata&quot;: {

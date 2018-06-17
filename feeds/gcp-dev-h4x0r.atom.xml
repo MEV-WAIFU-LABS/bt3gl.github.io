@@ -10,7 +10,7 @@
 &lt;h4&gt;Amigo perform two types of analysis:&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; For each attribute in a project, Amigo creates a up to date report. Amigo then checks the previous report for differences (or checking when the data was modified). If there is a diff, Amigo logs a report for this diff.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; Amigo saves the resources data in a database. Amigo then checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt; and reports everything that violates those rules.
-Amigo performs two types of analytics, generating reports that can be fed in ELK/411:&lt;/p&gt;
+Amigo performs two types of analytics, generating reports that can be fed in ELK.&lt;/p&gt;
 &lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
 &lt;h3&gt;Setting a Virtual Environment to install Amigo&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make venv
@@ -178,13 +178,6 @@ gcp_attributes:
           &amp;quot;https://www.googleapis.com/auth/compute.readonly&amp;quot;
         ],
         &amp;quot;email&amp;quot;: &amp;lt;service-account-email&amp;gt;
-      }
-    ],
-    &amp;quot;networkInterfaces&amp;quot;: [
-      {
-        &amp;quot;kind&amp;quot;: &amp;quot;compute#networkInterface&amp;quot;,
-        &amp;quot;network&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;shared-vpn-name&amp;gt;/global/networks/etsy&amp;quot;,
-        &amp;quot;subnetwork&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;shared-vpn-name&amp;gt;/regions/us-central1/subnetworks/migration-test&amp;quot;
       }
     ],
     &amp;quot;metadata&amp;quot;: {
