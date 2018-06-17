@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - astro, science</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/astro-science.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-02T00:00:00-05:00</updated><entry><title>Lots of Astrophysics for You!</title><link href="http://bt3gl.github.io/lots-of-astrophysics-for-you.html" rel="alternate"></link><published>2014-12-02T00:00:00-05:00</published><updated>2014-12-02T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-02:/lots-of-astrophysics-for-you.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/23.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;I wrote so much code during my PhD! Some of them were protected or cannot be shared, but some are freeeeee.&lt;/p&gt;
+&lt;p&gt;If you like astrophysics, check out some of my IDL and Python work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/MFits-Astrophysical-Analyzer"&gt;MFits, The Astrophysical Analyzer&lt;/a&gt;: 💫 Package to calculate five distinct fits on the data generated from the …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/23.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;I wrote so much code during my PhD! Some of them were protected or cannot be shared, but some are freeeeee.&lt;/p&gt;
+&lt;p&gt;If you like astrophysics, check out some of my IDL and Python work:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/MFits-Astrophysical-Analyzer"&gt;MFits, The Astrophysical Analyzer&lt;/a&gt;: 💫 Package to calculate five distinct fits on the data generated from the X-ray atmosphere simulations. This became a &lt;a href="http://iopscience.iop.org/article/10.3847/0004-637X/832/2/102"&gt;published paper at The Astrophysical Journal&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/Researching_the_Interstellar_Dust"&gt;Researching the Interstellar Dust&lt;/a&gt;: 🌠IDL Data reduction and analysis of many astrophysical pictures obtained from the Stony Brook Mt. Telescope. The object is to study the effects of the Interstellar Dust.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/Numerical-Methods-for-Physics"&gt;Numerical Methods for Physics&lt;/a&gt;: Numerical methods and exercises for Physics and Astrophysics: Integration and Differentiation,Ordinary Differential Equations, Linear Algebra and FFTs, Advection and Hyperbolic Partial Differential Equations, Elliptic Partial Differential Equations, Computational Fluid Dynamics&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/Spectra_of_Earthshine"&gt;Spectra of Earthshine&lt;/a&gt;: 🌎 The detection of exolife is one of the most important goals for future space missions. Here we analyze images taken from the moon at the Mt. Stony Brook, to be able to extract the spectra of the Earthshine and detect elements such as water and chlorophyll from Earth. Source code in IDL for data reduction and analysis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/Calculating_the_Diameter_of_Sun"&gt;Calculating the Diameter of the Sun&lt;/a&gt;: 🌜IDL Source code for data reduction and analysis. Here we analyze interferometric radio data from the Sun to be able to obtain its angular diameter.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content></entry></feed>
