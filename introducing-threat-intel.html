@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Introducing Threat Intel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Marina von Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Introducing Threat Intel">
+                                        Introducing Threat Intel
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-10-02T00:00:00-04:00">
+      Fri 02 October 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/h4x0r-dev.html"><i class="icon-folder-open"></i>h4x0r, dev</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><a href="https://github.com/bt3gl/threat_intel">Threat intel 🍒</a> is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:</p>
+<ul>
+<li>OpenDNS Investigate API</li>
+<li>VirusTotal API v2.0</li>
+<li>ShadowServer API</li>
+</ul>
+<hr>
+<h3>OpenDNS Investigate API</h3>
+<p><a href="https://investigate.opendns.com/">OpenDNS Investigate</a> provides an API that
+allows querying for:</p>
+<div class="highlight"><pre><span></span>* Domain categorization
+* Security information about a domain
+* Co-occurrences for a domain
+* Related domains for a domain
+* Domains related to an IP
+* Domain tagging dates for a domain
+* DNS RR history for a domain
+* WHOIS information
+    - WHOIS information for an email
+    - WHOIS information for a nameserver
+    - Historical WHOIS information for a domain
+* Latest malicious domains for an IP
+</pre></div>
+
+
+<p>To use the Investigate API wrapper import <code>InvestigateApi</code> class from <code>threat_intel.opendns</code> module:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threat_intel.opendns</span> <span class="kn">import</span> <span class="n">InvestigateApi</span>
+</pre></div>
+
+
+<p>To initialize the API wrapper you need the API key:</p>
+<div class="highlight"><pre><span></span><span class="n">investigate</span> <span class="o">=</span> <span class="n">InvestigateApi</span><span class="p">(</span><span class="s2">&quot;&lt;INVESTIGATE-API-KEY-HERE&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can also specify a file name where the API responses will be cached in a JSON file,
+to save you the bandwidth for the multiple calls about the same domains or IPs:</p>
+<div class="highlight"><pre><span></span><span class="n">investigate</span> <span class="o">=</span> <span class="n">InvestigateApi</span><span class="p">(</span><span class="s2">&quot;&lt;INVESTIGATE-API-KEY-HERE&gt;&quot;</span><span class="p">,</span> <span class="n">cache_file_name</span><span class="o">=</span><span class="s2">&quot;/tmp/cache.opendns.json&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Domain categorization</h4>
+<p>Calls <code>domains/categorization/?showLabels</code> Investigate API endpoint.
+It takes a list (or any other Python enumerable) of domains and returns
+the categories associated with this domains by OpenDNS along with a [-1, 0, 1] score, where -1 is a malicious status.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">categorization</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;baidu.com&quot;: {&quot;status&quot;: 1, &quot;content_categories&quot;: [&quot;Search Engines&quot;], &quot;security_categories&quot;: []},
+    &quot;google.com&quot;: {&quot;status&quot;: 1, &quot;content_categories&quot;: [&quot;Search Engines&quot;], &quot;security_categories&quot;: []},
+    &quot;bibikun.ru&quot;: {&quot;status&quot;: -1, &quot;content_categories&quot;: [], &quot;security_categories&quot;: [&quot;Malware&quot;]}
+}
+</pre></div>
+
+
+<h4>Security information about a domain</h4>
+<p>Calls <code>security/name/</code> Investigate API endpoint.
+It takes any Python enumerable with domains, e.g. list, and returns several security parameters
+associated with each domain.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">security</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;baidu.com&quot;: {
+    &quot;found&quot;: true,
+    &quot;handlings&quot;: {
+      &quot;domaintagging&quot;: 0.00032008666962131285,
+      &quot;blocked&quot;: 0.00018876906157154347,
+      &quot;whitelisted&quot;: 0.00019697641207465407,
+      &quot;expired&quot;: 2.462205150933176e-05,
+      &quot;normal&quot;: 0.9992695458052232
+    },
+    &quot;dga_score&quot;: 0,
+    &quot;rip_score&quot;: 0,
+
+    ..
+
+  }
+}
+</pre></div>
+
+
+<h4>Co-occurrences for a domain</h4>
+<p>Calls <code>recommendations/name/</code> Investigate API endpoint.
+Use this method to find out a list of co-occurence domains (domains that are being accessed by the same users within a small window of time) to the one given in a list, or any other Python enumerable.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">cooccurrences</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;baidu.com&quot;: {
+    &quot;found&quot;: true,
+    &quot;pfs2&quot;: [
+      [&quot;www.howtoforge.de&quot;, 0.14108563836506008],
+    }
+
+    ..
+
+}
+</pre></div>
+
+
+<h4>Related domains for a domain</h4>
+<p>Calls <code>links/name/</code> Investigate API endpoint.
+Use this method to find out a list of related domains (domains that have been frequently seen requested around a time window of 60 seconds, but that are not associated with the given domain) to the one given in a list, or any other Python enumerable.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">related_domains</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;tb1&quot;: [
+        [&quot;t.co&quot;, 11.0],
+        ]
+
+    ..
+
+}
+</pre></div>
+
+
+<h4>Domain tagging dates for a domain</h4>
+<p>Calls <code>domains/name/</code> Investigate API endpoint.</p>
+<p>Use this method to get the date range when the domain being queried was a part of the OpenDNS block list and how long a domain has been in this list</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">domain_tag</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &#39;category&#39;: u&#39;Malware&#39;,
+    &#39;url&#39;: None,
+    &#39;period&#39;: {
+        &#39;begin&#39;: u&#39;2013-09-16&#39;,
+        &#39;end&#39;: u&#39;Current&#39;
+        }
+
+    ..
+
+}
+</pre></div>
+
+
+<h4>DNS RR history for a Domain</h4>
+<p>Calls <code>dnsdb/name/a/</code> Investigate API endpoint.
+Use this method to find out related domains to domains given in a list, or any other Python enumerable.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">dns_rr</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &#39;features&#39;: {
+        &#39;geo_distance_mean&#39;: 0.0,
+        &#39;locations&#39;: [
+            {
+                &#39;lat&#39;: 59.89440155029297,
+                &#39;lon&#39;: 30.26420021057129
+            }
+                    ],
+        &#39;rips&#39;: 1,
+        &#39;is_subdomain&#39;: False,
+        &#39;ttls_mean&#39;: 86400.0,
+        &#39;non_routable&#39;: False,
+        }
+
+    ..
+
+}
+</pre></div>
+
+
+<h4>DNS RR history for an IP</h4>
+<p>Calls <code>dnsdb/ip/a/</code> Investigate API endpoint.
+Use this method to find out related domains to the IP addresses given in a list, or any other Python enumerable.</p>
+<div class="highlight"><pre><span></span><span class="n">ips</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;8.8.8.8&#39;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">rr_history</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;8.8.8.8&quot;: {
+    &quot;rrs&quot;: [
+      {
+        &quot;name&quot;: &quot;8.8.8.8&quot;,
+        &quot;type&quot;: &quot;A&quot;,
+        &quot;class&quot;: &quot;IN&quot;,
+        &quot;rr&quot;: &quot;000189.com.&quot;,
+        &quot;ttl&quot;: 3600
+      },
+      {
+        &quot;name&quot;: &quot;8.8.8.8&quot;,
+        &quot;type&quot;: &quot;A&quot;,
+        &quot;class&quot;: &quot;IN&quot;,
+        &quot;rr&quot;: &quot;008.no-ip.net.&quot;,
+        &quot;ttl&quot;: 60
+      },
+    }
+
+    ..
+
+}
+</pre></div>
+
+
+<h4>WHOIS information for a domain</h4>
+<h5>WHOIS information for an email</h5>
+<p>Calls <code>whois/emails/{email}</code> Investigate API endpoint.</p>
+<p>Use this method to see WHOIS information for the email address. (For now the OpenDNS API will only return at most 500 results)</p>
+<div class="highlight"><pre><span></span><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dns-admin@google.com&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">whois_emails</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;dns-admin@google.com&quot;: {
+        &quot;totalResults&quot;: 500,
+        &quot;moreDataAvailable&quot;: true,
+        &quot;limit&quot;: 500,
+        &quot;domains&quot;: [
+            {
+                &quot;domain&quot;: &quot;0emm.com&quot;,
+                &quot;current&quot;: true
+            },
+            ..
+        ]
+    }
+}
+</pre></div>
+
+
+<h5>WHOIS information for a nameserver</h5>
+<p>Calls <code>whois/nameservers/{nameserver}</code> Investigate API endpoint.</p>
+<p>Use this method to see WHOIS information for the nameserver. (For now the OpenDNS API will only return at most 500 results)</p>
+<div class="highlight"><pre><span></span><span class="n">nameservers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ns2.google.com&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">whois_nameservers</span><span class="p">(</span><span class="n">nameservers</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;ns2.google.com&quot;: {
+        &quot;totalResults&quot;: 500,
+        &quot;moreDataAvailable&quot;: true,
+        &quot;limit&quot;: 500,
+        &quot;domains&quot;: [
+            {
+                &quot;domain&quot;: &quot;46645.biz&quot;,
+                &quot;current&quot;: true
+            },
+            ..
+        ]
+    }
+}
+</pre></div>
+
+
+<h5>WHOIS information for a domain</h5>
+<p>Calls <code>whois/{domain}</code> Investigate API endpoint.</p>
+<p>Use this method to see WHOIS information for the domain.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">whois_domains</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &quot;administrativeContactFax&quot;: null,
+    &quot;whoisServers&quot;: null,
+    &quot;addresses&quot;: [
+        &quot;1600 amphitheatre parkway&quot;,
+        &quot;please contact contact-admin@google.com, 1600 amphitheatre parkway&quot;,
+        &quot;2400 e. bayshore pkwy&quot;
+    ],
+    ..
+}
+</pre></div>
+
+
+<h5>Historical WHOIS information for a domain</h5>
+<p>Calls <code>whois/{domain}/history</code> Investigate API endpoint.</p>
+<p>Use this method to see historical WHOIS information for the domain.</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5esb.biz&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">whois_domains_history</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    &#39;5esb.biz&#39;:[
+        {
+            u&#39;registrantFaxExt&#39;:u&#39;&#39;,
+            u&#39;administrativeContactPostalCode&#39;:u&#39;656448&#39;,
+            u&#39;zoneContactCity&#39;:u&#39;&#39;,
+            u&#39;addresses&#39;:[
+                u&#39;nan qu hua yuan xiao he&#39;
+            ],
+            ..
+        },
+        ..
+    ]
+}
+</pre></div>
+
+
+<h4>Latest malicious domains for an IP</h4>
+<p>Calls <code>ips/{ip}/latest_domains</code> Investigate API endpoint.</p>
+<p>Use this method to see whether the IP address has any malicious domains associated with it.</p>
+<div class="highlight"><pre><span></span><span class="n">ips</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">]</span>
+<span class="n">investigate</span><span class="o">.</span><span class="n">latest_malicious</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+    [
+        &#39;7ltd.biz&#39;,
+        &#39;co0s.ru&#39;,
+        &#39;t0link.in&#39;,
+    ]
+
+    ..
+}
+</pre></div>
+
+
+<hr>
+<h3>VirusTotal API</h3>
+<p><a href="https://www.virustotal.com/">VirusTotal</a> provides an
+<a href="https://www.virustotal.com/en/documentation/public-api/">API</a> that makes it
+possible to query for the reports about:</p>
+<div class="highlight"><pre><span></span>* Domains
+* URLs
+* IPs
+* File hashes
+* File Upload
+* Live Feed
+* Advanced search
+</pre></div>
+
+
+<p>To use the VirusTotal API wrapper import <code>VirusTotalApi</code> class from <code>threat_intel.virustotal</code> module:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threat_intel.virustotal</span> <span class="kn">import</span> <span class="n">VirusTotalApi</span>
+</pre></div>
+
+
+<p>To initialize the API wrapper you need the API key:</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span> <span class="o">=</span> <span class="n">VirusTotalApi</span><span class="p">(</span><span class="s2">&quot;&lt;VIRUSTOTAL-API-KEY-HERE&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>VirusTotal API calls allow to squeeze a list of file hashes or URLs into a single HTTP call.
+Depending on the API version you are using (public or private) you may need to tune the maximum number
+of the resources (file hashes or URLs) that could be passed in a single API call.
+You can do it with the <code>resources_per_req</code> parameter:</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span> <span class="o">=</span> <span class="n">VirusTotalApi</span><span class="p">(</span><span class="s2">&quot;&lt;VIRUSTOTAL-API-KEY-HERE&gt;&quot;</span><span class="p">,</span> <span class="n">resources_per_req</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<p>When using the public API your standard request rate allows you too put maximum 4 resources per request.
+With private API you are able to put up to 25 resources per call. That is also the default value if you
+don't pass the <code>resources_per_req</code> parameter.</p>
+<p>Of course when calling the API wrapper methods in the <code>VirusTotalApi</code> class you can pass as many resources
+as you want and the wrapper will take care of producing as many API calls as necessary to satisfy the request rate.</p>
+<p>Similarly to OpenDNS API wrapper, you can also specify the file name where the responses will be cached:</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span> <span class="o">=</span> <span class="n">VirusTotalApi</span><span class="p">(</span><span class="s2">&quot;&lt;VIRUSTOTAL-API-KEY-HERE&gt;&quot;</span><span class="p">,</span> <span class="n">cache_file_name</span><span class="o">=</span><span class="s2">&quot;/tmp/cache.virustotal.json&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Domain report endpoint</h4>
+<p>Calls <code>domain/report</code> VirusTotal API endpoint.
+Pass a list or any other Python enumerable containing the domains:</p>
+<div class="highlight"><pre><span></span><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s2">&quot;bibikun.ru&quot;</span><span class="p">]</span>
+<span class="n">vt</span><span class="o">.</span><span class="n">get_domain_reports</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;baidu.com&quot;: {
+    &quot;undetected_referrer_samples&quot;: [
+      {
+        &quot;positives&quot;: 0,
+        &quot;total&quot;: 56,
+        &quot;sha256&quot;: &quot;e3c1aea1352362e4b5c008e16b03810192d12a4f1cc71245f5a75e796c719c69&quot;
+      }
+    ],
+
+    ..
+
+    }
+}
+</pre></div>
+
+
+<h4>URL report endpoint</h4>
+<p>Calls <code>url/report</code> VirusTotal API endpoint.
+Pass a list or any other Python enumerable containing the URL addresses:</p>
+<div class="highlight"><pre><span></span><span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://www.google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;http://www.yelp.com&quot;</span><span class="p">]</span>
+<span class="n">vt</span><span class="o">.</span><span class="n">get_url_reports</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;http://www.google.com&quot;: {
+    &quot;permalink&quot;: &quot;https://www.virustotal.com/url/dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf/analysis/1423344006/&quot;,
+    &quot;resource&quot;: &quot;http://www.google.com&quot;,
+    &quot;url&quot;: &quot;http://www.google.com/&quot;,
+    &quot;response_code&quot;: 1,
+    &quot;scan_date&quot;: &quot;2015-02-07 21:20:06&quot;,
+    &quot;scan_id&quot;: &quot;dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf-1423344006&quot;,
+    &quot;verbose_msg&quot;: &quot;Scan finished, scan information embedded in this object&quot;,
+    &quot;filescan_id&quot;: null,
+    &quot;positives&quot;: 0,
+    &quot;total&quot;: 62,
+    &quot;scans&quot;: {
+      &quot;CLEAN MX&quot;: {
+        &quot;detected&quot;: false,
+        &quot;result&quot;: &quot;clean site&quot;
+      },
+    }
+  ..
+
+}
+</pre></div>
+
+
+<h4>URL scan endpoint</h4>
+<p>Calls 'url/scan' VirusTotal API endpoint.
+Submit a url or any other Python enumerable containing the URL addresses:</p>
+<div class="highlight"><pre><span></span><span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;http://www.google.com&quot;</span><span class="p">,</span> <span class="s2">&quot;http://www.yelp.com&quot;</span><span class="p">]</span>
+<span class="n">vt</span><span class="o">.</span><span class="n">post_url_report</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Hash report endpoint</h4>
+<p>Calls <code>file/report</code> VirusTotal API endpoint.
+You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
+<div class="highlight"><pre><span></span><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;88817f6eebbac24f351415dd410d522d&quot;</span>
+<span class="p">]</span>
+
+<span class="n">vt</span><span class="o">.</span><span class="n">get_file_reports</span><span class="p">(</span><span class="n">file_hashes</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;88817f6eebbac24f351415dd410d522d&quot;: {
+    &quot;response_code&quot;: 0,
+    &quot;resource&quot;: &quot;88817f6eebbac24f351415dd410d522d&quot;,
+    &quot;verbose_msg&quot;: &quot;The requested resource is not among the finished, queued or pending scans&quot;
+  },
+  &quot;99017f6eebbac24f351415dd410d522d&quot;: {
+    &quot;scan_id&quot;: &quot;52d3df0ed60c46f336c131bf2ca454f73bafdc4b04dfa2aea80746f5ba9e6d1c-1423261860&quot;,
+    &quot;sha1&quot;: &quot;4d1740485713a2ab3a4f5822a01f645fe8387f92&quot;,
+  }
+
+ ..
+
+}
+</pre></div>
+
+
+<h4>Hash rescan endpoint</h4>
+<p>Calls <code>file/rescan</code> VirusTotal API endpoint. Use to rescan a previously submitted file.
+You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
+<h4>Hash behaviour endpoint</h4>
+<p>Calls <code>file/behaviour</code> VirusTotal API endpoint. Use to get a report about the behaviour of the file when executed in a sandboxed environment (Cuckoo sandbox).
+You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
+<div class="highlight"><pre><span></span><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;88817f6eebbac24f351415dd410d522d&quot;</span>
+<span class="p">]</span>
+
+<span class="n">vt</span><span class="o">.</span><span class="n">get_file_behaviour</span><span class="p">(</span><span class="n">file_hashes</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Hash network-traffic endpoint</h4>
+<p>Calls <code>file/network-traffic</code> VirusTotal API endpoint. Use to get the dump of the network traffic generated by the file when executed.
+You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
+<div class="highlight"><pre><span></span><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;88817f6eebbac24f351415dd410d522d&quot;</span>
+<span class="p">]</span>
+
+<span class="n">vt</span><span class="o">.</span><span class="n">get_file_network_traffic</span><span class="p">(</span><span class="n">file_hashes</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Hash download endpoint</h4>
+<p>Calls <code>file/download</code> VirusTotal API endpoint. Use to download a file by its hash.
+You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
+<div class="highlight"><pre><span></span><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;88817f6eebbac24f351415dd410d522d&quot;</span>
+<span class="p">]</span>
+
+<span class="n">vt</span><span class="o">.</span><span class="n">get_file_download</span><span class="p">(</span><span class="n">file_hashes</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>IP reports endpoint</h4>
+<p>Calls <code>ip-address/report</code> VirusTotal API endpoint.
+Pass a list or any other Python enumerable containing the IP addresses:</p>
+<div class="highlight"><pre><span></span><span class="n">ips</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;90.156.201.27&#39;</span><span class="p">,</span> <span class="s1">&#39;198.51.132.80&#39;</span><span class="p">]</span>
+<span class="n">vt</span><span class="o">.</span><span class="n">get_ip_reports</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will result in:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;90.156.201.27&quot;: {
+    &quot;asn&quot;: &quot;25532&quot;,
+    &quot;country&quot;: &quot;RU&quot;,
+    &quot;response_code&quot;: 1,
+    &quot;as_owner&quot;: &quot;.masterhost autonomous system&quot;,
+    &quot;verbose_msg&quot;: &quot;IP address found in dataset&quot;,
+    &quot;resolutions&quot;: [
+      {
+        &quot;last_resolved&quot;: &quot;2013-04-01 00:00:00&quot;,
+        &quot;hostname&quot;: &quot;027.ru&quot;
+      },
+      {
+        &quot;last_resolved&quot;: &quot;2015-01-20 00:00:00&quot;,
+        &quot;hostname&quot;: &quot;600volt.ru&quot;
+      },
+
+      ..
+
+    ],
+    &quot;detected_urls&quot;: [
+      {
+        &quot;url&quot;: &quot;http://shop.albione.ru/&quot;,
+        &quot;positives&quot;: 2,
+        &quot;total&quot;: 52,
+        &quot;scan_date&quot;: &quot;2014-04-06 11:18:17&quot;
+      },
+      {
+        &quot;url&quot;: &quot;http://www.orlov.ru/&quot;,
+        &quot;positives&quot;: 3,
+        &quot;total&quot;: 52,
+        &quot;scan_date&quot;: &quot;2014-03-05 09:13:31&quot;
+      }
+    ],
+  },
+
+  &quot;198.51.132.80&quot;: {
+
+    ..
+
+  }
+}
+</pre></div>
+
+
+<h4>URL live feed endpoint</h4>
+<p>Calls <code>url/distribution</code> VirusTotal API endpoint. Use to get a live a feed with the latest URLs submitted to VirusTotal.</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">get_url_distribution</span><span class="p">()</span>
+</pre></div>
+
+
+<h4>Hash live feed endpoint</h4>
+<p>Calls <code>file/distribution</code> VirusTotal API endpoint. Use to get a live a feed with the latest Hashes submitted to VirusTotal.</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">get_file_distribution</span><span class="p">()</span>
+</pre></div>
+
+
+<h4>Hash search endpoint</h4>
+<p>Calls <code>file/search</code> VirusTotal API endpoint. Use to search for samples that match some binary/metadata/detection criteria.</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">get_file_search</span><span class="p">()</span>
+</pre></div>
+
+
+<h4>File date endpoint</h4>
+<p>Calls <code>file/clusters</code> VirusTotal API endpoint. Use to list simililarity clusters for a given time frame.</p>
+<div class="highlight"><pre><span></span><span class="n">vt</span><span class="o">.</span><span class="n">get_file_clusters</span><span class="p">()</span>
+</pre></div>
+
+
+<hr>
+<h3>ShadowServer API</h3>
+<p><a href="http://shadowserver.org/">ShadowServer</a> provides and <a href="http://bin-test.shadowserver.org/">API</a> that allows to test
+the hashes against a list of known software applications.</p>
+<p>To use the ShadowServer API wrapper import <code>ShadowServerApi</code> class from <code>threat_intel.shadowserver</code> module:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threat_intel.shadowserver</span> <span class="kn">import</span> <span class="n">ShadowServerApi</span>
+</pre></div>
+
+
+<p>To use the API wrapper simply call the <code>ShadowServerApi</code> initializer:</p>
+<div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">ShadowServerApi</span><span class="p">()</span>
+</pre></div>
+
+
+<p>You can also specify the file name where the API responses will be cached:</p>
+<div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">ShadowServerApi</span><span class="p">(</span><span class="n">cache_file_name</span><span class="o">=</span><span class="s2">&quot;/tmp/cache.shadowserver.json&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>To check whether the hashes are on the ShadowServer list of known hashes,
+call <code>get_bin_test</code> method and pass enumerable with the hashes you want to test:</p>
+<div class="highlight"><pre><span></span><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;88817f6eebbac24f351415dd410d522d&quot;</span>
+<span class="p">]</span>
+
+<span class="n">ss</span><span class="o">.</span><span class="n">get_bin_test</span><span class="p">(</span><span class="n">file_hashes</span><span class="p">)</span>
+</pre></div>
+
+
+<hr>
+<h2>Installation</h2>
+<h3>Install with <code>pip</code></h3>
+<div class="highlight"><pre><span></span>$ pip install threat_intel
+</pre></div>
+
+
+<h3>Testing</h3>
+<p>Go to town with <code>make</code>:</p>
+<div class="highlight"><pre><span></span>$ sudo pip install tox
+$ make <span class="nb">test</span>
+</pre></div>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

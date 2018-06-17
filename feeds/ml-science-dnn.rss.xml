@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>chmod +x singularity.sh - ml, science, dnn</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Fri, 02 Sep 2016 00:00:00 -0400</lastBuildDate><item><title>Lots of Machine Learning and DNN</title><link>http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/24.jpg" width="400px"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>chmod +x singularity.sh - ml, science, dnn</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Fri, 02 Dec 2016 00:00:00 -0500</lastBuildDate><item><title>Lots of Machine Learning and DNN</title><link>http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;At Apple, I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Sep 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-09-02:/lots-of-machine-learning-and-dnn.html</guid></item></channel></rss>
+&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Dec 2016 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</guid></item></channel></rss>

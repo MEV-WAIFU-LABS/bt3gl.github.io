@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>chmod +x singularity.sh - h4x0r, dev</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Fri, 02 Oct 2015 00:00:00 -0400</lastBuildDate><item><title>Introducing Threat Intel</title><link>http://bt3gl.github.io/introducing-threat-intel.html</link><description>&lt;p&gt;&lt;a href="https://github.com/bt3gl/threat_intel"&gt;Threat intel 🍒&lt;/a&gt; is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OpenDNS Investigate API&lt;/li&gt;
+&lt;li&gt;VirusTotal API v2.0&lt;/li&gt;
+&lt;li&gt;ShadowServer API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;OpenDNS Investigate API&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://investigate.opendns.com/"&gt;OpenDNS …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Oct 2015 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2015-10-02:/introducing-threat-intel.html</guid></item></channel></rss>
