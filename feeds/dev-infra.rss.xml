@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>chmod +x singularity.sh - dev, infra</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Tue, 01 Dec 2015 00:00:00 -0500</lastBuildDate><item><title>A First Guide for Continuous Delivery on the Cloud</title><link>http://bt3gl.github.io/a-first-guide-for-continuous-delivery-on-the-cloud.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/17.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continuous delivery&lt;/strong&gt; is a software development practice where code changes (in source control) are automatically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;built (run build and unit tests), known as &lt;strong&gt;continuous integration&lt;/strong&gt;,&lt;/li&gt;
+&lt;li&gt;tested (deploy to test environments, run all the tests), known as &lt;strong&gt;continuous testing&lt;/strong&gt;, and&lt;/li&gt;
+&lt;li&gt;prepared for a release (deploy to production environment), known as &lt;strong&gt;continuous …&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Dec 2015 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2015-12-01:/a-first-guide-for-continuous-delivery-on-the-cloud.html</guid></item></channel></rss>

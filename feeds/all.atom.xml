@@ -13,8 +13,9 @@
 &lt;li&gt;&lt;a href="https://loadimpact.com/"&gt;Load Impact&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://loader.io/"&gt;Loader&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;3. Use Performance Budget Calculator&lt;/h2&gt;
-&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc).&lt;/p&gt;
+&lt;h2&gt;3. Use Performance Tools&lt;/h2&gt;
+&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc).&lt;/p&gt;
+&lt;p&gt;Additionally, check &lt;a href="https://developers.google.com/speed/"&gt;Google's performance resources&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;4. Reduce the number of HTTP Requests&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;If your JS code is small enough, you can have it inline.&lt;/li&gt;
@@ -30,7 +31,7 @@
 &lt;p&gt;301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.&lt;/p&gt;
 &lt;h2&gt;7. Image Optimization&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;Use compression tools such as &lt;a href="https://tinypng.com/"&gt;tinypgn&lt;/a&gt;, &lt;a href="https://pngmini.com/"&gt;pngmini&lt;/a&gt;, &lt;a href="https://www.jpegmini.com"&gt;jpegmini&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use compression tools such as &lt;a href="https://github.com/toy/image_optim"&gt;image_optim&lt;/a&gt;, &lt;a href="https://tinypng.com/"&gt;tinypgn&lt;/a&gt;, &lt;a href="https://pngmini.com/"&gt;pngmini&lt;/a&gt;, &lt;a href="https://www.jpegmini.com"&gt;jpegmini&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Use responsive images in HTML with &lt;strong&gt;&lt;em&gt;srcset&lt;/em&gt;&lt;/strong&gt; and sizes attributes to serve different scaled images, based on the size of the display.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;8.  Render Blocking Resources blocking the DOM&lt;/h2&gt;
@@ -43,6 +44,7 @@
 &lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Concatenate all CSS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
+&lt;li&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;

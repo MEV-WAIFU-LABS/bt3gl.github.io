@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - dev, infra</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/dev-infra.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2015-12-01T00:00:00-05:00</updated><entry><title>A First Guide for Continuous Delivery on the Cloud</title><link href="http://bt3gl.github.io/a-first-guide-for-continuous-delivery-on-the-cloud.html" rel="alternate"></link><published>2015-12-01T00:00:00-05:00</published><updated>2015-12-01T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2015-12-01:/a-first-guide-for-continuous-delivery-on-the-cloud.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/17.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continuous delivery&lt;/strong&gt; is a software development practice where code changes (in source control) are automatically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;built (run build and unit tests), known as &lt;strong&gt;continuous integration&lt;/strong&gt;,&lt;/li&gt;
+&lt;li&gt;tested (deploy to test environments, run all the tests), known as &lt;strong&gt;continuous testing&lt;/strong&gt;, and&lt;/li&gt;
+&lt;li&gt;prepared for a release (deploy to production environment), known as &lt;strong&gt;continuous …&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/17.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continuous delivery&lt;/strong&gt; is a software development practice where code changes (in source control) are automatically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;built (run build and unit tests), known as &lt;strong&gt;continuous integration&lt;/strong&gt;,&lt;/li&gt;
+&lt;li&gt;tested (deploy to test environments, run all the tests), known as &lt;strong&gt;continuous testing&lt;/strong&gt;, and&lt;/li&gt;
+&lt;li&gt;prepared for a release (deploy to production environment), known as &lt;strong&gt;continuous deployment&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Further References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aws.amazon.com/devops/continuous-delivery/"&gt;AWS CI guide&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://jenkins.io/doc/pipeline/tour/hello-world/"&gt;Create your first pipeline with Jenkins&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content></entry></feed>
