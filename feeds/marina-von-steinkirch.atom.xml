@@ -1,8 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Marina von Steinkirch</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/marina-von-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-16T00:00:00-04:00</updated><entry><title>Developing Applications for Google: A Beginner Guide for Android, Chrome OS and Chromecast</title><link href="http://bt3gl.github.io/developing-applications-for-google-a-beginner-guide-for-android-chrome-os-and-chromecast.html" rel="alternate"></link><published>2018-06-16T00:00:00-04:00</published><updated>2018-06-16T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-16:/developing-applications-for-google-a-beginner-guide-for-android-chrome-os-and-chromecast.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/14.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/14.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>Developing Applications for Apple: A Beginner Guide for Apple TV, iOS and MacOS</title><link href="http://bt3gl.github.io/developing-applications-for-apple-a-beginner-guide-for-apple-tv-ios-and-macos.html" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-15:/developing-applications-for-apple-a-beginner-guide-for-apple-tv-ios-and-macos.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>A Full Stack Web App with React, Node.js, Express, and Webpack</title><link href="http://bt3gl.github.io/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html" rel="alternate"></link><published>2018-06-14T00:00:00-04:00</published><updated>2018-06-14T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-14:/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>The Tao of UX/UI Design</title><link href="http://bt3gl.github.io/the-tao-of-uxui-design.html" rel="alternate"></link><published>2018-06-13T00:00:00-04:00</published><updated>2018-06-13T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-13:/the-tao-of-uxui-design.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/15.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/15.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><published>2017-12-16T00:00:00-05:00</published><updated>2017-12-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-16:/introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/kubeless/kubeless"&gt;serverless framework&lt;/a&gt; that that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/kubeless/kubeless"&gt;serverless framework&lt;/a&gt; that that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Marina von Steinkirch</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/marina-von-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-16T00:00:00-04:00</updated><entry><title>Developing Applications for Google: A Beginner Guide for Android, Chrome OS and Chromecast</title><link href="http://bt3gl.github.io/developing-applications-for-google-a-beginner-guide-for-android-chrome-os-and-chromecast.html" rel="alternate"></link><published>2018-06-16T00:00:00-04:00</published><updated>2018-06-16T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-16:/developing-applications-for-google-a-beginner-guide-for-android-chrome-os-and-chromecast.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/14.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/14.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>Developing Applications for Apple: A Beginner Guide for Apple TV, iOS and MacOS</title><link href="http://bt3gl.github.io/developing-applications-for-apple-a-beginner-guide-for-apple-tv-ios-and-macos.html" rel="alternate"></link><published>2018-06-15T00:00:00-04:00</published><updated>2018-06-15T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-15:/developing-applications-for-apple-a-beginner-guide-for-apple-tv-ios-and-macos.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>A Full Stack Web App with React, Node.js, Express, and Webpack</title><link href="http://bt3gl.github.io/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html" rel="alternate"></link><published>2018-06-14T00:00:00-04:00</published><updated>2018-06-14T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-14:/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>The Tao of UX/UI Design</title><link href="http://bt3gl.github.io/the-tao-of-uxui-design.html" rel="alternate"></link><published>2018-06-13T00:00:00-04:00</published><updated>2018-06-13T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-13:/the-tao-of-uxui-design.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/15.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/15.jpg" width="400px"&gt;&lt;/p&gt;</content></entry><entry><title>A Quick Intro to Kubernetes</title><link href="http://bt3gl.github.io/a-quick-intro-to-kubernetes.html" rel="alternate"></link><published>2018-02-01T00:00:00-05:00</published><updated>2018-02-01T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-02-01:/a-quick-intro-to-kubernetes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Wanna try Kubernetes for the first time and don't know how to start? No problem! I wrote this quick guide to help some of the junior engineers in my team at Etsy to get started with k8s!&lt;/p&gt;
+&lt;p&gt;In this guide I will show you how to spin a quick Node …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Wanna try Kubernetes for the first time and don't know how to start? No problem! I wrote this quick guide to help some of the junior engineers in my team at Etsy to get started with k8s!&lt;/p&gt;
+&lt;p&gt;In this guide I will show you how to spin a quick Node.js server in kubernetes and to grasp some of its main concepts. Read on! &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Install kubectl in your VM&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you want to install &lt;code&gt;kubectl&lt;/code&gt; in your local machine.&lt;/p&gt;
+&lt;h3&gt;Spinning up a Hello World node server in docker&lt;/h3&gt;
+&lt;p&gt;Download &lt;a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Build the image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make build:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Run the container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make run
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -t  node_app_test .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Check whether the server worked:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make curl
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Check container's status:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make status
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Other useful commands&lt;/h4&gt;
+&lt;p&gt;Exec inside the container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker &lt;span class="nb"&gt;exec&lt;/span&gt; -i -t &amp;lt;container name from status&amp;gt; /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Check images in disk:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Pushing the Registry to Kubernetes&lt;/h3&gt;
+&lt;p&gt;In a real production system, we’ll want to build images in one place, then run them in the Kubernetes cluster. The system that
+ stores these images for distribution out to the running containers is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt; you can now deploy the image with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl create -f  node_example_kube_config.yaml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now you can create the service with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  kubectl expose deployment node-app-test
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;See the service at:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;Removing the service and the deployment when you are done:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl delete service node-app-test
+$ kubectl delete deployment node-app-test
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Useful General Commands&lt;/h2&gt;
+&lt;p&gt;Checking out pods:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get pods --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Checking deployments:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get deployments --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Checking services:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Get more information about a pod:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl describe pod --namespace&lt;span class="o"&gt;=&lt;/span&gt;security &amp;lt;pod name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Some References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#general-guidelines-and-recommendations"&gt;Dockerfiles good practices&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
