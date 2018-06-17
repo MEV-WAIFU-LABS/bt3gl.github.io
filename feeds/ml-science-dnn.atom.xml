@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - ml, science, dnn</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/ml-science-dnn.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2016-09-02T00:00:00-04:00</updated><entry><title>Lots of Machine Learning and DNN</title><link href="http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html" rel="alternate"></link><published>2016-09-02T00:00:00-04:00</published><updated>2016-09-02T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2016-09-02:/lots-of-machine-learning-and-dnn.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/24.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;At Apple, I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/24.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;At Apple, I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, when I was in my PhD I had the pleasure of doing &lt;a href="http://bt3gl.github.io/projects_page/html_files/ml.html"&gt;some nice work on Machine Learning&lt;/a&gt; as well. Here is the open-sourced code for you:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/Advanced-Machine-Learning"&gt;💎Advanced Machine Learning&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/MLNet-Classifying-Complex-Networks"&gt;🍭 MLNet - Classifying Complex Networks with ML&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/NetClean-Complex-Networks-Data-Cleanser"&gt;🔋 NetClean - Complex Networks Data-Cleanser&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/NetAna-Complex-Network-Analysis"&gt;🌺 NetAna - Complex Network Analysis Package&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
