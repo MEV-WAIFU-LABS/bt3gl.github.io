@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - web, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-12T00:00:00-05:00</updated><entry><title>17 Tips for Website Performance</title><link href="http://bt3gl.github.io/17-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/17-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - web, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-12T00:00:00-05:00</updated><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
-&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2).&lt;/p&gt;
-&lt;h2&gt;2. Load Test Your Site&lt;/h2&gt;
-&lt;p&gt;Load test your website to check for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
+&lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
-&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2).&lt;/p&gt;
+&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
 &lt;h2&gt;2. Load Test Your Site&lt;/h2&gt;
 &lt;p&gt;Load test your website to check for any bottlenecks. Some cool tools for this task:&lt;/p&gt;
 &lt;ul&gt;
@@ -106,4 +105,6 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
+&lt;h2&gt;18. Automate&lt;/h2&gt;
+&lt;p&gt;Have a Continuous Delivery pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
