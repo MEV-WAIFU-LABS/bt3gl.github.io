@@ -89,4 +89,4 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 
 &lt;h2&gt;16. Enable Gzip Compression&lt;/h2&gt;
 &lt;p&gt;Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enable in the &lt;code&gt;.htaccess&lt;/code&gt; file (Apache) or &lt;code&gt;nginx.conf&lt;/code&gt; (Nginx).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :)&lt;/em&gt;&lt;/strong&gt;*&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
