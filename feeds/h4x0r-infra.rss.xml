@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>chmod +x singularity.sh - H4x0r, infra</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Tue, 01 Nov 2016 00:00:00 -0400</lastBuildDate><item><title>Introducing my Grey Hacker Bag of Fun</title><link>http://bt3gl.github.io/introducing-my-grey-hacker-bag-of-fun.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/19.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Throughout my many years of hacking I have accumulate so many resources: books, scripts, tools, how-to, etc!&lt;/p&gt;
-&lt;p&gt;I decided to make everything available for you in this &lt;a href="https://github.com/bt3gl/Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;, and indexed my theme:&lt;/p&gt;
+&lt;p&gt;Throughout my many years of hacking I have been accumulating so many resources: books, scripts, tools, how-to, etc. I realized it's time to share them!&lt;/p&gt;
+&lt;p&gt;Please check out my &lt;a href="https://github.com/bt3gl/Gray-Hacker-Resources"&gt;gray hacker github repo&lt;/a&gt;, where I have indexed everything by subject:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;CTFs and WARGAMES&lt;/li&gt;
 &lt;li&gt;CRYPTOGRAPHY&lt;/li&gt;
 &lt;li&gt;FORENSICS&lt;/li&gt;
 &lt;li&gt;LINUX HACKING&lt;/li&gt;
 &lt;li&gt;MEMORY EXPLOITS&lt;/li&gt;
-&lt;li&gt;VULNERABILITIES AND EXPLOITS&lt;/li&gt;
-&lt;li&gt;NETWORK and 802.11&lt;/li&gt;
-&lt;li&gt;REVERSE …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>
+&lt;li&gt;VULNERABILITIES …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>
