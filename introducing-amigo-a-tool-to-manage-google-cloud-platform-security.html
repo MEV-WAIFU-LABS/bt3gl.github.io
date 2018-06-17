@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Introducing Amigo, a tool to manage Google Cloud Platform Security.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Marina von Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Introducing Amigo, a tool to manage Google Cloud Platform Security.">
+                                        Introducing Amigo, a tool to manage Google Cloud Platform Security.
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2017-12-16T00:00:00-05:00">
+      Sat 16 December 2017 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/gcp-dev-kafka-cloud-k8s.html"><i class="icon-folder-open"></i>gcp, dev, kafka, cloud, k8s</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"></p>
+<p>I wrote a tool called <a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security">Amigo</a> that uses the GCP API to fetch an organization's project data and with a set of customizable rules, it searches for security risks.</p>
+<h2>How Amigo Works</h2>
+<p>Amigo retrieves the GCP project list and their attribute (defined in the <code>config.yaml</code> file).</p>
+<h4>Amigo perform two types of analysis:</h4>
+<p><strong>i)</strong> For each attribute in a project, Amigo creates a up to date report. Amigo then checks the previous report for differences (or checking when the data was modified). If there is a diff, Amigo logs a report for this diff.</p>
+<p><strong>ii)</strong> Amigo saves the resources data in a database. Amigo then checks the custom rules specified in <code>rules.yaml</code> and reports everything that violates those rules.
+Amigo performs two types of analytics, generating reports that can be fed in ELK/411:</p>
+<h2>Setting up and Running Amigo</h2>
+<h3>Setting a Virtual Environment to install Amigo</h3>
+<div class="highlight"><pre><span></span>$ make venv
+<span class="c1"># source venv/bin/activate</span>
+</pre></div>
+
+
+<h3>Installing Amigo Package</h3>
+<div class="highlight"><pre><span></span>$ make install
+</pre></div>
+
+
+<h3>Creating a Service Account for Amigo</h3>
+<p>This should be done once in the first time you set Amigo:</p>
+<ol>
+<li>
+<p>Create a project and a service account at <a href="https://console.cloud.google.com/iam-admin/serviceaccounts">https://console.cloud.google.com/iam-admin/serviceaccounts</a>.</p>
+</li>
+<li>
+<p>Add the IAM roles <strong>Security Reviewer</strong> and <strong>Viewer permissions</strong> to the service account.</p>
+</li>
+<li>
+<p>Download the <strong>Service Account JSON credential file</strong> to a safe directory (e.g. your home directory). If amigo runs in other machines (or other people in the same organization is running Amigo), this key can be shared (and step 1. and 2. do not need to be repeated).</p>
+</li>
+</ol>
+<h3>Setting gcloud</h3>
+<p>Install <a href="https://cloud.google.com/sdk/downloads">gcloud SDK</a> and authenticate with:</p>
+<div class="highlight"><pre><span></span>$ gcloud auth application-default login
+</pre></div>
+
+
+<p>You can also check whether env variable <code>GOOGLE_APPLICATION_CREDENTIALS</code> is pointing to the <strong>Service Account JSON credential file</strong>.</p>
+<h3>Setting the Config file</h3>
+<p>Copy <code>config.yaml_example</code> to <code>config.yaml</code> and customize it.</p>
+<p>In the bottom of this file you are able to edit the attributes that you want to report on:</p>
+<div class="highlight"><pre><span></span>### Attributes to inspect
+gcp_attributes:
+    compute:
+        - firewalls
+        - networks
+        - snapshots
+</pre></div>
+
+
+<h3>Setting the Rules file</h3>
+<p>Inspect <code>rules.yaml</code> either removing or adding rules that should be searched in the reports.</p>
+<h3>Running Amigo</h3>
+<p>Run amigo with:</p>
+<div class="highlight"><pre><span></span>$ sudo amigo
+</pre></div>
+
+
+<p>This will retrieve the data from GCP and generate JSON reports. These reports will be save where is <code>reports_dir</code> in the config file.</p>
+<p>It is advised to watch for STERR and STDOUT in the <code>log_file</code> file defined in <code>config.yaml</code> (default to <code>amigo_log.txt</code>):</p>
+<div class="highlight"><pre><span></span>$ tail -f amigo_log.txt
+</pre></div>
+
+
+<h3>Alerting on Amigo</h3>
+<p>Relevant reports (e.g. diff reports) are generated inside the directory defined as <code>results_dir</code>, in the file <code>results.log</code> (e.g. <code>/log/amigo.log</code>). This is a JSON file that can be fed to ELK.</p>
+<hr>
+<h2>Creating Custom rules</h2>
+<h3>Firewalls Resource</h3>
+<p>Firewall reports have this format:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;kind&quot;: &quot;compute#firewall&quot;,
+  &quot;network&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/global/networks/default&quot;,
+  &quot;direction&quot;: &quot;INGRESS&quot;,
+  &quot;sourceRanges&quot;: [
+    &quot;0.0.0.0/0&quot;
+  ],
+  &quot;name&quot;: &quot;default-allow-icmp&quot;,
+  &quot;priority&quot;: 65534,
+  &quot;allowed&quot;: [
+    {
+      &quot;IPProtocol&quot;: &quot;icmp&quot;
+    }
+  ],
+  &quot;creationTimestamp&quot;: &lt;Time stamp&gt;,
+  &quot;id&quot;: &lt;ID&gt;,
+  &quot;selfLink&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/global/firewalls/default-allow-icmp&quot;,
+  &quot;description&quot;: &quot;Allow ICMP from anywhere&quot;
+}
+</pre></div>
+
+
+<h3>Networks Resource</h3>
+<p>Snapshot reports have this format:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;kind&quot;: &quot;compute#network&quot;,
+  &quot;description&quot;: &quot;Default network for the project&quot;,
+  &quot;subnetworks&quot;: [
+    &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/regions/&lt;region&gt;/subnetworks/default&quot;,
+  ],
+  &quot;autoCreateSubnetworks&quot;: true,
+  &quot;routingConfig&quot;: {
+    &quot;routingMode&quot;: &quot;REGIONAL&quot;
+  },
+  &quot;creationTimestamp&quot;: &lt;Time stamp&gt;,
+  &quot;id&quot;: &lt;ID&gt;,
+  &quot;selfLink&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/global/networks/default&quot;,
+  &quot;name&quot;: &quot;default&quot;
+}
+</pre></div>
+
+
+<h3>Snapshots Resource</h3>
+<p>Snapshot reports have this format:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;status&quot;: &quot;READY&quot;,
+  &quot;kind&quot;: &quot;compute#snapshot&quot;,
+  &quot;storageBytes&quot;: &lt;number&gt;,
+  &quot;name&quot;: &lt;name&gt;,
+  &quot;sourceDisk&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/zones/us-central1-c/disks/deployhost&quot;,
+  &quot;storageBytesStatus&quot;: &quot;UP_TO_DATE&quot;,
+  &quot;labelFingerprint&quot;: &lt;code&gt;,
+  &quot;sourceDiskId&quot;: &lt;ID&gt;,
+  &quot;diskSizeGb&quot;: &lt;size&gt;,
+  &quot;licenses&quot;: [
+    &quot;https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7&quot;
+  ],
+  &quot;creationTimestamp&quot;: &lt;time stamp&gt;,
+  &quot;id&quot;: &lt;ID&gt;,
+  &quot;selfLink&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;name&gt;/global/snapshots/snapshot-1-deployhost&quot;
+}
+</pre></div>
+
+
+<h3>Instance Template Resource</h3>
+<p>Instance Template reports have this format:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;kind&quot;: &quot;compute#instanceTemplate&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;properties&quot;: {
+    &quot;machineType&quot;: &lt;type&gt;,
+    &quot;tags&quot;: {
+      &quot;items&quot;: [
+        &lt;items&gt;
+      ]
+    },
+    &quot;disks&quot;: [
+      {
+        &quot;deviceName&quot;: &quot;persistent-disk-0&quot;,
+        &quot;kind&quot;: &quot;compute#attachedDisk&quot;,
+        &quot;initializeParams&quot;: {
+          &quot;sourceImage&quot;: &quot;global/images/&lt;name&gt;&quot;,
+          &quot;diskType&quot;: &quot;pd-standard&quot;
+        },
+        &quot;autoDelete&quot;: true,
+        &quot;index&quot;: 0,
+        &quot;boot&quot;: true,
+        &quot;mode&quot;: &quot;READ_WRITE&quot;,
+        &quot;interface&quot;: &quot;SCSI&quot;,
+        &quot;type&quot;: &quot;PERSISTENT&quot;
+      }
+    ],
+    &quot;scheduling&quot;: {
+      &quot;automaticRestart&quot;: true,
+      &quot;preemptible&quot;: false,
+      &quot;onHostMaintenance&quot;: &quot;MIGRATE&quot;
+    },
+    &quot;serviceAccounts&quot;: [
+      {
+        &quot;scopes&quot;: [
+          &quot;https://www.googleapis.com/auth/compute.readonly&quot;
+        ],
+        &quot;email&quot;: &lt;service-account-email&gt;
+      }
+    ],
+    &quot;networkInterfaces&quot;: [
+      {
+        &quot;kind&quot;: &quot;compute#networkInterface&quot;,
+        &quot;network&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;shared-vpn-name&gt;/global/networks/etsy&quot;,
+        &quot;subnetwork&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;shared-vpn-name&gt;/regions/us-central1/subnetworks/migration-test&quot;
+      }
+    ],
+    &quot;metadata&quot;: {
+      &quot;items&quot;: [
+        &lt;metadata&gt;
+      &quot;kind&quot;: &quot;compute#metadata&quot;,
+    }
+  },
+  &quot;creationTimestamp&quot;: &quot;2017-11-14T12:24:00.744-08:00&quot;,
+  &quot;id&quot;: &lt;ID&gt;
+  &quot;selfLink&quot;: &quot;https://www.googleapis.com/compute/v1/projects/&lt;project-name&gt;/global/instanceTemplates/&quot;,
+  &quot;name&quot;: &lt;name&gt;
+}
+</pre></div>
+
+
+<hr>
+<p><strong><em> Thank you for reading, and let me know what you think!</em></strong></p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

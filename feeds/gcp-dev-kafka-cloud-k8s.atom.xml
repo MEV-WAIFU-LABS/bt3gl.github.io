@@ -5,4 +5,207 @@
 &lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
 &lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/kubeless/kubeless"&gt;serverless framework&lt;/a&gt; that that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security.</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><published>2017-12-16T00:00:00-05:00</published><updated>2017-12-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-16:/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and with a set of customizable rules, it searches for security risks.&lt;/p&gt;
+&lt;h2&gt;How Amigo Works&lt;/h2&gt;
+&lt;p&gt;Amigo retrieves the GCP project list and their attribute (defined in the &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
+&lt;h4&gt;Amigo perform two …&lt;/h4&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and with a set of customizable rules, it searches for security risks.&lt;/p&gt;
+&lt;h2&gt;How Amigo Works&lt;/h2&gt;
+&lt;p&gt;Amigo retrieves the GCP project list and their attribute (defined in the &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
+&lt;h4&gt;Amigo perform two types of analysis:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; For each attribute in a project, Amigo creates a up to date report. Amigo then checks the previous report for differences (or checking when the data was modified). If there is a diff, Amigo logs a report for this diff.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; Amigo saves the resources data in a database. Amigo then checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt; and reports everything that violates those rules.
+Amigo performs two types of analytics, generating reports that can be fed in ELK/411:&lt;/p&gt;
+&lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
+&lt;h3&gt;Setting a Virtual Environment to install Amigo&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make venv
+&lt;span class="c1"&gt;# source venv/bin/activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Installing Amigo Package&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Creating a Service Account for Amigo&lt;/h3&gt;
+&lt;p&gt;This should be done once in the first time you set Amigo:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the IAM roles &lt;strong&gt;Security Reviewer&lt;/strong&gt; and &lt;strong&gt;Viewer permissions&lt;/strong&gt; to the service account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt; to a safe directory (e.g. your home directory). If amigo runs in other machines (or other people in the same organization is running Amigo), this key can be shared (and step 1. and 2. do not need to be repeated).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Setting gcloud&lt;/h3&gt;
+&lt;p&gt;Install &lt;a href="https://cloud.google.com/sdk/downloads"&gt;gcloud SDK&lt;/a&gt; and authenticate with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gcloud auth application-default login
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can also check whether env variable &lt;code&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; is pointing to the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Setting the Config file&lt;/h3&gt;
+&lt;p&gt;Copy &lt;code&gt;config.yaml_example&lt;/code&gt; to &lt;code&gt;config.yaml&lt;/code&gt; and customize it.&lt;/p&gt;
+&lt;p&gt;In the bottom of this file you are able to edit the attributes that you want to report on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;### Attributes to inspect
+gcp_attributes:
+    compute:
+        - firewalls
+        - networks
+        - snapshots
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Setting the Rules file&lt;/h3&gt;
+&lt;p&gt;Inspect &lt;code&gt;rules.yaml&lt;/code&gt; either removing or adding rules that should be searched in the reports.&lt;/p&gt;
+&lt;h3&gt;Running Amigo&lt;/h3&gt;
+&lt;p&gt;Run amigo with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo amigo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will retrieve the data from GCP and generate JSON reports. These reports will be save where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
+&lt;p&gt;It is advised to watch for STERR and STDOUT in the &lt;code&gt;log_file&lt;/code&gt; file defined in &lt;code&gt;config.yaml&lt;/code&gt; (default to &lt;code&gt;amigo_log.txt&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tail -f amigo_log.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Alerting on Amigo&lt;/h3&gt;
+&lt;p&gt;Relevant reports (e.g. diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g. &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Creating Custom rules&lt;/h2&gt;
+&lt;h3&gt;Firewalls Resource&lt;/h3&gt;
+&lt;p&gt;Firewall reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+  &amp;quot;kind&amp;quot;: &amp;quot;compute#firewall&amp;quot;,
+  &amp;quot;network&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/networks/default&amp;quot;,
+  &amp;quot;direction&amp;quot;: &amp;quot;INGRESS&amp;quot;,
+  &amp;quot;sourceRanges&amp;quot;: [
+    &amp;quot;0.0.0.0/0&amp;quot;
+  ],
+  &amp;quot;name&amp;quot;: &amp;quot;default-allow-icmp&amp;quot;,
+  &amp;quot;priority&amp;quot;: 65534,
+  &amp;quot;allowed&amp;quot;: [
+    {
+      &amp;quot;IPProtocol&amp;quot;: &amp;quot;icmp&amp;quot;
+    }
+  ],
+  &amp;quot;creationTimestamp&amp;quot;: &amp;lt;Time stamp&amp;gt;,
+  &amp;quot;id&amp;quot;: &amp;lt;ID&amp;gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/firewalls/default-allow-icmp&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;Allow ICMP from anywhere&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Networks Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+  &amp;quot;kind&amp;quot;: &amp;quot;compute#network&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;Default network for the project&amp;quot;,
+  &amp;quot;subnetworks&amp;quot;: [
+    &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/regions/&amp;lt;region&amp;gt;/subnetworks/default&amp;quot;,
+  ],
+  &amp;quot;autoCreateSubnetworks&amp;quot;: true,
+  &amp;quot;routingConfig&amp;quot;: {
+    &amp;quot;routingMode&amp;quot;: &amp;quot;REGIONAL&amp;quot;
+  },
+  &amp;quot;creationTimestamp&amp;quot;: &amp;lt;Time stamp&amp;gt;,
+  &amp;quot;id&amp;quot;: &amp;lt;ID&amp;gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/networks/default&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;quot;default&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Snapshots Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+  &amp;quot;status&amp;quot;: &amp;quot;READY&amp;quot;,
+  &amp;quot;kind&amp;quot;: &amp;quot;compute#snapshot&amp;quot;,
+  &amp;quot;storageBytes&amp;quot;: &amp;lt;number&amp;gt;,
+  &amp;quot;name&amp;quot;: &amp;lt;name&amp;gt;,
+  &amp;quot;sourceDisk&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/zones/us-central1-c/disks/deployhost&amp;quot;,
+  &amp;quot;storageBytesStatus&amp;quot;: &amp;quot;UP_TO_DATE&amp;quot;,
+  &amp;quot;labelFingerprint&amp;quot;: &amp;lt;code&amp;gt;,
+  &amp;quot;sourceDiskId&amp;quot;: &amp;lt;ID&amp;gt;,
+  &amp;quot;diskSizeGb&amp;quot;: &amp;lt;size&amp;gt;,
+  &amp;quot;licenses&amp;quot;: [
+    &amp;quot;https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7&amp;quot;
+  ],
+  &amp;quot;creationTimestamp&amp;quot;: &amp;lt;time stamp&amp;gt;,
+  &amp;quot;id&amp;quot;: &amp;lt;ID&amp;gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/snapshots/snapshot-1-deployhost&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Instance Template Resource&lt;/h3&gt;
+&lt;p&gt;Instance Template reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+  &amp;quot;kind&amp;quot;: &amp;quot;compute#instanceTemplate&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;,
+  &amp;quot;properties&amp;quot;: {
+    &amp;quot;machineType&amp;quot;: &amp;lt;type&amp;gt;,
+    &amp;quot;tags&amp;quot;: {
+      &amp;quot;items&amp;quot;: [
+        &amp;lt;items&amp;gt;
+      ]
+    },
+    &amp;quot;disks&amp;quot;: [
+      {
+        &amp;quot;deviceName&amp;quot;: &amp;quot;persistent-disk-0&amp;quot;,
+        &amp;quot;kind&amp;quot;: &amp;quot;compute#attachedDisk&amp;quot;,
+        &amp;quot;initializeParams&amp;quot;: {
+          &amp;quot;sourceImage&amp;quot;: &amp;quot;global/images/&amp;lt;name&amp;gt;&amp;quot;,
+          &amp;quot;diskType&amp;quot;: &amp;quot;pd-standard&amp;quot;
+        },
+        &amp;quot;autoDelete&amp;quot;: true,
+        &amp;quot;index&amp;quot;: 0,
+        &amp;quot;boot&amp;quot;: true,
+        &amp;quot;mode&amp;quot;: &amp;quot;READ_WRITE&amp;quot;,
+        &amp;quot;interface&amp;quot;: &amp;quot;SCSI&amp;quot;,
+        &amp;quot;type&amp;quot;: &amp;quot;PERSISTENT&amp;quot;
+      }
+    ],
+    &amp;quot;scheduling&amp;quot;: {
+      &amp;quot;automaticRestart&amp;quot;: true,
+      &amp;quot;preemptible&amp;quot;: false,
+      &amp;quot;onHostMaintenance&amp;quot;: &amp;quot;MIGRATE&amp;quot;
+    },
+    &amp;quot;serviceAccounts&amp;quot;: [
+      {
+        &amp;quot;scopes&amp;quot;: [
+          &amp;quot;https://www.googleapis.com/auth/compute.readonly&amp;quot;
+        ],
+        &amp;quot;email&amp;quot;: &amp;lt;service-account-email&amp;gt;
+      }
+    ],
+    &amp;quot;networkInterfaces&amp;quot;: [
+      {
+        &amp;quot;kind&amp;quot;: &amp;quot;compute#networkInterface&amp;quot;,
+        &amp;quot;network&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;shared-vpn-name&amp;gt;/global/networks/etsy&amp;quot;,
+        &amp;quot;subnetwork&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;shared-vpn-name&amp;gt;/regions/us-central1/subnetworks/migration-test&amp;quot;
+      }
+    ],
+    &amp;quot;metadata&amp;quot;: {
+      &amp;quot;items&amp;quot;: [
+        &amp;lt;metadata&amp;gt;
+      &amp;quot;kind&amp;quot;: &amp;quot;compute#metadata&amp;quot;,
+    }
+  },
+  &amp;quot;creationTimestamp&amp;quot;: &amp;quot;2017-11-14T12:24:00.744-08:00&amp;quot;,
+  &amp;quot;id&amp;quot;: &amp;lt;ID&amp;gt;
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;project-name&amp;gt;/global/instanceTemplates/&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;lt;name&amp;gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
