@@ -410,4 +410,303 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
 &lt;p&gt;Have a Continuous Delivery pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>A Full Stack Web App with React, Node.js, Express, and Webpack</title><link href="http://bt3gl.github.io/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html" rel="alternate"></link><published>2017-06-14T00:00:00-04:00</published><updated>2017-06-14T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-06-14:/a-full-stack-web-app-with-react-nodejs-express-and-webpack.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Introducing OsqueryX</title><link href="http://bt3gl.github.io/introducing-osqueryx.html" rel="alternate"></link><published>2017-07-18T00:00:00-04:00</published><updated>2017-07-18T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from osquery.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Installing&lt;/h2&gt;
+&lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you get a &lt;code&gt;Success!&lt;/code&gt; message and you've finished the docker setup correctly, you should now be able start with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ osqueryx start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Installation Notes …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from osquery.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Installing&lt;/h2&gt;
+&lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you get a &lt;code&gt;Success!&lt;/code&gt; message and you've finished the docker setup correctly, you should now be able start with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ osqueryx start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Installation Notes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If you can't get the script working (file a bug!) or install these manually:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker for Mac&lt;/li&gt;
+&lt;li&gt;Foreman&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Two temporary directories will be created under &lt;code&gt;osqueryx/tmp&lt;/code&gt;, in order to help you start creating your first alerts:
+        - &lt;code&gt;tmp/elasticsearch&lt;/code&gt; - where Elasticsearch stores the index data.
+        - &lt;code&gt;tmp/log/osquery&lt;/code&gt; - where you can read your development logs for the OSQuery daemon.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The following directories are mounted inside the ElastAlert container once it boots (ElastAlert reads rules and config from them):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- `/opt/config`: ElastAlert (elastalert_config.yaml) and Supervisord (elastalert_supervisord.conf) configuration files.
+- `/opt/rules`: Contains ElastAlert rules.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Starting&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ osqueryx start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will start two docker containers (Elasticsearch/ElastAlert) in daemonized mode. You can check to see if they're running properly using &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; $ docker ps
+ ```
+
+After the containers are booted, it will run `foreman start` to fire up OSQuery and Filebeat.
+
+You should then be seeing the output of ElastAlert as it searches the Filebeat index in Elasticsearch.
+
+
+----
+
+## Creating a new osquery query
+
+### Adding adhoc queries
+
+OSQuery queries are added/modified in the `.conf` files in the `packs/` directory.
+
+New JSON query file should be tested using `osqueryi` tool and linted with:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx lint_queries&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Once you&amp;#39;ve modified the query pack you will have to restart the OSQuery process by hitting ```CTRL+C``` in the terminal where you&amp;#39;re running foreman. Once you kill it, run:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx restart&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;### Adding malware queries
+
+Malware queries (specified in the `packs/&amp;lt;OS&amp;gt;/malware.conf` file) are generate from YAML IoC files inside `iocs/&amp;lt;OS&amp;gt;/*`.
+
+To add a new malware IoC/query/alert:
+
+Add the IoC data inside the IoC type (e.g. `&amp;quot;bundle_id&amp;quot;`, `&amp;quot;process_name&amp;quot;`, `&amp;quot;launchdaemons&amp;quot;`) and generate the osquery queries with:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx create_queries&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Once you&amp;#39;ve modified the query pack you will have to restart the OSQuery process by hitting ```CTRL+C``` in the terminal where you&amp;#39;re running foreman. Once you kill it, run:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx restart&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
+## Alerts
+
+Alerts are generated using ElastAlert. ElastAlert reads all of the files in `rules/` and alerts when a document in the filebeat index matches. The files in `rules/` can be manually created or automatically generated.
+
+You generate a list of alerts automatically with
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx create_alerts&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;If you take a peek inside of `rules/` you will see a new YAML file for each query.
+
+Once these files are added to `rules/` ElastAlert will pick them up on it&amp;#39;s next config reload (every 60s).
+
+---
+## An Walk Through example
+
+For instance, a new OSX indicator of compromise that is identified by a file `~/osquery_virus.txt` could be added to `iocs/osx/malicious_files.yaml` as:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;the_osquery_virus_omg:
+  - '/Users/%%/osquery_virus.txt'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Then, the OSQuery query (inside `malicious_files.conf`) and the alerts can be created by running:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx deploy&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Restart osquery by hitting ```CTRL+C``` and then:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx restart&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;By default, OSQuery will run this query every hour. This can be customized by changing the value of the key **interval** in the top of the IoC YAML file (below **IoC Query Config**).
+
+You can also add the desired type of ElastAlert alert there (e.g. &amp;quot;alert&amp;quot;: &amp;quot;slack&amp;quot;).
+
+---
+
+## Shipping your work
+
+Whenever you are ready to push your work, you can bring osqueryx down with:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx stop&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;## More Details on How osqueryx Works&lt;/span&gt;
+
+&lt;span class="c1"&gt;### ElastAlert variables in OSQuery&lt;/span&gt;
+
+&lt;span class="nv"&gt;In&lt;/span&gt; &lt;span class="s s-Atom"&gt;order&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;generate&lt;/span&gt; &lt;span class="s s-Atom"&gt;our&lt;/span&gt; &lt;span class="s s-Atom"&gt;alerts&lt;/span&gt; &lt;span class="s s-Atom"&gt;automatically&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;we&amp;#39;re storing some custom values inside of some queries. Since OSQuery stores it&amp;#39;s&lt;/span&gt; &lt;span class="s s-Atom"&gt;config&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;JSON&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;we&amp;#39;re able to add extra data to the Query objects and OSQuery will just ignore it. We&amp;#39;re&lt;/span&gt; &lt;span class="s s-Atom"&gt;taking&lt;/span&gt; &lt;span class="s s-Atom"&gt;advantage&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;storing&lt;/span&gt; &lt;span class="s s-Atom"&gt;extra&lt;/span&gt; &lt;span class="s s-Atom"&gt;metadata&lt;/span&gt; &lt;span class="s s-Atom"&gt;about&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;kind&lt;/span&gt; &lt;span class="s s-Atom"&gt;of&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;we&amp;#39;d like to generate.&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;Below is a table of supported attributes `osqueryx create_alerts` will add to the output of your alert.&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;| Query Key |     Type      |  Example |&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;|----------|:-------------:|------:|&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;| ElastAlert_rule_type |  string | new_term |&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;| ElastAlert_fields |    array   |   [&amp;quot;cats&amp;quot;] |&lt;/span&gt;
+
+
+&lt;span class="s s-Atom"&gt;### Adding alerts&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;In most cases our alerts are generated directly from OSQuery queries, however, there will be some cases that we want to add an alert for some adhoc info that we want to know about.&lt;/span&gt;
+
+&lt;span class="s s-Atom"&gt;Look in `examples/` to see what your ElastAlert should look like. Copy it into `rules/` and modify to your hearts content. Once you&amp;#39;ve&lt;/span&gt; &lt;span class="s s-Atom"&gt;got&lt;/span&gt; &lt;span class="s s-Atom"&gt;it&lt;/span&gt; &lt;span class="s s-Atom"&gt;working&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;way&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;want&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;then&lt;/span&gt; &lt;span class="s s-Atom"&gt;proceed&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;following&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;basic&lt;/span&gt; &lt;span class="s s-Atom"&gt;contribution&lt;/span&gt; &lt;span class="s s-Atom"&gt;steps&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;submitting&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="s s-Atom"&gt;repo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;### Testing alerts&lt;/span&gt;
+
+&lt;span class="nv"&gt;Before&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;commit&lt;/span&gt; &lt;span class="s s-Atom"&gt;your&lt;/span&gt; &lt;span class="s s-Atom"&gt;change&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;your&lt;/span&gt; &lt;span class="nv"&gt;PR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;should&lt;/span&gt; &lt;span class="s s-Atom"&gt;have&lt;/span&gt; &lt;span class="s s-Atom"&gt;tested&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;entire&lt;/span&gt; &lt;span class="s s-Atom"&gt;flow&lt;/span&gt; &lt;span class="s s-Atom"&gt;from&lt;/span&gt; &lt;span class="s s-Atom"&gt;start&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;finish&lt;/span&gt; &lt;span class="s s-Atom"&gt;for&lt;/span&gt; &lt;span class="s s-Atom"&gt;your&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;For&lt;/span&gt; &lt;span class="s s-Atom"&gt;example&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;want&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;add&lt;/span&gt; &lt;span class="s s-Atom"&gt;an&lt;/span&gt; &lt;span class="nv"&gt;OSQuery&lt;/span&gt; &lt;span class="s s-Atom"&gt;query&lt;/span&gt; &lt;span class="s s-Atom"&gt;which&lt;/span&gt; &lt;span class="s s-Atom"&gt;would&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;when&lt;/span&gt; &lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="s s-Atom"&gt;certain&lt;/span&gt; &lt;span class="s s-Atom"&gt;file&lt;/span&gt; &lt;span class="s s-Atom"&gt;existed&lt;/span&gt; &lt;span class="s s-Atom"&gt;on&lt;/span&gt; &lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="s s-Atom"&gt;users&lt;/span&gt; &lt;span class="s s-Atom"&gt;machine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;create&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="s s-Atom"&gt;query&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;osqueryx&lt;/span&gt; &lt;span class="s s-Atom"&gt;environment&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;then&lt;/span&gt; &lt;span class="s s-Atom"&gt;create&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;Once&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;file&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt; &lt;span class="s s-Atom"&gt;created&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;OSQuery&lt;/span&gt; &lt;span class="s s-Atom"&gt;should&lt;/span&gt; &lt;span class="s s-Atom"&gt;write&lt;/span&gt; &lt;span class="s s-Atom"&gt;an&lt;/span&gt; &lt;span class="s s-Atom"&gt;event&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;log&lt;/span&gt; &lt;span class="s s-Atom"&gt;file&lt;/span&gt; &lt;span class="s s-Atom"&gt;which&lt;/span&gt; &lt;span class="s s-Atom"&gt;should&lt;/span&gt; &lt;span class="s s-Atom"&gt;trigger&lt;/span&gt; &lt;span class="nv"&gt;ElastAlert&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="nv"&gt;By&lt;/span&gt; &lt;span class="s s-Atom"&gt;doing&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;should&lt;/span&gt; &lt;span class="s s-Atom"&gt;be&lt;/span&gt; &lt;span class="s s-Atom"&gt;able&lt;/span&gt; &lt;span class="s s-Atom"&gt;to&lt;/span&gt; &lt;span class="s s-Atom"&gt;see&lt;/span&gt; &lt;span class="s s-Atom"&gt;the&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;determine&lt;/span&gt; &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="s s-Atom"&gt;it&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s s-Atom"&gt;s&lt;/span&gt; &lt;span class="s s-Atom"&gt;what&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;intend&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;Also&lt;/span&gt; &lt;span class="s s-Atom"&gt;through&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="s s-Atom"&gt;practice&lt;/span&gt; &lt;span class="s s-Atom"&gt;you&lt;/span&gt; &lt;span class="s s-Atom"&gt;can&lt;/span&gt; &lt;span class="s s-Atom"&gt;determine&lt;/span&gt; &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="s s-Atom"&gt;this&lt;/span&gt; &lt;span class="o"&gt;is&lt;/span&gt; &lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="s s-Atom"&gt;noisy&lt;/span&gt; &lt;span class="s s-Atom"&gt;alert&lt;/span&gt; &lt;span class="s s-Atom"&gt;and&lt;/span&gt; &lt;span class="s s-Atom"&gt;could&lt;/span&gt; &lt;span class="s s-Atom"&gt;use&lt;/span&gt; &lt;span class="s s-Atom"&gt;some&lt;/span&gt; &lt;span class="s s-Atom"&gt;tuning&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;## Listing queries and alerts&lt;/span&gt;
+
+&lt;span class="nv"&gt;Available&lt;/span&gt; &lt;span class="s s-Atom"&gt;queries&lt;/span&gt; &lt;span class="s s-Atom"&gt;can&lt;/span&gt; &lt;span class="s s-Atom"&gt;be&lt;/span&gt; &lt;span class="s s-Atom"&gt;listed&lt;/span&gt; &lt;span class="nn"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx list_queries&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Available alerts can be listed with:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx list_alerts&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#### OSQuery&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;OSQuery&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;booted&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;executed&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;Where&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;automatic&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;started&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;prefixed&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;OSQuery_log&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;foreman&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;like&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;separately&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;live&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;osquery&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;As&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="n"&gt;controlled&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;re&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;die&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Simply&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;foreman&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;processes&lt;/span&gt; &lt;span class="n"&gt;again&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="cp"&gt;#### Filebeat&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;interact&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;Not&lt;/span&gt; &lt;span class="n"&gt;much&lt;/span&gt; &lt;span class="n"&gt;interaction&lt;/span&gt; &lt;span class="n"&gt;should&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;required&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;Filebeat&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;however&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;desire&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;modify&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;would&lt;/span&gt; &lt;span class="n"&gt;edit&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;filebeat&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yml&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;then&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;Filebeat&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;booted&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;executed&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;separately&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;look&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;Procfile&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;Where&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;automatic&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;started&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;prefixed&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;filebeat_log&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;foreman&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;like&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;separately&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;live&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;filebeat&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;As&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="n"&gt;controlled&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;simply&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;re&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;Foreman&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;die&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Simply&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;foreman&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;processes&lt;/span&gt; &lt;span class="n"&gt;again&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+
+&lt;span class="cp"&gt;#### Elasticsearch&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;Elasticsearch&lt;/span&gt; &lt;span class="n"&gt;should&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nl"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//localhost:9200](http://localhost:9200) after you run `osqueryx start`. From there you can interact with it using `curl` and the [Elasticsearch API](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/docs.html).&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;Elasticsearch&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;started&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Docker&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;Docker&lt;/span&gt; &lt;span class="n"&gt;Compose&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;These&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;executed&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;bring&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;containers&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;background&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Docker&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;encapsulate&lt;/span&gt; &lt;span class="n"&gt;Elasticsearch&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;allows&lt;/span&gt; &lt;span class="n"&gt;us&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;emulate&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt; &lt;span class="n"&gt;similar&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;production&lt;/span&gt; &lt;span class="n"&gt;easily&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;Where&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;?**&lt;/span&gt;
+
+&lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;automatic&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;started&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;osqueryx&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;prefixed&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;elasticsearch_log&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;foreman&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;like&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;logs&lt;/span&gt; &lt;span class="n"&gt;separately&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;so&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;invoking&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;docker&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="nl"&gt;terminal&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ docker logs -f osqueryx_elasticsearch_1&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;**How can I restart it?**
+
+Elasticsearch is run using Docker Compose. If you&amp;#39;d like to restart your running containers, you can run:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ osqueryx restart&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;to issue a full restart of your containers. Keep in mind this will also restart ElastAlert.
+
+
+**How do I know it&amp;#39;s running?**
+
+You can `curl localhost:9200` to see if Elasticsearch is listening on port 9200 properly. You should see something like this:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;{
+  "name" : "Commando",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "KflM016zREenHcjCrA4dfg",
+  "version" : {
+    "number" : "2.4.4",
+    "build_hash" : "fcbb46dfd45562a9cf00c604b30849a6dec6b017",
+    "build_timestamp" : "2017-01-03T11:33:16Z",
+    "build_snapshot" : false,
+    "lucene_version" : "5.5.2"
+  },
+  "tagline" : "You Know, for Search"
+}&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;You can also look at your running containers by executing `docker ps | grep elasticsearch`:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ docker ps  | grep elasticsearch
+7f7e28471dbf        osqueryx_elasticsearch   "/elasticsearch_do..."   23 hours ago        Up 23 hours         0.0.0.0:9200-&amp;gt;9200/tcp, 9300/tcp   osqueryx_elasticsearch_1&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#### ElastAlert
+
+**How do I interact with it?**
+
+ElastAlert automatically detects rule changes on the filesystem and will reload rules accordingly. One magic thing we&amp;#39;re doing in the osqueryx environment is mounting the ElastAlert `rules/` directory in this repo directly to `/opt/rules` in the container, which ElastAlert is configured to watch. Once you modify an alert, no restart of the service is required. Wait patiently and watch the logs for ElastAlert to reload your rule files.
+
+**How does it run?**
+
+ElastAlert is started using Docker and Docker Compose. The commands to bring up the Kibana container are executed when you run `osqueryx start`. You can check to see if it&amp;#39;s running by executing:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;$ docker ps | grep kibana
+```&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Where can I read the logs?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Foreman is set up to follow the tail of the logs which are generated by the container. If you'd like to tail this in a different window, you can run &lt;code&gt;docker logs -f osqueryx_elastalert_1&lt;/code&gt; in a separate window to read the logs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How can I restart it?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ElastAlert is run using Docker Compose. If you'd like to restart your running containers, you can run &lt;code&gt;osqueryx restart&lt;/code&gt; to issue a full restart of your containers. Keep in mind this will also restart Elasticsearch.&lt;/p&gt;
+&lt;h4&gt;Kibana&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;How do I access it?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Kibana should be running at &lt;a href="http://localhost:5601"&gt;http://localhost:5601&lt;/a&gt; after you run &lt;code&gt;osqueryx start&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How does it run?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Kibana is started using Docker and Docker Compose. The commands to bring up the Kibana container are executed when you run &lt;code&gt;osqueryx start&lt;/code&gt;. You can check to see if it's running by executing &lt;code&gt;docker ps | grep kibana&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Where can I read the logs?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;An automatic tail of these logs is started when you execute &lt;code&gt;osqueryx start&lt;/code&gt;. The logs are prefixed with &lt;code&gt;kibana_log&lt;/code&gt; in the foreman output. If you'd like to tail these logs separately, you can do so by running &lt;code&gt;docker logs -f osqueryx_kibana_1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How can I restart it?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Kibana is run using Docker Compose. If you'd like to restart your running containers, you can run &lt;code&gt;osqueryx restart&lt;/code&gt; to issue a full restart of your containers. Keep in mind this will also restart the other running containers that are defined in the &lt;code&gt;docker-compose.yml&lt;/code&gt; file.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
