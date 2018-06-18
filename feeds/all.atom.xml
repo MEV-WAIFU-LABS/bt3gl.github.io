@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-02-01T00:00:00-05:00</updated><entry><title>A Quick Intro to Kubernetes</title><link href="http://bt3gl.github.io/a-quick-intro-to-kubernetes.html" rel="alternate"></link><published>2018-02-01T00:00:00-05:00</published><updated>2018-02-01T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-02-01:/a-quick-intro-to-kubernetes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Wanna try Kubernetes for the first time and don't know how to start? No problem! I wrote this quick guide to help some of the junior engineers in my team at Etsy to get started with k8s!&lt;/p&gt;
-&lt;p&gt;In this guide I will show you how to spin a quick Node …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Wanna try Kubernetes for the first time and don't know how to start? No problem! I wrote this quick guide to help some of the junior engineers in my team at Etsy to get started with k8s!&lt;/p&gt;
-&lt;p&gt;In this guide I will show you how to spin a quick Node.js server in kubernetes and to grasp some of its main concepts. Read on! &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
-&lt;p&gt;First things first, you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine or VM.&lt;/p&gt;
-&lt;p&gt;Make sure you have all the auths right:&lt;/p&gt;
+&lt;p&gt;First you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
+&lt;p&gt;Make sure you have all the auths right, for instance, I do the follow:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Create a auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
@@ -23,7 +23,7 @@
 
 
 &lt;p&gt;Which is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -t  node_app_test .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -t node_app_test .
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -32,11 +32,13 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;Voilà!&lt;/p&gt;
+&lt;p&gt;You can also check the status of your setup with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make status
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Other useful commands&lt;/h4&gt;
+&lt;h4&gt;Other useful Docker commands&lt;/h4&gt;
 &lt;p&gt;Exec inside the container:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker &lt;span class="nb"&gt;exec&lt;/span&gt; -i -t &amp;lt;container name from status&amp;gt; /bin/bash
 &lt;/pre&gt;&lt;/div&gt;
@@ -48,19 +50,19 @@
 
 
 &lt;h3&gt;Pushing the Registry to Kubernetes&lt;/h3&gt;
-&lt;p&gt;In a real production system, we’ll want to build images in one place, then run them in the Kubernetes cluster. The system that
- stores these images for distribution out to the running containers is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt; you can now deploy the image with&lt;/p&gt;
+&lt;p&gt;In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. &lt;/p&gt;
+&lt;p&gt;The system that images for distribution is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt;), you can now deploy the image with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl create -f  node_example_kube_config.yaml
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now you can create the service with:&lt;/p&gt;
+&lt;p&gt;After that, you are able to create the service with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  kubectl expose deployment node-app-test
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;See the service at:&lt;/p&gt;
+&lt;p&gt;Also, check out the service status with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -74,22 +76,22 @@ $ kubectl delete deployment node-app-test
 
 &lt;h2&gt;Useful General Commands&lt;/h2&gt;
 &lt;p&gt;Checking out pods:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get pods --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get pods --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Checking deployments:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get deployments --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get deployments --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Checking services:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services --namespace&lt;span class="o"&gt;=&lt;/span&gt;security
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Get more information about a pod:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl describe pod --namespace&lt;span class="o"&gt;=&lt;/span&gt;security &amp;lt;pod name&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl describe pod --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt; &amp;lt;pod name&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
