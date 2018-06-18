@@ -299,7 +299,6 @@ gcp_attributes:
 &lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
 &lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
-&lt;h1&gt;Installing&lt;/h1&gt;
 &lt;h2&gt;Installing Kubeless&lt;/h2&gt;
 &lt;p&gt;Follow &lt;a href="https://github.com/kubeless/kubeless"&gt;this instructions&lt;/a&gt;. Customize Kubeless config file at &lt;code&gt;kubeless-config.yaml&lt;/code&gt; and then run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make kl
