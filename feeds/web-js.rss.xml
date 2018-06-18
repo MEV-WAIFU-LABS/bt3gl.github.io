@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0"><channel><title>chmod +x singularity.sh - web, js</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Tue, 18 Jul 2017 00:00:00 -0400</lastBuildDate><item><title>Introducing OsqueryX</title><link>http://bt3gl.github.io/introducing-osqueryx.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from osquery.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Installing&lt;/h2&gt;
 &lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;

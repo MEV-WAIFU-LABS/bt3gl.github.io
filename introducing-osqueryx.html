@@ -106,7 +106,7 @@
 
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"></p>
-<p><a href="https://github.com/bt3gl/osqueryx">osqueryX</a> is a set of tools to manage security data collection and alerts from osquery.</p>
+<p><a href="https://github.com/bt3gl/osqueryx">osqueryX</a> is a set of tools to manage security data collection and alerts from <a href="https://osquery.io/">osquery</a>.</p>
 <hr>
 <h2>Installing</h2>
 <p>Clone this repo and bootstrap your environment running:</p>
@@ -130,8 +130,8 @@
 </li>
 <li>
 <p>Two temporary directories will be created under <code>osqueryx/tmp</code>, in order to help you start creating your first alerts:
-        - <code>tmp/elasticsearch</code> - where Elasticsearch stores the index data.
-        - <code>tmp/log/osquery</code> - where you can read your development logs for the OSQuery daemon.</p>
+        - tmp/elasticsearch - where Elasticsearch stores the index data.
+        - tmp/log/osquery - where you can read your development logs for the OSQuery daemon.</p>
 </li>
 <li>
 <p>The following directories are mounted inside the ElastAlert container once it boots (ElastAlert reads rules and config from them):</p>
@@ -149,233 +149,185 @@
 
 
 <p>This will start two docker containers (Elasticsearch/ElastAlert) in daemonized mode. You can check to see if they're running properly using </p>
-<div class="highlight"><pre><span></span> $ docker ps
- ```
-
-After the containers are booted, it will run `foreman start` to fire up OSQuery and Filebeat.
-
-You should then be seeing the output of ElastAlert as it searches the Filebeat index in Elasticsearch.
-
-
-----
-
-## Creating a new osquery query
-
-### Adding adhoc queries
-
-OSQuery queries are added/modified in the `.conf` files in the `packs/` directory.
-
-New JSON query file should be tested using `osqueryi` tool and linted with:
+<div class="highlight"><pre><span></span>$ docker ps
 </pre></div>
 
 
-<p>$ osqueryx lint_queries</p>
-<div class="highlight"><pre><span></span>Once you&#39;ve modified the query pack you will have to restart the OSQuery process by hitting ```CTRL+C``` in the terminal where you&#39;re running foreman. Once you kill it, run:
+<p>After the containers are booted, it will run <code>foreman start</code> to fire up OSQuery and Filebeat.</p>
+<p>You should then be seeing the output of ElastAlert as it searches the Filebeat index in Elasticsearch.</p>
+<hr>
+<h2>Creating a new osquery query</h2>
+<h3>Adding adhoc queries</h3>
+<p>OSQuery queries are added/modified in the <code>.conf</code> files in the <code>packs/</code> directory.</p>
+<p>New JSON query file should be tested using <code>osqueryi</code> tool and linted with:</p>
+<div class="highlight"><pre><span></span>$ osqueryx lint_queries
 </pre></div>
 
 
-<p>$ osqueryx restart</p>
-<div class="highlight"><pre><span></span>### Adding malware queries
-
-Malware queries (specified in the `packs/&lt;OS&gt;/malware.conf` file) are generate from YAML IoC files inside `iocs/&lt;OS&gt;/*`.
-
-To add a new malware IoC/query/alert:
-
-Add the IoC data inside the IoC type (e.g. `&quot;bundle_id&quot;`, `&quot;process_name&quot;`, `&quot;launchdaemons&quot;`) and generate the osquery queries with:
+<p>Once you've modified the query pack you will have to restart the OSQuery process by hitting <code>CTRL+C</code> in the terminal where you're running foreman. Once you kill it, run:</p>
+<div class="highlight"><pre><span></span>$ osqueryx restart
 </pre></div>
 
 
-<p>$ osqueryx create_queries</p>
-<div class="highlight"><pre><span></span>Once you&#39;ve modified the query pack you will have to restart the OSQuery process by hitting ```CTRL+C``` in the terminal where you&#39;re running foreman. Once you kill it, run:
+<h3>Adding malware queries</h3>
+<p>Malware queries (specified in the <code>packs/&lt;OS&gt;/malware.conf</code> file) are generate from YAML IoC files inside <code>iocs/&lt;OS&gt;/*</code>.</p>
+<p>To add a new malware IoC/query/alert:</p>
+<p>Add the IoC data inside the IoC type (e.g. <code>"bundle_id"</code>, <code>"process_name"</code>, <code>"launchdaemons"</code>) and generate the osquery queries with:</p>
+<div class="highlight"><pre><span></span>$ osqueryx create_queries
 </pre></div>
 
 
-<p>$ osqueryx restart</p>
-<div class="highlight"><pre><span></span>---
-## Alerts
-
-Alerts are generated using ElastAlert. ElastAlert reads all of the files in `rules/` and alerts when a document in the filebeat index matches. The files in `rules/` can be manually created or automatically generated.
-
-You generate a list of alerts automatically with
+<p>Once you've modified the query pack you will have to restart the OSQuery process by hitting <code>CTRL+C</code> in the terminal where you're running foreman. Once you kill it, run:</p>
+<div class="highlight"><pre><span></span>$ osqueryx restart
 </pre></div>
 
 
-<p>$ osqueryx create_alerts</p>
-<div class="highlight"><pre><span></span>If you take a peek inside of `rules/` you will see a new YAML file for each query.
-
-Once these files are added to `rules/` ElastAlert will pick them up on it&#39;s next config reload (every 60s).
-
----
-## An Walk Through example
-
-For instance, a new OSX indicator of compromise that is identified by a file `~/osquery_virus.txt` could be added to `iocs/osx/malicious_files.yaml` as:
+<hr>
+<h2>Alerts</h2>
+<p>Alerts are generated using ElastAlert. ElastAlert reads all of the files in <code>rules/</code> and alerts when a document in the filebeat index matches. The files in <code>rules/</code> can be manually created or automatically generated.</p>
+<p>You generate a list of alerts automatically with</p>
+<div class="highlight"><pre><span></span>$ osqueryx create_alerts
 </pre></div>
 
 
-<p>the_osquery_virus_omg:
-  - '/Users/%%/osquery_virus.txt'</p>
-<div class="highlight"><pre><span></span>Then, the OSQuery query (inside `malicious_files.conf`) and the alerts can be created by running:
+<p>If you take a peek inside of <code>rules/</code> you will see a new YAML file for each query.</p>
+<p>Once these files are added to <code>rules/</code> ElastAlert will pick them up on it's next config reload (every 60s).</p>
+<hr>
+<h2>An Walk Through example</h2>
+<p>For instance, a new OSX indicator of compromise that is identified by a file <code>~/osquery_virus.txt</code> could be added to <code>iocs/osx/malicious_files.yaml</code> as:</p>
+<div class="highlight"><pre><span></span>the_osquery_virus_omg:
+  - &#39;/Users/%%/osquery_virus.txt&#39;
 </pre></div>
 
 
-<p>$ osqueryx deploy</p>
-<div class="highlight"><pre><span></span>Restart osquery by hitting ```CTRL+C``` and then:
+<p>Then, the OSQuery query (inside <code>malicious_files.conf</code>) and the alerts can be created by running:</p>
+<div class="highlight"><pre><span></span>$ osqueryx deploy
 </pre></div>
 
 
-<p>$ osqueryx restart</p>
-<div class="highlight"><pre><span></span>By default, OSQuery will run this query every hour. This can be customized by changing the value of the key **interval** in the top of the IoC YAML file (below **IoC Query Config**).
-
-You can also add the desired type of ElastAlert alert there (e.g. &quot;alert&quot;: &quot;slack&quot;).
-
----
-
-## Shipping your work
-
-Whenever you are ready to push your work, you can bring osqueryx down with:
+<p>Restart osquery by hitting <code>CTRL+C</code> and then:</p>
+<div class="highlight"><pre><span></span>$ osqueryx restart
 </pre></div>
 
 
-<p>$ osqueryx stop</p>
-<div class="highlight"><pre><span></span><span class="c1">## More Details on How osqueryx Works</span>
-
-<span class="c1">### ElastAlert variables in OSQuery</span>
-
-<span class="nv">In</span> <span class="s s-Atom">order</span> <span class="s s-Atom">to</span> <span class="s s-Atom">generate</span> <span class="s s-Atom">our</span> <span class="s s-Atom">alerts</span> <span class="s s-Atom">automatically</span><span class="p">,</span> <span class="s s-Atom">we&#39;re storing some custom values inside of some queries. Since OSQuery stores it&#39;s</span> <span class="s s-Atom">config</span> <span class="s s-Atom">in</span> <span class="nv">JSON</span><span class="p">,</span> <span class="s s-Atom">we&#39;re able to add extra data to the Query objects and OSQuery will just ignore it. We&#39;re</span> <span class="s s-Atom">taking</span> <span class="s s-Atom">advantage</span> <span class="s s-Atom">of</span> <span class="s s-Atom">this</span> <span class="s s-Atom">and</span> <span class="s s-Atom">storing</span> <span class="s s-Atom">extra</span> <span class="s s-Atom">metadata</span> <span class="s s-Atom">about</span> <span class="s s-Atom">the</span> <span class="s s-Atom">kind</span> <span class="s s-Atom">of</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">we&#39;d like to generate.</span>
-
-<span class="s s-Atom">Below is a table of supported attributes `osqueryx create_alerts` will add to the output of your alert.</span>
-
-<span class="s s-Atom">| Query Key |     Type      |  Example |</span>
-<span class="s s-Atom">|----------|:-------------:|------:|</span>
-<span class="s s-Atom">| ElastAlert_rule_type |  string | new_term |</span>
-<span class="s s-Atom">| ElastAlert_fields |    array   |   [&quot;cats&quot;] |</span>
-
-
-<span class="s s-Atom">### Adding alerts</span>
-
-<span class="s s-Atom">In most cases our alerts are generated directly from OSQuery queries, however, there will be some cases that we want to add an alert for some adhoc info that we want to know about.</span>
-
-<span class="s s-Atom">Look in `examples/` to see what your ElastAlert should look like. Copy it into `rules/` and modify to your hearts content. Once you&#39;ve</span> <span class="s s-Atom">got</span> <span class="s s-Atom">it</span> <span class="s s-Atom">working</span> <span class="s s-Atom">the</span> <span class="s s-Atom">way</span> <span class="s s-Atom">you</span> <span class="s s-Atom">want</span> <span class="s s-Atom">to</span> <span class="s s-Atom">then</span> <span class="s s-Atom">proceed</span> <span class="s s-Atom">to</span> <span class="s s-Atom">following</span> <span class="s s-Atom">the</span> <span class="s s-Atom">basic</span> <span class="s s-Atom">contribution</span> <span class="s s-Atom">steps</span> <span class="s s-Atom">for</span> <span class="s s-Atom">submitting</span> <span class="s s-Atom">the</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">to</span> <span class="s s-Atom">this</span> <span class="s s-Atom">repo</span><span class="p">.</span>
-
-
-<span class="c1">### Testing alerts</span>
-
-<span class="nv">Before</span> <span class="s s-Atom">you</span> <span class="s s-Atom">commit</span> <span class="s s-Atom">your</span> <span class="s s-Atom">change</span> <span class="s s-Atom">in</span> <span class="s s-Atom">your</span> <span class="nv">PR</span><span class="p">,</span> <span class="s s-Atom">you</span> <span class="s s-Atom">should</span> <span class="s s-Atom">have</span> <span class="s s-Atom">tested</span> <span class="s s-Atom">the</span> <span class="s s-Atom">entire</span> <span class="s s-Atom">flow</span> <span class="s s-Atom">from</span> <span class="s s-Atom">start</span> <span class="s s-Atom">to</span> <span class="s s-Atom">finish</span> <span class="s s-Atom">for</span> <span class="s s-Atom">your</span> <span class="s s-Atom">alert</span><span class="p">.</span> <span class="nv">For</span> <span class="s s-Atom">example</span><span class="p">,</span> <span class="s s-Atom">if</span> <span class="s s-Atom">you</span> <span class="s s-Atom">want</span> <span class="s s-Atom">to</span> <span class="s s-Atom">add</span> <span class="s s-Atom">an</span> <span class="nv">OSQuery</span> <span class="s s-Atom">query</span> <span class="s s-Atom">which</span> <span class="s s-Atom">would</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">you</span> <span class="s s-Atom">when</span> <span class="s s-Atom">a</span> <span class="s s-Atom">certain</span> <span class="s s-Atom">file</span> <span class="s s-Atom">existed</span> <span class="s s-Atom">on</span> <span class="s s-Atom">a</span> <span class="s s-Atom">users</span> <span class="s s-Atom">machine</span><span class="p">,</span> <span class="s s-Atom">create</span> <span class="s s-Atom">this</span> <span class="s s-Atom">query</span> <span class="s s-Atom">and</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">in</span> <span class="s s-Atom">the</span> <span class="s s-Atom">osqueryx</span> <span class="s s-Atom">environment</span> <span class="s s-Atom">and</span> <span class="s s-Atom">then</span> <span class="s s-Atom">create</span> <span class="s s-Atom">the</span> <span class="s s-Atom">file</span><span class="p">.</span> <span class="nv">Once</span> <span class="s s-Atom">the</span> <span class="s s-Atom">file</span> <span class="o">is</span> <span class="s s-Atom">created</span><span class="p">,</span> <span class="nv">OSQuery</span> <span class="s s-Atom">should</span> <span class="s s-Atom">write</span> <span class="s s-Atom">an</span> <span class="s s-Atom">event</span> <span class="s s-Atom">to</span> <span class="s s-Atom">the</span> <span class="s s-Atom">log</span> <span class="s s-Atom">file</span> <span class="s s-Atom">which</span> <span class="s s-Atom">should</span> <span class="s s-Atom">trigger</span> <span class="nv">ElastAlert</span><span class="p">.</span>
-
-<span class="nv">By</span> <span class="s s-Atom">doing</span> <span class="s s-Atom">this</span><span class="p">,</span> <span class="s s-Atom">you</span> <span class="s s-Atom">should</span> <span class="s s-Atom">be</span> <span class="s s-Atom">able</span> <span class="s s-Atom">to</span> <span class="s s-Atom">see</span> <span class="s s-Atom">the</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">and</span> <span class="s s-Atom">determine</span> <span class="s s-Atom">if</span> <span class="s s-Atom">it</span><span class="err">&#39;</span><span class="s s-Atom">s</span> <span class="s s-Atom">what</span> <span class="s s-Atom">you</span> <span class="s s-Atom">intend</span><span class="p">.</span> <span class="nv">Also</span> <span class="s s-Atom">through</span> <span class="s s-Atom">this</span> <span class="s s-Atom">practice</span> <span class="s s-Atom">you</span> <span class="s s-Atom">can</span> <span class="s s-Atom">determine</span> <span class="s s-Atom">if</span> <span class="s s-Atom">this</span> <span class="o">is</span> <span class="s s-Atom">a</span> <span class="s s-Atom">noisy</span> <span class="s s-Atom">alert</span> <span class="s s-Atom">and</span> <span class="s s-Atom">could</span> <span class="s s-Atom">use</span> <span class="s s-Atom">some</span> <span class="s s-Atom">tuning</span><span class="p">.</span>
-
-
-<span class="c1">## Listing queries and alerts</span>
-
-<span class="nv">Available</span> <span class="s s-Atom">queries</span> <span class="s s-Atom">can</span> <span class="s s-Atom">be</span> <span class="s s-Atom">listed</span> <span class="nn">with</span><span class="p">:</span>
+<p>By default, OSQuery will run this query every hour. This can be customized by changing the value of the key <strong>interval</strong> in the top of the IoC YAML file (below <strong>IoC Query Config</strong>).</p>
+<p>You can also add the desired type of ElastAlert alert there (e.g. "alert": "slack").</p>
+<hr>
+<h2>Shipping your work</h2>
+<p>Whenever you are ready to push your work, you can bring osqueryx down with:</p>
+<div class="highlight"><pre><span></span>$ osqueryx stop
 </pre></div>
 
 
-<p>$ osqueryx list_queries</p>
-<div class="highlight"><pre><span></span>Available alerts can be listed with:
+<h2>More Details on How osqueryx Works</h2>
+<h3>ElastAlert variables in OSQuery</h3>
+<p>In order to generate our alerts automatically, we're storing some custom values inside of some queries. Since OSQuery stores it's config in JSON, we're able to add extra data to the Query objects and OSQuery will just ignore it. We're taking advantage of this and storing extra metadata about the kind of alert we'd like to generate.</p>
+<p>Below is a table of supported attributes <code>osqueryx create_alerts</code> will add to the output of your alert.</p>
+<table>
+<thead>
+<tr>
+<th>Query Key</th>
+<th align="center">Type</th>
+<th align="right">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElastAlert_rule_type</td>
+<td align="center">string</td>
+<td align="right">new_term</td>
+</tr>
+<tr>
+<td>ElastAlert_fields</td>
+<td align="center">array</td>
+<td align="right">["cats"]</td>
+</tr>
+</tbody>
+</table>
+<h3>Adding alerts</h3>
+<p>In most cases our alerts are generated directly from OSQuery queries, however, there will be some cases that we want to add an alert for some adhoc info that we want to know about.</p>
+<p>Look in <code>examples/</code> to see what your ElastAlert should look like. Copy it into <code>rules/</code> and modify to your hearts content. Once you've got it working the way you want to then proceed to following the basic contribution steps for submitting the alert to this repo.</p>
+<h3>Testing alerts</h3>
+<p>Before you commit your change in your PR, you should have tested the entire flow from start to finish for your alert. For example, if you want to add an OSQuery query which would alert you when a certain file existed on a users machine, create this query and alert in the osqueryx environment and then create the file. Once the file is created, OSQuery should write an event to the log file which should trigger ElastAlert.</p>
+<p>By doing this, you should be able to see the alert and determine if it's what you intend. Also through this practice you can determine if this is a noisy alert and could use some tuning.</p>
+<h2>Listing queries and alerts</h2>
+<p>Available queries can be listed with:</p>
+<div class="highlight"><pre><span></span>$ osqueryx list_queries
 </pre></div>
 
 
-<p>$ osqueryx list_alerts</p>
-<div class="highlight"><pre><span></span><span class="cp">#### OSQuery</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="n">does</span> <span class="n">it</span> <span class="n">run</span><span class="o">?**</span>
-
-<span class="n">OSQuery</span> <span class="n">is</span> <span class="n">booted</span> <span class="n">up</span> <span class="n">using</span> <span class="n">Foreman</span> <span class="n">which</span> <span class="n">is</span> <span class="n">executed</span> <span class="n">when</span> <span class="n">you</span> <span class="n">run</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">Where</span> <span class="n">can</span> <span class="n">I</span> <span class="n">read</span> <span class="n">the</span> <span class="n">logs</span><span class="o">?**</span>
-
-<span class="n">An</span> <span class="n">automatic</span> <span class="n">tail</span> <span class="n">of</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">is</span> <span class="n">started</span> <span class="n">when</span> <span class="n">you</span> <span class="n">execute</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span> <span class="n">The</span> <span class="n">logs</span> <span class="n">are</span> <span class="n">prefixed</span> <span class="n">with</span> <span class="err">`</span><span class="n">OSQuery_log</span><span class="err">`</span> <span class="k">in</span> <span class="n">the</span> <span class="n">foreman</span> <span class="n">output</span><span class="p">.</span> <span class="n">If</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">to</span> <span class="n">tail</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">separately</span><span class="p">,</span> <span class="n">they</span> <span class="n">live</span> <span class="k">in</span> <span class="err">`</span><span class="n">tmp</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">osquery</span><span class="err">`</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="n">can</span> <span class="n">I</span> <span class="n">restart</span> <span class="n">it</span><span class="o">?**</span>
-
-<span class="n">As</span> <span class="n">with</span> <span class="n">any</span> <span class="n">Foreman</span> <span class="n">controlled</span> <span class="n">process</span><span class="p">,</span> <span class="n">simply</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="k">in</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">that</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">re</span> <span class="n">running</span> <span class="n">Foreman</span> <span class="k">in</span> <span class="n">and</span> <span class="n">it</span> <span class="n">will</span> <span class="n">die</span><span class="p">.</span> <span class="n">Simply</span> <span class="n">run</span> <span class="err">`</span><span class="n">foreman</span> <span class="n">start</span><span class="err">`</span> <span class="n">or</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span> <span class="n">to</span> <span class="n">start</span> <span class="n">up</span> <span class="n">the</span> <span class="n">processes</span> <span class="n">again</span><span class="p">.</span>
-
-<span class="cp">#### Filebeat</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="k">do</span> <span class="n">I</span> <span class="n">interact</span> <span class="n">with</span> <span class="n">it</span><span class="o">?**</span>
-
-<span class="n">Not</span> <span class="n">much</span> <span class="n">interaction</span> <span class="n">should</span> <span class="n">be</span> <span class="n">required</span> <span class="k">for</span> <span class="n">Filebeat</span><span class="p">,</span> <span class="n">however</span><span class="p">,</span> <span class="k">if</span> <span class="n">you</span> <span class="n">desire</span> <span class="n">to</span> <span class="n">modify</span> <span class="n">the</span> <span class="n">config</span> <span class="n">and</span> <span class="n">restart</span> <span class="n">the</span> <span class="n">process</span><span class="p">,</span> <span class="n">you</span> <span class="n">would</span> <span class="n">edit</span> <span class="n">the</span> <span class="n">config</span> <span class="n">at</span> <span class="err">`</span><span class="n">config</span><span class="o">/</span><span class="n">filebeat</span><span class="p">.</span><span class="n">yml</span><span class="err">`</span> <span class="n">and</span> <span class="n">then</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">your</span> <span class="n">Foreman</span> <span class="n">and</span> <span class="n">restart</span> <span class="n">with</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="n">does</span> <span class="n">it</span> <span class="n">run</span><span class="o">?**</span>
-
-<span class="n">Filebeat</span> <span class="n">is</span> <span class="n">booted</span> <span class="n">up</span> <span class="n">using</span> <span class="n">Foreman</span> <span class="n">which</span> <span class="n">is</span> <span class="n">executed</span> <span class="n">when</span> <span class="n">you</span> <span class="n">run</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span> <span class="n">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">process</span> <span class="n">separately</span><span class="p">,</span> <span class="n">look</span> <span class="n">at</span> <span class="n">the</span> <span class="err">`</span><span class="n">osqueryx</span><span class="err">`</span> <span class="n">command</span> <span class="k">in</span> <span class="n">the</span> <span class="err">`</span><span class="n">Procfile</span><span class="err">`</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">Where</span> <span class="n">can</span> <span class="n">I</span> <span class="n">read</span> <span class="n">the</span> <span class="n">logs</span><span class="o">?**</span>
-
-<span class="n">An</span> <span class="n">automatic</span> <span class="n">tail</span> <span class="n">of</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">is</span> <span class="n">started</span> <span class="n">when</span> <span class="n">you</span> <span class="n">execute</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span> <span class="n">The</span> <span class="n">logs</span> <span class="n">are</span> <span class="n">prefixed</span> <span class="n">with</span> <span class="err">`</span><span class="n">filebeat_log</span><span class="err">`</span> <span class="k">in</span> <span class="n">the</span> <span class="n">foreman</span> <span class="n">output</span><span class="p">.</span> <span class="n">If</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">to</span> <span class="n">tail</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">separately</span><span class="p">,</span> <span class="n">they</span> <span class="n">live</span> <span class="n">at</span> <span class="err">`</span><span class="n">tmp</span><span class="o">/</span><span class="n">filebeat</span><span class="o">/</span><span class="n">logs</span><span class="err">`</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="n">can</span> <span class="n">I</span> <span class="n">restart</span> <span class="n">it</span><span class="o">?**</span>
-
-<span class="n">As</span> <span class="n">with</span> <span class="n">any</span> <span class="n">Foreman</span> <span class="n">controlled</span> <span class="n">process</span><span class="p">,</span> <span class="n">simply</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="k">in</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">that</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">re</span> <span class="n">running</span> <span class="n">Foreman</span> <span class="k">in</span> <span class="n">and</span> <span class="n">it</span> <span class="n">will</span> <span class="n">die</span><span class="p">.</span> <span class="n">Simply</span> <span class="n">run</span> <span class="err">`</span><span class="n">foreman</span> <span class="n">start</span><span class="err">`</span> <span class="n">or</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">restart</span><span class="err">`</span> <span class="n">to</span> <span class="n">start</span> <span class="n">up</span> <span class="n">the</span> <span class="n">processes</span> <span class="n">again</span><span class="p">.</span>
-
-
-<span class="cp">#### Elasticsearch</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="k">do</span> <span class="n">I</span> <span class="n">access</span> <span class="n">it</span><span class="o">?**</span>
-
-<span class="n">Elasticsearch</span> <span class="n">should</span> <span class="n">be</span> <span class="n">running</span> <span class="n">at</span> <span class="p">[</span><span class="nl">http</span><span class="p">:</span><span class="c1">//localhost:9200](http://localhost:9200) after you run `osqueryx start`. From there you can interact with it using `curl` and the [Elasticsearch API](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/docs.html).</span>
-
-<span class="o">**</span><span class="n">How</span> <span class="n">does</span> <span class="n">it</span> <span class="n">run</span><span class="o">?**</span>
-
-<span class="n">Elasticsearch</span> <span class="n">is</span> <span class="n">started</span> <span class="n">using</span> <span class="n">Docker</span> <span class="n">and</span> <span class="n">Docker</span> <span class="n">Compose</span><span class="p">.</span> <span class="n">These</span> <span class="n">commands</span> <span class="n">are</span> <span class="n">executed</span> <span class="n">when</span> <span class="n">you</span> <span class="n">run</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span> <span class="n">which</span> <span class="n">will</span> <span class="n">bring</span> <span class="n">the</span> <span class="n">containers</span> <span class="n">up</span> <span class="k">in</span> <span class="n">the</span> <span class="n">background</span> <span class="k">in</span> <span class="n">a</span> <span class="n">running</span> <span class="n">state</span><span class="p">.</span> <span class="n">Docker</span> <span class="n">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">encapsulate</span> <span class="n">Elasticsearch</span> <span class="k">in</span> <span class="n">a</span> <span class="n">Linux</span> <span class="n">environment</span><span class="p">.</span> <span class="n">This</span> <span class="n">allows</span> <span class="n">us</span> <span class="n">to</span> <span class="n">emulate</span> <span class="n">an</span> <span class="n">environment</span> <span class="n">similar</span> <span class="n">to</span> <span class="n">production</span> <span class="n">easily</span><span class="p">.</span>
-
-<span class="o">**</span><span class="n">Where</span> <span class="n">can</span> <span class="n">I</span> <span class="n">read</span> <span class="n">the</span> <span class="n">logs</span><span class="o">?**</span>
-
-<span class="n">An</span> <span class="n">automatic</span> <span class="n">tail</span> <span class="n">of</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">is</span> <span class="n">started</span> <span class="n">when</span> <span class="n">you</span> <span class="n">execute</span> <span class="err">`</span><span class="n">osqueryx</span> <span class="n">start</span><span class="err">`</span><span class="p">.</span> <span class="n">The</span> <span class="n">logs</span> <span class="n">are</span> <span class="n">prefixed</span> <span class="n">with</span> <span class="err">`</span><span class="n">elasticsearch_log</span><span class="err">`</span> <span class="k">in</span> <span class="n">the</span> <span class="n">foreman</span> <span class="n">output</span><span class="p">.</span> <span class="n">If</span> <span class="n">you</span><span class="err">&#39;</span><span class="n">d</span> <span class="n">like</span> <span class="n">to</span> <span class="n">tail</span> <span class="n">these</span> <span class="n">logs</span> <span class="n">separately</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="k">do</span> <span class="n">so</span> <span class="n">by</span> <span class="n">invoking</span> <span class="n">the</span> <span class="n">docker</span> <span class="n">client</span> <span class="n">on</span> <span class="n">the</span> <span class="nl">terminal</span><span class="p">:</span>
+<p>Available alerts can be listed with:</p>
+<div class="highlight"><pre><span></span>$ osqueryx list_alerts
 </pre></div>
 
 
-<p>$ docker logs -f osqueryx_elasticsearch_1</p>
-<div class="highlight"><pre><span></span>**How can I restart it?**
-
-Elasticsearch is run using Docker Compose. If you&#39;d like to restart your running containers, you can run:
+<h4>OSQuery</h4>
+<p><strong>How does it run?</strong></p>
+<p>OSQuery is booted up using Foreman which is executed when you run <code>osqueryx start</code>.</p>
+<p><strong>Where can I read the logs?</strong></p>
+<p>An automatic tail of these logs is started when you execute <code>osqueryx start</code>. The logs are prefixed with <code>OSQuery_log</code> in the foreman output. If you'd like to tail these logs separately, they live in <code>tmp/log/osquery</code>.</p>
+<p><strong>How can I restart it?</strong></p>
+<p>As with any Foreman controlled process, simply CTRL+C in the pane that you're running Foreman in and it will die. Simply run <code>foreman start</code> or <code>osqueryx start</code> to start up the processes again.</p>
+<h4>Filebeat</h4>
+<p><strong>How do I interact with it?</strong></p>
+<p>Not much interaction should be required for Filebeat, however, if you desire to modify the config and restart the process, you would edit the config at <code>config/filebeat.yml</code> and then CTRL+C your Foreman and restart with <code>osqueryx start</code>.</p>
+<p><strong>How does it run?</strong></p>
+<p>Filebeat is booted up using Foreman which is executed when you run <code>osqueryx start</code>. If you want to run this process separately, look at the <code>osqueryx</code> command in the <code>Procfile</code>.</p>
+<p><strong>Where can I read the logs?</strong></p>
+<p>An automatic tail of these logs is started when you execute <code>osqueryx start</code>. The logs are prefixed with <code>filebeat_log</code> in the foreman output. If you'd like to tail these logs separately, they live at <code>tmp/filebeat/logs</code>.</p>
+<p><strong>How can I restart it?</strong></p>
+<p>As with any Foreman controlled process, simply CTRL+C in the pane that you're running Foreman in and it will die. Simply run <code>foreman start</code> or <code>osqueryx restart</code> to start up the processes again.</p>
+<h4>Elasticsearch</h4>
+<p><strong>How do I access it?</strong></p>
+<p>Elasticsearch should be running at <a href="http://localhost:9200">http://localhost:9200</a> after you run <code>osqueryx start</code>. From there you can interact with it using <code>curl</code> and the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/2.4/docs.html">Elasticsearch API</a>.</p>
+<p><strong>How does it run?</strong></p>
+<p>Elasticsearch is started using Docker and Docker Compose. These commands are executed when you run <code>osqueryx start</code> which will bring the containers up in the background in a running state. Docker is used to encapsulate Elasticsearch in a Linux environment. This allows us to emulate an environment similar to production easily.</p>
+<p><strong>Where can I read the logs?</strong></p>
+<p>An automatic tail of these logs is started when you execute <code>osqueryx start</code>. The logs are prefixed with <code>elasticsearch_log</code> in the foreman output. If you'd like to tail these logs separately, you can do so by invoking the docker client on the terminal:</p>
+<div class="highlight"><pre><span></span>$ docker logs -f osqueryx_elasticsearch_1
 </pre></div>
 
 
-<p>$ osqueryx restart</p>
-<div class="highlight"><pre><span></span>to issue a full restart of your containers. Keep in mind this will also restart ElastAlert.
-
-
-**How do I know it&#39;s running?**
-
-You can `curl localhost:9200` to see if Elasticsearch is listening on port 9200 properly. You should see something like this:
+<p><strong>How can I restart it?</strong></p>
+<p>Elasticsearch is run using Docker Compose. If you'd like to restart your running containers, you can run:</p>
+<div class="highlight"><pre><span></span>$ osqueryx restart
 </pre></div>
 
 
-<p>{
-  "name" : "Commando",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "KflM016zREenHcjCrA4dfg",
-  "version" : {
-    "number" : "2.4.4",
-    "build_hash" : "fcbb46dfd45562a9cf00c604b30849a6dec6b017",
-    "build_timestamp" : "2017-01-03T11:33:16Z",
-    "build_snapshot" : false,
-    "lucene_version" : "5.5.2"
+<p>to issue a full restart of your containers. Keep in mind this will also restart ElastAlert.</p>
+<p><strong>How do I know it's running?</strong></p>
+<p>You can <code>curl localhost:9200</code> to see if Elasticsearch is listening on port 9200 properly. You should see something like this:</p>
+<div class="highlight"><pre><span></span>{
+  &quot;name&quot; : &quot;Commando&quot;,
+  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,
+  &quot;cluster_uuid&quot; : &quot;KflM016zREenHcjCrA4dfg&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;2.4.4&quot;,
+    &quot;build_hash&quot; : &quot;fcbb46dfd45562a9cf00c604b30849a6dec6b017&quot;,
+    &quot;build_timestamp&quot; : &quot;2017-01-03T11:33:16Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;5.5.2&quot;
   },
-  "tagline" : "You Know, for Search"
-}</p>
-<div class="highlight"><pre><span></span>You can also look at your running containers by executing `docker ps | grep elasticsearch`:
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
 </pre></div>
 
 
-<p>$ docker ps  | grep elasticsearch
-7f7e28471dbf        osqueryx_elasticsearch   "/elasticsearch_do..."   23 hours ago        Up 23 hours         0.0.0.0:9200-&gt;9200/tcp, 9300/tcp   osqueryx_elasticsearch_1</p>
-<div class="highlight"><pre><span></span>#### ElastAlert
-
-**How do I interact with it?**
-
-ElastAlert automatically detects rule changes on the filesystem and will reload rules accordingly. One magic thing we&#39;re doing in the osqueryx environment is mounting the ElastAlert `rules/` directory in this repo directly to `/opt/rules` in the container, which ElastAlert is configured to watch. Once you modify an alert, no restart of the service is required. Wait patiently and watch the logs for ElastAlert to reload your rule files.
-
-**How does it run?**
-
-ElastAlert is started using Docker and Docker Compose. The commands to bring up the Kibana container are executed when you run `osqueryx start`. You can check to see if it&#39;s running by executing:
+<p>You can also look at your running containers by executing <code>docker ps | grep elasticsearch</code>:</p>
+<div class="highlight"><pre><span></span>$ docker ps  <span class="p">|</span> grep elasticsearch
+7f7e28471dbf        osqueryx_elasticsearch   <span class="s2">&quot;/elasticsearch_do...&quot;</span>   <span class="m">23</span> hours ago        Up <span class="m">23</span> hours         <span class="m">0</span>.0.0.0:9200-&gt;9200/tcp, <span class="m">9300</span>/tcp   osqueryx_elasticsearch_1
 </pre></div>
 
 
-<p>$ docker ps | grep kibana
-```</p>
+<h4>ElastAlert</h4>
+<p><strong>How do I interact with it?</strong></p>
+<p>ElastAlert automatically detects rule changes on the filesystem and will reload rules accordingly. One magic thing we're doing in the osqueryx environment is mounting the ElastAlert <code>rules/</code> directory in this repo directly to <code>/opt/rules</code> in the container, which ElastAlert is configured to watch. Once you modify an alert, no restart of the service is required. Wait patiently and watch the logs for ElastAlert to reload your rule files.</p>
+<p><strong>How does it run?</strong></p>
+<p>ElastAlert is started using Docker and Docker Compose. The commands to bring up the Kibana container are executed when you run <code>osqueryx start</code>. You can check to see if it's running by executing:</p>
+<div class="highlight"><pre><span></span>$ docker ps <span class="p">|</span> grep kibana
+</pre></div>
+
+
 <p><strong>Where can I read the logs?</strong></p>
 <p>Foreman is set up to follow the tail of the logs which are generated by the container. If you'd like to tail this in a different window, you can run <code>docker logs -f osqueryx_elastalert_1</code> in a separate window to read the logs.</p>
 <p><strong>How can I restart it?</strong></p>
