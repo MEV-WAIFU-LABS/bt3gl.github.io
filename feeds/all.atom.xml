@@ -1,106 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-02-01T00:00:00-05:00</updated><entry><title>A Quick Intro to Kubernetes</title><link href="http://bt3gl.github.io/a-quick-intro-to-kubernetes.html" rel="alternate"></link><published>2018-02-01T00:00:00-05:00</published><updated>2018-02-01T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-02-01:/a-quick-intro-to-kubernetes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
-&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
-&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Install kubectl&lt;/h3&gt;
-&lt;p&gt;First you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
-&lt;p&gt;Make sure you have all the auths right, for instance, I do the follow:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Create a auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;Spinning up a Hello World node server in docker&lt;/h3&gt;
-&lt;p&gt;Download &lt;a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make build:
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now, just run the container:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make run
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Which is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -t node_app_test .
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Check whether the server is up:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make curl
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Voilà!&lt;/p&gt;
-&lt;p&gt;You can also check the status of your setup with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make status
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h4&gt;Other useful Docker commands&lt;/h4&gt;
-&lt;p&gt;Exec inside the container:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker &lt;span class="nb"&gt;exec&lt;/span&gt; -i -t &amp;lt;container name from status&amp;gt; /bin/bash
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Check images in disk:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Pushing the Registry to Kubernetes&lt;/h3&gt;
-&lt;p&gt;In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. &lt;/p&gt;
-&lt;p&gt;The system that images for distribution is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt;), you can now deploy the image with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl create -f  node_example_kube_config.yaml
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;After that, you are able to create the service with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  kubectl expose deployment node-app-test
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Also, check out the service status with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Clean up&lt;/h3&gt;
-&lt;p&gt;Removing the service and the deployment when you are done:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl delete service node-app-test
-$ kubectl delete deployment node-app-test
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Useful General Commands&lt;/h2&gt;
-&lt;p&gt;Checking out pods:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get pods --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Checking deployments:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get deployments --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Checking services:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Get more information about a pod:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl describe pod --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt; &amp;lt;pod name&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Some References:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#general-guidelines-and-recommendations"&gt;Dockerfiles good practices&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><published>2017-12-17T00:00:00-05:00</published><updated>2017-12-17T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-17:/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-17T00:00:00-05:00</updated><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><published>2017-12-17T00:00:00-05:00</published><updated>2017-12-17T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-17:/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
 &lt;h2&gt;How Amigo Works&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
@@ -450,7 +349,108 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
 &lt;p&gt;Have a Continuous Delivery pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Introducing OsqueryX</title><link href="http://bt3gl.github.io/introducing-osqueryx.html" rel="alternate"></link><published>2017-07-18T00:00:00-04:00</published><updated>2017-07-18T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>A Quick Intro to Kubernetes</title><link href="http://bt3gl.github.io/a-quick-intro-to-kubernetes.html" rel="alternate"></link><published>2017-12-04T00:00:00-05:00</published><updated>2017-12-04T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-04:/a-quick-intro-to-kubernetes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install kubectl&lt;/h3&gt;
+&lt;p&gt;First you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
+&lt;p&gt;Make sure you have all the auths right, for instance, I do the follow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Spinning up a Hello World node server in docker&lt;/h3&gt;
+&lt;p&gt;Download &lt;a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make build:
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, just run the container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make run
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Which is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker build -t node_app_test .
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Check whether the server is up:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make curl
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voilà!&lt;/p&gt;
+&lt;p&gt;You can also check the status of your setup with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make status
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Other useful Docker commands&lt;/h4&gt;
+&lt;p&gt;Exec inside the container:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker &lt;span class="nb"&gt;exec&lt;/span&gt; -i -t &amp;lt;container name from status&amp;gt; /bin/bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Check images in disk:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker images
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Pushing the Registry to Kubernetes&lt;/h3&gt;
+&lt;p&gt;In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. &lt;/p&gt;
+&lt;p&gt;The system that images for distribution is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt;), you can now deploy the image with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl create -f  node_example_kube_config.yaml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that, you are able to create the service with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  kubectl expose deployment node-app-test
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Also, check out the service status with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;Removing the service and the deployment when you are done:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl delete service node-app-test
+$ kubectl delete deployment node-app-test
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Useful General Commands&lt;/h2&gt;
+&lt;p&gt;Checking out pods:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get pods --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Checking deployments:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get deployments --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Checking services:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl get services --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Get more information about a pod:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl describe pod --namespace&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;ns-name&amp;gt; &amp;lt;pod name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Some References:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#general-guidelines-and-recommendations"&gt;Dockerfiles good practices&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Introducing OsqueryX</title><link href="http://bt3gl.github.io/introducing-osqueryx.html" rel="alternate"></link><published>2017-07-18T00:00:00-04:00</published><updated>2017-07-18T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Installing&lt;/h2&gt;
 &lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
