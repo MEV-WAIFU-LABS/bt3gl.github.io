@@ -108,34 +108,34 @@
                 <p><img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"></p>
 <p>Wanna try Kubernetes for the first time and don't know how to start? No problem! I wrote this quick guide to help some of the junior engineers in my team at Etsy to get started with k8s!</p>
 <p>In this guide I will show you how to spin a quick Node.js server in kubernetes and to grasp some of its main concepts. Read on! <a href="https://github.com/bt3gl/k8s_security">Here is the source code</a>.</p>
-<h2>Install kubectl in your VM</h2>
+<h3>Install kubectl</h3>
+<p>First things first, you will need to install <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> in your machine or VM.</p>
+<p>Make sure you have all the auths right:</p>
 <ol>
 <li>Create a auth token and move to <code>~/.kube</code></li>
 <li>Create a config file and move to <code>~/.kube</code></li>
 </ol>
-<p>If you want to install <code>kubectl</code> in your local machine.</p>
 <h3>Spinning up a Hello World node server in docker</h3>
-<p>Download <a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example">this code</a>.</p>
-<p>Build the image:</p>
+<p>Download <a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example">this code</a> and build the image:</p>
 <div class="highlight"><pre><span></span>$ make build:
 </pre></div>
 
 
-<p>Run the container:</p>
+<p>Now, just run the container:</p>
 <div class="highlight"><pre><span></span>$ make run
 </pre></div>
 
 
+<p>Which is:</p>
 <div class="highlight"><pre><span></span>docker build -t  node_app_test .
 </pre></div>
 
 
-<p>Check whether the server worked:</p>
+<p>Check whether the server is up:</p>
 <div class="highlight"><pre><span></span>$ make curl
 </pre></div>
 
 
-<p>Check container's status:</p>
 <div class="highlight"><pre><span></span>$ make status
 </pre></div>
 
