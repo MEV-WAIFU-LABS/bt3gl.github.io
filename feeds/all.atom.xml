@@ -206,7 +206,7 @@ gcp_attributes:
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Crating Kubeless topic&lt;/h2&gt;
+&lt;h2&gt;Creating Kubeless topic&lt;/h2&gt;
 &lt;p&gt;In Kafka, messages are published into topics. The functions ran by kubeless (consumers) are going to receive these messages by creating the topic:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubeless topic create reactor
 &lt;/pre&gt;&lt;/div&gt;

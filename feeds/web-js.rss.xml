@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>chmod +x singularity.sh - web, js</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Tue, 18 Jul 2017 00:00:00 -0400</lastBuildDate><item><title>Introducing OsqueryX</title><link>http://bt3gl.github.io/introducing-osqueryx.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Installing&lt;/h2&gt;
-&lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;If you get a &lt;code&gt;Success!&lt;/code&gt; message and you've finished the docker setup correctly, you should now be able start with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ osqueryx start
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Installation Notes …&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 18 Jul 2017 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</guid></item><item><title>Get Started with Full Stack Web App with React Development</title><link>http://bt3gl.github.io/get-started-with-full-stack-web-app-with-react-development.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Wed, 14 Jun 2017 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-06-14:/get-started-with-full-stack-web-app-with-react-development.html</guid></item></channel></rss>
+<rss version="2.0"><channel><title>chmod +x singularity.sh - web, js</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Wed, 14 Jun 2017 00:00:00 -0400</lastBuildDate><item><title>Get Started with Full Stack Web App with React Development</title><link>http://bt3gl.github.io/get-started-with-full-stack-web-app-with-react-development.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Wed, 14 Jun 2017 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-06-14:/get-started-with-full-stack-web-app-with-react-development.html</guid></item></channel></rss>
