@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-12-01T02:00:00">
+<abbr class="published" title="2014-12-01T02:00:00-05:00">
       Mon 01 December 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -116,46 +116,46 @@
 	<a href="./tag/wireshark.html"><i class="icon-tag"></i>Wireshark</a>
 </footer><!-- /.post-info -->                </div>
                 <p>During this last weekend, the <a href="https://9447.plumbing/home">9447 CTF</a> took place. One of the <em>misc</em> problems was called <strong>NoSQL</strong> and had the following description, together with an attachment with three files:</p>
-<div class="highlight"><pre>    <span class="n">Hey</span><span class="p">,</span> <span class="n">I</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">understand</span> <span class="n">how</span> <span class="n">SQL</span> <span class="n">works</span> <span class="n">so</span> <span class="n">I</span> <span class="n">made</span> <span class="n">my</span> <span class="n">own</span> <span class="n">NoSQL</span> <span class="n">startup</span><span class="p">.</span> <span class="n">And</span> <span class="n">OpenSSL</span> <span class="n">is</span> <span class="n">bloody</span> <span class="n">crap</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>    Hey, I don&#39;t understand how SQL works so I made my own NoSQL startup. And OpenSSL is bloody crap.
 
-    <span class="nl">ip:</span> <span class="mf">54.148.249.150</span>
-    <span class="nl">port:</span> <span class="mi">4479</span>
+    ip: 54.148.249.150
+    port: 4479
 </pre></div>
 
 
 <h3>The Client File</h3>
 <p>The first file was a  script <strong>client.py</strong>, where, by using Python's <a href="https://docs.python.org/2/library/socket.html">socket</a> library, showed how a connection to the server could be made:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
 
 <span class="k">class</span> <span class="nc">EncryptedStream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="n">key</span> <span class="o">=</span> <span class="s">&#39;this is not the flag nor the key&#39;</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+  <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;this is not the flag nor the key&#39;</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
   <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">:</span>
-      <span class="n">msg</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span>
+      <span class="n">msg</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span>
     <span class="n">iv</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
     <span class="n">aes</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_ECB</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
     <span class="n">enc</span> <span class="o">=</span> <span class="n">aes</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">enc</span><span class="p">)))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">enc</span><span class="p">)))</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">enc</span><span class="p">)</span>
   <span class="k">def</span> <span class="nf">recv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">nbytes</span><span class="p">)</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;</span><span class="se">\</span>
-<span class="s">HELLO</span>
-<span class="s">SHOW VERSION</span>
-<span class="s">SET example This tiny script is basically a RedisStore...</span>
-<span class="s">GET example</span>
-<span class="s">SHOW KEYS</span>
-<span class="s">SET brucefact#1 Bruce Schneier can break elliptic curve cryptography by bending it into a circle</span>
-<span class="s">SET brucefact#2 Bruce Schneier always cooks his eggs scrambled. When he wants hardboiled eggs, he unscrambles them</span>
-<span class="s">SET brucefact#3 Bruce Schneier could solve this by inverting md5 hash of the flag</span>
-<span class="s">ENCRYPTION HEX</span>
-<span class="s">MD5 flag</span>
-<span class="s">&#39;&#39;&#39;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span><span class="se">\</span>
+<span class="s1">HELLO</span>
+<span class="s1">SHOW VERSION</span>
+<span class="s1">SET example This tiny script is basically a RedisStore...</span>
+<span class="s1">GET example</span>
+<span class="s1">SHOW KEYS</span>
+<span class="s1">SET brucefact#1 Bruce Schneier can break elliptic curve cryptography by bending it into a circle</span>
+<span class="s1">SET brucefact#2 Bruce Schneier always cooks his eggs scrambled. When he wants hardboiled eggs, he unscrambles them</span>
+<span class="s1">SET brucefact#3 Bruce Schneier could solve this by inverting md5 hash of the flag</span>
+<span class="s1">ENCRYPTION HEX</span>
+<span class="s1">MD5 flag</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
 <span class="n">stream</span> <span class="o">=</span> <span class="n">EncryptedStream</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
 <span class="n">stream</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
@@ -171,10 +171,10 @@
 <h3>The Server File</h3>
 <p>The second file was the <strong>server.py</strong> script, which is basically a <a href="http://redis.io/">Redis</a> like database (hence, the <em>nosql</em> title). Unlike SQL databases, Redis <em>maps keys to types of values</em>. In this challenge, the idea was to recover an entry that had the key <strong>flag</strong> returning the value of the flag.</p>
 <p>In the script below, besides creating this database, functions such as: <strong>AES decrypting</strong> (encryption), <strong>MD5</strong> (hashing), and <strong>hex</strong> (enconding) are implemented using Python's library:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
 
-<span class="n">key</span> <span class="o">=</span> <span class="s">&#39;this is not the flag nor the key&#39;</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
+<span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;this is not the flag nor the key&#39;</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
 <span class="n">db</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">md5</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -184,21 +184,21 @@
   <span class="n">iv</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
   <span class="n">aes</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_ECB</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
   <span class="n">data</span> <span class="o">=</span> <span class="n">aes</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\0</span><span class="s">&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">reply_plain</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-  <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">reply_hex</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-  <span class="c"># This is totally encrypted, right?</span>
-  <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;hex&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+  <span class="c1"># This is totally encrypted, right?</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
   <span class="k">global</span> <span class="n">db</span>
   <span class="n">reply</span> <span class="o">=</span> <span class="n">reply_plain</span>
 
-  <span class="n">datalen</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="n">data</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+  <span class="n">datalen</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;I&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
   <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="n">datalen</span><span class="p">:</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
@@ -206,49 +206,49 @@
     <span class="n">data</span> <span class="o">+=</span> <span class="n">s</span>
   <span class="n">data</span> <span class="o">=</span> <span class="n">decrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-  <span class="n">commands</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+  <span class="n">commands</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
   <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">commands</span><span class="p">:</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cmd</span><span class="p">:</span>
       <span class="k">continue</span>
-    <span class="k">if</span> <span class="s">&#39; &#39;</span> <span class="ow">in</span> <span class="n">cmd</span><span class="p">:</span>
-      <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39; &#39;</span> <span class="ow">in</span> <span class="n">cmd</span><span class="p">:</span>
+      <span class="n">cmd</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;HELLO&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="s">&#39;WELCOME&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;SHOW&#39;</span><span class="p">:</span>
-      <span class="k">if</span> <span class="n">args</span> <span class="o">==</span> <span class="s">&#39;VERSION&#39;</span><span class="p">:</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&#39;NoRedisSQL v1.0&#39;</span><span class="p">)</span>
-      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s">&#39;KEYS&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;HELLO&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;WELCOME&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;SHOW&#39;</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">args</span> <span class="o">==</span> <span class="s1">&#39;VERSION&#39;</span><span class="p">:</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;NoRedisSQL v1.0&#39;</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s1">&#39;KEYS&#39;</span><span class="p">:</span>
         <span class="n">reply</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
-      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s">&#39;ME THE MONEY&#39;</span><span class="p">:</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&quot;Jerry, doesn&#39;t it make you feel good just to say that!&quot;</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s1">&#39;ME THE MONEY&#39;</span><span class="p">:</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s2">&quot;Jerry, doesn&#39;t it make you feel good just to say that!&quot;</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&#39;u w0t m8&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;SET&#39;</span><span class="p">:</span>
-      <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;u w0t m8&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;SET&#39;</span><span class="p">:</span>
+      <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
       <span class="n">db</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-      <span class="n">reply</span><span class="p">(</span><span class="s">&#39;OK&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;GET&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="n">args</span> <span class="o">+</span> <span class="s">&#39;: &#39;</span> <span class="o">+</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">))</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;SNIPPET&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="n">args</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;...&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;MD5&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="n">md5</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)))</span>
-    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;ENCRYPTION&#39;</span><span class="p">:</span>
-      <span class="k">if</span> <span class="n">args</span> <span class="o">==</span> <span class="s">&#39;HEX&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;OK&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="n">args</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;SNIPPET&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="n">args</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;MD5&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="n">md5</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)))</span>
+    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;ENCRYPTION&#39;</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">args</span> <span class="o">==</span> <span class="s1">&#39;HEX&#39;</span><span class="p">:</span>
         <span class="n">reply</span> <span class="o">=</span> <span class="n">reply_hex</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&#39;OK&#39;</span><span class="p">)</span>
-      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s">&#39;OFF&#39;</span><span class="p">:</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;OK&#39;</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="n">args</span> <span class="o">==</span> <span class="s1">&#39;OFF&#39;</span><span class="p">:</span>
         <span class="n">reply</span> <span class="o">=</span> <span class="n">reply_plain</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&#39;OK&#39;</span><span class="p">)</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;OK&#39;</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="n">reply</span><span class="p">(</span><span class="s">&#39;u w0t m8&#39;</span><span class="p">)</span>
+        <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;u w0t m8&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="s">&#39;Unknown command </span><span class="si">%r</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+      <span class="n">reply</span><span class="p">(</span><span class="s1">&#39;Unknown command </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
   <span class="n">signal</span><span class="o">.</span><span class="n">alarm</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
   <span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGALRM</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
   <span class="n">main</span><span class="p">()</span>
@@ -259,9 +259,9 @@
 <p>In addition, a crucial detail is to understand how the client encrypts the commands using the <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_.28ECB.29">electronic codebook (ECB)</a> block cipher type. In this type of operation the message is divided into blocks that are encrypted separately (<a href="https://www.dlitz.net/software/pycrypto/api/2.6/">PyCryptos's AES.MODE_ECB</a>).</p>
 <h3>The PCAP File</h3>
 <p>The last file was a <strong>pcap</strong> dump. When opening it with <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">Wireshark</a>, I verified it was really short, and the content was simply a <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">TCP handshake</a>. Right-clicking some packet and selecting <em>Follow TCP Stream</em> returned the dump of the connection suggested by the <strong>client.py</strong> script:</p>
-<p><img alt="" src="http://i.imgur.com/2Y6aaW1.png" /></p>
+<p><img alt="" src="http://i.imgur.com/2Y6aaW1.png"></p>
 <p>However, we see that the database has already an entry for flag:</p>
-<div class="highlight"><pre><span class="p">[</span><span class="err">&#39;</span><span class="n">flag</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">example</span><span class="err">&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span>[&#39;flag&#39;, &#39;example&#39;]
 </pre></div>
 
 
@@ -270,32 +270,32 @@
 <p>As it was expected, searching for this hash in the usual channels (for example <a href="http://hash-killer.com/">here</a>, <a href="http://www.md5this.com/">here</a>, or <a href="http://www.hashkiller.co.uk/">here</a>) was not successful: <em>brute force it is not the way to go</em>.</p>
 <h3>Solving the Challenge</h3>
 <p>It's pretty clear from our <strong>server.py</strong> script that we could craft a direct request to the server to get our flag before it is hashed to MD5. For example, if the request <em>GET flag</em>,</p>
-<div class="highlight"><pre>    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;GET&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="n">args</span> <span class="o">+</span> <span class="s">&#39;: &#39;</span> <span class="o">+</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span>    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="n">args</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
 </pre></div>
 
 
 <p>is exactly like <em>MD5 flag</em>, without the hashing:</p>
-<div class="highlight"><pre>    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s">&#39;MD5&#39;</span><span class="p">:</span>
-      <span class="n">reply</span><span class="p">(</span><span class="n">md5</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span>    <span class="k">elif</span> <span class="n">cmd</span> <span class="o">==</span> <span class="s1">&#39;MD5&#39;</span><span class="p">:</span>
+      <span class="n">reply</span><span class="p">(</span><span class="n">md5</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)))</span>
 </pre></div>
 
 
 <p>However, we do not have the AES key used by the server, only an example of communication given by the PCAP file. How do we get to send a <strong>GET flag</strong> message?</p>
 <p>The first thing that comes  to our minds is to use the network dump to replay the message, re-shaping it somehow to have a <em>GET flag</em>.  Remember that the blocks have a size of 16, and we see two blocks that are particularly interesting:</p>
-<div class="highlight"><pre><span class="n">ION</span> <span class="n">HEX</span>
-<span class="n">MD5</span> <span class="n">flag</span>
+<div class="highlight"><pre><span></span>ION HEX
+MD5 flag
 </pre></div>
 
 
 <p>and</p>
-<div class="highlight"><pre><span class="n">edisStore</span><span class="p">...</span>
-<span class="n">GET</span>
+<div class="highlight"><pre><span></span>edisStore...
+GET
 </pre></div>
 
 
 <p>Now we check how the oracle responds to several types of responses:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span> <span class="n">client</span><span class="p">.</span><span class="n">py</span> <span class="mf">54.148.249.150</span> <span class="mi">4479</span>
+<div class="highlight"><pre><span></span>$ python client.py <span class="m">54</span>.148.249.150 <span class="m">4479</span>
 </pre></div>
 
 
@@ -307,20 +307,6 @@
 </ol>
 <h2><strong>Awesome!</strong></h2>
                 </div><!-- /.entry-content -->
-                <div class="comments">
-                <h2>Comments !</h2>
-                        <div id="disqus_thread"></div>
-                        <script type="text/javascript">
-                           var disqus_identifier = "on-redis-aes-encryption-in-the-9447s-ctf.html";
-                           (function() {
-                                var dsq = document.createElement('script');
-                                dsq.type = 'text/javascript'; dsq.async = true;
-                                dsq.src = 'http://bt3gl.disqus.com/embed.js';
-                                (document.getElementsByTagName('head')[0] ||
-                                 document.getElementsByTagName('body')[0]).appendChild(dsq);
-                          })();
-                        </script>
-                </div>
         </article>
 </section>
         </div><!--/span-->
