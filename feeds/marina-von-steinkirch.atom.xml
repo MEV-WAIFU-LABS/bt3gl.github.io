@@ -1,49 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Marina von Steinkirch</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/marina-von-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-16T00:00:00-05:00</updated><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><published>2017-12-16T00:00:00-05:00</published><updated>2017-12-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-16:/introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Installing Kubeless&lt;/h2&gt;
-&lt;p&gt;Follow &lt;a href="https://github.com/kubeless/kubeless"&gt;this instructions&lt;/a&gt;. Customize Kubeless config file at &lt;code&gt;kubeless-config.yaml&lt;/code&gt; and then run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make kl
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Creating Kubeless topic&lt;/h2&gt;
-&lt;p&gt;In Kafka, messages are published into topics. The functions ran by kubeless (consumers) are going to receive these messages by creating the topic:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubeless topic create reactor
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Firing Up Containers&lt;/h2&gt;
-&lt;p&gt;To run a logstash, elastsearch, zookeeper and kafka (producers) so that it outputs to Kafka's topic for kubeless, run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pipeline
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;Debugging&lt;/h2&gt;
-&lt;p&gt;To debug any pods (&lt;code&gt;kubeless&lt;/code&gt; or &lt;code&gt;kafka&lt;/code&gt; or &lt;code&gt;zoo&lt;/code&gt;), grab the name with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pods
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;and then run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl logs &amp;lt;podname&amp;gt;  --namespace&lt;span class="o"&gt;=&lt;/span&gt;kubeless
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr&gt;
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/kubeless/kubeless"&gt;Kubeless github repository.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/"&gt;Kubernetes CustomResourceDefiniton.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://serverless.com/framework/docs/providers/kubeless/"&gt;Kubeless serveless documentation.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.beyondthelines.net/computing/kafka-patterns/"&gt;Kafka Concepts and Common Patterns&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Marina von Steinkirch</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/marina-von-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-12T00:00:00-05:00</updated><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
 &lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
 &lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
@@ -254,7 +210,51 @@ $ kubectl delete deployment node-app-test
 &lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#general-guidelines-and-recommendations"&gt;Dockerfiles good practices&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Lots of Machine Learning and DNN</title><link href="http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html" rel="alternate"></link><published>2016-12-02T00:00:00-05:00</published><updated>2016-12-02T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><published>2017-11-16T00:00:00-05:00</published><updated>2017-11-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-16:/introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
+&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
+&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Installing Kubeless&lt;/h2&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/kubeless/kubeless"&gt;this instructions&lt;/a&gt;. Customize Kubeless config file at &lt;code&gt;kubeless-config.yaml&lt;/code&gt; and then run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make kl
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Creating Kubeless topic&lt;/h2&gt;
+&lt;p&gt;In Kafka, messages are published into topics. The functions ran by kubeless (consumers) are going to receive these messages by creating the topic:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubeless topic create reactor
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Firing Up Containers&lt;/h2&gt;
+&lt;p&gt;To run a logstash, elastsearch, zookeeper and kafka (producers) so that it outputs to Kafka's topic for kubeless, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pipeline
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Debugging&lt;/h2&gt;
+&lt;p&gt;To debug any pods (&lt;code&gt;kubeless&lt;/code&gt; or &lt;code&gt;kafka&lt;/code&gt; or &lt;code&gt;zoo&lt;/code&gt;), grab the name with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pods
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and then run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl logs &amp;lt;podname&amp;gt;  --namespace&lt;span class="o"&gt;=&lt;/span&gt;kubeless
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/kubeless/kubeless"&gt;Kubeless github repository.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/"&gt;Kubernetes CustomResourceDefiniton.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://serverless.com/framework/docs/providers/kubeless/"&gt;Kubeless serveless documentation.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.beyondthelines.net/computing/kafka-patterns/"&gt;Kafka Concepts and Common Patterns&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Lots of Machine Learning and DNN</title><link href="http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html" rel="alternate"></link><published>2016-12-02T00:00:00-05:00</published><updated>2016-12-02T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;At Apple I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
