@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Sun, 17 Dec 2017 00:00:00 -0500</lastBuildDate><item><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link>http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
-&lt;h2&gt;How Amigo Works&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; For each …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sun, 17 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-17:/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</guid></item><item><title>Introducing a GCP Pub/Sub Message Framework</title><link>http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Sat, 16 Dec 2017 00:00:00 -0500</lastBuildDate><item><title>Introducing a GCP Pub/Sub Message Framework</title><link>http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
 &lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes …&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sat, 16 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-16:/introducing-a-gcp-pubsub-message-framework.html</guid></item><item><title>18 Tips for Website Performance</title><link>http://bt3gl.github.io/18-tips-for-website-performance.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
 &lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
 &lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 12 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</guid></item><item><title>A Quick Intro to Kubernetes</title><link>http://bt3gl.github.io/a-quick-intro-to-kubernetes.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
-&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Mon, 04 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-04:/a-quick-intro-to-kubernetes.html</guid></item><item><title>Introducing OsqueryX</title><link>http://bt3gl.github.io/introducing-osqueryx.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Installing&lt;/h2&gt;
-&lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;If you get a &lt;code&gt;Success!&lt;/code&gt; message and you've finished the docker setup correctly, you should now be able start with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ osqueryx start
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Installation Notes …&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 18 Jul 2017 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</guid></item></channel></rss>
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Mon, 04 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-04:/a-quick-intro-to-kubernetes.html</guid></item><item><title>Lots of Machine Learning and DNN</title><link>http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;At Apple I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Dec 2016 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</guid></item><item><title>Introducing my Grey Hacker Bag of Fun</title><link>http://bt3gl.github.io/introducing-my-grey-hacker-bag-of-fun.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/19.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Throughout my many years of hacking I have been accumulating so many resources: books, scripts, tools, how-to, etc. I realized it's time to share them!&lt;/p&gt;
+&lt;p&gt;Please check out my &lt;a href="https://github.com/bt3gl/Gray-Hacker-Resources"&gt;gray hacker github repo&lt;/a&gt;, where I have indexed everything by subject:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CTFs and WARGAMES&lt;/li&gt;
+&lt;li&gt;CRYPTOGRAPHY&lt;/li&gt;
+&lt;li&gt;FORENSICS&lt;/li&gt;
+&lt;li&gt;LINUX HACKING&lt;/li&gt;
+&lt;li&gt;MEMORY EXPLOITS&lt;/li&gt;
+&lt;li&gt;VULNERABILITIES …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>
