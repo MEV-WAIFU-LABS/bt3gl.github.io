@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - vr, ar, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/vr-ar-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-23T00:00:00-04:00</updated><entry><title>To All the AR &amp; VR Groms Out There</title><link href="http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html" rel="alternate"></link><published>2018-06-23T00:00:00-04:00</published><updated>2018-06-23T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-23:/to-all-the-ar-vr-groms-out-there.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone! &lt;/p&gt;
-&lt;p&gt;I am now a &lt;a href="https://en.wiktionary.org/wiki/grom"&gt;grom&lt;/a&gt; AR/VR software engineer and this is a small compilation of some of the resources that I have been learning and reading from. &lt;/p&gt;
+&lt;p&gt;I am now a &lt;a href="https://en.wiktionary.org/wiki/grom"&gt;grom&lt;/a&gt; AR &amp;amp; VR software engineer and this is a small compilation of some of the resources that I have been learning and reading from. &lt;/p&gt;
 &lt;p&gt;Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;AR …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone! &lt;/p&gt;
-&lt;p&gt;I am now a &lt;a href="https://en.wiktionary.org/wiki/grom"&gt;grom&lt;/a&gt; AR/VR software engineer and this is a small compilation of some of the resources that I have been learning and reading from. &lt;/p&gt;
+&lt;p&gt;I am now a &lt;a href="https://en.wiktionary.org/wiki/grom"&gt;grom&lt;/a&gt; AR &amp;amp; VR software engineer and this is a small compilation of some of the resources that I have been learning and reading from. &lt;/p&gt;
 &lt;p&gt;Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
@@ -27,18 +27,23 @@
 &lt;li&gt;&lt;a href="https://blog.viromedia.com/tutorial-image-recognition-how-to-markers-showcase-product-retail-arkit-arcore-augmented-reality-dc4ce7e7c8f"&gt;Tutorial: Image Recognition - How to use markers to showcase a product in AR&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.viromedia.com/image-marker-recognition-arcore-android-augmented-reality-1855981f5165"&gt;Image/Marker Recognition for ARCore (Android)&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://medium.com/tag/augmented-reality"&gt;Medium's Augmented Reality&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.reddit.com/r/ARKitCreators/"&gt;r/ARKitCreators/&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/ARKitCreators/"&gt;r/ARKitCreators&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/LearnARdev/"&gt;r/LearnARdev&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Learning&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/documentation/arkit/building_your_first_ar_experience"&gt;Building Your First AR Experience&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://experiments.withgoogle.com/collection/ar"&gt;Google's AR Experiments&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udemy.com/ios11augmentedrealitycourse"&gt;The Complete iOS 11 ARKit Developer Course&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udemy.com/ios-augmented-reality-the-complete-course-on-arkit/?siteID=Fh5UMknfYAU-KPE8Y4QfnASNEKPRXdbq1Q&amp;amp;LSNPUBID=Fh5UMknfYAU"&gt;iOS Augmented Reality curs on ArKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.udemy.com/arkit-portal-learn-how-to-create-a-portal-using-arkit/learn/v4/overview"&gt;Augmented Reality Portal using ARKit&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udemy.com/arkit-course-ios-11-build-3-awesome-ar-apps/?siteID=Fh5UMknfYAU-nmxSqJMfNu9HQNLs4PkWJA&amp;amp;LSNPUBID=Fh5UMknfYAU"&gt;ARKit Unity &amp;amp; Xcode - Build 7 Augmented Reality apps&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udemy.com/mastering-arkit-for-ios-using-swift"&gt;Mastering ARKit for iOS&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.udemy.com/learn-arkit-for-ios-from-scratch/?siteID=Fh5UMknfYAU-yVHIgFgDQIzJUKXRiABlOA&amp;amp;LSNPUBID=Fh5UMknfYAU"&gt;Learn ARKit 2 for iOS 12 from Scratch&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://in.udacity.com/course/learn-arkit--nd114"&gt;Lear ARKit&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.madewitharkit.com/"&gt;Made with ARKit&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.betawave.io/a-software-engineers-guide-to-unity-and-ar-vr-development-part-1-c20ce973bf8e"&gt;A Software Engineer’s Guide to Unity and AR/VR Development&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://hackernoon.com/building-ar-vr-with-javascript-and-html-28acd1da0371"&gt;Building AR/VR with Javascript and HTML&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Virtual_reality"&gt;Virtual Reality&lt;/a&gt;&lt;/h1&gt;
@@ -97,6 +102,7 @@
 &lt;li&gt;&lt;a href="https://blog.vive.com/us/"&gt;Vive Blog&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://thinkmobiles.com/blog/"&gt;Think Mobiles&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://forum.xda-developers.com/mobile-vr"&gt;XDA Developers&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://haptic.al/"&gt;Haptic.al&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;VR Channels&lt;/h2&gt;
 &lt;ul&gt;
