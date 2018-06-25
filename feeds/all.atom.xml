@@ -11,11 +11,12 @@
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;AR Platforms&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/augmented-reality/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;:  Apple’s developer portal for ARKit.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/arkit/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;:  Apple’s developer portal for ARKit.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://developers.google.com/ar/"&gt;ARCore Developer Portal (Google)&lt;/a&gt;:  Google’s developer portal for ARCore.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Quintessential Readings&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/design/human-interface-guidelines/ios/system-capabilities/augmented-reality/"&gt;Apple's Human Interface Guidelines&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://render.betaworks.com/the-state-of-mobile-ar-a-platform-overview-9f8cd9ec91f4"&gt;The State of Mobile AR: A Platform Overview&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://medium.com/6d-ai/ar-first-mobile-second-614e85673083"&gt;AR-First Mobile second&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://medium.com/6d-ai/how-is-arcore-better-than-arkit-5223e6b3e79d"&gt;How is ARCore better than ARKit&lt;/a&gt;.&lt;/li&gt;
