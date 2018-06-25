@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - vr, ar, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/vr-ar-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-23T00:00:00-04:00</updated><entry><title>To All the AR &amp; VR Groms Out There</title><link href="http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html" rel="alternate"></link><published>2018-06-23T00:00:00-04:00</published><updated>2018-06-23T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-23:/to-all-the-ar-vr-groms-out-there.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - vr, ar, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/vr-ar-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-21T00:00:00-04:00</updated><entry><title>To All the AR &amp; VR Groms Out There</title><link href="http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html" rel="alternate"></link><published>2018-06-21T00:00:00-04:00</published><updated>2018-06-21T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-21:/to-all-the-ar-vr-groms-out-there.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone! &lt;/p&gt;
 &lt;p&gt;I am now a &lt;a href="https://en.wiktionary.org/wiki/grom"&gt;grom&lt;/a&gt; AR &amp;amp; VR software engineer and this is a small compilation of some of the resources that I have been learning and reading from. &lt;/p&gt;
 &lt;p&gt;Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
@@ -43,6 +43,10 @@
 &lt;li&gt;&lt;a href="http://www.madewitharkit.com/"&gt;Made with ARKit&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.betawave.io/a-software-engineers-guide-to-unity-and-ar-vr-development-part-1-c20ce973bf8e"&gt;A Software Engineer’s Guide to Unity and AR/VR Development&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://hackernoon.com/building-ar-vr-with-javascript-and-html-28acd1da0371"&gt;Building AR/VR with Javascript and HTML&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Code Samples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/documentation/arkit/swiftshot_creating_a_game_for_augmented_reality"&gt;SwiftShot: Creating a Game for Augmented Reality&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Virtual_reality"&gt;Virtual Reality&lt;/a&gt;&lt;/h1&gt;
