@@ -262,7 +262,7 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;/ul&gt;
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
-&lt;p&gt;Have a Continuous Delivery pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
+&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Spin up a Node.JS Server in Kubernetes in 10 Minutes</title><link href="http://bt3gl.github.io/spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html" rel="alternate"></link><published>2017-12-04T00:00:00-05:00</published><updated>2017-12-04T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-04:/spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hey everyone!&lt;/p&gt;
 &lt;p&gt;I wrote this quick guide to help you to get started with k8s in 10 min.&lt;/p&gt;
