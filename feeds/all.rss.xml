@@ -8,7 +8,10 @@
 &lt;li&gt;&lt;a href="https://developer.apple.com/arkit/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;:  Apple’s developer portal …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Thu, 21 Jun 2018 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2018-06-21:/to-all-the-ar-vr-groms-out-there.html</guid></item><item><title>18 Tips for Website Performance</title><link>http://bt3gl.github.io/18-tips-for-website-performance.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
 &lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
-&lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 12 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</guid></item><item><title>Lots of Machine Learning and DNN</title><link>http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 12 Dec 2017 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</guid></item><item><title>Getting Started with React Development in 5 Minutes</title><link>http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey Everyone!&lt;/p&gt;
+&lt;p&gt;The VR world is a lot of React and there is so many things I want to share with you! I am starting to write a series of post teaching React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I am showing how easy …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Thu, 01 Jun 2017 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2017-06-01:/getting-started-with-react-development-in-5-minutes.html</guid></item><item><title>Lots of Machine Learning and DNN</title><link>http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;At Apple I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
@@ -23,21 +26,4 @@
 &lt;li&gt;FORENSICS&lt;/li&gt;
 &lt;li&gt;LINUX HACKING&lt;/li&gt;
 &lt;li&gt;MEMORY EXPLOITS&lt;/li&gt;
-&lt;li&gt;VULNERABILITIES …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item><item><title>Studies in AI &amp; Pixels &amp; Waves - #12</title><link>http://bt3gl.github.io/studies-in-ai-pixels-waves-12.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;h1&gt;In the Arxivs&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://arxiv.org/abs/1610.03017"&gt;Fully Character-Level Neural Machine Translation without Explicit Segmentation&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://ismir2015.uma.es/articles/276_Paper.pdf"&gt;Modeling Genre with The Music Genome Project&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;In the News&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://docs.google.com/document/d/1PcNYtTDC7XuG1O_JSdfj3QOQ7T4pvQxsr_-CT2OZXwI/edit"&gt;OpenAI's Unconference Notes&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.fastcompany.com/3063053/beyond-siri-the-next-generation-of-ai-assistants-is-smarter-specialists"&gt;Beyond Siri, The Next-Generation AI Assistants Are Smarter Specialists&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;Interesting Videos&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://yanpanlau.github.io/2016/10/11/Torcs-Keras.html"&gt;Using Keras and Deep Deterministic Policy Gradient to play TORCS&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1&gt;Some Slides &amp;amp; Classes&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="http://musicinformationretrieval.com/"&gt;Notes on …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sat, 08 Oct 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-10-08:/studies-in-ai-pixels-waves-12.html</guid></item></channel></rss>
+&lt;li&gt;VULNERABILITIES …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>

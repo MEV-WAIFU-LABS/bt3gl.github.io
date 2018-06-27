@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - web, js</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-js.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-06-14T00:00:00-04:00</updated><entry><title>Get Started with Full Stack Web App with React Development</title><link href="http://bt3gl.github.io/get-started-with-full-stack-web-app-with-react-development.html" rel="alternate"></link><published>2017-06-14T00:00:00-04:00</published><updated>2017-06-14T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-06-14:/get-started-with-full-stack-web-app-with-react-development.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/12.jpg" width="400px"&gt;&lt;/p&gt;</content></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - web, js</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-js.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-06-01T00:00:00-04:00</updated><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><published>2017-06-01T00:00:00-04:00</published><updated>2017-06-01T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-06-01:/getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey Everyone!&lt;/p&gt;
+&lt;p&gt;The VR world is a lot of React and there is so many things I want to share with you! I am starting to write a series of post teaching React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I am showing how easy …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hey Everyone!&lt;/p&gt;
+&lt;p&gt;The VR world is a lot of React and there is so many things I want to share with you! I am starting to write a series of post teaching React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I am showing how easy is to start with react in 5 minutes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install Node.js and Yarn.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew install node
+$ brew install yarn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install &lt;a href="https://github.com/facebook/create-react-app"&gt;create-react-app&lt;/a&gt;. This awesome framework abstracts away all the complexity of implementing &lt;a href="https://webpack.js.org/"&gt;Webpack&lt;/a&gt;, &lt;a href="https://babeljs.io/"&gt;Babel&lt;/a&gt;, a dev server, a production build process, and other critical things.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create Your App&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yarn create react-app &amp;lt;your-app-name&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;Run it!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;your-app-name&amp;gt;
+$ yarn start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Edit &lt;code&gt;src/App.js&lt;/code&gt; and see it being update instantly in your browser at &lt;code&gt;http://localhost:3000/&lt;/code&gt;. The directory structure is the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;node_modules&lt;/code&gt;: holds all the third-party code, such as React.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;public&lt;/code&gt;: where our static assets go, like our favicon. It also keeps the project's HTML file. Because React is all JavaScript, you only really need the HTML file to update the &lt;head&gt; (title and meta tags).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;src&lt;/code&gt; is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Test it at home and stay tunned for the next episode! 🦄&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
