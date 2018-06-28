@@ -26,7 +26,7 @@
 &lt;li&gt;&lt;code&gt;Main.storyboard&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;Scene.swift&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;This is where the anchor is created, the class that manages the Sprite scene (Scene.sks).  This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control how the App is operating with the scene. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
+&lt;p&gt;Anchors are 3D points that correspond real world features that ARKit detects. This class is where the anchor is created, and also manages the Sprite scene (Scene.sks). This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control how the App is operating with the scene. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
 &lt;p&gt;For our App, we are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Defining the method &lt;code&gt;touchesBegan&lt;/code&gt;, where we define what happens when we click the scene.&lt;/li&gt;
