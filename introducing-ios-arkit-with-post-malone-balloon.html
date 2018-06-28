@@ -108,7 +108,7 @@
                 <p><img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"></p>
 <p>Hi Everyone!</p>
 <p>I am starting a series of posts where <strong><em>I go deep into AR &amp; VR through fun examples</em></strong> and I'd love you to join me!</p>
-<p>Today I am going to show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>, a framework that provides you high level classes for <strong>tracking</strong>, <strong>scene understanding</strong> and <strong>rendering</strong>. This app runs an ARKit world tracking session with content displayed in a SceneKit view.</p>
+<p>Today I am going to show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>, a framework that provides you high level classes for <strong>tracking</strong>, <strong>scene understanding</strong> and <strong>rendering</strong>. This app runs an ARKit world tracking session with content displayed in a <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a> 2D view.</p>
 <p>We are going to dive into a simple but fun <a href="https://github.com/bt3gl/AR_PostMalone">App where you can insert Post Malone balloons</a> into your reality.</p>
 <p>Before everything, I recommend you to watch <a href="https://developer.apple.com/videos/play/wwdc2017/602/">WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'</a>. It gives a nice overview of ARKit's capabilities.</p>
 <h2>The source code for AR_PostMalone the following structure:</h2>
@@ -128,16 +128,17 @@
 <li><code>Main.storyboard</code>.</li>
 </ul>
 <h2><code>Scene.swift</code></h2>
-<p>This module is where you call the class <code>Scene</code> to control how the App is operating with the scene. Here we are using <a href="https://developer.apple.com/arkit/">ARKit</a> and <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a>. Rendering brings tracking and scene understanding together with your content.</p>
+<p>This is where the anchor is created, the class that manages the Sprite scene (Scene.sks).  This module is where you call the class <code>Scene</code> to control how the App is operating with the scene. Rendering brings tracking and scene understanding together with your content.</p>
 <p>For our App, we are:</p>
 <ul>
 <li>Defining the method <code>touchesBegan</code>, where we define what happens when we click the scene.</li>
 <li>The sequence of movements is defined by <code>let sequence = SKAction.sequence([popSound, moveDown, moveDownFloating, moveToBottom])</code>.</li>
 <li>When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (<code>moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown</code>).</li>
 <li>The balloon either pops (<code>let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)</code>) or fades after a second (<code>fadeOut = SKAction.fadeOut(withDuration: 1.0)</code>).</li>
+<li>An ARAnchor uses a 4×4 matrix represents the combined position, rotation or orientation, and scale of an object in three-dimensional space.</li>
 </ul>
 <h2><code>ViewController.swift</code></h2>
-<p>The ViewController class inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
+<p>This view is managed by the class ViewController, which inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
 <ul>
 <li>
 <p>Views</p>

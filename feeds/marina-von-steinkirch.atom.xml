@@ -5,7 +5,7 @@
 &lt;p&gt;Today I am going to show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high level …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
 &lt;p&gt;I am starting a series of posts where &lt;strong&gt;&lt;em&gt;I go deep into AR &amp;amp; VR through fun examples&lt;/em&gt;&lt;/strong&gt; and I'd love you to join me!&lt;/p&gt;
-&lt;p&gt;Today I am going to show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt; and &lt;strong&gt;rendering&lt;/strong&gt;. This app runs an ARKit world tracking session with content displayed in a SceneKit view.&lt;/p&gt;
+&lt;p&gt;Today I am going to show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt; and &lt;strong&gt;rendering&lt;/strong&gt;. This app runs an ARKit world tracking session with content displayed in a &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt; 2D view.&lt;/p&gt;
 &lt;p&gt;We are going to dive into a simple but fun &lt;a href="https://github.com/bt3gl/AR_PostMalone"&gt;App where you can insert Post Malone balloons&lt;/a&gt; into your reality.&lt;/p&gt;
 &lt;p&gt;Before everything, I recommend you to watch &lt;a href="https://developer.apple.com/videos/play/wwdc2017/602/"&gt;WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'&lt;/a&gt;. It gives a nice overview of ARKit's capabilities.&lt;/p&gt;
 &lt;h2&gt;The source code for AR_PostMalone the following structure:&lt;/h2&gt;
@@ -25,16 +25,17 @@
 &lt;li&gt;&lt;code&gt;Main.storyboard&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;code&gt;Scene.swift&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control how the App is operating with the scene. Here we are using &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt; and &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt;. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
+&lt;p&gt;This is where the anchor is created, the class that manages the Sprite scene (Scene.sks).  This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control how the App is operating with the scene. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
 &lt;p&gt;For our App, we are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Defining the method &lt;code&gt;touchesBegan&lt;/code&gt;, where we define what happens when we click the scene.&lt;/li&gt;
 &lt;li&gt;The sequence of movements is defined by &lt;code&gt;let sequence = SKAction.sequence([popSound, moveDown, moveDownFloating, moveToBottom])&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (&lt;code&gt;moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown&lt;/code&gt;).&lt;/li&gt;
 &lt;li&gt;The balloon either pops (&lt;code&gt;let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)&lt;/code&gt;) or fades after a second (&lt;code&gt;fadeOut = SKAction.fadeOut(withDuration: 1.0)&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;An ARAnchor uses a 4×4 matrix represents the combined position, rotation or orientation, and scale of an object in three-dimensional space.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;code&gt;ViewController.swift&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;The ViewController class inherents from &lt;code&gt;ARSKViewDelegate&lt;/code&gt; so that we can create a &lt;code&gt;sceneView&lt;/code&gt; variable. This class has methods for:&lt;/p&gt;
+&lt;p&gt;This view is managed by the class ViewController, which inherents from &lt;code&gt;ARSKViewDelegate&lt;/code&gt; so that we can create a &lt;code&gt;sceneView&lt;/code&gt; variable. This class has methods for:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Views&lt;/p&gt;
