@@ -110,22 +110,22 @@
 <p>I am starting a series of posts where <strong><em>I teach AR &amp; VR by fun examples</em></strong> and I'd love you to join me!</p>
 <p>Today I am going to show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>. We are going to dive intp a simple but fun <a href="https://github.com/bt3gl/AR_PostMalone">App where you can insert Post Maolone balloons</a> into your reality.</p>
 <h2>The source code has the following structure:</h2>
-<h4><code>Info.plist</code></h4>
+<h2><code>Info.plist</code></h2>
 <p>An information property list file is a XML file that contains essential configuration information for a bundled executable. Example of the information you want to add is:</p>
 <ul>
 <li>The name of your app (<code>&lt;string&gt;PostMaloneBalloon&lt;/string&gt;</code>).</li>
 <li>Camera usage (<code>&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;</code>).</li>
 <li>Frameworks you need (<code>&lt;key&gt;UIRequiredDeviceCapabilities&lt;/key&gt;</code> with <code>&lt;string&gt;armv7&lt;/string&gt;</code> and <code>&lt;string&gt;arkit&lt;/string&gt;</code>).</li>
 </ul>
-<h4><code>Assets.xcassets</code> directory</h4>
+<h2><code>Assets.xcassets</code> directory</h2>
 <p>This is where you place assets such as the images used in your App (Post Malone head) and icons. A file <code>Content.json</code> is placed inside every directory to describe the assets.</p>
-<h4><code>Base.lproj</code> directory</h4>
+<h2><code>Base.lproj</code> directory</h2>
 <p>Contains two <a href="https://www.raywenderlich.com/160521/storyboards-tutorial-ios-11-part-1">story board files</a>:</p>
 <ul>
 <li><code>LaunchScreen.storyboard</code>.</li>
 <li><code>Main.storyboard</code>.</li>
 </ul>
-<h4><code>Scene.swift</code></h4>
+<h2><code>Scene.swift</code></h2>
 <p>This module is where you call the class <code>Scene</code> to control what how the App is operating with the scene. Here we are explicitly using <a href="https://developer.apple.com/arkit/">ARKit</a> and <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a>.</p>
 <p>For our App, we are:</p>
 <ul>
@@ -134,7 +134,7 @@
 <li>When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (<code>moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown</code>).</li>
 <li>The balloon either pops (<code>let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)</code>) or fades after a second (<code>fadeOut = SKAction.fadeOut(withDuration: 1.0)</code>).</li>
 </ul>
-<h4><code>ViewController.swift</code></h4>
+<h2><code>ViewController.swift</code></h2>
 <p>The ViewController class inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
 <ul>
 <li>
@@ -154,7 +154,7 @@
 </ul>
 </li>
 </ul>
-<h4><code>AppDelegate.swift</code></h4>
+<h2><code>AppDelegate.swift</code></h2>
 <p>This is where we call the class <code>AppDelegate</code>, which responds for <code>UIApplicationMain</code>. In this class we create a variable that will work as the window UI and we have UI methods for:</p>
 <ul>
 <li>See if the application is about to move from active to inactive state (for example, pause ongoing tasks).</li>
