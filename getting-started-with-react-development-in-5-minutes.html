@@ -145,14 +145,45 @@ $ yarn start
 
 <ol>
 <li>
-<p>Edit <code>src/App.js</code> and see it being update instantly in your browser at <code>http://localhost:3000/</code>. The directory structure is the following:</p>
-<ul>
-<li><code>node_modules</code>: holds all the third-party code, such as React.</li>
+<p>You now have your app running at <code>http://localhost:3000/</code>! The components of your app are the following:</p>
+</li>
+<li>
+<p><code>node_modules</code>: holds all the third-party code, such as React.</p>
+</li>
 <li><code>public</code>: where our static assets go, like our favicon. It also keeps the project's HTML file. Because React is all JavaScript, you only really need the HTML file to update the <head> (title and meta tags).</li>
-<li><code>src</code> is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.</li>
-</ul>
+<li>
+<p><code>src</code> is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.</p>
+</li>
+<li>
+<p>Go to <code>src</code> and edit <code>src/App.js</code> to add things you want React to render:</p>
 </li>
 </ol>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">React</span><span class="o">,</span> <span class="p">{</span> <span class="n">Component</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">logo</span> <span class="nn">from</span> <span class="s1">&#39;./logo.svg&#39;</span><span class="p">;</span>
+<span class="kn">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">App</span> <span class="n">extends</span> <span class="n">Component</span> <span class="p">{</span>
+  <span class="n">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="n">div</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">header</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-header&quot;</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="n">logo</span><span class="p">}</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-logo&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span> <span class="o">/&gt;</span>
+          <span class="o">&lt;</span><span class="n">h1</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-title&quot;</span><span class="o">&gt;</span><span class="n">Welcome</span> <span class="n">to</span> <span class="n">React</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">header</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-intro&quot;</span><span class="o">&gt;</span>
+          <span class="n">HELLO</span> <span class="n">THERE</span><span class="err">!</span>
+          <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">src</span><span class="o">/</span><span class="n">App</span><span class="o">.</span><span class="n">js</span><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="n">save</span> <span class="n">to</span> <span class="nb">reload</span><span class="o">.</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+      <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">export</span> <span class="n">default</span> <span class="n">App</span><span class="p">;</span>
+</pre></div>
+
+
+<p>You will see the additions instantly updated in your browser at <code>http://localhost:3000/</code>.</p>
 <h3>Voilà! Dat's it? Yes, datzit! &lt;3</h3>
 <h2>References to get Started</h2>
 <ul>
