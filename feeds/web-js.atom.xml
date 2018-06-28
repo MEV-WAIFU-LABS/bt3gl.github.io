@@ -64,6 +64,25 @@
 &lt;li&gt;Restart any tasks that were paused while the application was inactive.&lt;/li&gt;
 &lt;li&gt;Termination actions for when the application is about to terminate (for example, to save data if appropriate).&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3&gt;Some Terminology&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Field of view&lt;/strong&gt;: measured in degrees, is the extent of the observable world that is seen at any given moment (humans have a FOV of around 180°, but most HMDs offer between 50 and 110°).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Latency&lt;/strong&gt;: In VR, a 20 millisecond latency is considered low and acceptable for a comfortable experience.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Haptics&lt;/strong&gt;: recreate the sense of touch by applying forces, vibrations, or motions to the user, through feedback devices (example, vibrating game controllers).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Stitching&lt;/strong&gt;: the process of combining multiple video sources with overlapping fields of view to produce a fully immersive 360°. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Visual Inertial Odometry&lt;/strong&gt;: ARKit analyzes the phone camera and motion data in order to keep track of the world around i
+ARSession object that manages the motion tracking and image processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading and see you in the next episode! &amp;lt;3&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-01:/getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hey Everyone!&lt;/p&gt;
