@@ -114,7 +114,7 @@ $ yarn start
 &lt;p&gt;&lt;code&gt;src&lt;/code&gt; is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Go to &lt;code&gt;src&lt;/code&gt; and edit &lt;code&gt;src/App.js&lt;/code&gt; to add things you want React to render:&lt;/p&gt;
+&lt;p&gt;Go to &lt;code&gt;src&lt;/code&gt; and edit &lt;code&gt;App.js&lt;/code&gt; (and &lt;code&gt;App.css&lt;/code&gt;) to add things you want React to render:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;React&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -142,7 +142,7 @@ $ yarn start
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You will see the additions instantly updated in your browser at &lt;code&gt;http://localhost:3000/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You will see the additions instantly updated in your browser at &lt;code&gt;http://localhost:3000/&lt;/code&gt;. Also, keep in mind that &lt;code&gt;index.js&lt;/code&gt; is where all of your React code lives.&lt;/p&gt;
 &lt;h3&gt;Voilà! Dat's it? Yes, datzit! &amp;lt;3&lt;/h3&gt;
 &lt;h2&gt;References to get Started&lt;/h2&gt;
 &lt;ul&gt;
