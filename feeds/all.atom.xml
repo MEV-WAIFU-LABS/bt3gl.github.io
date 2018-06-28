@@ -145,8 +145,9 @@
 &lt;li&gt;&lt;a href="https://unity3d.com/"&gt;Unity&lt;/a&gt;: uses C# as its primary programming language.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.unrealengine.com/en-US/vr"&gt;Unreal&lt;/a&gt;: uses C++ and a node-based language called Blueprints Visual Scripting.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Web Development&lt;/h2&gt;
+&lt;h2&gt;Development&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://facebook.github.io/react-360/"&gt;React 260&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://webvr.info/"&gt;WebVR&lt;/a&gt;: open standard with a JavaScript API that makes it possible to experience VR in your browser.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://aframe.io/"&gt;A-frame&lt;/a&gt;: framework for building virtual reality experiences with HTML.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://facebook.github.io/react-360/"&gt;React VR&lt;/a&gt;: library developed by Facebook based on React and React Native.&lt;/li&gt;
