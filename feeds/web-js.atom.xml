@@ -24,7 +24,7 @@
 &lt;li&gt;&lt;code&gt;Main.storyboard&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;code&gt;Scene.swift&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control what how the App is operating with the scene. Here we are explicitly using &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt; and &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt;. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
+&lt;p&gt;This module is where you call the class &lt;code&gt;Scene&lt;/code&gt; to control how the App is operating with the scene. Here we are using &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt; and &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt;. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
 &lt;p&gt;For our App, we are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Defining the method &lt;code&gt;touchesBegan&lt;/code&gt;, where we define what happens when we click the scene.&lt;/li&gt;
@@ -151,4 +151,4 @@ $ yarn start
 &lt;li&gt;&lt;a href="https://www.robinwieruch.de/the-road-to-learn-react/."&gt;The Road to Learn React&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Test it at home and stay tunned for the next episode! 🦄&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Test it at home and stay tunned for the next episode when we are going to talk about &lt;a href="https://facebook.github.io/react-360/docs/what-is.html"&gt;React 360&lt;/a&gt;! 🦄&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
