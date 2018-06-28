@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>chmod +x singularity.sh - Marina von Steinkirch</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Thu, 21 Jun 2018 00:00:00 -0400</lastBuildDate><item><title>To All the AR &amp; VR Groms Out There</title><link>http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>chmod +x singularity.sh - Marina von Steinkirch</title><link>http://bt3gl.github.io/</link><description></description><lastBuildDate>Sun, 24 Jun 2018 00:00:00 -0400</lastBuildDate><item><title>Introducing iOS ARKit with "Post Malone Balloon"</title><link>http://bt3gl.github.io/introducing-ios-arkit-with-post-malone-balloon.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;Hi Everyone!&lt;/p&gt;
+&lt;p&gt;I am starting a series of posts where &lt;strong&gt;&lt;em&gt;I teach AR &amp;amp; VR by fun examples&lt;/em&gt;&lt;/strong&gt; and I'd love you to join me!&lt;/p&gt;
+&lt;p&gt;Today I am going to show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;. We are going to dive intp a simple but …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Sun, 24 Jun 2018 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2018-06-24:/introducing-ios-arkit-with-post-malone-balloon.html</guid></item><item><title>To All the AR &amp; VR Groms Out There</title><link>http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
 &lt;p&gt;I am sharing a compilation of some of VR &amp;amp; AR resources that I have been learning and reading from. Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
@@ -17,13 +20,4 @@
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Dec 2016 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</guid></item><item><title>Introducing my Grey Hacker Bag of Fun</title><link>http://bt3gl.github.io/introducing-my-grey-hacker-bag-of-fun.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/19.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Throughout my many years of hacking I have been accumulating so many resources: books, scripts, tools, how-to, etc. I realized it's time to share them!&lt;/p&gt;
-&lt;p&gt;Please check out my &lt;a href="https://github.com/bt3gl/Gray-Hacker-Resources"&gt;gray hacker github repo&lt;/a&gt;, where I have indexed everything by subject:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;CTFs and WARGAMES&lt;/li&gt;
-&lt;li&gt;CRYPTOGRAPHY&lt;/li&gt;
-&lt;li&gt;FORENSICS&lt;/li&gt;
-&lt;li&gt;LINUX HACKING&lt;/li&gt;
-&lt;li&gt;MEMORY EXPLOITS&lt;/li&gt;
-&lt;li&gt;VULNERABILITIES …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 -0400</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-11-01:/introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>
+&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Marina von Steinkirch</dc:creator><pubDate>Fri, 02 Dec 2016 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</guid></item></channel></rss>

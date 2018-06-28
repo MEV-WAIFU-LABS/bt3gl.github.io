@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Introducing iOS ARKit with "Post Malone Balloon"</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Marina von Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Introducing iOS ARKit with "Post Malone Balloon"">
+                                        Introducing iOS ARKit with "Post Malone Balloon"
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2018-06-24T00:00:00-04:00">
+      Sun 24 June 2018 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/web-js.html"><i class="icon-folder-open"></i>web, js</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"></p>
+<p>Hi Everyone!</p>
+<p>I am starting a series of posts where <strong><em>I teach AR &amp; VR by fun examples</em></strong> and I'd love you to join me!</p>
+<p>Today I am going to show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>. We are going to dive intp a simple but fun <a href="https://github.com/bt3gl/AR_PostMalone">App where you can insert Post Maolone balloons</a> into your reality.</p>
+<h2>The source code has the following structure:</h2>
+<h4><code>Info.plist</code></h4>
+<p>An information property list file is a XML file that contains essential configuration information for a bundled executable. Example of the information you want to add is:</p>
+<ul>
+<li>The name of your app (<code>&lt;string&gt;PostMaloneBalloon&lt;/string&gt;</code>).</li>
+<li>Camera usage (<code>&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;</code>).</li>
+<li>Frameworks you need (<code>&lt;key&gt;UIRequiredDeviceCapabilities&lt;/key&gt;</code> with <code>&lt;string&gt;armv7&lt;/string&gt;</code> and <code>&lt;string&gt;arkit&lt;/string&gt;</code>).</li>
+</ul>
+<h4><code>Assets.xcassets</code> directory</h4>
+<p>This is where you place assets such as the images used in your App (Post Malone head) and icons. A file <code>Content.json</code> is placed inside every directory to describe the assets.</p>
+<h4><code>Base.lproj</code> directory</h4>
+<p>Contains two <a href="https://www.raywenderlich.com/160521/storyboards-tutorial-ios-11-part-1">story board files</a>:</p>
+<ul>
+<li><code>LaunchScreen.storyboard</code>.</li>
+<li><code>Main.storyboard</code>.</li>
+</ul>
+<h4><code>Scene.swift</code></h4>
+<p>This module is where you call the class <code>Scene</code> to control what how the App is operating with the scene. Here we are explicitly using <a href="https://developer.apple.com/arkit/">ARKit</a> and <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a>.</p>
+<p>For our App, we are:</p>
+<ul>
+<li>Defining the method <code>touchesBegan</code>, where we define what happens when we click the scene.</li>
+<li>The sequence of movements is defined by <code>let sequence = SKAction.sequence([popSound, moveDown, moveDownFloating, moveToBottom])</code>.</li>
+<li>When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (<code>moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown</code>).</li>
+<li>The balloon either pops (<code>let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)</code>) or fades after a second (<code>fadeOut = SKAction.fadeOut(withDuration: 1.0)</code>).</li>
+</ul>
+<h4><code>ViewController.swift</code></h4>
+<p>The ViewController class inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
+<ul>
+<li>
+<p>Views</p>
+<ul>
+<li>Scaling and placing the view.</li>
+<li>View when it loads (and load the pre-defined scene from <a href="https://developer.apple.com/documentation/spritekit/skscene">SKScene</a>).</li>
+<li>View to appear and disappear.</li>
+<li>Run.</li>
+</ul>
+</li>
+<li>
+<p>Sessions</p>
+<ul>
+<li>Session interrupted.</li>
+<li>Session ended.</li>
+</ul>
+</li>
+</ul>
+<h4><code>AppDelegate.swift</code></h4>
+<p>This is where we call the class <code>AppDelegate</code>, which responds for <code>UIApplicationMain</code>. In this class we create a variable that will work as the window UI and we have UI methods for:</p>
+<ul>
+<li>See if the application is about to move from active to inactive state (for example, pause ongoing tasks).</li>
+<li>Release shared resources and  save user data.</li>
+<li>Change from the background to the active state.</li>
+<li>Restart any tasks that were paused while the application was inactive.</li>
+<li>Termination actions for when the application is about to terminate (for example, to save data if appropriate).</li>
+</ul>
+<hr>
+<p><strong><em> Thank you for reading and see you in the next episode! &lt;3</em></strong></p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
