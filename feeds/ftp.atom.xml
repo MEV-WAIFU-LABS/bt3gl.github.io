@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - FTP</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/ftp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-09-22T05:20:00-04:00</updated><entry><title>CSAW CTF 2014 - Forensics 200: "why not sftp?"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html" rel="alternate"></link><published>2014-09-22T05:20:00-04:00</published><updated>2014-09-22T05:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:/csaw-ctf-2014-forensics-200-why-not-sftp.html</id><summary type="html">&lt;p&gt;The purpose of this problem is to teach about the need of encrypting your data. The &lt;a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol"&gt;FTP&lt;/a&gt;  protocol sends clear text over the wire, &lt;em&gt;i.e&lt;/em&gt;  the  data is transmitted without any encryption.
- &lt;a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol"&gt;SSH/Secure File Transfer Protocol&lt;/a&gt; is a network protocol providing secure file transfer. Using SFTP, instead of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The purpose of this problem is to teach about the need of encrypting your data. The &lt;a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol"&gt;FTP&lt;/a&gt;  protocol sends clear text over the wire, &lt;em&gt;i.e&lt;/em&gt;  the  data is transmitted without any encryption.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/ftp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-09-22T05:20:00-04:00</updated><entry><title>CSAW CTF 2014 - Forensics 200: "why not sftp?"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html" rel="alternate"></link><updated>2014-09-22T05:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-why-not-sftp.html</id><summary type="html">&lt;p&gt;The purpose of this problem is to teach about the need of encrypting your data. The &lt;a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol"&gt;FTP&lt;/a&gt;  protocol sends clear text over the wire, &lt;em&gt;i.e&lt;/em&gt;  the  data is transmitted without any encryption.
  &lt;a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol"&gt;SSH/Secure File Transfer Protocol&lt;/a&gt; is a network protocol providing secure file transfer. Using SFTP, instead of FTP, would avoid to find the flag in this problem in the way we did.&lt;/p&gt;
 &lt;p&gt;This is the second forensics problem and it starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;well seriously, why not?&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/7831788f2ab94feddc72ce53e80fda5f/traffic-5.pcap"&gt;traffic-5.pcap&lt;/a&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/7831788f2ab94feddc72ce53e80fda5f/traffic-5.pcap"&gt;traffic-5.pcap&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Analyzing the PCAP File&lt;/h2&gt;
 &lt;p&gt;Now let's search for the flag! We open the &lt;a href="http://en.wikipedia.org/wiki/Pcap"&gt;pcap&lt;/a&gt; file in &lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; (an open-source packet analyzer). There are several things that we could search for in this file, for instance we could look for FTP transactions or we could search for strings such as &lt;em&gt;password&lt;/em&gt; or &lt;em&gt;flag&lt;/em&gt;. We show both approaches.&lt;/p&gt;
 &lt;h2&gt;Solution 1: Searching for the string &lt;em&gt;flag&lt;/em&gt;&lt;/h2&gt;
@@ -21,40 +19,40 @@
 &lt;li&gt;Search for password choosing the options string and packet bytes.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Clicking on &lt;em&gt;Follow TCP Stream&lt;/em&gt; gives:
-&lt;img alt="" src="http://i.imgur.com/c61P5Aj.png"&gt;&lt;/p&gt;
+&lt;img alt="" src="http://i.imgur.com/c61P5Aj.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. This is a misleading information!&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h4&gt;But We Were Almost There!&lt;/h4&gt;
 &lt;p&gt;Now, if we search for &lt;em&gt;flag&lt;/em&gt; we actually find something:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/knuwJFq.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/knuwJFq.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We find the packet with a file named flag! Awesome.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Solution 2: Looking for the FTP Protocols&lt;/h2&gt;
 &lt;p&gt;All right, let's use another information we have: it should be something related to the FTP protocol. In Wireshark, we can find specific protocol with filters. We want to filter for FTP with some data. We start trying the usual FTP-DATA port:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tcp.port==21
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tcp&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nope. The results should be another port. Let's search explicitly for:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ftp-data
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ftp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Cool, we found a few packets:
-&lt;img alt="" src="http://i.imgur.com/cWhiXZD.png"&gt;&lt;/p&gt;
+&lt;img alt="" src="http://i.imgur.com/cWhiXZD.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Extracting the File&lt;/h2&gt;
 &lt;p&gt;Once we find the packet with any of the methods above, we right-click it selecting &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This leads to:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/LZTse2s.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/LZTse2s.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The file &lt;em&gt;flag.png&lt;/em&gt; is our flag. To extract it we  click in the &lt;em&gt;Save as&lt;/em&gt; button, then in the terminal we can use the command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ file s.whatever
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Awesome, so all we need is to &lt;em&gt;unzip&lt;/em&gt; this file and we get &lt;em&gt;flag.png&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/WcxyITv.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
 &lt;h4&gt;Extra: Finding files with &lt;em&gt;File Signatures&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;If we don't know the name of the file we are looking for, but we know its type, we can search for its &lt;a href="http://en.wikipedia.org/wiki/File_signature"&gt;file signature&lt;/a&gt;, which can be found &lt;a href="http://en.wikipedia.org/wiki/List_of_file_signatures"&gt;here&lt;/a&gt; (a hex value).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="FTP"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="FTP"></category></entry></feed>

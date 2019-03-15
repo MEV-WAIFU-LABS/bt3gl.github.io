@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-24T00:00:00-04:00</updated><entry><title>Introducing iOS ARKit with "Post Malone Balloon"</title><link href="http://bt3gl.github.io/introducing-ios-arkit-with-post-malone-balloon.html" rel="alternate"></link><published>2018-06-24T00:00:00-04:00</published><updated>2018-06-24T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-24:/introducing-ios-arkit-with-post-malone-balloon.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Hi Everyone!&lt;/p&gt;
-&lt;p&gt;In this post, I  show how neat is to write an AR iOS application …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-06-24T00:00:00-04:00</updated><entry><title>Introducing iOS ARKit with "Post Malone Balloon"</title><link href="http://bt3gl.github.io/introducing-ios-arkit-with-post-malone-balloon.html" rel="alternate"></link><updated>2018-06-24T00:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-24:introducing-ios-arkit-with-post-malone-balloon.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
 &lt;p&gt;In this post, I  show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt; and &lt;strong&gt;rendering&lt;/strong&gt;. More specifically, ARKit is a session based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.&lt;/p&gt;
@@ -82,14 +79,8 @@
 ARSession object that manages the motion tracking and image processing.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading and see you in the next episode! &amp;lt;3&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>To All the AR &amp; VR Groms Out There</title><link href="http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html" rel="alternate"></link><published>2018-06-21T00:00:00-04:00</published><updated>2018-06-21T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-21:/to-all-the-ar-vr-groms-out-there.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Hi Everyone!&lt;/p&gt;
-&lt;p&gt;I am sharing a compilation of some of VR &amp;amp; AR resources that I have been learning and reading from. Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
-&lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
-&lt;h2&gt;AR Platforms&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://developer.apple.com/arkit/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;:  Apple’s developer portal …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading and see you in the next episode! &amp;lt;3&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>To All the AR &amp; VR Groms Out There</title><link href="http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html" rel="alternate"></link><updated>2018-06-21T00:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-21:to-all-the-ar-vr-groms-out-there.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
 &lt;p&gt;I am sharing a compilation of some of VR &amp;amp; AR resources that I have been learning and reading from. Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
@@ -147,7 +138,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;li&gt;&lt;a href="https://github.com/viromedia/viro"&gt;Viro code samples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/shu223/ARKit-Sampler"&gt;ARKit Sampler&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Virtual_reality"&gt;Virtual Reality&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;Devices&lt;/h2&gt;
 &lt;h4&gt;Devices supporting three degrees of freedom:&lt;/h4&gt;
@@ -252,9 +243,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;li&gt;&lt;a href="https://www.reddit.com/r/HTC_Vive"&gt;/r/HTC_Vive&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.reddit.com/r/learnVRdev/"&gt;/r/learnVRdev&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;</content></entry><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-01:/getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Hey Everyone!&lt;/p&gt;
-&lt;p&gt;The VR world has a lot of &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt; and there is so many things I have been learning and I want to share with you! I am starting to write a series of posts diving into React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;hr /&gt;</summary></entry><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><updated>2018-06-01T00:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-01:getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Hey Everyone!&lt;/p&gt;
 &lt;p&gt;The VR world has a lot of &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt; and there is so many things I have been learning and I want to share with you! I am starting to write a series of posts diving into React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Today I am showing how easy is to start with React in 5 minutes.&lt;/p&gt;
@@ -278,8 +267,8 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;ol&gt;
 &lt;li&gt;Install Node.js and Yarn.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew install node
-$ brew install yarn
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -291,15 +280,15 @@ $ brew install yarn
 &lt;p&gt;Create Your App&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yarn create react-app &amp;lt;your-app-name&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;react&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ol&gt;
 &lt;li&gt;Run it!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;your-app-name&amp;gt;
-$ yarn start
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -318,28 +307,28 @@ $ yarn start
 &lt;p&gt;Go to &lt;code&gt;src&lt;/code&gt; and edit &lt;code&gt;App.js&lt;/code&gt; (and &lt;code&gt;App.css&lt;/code&gt;) to add things you want React to render:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;React&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;logo&lt;/span&gt; &lt;span class="nn"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./logo.svg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./App.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;logo&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./logo.svg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./App.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;App&lt;/span&gt; &lt;span class="n"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="nb"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt; &lt;span class="nx"&gt;extends&lt;/span&gt; &lt;span class="nb"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nb"&gt;render&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-header&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;logo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-logo&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;logo&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-title&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Welcome&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;React&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-intro&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class="n"&gt;HELLO&lt;/span&gt; &lt;span class="n"&gt;THERE&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;App&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;js&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;save&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="nb"&gt;reload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-header&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;img&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;logo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-logo&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;logo&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-title&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Welcome&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="k"&gt;header&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-intro&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class="nx"&gt;HELLO&lt;/span&gt; &lt;span class="nx"&gt;THERE&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nb"&gt;src&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;App.js&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="nb"&gt;save&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;reload.&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;default&lt;/span&gt; &lt;span class="n"&gt;App&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nx"&gt;export&lt;/span&gt; &lt;span class="nb"&gt;default&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -351,11 +340,200 @@ $ yarn start
 &lt;li&gt;&lt;a href="https://www.fullstackreact.com/30-days-of-react/"&gt;30 Days of React&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.robinwieruch.de/the-road-to-learn-react/."&gt;The Road to Learn React&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Test it at home and stay tunned for the next episode when we are going to talk about &lt;a href="https://facebook.github.io/react-360/docs/what-is.html"&gt;React 360&lt;/a&gt;! 🦄&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
-&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
-&lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Test it at home and stay tunned for the next episode when we are going to talk about &lt;a href="https://facebook.github.io/react-360/docs/what-is.html"&gt;React 360&lt;/a&gt;! 🦄&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><updated>2017-12-17T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px" /&gt;&lt;/p&gt;
+&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
+&lt;h2&gt;How Amigo Works&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; For each attribute in a project, Amigo creates an updated report. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iii)&lt;/strong&gt; Amigo checks the previous report for differences (verifying when the data was modified). If there is a diff, Amigo logs the report for this diff.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iv)&lt;/strong&gt; Amigo saves the resources data in a database and then it checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt;, reporting everything that violates those rules.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;v)&lt;/strong&gt; The &lt;strong&gt;science&lt;/strong&gt; generated by Amigo can be fed into ELK.&lt;/p&gt;
+&lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
+&lt;h3&gt;Setting a Virtual Environment&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Installing Amigo&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Creating a Service Account&lt;/h3&gt;
+&lt;p&gt;This should be done once, at the first time you run Amigo:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the IAM roles &lt;strong&gt;Security Reviewer&lt;/strong&gt; and &lt;strong&gt;Viewer permissions&lt;/strong&gt; to the service account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt; to a safe directory (e.g. your home directory). If amigo runs in other machines (or other people in the same organization is running Amigo), this key can be shared (and step 1. and 2. do not need to be repeated).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Setting gcloud&lt;/h3&gt;
+&lt;p&gt;Install &lt;a href="https://cloud.google.com/sdk/downloads"&gt;gcloud SDK&lt;/a&gt; and authenticate with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;gcloud&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can also check whether env variable &lt;code&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; is pointing to the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Setting the Config file&lt;/h3&gt;
+&lt;p&gt;Copy &lt;code&gt;config.yaml_example&lt;/code&gt; to &lt;code&gt;config.yaml&lt;/code&gt; and customize it.&lt;/p&gt;
+&lt;p&gt;In the bottom of this file you are able to edit the attributes that you want to report on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;### Attributes to inspect&lt;/span&gt;
+&lt;span class="nl"&gt;gcp_attributes:&lt;/span&gt;
+    &lt;span class="nl"&gt;compute:&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;firewalls&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;networks&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;snapshots&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Setting the Rules file&lt;/h3&gt;
+&lt;p&gt;Inspect &lt;code&gt;rules.yaml&lt;/code&gt; either removing or adding rules that should be searched in the reports.&lt;/p&gt;
+&lt;h3&gt;Running Amigo&lt;/h3&gt;
+&lt;p&gt;Run amigo with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;amigo&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This retrieves the data from GCP and generate JSON reports. These reports will be save where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
+&lt;p&gt;It is advised to watch for STERR and STDOUT in the &lt;code&gt;log_file&lt;/code&gt; file defined in &lt;code&gt;config.yaml&lt;/code&gt; (default to &lt;code&gt;amigo_log.txt&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;amigo_log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Alerting with Amigo&lt;/h3&gt;
+&lt;p&gt;Relevant reports (e.g. diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g. &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Creating Custom rules&lt;/h2&gt;
+&lt;h3&gt;Firewalls Resource&lt;/h3&gt;
+&lt;p&gt;Firewall reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#firewall&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/networks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;direction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;INGRESS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceRanges&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;0.0.0.0/0&amp;quot;&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;name&amp;quot;: &amp;quot;default-allow-icmp&amp;quot;,
+  &amp;quot;priority&amp;quot;: 65534,
+  &amp;quot;allowed&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;IPProtocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;icmp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/firewalls/default-allow-icmp&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;Allow ICMP from anywhere&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Networks Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Default network for the project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;subnetworks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/regions/&amp;lt;region&amp;gt;/subnetworks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;autoCreateSubnetworks&amp;quot;: true,
+  &amp;quot;routingConfig&amp;quot;: {
+    &amp;quot;routingMode&amp;quot;: &amp;quot;REGIONAL&amp;quot;
+  },
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/networks/default&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;quot;default&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Snapshots Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#snapshot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;storageBytes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/zones/us-central1-c/disks/deployhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;storageBytesStatus&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;UP_TO_DATE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;labelFingerprint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceDiskId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;diskSizeGb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;size&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;licenses&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7&amp;quot;&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/snapshots/snapshot-1-deployhost&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Instance Template Resource&lt;/h3&gt;
+&lt;p&gt;Instance Template reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#instanceTemplate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;machineType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="cp"&gt;]&lt;/span&gt;
+    },
+    &amp;quot;disks&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;deviceName&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;persistent-disk-0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#attachedDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;initializeParams&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;sourceImage&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;global/images/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;diskType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pd-standard&amp;quot;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;autoDelete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;boot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READ_WRITE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;interface&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SCSI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PERSISTENT&amp;quot;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="cp"&gt;]&lt;/span&gt;,
+    &amp;quot;scheduling&amp;quot;: {
+      &amp;quot;automaticRestart&amp;quot;: true,
+      &amp;quot;preemptible&amp;quot;: false,
+      &amp;quot;onHostMaintenance&amp;quot;: &amp;quot;MIGRATE&amp;quot;
+    },
+    &amp;quot;serviceAccounts&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;scopes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/auth/compute.readonly&amp;quot;&lt;/span&gt;
+        &lt;span class="cp"&gt;]&lt;/span&gt;,
+        &amp;quot;email&amp;quot;: &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt;&lt;span class="na"&gt;-account-email&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+      }
+    ],
+    &amp;quot;metadata&amp;quot;: {
+      &amp;quot;items&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;metadata&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#metadata&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;creationTimestamp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2017-11-14T12:24:00.744-08:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;selfLink&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;project-name&amp;gt;/global/instanceTemplates/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><updated>2017-12-12T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
 &lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
 &lt;h2&gt;2. Load Test Your Site&lt;/h2&gt;
@@ -420,13 +598,13 @@ $ yarn start
 &lt;p&gt;Let the browser cache some data (with a max-age of a week) by using HTTP headers such as &lt;strong&gt;&lt;em&gt;Cache-control&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;Expires&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;12. Prefetching&lt;/h2&gt;
 &lt;p&gt;DNS prefetching can be a good solution to resolve domain names before a user follows a link. It's implemented in the &lt;strong&gt;&lt;em&gt;HEADER&lt;/em&gt;&lt;/strong&gt; session with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//www.example.com&amp;quot;&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dns-prefetch&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;//www.example.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;13. Preconnecting&lt;/h2&gt;
 &lt;p&gt;With the &lt;strong&gt;&lt;em&gt;preconnect&lt;/em&gt;&lt;/strong&gt; label, the browser can set up early connections (such as DNS lookup, TLS negotiation, etc.) before an HTTP request is sent to the server. This can be implemented with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;link href=&amp;#39;https://CDNHOST.com&amp;#39; rel=&amp;#39;preconnect&amp;#39; crossorigin&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//CDNHOST.com&amp;#39; rel=&amp;#39;preconnect&amp;#39; crossorigin&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -434,10 +612,10 @@ $ yarn start
 &lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs a SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
 &lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
 &lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://(.+\.)?domain\.com/ [NC]
-RewriteCond %{HTTP_REFERER} !^$
-RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//(.+\.)?domain\.com/ [NC]&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;
+&lt;span class="n"&gt;RewriteRule&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.(&lt;/span&gt;&lt;span class="n"&gt;jpe&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;bmp&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//i.imgur.com/DONT_DISPLAY.gif [L]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -462,23 +640,4 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
 &lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry><entry><title>Lots of Machine Learning and DNN</title><link href="http://bt3gl.github.io/lots-of-machine-learning-and-dnn.html" rel="alternate"></link><published>2016-12-02T00:00:00-05:00</published><updated>2016-12-02T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2016-12-02:/lots-of-machine-learning-and-dnn.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;At Apple I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Additionally, when I was in my PhD …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/25.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;At Apple I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my &lt;strong&gt;personal&lt;/strong&gt; studies:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/Machine-Learning-Resources"&gt;🚀 My Resources for AI, ML, and DNN&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/CUDA_Studies_For_Deep_Learning"&gt;🛰 CUDA Studies for Deep Learning Problems&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Additionally, when I was in my PhD I had the pleasure of doing &lt;a href="http://bt3gl.github.io/projects_page/html_files/ml.html"&gt;some nice work on Machine Learning&lt;/a&gt; as well. Here is the open-sourced code for you:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/Advanced-Machine-Learning"&gt;💎Advanced Machine Learning&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/MLNet-Classifying-Complex-Networks"&gt;🍭 MLNet - Classifying Complex Networks with ML&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/NetClean-Complex-Networks-Data-Cleanser"&gt;🔋 NetClean - Complex Networks Data-Cleanser&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/NetAna-Complex-Network-Analysis"&gt;🌺 NetAna - Complex Network Analysis Package&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>

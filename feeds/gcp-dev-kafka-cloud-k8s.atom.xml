@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - gcp, dev, kafka, cloud, k8s</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/gcp-dev-kafka-cloud-k8s.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-11-16T00:00:00-05:00</updated><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><published>2017-11-16T00:00:00-05:00</published><updated>2017-11-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-16:/introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/gcp-dev-kafka-cloud-k8s.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-11-16T00:00:00-05:00</updated><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><updated>2017-11-16T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-16:introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Everything in either in GCP or AWS these days and there is so much data from so many sources!&lt;/p&gt;
 &lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;,  I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Installing Kubeless&lt;/h2&gt;
 &lt;p&gt;Follow &lt;a href="https://github.com/kubeless/kubeless"&gt;this instructions&lt;/a&gt;. Customize Kubeless config file at &lt;code&gt;kubeless-config.yaml&lt;/code&gt; and then run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make kl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;kl&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Creating Kubeless topic&lt;/h2&gt;
 &lt;p&gt;In Kafka, messages are published into topics. The functions ran by kubeless (consumers) are going to receive these messages by creating the topic:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubeless topic create reactor
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubeless&lt;/span&gt; &lt;span class="n"&gt;topic&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;reactor&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Firing Up Containers&lt;/h2&gt;
 &lt;p&gt;To run a logstash, elastsearch, zookeeper and kafka (producers) so that it outputs to Kafka's topic for kubeless, run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pipeline
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;pipeline&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Debugging&lt;/h2&gt;
 &lt;p&gt;To debug any pods (&lt;code&gt;kubeless&lt;/code&gt; or &lt;code&gt;kafka&lt;/code&gt; or &lt;code&gt;zoo&lt;/code&gt;), grab the name with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make pods
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;pods&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;and then run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kubectl logs &amp;lt;podname&amp;gt;  --namespace&lt;span class="o"&gt;=&lt;/span&gt;kubeless
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;kubectl&lt;/span&gt; &lt;span class="nx"&gt;logs&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;podname&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;  &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;namespace&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;kubeless&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;References&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/kubeless/kubeless"&gt;Kubeless github repository.&lt;/a&gt;&lt;/li&gt;
@@ -41,6 +39,6 @@
 &lt;li&gt;&lt;a href="https://serverless.com/framework/docs/providers/kubeless/"&gt;Kubeless serveless documentation.&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.beyondthelines.net/computing/kafka-patterns/"&gt;Kafka Concepts and Common Patterns&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>

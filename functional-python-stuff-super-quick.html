@@ -5,7 +5,7 @@
     <title>Functional Python Stuff Super Quick</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2015-03-01T00:00:00-05:00">
+<abbr class="published" title="2015-03-01T00:00:00">
       Sun 01 March 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -106,28 +106,28 @@
 
 </footer><!-- /.post-info -->                </div>
                 <h3>Python has <strong>First Class Functions</strong></h3>
-<div class="highlight"><pre><span></span>def create_adder(x):
-    def adder(y):
-        return x + y
-    return adder
+<div class="highlight"><pre><span class="n">def</span> <span class="n">create_adder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
 </pre></div>
 
 
 <p>Such that:</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; add_10 = create_adder(10)
-&gt;&gt;&gt; add_10(3)  
-13
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span> <span class="o">=</span> <span class="n">create_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  
+<span class="mi">13</span>
 </pre></div>
 
 
 <h3>Python has <strong>Anonymous Functions</strong></h3>
-<div class="highlight"><pre><span></span>(lambda x: x &gt; 2)(3)   # =&gt; True
+<div class="highlight"><pre><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="n">True</span>
 </pre></div>
 
 
 <h3>Python has Built-in <strong>Higher Order Functions</strong></h3>
-<div class="highlight"><pre><span></span>map(add_10, [1, 2, 3])   # =&gt; [11, 12, 13]
-filter(lambda x: x &gt; 5, [3, 4, 5, 6, 7])   # =&gt; [6, 7]
+<div class="highlight"><pre><span class="n">map</span><span class="p">(</span><span class="n">add_10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
 </pre></div>
                 </div><!-- /.entry-content -->
         </article>

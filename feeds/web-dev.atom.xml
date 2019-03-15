@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - web, dev</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-12T00:00:00-05:00</updated><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><published>2017-12-12T00:00:00-05:00</published><updated>2017-12-12T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:/18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
-&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
-&lt;h2&gt;2. Load Test Your Site …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-12-12T00:00:00-05:00</updated><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><updated>2017-12-12T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
 &lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
 &lt;h2&gt;2. Load Test Your Site&lt;/h2&gt;
@@ -67,13 +64,13 @@
 &lt;p&gt;Let the browser cache some data (with a max-age of a week) by using HTTP headers such as &lt;strong&gt;&lt;em&gt;Cache-control&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;Expires&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;12. Prefetching&lt;/h2&gt;
 &lt;p&gt;DNS prefetching can be a good solution to resolve domain names before a user follows a link. It's implemented in the &lt;strong&gt;&lt;em&gt;HEADER&lt;/em&gt;&lt;/strong&gt; session with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;link rel=&amp;quot;dns-prefetch&amp;quot; href=&amp;quot;//www.example.com&amp;quot;&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dns-prefetch&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;//www.example.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;13. Preconnecting&lt;/h2&gt;
 &lt;p&gt;With the &lt;strong&gt;&lt;em&gt;preconnect&lt;/em&gt;&lt;/strong&gt; label, the browser can set up early connections (such as DNS lookup, TLS negotiation, etc.) before an HTTP request is sent to the server. This can be implemented with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;link href=&amp;#39;https://CDNHOST.com&amp;#39; rel=&amp;#39;preconnect&amp;#39; crossorigin&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//CDNHOST.com&amp;#39; rel=&amp;#39;preconnect&amp;#39; crossorigin&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -81,10 +78,10 @@
 &lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs a SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
 &lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
 &lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://(.+\.)?domain\.com/ [NC]
-RewriteCond %{HTTP_REFERER} !^$
-RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//(.+\.)?domain\.com/ [NC]&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;
+&lt;span class="n"&gt;RewriteRule&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.(&lt;/span&gt;&lt;span class="n"&gt;jpe&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;bmp&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//i.imgur.com/DONT_DISPLAY.gif [L]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -109,4 +106,4 @@ RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
 &lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
 &lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Thank you for reading :) &lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>

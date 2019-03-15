@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - Life,Universe,Everything</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/lifeuniverseeverything.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-10T04:20:00-05:00</updated><entry><title>The Ultimate Linux Guide for Hackers ;)</title><link href="http://bt3gl.github.io/the-ultimate-linux-guide-for-hackers.html" rel="alternate"></link><published>2014-11-10T04:20:00-05:00</published><updated>2014-11-10T04:20:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-10:/the-ultimate-linux-guide-for-hackers.html</id><summary type="html">&lt;p&gt;Being a Linux user is, above all, a &lt;em&gt;life style&lt;/em&gt;. Interestingly, more and more people have been joining this community, keeping it dynamic and organic.&lt;/p&gt;
-&lt;p&gt;Linux has been in my life since my high school  years  and  I'm still constantly inspired by the fact that it has not lost any …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Being a Linux user is, above all, a &lt;em&gt;life style&lt;/em&gt;. Interestingly, more and more people have been joining this community, keeping it dynamic and organic.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/lifeuniverseeverything.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-10T04:20:00-05:00</updated><entry><title>The Ultimate Linux Guide for Hackers ;)</title><link href="http://bt3gl.github.io/the-ultimate-linux-guide-for-hackers.html" rel="alternate"></link><updated>2014-11-10T04:20:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-10:the-ultimate-linux-guide-for-hackers.html</id><summary type="html">&lt;p&gt;Being a Linux user is, above all, a &lt;em&gt;life style&lt;/em&gt;. Interestingly, more and more people have been joining this community, keeping it dynamic and organic.&lt;/p&gt;
 &lt;p&gt;Linux has been in my life since my high school  years  and  I'm still constantly inspired by the fact that it has not lost any of its appeal. There is always something new or deeper to be learned. Linux is &lt;em&gt;the&lt;/em&gt; tool for those who choose to spend their excess of curiosity flying around bytes.&lt;/p&gt;
 &lt;p&gt;With the novice in mind, this blog post is my introduction to the Linux machinery, containing some of my favorite tricks. I hope you enjoy this exciting adventure of taking control of &lt;em&gt;The Machine&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer I&lt;/strong&gt;: Keep in mind that the truly way for mastering Linux is making the &lt;strong&gt;man&lt;/strong&gt; and &lt;strong&gt;help&lt;/strong&gt; pages in the command line your best friends:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ man &amp;lt;COMMAND&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;man&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Disclaimer II&lt;/strong&gt;: The Linux distributions I'm current using are Fedora and Kali (Debian-based). You should be comfortable exploring several distributions until you find your favorite. You should definitely aim to go beyond Ubuntu.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer III&lt;/strong&gt;: This guide is written for  &lt;a href="http://www.gnu.org/software/bash/"&gt;bash&lt;/a&gt;. I encourage you to go further and search for your favorite shell.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;The Linux Environment&lt;/h1&gt;
 &lt;h2&gt;The Linux Filesystem&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Let's start getting an idea of our system. The &lt;em&gt;Linux filesystem&lt;/em&gt; is composed of several system directories locate at &lt;strong&gt;/&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls /
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qhYyiK8.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qhYyiK8.png" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You can verify their sizes and where they are mounted with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ df -h .
-Filesystem              Type  Size  Used Avail Use% Mounted on
-/dev/mapper/fedora-home ext4  127G   62G   59G  &lt;span class="m"&gt;51&lt;/span&gt;% /home
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Filesystem&lt;/span&gt;              &lt;span class="n"&gt;Type&lt;/span&gt;  &lt;span class="n"&gt;Size&lt;/span&gt;  &lt;span class="n"&gt;Used&lt;/span&gt; &lt;span class="n"&gt;Avail&lt;/span&gt; &lt;span class="n"&gt;Use&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;Mounted&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mapper&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt; &lt;span class="n"&gt;ext4&lt;/span&gt;  &lt;span class="mi"&gt;127&lt;/span&gt;&lt;span class="n"&gt;G&lt;/span&gt;   &lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="n"&gt;G&lt;/span&gt;   &lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="n"&gt;G&lt;/span&gt;  &lt;span class="mi"&gt;51&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -151,7 +150,7 @@ Filesystem              Type  Size  Used Avail Use% Mounted on
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;/proc&lt;/strong&gt; contains dynamically-created virtual filesystem that contains data about each running process and about the system as a whole.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;/dev Specials&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -172,7 +171,7 @@ Filesystem              Type  Size  Used Avail Use% Mounted on
 &lt;p&gt;For example, to output random bytes, you can type:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat /dev/urandom &lt;span class="p"&gt;|&lt;/span&gt; strings
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;urandom&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;strings&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -185,35 +184,35 @@ Filesystem              Type  Size  Used Avail Use% Mounted on
 &lt;p&gt;To find the Kernel information you can type:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat /proc/version
-Linux version &lt;span class="m"&gt;3&lt;/span&gt;.14.9-200.fc20.x86_64 &lt;span class="o"&gt;(&lt;/span&gt;mockbuild@bkernel02.phx2.fedoraproject.org&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;gcc version &lt;span class="m"&gt;4&lt;/span&gt;.8.3 &lt;span class="m"&gt;20140624&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;Red Hat &lt;span class="m"&gt;4&lt;/span&gt;.8.3-1&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#1 SMP Thu Jun 26 21:40:51 UTC 2014&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;proc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;
+&lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="mf"&gt;3.14.9&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;200.f&lt;/span&gt;&lt;span class="n"&gt;c20&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mockbuild&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;bkernel02&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;phx2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fedoraproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gcc&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="mf"&gt;4.8.3&lt;/span&gt; &lt;span class="mi"&gt;20140624&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Red&lt;/span&gt; &lt;span class="n"&gt;Hat&lt;/span&gt; &lt;span class="mf"&gt;4.8.3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GCC&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;SMP&lt;/span&gt; &lt;span class="n"&gt;Thu&lt;/span&gt; &lt;span class="n"&gt;Jun&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;51&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;You can also print similar system information with  the specific command to print system information, &lt;code&gt;uname&lt;/code&gt;. The flag &lt;strong&gt;-a&lt;/strong&gt; stands for all:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; $ uname -a
- Linux XXXXX 3.14.9-200.fc20.x86_64 #1 SMP Thu Jun 26 21:40:51 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;uname&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
+ &lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="n"&gt;XXXXX&lt;/span&gt; &lt;span class="mf"&gt;3.14.9&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;200.f&lt;/span&gt;&lt;span class="n"&gt;c20&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x86_64&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;SMP&lt;/span&gt; &lt;span class="n"&gt;Thu&lt;/span&gt; &lt;span class="n"&gt;Jun&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;51&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt; &lt;span class="n"&gt;x86_64&lt;/span&gt; &lt;span class="n"&gt;x86_64&lt;/span&gt; &lt;span class="n"&gt;x86_64&lt;/span&gt; &lt;span class="n"&gt;GNU&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Linux&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For instance, we might be interested on &lt;strong&gt;checking whether you are using the latest Kernel&lt;/strong&gt;. You can do this by checking whether the outputs of the following commands match:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rpm -qa kernel &lt;span class="p"&gt;|&lt;/span&gt; sort -V &lt;span class="p"&gt;|&lt;/span&gt; tail -n &lt;span class="m"&gt;1&lt;/span&gt;
-$ uname -r
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;qa&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;uname&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Additionally, for Fedora (and RPM systems) you can check  what kernels are installed with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rpm -q kernel
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;q&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Processes&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -233,26 +232,26 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;To see the processes that were not started from your current session you can run:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps x
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see your processes and those belonging to other users:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps aux
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To list all zombie processes you can either do:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep -w Z
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="n"&gt;Z&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps -e
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -260,7 +259,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Another useful command is &lt;strong&gt;top&lt;/strong&gt; (table of processes). It tells you which programs are using the most of memory or CPU:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ top
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -271,7 +270,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;To stop running a command you can use &lt;strong&gt;kill&lt;/strong&gt;. This will send a message called  &lt;strong&gt;signal&lt;/strong&gt; to the program. There are &lt;a href="http://www.linux.org/threads/kill-commands-and-signals.4423/"&gt;64 different signals&lt;/a&gt;, some having   distinct meanings from &lt;em&gt;stop running&lt;/em&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;kill&lt;/span&gt; &amp;lt;SIGNAL or OPTION&amp;gt; &amp;lt;ID or PID&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;SIGNAL&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;OPTION&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;PID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -286,31 +285,31 @@ $ uname -r
 &lt;p&gt;The signal &lt;strong&gt;SIGKILL&lt;/strong&gt; is mandatory and cause the immediate end of the process. The only exception is if the program is in the middle of making a request to the operating system, &lt;em&gt;i.e.&lt;/em&gt; a system call). This is because the request needs to finish first. This is the most &lt;strong&gt;unsafe&lt;/strong&gt; way to kill the process (check &lt;a href="https://stripe.com/blog/game-day-exercises-at-stripe"&gt;this post from Stripe's Game Day&lt;/a&gt;).  &lt;strong&gt;SIGKILL&lt;/strong&gt; is the 9th signal in the list and it is usually sent with:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;kill&lt;/span&gt; -9 &amp;lt;ID or PID&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;PID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To know all the process with their PID, run:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps -A
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To find the PID of a specific process:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pidof subl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pidof&lt;/span&gt; &lt;span class="n"&gt;subl&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ps aux &lt;span class="p"&gt;|&lt;/span&gt; grep subl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ps&lt;/span&gt; &lt;span class="n"&gt;aux&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;subl&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or even&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pgrep subl
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pgrep&lt;/span&gt; &lt;span class="n"&gt;subl&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -322,7 +321,7 @@ $ uname -r
 &lt;p&gt;Another way of killing process:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pkill &amp;lt;PROCESS NAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pkill&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;PROCESS&lt;/span&gt; &lt;span class="n"&gt;NAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -330,7 +329,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Another great command is &lt;strong&gt;uptime&lt;/strong&gt;, which shows how long the system has been running, with a measure of its load average as well:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ uptime
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;uptime&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -338,7 +337,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Finally, you can change processes priority using &lt;code&gt;nice&lt;/code&gt; (runs a program with modified scheduling priority) and &lt;code&gt;renice&lt;/code&gt;(alter priority of running processes).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Environment Variables&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Environment variables&lt;/em&gt; are several dynamic named values in the operating system that can be used in running processes.&lt;/li&gt;
@@ -347,12 +346,12 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;You can see the &lt;em&gt;environment variables and configuration&lt;/em&gt; in your system with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;set&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ env
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -360,21 +359,21 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;The value of an environment variable can be changed with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;VAR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;export&lt;/span&gt; &lt;span class="kd"&gt;VAR&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;value&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;The value can be checked with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$VAR&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;VAR&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;PATH&lt;/strong&gt; (search path) is the list of directories that the shell look in to try to find a particular command. For example, when you type &lt;code&gt;ls&lt;/code&gt; it will look at &lt;code&gt;/bin/ls&lt;/code&gt;. The path is stored in the variable &lt;strong&gt;PATH&lt;/strong&gt;, which is a list of directory names separated by colons and it's coded inside &lt;strong&gt;./bashrc&lt;/strong&gt;. To export a new path you can do:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:/&amp;lt;DIRECTORY&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -382,7 +381,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Inside a running shell script, there are pseudo-environment variables that are called with &lt;strong&gt;$1&lt;/strong&gt;, &lt;strong&gt;$2&lt;/strong&gt;, etc., for individual arguments that were passed to the script when it was run. In addition, &lt;strong&gt;$0&lt;/strong&gt; is the name of the script and &lt;strong&gt;$@&lt;/strong&gt; is for the list of all the command-line arguments.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;The "~/." Files (dot-files)&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The leading dot in a file is used as an indicator to not list these files normally, but only when they are specifically requested. The reason is that, generally, dot-files are used to store configuration and sensitive information for  applications.&lt;/li&gt;
@@ -396,7 +395,7 @@ $ uname -r
 &lt;p&gt;It's a good experience to customize your &lt;strong&gt;~/.bashrc&lt;/strong&gt;. Just google for samples, or take a look at this &lt;a href="http://dotfiles.org"&gt;site dedicated for sharing dot-files&lt;/a&gt;, or at  &lt;a href="https://github.com/bt3gl/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc"&gt;mine&lt;/a&gt;. Don't forget to &lt;code&gt;source&lt;/code&gt; your &lt;strong&gt;./bashrc&lt;/strong&gt; file every time you make a change (opening a new terminal has the same effect):&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.bashrc
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bashrc&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -412,7 +411,7 @@ $ uname -r
 &lt;p&gt;If you use &lt;a href="http://pidgin.im/"&gt;Pidgin&lt;/a&gt;, the &lt;strong&gt;~/.purple&lt;/strong&gt; directory (after the name of &lt;a href="https://developer.pidgin.im/wiki/WhatIsLibpurple"&gt;the IM library&lt;/a&gt;) contains private information. This includes sensitive cryptographic keys for users of cryptographic extensions to Pidgin such as &lt;a href="https://otr.cypherpunks.ca/"&gt;Off-the-Record&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;File Descriptors&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -427,32 +426,32 @@ $ uname -r
 &lt;p&gt;This naming is used for manipulation of these resources  in the command line. For example,  to send an &lt;strong&gt;input&lt;/strong&gt; to a program you use &lt;strong&gt;&amp;lt;&lt;/strong&gt;:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &amp;lt;PROGRAM&amp;gt; &amp;lt; &amp;lt;INPUT&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PROGRAM&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;INPUT&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To send a program's &lt;strong&gt;output&lt;/strong&gt; somewhere else than the terminal (such as a file), you use &lt;strong&gt;&amp;gt;&lt;/strong&gt;. For example, to just  discard the output:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &amp;lt;PROGRAM&amp;gt; &amp;gt; /dev/null
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PROGRAM&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;dev&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;null&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To send the program's error messages to a file you use the file descriptor 2:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &amp;lt;PROGRAM&amp;gt; &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt; &amp;lt;FILE&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PROGRAM&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To send the program's error messages to the same place where &lt;strong&gt;stdout&lt;/strong&gt; is going, &lt;em&gt;i.e.&lt;/em&gt; merging it into a single stream (this works greatly for pipelines):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &amp;lt;PROGRAM&amp;gt; &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PROGRAM&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;File Permissions&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Every file/directory in Linux is said to belong to a particular &lt;strong&gt;owner&lt;/strong&gt; and a particular &lt;strong&gt;group&lt;/strong&gt;. Files also have permissions stating what operations are allowed.&lt;/li&gt;
@@ -500,21 +499,21 @@ $ uname -r
 &lt;p&gt;To see the file permissions in the current folder, type:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -l
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For example, &lt;code&gt;-rw-r--r--&lt;/code&gt; means that it is a file (-) where the owner has read (r) and write (w) permissions, but not execute permission (-).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;Shell Commands and Tricks&lt;/h1&gt;
 &lt;h2&gt;Reading Files&lt;/h2&gt;
 &lt;h3&gt;cat&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Prints the content of a file in the terminal:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -522,7 +521,7 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Prints the inverse of the content of a file  in the terminal (starting from the bottom):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tac &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;tac&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -530,8 +529,8 @@ $ uname -r
 &lt;ul&gt;
 &lt;li&gt;Both print the content of a file, but adding page control:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ less &amp;lt;FILENAME&amp;gt;
-$ more &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;less&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;more&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -539,14 +538,14 @@ $ more &amp;lt;FILENAME&amp;gt;
 &lt;ul&gt;
 &lt;li&gt;To read 20 lines from the begin:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ head -20 &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;head&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To read 20 lines from the bottom:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tail -10 &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -554,7 +553,7 @@ $ more &amp;lt;FILENAME&amp;gt;
 &lt;ul&gt;
 &lt;li&gt;To print (cat) a file with line numbers:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nl &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;nl&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -562,7 +561,7 @@ $ more &amp;lt;FILENAME&amp;gt;
 &lt;ul&gt;
 &lt;li&gt;To save the output of a program and see it as well:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &amp;lt;PROGRAM&amp;gt; &lt;span class="p"&gt;|&lt;/span&gt; tee -a &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PROGRAM&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;tee&lt;/span&gt; &lt;span class="na"&gt;-a&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -570,11 +569,11 @@ $ more &amp;lt;FILENAME&amp;gt;
 &lt;ul&gt;
 &lt;li&gt;To print the length and number of lines of a file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wc &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;wc&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Searching inside Files&lt;/h2&gt;
 &lt;h3&gt;diff and diff3&lt;/h3&gt;
 &lt;ul&gt;
@@ -589,8 +588,8 @@ $ more &amp;lt;FILENAME&amp;gt;
 &lt;ul&gt;
 &lt;li&gt;The command &lt;strong&gt;file&lt;/strong&gt; shows the real nature of a file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ file requirements.txt
-requirements.txt: ASCII text
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ASCII&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -598,38 +597,38 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;grep&lt;/strong&gt; finds matches for a particular search pattern. The flag &lt;strong&gt;-l&lt;/strong&gt; lists the files that contain matches, the flag &lt;strong&gt;-i&lt;/strong&gt; makes the search case insensitive, and the flag &lt;strong&gt;-r&lt;/strong&gt; searches all the files in a directory and subdirectory:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep -lir &amp;lt;PATTERN&amp;gt; &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;grep&lt;/span&gt; &lt;span class="na"&gt;-lir&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;PATTERN&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For example, to remove lines that are not equal to a word:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep -xv &amp;lt;WORD&amp;gt; &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;grep&lt;/span&gt; &lt;span class="na"&gt;-xv&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;WORD&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Listing or Searching for Files&lt;/h2&gt;
 &lt;h3&gt;ls&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;ls&lt;/strong&gt;  lists  directory and files. Useful flags are &lt;strong&gt;-l&lt;/strong&gt; to list the permissions of each file in the directory and &lt;strong&gt;-a&lt;/strong&gt; to include the dot-files:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -la
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;la&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To list files sorted by size:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -lrS
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;lrS&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To list the names of the 10 most recently modified files ending with .txt:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -rt *.txt &lt;span class="p"&gt;|&lt;/span&gt; tail -10
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rt&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -641,7 +640,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;To find files in a directory:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find &amp;lt;DIRECTORY&amp;gt; -name &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;find&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="na"&gt;-name&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -649,7 +648,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;To find  binaries in PATH variables:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ which ls
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -657,7 +656,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;To find any file in any directory:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;whereis&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -665,24 +664,24 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;To find files by name (using database):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ locate &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;locate&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To test if a a file exist:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;test&lt;/span&gt; -f &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="na"&gt;-f&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Modifying Files&lt;/h2&gt;
 &lt;h3&gt;true&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;To make a file empty:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;true&lt;/span&gt; &amp;gt; &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -690,28 +689,28 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;tr&lt;/strong&gt; takes a pair of strings as arguments and replaces, in its input, every letter that occurs in the first string by the corresponding characters in the second string. For example, to make everything lowercase:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tr A-Z a-z
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tr&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Z&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To put every word in a line by replacing spaces with newlines:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tr -s &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tr&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To combine multiple lines into a single line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tr -d &lt;span class="s1"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tr&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;tr&lt;/strong&gt; doesn't accept the names of files to act upon, so we can pipe it with cat to take input file arguments (same effect as &lt;code&gt;$ &amp;lt;PROGRAM&amp;gt; &amp;lt; &amp;lt;FILENAME&amp;gt;&lt;/code&gt;):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;tr&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$@&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;tr&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -719,28 +718,28 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;Sort the contents of text files. The flag &lt;strong&gt;-r&lt;/strong&gt; sort backwards, and the flag &lt;strong&gt;-n&lt;/strong&gt; selects numeric sort order (for example, without it, 2 comes after 1000):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sort -rn &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="na"&gt;-rn&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To output a frequency count (histogram):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sort &amp;lt;FILENAME&amp;gt; &lt;span class="p"&gt;|&lt;/span&gt; uniq -c &lt;span class="p"&gt;|&lt;/span&gt; sort -rn
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;uniq&lt;/span&gt; &lt;span class="na"&gt;-c&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="na"&gt;-rn&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To chose random lines from a file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sort -R  &amp;lt;FILENAME&amp;gt; &lt;span class="p"&gt;|&lt;/span&gt; head -10
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="na"&gt;-R&lt;/span&gt;  &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nb"&gt;head&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To combine multiple files into one sorted file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sort -m &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="na"&gt;-m&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -748,14 +747,14 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;uniq&lt;/strong&gt; remove &lt;em&gt;adjacent&lt;/em&gt; duplicate lines. The flag &lt;strong&gt;-c&lt;/strong&gt; can include a count:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ uniq -c &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;uniq&lt;/span&gt; &lt;span class="na"&gt;-c&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To output only duplicate lines:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ uniq -d &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;uniq&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -763,14 +762,14 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;cut&lt;/strong&gt; selects particular fields (columns) from a structured text files (or particular characters from each line of any text file). The flag &lt;strong&gt;-d&lt;/strong&gt; specifies what delimiter should be used to divide columns (default is tab), the flag &lt;strong&gt;-f&lt;/strong&gt; specifies which field or fields to print and in what order:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cut -d &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f &lt;span class="m"&gt;2&lt;/span&gt; &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cut&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class="na"&gt;-f&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;The flag &lt;strong&gt;-c&lt;/strong&gt; specifies a range of characters to output, so &lt;strong&gt;-c1-2&lt;/strong&gt; means to output only the first two characters of each line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cut -c1-2 &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cut&lt;/span&gt; &lt;span class="na"&gt;-c1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -778,17 +777,17 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;join&lt;/strong&gt; combines multiple file by common delimited fields:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ join &amp;lt;FILENAME1&amp;gt; &amp;lt;FILENAME2&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILENAME1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILENAME2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Creating Files and Directories&lt;/h2&gt;
 &lt;h3&gt;mkdir&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;mkdir&lt;/strong&gt; creates a directory. An useful flag is &lt;strong&gt;-p&lt;/strong&gt; which creates  the entire path of directories (in case they don't exist):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir -p &amp;lt;DIRNAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;mkdir&lt;/span&gt; &lt;span class="na"&gt;-p&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRNAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -796,14 +795,14 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;Copying directory trees is done with &lt;strong&gt;cp&lt;/strong&gt;. The flag &lt;strong&gt;-a&lt;/strong&gt; is used to preserve all metadata:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cp -a &amp;lt;ORIGIN&amp;gt; &amp;lt;DEST&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cp&lt;/span&gt; &lt;span class="na"&gt;-a&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;ORIGIN&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DEST&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Interestingly, commands enclosed in &lt;strong&gt;$()&lt;/strong&gt; can be run and then the output of the commands is substituted for the clause and can be used as a part of another command line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cp &lt;span class="k"&gt;$(&lt;/span&gt;ls -rt *.txt &lt;span class="p"&gt;|&lt;/span&gt; tail -10&lt;span class="k"&gt;)&lt;/span&gt; &amp;lt;DEST&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cp&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;ls&lt;/span&gt; &lt;span class="na"&gt;-rt&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;txt&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nx"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DEST&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -811,7 +810,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;The &lt;strong&gt;pushd&lt;/strong&gt; command saves the current working directory in memory so it can be returned to at any time, optionally changing to a new directory:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; $ pushd ~/Desktop/
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pushd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;Desktop&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -822,7 +821,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;Files can be linked with different names with the &lt;strong&gt;ln&lt;/strong&gt;. To create a symbolic (soft) link you can use the flag &lt;strong&gt;-s&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ln -s &amp;lt;TARGET&amp;gt; &amp;lt;LINKNAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;ln&lt;/span&gt; &lt;span class="na"&gt;-s&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;TARGET&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;LINKNAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -830,38 +829,38 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;dd&lt;/strong&gt; is used for disk-to-disk copies, being useful for making copies of raw disk space. For example, to back up your &lt;a href="http://en.wikipedia.org/wiki/Master_boot_record"&gt;Master Boot Record&lt;/a&gt; (MBR):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sda &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;sda.mbr &lt;span class="nv"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;512&lt;/span&gt; &lt;span class="nv"&gt;count&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;dd&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mbr&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;512&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To use &lt;strong&gt;dd&lt;/strong&gt; to make a copy of one disk onto another:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dd &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sda &lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/sdb
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;dd&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sda&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sdb&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Network and Admin&lt;/h2&gt;
 &lt;h3&gt;du&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;du&lt;/strong&gt; shows how much disk space is used for each file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ du -sha
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sha&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see  this information sorted  and only the 10 largest files:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ du -a &lt;span class="p"&gt;|&lt;/span&gt; sort -rn &lt;span class="p"&gt;|&lt;/span&gt; head -10
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rn&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;head&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To determine which subdirectories are taking a lot of disk space:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ du --max-depth&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;  &lt;span class="p"&gt;|&lt;/span&gt; sort -k1 -rn
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;depth&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;k1&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rn&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -869,7 +868,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;df&lt;/strong&gt;  shows how much disk space is used on each mounted filesystem. It displays  five columns for each filesystem: the name, the size, how much is used, how much is available, percentage of use, and where it is mounted. Note the values won't add up because Unix filesystems have &lt;strong&gt;reserved&lt;/strong&gt; storage blogs which only the root user can write to.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ df -h
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -877,7 +876,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;You can check and configure your network interface with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ifconfig
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ifconfig&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -900,7 +899,7 @@ requirements.txt: ASCII text
 &lt;p&gt;A good trick is to change the IP address, &lt;a href="http://en.wikipedia.org/wiki/Subnetwork"&gt;netmask&lt;/a&gt; and broadcast address for your network interface:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ifconfig eth0 &lt;span class="m"&gt;192&lt;/span&gt;.168.1.115 netmask &lt;span class="m"&gt;255&lt;/span&gt;.255.255.0 broadcast &lt;span class="m"&gt;192&lt;/span&gt;.168.1.255
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ifconfig&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt; &lt;span class="mf"&gt;192.168.1.115&lt;/span&gt; &lt;span class="n"&gt;netmask&lt;/span&gt; &lt;span class="mf"&gt;255.255.255.0&lt;/span&gt; &lt;span class="n"&gt;broadcast&lt;/span&gt; &lt;span class="mf"&gt;192.168.1.255&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -908,7 +907,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;Linux has a DHCP server that runs a daemon called &lt;code&gt;dhcpd&lt;/code&gt;, assigning IP address to all the systems on the subnet (it also keeps logs files):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dhclient
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;dhclient&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -920,35 +919,35 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;netstat&lt;/strong&gt; prints the network connections, routing tables, interface statistics, among others. Useful  flags are &lt;strong&gt;-t&lt;/strong&gt; for TCP, &lt;strong&gt;-u&lt;/strong&gt; for UDP, &lt;strong&gt;-l&lt;/strong&gt; for listening, &lt;strong&gt;-p&lt;/strong&gt; for program, &lt;strong&gt;-n&lt;/strong&gt; for numeric. For example:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ netstat -s
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To display all open network ports:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ netstat -tulpn
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tulpn&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Display all TCP sockets:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ netstat -nat
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nat&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Display all UDP sockets:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ netstat -nau
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nau&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;View established connections only:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ netstat -natu &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s1"&gt;&amp;#39;ESTABLISHED&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;netstat&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;natu&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ESTABLISHED&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -961,28 +960,28 @@ requirements.txt: ASCII text
 &lt;p&gt;It can display stats for &lt;a href="http://www.cyberciti.biz/tips/linux-investigate-sockets-network-connections.html"&gt;PACKET sockets, TCP sockets, UDP sockets, DCCP sockets, RAW sockets, Unix domain sockets, and more&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ss -s
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To display all open network ports:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ss -l
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To display all TCP sockets:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ss -t -a
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To display all UCP sockets:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ss -u -a
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ss&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -990,7 +989,7 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;tcptrack&lt;/strong&gt; displays information about TCP connections it sees on a network and display bandwidth usage on some interface by a host.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  tcptrack -i eth0
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;tcptrack&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -998,14 +997,14 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;To connect to a host server, you can  use &lt;strong&gt;netcat&lt;/strong&gt; (nc) and &lt;strong&gt;telnet&lt;/strong&gt;. To connect under an encrypted session, &lt;strong&gt;ssh&lt;/strong&gt; is used. For example, to send a string to a host at port 3000:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e &lt;span class="p"&gt;|&lt;/span&gt; nc localhost &lt;span class="m"&gt;3000&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;wcYUJFw0k0XLShlDzztnTBHiqxU3b3e&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;nc&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt; &lt;span class="mi"&gt;3000&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To telnet to localhost at port 3000:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ telnet localhost &lt;span class="m"&gt;3000&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;telnet&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt; &lt;span class="mi"&gt;3000&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1013,59 +1012,59 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;lsof&lt;/strong&gt; lists open files (remember that everything is considered a file in Linux):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsof &amp;lt;STRING&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;lsof&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;STRING&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see open TCP ports:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsof &lt;span class="p"&gt;|&lt;/span&gt; grep TCP
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;lsof&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;TCP&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see IPv4 port(s):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsof -Pnl +M -i4
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;lsof&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Pnl&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i4&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see IPv6 listing port(s):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsof -Pnl +M -i6
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;lsof&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Pnl&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i6&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Useful Stuff&lt;/h2&gt;
 &lt;h3&gt;echo&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;echo&lt;/strong&gt; prints its arguments as output. It can be useful for pipeling, and in this case you use the flag &lt;strong&gt;-n&lt;/strong&gt; to not output the trailing new line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n &amp;lt;FILENAME&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;echo&lt;/span&gt; &lt;span class="na"&gt;-n&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;echo&lt;/strong&gt; can be useful to generate commands inside scripts (remember the discussion about file descriptor):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Done!&amp;#39;&lt;/span&gt; &amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Done&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;amp;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Or to find shell environment variables (remember the discussion about them):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$PATH&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;PATH&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For example, we can send the current date information to a file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; Completed at &lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="k"&gt;)&lt;/span&gt; &amp;gt;&amp;gt; log.log
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;Completed&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1073,11 +1072,11 @@ requirements.txt: ASCII text
 &lt;ul&gt;
 &lt;li&gt;You can calculate hashes straight from the command line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt;/span&gt; md5sum
-$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt;/span&gt; sha1sum
-03d67c263c27a453ef65b29e30334727333ccbcd  -
-$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt;/span&gt; sha256sum
-705db0603fd5431451dab1171b964b4bd575e2230f40f4c300d70df6e65f5f1c  -
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;md5sum&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sha1sum&lt;/span&gt;
+&lt;span class="mo"&gt;03&lt;/span&gt;&lt;span class="n"&gt;d67c263c27a453ef65b29e30334727333ccbcd&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sha256sum&lt;/span&gt;
+&lt;span class="mi"&gt;705&lt;/span&gt;&lt;span class="n"&gt;db0603fd5431451dab1171b964b4bd575e2230f40f4c300d70df6e65f5f1c&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1085,15 +1084,15 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;A calculator program is given by the command &lt;strong&gt;bc&lt;/strong&gt; The flag &lt;strong&gt;-l&lt;/strong&gt; stands for the standard math library:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bc -l
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;bc&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For example, we can make a quick calculation with:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2*15454&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; bc
-&lt;span class="m"&gt;30908&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;15454&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;bc&lt;/span&gt;
+&lt;span class="mi"&gt;30908&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1101,7 +1100,7 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;To find information about logged users you can use the commands &lt;strong&gt;w, who, finger&lt;/strong&gt;, and &lt;strong&gt;users&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Regular Expression 101&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1126,14 +1125,14 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;For example, to find lines in a file that begin with a particular string you can use the regex symbol &lt;strong&gt;^&lt;/strong&gt;:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep ^awesome
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="n"&gt;awesome&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Additionally, to find lines that end with a particular string you can use &lt;strong&gt;$&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep awesome$
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1151,7 +1150,7 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;For instance, you can use &lt;code&gt;egrep '.{12}'&lt;/code&gt;to find words of at least 12 letters. You can use &lt;code&gt;egrep -x '.{12}'&lt;/code&gt; to find words of exactly twelve letters.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Awk and Sed&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;awk&lt;/strong&gt;  is a pattern scanning tool while &lt;strong&gt;sed&lt;/strong&gt; is a stream editor for filtering and transform text. While these tools are extremely powerful, if you have knowledge of any very high level languages such as Python or Ruby, you  don't necessary need to learn them.&lt;/li&gt;
@@ -1160,32 +1159,32 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;Let's say we want  to replace every occurrence of &lt;em&gt;mysql&lt;/em&gt; and with MySQL (Linux is case sensitive), and then save the new file to &lt;FILENAME&gt;. We can write an one-line command that says  "search for the word mysql and replace it with the word MySQL":&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sed s/mysql/MySQL/g &amp;lt;FILEORIGIN&amp;gt; &amp;gt; &amp;lt;FILEDEST&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;sed&lt;/span&gt; &lt;span class="nb"&gt;s&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mysql&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;MySQL&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;g&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILEORIGIN&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILEDEST&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To replace any instances of period followed by any number of spaces with a period followed by a single space in every file in this directory:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sed -i &lt;span class="s1"&gt;&amp;#39;s/\. */. /g&amp;#39;&lt;/span&gt; *
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sed&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="err"&gt;*/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To pass an input through a stream editor and then quit after printing the number of lines designated by the script's first parameter:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sed &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;q
+&lt;div class="highlight"&gt;&lt;pre&gt;$ sed &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;q
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;Some More Advanced Stuff&lt;/h1&gt;
 &lt;h2&gt;Scheduling Recurrent Processes&lt;/h2&gt;
 &lt;h3&gt;at&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;A very cute bash command is &lt;strong&gt;at&lt;/strong&gt;, which allows you to run processes later (ended with CTRL+D):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ at 3pm
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;pm&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1198,14 +1197,14 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;To view the contents of your crontab, run:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ crontab -l
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;crontab&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To edit your crontab, run:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ crontab -e
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;crontab&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1217,18 +1216,18 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;For example, to run a backup every day at 5am, edit your crontab to:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;0 5 * * * /home/files/backup.sh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;backup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Or if you want to remember some birthday, you can edit your crontab to:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* * 16 1 * echo &amp;quot;Remember Mom&amp;#39;s bday!&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Remember Mom&amp;#39;s bday!&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;rsync&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1244,11 +1243,11 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;A very common set is &lt;strong&gt;-av&lt;/strong&gt; which makes &lt;strong&gt;rsync&lt;/strong&gt; to work recursively, preserving metadata about the files it copies, and displaying the name of each file as it is copied. For example, the command below is used to transfer some directory  to the &lt;strong&gt;/planning&lt;/strong&gt; subdirectory on a remote host:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rsync -av &amp;lt;DIRECTORY&amp;gt; &amp;lt;HOST&amp;gt;:/planning
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;rsync&lt;/span&gt; &lt;span class="na"&gt;-av&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;HOST&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:/&lt;/span&gt;&lt;span class="nx"&gt;planning&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;File Compression&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1264,14 +1263,14 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;A simple tarball is created with the flag &lt;strong&gt;c&lt;/strong&gt;:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar cf &amp;lt;FILE.tar&amp;gt; &amp;lt;CONTENTS&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;tar&lt;/span&gt; &lt;span class="nx"&gt;cf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILE.tar&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;CONTENTS&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To extract a tarball you use the flag &lt;strong&gt;x&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar xf &amp;lt;FILE.tar&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;xf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;FILE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1279,7 +1278,7 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;gzip&lt;/strong&gt; is the most frequently used Linux compression utility. To create the archive and compress with gzip you use the flag &lt;strong&gt;z&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar zcf &amp;lt;FILE.tar.gz&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;zcf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;FILE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gz&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1290,7 +1289,7 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;bzip2&lt;/strong&gt; produces files significantly smaller than those produced by gzip. To create the archive and compress with bz2 you use the flag &lt;strong&gt;j&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar jcf &amp;lt;FILE.tar.bz2&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;jcf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;FILE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bz2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1298,11 +1297,11 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;xz&lt;/strong&gt; is the most space efficient compression utility used in Linux. To create the archive and compress with xz:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar Jcf &amp;lt;FILE.tar.xz&amp;gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;Jcf&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;FILE&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xz&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1320,19 +1319,19 @@ $ &lt;span class="nb"&gt;echo&lt;/span&gt; -n awesome &lt;span class="p"&gt;|&lt
 &lt;p&gt;The folder &lt;code&gt;/etc/services&lt;/code&gt; is a plain ASCII file providing a mapping between friendly textual names for internet services, and their underlying assigned port numbers and protocol types. To check it:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat /etc/services
-$ grep &lt;span class="m"&gt;110&lt;/span&gt; /etc/services
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;services&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="mi"&gt;110&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;services&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;To see what your system is logging:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lastlog
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;lastlog&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;/proc and inodes&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1356,29 +1355,29 @@ $ grep &lt;span class="m"&gt;110&lt;/span&gt; /etc/services
 &lt;p&gt;An &lt;strong&gt;index node&lt;/strong&gt; (inode) is a data structure used to represent a filesystem object such as files or  directories. The true name of a file, even when it has no other name, is in fact its &lt;em&gt;inode number&lt;/em&gt; within the filesystem it was created, which can be obtained by&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stat
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;stat&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls -i
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Creating a hard link with &lt;strong&gt;ln&lt;/strong&gt; results in a new file with the same &lt;em&gt;inode number&lt;/em&gt; as the original. Running &lt;em&gt;rm&lt;/em&gt; won't affect the other file:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; awesome &amp;gt; awesome
-$ cp awesome  more-awesome
-$ ln awesome same-awesome
-$ ls -i *some
-&lt;span class="m"&gt;7602299&lt;/span&gt; awesome
-&lt;span class="m"&gt;7602302&lt;/span&gt; more-awesome
-&lt;span class="m"&gt;7602299&lt;/span&gt; same-awesome
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt;  &lt;span class="n"&gt;more&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt; &lt;span class="n"&gt;same&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;some&lt;/span&gt;
+&lt;span class="mi"&gt;7602299&lt;/span&gt; &lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="mi"&gt;7602302&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;awesome&lt;/span&gt;
+&lt;span class="mi"&gt;7602299&lt;/span&gt; &lt;span class="n"&gt;same&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;awesome&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Text, Hexdump, and Encodings&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1388,20 +1387,20 @@ $ ls -i *some
 &lt;p&gt;A text with a single line containing the word 'Hello' in  ASCII would be 6 bytes (one for each letter, and one for the trailing newline). For example, the text below:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat text.txt
-Hello everyone!
-Linux is really cool.
-Let&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s learn more!
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;Hello&lt;/span&gt; &lt;span class="n"&gt;everyone&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+&lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;really&lt;/span&gt; &lt;span class="n"&gt;cool&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Let&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;learn&lt;/span&gt; &lt;span class="n"&gt;more&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;is represented as:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ hexdump -c &amp;lt; text.txt
-&lt;span class="m"&gt;0000000&lt;/span&gt;   H   e   l   l   o       e   v   e   r   y   o   n   e   !  &lt;span class="se"&gt;\n&lt;/span&gt;
-&lt;span class="m"&gt;0000010&lt;/span&gt;   L   i   n   u   x       i   s       r   e   a   l   l   y
-&lt;span class="m"&gt;0000020&lt;/span&gt;   c   o   o   l   .  &lt;span class="se"&gt;\n&lt;/span&gt;   L   e   t   &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;   s       l   e   a   r
-&lt;span class="m"&gt;0000030&lt;/span&gt;   n       m   o   r   e   !  &lt;span class="se"&gt;\n&lt;/span&gt;
-&lt;span class="m"&gt;0000038&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;hexdump&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="mo"&gt;0000000&lt;/span&gt;   &lt;span class="n"&gt;H&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="n"&gt;o&lt;/span&gt;       &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;v&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;r&lt;/span&gt;   &lt;span class="n"&gt;y&lt;/span&gt;   &lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;n&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="o"&gt;!&lt;/span&gt;  &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;span class="mo"&gt;0000010&lt;/span&gt;   &lt;span class="n"&gt;L&lt;/span&gt;   &lt;span class="n"&gt;i&lt;/span&gt;   &lt;span class="n"&gt;n&lt;/span&gt;   &lt;span class="n"&gt;u&lt;/span&gt;   &lt;span class="n"&gt;x&lt;/span&gt;       &lt;span class="n"&gt;i&lt;/span&gt;   &lt;span class="n"&gt;s&lt;/span&gt;       &lt;span class="n"&gt;r&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;a&lt;/span&gt;   &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;span class="mo"&gt;0000020&lt;/span&gt;   &lt;span class="n"&gt;c&lt;/span&gt;   &lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="p"&gt;.&lt;/span&gt;  &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;   &lt;span class="n"&gt;L&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;t&lt;/span&gt;   &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;   &lt;span class="n"&gt;s&lt;/span&gt;       &lt;span class="n"&gt;l&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="n"&gt;a&lt;/span&gt;   &lt;span class="n"&gt;r&lt;/span&gt;
+&lt;span class="mo"&gt;0000030&lt;/span&gt;   &lt;span class="n"&gt;n&lt;/span&gt;       &lt;span class="n"&gt;m&lt;/span&gt;   &lt;span class="n"&gt;o&lt;/span&gt;   &lt;span class="n"&gt;r&lt;/span&gt;   &lt;span class="n"&gt;e&lt;/span&gt;   &lt;span class="o"&gt;!&lt;/span&gt;  &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;span class="mo"&gt;000003&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1428,7 +1427,7 @@ Let&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s learn more!
 &lt;p&gt;Linux has a command to translate between character sets:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ recode iso8859-1..utf-8
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;recode&lt;/span&gt; &lt;span class="n"&gt;iso8859&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;1.&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utf&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1440,13 +1439,13 @@ Let&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s learn more!
 &lt;p&gt;There are only two mandatory rules about characters that can't appear in filename: null bytes (bytes that have numeric value zero) and forward slashes &lt;strong&gt;/&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;Extra Juice: (pseudo)-Random Tricks&lt;/h1&gt;
 &lt;h2&gt;Creating Pseudo-Random Passwords&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Add this to your &lt;strong&gt;~/.bashrc&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;genpass() {
+&lt;div class="highlight"&gt;&lt;pre&gt;genpass() {
     local p=$1
         [ &amp;quot;&lt;span class="nv"&gt;$p&lt;/span&gt;&amp;quot; == &amp;quot;&amp;quot; ] &lt;span class="err"&gt;&amp;amp;&amp;amp;&lt;/span&gt; p=16
         tr -dc A-Za-z0-9_ &lt;span class="err"&gt;&amp;lt;&lt;/span&gt; /dev/urandom | head -c &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; | xargs
@@ -1457,30 +1456,30 @@ Let&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s learn more!
 &lt;ul&gt;
 &lt;li&gt;Then, to generate passwords, just type:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ genpass
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;genpass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;For example:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ genpass
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;genpass
 dIBObynGX9epYogz
-$ genpass &lt;span class="m"&gt;8&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;genpass 8
 c_yhmaXt
-$ genpass &lt;span class="m"&gt;12&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;genpass 12
 FZI2wz2LzyVQ
-$ genpass &lt;span class="m"&gt;14&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;genpass 14
 ZEfgQvpY4ixePt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Most Common words plus Frequency&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;We can use the commands we learned to build a script that print the most common words plus their frequency:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tr -cs A-Za-z &amp;#39;\n&amp;#39; |
+&lt;div class="highlight"&gt;&lt;pre&gt;tr -cs A-Za-z &amp;#39;\n&amp;#39; |
 tr A-Z a-z |
 sort |
 uniq -c |
@@ -1492,42 +1491,42 @@ sed &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&
 &lt;ul&gt;
 &lt;li&gt;This is the same as splitting and tokenizing the file using Python:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;collections&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;common_words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;collections&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;most_common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;collections&lt;/span&gt;
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;common_words&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;collections&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Counter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;stdin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;lower&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;()).&lt;/span&gt;&lt;span class="n"&gt;most_common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Password Asterisks&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;By default, when you type your password in the terminal you should see no feedback. If you would like to see asterisks instead, edit:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo visudo
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;visudo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;to have the value:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Defaults                           pwfeedback
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Defaults&lt;/span&gt;                           &lt;span class="n"&gt;pwfeedback&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;imagemagick&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;You can create a gif file from terminal with  &lt;strong&gt;&lt;em&gt;imagemagick&lt;/em&gt;&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mogrify -resize 640x480 *.jpg
-$ convert -delay &lt;span class="m"&gt;20&lt;/span&gt; -loop &lt;span class="m"&gt;0&lt;/span&gt; *.jpg myimage.gif
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;mogrify&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;resize&lt;/span&gt; &lt;span class="mi"&gt;640&lt;/span&gt;&lt;span class="n"&gt;x480&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;convert&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;loop&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jpg&lt;/span&gt; &lt;span class="n"&gt;myimage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Easy access to the History&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Type &lt;code&gt;!!&lt;/code&gt; to run the last command in the history, &lt;code&gt;!-2&lt;/code&gt; for the command before that, and so on.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h1&gt;Further References:&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1575,16 +1574,10 @@ $ convert -delay &lt;span class="m"&gt;20&lt;/span&gt; -loop &lt;span class="m"&
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content><category term="Linux"></category><category term="Python"></category><category term="Unicode"></category><category term="tr"></category><category term="ifconfig"></category><category term="ssh"></category><category term="netcat"></category><category term="Stripe"></category></entry><entry><title>That's What Love Looks Like</title><link href="http://bt3gl.github.io/thats-what-love-looks-like.html" rel="alternate"></link><published>2014-10-06T00:50:00-04:00</published><updated>2014-10-06T00:50:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-06:/thats-what-love-looks-like.html</id><summary type="html">&lt;p&gt;I'm talking about this day that was all about &lt;strong&gt;love&lt;/strong&gt;.&lt;/p&gt;
+&lt;/ul&gt;</summary><category term="Linux"></category><category term="Python"></category><category term="Unicode"></category><category term="tr"></category><category term="ifconfig"></category><category term="ssh"></category><category term="netcat"></category><category term="Stripe"></category></entry><entry><title>That's What Love Looks Like</title><link href="http://bt3gl.github.io/thats-what-love-looks-like.html" rel="alternate"></link><updated>2014-10-06T00:50:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-06:thats-what-love-looks-like.html</id><summary type="html">&lt;p&gt;I'm talking about this day that was all about &lt;strong&gt;love&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;I am not actually talking, I'm showing my pictures.&lt;/p&gt;
 &lt;p&gt;The  &lt;a href="http://en.wikipedia.org/wiki/People's_Climate_March"&gt;People's Climate March&lt;/a&gt;, which happened a couple of weeks ago in NYC, filled my veins with &lt;strong&gt;hope&lt;/strong&gt;. No words are able to express what each of these pictures say.&lt;/p&gt;
 &lt;iframe class="imgur-album" width="100%" height="550" frameborder="0" src="//imgur.com/a/Rcnoo/embed?background=f2f2f2&amp;text=1a1a1a&amp;link=4e76c9"&gt;&lt;/iframe&gt;
 
-&lt;p&gt;The …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm talking about this day that was all about &lt;strong&gt;love&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I am not actually talking, I'm showing my pictures.&lt;/p&gt;
-&lt;p&gt;The  &lt;a href="http://en.wikipedia.org/wiki/People's_Climate_March"&gt;People's Climate March&lt;/a&gt;, which happened a couple of weeks ago in NYC, filled my veins with &lt;strong&gt;hope&lt;/strong&gt;. No words are able to express what each of these pictures say.&lt;/p&gt;
-&lt;iframe class="imgur-album" width="100%" height="550" frameborder="0" src="//imgur.com/a/Rcnoo/embed?background=f2f2f2&amp;text=1a1a1a&amp;link=4e76c9"&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The rest of the pictures (and in larger resolution) are &lt;a href="https://flic.kr/s/aHsk4dVkbV"&gt;here (flickr)&lt;/a&gt; or &lt;a href="https://www.behance.net/gallery/20284067/Peoples-Climate-March-NYC-2014"&gt;here (behance)&lt;/a&gt;. Peace.&lt;/p&gt;</content><category term="Hope"></category><category term="Love"></category></entry><entry><title>Setting up a Playing Environment with Virtual Machines</title><link href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html" rel="alternate"></link><published>2014-10-03T04:30:00-04:00</published><updated>2014-10-03T04:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-03:/setting-up-a-playing-environment-with-virtual-machines.html</id><summary type="html">&lt;hr&gt;
-&lt;h2&gt;Further References:&lt;/h2&gt;</summary><content type="html">&lt;hr&gt;
-&lt;h2&gt;Further References:&lt;/h2&gt;</content><category term="VMWare"></category></entry></feed>
+&lt;p&gt;The rest of the pictures (and in larger resolution) are &lt;a href="https://flic.kr/s/aHsk4dVkbV"&gt;here (flickr)&lt;/a&gt; or &lt;a href="https://www.behance.net/gallery/20284067/Peoples-Climate-March-NYC-2014"&gt;here (behance)&lt;/a&gt;. Peace.&lt;/p&gt;</summary><category term="Hope"></category><category term="Love"></category></entry><entry><title>Setting up a Playing Environment with Virtual Machines</title><link href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html" rel="alternate"></link><updated>2014-10-03T04:30:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-03:setting-up-a-playing-environment-with-virtual-machines.html</id><summary type="html">&lt;hr /&gt;
+&lt;h2&gt;Further References:&lt;/h2&gt;</summary><category term="VMWare"></category></entry></feed>

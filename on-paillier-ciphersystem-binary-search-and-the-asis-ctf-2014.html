@@ -5,7 +5,7 @@
     <title>On Paillier Ciphersystem, Binary Search and the ASIS CTF 2014</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-10-13T02:00:00-04:00">
+<abbr class="published" title="2014-10-13T02:00:00">
       Mon 13 October 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -112,18 +112,18 @@
 	<a href="./tag/oracle.html"><i class="icon-tag"></i>Oracle</a>
 	<a href="./tag/decimal.html"><i class="icon-tag"></i>Decimal</a>
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="" src="http://i.imgur.com/7LMyBGx.png"></p>
+                <p><img alt="" src="http://i.imgur.com/7LMyBGx.png" /></p>
 <p>The <a href="http://asis-ctf.ir/home/">ASIS CTF</a> happened last weekend. Although I ended up not playing all I wanted, I did spend some time working on a crypto challenge that was worth a lot of points in the game. The challenge was about a sort of not well-known system, the <a href="http://en.wikipedia.org/wiki/Paillier_cryptosystem">Paillier cryptosystem</a>.</p>
-<hr>
+<hr />
 <h2>The Cryptosystem</h2>
 <p>The challenge was started by netcating to <code>nc asis-ctf.ir 12445</code>:</p>
-<div class="highlight"><pre><span></span>  &gt; Here we use a well-known cryptosystem, which introduced in late 90s as a part of PhD Thesis. This cryptosystem is a probabilistic asymmetric algorithm, so computer nerds are familiar with the basics. The power of this cryptosystem is based on the fact that no efficient general method for computing discrete logarithms on conventional computers is known. In real world it could be used in a situation where there is a need for anonymity and a mechanism to validate, like election. What&#39;s the name of this cryptosystem?
+<div class="highlight"><pre>  <span class="o">&gt;</span> <span class="n">Here</span> <span class="n">we</span> <span class="n">use</span> <span class="n">a</span> <span class="n">well</span><span class="o">-</span><span class="n">known</span> <span class="n">cryptosystem</span><span class="p">,</span> <span class="n">which</span> <span class="n">introduced</span> <span class="n">in</span> <span class="n">late</span> <span class="mi">90</span><span class="n">s</span> <span class="n">as</span> <span class="n">a</span> <span class="n">part</span> <span class="n">of</span> <span class="n">PhD</span> <span class="n">Thesis</span><span class="p">.</span> <span class="n">This</span> <span class="n">cryptosystem</span> <span class="n">is</span> <span class="n">a</span> <span class="n">probabilistic</span> <span class="n">asymmetric</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">so</span> <span class="n">computer</span> <span class="n">nerds</span> <span class="n">are</span> <span class="n">familiar</span> <span class="n">with</span> <span class="n">the</span> <span class="n">basics</span><span class="p">.</span> <span class="n">The</span> <span class="n">power</span> <span class="n">of</span> <span class="n">this</span> <span class="n">cryptosystem</span> <span class="n">is</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">fact</span> <span class="n">that</span> <span class="n">no</span> <span class="n">efficient</span> <span class="n">general</span> <span class="n">method</span> <span class="k">for</span> <span class="n">computing</span> <span class="n">discrete</span> <span class="n">logarithms</span> <span class="n">on</span> <span class="n">conventional</span> <span class="n">computers</span> <span class="n">is</span> <span class="n">known</span><span class="p">.</span> <span class="n">In</span> <span class="n">real</span> <span class="n">world</span> <span class="n">it</span> <span class="n">could</span> <span class="n">be</span> <span class="n">used</span> <span class="n">in</span> <span class="n">a</span> <span class="n">situation</span> <span class="n">where</span> <span class="n">there</span> <span class="n">is</span> <span class="n">a</span> <span class="n">need</span> <span class="k">for</span> <span class="n">anonymity</span> <span class="n">and</span> <span class="n">a</span> <span class="n">mechanism</span> <span class="n">to</span> <span class="n">validate</span><span class="p">,</span> <span class="n">like</span> <span class="n">election</span><span class="p">.</span> <span class="n">What</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">this</span> <span class="n">cryptosystem</span><span class="o">?</span>
 </pre></div>
 
 
 <p>The answer would return an <a href="http://en.wikipedia.org/wiki/Oracle_machine">oracle</a>:</p>
-<div class="highlight"><pre><span></span>paillier
-The secret is: <span class="m">642807145082286247713777999837639377481387351058282123170326710069313488038832353876780566208105600079151229044887906676902907027064003780445277944626862081731861220016415929268942783162708816500946772808327134830134079094377390069335173892453677535279678315885291394526580800235039893009001625481049390361761336337647597773237774304907266052473708273977012064983893047728185071148350402161227727584760493541436392061714945686426966193498593237383322044894184438689354989491800002299012669235551727100161976426628760839759603818593410342738847167887121724862806632881028892880165650108111619269651597119870237519410</span>
+<div class="highlight"><pre>paillier
+The secret is: 642807145082286247713777999837639377481387351058282123170326710069313488038832353876780566208105600079151229044887906676902907027064003780445277944626862081731861220016415929268942783162708816500946772808327134830134079094377390069335173892453677535279678315885291394526580800235039893009001625481049390361761336337647597773237774304907266052473708273977012064983893047728185071148350402161227727584760493541436392061714945686426966193498593237383322044894184438689354989491800002299012669235551727100161976426628760839759603818593410342738847167887121724862806632881028892880165650108111619269651597119870237519410
 Tell us your choice:
 <span class="o">[</span>E<span class="o">]</span>ncrypt: <span class="o">[</span>D<span class="o">]</span>ecrypt:
 </pre></div>
@@ -138,9 +138,9 @@ Tell us your choice:
 <p>What matter for us is the fact that this system has a <a href="http://en.wikipedia.org/wiki/Homomorphic_encryption">homomorphic</a> propriety. Well, from Latin, <em>homo</em> means <em>the same</em> (like <em>homogeneous</em>) and <em>morphic</em> means <em>form</em> (like <em>metamorphosis</em>). So this propriety says that the cipher  conserves the form of the message, even if we play  with it. This propriety in a cryptographic algorithm is also called <a href="http://en.wikipedia.org/wiki/Malleability_(cryptography)">malleability</a>.</p>
 <p>In other words, if we know only the public key (which is the <a href="http://en.wikipedia.org/wiki/Modulo_operation">modulo</a>m <strong>n</strong>, a multiplication of two large prime numbers), we can manipulate the cipher and still get the original content of the plain message.</p>
 <p>For example, the multiplication of a <strong>cipher 1</strong> by a <strong>cipher 2</strong> is decrypted as a sum of the <strong>message 1</strong> to <strong>message 2</strong>:</p>
-<p><img alt="" src="http://i.imgur.com/EBrjNjO.png"></p>
+<p><img alt="" src="http://i.imgur.com/EBrjNjO.png" /></p>
 <p>And, look at this: we can also exponentiate the cipher by some constant <strong>k</strong>!</p>
-<p><img alt="" src="http://i.imgur.com/UONTcAb.png"></p>
+<p><img alt="" src="http://i.imgur.com/UONTcAb.png" /></p>
 <p>Pretty cool, huh? I think so... :)</p>
 <h3>Simple implementation of a Paillier system</h3>
 <p>Let's highlight the implementation of this system in Python. All we need is a large prime number generator, which we can borrow from <a href="https://www.dlitz.net/software/pycrypto/">pyCrypto</a>.</p>
@@ -160,7 +160,7 @@ Tell us your choice:
 </li>
 </ul>
 <p>The script below shows how this works:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Crypto.Util.number</span> <span class="kn">as</span> <span class="nn">cry</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">Crypto.Util.number</span> <span class="kn">as</span> <span class="nn">cry</span>
 <span class="kn">import</span> <span class="nn">gmpy</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
@@ -174,12 +174,12 @@ Tell us your choice:
     <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">rand</span><span class="p">):</span>
-    <span class="c1"># c = g^m * r^m % n^2</span>
+    <span class="c"># c = g^m * r^m % n^2</span>
     <span class="n">n_sqr</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">msg</span><span class="p">,</span> <span class="n">n_sqr</span><span class="p">)</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">rand</span><span class="p">,</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_sqr</span><span class="p">)</span> <span class="p">)</span> <span class="o">%</span> <span class="n">n_sqr</span>
 
 <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">cipher</span><span class="p">):</span>
-    <span class="c1"># m = L(c^l mod n^2)*mu mod n</span>
+    <span class="c"># m = L(c^l mod n^2)*mu mod n</span>
     <span class="k">return</span> <span class="p">(((</span><span class="nb">pow</span><span class="p">(</span><span class="n">cipher</span><span class="p">,</span> <span class="n">key</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">//</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">key</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">%</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">get_random_number</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -195,30 +195,30 @@ Tell us your choice:
     <span class="n">cipher</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">MSG</span><span class="p">,</span> <span class="n">rand</span><span class="p">)</span>
     <span class="n">decipher</span> <span class="o">=</span> <span class="n">decrypt</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">cipher</span><span class="p">)</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The message is {}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MSG</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The cipher is {}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cipher</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The decipher is {}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decipher</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The message is {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">MSG</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The cipher is {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cipher</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The decipher is {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decipher</span><span class="p">))</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">paillier_poc</span><span class="p">()</span>
 </pre></div>
 
 
 <p>All right, time to go back to our challenge.</p>
-<hr>
+<hr />
 <h2>Understanding the Challenge</h2>
 <p>Performing some recon in the oracle, I noticed the following:</p>
 <ul>
 <li>Encryption and decryption of any <strong>integer</strong> works...</li>
 </ul>
-<div class="highlight"><pre><span></span>[E]ncrypt: [D]ecrypt: e
-Tell us your message to encrypt: 1
-Your secret is: 73109965080485247131710209266123910705889636744106672869822932981580432295328645599823550448181731566435402609978665387224898646975403769881196399448975370668935092605229755765060164052771714510987944591017615792396157094596290728393053648253053017939625091326878542241485082342371560710778399247063411414649475517288243167425022137869055256778307340931947663486971023680806406250041891606619955393621120918102708442427400288119511466304393700124201965017764148482926998000012235997591413309617388902575733355188418714479900913342627281937156809563150498906460101268562252351167461233533852277300215020108137992142
-Tell us your choice:
-------------------------
-[E]ncrypt: [D]ecrypt: d
-Tell us your secret to decrypt: 73109965080485247131710209266123910705889636744106672869822932981580432295328645599823550448181731566435402609978665387224898646975403769881196399448975370668935092605229755765060164052771714510987944591017615792396157094596290728393053648253053017939625091326878542241485082342371560710778399247063411414649475517288243167425022137869055256778307340931947663486971023680806406250041891606619955393621120918102708442427400288119511466304393700124201965017764148482926998000012235997591413309617388902575733355188418714479900913342627281937156809563150498906460101268562252351167461233533852277300215020108137992142
-Your original message is: 1
+<div class="highlight"><pre><span class="p">[</span><span class="n">E</span><span class="p">]</span><span class="n">ncrypt</span><span class="o">:</span> <span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="n">ecrypt</span><span class="o">:</span> <span class="n">e</span>
+<span class="n">Tell</span> <span class="n">us</span> <span class="n">your</span> <span class="n">message</span> <span class="n">to</span> <span class="n">encrypt</span><span class="o">:</span> <span class="mi">1</span>
+<span class="n">Your</span> <span class="n">secret</span> <span class="n">is</span><span class="o">:</span> <span class="mi">73109965080485247131710209266123910705889636744106672869822932981580432295328645599823550448181731566435402609978665387224898646975403769881196399448975370668935092605229755765060164052771714510987944591017615792396157094596290728393053648253053017939625091326878542241485082342371560710778399247063411414649475517288243167425022137869055256778307340931947663486971023680806406250041891606619955393621120918102708442427400288119511466304393700124201965017764148482926998000012235997591413309617388902575733355188418714479900913342627281937156809563150498906460101268562252351167461233533852277300215020108137992142</span>
+<span class="n">Tell</span> <span class="n">us</span> <span class="n">your</span> <span class="n">choice</span><span class="o">:</span>
+<span class="o">------------------------</span>
+<span class="p">[</span><span class="n">E</span><span class="p">]</span><span class="n">ncrypt</span><span class="o">:</span> <span class="p">[</span><span class="n">D</span><span class="p">]</span><span class="n">ecrypt</span><span class="o">:</span> <span class="n">d</span>
+<span class="n">Tell</span> <span class="n">us</span> <span class="n">your</span> <span class="n">secret</span> <span class="n">to</span> <span class="n">decrypt</span><span class="o">:</span> <span class="mi">73109965080485247131710209266123910705889636744106672869822932981580432295328645599823550448181731566435402609978665387224898646975403769881196399448975370668935092605229755765060164052771714510987944591017615792396157094596290728393053648253053017939625091326878542241485082342371560710778399247063411414649475517288243167425022137869055256778307340931947663486971023680806406250041891606619955393621120918102708442427400288119511466304393700124201965017764148482926998000012235997591413309617388902575733355188418714479900913342627281937156809563150498906460101268562252351167461233533852277300215020108137992142</span>
+<span class="n">Your</span> <span class="n">original</span> <span class="n">message</span> <span class="n">is</span><span class="o">:</span> <span class="mi">1</span>
 </pre></div>
 
 
@@ -240,149 +240,149 @@ Your original message is: 1
 <p>Whenever we have a netcat challenge, I like to have a clean script to get and send messages (copying from terminal is lame).</p>
 <p>In addition, all the numbers in this challenge were really long (the encrypted messages had 614 chars), so we need to perform operations in a consistent and efficient way.</p>
 <p>To work with long numbers in Python, I use the <a href="https://docs.python.org/2/library/decimal.html">Decimal</a> library. For instance, considering that we could want to add two messages, I set the context to 1240 bytes:</p>
-<div class="highlight"><pre><span></span>decimal.getcontext().prec = 1240
+<div class="highlight"><pre><span class="n">decimal</span><span class="p">.</span><span class="n">getcontext</span><span class="p">().</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">1240</span>
 </pre></div>
 
 
 <p>For now on I will be using modifications of this snippet to interact with the oracle:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">decimal</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">decimal</span>
 <span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="k">def</span> <span class="nf">nc_paillier</span><span class="p">():</span>
-    <span class="c1"># create socket</span>
+    <span class="c"># create socket</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
 
-    <span class="c1"># answer the initial question</span>
+    <span class="c"># answer the initial question</span>
     <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;paillier&#39;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;paillier&#39;</span><span class="p">)</span>
 
-    <span class="c1"># get the secret</span>
+    <span class="c"># get the secret</span>
     <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
 
-    <span class="c1"># cleaning it</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c"># cleaning it</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c1"># it&#39;s good to print (because it changes periodically)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The secret is: &quot;</span><span class="p">)</span>
+    <span class="c"># it&#39;s good to print (because it changes periodically)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;The secret is: &quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
-    <span class="c1"># change from str to long decimal</span>
+    <span class="c"># change from str to long decimal</span>
     <span class="n">mdec</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        From here you can do whatever you want.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1"># If you want to encrypt messages</span>
-    <span class="n">msg_to_e</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+    <span class="c"># If you want to encrypt messages</span>
+    <span class="n">msg_to_e</span> <span class="o">=</span> <span class="s">&#39;1&#39;</span>
 
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;E&#39;</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg_to_e</span><span class="p">)</span>
     <span class="n">me</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">me</span> <span class="o">=</span> <span class="n">me</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">me</span> <span class="o">=</span> <span class="n">me</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Secret for </span><span class="si">%s</span><span class="s2"> is:&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">msg_to_e</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Secret for </span><span class="si">%s</span><span class="s"> is:&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">msg_to_e</span><span class="p">))</span>
     <span class="k">print</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
 
     <span class="n">medec</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
 
-    <span class="c1"># If you want to decrypt messages</span>
+    <span class="c"># If you want to decrypt messages</span>
     <span class="n">msg_to_d</span> <span class="o">=</span> <span class="n">me</span>
 
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;D&#39;</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg_to_d</span><span class="p">)</span>
     <span class="n">md</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">md</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">md</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;: &quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Decryption is: &quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Decryption is: &quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
 
     <span class="n">mddec</span> <span class="o">=</span> <span class="n">decimal</span><span class="o">.</span><span class="n">Decimal</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="c1"># really long numbers</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c"># really long numbers</span>
     <span class="n">decimal</span><span class="o">.</span><span class="n">getcontext</span><span class="p">()</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">1240</span>
 
     <span class="n">PORT</span> <span class="o">=</span> <span class="mi">12445</span>
-    <span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;asis-ctf.ir&#39;</span>
+    <span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;asis-ctf.ir&#39;</span>
 
     <span class="n">nc_paillier</span><span class="p">()</span>
 </pre></div>
 
 
-<hr>
+<hr />
 <h2>Solving the Challenge</h2>
 <h3>Finding out the Modulo</h3>
 <p>At this point we know that we cannot do anything in the Paillier system without knowing the modulo, <strong>n</strong>. Of course, this value was not given. However, from the recon we have learned that we can find it from the oracle.</p>
 <p>The exactly value when the oracle cycles back to the beginning is our <strong>n</strong>. This value should not return any message since <strong>n%n = 0</strong>. So, we are looking for this <strong>None</strong> result.</p>
 <p>What's the 101 way to search for a number? <a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search</a>, of course! Adapting one of <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching">my scripts</a>, I wrote the snippet below to look for this number.</p>
 <p>The only problem is, the secret has 614 chars and we cannot scan all the 1E614 integer numbers! However, the only way that adding two encrypted messages would work was if the module <strong>n</strong> lied at somewhere around 614/2. For this reason we set our low and high search values around 1E306 and 1E308:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">decimal</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">decimal</span>
 <span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="k">def</span> <span class="nf">bs_paillier</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">hi</span> <span class="o">&lt;</span> <span class="n">lo</span><span class="p">:</span> <span class="k">return</span> <span class="bp">None</span>
     <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">hi</span> <span class="o">+</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;We are at: &quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;We are at: &quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
 
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;E&#39;</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">ans</span>
 
-    <span class="k">if</span> <span class="s1">&#39;None&#39;</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;Found it!&quot;</span>
+    <span class="k">if</span> <span class="s">&#39;None&#39;</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;Found it!&quot;</span>
         <span class="k">return</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">elif</span> <span class="s1">&#39;Your message is&#39;</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="s">&#39;Your message is&#39;</span> <span class="ow">in</span> <span class="n">ans</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">bs_paillier</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">bs_paillier</span><span class="p">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">get_mod_paillier</span><span class="p">():</span>
 
-    <span class="c1"># create socket, answer first question</span>
+    <span class="c"># create socket, answer first question</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;paillier&#39;</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;paillier&#39;</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
 
-    <span class="c1"># start binary search</span>
+    <span class="c"># start binary search</span>
     <span class="n">hi</span><span class="p">,</span> <span class="n">lo</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">306</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">308</span>
     <span class="n">mod</span> <span class="o">=</span> <span class="n">bs_paillier</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">mod</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
 
     <span class="n">PORT</span> <span class="o">=</span> <span class="mi">12445</span>
-    <span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;asis-ctf.ir&#39;</span>
+    <span class="n">HOST</span> <span class="o">=</span> <span class="s">&#39;asis-ctf.ir&#39;</span>
 
     <span class="n">get_mod_paillier</span><span class="p">()</span>
 </pre></div>
 
 
 <p>The script took around 5 minutes to be finished, returning our <strong>n</strong> for the round:</p>
-<div class="highlight"><pre><span></span>17671943390317527594740575037779239788090749028363849573873871285525785364877468659238291287413782918855995881353189626069716161186805808731291508724925847487655603905895106750055611619881911787280882269077856999823769344599404478814635216943095238063240285592085964648122007040660676934950342692770738186633
+<div class="highlight"><pre><span class="mi">17671943390317527594740575037779239788090749028363849573873871285525785364877468659238291287413782918855995881353189626069716161186805808731291508724925847487655603905895106750055611619881911787280882269077856999823769344599404478814635216943095238063240285592085964648122007040660676934950342692770738186633</span>
 </pre></div>
 
 
 <p>We are ready to break this system!</p>
 <h3>Convoluting and Decrypting the Answer</h3>
 <p>We use the first <strong>homomorphic</strong> propriety to craft a message which will give us the flag:</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convolution</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">convolution</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">e1</span> <span class="o">*</span> <span class="n">e2</span> <span class="p">)</span><span class="o">%</span><span class="p">(</span><span class="n">mod</span><span class="o">*</span><span class="n">mod</span><span class="p">)</span>
 </pre></div>
 
 
 <p>This returns:</p>
-<div class="highlight"><pre><span></span>112280008116052186646368021111109237871341887479615992317427354059600212357857288108129264030737539972269011409996912208818076010168198529262326772763879996822102998582534816837233418191109543582310863266347760528961946352593880742472731062537568071764692096627743690922908221673060800965135164509962029222789740380393803936034322030637125612078147029021325858011668393839188326210425016990153989714767763564793169128967154011677910768035056556423954036535193602627342043345257626256977045594687342553610052190731351090959432138598081567054374046432685112246445454537701332996220698854386609070078979440083610540257
+<div class="highlight"><pre><span class="mi">112280008116052186646368021111109237871341887479615992317427354059600212357857288108129264030737539972269011409996912208818076010168198529262326772763879996822102998582534816837233418191109543582310863266347760528961946352593880742472731062537568071764692096627743690922908221673060800965135164509962029222789740380393803936034322030637125612078147029021325858011668393839188326210425016990153989714767763564793169128967154011677910768035056556423954036535193602627342043345257626256977045594687342553610052190731351090959432138598081567054374046432685112246445454537701332996220698854386609070078979440083610540257</span>
 </pre></div>
 
 
@@ -390,40 +390,40 @@ Your original message is: 1
 <h3>Getting the Flag!</h3>
 <p>Of all the possible options of decoding our flag, it was obvious that they were hexadecimal values that should be converted to ASCII.</p>
 <p>It also helped the fact that I had in mind the ASCII representation of the word <em>ASIS</em>, which is given by <em>41 53 49 53</em>:</p>
-<div class="highlight"><pre><span></span>$ python -c <span class="s2">&quot;print &#39;0x41534953&#39;[2:].decode(&#39;hex&#39;)&quot;</span>
+<div class="highlight"><pre><span class="nv">$ </span>python -c <span class="s2">&quot;print &#39;0x41534953&#39;[2:].decode(&#39;hex&#39;)&quot;</span>
 ASIS
 </pre></div>
 
 
 <p>This is easier with the following script:</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_hex</span><span class="p">(</span><span class="n">secret</span><span class="p">):</span>
-    <span class="c1"># cutting L in the end</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">print_hex</span><span class="p">(</span><span class="n">secret</span><span class="p">):</span>
+    <span class="c"># cutting L in the end</span>
     <span class="n">a</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">secret</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># cutting the \x symbol</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;hex&#39;</span><span class="p">)</span>
+    <span class="c"># cutting the \x symbol</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;hex&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">b</span>
 </pre></div>
 
 
 <p>Running it, we get the hexadecimal form of our flag:</p>
-<div class="highlight"><pre><span></span>32487808320243150435316584796155571093777738593139558163862909500838275925645449950017590
+<div class="highlight"><pre><span class="mi">32487808320243150435316584796155571093777738593139558163862909500838275925645449950017590</span>
 </pre></div>
 
 
 <p>And its ASCII decoding,</p>
-<div class="highlight"><pre><span></span>0x415349535f3835633966656264346331353935306162316631396136626437613934663836
+<div class="highlight"><pre><span class="mh">0x415349535f3835633966656264346331353935306162316631396136626437613934663836</span>
 </pre></div>
 
 
 <p>Leads to the flag:</p>
-<div class="highlight"><pre><span></span>ASIS_85c9febd4c15950ab1f19a6bd7a94f87
+<div class="highlight"><pre><span class="n">ASIS_85c9febd4c15950ab1f19a6bd7a94f87</span>
 </pre></div>
 
 
 <p>Cool, right?</p>
 <p>If you think so, all scripts I mentioned are <a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier">here</a>.</p>
 <p>Hack all the things! (:</p>
-<hr>
+<hr />
                 </div><!-- /.entry-content -->
         </article>
 </section>

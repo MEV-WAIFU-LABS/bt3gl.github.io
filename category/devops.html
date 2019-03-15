@@ -5,7 +5,7 @@
     <title>chmod +x singularity.sh - DevOps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="../theme/css/bootstrap.dark.css" type="text/css" />
@@ -86,7 +86,7 @@
         <div class="article">
                 <h1><a href="../a-tor-proxy-in-a-raspberry-pi.html">A Tor Proxy in a Raspberry Pi</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-03-29T00:00:00-04:00">
+<abbr class="published" title="2015-03-29T00:00:00">
       Sun 29 March 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -94,11 +94,11 @@
 
 
 </footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px"></p>
+                <div class="summary"><p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /></p>
 <p>In this tutorial I walk through all the steps to setup a Tor proxy in a Raspberry Pi (Model B). This work was based on some of tutorials from Adafruit.</p>
 <h1>Setting Up a Raspberry Pi</h1>
 <h2>Installing an Operating System in the SD card</h2>
-<p><a href="http://www.raspberrypi.org/help/noobs-setup">You can either install NOOBS and then …</a></p>
+<p><a href="http://www.raspberrypi.org/help/noobs-setup">You can either install NOOBS and then ...</a></p>
                         <a class="btn primary xsmall" href="../a-tor-proxy-in-a-raspberry-pi.html">more ...</a>
                 </div>
         </div>
@@ -106,7 +106,7 @@
         <div class="article">
                 <h1><a href="../deploying-a-flask-app-at-heroku.html">Deploying a Flask App at Heroku</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-03-21T00:00:00-04:00">
+<abbr class="published" title="2015-03-21T00:00:00">
       Sat 21 March 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -114,12 +114,12 @@
 
 
 </footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px"></p>
+                <div class="summary"><p><img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /></p>
 <p>I was playing with Flask and I wrote my own <a href="https://anti-social.herokuapp.com/">Anti-Social Network</a>. </p>
 <p>Heroku platform is very flexible and it supports several programming languages. To
 deploy an application to Heroku, use Git to push the application to Heroku’s server.</p>
 <h1>Running in a Production Server</h1>
-<p>Heroku does not provide a web …</p>
+<p>Heroku does not provide a web ...</p>
                         <a class="btn primary xsmall" href="../deploying-a-flask-app-at-heroku.html">more ...</a>
                 </div>
         </div>
@@ -127,7 +127,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
         <div class="article">
                 <h1><a href="../functional-python-stuff-super-quick.html">Functional Python Stuff Super Quick</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-03-01T00:00:00-05:00">
+<abbr class="published" title="2015-03-01T00:00:00">
       Sun 01 March 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -136,28 +136,28 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 </footer><!-- /.post-info --></div>
                 <div class="summary"><h3>Python has <strong>First Class Functions</strong></h3>
-<div class="highlight"><pre><span></span>def create_adder(x):
-    def adder(y):
-        return x + y
-    return adder
+<div class="highlight"><pre><span class="n">def</span> <span class="n">create_adder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
 </pre></div>
 
 
 <p>Such that:</p>
-<div class="highlight"><pre><span></span>&gt;&gt;&gt; add_10 = create_adder(10)
-&gt;&gt;&gt; add_10(3)  
-13
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span> <span class="o">=</span> <span class="n">create_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  
+<span class="mi">13</span>
 </pre></div>
 
 
 <h3>Python has <strong>Anonymous Functions</strong></h3>
-<div class="highlight"><pre><span></span>(lambda x: x &gt; 2)(3)   # =&gt; True
+<div class="highlight"><pre><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="n">True</span>
 </pre></div>
 
 
 <h3>Python has Built-in <strong>Higher Order Functions</strong></h3>
-<div class="highlight"><pre><span></span>map(add_10, [1, 2, 3])   # =&gt; [11, 12, 13]
-filter(lambda …</pre></div>
+<div class="highlight"><pre><span class="n">map</span><span class="p">(</span><span class="n">add_10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">lambda ...</span></pre></div>
                         <a class="btn primary xsmall" href="../functional-python-stuff-super-quick.html">more ...</a>
                 </div>
         </div>
@@ -165,7 +165,7 @@ filter(lambda …</pre></div>
         <div class="article">
                 <h1><a href="../getting-started-with-lamp-and-codeigniter.html">Getting started with LAMP and CodeIgniter</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-02-25T00:00:00-05:00">
+<abbr class="published" title="2015-02-25T00:00:00">
       Wed 25 February 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -178,7 +178,7 @@ filter(lambda …</pre></div>
 <p>We will use a web interface to access data in our database:</p>
 <ul>
 <li>
-<p>Log in with your root login …</p></li></ul>
+<p>Log in with your root login ...</p></li></ul>
                         <a class="btn primary xsmall" href="../getting-started-with-lamp-and-codeigniter.html">more ...</a>
                 </div>
         </div>
@@ -186,7 +186,7 @@ filter(lambda …</pre></div>
         <div class="article">
                 <h1><a href="../javascript-crash-course.html">JavaScript: Crash Course</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-02-15T00:00:00-05:00">
+<abbr class="published" title="2015-02-15T00:00:00">
       Sun 15 February 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -198,7 +198,7 @@ filter(lambda …</pre></div>
 <p>JavaScript (JS) is a dynamic computer programming language. Install <a href="https://developer.chrome.com/devtools/index">Google Dev Tools</a> to proceed. </p>
 <h1>JavaScript 101</h1>
 <p>To include your example.js in an HTML page (usually placed right before </body> will guarantee that elements are defined when the script is executed):</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;/path/to/example.js&quot;</span><span class="nt">&gt;&lt;/script …</span></pre></div>
+<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;/path/to/example.js&quot;</span><span class="nt">&gt;&lt;/script ...</span></pre></div>
                         <a class="btn primary xsmall" href="../javascript-crash-course.html">more ...</a>
                 </div>
         </div>
@@ -206,7 +206,7 @@ filter(lambda …</pre></div>
         <div class="article">
                 <h1><a href="../grub-configuration.html">Grub Configuration</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-01-29T00:00:00-05:00">
+<abbr class="published" title="2015-01-29T00:00:00">
       Thu 29 January 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -216,7 +216,7 @@ filter(lambda …</pre></div>
 </footer><!-- /.post-info --></div>
                 <div class="summary"><h2>Understanding MBR and EFI</h2>
 <p>BIOS/MBR is an older partition table type also referred to as Legacy mode. Nowadays, UEFI is in most of the new computer (specially those that came with W8 or W8.1 pre-installed). UEFI always use the gpt partition table type.</p>
-<p>To find out each one …</p>
+<p>To find out each one ...</p>
                         <a class="btn primary xsmall" href="../grub-configuration.html">more ...</a>
                 </div>
         </div>
@@ -224,7 +224,7 @@ filter(lambda …</pre></div>
         <div class="article">
                 <h1><a href="../some-nice-devops-articles-i-wrote-at-codewall.html">Some Nice DevOps Articles I wrote at CodeWall</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-01-27T00:00:00-05:00">
+<abbr class="published" title="2015-01-27T00:00:00">
       Tue 27 January 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -256,7 +256,7 @@ filter(lambda …</pre></div>
 <p><a href="https://coderwall.com/p/wcje3w/practical-guide-to-linux-s-cut-command">Practical Guide to Linux's CUT Command</a>.</p>
 </li>
 <li>
-<p><a href="https://coderwall.com/p/gkhwoq/setting-up-stunnel-in-fedora-20">Setting up Stunnel in …</a></p></li></ul>
+<p><a href="https://coderwall.com/p/gkhwoq/setting-up-stunnel-in-fedora-20">Setting up Stunnel ...</a></p></li></ul>
                         <a class="btn primary xsmall" href="../some-nice-devops-articles-i-wrote-at-codewall.html">more ...</a>
                 </div>
         </div>

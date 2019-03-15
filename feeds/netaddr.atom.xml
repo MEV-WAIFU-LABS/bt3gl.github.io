@@ -1,85 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - netaddr</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/netaddr.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-16T00:00:00-05:00</updated><entry><title>Black Hat Python: Building a UDP Scanner</title><link href="http://bt3gl.github.io/black-hat-python-building-a-udp-scanner.html" rel="alternate"></link><published>2014-12-16T00:00:00-05:00</published><updated>2014-12-16T00:00:00-05:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-16:/black-hat-python-building-a-udp-scanner.html</id><summary type="html">&lt;p&gt;When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.&lt;/p&gt;
-&lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/netaddr.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-16T00:00:00-05:00</updated><entry><title>Black Hat Python: Building a UDP Scanner</title><link href="http://bt3gl.github.io/black-hat-python-building-a-udp-scanner.html" rel="alternate"></link><updated>2014-12-16T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-16:black-hat-python-building-a-udp-scanner.html</id><summary type="html">&lt;p&gt;When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.&lt;/p&gt;
 &lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing, but what if you don't have Wireshark available to monitor a network traffic?&lt;/p&gt;
 &lt;p&gt;Again, Python comes with several solutions and today I'm going  through the steps to build a &lt;strong&gt;UDP Host discovery tool&lt;/strong&gt;. First, we are going to see how we deal with &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt; to  write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.&lt;/p&gt;
 &lt;p&gt;The cool thing about &lt;strong&gt;raw sockets&lt;/strong&gt; is that they allow access to low-level networking information. For example, we can use it to check &lt;strong&gt;IP&lt;/strong&gt; and &lt;strong&gt;ICMP&lt;/strong&gt; headers, which are in the layer 3 of the OSI model (the network layer).&lt;/p&gt;
 &lt;p&gt;The cool thing about using &lt;strong&gt;UDP datagrams&lt;/strong&gt; is that, differently from &lt;strong&gt;TCP&lt;/strong&gt;, they do not bring much overhead when sent across an entire subnet (remember the TCP &lt;a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml"&gt;handshaking&lt;/a&gt;). All we need to do is wait for the &lt;strong&gt;ICMP&lt;/strong&gt; responses saying whether the hosts are available or closed (unreachable).
 Remember that ICMP is essentially a special control protocol that issues error reports and can control the behavior of machines in data transfer.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Writing a Packet Sniffer&lt;/h2&gt;
 &lt;p&gt;We start with a  very simple task: with Python's  &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket&lt;/a&gt; library, we will write a very simple packet sniffer.&lt;/p&gt;
 &lt;p&gt;In this sniffer we create a raw socket and then we bind it to the public interface. The interface should be in &lt;strong&gt;promiscuous mode&lt;/strong&gt;, which means that every packet that the network card sees is captured, even those that are not destined to the host.&lt;/p&gt;
 &lt;p&gt;One detail to remember is that things are slightly different if we are using Windows: in this case we need to send a &lt;a href="http://en.wikipedia.org/wiki/Ioctl"&gt;IOCTL&lt;/a&gt; package to set the interface to &lt;strong&gt;promiscuous mode&lt;/strong&gt;. In addition, while Linux needs to use ICMP, Windows allow us to sniff the incoming packets independently of the protocol:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
-&lt;span class="c1"&gt;# host to listen&lt;/span&gt;
-&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# host to listen&lt;/span&gt;
+&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sniffing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;win&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_prot&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;sniffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AF_INET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOCK_RAW&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_prot&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# include the IP headers in the captured packets&lt;/span&gt;
+        &lt;span class="c"&gt;# include the IP headers in the captured packets&lt;/span&gt;
         &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setsockopt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPPROTO_IP&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IP_HDRINCL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;win&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ioctl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SIO_RCVALL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_RCVALL_ON&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# read in a single packet&lt;/span&gt;
+        &lt;span class="c"&gt;# read in a single packet&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recvfrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;65565&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;nt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;nt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;sniffing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPPROTO_IP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;sniffing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPPROTO_ICMP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HOST&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;To test this script, we run the following command in one terminal window:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python sniffer.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python sniffer.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Then, in a second  window, we can  &lt;a href="http://en.wikipedia.org/wiki/Ping_(networking_utility)"&gt;ping&lt;/a&gt; or &lt;a href="http://en.wikipedia.org/wiki/Traceroute"&gt;traceroute&lt;/a&gt; some address, for example &lt;a href="www.google.com"&gt;www.google.com&lt;/a&gt;. The results will look like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python raw_socket.py
-&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;E\x00\x00T\xb3\xec\x00\x005\x01\xe4\x13J}\xe1\x11\xc0\xa8\x01r\x00\x00v\xdfx\xa2\x00\x01sr\x98T\x00\x00\x00\x008\xe3\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&amp;quot;#$%&amp;amp;\&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;*+,-./01234567&lt;span class="s1"&gt;&amp;#39;, (&amp;#39;&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.225.17&lt;span class="s1"&gt;&amp;#39;, 0))&lt;/span&gt;
-&lt;span class="s1"&gt;(&amp;#39;&lt;/span&gt;E&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;00T&lt;span class="se"&gt;\x&lt;/span&gt;b4&lt;span class="se"&gt;\x&lt;/span&gt;1b&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;005&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;01&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;e3&lt;span class="se"&gt;\x&lt;/span&gt;e4J&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;e1&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;c0&lt;span class="se"&gt;\x&lt;/span&gt;a8&lt;span class="se"&gt;\x&lt;/span&gt;01r&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;~&lt;span class="se"&gt;\x&lt;/span&gt;d7x&lt;span class="se"&gt;\x&lt;/span&gt;a2&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;02tr&lt;span class="se"&gt;\x&lt;/span&gt;98T&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;/&lt;span class="se"&gt;\x&lt;/span&gt;ea&lt;span class="se"&gt;\r\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;13&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;17&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;18&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;&lt;span class="m"&gt;19&lt;/span&gt;&lt;span class="se"&gt;\x&lt;/span&gt;1a&lt;span class="se"&gt;\x&lt;/span&gt;1b&lt;span class="se"&gt;\x&lt;/span&gt;1c&lt;span class="se"&gt;\x&lt;/span&gt;1d&lt;span class="se"&gt;\x&lt;/span&gt;1e&lt;span class="se"&gt;\x&lt;/span&gt;1f !&lt;span class="s2"&gt;&amp;quot;#&lt;/span&gt;$&lt;span class="s2"&gt;%&amp;amp;\&amp;#39;()*+,-./01234567&amp;#39;, (&amp;#39;74.125.225.17&amp;#39;, 0))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python raw_socket.py
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;E\x00\x00T\xb3\xec\x00\x005\x01\xe4\x13J}\xe1\x11\xc0\xa8\x01r\x00\x00v\xdfx\xa2\x00\x01sr\x98T\x00\x00\x00\x008\xe3\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&amp;quot;#$%&amp;amp;\&amp;#39;()*+,-./01234567&amp;#39;&lt;/span&gt;, &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;74.125.225.17&amp;#39;&lt;/span&gt;, 0&lt;span class="o"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;E\x00\x00T\xb4\x1b\x00\x005\x01\xe3\xe4J}\xe1\x11\xc0\xa8\x01r\x00\x00~\xd7x\xa2\x00\x02tr\x98T\x00\x00\x00\x00/\xea\r\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !&amp;quot;#$%&amp;amp;\&amp;#39;()*+,-./01234567&amp;#39;&lt;/span&gt;, &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;74.125.225.17&amp;#39;&lt;/span&gt;, 0&lt;span class="o"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now it's pretty obvious that we need to decode these headers.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Decoding the IP and ICMP Layers&lt;/h2&gt;
 &lt;h3&gt;The IP Header&lt;/h3&gt;
 &lt;p&gt;A typical IP header has the following structure, where each field belongs to a variable (this header is originally &lt;a href="http://minirighi.sourceforge.net/html/structip.html"&gt;written in C&lt;/a&gt;):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/3fmVLJS.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/3fmVLJS.jpg" /&gt;&lt;/p&gt;
 &lt;h3&gt;The ICMP Header&lt;/h3&gt;
 &lt;p&gt;In the same way, ICMP can vary in its content but each message contains three elements that are consistent: &lt;strong&gt;type&lt;/strong&gt; and &lt;strong&gt;code&lt;/strong&gt; (tells the receiving host what type of ICMP message is arriving for decoding) and &lt;strong&gt;checksum&lt;/strong&gt; fields.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/gsUPKRa.gif"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/gsUPKRa.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;For our scanner, we are looking for a &lt;strong&gt;type value of 3&lt;/strong&gt; and a &lt;strong&gt;code value of 3&lt;/strong&gt;, which are the &lt;strong&gt;Destination Unreachable&lt;/strong&gt; class and &lt;strong&gt;Port Unreachable&lt;/strong&gt; &lt;a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages"&gt;errors in ICMP messages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To represent this header, we create a class, with the help of Python's &lt;a href="https://docs.python.org/2/library/ctypes.html"&gt;ctypes&lt;/a&gt; library:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ctypes&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ctypes&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ICMP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Structure&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;_fields_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;        &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ubyte&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;code&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;        &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ubyte&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;checksum&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;    &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;unused&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;      &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;next_hop_mtu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;type&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;        &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ubyte&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;code&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;        &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ubyte&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;checksum&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;    &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;unused&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;      &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;next_hop_mtu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;c_ushort&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_buffer_copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket_buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket_buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -87,14 +86,14 @@ Remember that ICMP is essentially a special control protocol that issues error r
 &lt;h3&gt;Writing the Header Decoder&lt;/h3&gt;
 &lt;p&gt;Now we are ready to write our IP/ICMP header decoder. The script below creates a sniffer socket (just as we did before) and then it runs a loop to continually read in packets and decode their information.&lt;/p&gt;
 &lt;p&gt;Notice that for the IP header, the code reads the packet, unpacks the first 20 bytes to the raw buffer, and then prints the header variables. The ICMP header data comes right after it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ctypes&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;ICMPHeader&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ICMP&lt;/span&gt;
 
-&lt;span class="c1"&gt;# host to listen on&lt;/span&gt;
-&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# host to listen on&lt;/span&gt;
+&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;socket_protocol&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPPROTO_ICMP&lt;/span&gt;
@@ -105,9 +104,9 @@ Remember that ICMP is essentially a special control protocol that issues error r
     &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;raw_buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recvfrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;65565&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="n"&gt;ip_header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-        &lt;span class="n"&gt;iph&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;!BBHHHBBH4s4s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_header&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;iph&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;!BBHHHBBH4s4s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_header&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# Create our IP structure&lt;/span&gt;
+        &lt;span class="c"&gt;# Create our IP structure&lt;/span&gt;
         &lt;span class="n"&gt;version_ihl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;iph&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;version_ihl&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
         &lt;span class="n"&gt;ihl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;version_ihl&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0xF&lt;/span&gt;
@@ -117,32 +116,32 @@ Remember that ICMP is essentially a special control protocol that issues error r
         &lt;span class="n"&gt;s_addr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inet_ntoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iph&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
         &lt;span class="n"&gt;d_addr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inet_ntoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iph&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;IP -&amp;gt; Version:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;, Header Length:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ihl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; \
-        &lt;span class="s1"&gt;&amp;#39;, TTL:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;, Protocol:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;protocol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;, Source:&amp;#39;&lt;/span&gt;\
-         &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;, Destination:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;IP -&amp;gt; Version:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;, Header Length:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ihl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; \
+        &lt;span class="s"&gt;&amp;#39;, TTL:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;, Protocol:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;protocol&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;, Source:&amp;#39;&lt;/span&gt;\
+         &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;, Destination:&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# Create our ICMP structure&lt;/span&gt;
+        &lt;span class="c"&gt;# Create our ICMP structure&lt;/span&gt;
         &lt;span class="n"&gt;buf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;iph_length&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;iph_length&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ICMP&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
         &lt;span class="n"&gt;icmp_header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ICMP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ICMP -&amp;gt; Type:&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s2"&gt;, Code:&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;ICMP -&amp;gt; Type:&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;, Code:&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Testing the Decoder&lt;/h3&gt;
 &lt;p&gt;Running the script in one terminal and sending a &lt;strong&gt;ping&lt;/strong&gt;  in other will return something like this (notice the ICMP type 0):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ping www.google.com
-PING www.google.com &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.226.16&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;56&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;84&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; bytes of data.
-&lt;span class="m"&gt;64&lt;/span&gt; bytes from lga15s42-in-f16.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.226.16&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="nv"&gt;icmp_seq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="nv"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;56&lt;/span&gt; &lt;span class="nv"&gt;time&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.7 ms
-&lt;span class="m"&gt;64&lt;/span&gt; bytes from lga15s42-in-f16.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.226.16&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="nv"&gt;icmp_seq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="nv"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;56&lt;/span&gt; &lt;span class="nv"&gt;time&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;.0 ms
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ping www.google.com
+PING www.google.com &lt;span class="o"&gt;(&lt;/span&gt;74.125.226.16&lt;span class="o"&gt;)&lt;/span&gt; 56&lt;span class="o"&gt;(&lt;/span&gt;84&lt;span class="o"&gt;)&lt;/span&gt; bytes of data.
+64 bytes from lga15s42-in-f16.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;74.125.226.16&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="nv"&gt;icmp_seq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;1 &lt;span class="nv"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;56 &lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;15.7 ms
+64 bytes from lga15s42-in-f16.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;74.125.226.16&lt;span class="o"&gt;)&lt;/span&gt;: &lt;span class="nv"&gt;icmp_seq&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;2 &lt;span class="nv"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;56 &lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;15.0 ms
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python ip_header_decode.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python ip_header_decode.py
 IP -&amp;gt; Version:4, Header Length:5, TTL:56, Protocol:1, Source:74.125.226.16, Destination:192.168.1.114
 ICMP -&amp;gt; Type:0, Code:0
 IP -&amp;gt; Version:4, Header Length:5, TTL:56, Protocol:1, Source:74.125.226.16, Destination:192.168.1.114
@@ -152,22 +151,22 @@ ICMP -&amp;gt; Type:0, Code:0
 
 
 &lt;p&gt;In the other hand, if we run &lt;strong&gt;traceroute&lt;/strong&gt; instead:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ traceroute www.google.com
-traceroute to www.google.com &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.226.50&lt;span class="o"&gt;)&lt;/span&gt;, &lt;span class="m"&gt;30&lt;/span&gt; hops max, &lt;span class="m"&gt;60&lt;/span&gt; byte packets
- &lt;span class="m"&gt;1&lt;/span&gt;  * * *
- &lt;span class="m"&gt;2&lt;/span&gt;  * * *
- &lt;span class="m"&gt;3&lt;/span&gt;  &lt;span class="m"&gt;67&lt;/span&gt;.59.255.137 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;67&lt;/span&gt;.59.255.137&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;17&lt;/span&gt;.183 ms &lt;span class="m"&gt;67&lt;/span&gt;.59.255.129 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;67&lt;/span&gt;.59.255.129&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;70&lt;/span&gt;.563 ms &lt;span class="m"&gt;67&lt;/span&gt;.59.255.137 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;67&lt;/span&gt;.59.255.137&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;21&lt;/span&gt;.480 ms
- &lt;span class="m"&gt;4&lt;/span&gt;  451be075.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;65&lt;/span&gt;.19.99.117&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;14&lt;/span&gt;.639 ms rtr102.wan.hcvlny.cv.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;65&lt;/span&gt;.19.99.205&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;24&lt;/span&gt;.086 ms 451be075.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;65&lt;/span&gt;.19.107.117&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;24&lt;/span&gt;.025 ms
- &lt;span class="m"&gt;5&lt;/span&gt;  &lt;span class="m"&gt;64&lt;/span&gt;.15.3.246 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;64&lt;/span&gt;.15.3.246&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;24&lt;/span&gt;.005 ms &lt;span class="m"&gt;64&lt;/span&gt;.15.0.218 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;64&lt;/span&gt;.15.0.218&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;23&lt;/span&gt;.961 ms 451be0c2.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;65&lt;/span&gt;.19.120.194&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;23&lt;/span&gt;.935 ms
- &lt;span class="m"&gt;6&lt;/span&gt;  &lt;span class="m"&gt;72&lt;/span&gt;.14.215.203 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;72&lt;/span&gt;.14.215.203&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;23&lt;/span&gt;.872 ms  &lt;span class="m"&gt;46&lt;/span&gt;.943 ms *
- &lt;span class="m"&gt;7&lt;/span&gt;  &lt;span class="m"&gt;216&lt;/span&gt;.239.50.141 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;216&lt;/span&gt;.239.50.141&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;48&lt;/span&gt;.906 ms  &lt;span class="m"&gt;46&lt;/span&gt;.138 ms  &lt;span class="m"&gt;46&lt;/span&gt;.122 ms
- &lt;span class="m"&gt;8&lt;/span&gt;  &lt;span class="m"&gt;209&lt;/span&gt;.85.245.179 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;209&lt;/span&gt;.85.245.179&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;46&lt;/span&gt;.108 ms  &lt;span class="m"&gt;46&lt;/span&gt;.095 ms  &lt;span class="m"&gt;46&lt;/span&gt;.074 ms
- &lt;span class="m"&gt;9&lt;/span&gt;  lga15s43-in-f18.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;74&lt;/span&gt;.125.226.50&lt;span class="o"&gt;)&lt;/span&gt;  &lt;span class="m"&gt;45&lt;/span&gt;.997 ms  &lt;span class="m"&gt;19&lt;/span&gt;.507 ms  &lt;span class="m"&gt;16&lt;/span&gt;.607 ms
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;traceroute www.google.com
+traceroute to www.google.com &lt;span class="o"&gt;(&lt;/span&gt;74.125.226.50&lt;span class="o"&gt;)&lt;/span&gt;, 30 hops max, 60 byte packets
+ 1  * * *
+ 2  * * *
+ 3  67.59.255.137 &lt;span class="o"&gt;(&lt;/span&gt;67.59.255.137&lt;span class="o"&gt;)&lt;/span&gt;  17.183 ms 67.59.255.129 &lt;span class="o"&gt;(&lt;/span&gt;67.59.255.129&lt;span class="o"&gt;)&lt;/span&gt;  70.563 ms 67.59.255.137 &lt;span class="o"&gt;(&lt;/span&gt;67.59.255.137&lt;span class="o"&gt;)&lt;/span&gt;  21.480 ms
+ 4  451be075.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;65.19.99.117&lt;span class="o"&gt;)&lt;/span&gt;  14.639 ms rtr102.wan.hcvlny.cv.net &lt;span class="o"&gt;(&lt;/span&gt;65.19.99.205&lt;span class="o"&gt;)&lt;/span&gt;  24.086 ms 451be075.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;65.19.107.117&lt;span class="o"&gt;)&lt;/span&gt;  24.025 ms
+ 5  64.15.3.246 &lt;span class="o"&gt;(&lt;/span&gt;64.15.3.246&lt;span class="o"&gt;)&lt;/span&gt;  24.005 ms 64.15.0.218 &lt;span class="o"&gt;(&lt;/span&gt;64.15.0.218&lt;span class="o"&gt;)&lt;/span&gt;  23.961 ms 451be0c2.cst.lightpath.net &lt;span class="o"&gt;(&lt;/span&gt;65.19.120.194&lt;span class="o"&gt;)&lt;/span&gt;  23.935 ms
+ 6  72.14.215.203 &lt;span class="o"&gt;(&lt;/span&gt;72.14.215.203&lt;span class="o"&gt;)&lt;/span&gt;  23.872 ms  46.943 ms *
+ 7  216.239.50.141 &lt;span class="o"&gt;(&lt;/span&gt;216.239.50.141&lt;span class="o"&gt;)&lt;/span&gt;  48.906 ms  46.138 ms  46.122 ms
+ 8  209.85.245.179 &lt;span class="o"&gt;(&lt;/span&gt;209.85.245.179&lt;span class="o"&gt;)&lt;/span&gt;  46.108 ms  46.095 ms  46.074 ms
+ 9  lga15s43-in-f18.1e100.net &lt;span class="o"&gt;(&lt;/span&gt;74.125.226.50&lt;span class="o"&gt;)&lt;/span&gt;  45.997 ms  19.507 ms  16.607 ms
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We get something like this (notice the &lt;a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages"&gt;several types of ICMP responses&lt;/a&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo python ip_header_decode.py
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo python ip_header_decode.py
 IP -&amp;gt; Version:4, Header Length:5, TTL:252, Protocol:1, Source:65.19.99.117, Destination:192.168.1.114
 ICMP -&amp;gt; Type:11, Code:0
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
@@ -183,28 +182,28 @@ ICMP -&amp;gt; Type:3, Code:3
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Writing the Scanner&lt;/h2&gt;
 &lt;h3&gt;Installing netaddr&lt;/h3&gt;
 &lt;p&gt;We are ready to write our full scanner. But, first, let's install &lt;a href="https://pypi.python.org/pypi/netaddr"&gt;netaddr&lt;/a&gt;, which is a Python library for representing and manipulating network addresses.&lt;/p&gt;
 &lt;p&gt;Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem, since we want to be able to use a subnet mask such as 192.168.1.0/24.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install netaddr
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install netaddr
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We can quickly test this library with the following snippet (which should print "OK"):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;netaddr&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;netaddr&lt;/span&gt;
 
-&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;netaddr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPNetwork&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;192.168.1.0/24&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;OK!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;netaddr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPNetwork&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;192.168.1.0/24&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;OK!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;Enter the Scanner&lt;/h3&gt;
 &lt;p&gt;To write our scanner we are going to put together everything we have, and then add a loop to spray UDP datagrams with a string signature to all the address within our target subnet.&lt;/p&gt;
 &lt;p&gt;To make this work, each packet will be sent in a separated thread, to make sure that we are not interfering with the sniff responses:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
@@ -213,20 +212,20 @@ ICMP -&amp;gt; Type:3, Code:3
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;ICMPHeader&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ICMP&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ctypes&lt;/span&gt;
 
-&lt;span class="c1"&gt;# host to listen on&lt;/span&gt;
-&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
-&lt;span class="c1"&gt;# subnet to target (iterates through all IP address in this subnet)&lt;/span&gt;
-&lt;span class="n"&gt;SUBNET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;192.168.1.0/24&amp;#39;&lt;/span&gt;
-&lt;span class="c1"&gt;# string signature&lt;/span&gt;
-&lt;span class="n"&gt;MESSAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;hellooooo&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# host to listen on&lt;/span&gt;
+&lt;span class="n"&gt;HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;192.168.1.114&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# subnet to target (iterates through all IP address in this subnet)&lt;/span&gt;
+&lt;span class="n"&gt;SUBNET&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;192.168.1.0/24&amp;#39;&lt;/span&gt;
+&lt;span class="c"&gt;# string signature&lt;/span&gt;
+&lt;span class="n"&gt;MESSAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;hellooooo&amp;#39;&lt;/span&gt;
 
-&lt;span class="c1"&gt;# sprays out the udp datagram&lt;/span&gt;
+&lt;span class="c"&gt;# sprays out the udp datagram&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;udp_sender&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SUBNET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;sender&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AF_INET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOCK_DGRAM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;IPNetwork&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SUBNET&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;65212&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+            &lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;65212&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
         &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;pass&lt;/span&gt;
 
@@ -239,47 +238,47 @@ ICMP -&amp;gt; Type:3, Code:3
     &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt; &lt;span class="n"&gt;HOST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setsockopt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IPPROTO_IP&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IP_HDRINCL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-    &lt;span class="c1"&gt;# continually read in packets and parse their information&lt;/span&gt;
+    &lt;span class="c"&gt;# continually read in packets and parse their information&lt;/span&gt;
     &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;raw_buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sniffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recvfrom&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;65565&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="n"&gt;ip_header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-        &lt;span class="n"&gt;iph&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;!BBHHHBBH4s4s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_header&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;iph&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;!BBHHHBBH4s4s&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ip_header&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# Create our IP structure&lt;/span&gt;
+        &lt;span class="c"&gt;# Create our IP structure&lt;/span&gt;
         &lt;span class="n"&gt;version_ihl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;iph&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
         &lt;span class="n"&gt;ihl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;version_ihl&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mh"&gt;0xF&lt;/span&gt;
         &lt;span class="n"&gt;iph_length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ihl&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;
         &lt;span class="n"&gt;src_addr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;inet_ntoa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;iph&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# Create our ICMP structure&lt;/span&gt;
+        &lt;span class="c"&gt;# Create our ICMP structure&lt;/span&gt;
         &lt;span class="n"&gt;buf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;iph_length&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;iph_length&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;ctypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sizeof&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ICMP&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
         &lt;span class="n"&gt;icmp_header&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ICMP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# check for the type 3 and code and within our target subnet&lt;/span&gt;
+        &lt;span class="c"&gt;# check for the type 3 and code and within our target subnet&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;icmp_header&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;IPAddress&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;src_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;IPNetwork&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SUBNET&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;raw_buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="p"&gt;):]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-                    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Host up: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;src_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Host up: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;src_addr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Finally, running the scanner  gives a result similar to this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python scanner.py
-Host up: &lt;span class="m"&gt;192&lt;/span&gt;.168.1.114
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python scanner.py
+Host up: 192.168.1.114
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Pretty neat!&lt;/p&gt;
 &lt;p&gt;By the way, the results from our scanner can be checked against the values of the IP addresses in your router's &lt;strong&gt;DHCP table&lt;/strong&gt;. They should match!&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;p&gt;That's all, folks. Hope you had fun.&lt;/p&gt;
 &lt;h2&gt;Further References:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://netaddr.readthedocs.org/en/latest/tutorial_01.html"&gt;Tutorial to learn netaddr&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Python"></category><category term="socket"></category><category term="sniffing"></category><category term="UDP"></category><category term="netaddr"></category><category term="ICMP"></category><category term="scanner"></category><category term="packet_header"></category></entry></feed>
+&lt;/ul&gt;</summary><category term="Python"></category><category term="socket"></category><category term="sniffing"></category><category term="UDP"></category><category term="netaddr"></category><category term="ICMP"></category><category term="scanner"></category><category term="packet_header"></category></entry></feed>

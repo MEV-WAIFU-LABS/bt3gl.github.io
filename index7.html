@@ -5,7 +5,7 @@
     <title>chmod +x singularity.sh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -84,9 +84,90 @@
       <div class="row">
         <div class="span9" id="content">
         <div class="article">
+                <h1><a href="./csaw-ctf-2014-forensics-200-obscurity.html">CSAW CTF 2014 - Forensics 200: "Obscurity"</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-09-22T07:20:00">
+      Mon 22 September 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/forensics.html"><i class="icon-folder-open"></i>Forensics</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
+	<a href="./tag/csaw.html"><i class="icon-tag"></i>CSAW</a>
+	<a href="./tag/pdf-parser.html"><i class="icon-tag"></i>pdf-parser</a>
+	<a href="./tag/pdftotext.html"><i class="icon-tag"></i>pdftotext</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>The third forensics challenge starts with the following text:</p>
+<blockquote>
+<p>see or do not see</p>
+<p>Written by marc</p>
+<p><a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf">pdf.pdf</a></p>
+</blockquote>
+<p>Hacking PDFs, what fun!</p>
+<p>In general, when dealing with reverse-engineering malicious documents, we follow these steps:</p>
+<div class="highlight"><pre> <span class="mf">1.</span> <span class="n">We</span> <span class="n">search</span> <span class="k">for</span> <span class="n">malicious</span> <span class="n">embedded</span> <span class="n">code</span> <span class="p">(</span><span class="n">shell</span> <span class="n">code</span><span class="p">,</span> <span class="n">JavaScript</span><span class="p">).</span>
+
+ <span class="mf">2.</span> <span class="n">We</span> <span class="n">extract</span> <span class="n">any</span> <span class="n">suspicious ...</span></pre></div>
+                        <a class="btn primary xsmall" href="./csaw-ctf-2014-forensics-200-obscurity.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./csaw-ctf-2014-forensics-100-dumpster-diving.html">CSAW CTF 2014 - Forensics 100: "dumpster diving"</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-09-22T06:20:00">
+      Mon 22 September 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/forensics.html"><i class="icon-folder-open"></i>Forensics</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
+	<a href="./tag/csaw.html"><i class="icon-tag"></i>CSAW</a>
+	<a href="./tag/readelf.html"><i class="icon-tag"></i>readelf</a>
+	<a href="./tag/mem.html"><i class="icon-tag"></i>mem</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>This was the first forensic challenge. It starts with the following text:</p>
+<blockquote>
+<p>dumpsters are cool, but cores are cooler</p>
+<p>Written by marc</p>
+<p><a href="https://ctf.isis.poly.edu/static/uploads/606580b079e73e14ab2751e35d22ad44/firefox.mem.zip">firefox.mem.zip</a></p>
+</blockquote>
+<h2>Unziping firefox.mem.zip</h2>
+<p>The given file has a funny extension <em>.mem.zip</em>. Before we go ahead and unzip it, let's try to learn ...</p>
+                        <a class="btn primary xsmall" href="./csaw-ctf-2014-forensics-100-dumpster-diving.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./csaw-ctf-2014-forensics-200-why-not-sftp.html">CSAW CTF 2014 - Forensics 200: "why not sftp?"</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-09-22T05:20:00">
+      Mon 22 September 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/forensics.html"><i class="icon-folder-open"></i>Forensics</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
+	<a href="./tag/csaw.html"><i class="icon-tag"></i>CSAW</a>
+	<a href="./tag/wireshark.html"><i class="icon-tag"></i>Wireshark</a>
+	<a href="./tag/ftp.html"><i class="icon-tag"></i>FTP</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>The purpose of this problem is to teach about the need of encrypting your data. The <a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>  protocol sends clear text over the wire, <em>i.e</em>  the  data is transmitted without any encryption.
+ <a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol">SSH/Secure File Transfer Protocol</a> is a network protocol providing secure file transfer. Using SFTP, instead of ...</p>
+                        <a class="btn primary xsmall" href="./csaw-ctf-2014-forensics-200-why-not-sftp.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
                 <h1><a href="./csaw-ctf-2014-cryptography-200-psifer-school.html">CSAW CTF 2014 - Cryptography 200 - Psifer School</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-09-21T00:20:00-04:00">
+<abbr class="published" title="2014-09-21T00:20:00">
       Sun 21 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -107,7 +188,7 @@
 <p>The problem starts with the following text:</p>
 <blockquote>
 <p>There's no heartbleed here. Why don't we use these ciphers?</p>
-<p>nc 54.209.5 …</p></blockquote>
+<p>nc 54 ...</p></blockquote>
                         <a class="btn primary xsmall" href="./csaw-ctf-2014-cryptography-200-psifer-school.html">more ...</a>
                 </div>
         </div>
@@ -115,7 +196,7 @@
         <div class="article">
                 <h1><a href="./a-lit-backdoor.html">A Lit Backdoor</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-06-21T02:00:00-04:00">
+<abbr class="published" title="2014-06-21T02:00:00">
       Sat 21 June 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -126,7 +207,7 @@
 	<a href="./tag/reverse_shell-netcat.html"><i class="icon-tag"></i>Reverse_shell netcat</a>
 </footer><!-- /.post-info --></div>
                 <div class="summary"><p>I was never a big fan of Macbooks. Being a penguin user for so long, you learn to stop worrying and love love the bomb. But here is a little trick that works for both.</p>
-<p>In the victim's machine (presumably a macbook), create the reverse shell in the port 1337 …</p>
+<p>In the victim's machine (presumably a macbook), create the reverse shell in the port ...</p>
                         <a class="btn primary xsmall" href="./a-lit-backdoor.html">more ...</a>
                 </div>
         </div>
@@ -134,7 +215,7 @@
         <div class="article">
                 <h1><a href="./getting-your-public-ip-from-the-terminal.html">Getting your Public IP from the Terminal</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-06-21T02:00:00-04:00">
+<abbr class="published" title="2014-06-21T02:00:00">
       Sat 21 June 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -148,7 +229,7 @@
 <p>In this little post I show many ways to find your public IP address form the Linux terminal. </p>
 <h3>Using Curl</h3>
 <p>You can simply curl it from IP websites:</p>
-<div class="highlight"><pre><span></span>$  curl ifconfig.me …</pre></div>
+<div class="highlight"><pre><span class="nv">$ </span> curl ifconfig.me ...</pre></div>
                         <a class="btn primary xsmall" href="./getting-your-public-ip-from-the-terminal.html">more ...</a>
                 </div>
         </div>

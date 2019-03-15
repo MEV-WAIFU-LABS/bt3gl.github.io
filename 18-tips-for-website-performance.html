@@ -5,7 +5,7 @@
     <title>18 Tips for Website Performance</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2017-12-12T00:00:00-05:00">
+<abbr class="published" title="2017-12-12T00:00:00">
       Tue 12 December 2017 </abbr>
 
 <span class="label"> Category</span>
@@ -105,7 +105,7 @@
 
 
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px"></p>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px" /></p>
 <h2>1. Test your Website’s Speed</h2>
 <p>Use a website speed test tool to analyze the overall speed of your website. For instance, <a href="https://tools.keycdn.com/speed">KeyCDN’s website speed test tool</a> or <a href="http://www.webpagetest.org/">WebPageTest</a> can useful (and they both support HTTP/2). You could also use a <a href="https://www.ej-technologies.com/products/jprofiler/overview.html">JavaScript</a> profiler.</p>
 <h2>2. Load Test Your Site</h2>
@@ -170,13 +170,13 @@
 <p>Let the browser cache some data (with a max-age of a week) by using HTTP headers such as <strong><em>Cache-control</em></strong> and <strong><em>Expires</em></strong>.</p>
 <h2>12. Prefetching</h2>
 <p>DNS prefetching can be a good solution to resolve domain names before a user follows a link. It's implemented in the <strong><em>HEADER</em></strong> session with:</p>
-<div class="highlight"><pre><span></span>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//www.example.com&quot;&gt;
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">&quot;dns-prefetch&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;//www.example.com&quot;</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h2>13. Preconnecting</h2>
 <p>With the <strong><em>preconnect</em></strong> label, the browser can set up early connections (such as DNS lookup, TLS negotiation, etc.) before an HTTP request is sent to the server. This can be implemented with:</p>
-<div class="highlight"><pre><span></span>&lt;link href=&#39;https://CDNHOST.com&#39; rel=&#39;preconnect&#39; crossorigin&gt;
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="err">&#39;</span><span class="n">https</span><span class="o">:</span><span class="c1">//CDNHOST.com&#39; rel=&#39;preconnect&#39; crossorigin&gt;</span>
 </pre></div>
 
 
@@ -184,10 +184,10 @@
 <p>HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs a SSL certificate and a server that supports HTTP/2.</p>
 <h2>15. Hotlink Protection</h2>
 <p>Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a <code>.htaccess</code> file (Apache):</p>
-<div class="highlight"><pre><span></span>RewriteEngine On
-RewriteCond %{HTTP_REFERER} !^http://(.+\.)?domain\.com/ [NC]
-RewriteCond %{HTTP_REFERER} !^$
-RewriteRule .*\.(jpe?g|gif|bmp|png)$ http://i.imgur.com/DONT_DISPLAY.gif [L]
+<div class="highlight"><pre><span class="n">RewriteEngine</span> <span class="n">On</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="n">http</span><span class="o">:</span><span class="c1">//(.+\.)?domain\.com/ [NC]</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="err">$</span>
+<span class="n">RewriteRule</span> <span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.(</span><span class="n">jpe</span><span class="o">?</span><span class="n">g</span><span class="o">|</span><span class="n">gif</span><span class="o">|</span><span class="n">bmp</span><span class="o">|</span><span class="n">png</span><span class="p">)</span><span class="err">$</span> <span class="n">http</span><span class="o">:</span><span class="c1">//i.imgur.com/DONT_DISPLAY.gif [L]</span>
 </pre></div>
 
 

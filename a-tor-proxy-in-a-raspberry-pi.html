@@ -5,7 +5,7 @@
     <title>A Tor Proxy in a Raspberry Pi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2015-03-29T00:00:00-04:00">
+<abbr class="published" title="2015-03-29T00:00:00">
       Sun 29 March 2015 </abbr>
 
 <span class="label"> Category</span>
@@ -105,7 +105,7 @@
 
 
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px"></p>
+                <p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /></p>
 <p>In this tutorial I walk through all the steps to setup a Tor proxy in a Raspberry Pi (Model B). This work was based on some of tutorials from Adafruit.</p>
 <h1>Setting Up a Raspberry Pi</h1>
 <h2>Installing an Operating System in the SD card</h2>
@@ -118,293 +118,293 @@
 <p>The easiest way to connect to your Pi is by a HDMI cable to a monitor and an USB keyboard. Another options is through a console cable or a SSH connection.</p>
 <h2>Connection through a Console Cable (3.3V logic levels)</h2>
 <p>The connections are to the outside pin connections of the GPIO header:</p>
-<div class="highlight"><pre><span></span>The red lead should be connected to 5V.
-The black lead to GND,
-The white lead to TXD.
-The green lead to RXD.
-If the serial lead (red) is connected, do not attach the Pi&#39;s USB power adapter. 
+<div class="highlight"><pre><span class="n">The</span> <span class="n">red</span> <span class="n">lead</span> <span class="n">should</span> <span class="n">be</span> <span class="n">connected</span> <span class="n">to</span> <span class="mi">5</span><span class="n">V</span><span class="p">.</span>
+<span class="n">The</span> <span class="n">black</span> <span class="n">lead</span> <span class="n">to</span> <span class="n">GND</span><span class="p">,</span>
+<span class="n">The</span> <span class="n">white</span> <span class="n">lead</span> <span class="n">to</span> <span class="n">TXD</span><span class="p">.</span>
+<span class="n">The</span> <span class="n">green</span> <span class="n">lead</span> <span class="n">to</span> <span class="n">RXD</span><span class="p">.</span>
+<span class="n">If</span> <span class="n">the</span> <span class="n">serial</span> <span class="n">lead</span> <span class="p">(</span><span class="n">red</span><span class="p">)</span> <span class="n">is</span> <span class="n">connected</span><span class="p">,</span> <span class="k">do</span> <span class="n">not</span> <span class="n">attach</span> <span class="n">the</span> <span class="n">Pi</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">USB</span> <span class="n">power</span> <span class="n">adapter</span><span class="p">.</span> 
 </pre></div>
 
 
 <p>In Linux you can use screen:</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get install screen
-$ sudo screen /dev/ttyUSB0 <span class="m">115200</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">screen</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">screen</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span> <span class="mi">115200</span>
 </pre></div>
 
 
 <p>In Windows, you can use a terminal emulation such as Putty and the drivers from this (link)[http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&amp;pcid=41]. Verify the number of the COM serial port in the Device manager and connect with speed 115200.</p>
 <h2>SSH Connection</h2>
 <p>You need to enable SSH in the Pi:</p>
-<div class="highlight"><pre><span></span>$ sudo raspi-config
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">raspi</span><span class="o">-</span><span class="n">config</span>
 </pre></div>
 
 
 <p>Find the Pi's IP by:</p>
-<div class="highlight"><pre><span></span>$ sudo ifconfig
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">ifconfig</span>
 </pre></div>
 
 
 <p>From your Linux PC (using "pi" as user):</p>
-<div class="highlight"><pre><span></span>$ sudo PI-IP -l pi
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">PI</span><span class="o">-</span><span class="n">IP</span> <span class="o">-</span><span class="n">l</span> <span class="n">pi</span>
 </pre></div>
 
 
 <p>You can (should) set RSA keys. In a terminal session on the Linux client enter:</p>
-<div class="highlight"><pre><span></span>$ mkdir ~/.ssh
-$ chmod <span class="m">700</span> ~/.ssh
-$ ssh-keygen -t rsa
+<div class="highlight"><pre><span class="err">$</span> <span class="n">mkdir</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span>
+<span class="err">$</span> <span class="n">chmod</span> <span class="mi">700</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span>
+<span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
 </pre></div>
 
 
 <p>Now copy the public key over to the Pi by typing in the client:</p>
-<div class="highlight"><pre><span></span>$ ssh-copy-id &lt;userid&gt;@&lt;hostname or ip address&gt;
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">ssh</span><span class="na">-copy-id</span> <span class="o">&lt;</span><span class="nx">userid</span><span class="o">&gt;</span><span class="p">@</span><span class="o">&lt;</span><span class="nb">hostname</span> <span class="ow">or</span> <span class="nx">ip</span> <span class="nx">address</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h2>Setting up a Wi-Fi Access Point</h2>
 <p>You need an ethernet cable and a WiFi adapter. First, check if you see the wlan0 (the WiFi) module:</p>
-<div class="highlight"><pre><span></span>$ ifconfig -a 
+<div class="highlight"><pre><span class="err">$</span> <span class="n">ifconfig</span> <span class="o">-</span><span class="n">a</span> 
 </pre></div>
 
 
 <h3>DHCP Server Configuration</h3>
 <p>Install the software that will act as the hostap (host access point):</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get install hostapd isc-dhcp-server
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">hostapd</span> <span class="n">isc</span><span class="o">-</span><span class="n">dhcp</span><span class="o">-</span><span class="n">server</span>
 </pre></div>
 
 
 <p>If the Pi cannot get the apt-get repositories:</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get update 
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> 
 </pre></div>
 
 
 <p>Edit <code>/etc/networks/interfaces</code>:</p>
-<div class="highlight"><pre><span></span>auto lo
+<div class="highlight"><pre><span class="k">auto</span> <span class="n">lo</span>
 
-iface lo inet loopback
-iface eth0 inet dhcp
+<span class="n">iface</span> <span class="n">lo</span> <span class="n">inet</span> <span class="n">loopback</span>
+<span class="n">iface</span> <span class="n">eth0</span> <span class="n">inet</span> <span class="n">dhcp</span>
 
-allow-hotplug wlan0
+<span class="n">allow</span><span class="o">-</span><span class="n">hotplug</span> <span class="n">wlan0</span>
 
-iface wlan0 inet static
-  address 192.168.42.1
-  netmask 255.255.255.0
+<span class="n">iface</span> <span class="n">wlan0</span> <span class="n">inet</span> <span class="k">static</span>
+  <span class="n">address</span> <span class="mf">192.168.42.1</span>
+  <span class="n">netmask</span> <span class="mf">255.255.255.0</span>
 </pre></div>
 
 
 <p>Then edit the DHCP server configuration file, <code>/etc/dhcp/dhcpd.conf</code>:</p>
-<div class="highlight"><pre><span></span>subnet 192.168.42.0 netmask 255.255.255.0 {
-range 192.168.42.10 192.168.42.50;
-option broadcast-address 192.168.42.255;
-option routers 192.168.42.1;
-default-lease-time 600;
-max-lease-time 7200;
-option domain-name &quot;local&quot;;
-option domain-name-servers 8.8.8.8, 8.8.4.4;
-}
+<div class="highlight"><pre><span class="n">subnet</span> <span class="mf">192.168.42.0</span> <span class="n">netmask</span> <span class="mf">255.255.255.0</span> <span class="p">{</span>
+<span class="n">range</span> <span class="mf">192.168.42.10</span> <span class="mf">192.168.42.50</span><span class="p">;</span>
+<span class="n">option</span> <span class="n">broadcast</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168.42.255</span><span class="p">;</span>
+<span class="n">option</span> <span class="n">routers</span> <span class="mf">192.168.42.1</span><span class="p">;</span>
+<span class="k">default</span><span class="o">-</span><span class="n">lease</span><span class="o">-</span><span class="n">time</span> <span class="mi">600</span><span class="p">;</span>
+<span class="n">max</span><span class="o">-</span><span class="n">lease</span><span class="o">-</span><span class="n">time</span> <span class="mi">7200</span><span class="p">;</span>
+<span class="n">option</span> <span class="n">domain</span><span class="o">-</span><span class="n">name</span> <span class="s">&quot;local&quot;</span><span class="p">;</span>
+<span class="n">option</span> <span class="n">domain</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">servers</span> <span class="mf">8.8.8.8</span><span class="p">,</span> <span class="mf">8.8.4.4</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
 
 <p>Now, add the bellow line to <code>/etc/default/isc-dhcp-server</code>:</p>
-<div class="highlight"><pre><span></span>INTERFACES=&quot;wlan0&quot; 
+<div class="highlight"><pre><span class="n">INTERFACES</span><span class="o">=</span><span class="s">&quot;wlan0&quot;</span> 
 </pre></div>
 
 
 <p>Restart the network:</p>
-<div class="highlight"><pre><span></span>$ sudo /etc/init.d/networking restart
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">networking</span> <span class="n">restart</span>
 </pre></div>
 
 
 <h3>IP Forwarding</h3>
 <p>Enable IP forwarding and setting up NAT to allow multiple clients to connect to the WiFi and have all the data 'tunneled' through the single Ethernet IP:</p>
-<div class="highlight"><pre><span></span>$ sudo <span class="nb">echo</span> <span class="m">1</span> &gt; /proc/sys/net/ipv4/ip_forward
-$ sudo nano /etc/sysctl.conf
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">echo</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">ipv4</span><span class="o">/</span><span class="n">ip_forward</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysctl</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Uncomment the next line to enable packet forwarding for IPv4:</p>
-<div class="highlight"><pre><span></span>net.ipv4.ip_forward=1
+<div class="highlight"><pre><span class="n">net</span><span class="p">.</span><span class="n">ipv4</span><span class="p">.</span><span class="n">ip_forward</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 
 
 <p>And update:</p>
-<div class="highlight"><pre><span></span>sudo sh -c &quot;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&quot;
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;echo 1 &gt; /proc/sys/net/ipv4/ip_forward&quot;</span>
 </pre></div>
 
 
 <h3>Firewall Configuration</h3>
 <p>We insert an iptables rules to allow NAT (network address translation):</p>
-<div class="highlight"><pre><span></span>$ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-$ iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-$ iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+<div class="highlight"><pre><span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">POSTROUTING</span> <span class="o">-</span><span class="n">o</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">MASQUERADE</span>
+<span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">o</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
+<span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">o</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
 </pre></div>
 
 
 <p>To make the above true in every reboot:</p>
-<div class="highlight"><pre><span></span>$ sudo sh -c <span class="s2">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span>
 </pre></div>
 
 
 <p>For additional security (it blocks access from RFC 1918 subnets on your internet (eth0) interface as well as ICMP (ping) packets and ssh connections.):</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -A INPUT -s <span class="m">192</span>.168.0.0/24 -i eth0 -j DROP
-$ sudo iptables -A INPUT -s <span class="m">10</span>.0.0.0/8 -i eth0 -j DROP
-$ sudo iptables -A INPUT -s <span class="m">172</span>.16.0.0/12 -i eth0 -j DROP
-$ sudo iptables -A INPUT -s <span class="m">224</span>.0.0.0/4 -i eth0 -j DROP
-$ sudo iptables -A INPUT -s <span class="m">240</span>.0.0.0/5 -i eth0 -j DROP
-$ sudo iptables -A INPUT -s <span class="m">127</span>.0.0.0/8 -i eth0 -j DROP
-$ sudo iptables -A INPUT -i eth0 -p tcp -m tcp --dport <span class="m">22</span> -j DROP
-$ sudo iptables -A INPUT -i eth0 -p icmp -m icmp --icmp-type <span class="m">8</span> -j DROP
-$ sudo iptables-save &gt; /etc/iptables.up.rules
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">192.168.0.0</span><span class="o">/</span><span class="mi">24</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">10.0.0.0</span><span class="o">/</span><span class="mi">8</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">172.16.0.0</span><span class="o">/</span><span class="mi">12</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">224.0.0.0</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">240.0.0.0</span><span class="o">/</span><span class="mi">5</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">s</span> <span class="mf">127.0.0.0</span><span class="o">/</span><span class="mi">8</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="o">-</span><span class="n">m</span> <span class="n">tcp</span> <span class="o">--</span><span class="n">dport</span> <span class="mi">22</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">p</span> <span class="n">icmp</span> <span class="o">-</span><span class="n">m</span> <span class="n">icmp</span> <span class="o">--</span><span class="n">icmp</span><span class="o">-</span><span class="n">type</span> <span class="mi">8</span> <span class="o">-</span><span class="n">j</span> <span class="n">DROP</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span><span class="o">-</span><span class="n">save</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">iptables</span><span class="p">.</span><span class="n">up</span><span class="p">.</span><span class="n">rules</span>
 </pre></div>
 
 
 <p>If you want to see how many packets your firewall is blocking:</p>
-<div class="highlight"><pre><span></span>$ iptables -L -n -v
+<div class="highlight"><pre><span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 
 
 <p>If your eth0 still shows a private address, it probably didn't renew when you moved it to your modem. Fix this by running:</p>
-<div class="highlight"><pre><span></span>$ sudo ifdown eth0 <span class="o">&amp;&amp;</span> sudo ifup eth0
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">ifdown</span> <span class="n">eth0</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">ifup</span> <span class="n">eth0</span>
 </pre></div>
 
 
 <h2>Access Point Configuration</h2>
 <p>Configure Access Point with hostpad, editing <code>/etc/hostapd/hostapd.conf</code>:</p>
-<div class="highlight"><pre><span></span>interface=wlan0
-driver=rtl871xdrv
-ssid=Pi_AP
-hw_mode=g
-channel=6
-macaddr_acl=0
-auth_algs=1
-ignore_broadcast_ssid=0
-wpa=2
-wpa_passphrase=Raspberry
-wpa_key_mgmt=WPA-PSK
-wpa_pairwise=TKIP
-rsn_pairwise=CCMP
+<div class="highlight"><pre><span class="n">interface</span><span class="o">=</span><span class="n">wlan0</span>
+<span class="n">driver</span><span class="o">=</span><span class="n">rtl871xdrv</span>
+<span class="n">ssid</span><span class="o">=</span><span class="n">Pi_AP</span>
+<span class="n">hw_mode</span><span class="o">=</span><span class="n">g</span>
+<span class="n">channel</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">macaddr_acl</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">auth_algs</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ignore_broadcast_ssid</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">wpa</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">wpa_passphrase</span><span class="o">=</span><span class="n">Raspberry</span>
+<span class="n">wpa_key_mgmt</span><span class="o">=</span><span class="n">WPA</span><span class="o">-</span><span class="n">PSK</span>
+<span class="n">wpa_pairwise</span><span class="o">=</span><span class="n">TKIP</span>
+<span class="n">rsn_pairwise</span><span class="o">=</span><span class="n">CCMP</span>
 </pre></div>
 
 
 <p>Now we will tell the Pi where to find this configuration file in /etc/default/hostapd:</p>
-<div class="highlight"><pre><span></span>DAEMON_CONF=&quot;/etc/hostapd/hostapd.conf&quot;
+<div class="highlight"><pre><span class="n">DAEMON_CONF</span><span class="o">=</span><span class="s">&quot;/etc/hostapd/hostapd.conf&quot;</span>
 </pre></div>
 
 
 <p>And start the access point by running hostpad:</p>
-<div class="highlight"><pre><span></span>$ hostapd -d /etc/hostapd/hostapd.conf
+<div class="highlight"><pre><span class="err">$</span> <span class="n">hostapd</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostapd</span><span class="o">/</span><span class="n">hostapd</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>To start automatically, add the command to <code>/etc/rc.local</code>:</p>
-<div class="highlight"><pre><span></span>$ hostapd -B /etc/hostapd/hostapd.conf
+<div class="highlight"><pre><span class="err">$</span> <span class="n">hostapd</span> <span class="o">-</span><span class="n">B</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostapd</span><span class="o">/</span><span class="n">hostapd</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <h3>Logs and Status</h3>
 <p>To see the system log data, run in the Pi:</p>
-<div class="highlight"><pre><span></span>$ tail -f /var/log/syslog
+<div class="highlight"><pre><span class="err">$</span> <span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">syslog</span>
 </pre></div>
 
 
 <p>You can always check the status of the host AP server and the DHCP server with:</p>
-<div class="highlight"><pre><span></span>$ sudo service hostapd status
-$ sudo service isc-dhcp-server status
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">service</span> <span class="n">hostapd</span> <span class="n">status</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">service</span> <span class="n">isc</span><span class="o">-</span><span class="n">dhcp</span><span class="o">-</span><span class="n">server</span> <span class="n">status</span>
 </pre></div>
 
 
 <h3>Setting up a Daemon</h3>
 <p>Now that we know it works, we can set it up as a 'daemon' (a program that will start when the Pi boots):</p>
-<div class="highlight"><pre><span></span>$ sudo service hostapd start 
-$ sudo service isc-dhcp-server start
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">service</span> <span class="n">hostapd</span> <span class="n">start</span> 
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">service</span> <span class="n">isc</span><span class="o">-</span><span class="n">dhcp</span><span class="o">-</span><span class="n">server</span> <span class="n">start</span>
 </pre></div>
 
 
 <p>To start the daemon services. Verify that they both start successfully (no 'failure' or 'errors')</p>
-<div class="highlight"><pre><span></span>$ sudo update-rc.d hostapd <span class="nb">enable</span> 
-$ sudo update-rc.d isc-dhcp-server <span class="nb">enable</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">rc</span><span class="p">.</span><span class="n">d</span> <span class="n">hostapd</span> <span class="n">enable</span> 
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">rc</span><span class="p">.</span><span class="n">d</span> <span class="n">isc</span><span class="o">-</span><span class="n">dhcp</span><span class="o">-</span><span class="n">server</span> <span class="n">enable</span>
 </pre></div>
 
 
 <h3>Removing WPA-Supplicant</h3>
 <p>Depending on your distribution, you may need to remove WPASupplicant. Do so by running this command:</p>
-<div class="highlight"><pre><span></span>sudo mv /usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service ~/
+<div class="highlight"><pre><span class="n">sudo</span> <span class="n">mv</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">dbus</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">services</span><span class="o">/</span><span class="n">fi</span><span class="p">.</span><span class="n">epitest</span><span class="p">.</span><span class="n">hostap</span><span class="p">.</span><span class="n">WPASupplicant</span><span class="p">.</span><span class="n">service</span> <span class="o">~/</span>
 </pre></div>
 
 
 <h2>Setting up the Tor Proxy</h2>
 <p>You now have a wirelesses access point in your Pi. To make it a Tor proxy, first install Tor:</p>
-<div class="highlight"><pre><span></span>$ sudo apt-get install tor
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">tor</span>
 </pre></div>
 
 
 <p>Then edit the Tor config file at <code>/etc/tor/torrc</code>:</p>
-<div class="highlight"><pre><span></span>Log notice file /var/log/tor/notices.log
-VirtualAddrNetwork 10.192.0.0/10
-AutomapHostsSuffixes .onion,.exit
-AutomapHostsOnResolve 1
-TransPort 9040
-TransListenAddress 192.168.42.1
-DNSPort 53
-DNSListenAddress 192.168.42.1
+<div class="highlight"><pre><span class="n">Log</span> <span class="n">notice</span> <span class="n">file</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">tor</span><span class="o">/</span><span class="n">notices</span><span class="p">.</span><span class="n">log</span>
+<span class="n">VirtualAddrNetwork</span> <span class="mf">10.192.0.0</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">AutomapHostsSuffixes</span> <span class="p">.</span><span class="n">onion</span><span class="p">,.</span><span class="n">exit</span>
+<span class="n">AutomapHostsOnResolve</span> <span class="mi">1</span>
+<span class="n">TransPort</span> <span class="mi">9040</span>
+<span class="n">TransListenAddress</span> <span class="mf">192.168.42.1</span>
+<span class="n">DNSPort</span> <span class="mi">53</span>
+<span class="n">DNSListenAddress</span> <span class="mf">192.168.42.1</span>
 </pre></div>
 
 
 <p>Change the IP routing tables so that connections via the WiFi interface (wlan0) will be routed through the Tor software. To flush the old rules from the IP NAT table do:</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -F
-$ sudo iptables -t nat -F
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">F</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">F</span>
 </pre></div>
 
 
 <p>Add the iptables, to be able to ssh:</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport <span class="m">22</span> -j REDIRECT --to-ports <span class="m">22</span> 
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">PREROUTING</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="o">--</span><span class="n">dport</span> <span class="mi">22</span> <span class="o">-</span><span class="n">j</span> <span class="n">REDIRECT</span> <span class="o">--</span><span class="n">to</span><span class="o">-</span><span class="n">ports</span> <span class="mi">22</span> 
 </pre></div>
 
 
 <p>To route all DNS (UDP port 53) from interface wlan0 to internal port 53 (DNSPort in our torrc):</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -t nat -A PREROUTING -i wlan0 -p udp --dport <span class="m">53</span> -j REDIRECT --to-ports <span class="m">53</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">PREROUTING</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">p</span> <span class="n">udp</span> <span class="o">--</span><span class="n">dport</span> <span class="mi">53</span> <span class="o">-</span><span class="n">j</span> <span class="n">REDIRECT</span> <span class="o">--</span><span class="n">to</span><span class="o">-</span><span class="n">ports</span> <span class="mi">53</span>
 </pre></div>
 
 
 <p>To route all TCP traffic from interface wlan0 to port 9040 (TransPort in our torrc):</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --syn -j REDIRECT --to-ports <span class="m">9040</span> 
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">PREROUTING</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">p</span> <span class="n">tcp</span> <span class="o">--</span><span class="n">syn</span> <span class="o">-</span><span class="n">j</span> <span class="n">REDIRECT</span> <span class="o">--</span><span class="n">to</span><span class="o">-</span><span class="n">ports</span> <span class="mi">9040</span> 
 </pre></div>
 
 
 <p>Check that the iptables are right with:</p>
-<div class="highlight"><pre><span></span>$ sudo iptables -t nat -L
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">L</span>
 </pre></div>
 
 
 <p>If everything is good, we'll save it to our old NAT save file:</p>
-<div class="highlight"><pre><span></span>$ sudo sh -c <span class="s2">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;</span>
 </pre></div>
 
 
 <p>Next we'll create our log file (handy for debugging) with:</p>
-<div class="highlight"><pre><span></span>$ sudo touch /var/log/tor/notices.log
-$ sudo chown debian-tor /var/log/tor/notices.log
-$ sudo chmod <span class="m">644</span> /var/log/tor/notices.log
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">touch</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">tor</span><span class="o">/</span><span class="n">notices</span><span class="p">.</span><span class="n">log</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">chown</span> <span class="n">debian</span><span class="o">-</span><span class="n">tor</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">tor</span><span class="o">/</span><span class="n">notices</span><span class="p">.</span><span class="n">log</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">644</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">tor</span><span class="o">/</span><span class="n">notices</span><span class="p">.</span><span class="n">log</span>
 </pre></div>
 
 
 <p>Check it with:</p>
-<div class="highlight"><pre><span></span>$ ls -l /var/log/tor
+<div class="highlight"><pre><span class="err">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">tor</span>
 </pre></div>
 
 
 <p>Finally, you can start the Tor service manually:</p>
-<div class="highlight"><pre><span></span>$ sudo service tor start
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">service</span> <span class="n">tor</span> <span class="n">start</span>
 </pre></div>
 
 
 <p>And make it start on boot:</p>
-<div class="highlight"><pre><span></span>$ sudo update-rc.d tor <span class="nb">enable</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">rc</span><span class="p">.</span><span class="n">d</span> <span class="n">tor</span> <span class="n">enable</span>
 </pre></div>
 
 
 <p>That's it! Browser safe!</p>
-<hr>
+<hr />
 <p>Enjoy! This article was originally posted <a href="https://coderwall.com/p/m3excg/a-tor-proxy-in-a-raspberry-pi">here</a>.</p>
                 </div><!-- /.entry-content -->
         </article>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - bytecode</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/bytecode.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-01T04:20:00-04:00</updated><entry><title>A Closer Look at Chrome's Security: Understanding V8</title><link href="http://bt3gl.github.io/a-closer-look-at-chromes-security-understanding-v8.html" rel="alternate"></link><published>2014-11-01T04:20:00-04:00</published><updated>2014-11-01T04:20:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-01:/a-closer-look-at-chromes-security-understanding-v8.html</id><summary type="html">&lt;p&gt;&lt;a href="http://blogoscoped.com/google-chrome/"&gt;In 2008, Google released a sandbox-oriented browser&lt;/a&gt;, that was assembled from several different code libraries from Google and third parties (for instance, it borrowed a rendering machinery from the open-source  &lt;a href="https://www.webkit.org/"&gt;Webkit layout engine&lt;/a&gt;, later changing it to a forked version, &lt;a href="http://en.wikipedia.org/wiki/Blink_(layout_engine)"&gt;Blink&lt;/a&gt;).  Six years later, Chrome has became the preferred browser …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://blogoscoped.com/google-chrome/"&gt;In 2008, Google released a sandbox-oriented browser&lt;/a&gt;, that was assembled from several different code libraries from Google and third parties (for instance, it borrowed a rendering machinery from the open-source  &lt;a href="https://www.webkit.org/"&gt;Webkit layout engine&lt;/a&gt;, later changing it to a forked version, &lt;a href="http://en.wikipedia.org/wiki/Blink_(layout_engine)"&gt;Blink&lt;/a&gt;).  Six years later, Chrome has became the preferred browser for &lt;a href="http://en.wikipedia.org/wiki/File:Usage_share_of_web_browsers_(Source_StatCounter).svg"&gt;half of users in the Internet&lt;/a&gt;. This is enough reason to investigate further how security is dealt in this engine. With this motivation in mind, I summarize the main features of Chrome and its &lt;a href="http://www.chromium.org/Home"&gt;Chromium Project&lt;/a&gt;, describing the pristine way of processing JavaScript with the &lt;strong&gt;V8 JavaScript virtual machine&lt;/strong&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/bytecode.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-01T04:20:00-04:00</updated><entry><title>A Closer Look at Chrome's Security: Understanding V8</title><link href="http://bt3gl.github.io/a-closer-look-at-chromes-security-understanding-v8.html" rel="alternate"></link><updated>2014-11-01T04:20:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-01:a-closer-look-at-chromes-security-understanding-v8.html</id><summary type="html">&lt;p&gt;&lt;a href="http://blogoscoped.com/google-chrome/"&gt;In 2008, Google released a sandbox-oriented browser&lt;/a&gt;, that was assembled from several different code libraries from Google and third parties (for instance, it borrowed a rendering machinery from the open-source  &lt;a href="https://www.webkit.org/"&gt;Webkit layout engine&lt;/a&gt;, later changing it to a forked version, &lt;a href="http://en.wikipedia.org/wiki/Blink_(layout_engine)"&gt;Blink&lt;/a&gt;).  Six years later, Chrome has became the preferred browser for &lt;a href="http://en.wikipedia.org/wiki/File:Usage_share_of_web_browsers_(Source_StatCounter).svg"&gt;half of users in the Internet&lt;/a&gt;. This is enough reason to investigate further how security is dealt in this engine. With this motivation in mind, I summarize the main features of Chrome and its &lt;a href="http://www.chromium.org/Home"&gt;Chromium Project&lt;/a&gt;, describing the pristine way of processing JavaScript with the &lt;strong&gt;V8 JavaScript virtual machine&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;They way computers talk...&lt;/h2&gt;
 &lt;p&gt;In mainstream computer languages, a &lt;a href="http://www.openbookproject.net/thinkcs/python/english2e/ch01.html"&gt;source code in a &lt;strong&gt;high level language&lt;/strong&gt; is transformed to a &lt;strong&gt;low level language&lt;/strong&gt;&lt;/a&gt; (a machine or assembly language)  by either being &lt;strong&gt;compiled&lt;/strong&gt; or &lt;strong&gt;interpreted&lt;/strong&gt; . This is &lt;a href="https://www.youtube.com/watch?v=_C5AHaS1mOA"&gt;a very simple concept&lt;/a&gt; but it is a fundamental one!&lt;/p&gt;
 &lt;h3&gt;Compilers and Interpreters&lt;/h3&gt;
@@ -7,11 +7,11 @@
 &lt;p&gt;&lt;strong&gt;Interpreters&lt;/strong&gt; execute instructions without compiling into machine language first. They are first translated into a lower level intermediate representations such as &lt;strong&gt;byte code&lt;/strong&gt; or &lt;strong&gt;abstract syntax trees&lt;/strong&gt; (ASTs). Then they are interpreted by a  &lt;strong&gt;virtual machine&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;The truth is that things are generally mixed.  For example, when you type some instruction in  Python's REPL, &lt;a href="http://akaptur.com/blog/2013/11/17/introduction-to-the-python-interpreter-3/"&gt;the language executes four steps&lt;/a&gt;: &lt;em&gt;lexing&lt;/em&gt; (breaks the code into pieces), &lt;em&gt;parsing&lt;/em&gt; (generates an AST with those pieces - it is the syntax analysis), &lt;em&gt;compiling&lt;/em&gt; (converts the AST into code objects - which are attributes of the function objects), and &lt;em&gt;interpreting&lt;/em&gt; (executes the code objects).&lt;/p&gt;
 &lt;p&gt;In Python, byte-compiled code, in form of &lt;strong&gt;.pyc&lt;/strong&gt; files, is used by the compiler to speed-up the start-up time (load time) for short programs that use a lot of standard modules. And, by the way, byte codes are attributes of the code object so to see them, you just need to call &lt;code&gt;func_code&lt;/code&gt; (code object) and &lt;code&gt;co_code&lt;/code&gt;(bytecode)[1]:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;some_function&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;some_function&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;return&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;some_function&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;func_code&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;co_code&lt;/span&gt;
-&lt;span class="s1"&gt;&amp;#39;d&lt;/span&gt;&lt;span class="se"&gt;\x00\x00&lt;/span&gt;&lt;span class="s1"&gt;S&amp;#39;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;d&lt;/span&gt;&lt;span class="se"&gt;\x00\x00&lt;/span&gt;&lt;span class="s"&gt;S&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -23,14 +23,14 @@
 &lt;p&gt;&lt;strong&gt;Method JITs&lt;/strong&gt; emit native code for every block (method) of code and update references dynamically. Method JITs can implement an &lt;em&gt;inline cache&lt;/em&gt; for rewriting type lookups at runtime.&lt;/p&gt;
 &lt;p&gt;In &lt;strong&gt;tracing JITs&lt;/strong&gt;, native code is only emitted when a certain block (method) is considered &lt;em&gt;important&lt;/em&gt;. An example is given by traditional JavaScript: if you load a script with functions that are never used, they are never compiled. Additionally, in JavaScript a  &lt;em&gt;cache&lt;/em&gt; is usually implemented due to the nature of its &lt;em&gt;dynamic typing system&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;As we will see below, V8 performs direct JIT compilation from  (JavaScript) source code to native machine code (IA-32, x86-64, ARM, or MIPS ISAs),  &lt;strong&gt;without transforming it to bytecode first&lt;/strong&gt;. In addition, V8 performs  dynamic several optimizations at runtime (including &lt;strong&gt;inline caching&lt;/strong&gt;). But let's not get ahead of ourselves! Also,  as a note, Google has implemented a technology called &lt;a href="http://code.google.com/p/nativeclient/"&gt;&lt;strong&gt;Native Client&lt;/strong&gt;&lt;/a&gt; (NaCl), which  allows one to provide compiled code to the  Chrome browser.&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;The way JavaScript rolls...&lt;/h2&gt;
 &lt;p&gt;JavaScript's integration with &lt;a href="http://en.wikipedia.org/wiki/Netscape_Navigator"&gt;Netscape Navigator&lt;/a&gt; in the mid-90s made it easier for developers to access HTML page elements such as &lt;em&gt;forms&lt;/em&gt;, &lt;em&gt;frames&lt;/em&gt;, and &lt;em&gt;images&lt;/em&gt;. This was essential for JavaScript's accession to become the most popular scripting engine for the web.&lt;/p&gt;
 &lt;p&gt;However, the language's high dynamical behavior (that I'm briefly discussing here) came with a price: in the mid-2000s browsers had very slow  implementations that did not scale with code size or &lt;em&gt;object allocation&lt;/em&gt;. Issues such as &lt;em&gt;memory leaks&lt;/em&gt; when running web apps were becoming mainstream. It was clear that things would only get worse and a new JavaScript engine was a need.&lt;/p&gt;
 &lt;h3&gt;JavaScript's Structure&lt;/h3&gt;
 &lt;p&gt;In JavaScript, every object has a &lt;em&gt;prototype&lt;/em&gt;, and the prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype.&lt;/p&gt;
 &lt;p&gt;So, for example, supposing an application that has an object &lt;em&gt;Point&lt;/em&gt; (borrowed from the &lt;a href="https://developers.google.com/v8/design"&gt;official documentation&lt;/a&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
         &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -38,14 +38,14 @@
 
 
 &lt;p&gt;We can create several objects:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And we can access the propriety &lt;code&gt;x&lt;/code&gt; in these object by:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;a.x;
-b.x;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -66,15 +66,15 @@ b.x;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;As one could guess, JavaScript has automatic memory management. Actually, the core design flaw of traditional JavaScript engines is &lt;strong&gt;bad garbage collection behavior&lt;/strong&gt;. The problem is that JavaScript engines do not know exactly where all the pointers are, and they will search through the entire execution stack to see what data looks like pointers (for instance, integers can look like a pointer to an address in the heap).&lt;/p&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Introducing V8&lt;/h2&gt;
 &lt;p&gt;A solution for the issues presented above came from Google,  with  the &lt;strong&gt;V8 Engine&lt;/strong&gt;. V8 is an &lt;a href="https://code.google.com/p/v8/"&gt;open source JavaScript engine&lt;/a&gt; written in C++ that gave birth to Chrome. V8 has a way to categorize the highly-dynamic JavaScript objects into classes, bringing techniques from static class-based languages. In addition, as I mentioned in the the beginning, V8 compiles JavaScript to native machine code before executing it.&lt;/p&gt;
 &lt;p&gt;In terms of performance, besides direct compilation to native code, three main features in V8 are fundamental:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. Hidden classes.
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;Hidden&lt;/span&gt; &lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-2. In-line caching as an optimization technique.
+&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="n"&gt;caching&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;optimization&lt;/span&gt; &lt;span class="n"&gt;technique&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-3. Efficient memory management system (garbage collection).
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;Efficient&lt;/span&gt; &lt;span class="n"&gt;memory&lt;/span&gt; &lt;span class="n"&gt;management&lt;/span&gt; &lt;span class="n"&gt;system&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;garbage&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -95,10 +95,10 @@ b.x;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Instead of having a generic lookup for a propriety, V8  generates an efficient machine code to search the propriety. The machine code generated for accessing &lt;code&gt;x&lt;/code&gt; is something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# ebx = the point object
-cmp [ebx, &amp;lt;class offset&amp;gt;], &amp;lt;cached class&amp;gt;
-jne &amp;lt;inline cache miss&amp;gt;
-mv eax, [ebx, &amp;lt;cached x offset&amp;gt;]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# ebx = the point object&lt;/span&gt;
+&lt;span class="n"&gt;cmp&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ebx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;offset&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;cached&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="n"&gt;jne&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;inline&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="n"&gt;miss&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="n"&gt;mv&lt;/span&gt; &lt;span class="n"&gt;eax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ebx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;cached&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;offset&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -126,17 +126,17 @@ mv eax, [ebx, &amp;lt;cached x offset&amp;gt;]
 &lt;h3&gt;V8's Efficient Garbage Collecting&lt;/h3&gt;
 &lt;p&gt;In V8, a &lt;strong&gt;precise garbage collection&lt;/strong&gt; is used. &lt;em&gt;Every pointer's location are known on the execution stack&lt;/em&gt;, so V8 is able to implement incremental garbage collection. V8 can migrate an object to another place and just rewire the pointer.&lt;/p&gt;
 &lt;p&gt;In summary, &lt;a href="https://developers.google.com/v8/design#garb_coll"&gt;V8's garbage collection&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1. stops program execution when performing a garbage collection cycle,
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;stops&lt;/span&gt; &lt;span class="n"&gt;program&lt;/span&gt; &lt;span class="n"&gt;execution&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;performing&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;garbage&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="n"&gt;cycle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 
-2. processes only part of the object heap in most collection cycles (minimizing the impact of stopping the application),
+&lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;processes&lt;/span&gt; &lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;part&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt; &lt;span class="n"&gt;heap&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="n"&gt;cycles&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;minimizing&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;impact&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;stopping&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
 
-3. always knows exactly where all objects and pointers are in memory (avoiding falsely identifying objects as pointers).
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;always&lt;/span&gt; &lt;span class="n"&gt;knows&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="n"&gt;where&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;pointers&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;memory&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;avoiding&lt;/span&gt; &lt;span class="n"&gt;falsely&lt;/span&gt; &lt;span class="n"&gt;identifying&lt;/span&gt; &lt;span class="n"&gt;objects&lt;/span&gt; &lt;span class="n"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pointers&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Further Readings:&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://noncombatant.org/2014/03/11/privacy-and-security-settings-in-chrome/"&gt;Privacy And Security Settings in Chrome&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;[1] When the Python interpreter is invoked with the &lt;code&gt;-O&lt;/code&gt; flag, optimized code is generated and stored in &lt;strong&gt;&lt;em&gt;.pyo&lt;/em&gt;&lt;/strong&gt; files. The optimizer removes assert statements.&lt;/p&gt;</content><category term="V8"></category><category term="JIT"></category><category term="JavaScript"></category><category term="garbage_collection"></category><category term="cache"></category><category term="bytecode"></category><category term="Chrome"></category><category term="Python"></category></entry></feed>
+&lt;p&gt;[1] When the Python interpreter is invoked with the &lt;code&gt;-O&lt;/code&gt; flag, optimized code is generated and stored in &lt;strong&gt;&lt;em&gt;.pyo&lt;/em&gt;&lt;/strong&gt; files. The optimizer removes assert statements.&lt;/p&gt;</summary><category term="V8"></category><category term="JIT"></category><category term="JavaScript"></category><category term="garbage_collection"></category><category term="cache"></category><category term="bytecode"></category><category term="Chrome"></category><category term="Python"></category></entry></feed>

