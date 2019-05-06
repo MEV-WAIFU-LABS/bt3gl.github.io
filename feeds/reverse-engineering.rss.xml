@@ -129,7 +129,10 @@ We should blow up the bridge at midnight
 
 &lt;p&gt;This gives us our flag:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="http://i.imgur.com/sA7JPrl.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 26 Sep 2014 04:20:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-09-26:the-sharif-university-ctf-2014.html</guid><category>CTF</category><category>Steganography</category><category>jad</category><category>OutGuess</category></item><item><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link>http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html</link><description>&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 26 Sep 2014 04:20:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-09-26:the-sharif-university-ctf-2014.html</guid><category>CTF</category><category>Steganography</category><category>jad</category><category>OutGuess</category></item><item><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link>http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html</link><description>&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I trust people on the Internet all the time, do you?&lt;/p&gt;
 &lt;p&gt;Written by ColdHeat&lt;/p&gt;
@@ -240,4 +243,7 @@ import os
 
 
 &lt;p&gt;Yaaay! The flag is &lt;strong&gt;trust_is_risky&lt;/strong&gt;! Easy!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 22 Sep 2014 09:20:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-reverse-engineering-100-eggshells.html</guid><category>CTF</category><category>CSAW</category><category>uncompyle2</category></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 22 Sep 2014 09:20:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-reverse-engineering-100-eggshells.html</guid><category>CTF</category><category>CSAW</category><category>uncompyle2</category></item></channel></rss>

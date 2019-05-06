@@ -129,7 +129,10 @@ We should blow up the bridge at midnight
 
 &lt;p&gt;This gives us our flag:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="http://i.imgur.com/sA7JPrl.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Steganography"></category><category term="jad"></category><category term="OutGuess"></category></entry><entry><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html" rel="alternate"></link><updated>2014-09-22T09:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-reverse-engineering-100-eggshells.html</id><summary type="html">&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Steganography"></category><category term="jad"></category><category term="OutGuess"></category></entry><entry><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html" rel="alternate"></link><updated>2014-09-22T09:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-reverse-engineering-100-eggshells.html</id><summary type="html">&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I trust people on the Internet all the time, do you?&lt;/p&gt;
 &lt;p&gt;Written by ColdHeat&lt;/p&gt;
@@ -240,4 +243,7 @@ import os
 
 
 &lt;p&gt;Yaaay! The flag is &lt;strong&gt;trust_is_risky&lt;/strong&gt;! Easy!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="uncompyle2"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="uncompyle2"></category></entry></feed>

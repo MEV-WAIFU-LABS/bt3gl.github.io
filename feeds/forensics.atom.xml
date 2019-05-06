@@ -467,7 +467,10 @@ obj 8 0
 
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;That's it! Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="hashcat"></category><category term="pdf-parser"></category><category term="qpdf"></category><category term="LAMP"></category><category term="JavaScript"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "Obscurity"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-obscurity.html" rel="alternate"></link><updated>2014-09-22T07:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-obscurity.html</id><summary type="html">&lt;p&gt;The third forensics challenge starts with the following text:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;That's it! Hack all the things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="hashcat"></category><category term="pdf-parser"></category><category term="qpdf"></category><category term="LAMP"></category><category term="JavaScript"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "Obscurity"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-obscurity.html" rel="alternate"></link><updated>2014-09-22T07:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-obscurity.html</id><summary type="html">&lt;p&gt;The third forensics challenge starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;see or do not see&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
@@ -602,7 +605,10 @@ flag&lt;span class="o"&gt;{&lt;/span&gt;security_through_obscurity&lt;span class
 
 
 &lt;p&gt;As a note, there are several other PDF forensics tools that are worth to be mentioned: &lt;a href="http://esec-lab.sogeti.com/pages/Origami"&gt;Origami&lt;/a&gt; (pdfextract extracts JavaScript from PDF files), &lt;a href="http://blog.zeltser.com/post/3235995383/pdf-stream-dumper-malicious-file-analysis"&gt;PDF Stream Dumper&lt;/a&gt; (several PDF analysis tools), &lt;a href="http://blog.zeltser.com/post/6780160077/peepdf-malicious-pdf-analysis"&gt;Peepdf&lt;/a&gt; (command-line shell for examining PDF), &lt;a href="https://github.com/9b/pdfxray_lite"&gt;PDF X-RAY Lite&lt;/a&gt; (creates an HTML report with decoded file structure and contents), &lt;a href="http://blog.zeltser.com/post/12615013257/extracting-swf-from-pdf-using-swf-mastah"&gt;SWF mastah&lt;/a&gt; (extracts SWF objects), &lt;a href="for examining and decoding structure and content of PDF files"&gt;Pyew&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry><entry><title>CSAW CTF 2014 - Forensics 100: "dumpster diving"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-100-dumpster-diving.html" rel="alternate"></link><updated>2014-09-22T06:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-100-dumpster-diving.html</id><summary type="html">&lt;p&gt;This was the first forensic challenge. It starts with the following text:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry><entry><title>CSAW CTF 2014 - Forensics 100: "dumpster diving"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-100-dumpster-diving.html" rel="alternate"></link><updated>2014-09-22T06:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-100-dumpster-diving.html</id><summary type="html">&lt;p&gt;This was the first forensic challenge. It starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;dumpsters are cool, but cores are cooler&lt;/p&gt;
 &lt;p&gt;Written by marc&lt;/p&gt;
@@ -726,7 +732,10 @@ Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class
 
 
 &lt;p&gt;Yay! We found the flag: &lt;strong&gt;cd69b4957f06cd818d7bf3d61980e291&lt;/strong&gt;!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="readelf"></category><category term="mem"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "why not sftp?"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html" rel="alternate"></link><updated>2014-09-22T05:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-why-not-sftp.html</id><summary type="html">&lt;p&gt;The purpose of this problem is to teach about the need of encrypting your data. The &lt;a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol"&gt;FTP&lt;/a&gt;  protocol sends clear text over the wire, &lt;em&gt;i.e&lt;/em&gt;  the  data is transmitted without any encryption.
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="readelf"></category><category term="mem"></category></entry><entry><title>CSAW CTF 2014 - Forensics 200: "why not sftp?"</title><link href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html" rel="alternate"></link><updated>2014-09-22T05:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-22:csaw-ctf-2014-forensics-200-why-not-sftp.html</id><summary type="html">&lt;p&gt;The purpose of this problem is to teach about the need of encrypting your data. The &lt;a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol"&gt;FTP&lt;/a&gt;  protocol sends clear text over the wire, &lt;em&gt;i.e&lt;/em&gt;  the  data is transmitted without any encryption.
  &lt;a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol"&gt;SSH/Secure File Transfer Protocol&lt;/a&gt; is a network protocol providing secure file transfer. Using SFTP, instead of FTP, would avoid to find the flag in this problem in the way we did.&lt;/p&gt;
 &lt;p&gt;This is the second forensics problem and it starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -782,4 +791,7 @@ s.whatever: Zip archive data, at least v2.0 to extract
 &lt;p&gt;&lt;img alt="" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
 &lt;h4&gt;Extra: Finding files with &lt;em&gt;File Signatures&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;If we don't know the name of the file we are looking for, but we know its type, we can search for its &lt;a href="http://en.wikipedia.org/wiki/File_signature"&gt;file signature&lt;/a&gt;, which can be found &lt;a href="http://en.wikipedia.org/wiki/List_of_file_signatures"&gt;here&lt;/a&gt; (a hex value).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="FTP"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="FTP"></category></entry></feed>

@@ -299,7 +299,10 @@
 
 &lt;p&gt;That's it! Browser safe!&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/m3excg/a-tor-proxy-in-a-raspberry-pi"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Deploying a Flask App at Heroku</title><link href="http://bt3gl.github.io/deploying-a-flask-app-at-heroku.html" rel="alternate"></link><updated>2015-03-21T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-21:deploying-a-flask-app-at-heroku.html</id><summary type="html">&lt;p&gt;&lt;img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/m3excg/a-tor-proxy-in-a-raspberry-pi"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Deploying a Flask App at Heroku</title><link href="http://bt3gl.github.io/deploying-a-flask-app-at-heroku.html" rel="alternate"></link><updated>2015-03-21T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-21:deploying-a-flask-app-at-heroku.html</id><summary type="html">&lt;p&gt;&lt;img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /&gt;&lt;/p&gt;
 &lt;p&gt;I was playing with Flask and I wrote my own &lt;a href="https://anti-social.herokuapp.com/"&gt;Anti-Social Network&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Heroku platform is very flexible and it supports several programming languages. To
 deploy an application to Heroku, use Git to push the application to Heroku’s server.&lt;/p&gt;
@@ -456,7 +459,10 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 &lt;p&gt;That's it! The app should be running at &lt;code&gt;&amp;lt; app-name &amp;gt;.herokuapp.com&lt;/code&gt;.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/pstm1w/deploying-a-flask-app-at-heroku"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>Functional Python Stuff Super Quick</title><link href="http://bt3gl.github.io/functional-python-stuff-super-quick.html" rel="alternate"></link><updated>2015-03-01T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-01:functional-python-stuff-super-quick.html</id><summary type="html">&lt;h3&gt;Python has &lt;strong&gt;First Class Functions&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/pstm1w/deploying-a-flask-app-at-heroku"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Functional Python Stuff Super Quick</title><link href="http://bt3gl.github.io/functional-python-stuff-super-quick.html" rel="alternate"></link><updated>2015-03-01T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-01:functional-python-stuff-super-quick.html</id><summary type="html">&lt;h3&gt;Python has &lt;strong&gt;First Class Functions&lt;/strong&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;create_adder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;adder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
@@ -479,7 +485,12 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 &lt;h3&gt;Python has Built-in &lt;strong&gt;Higher Order Functions&lt;/strong&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;   &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;   &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Getting started with LAMP and CodeIgniter</title><link href="http://bt3gl.github.io/getting-started-with-lamp-and-codeigniter.html" rel="alternate"></link><updated>2015-02-25T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-02-25:getting-started-with-lamp-and-codeigniter.html</id><summary type="html">&lt;p&gt;LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Getting started with LAMP and CodeIgniter</title><link href="http://bt3gl.github.io/getting-started-with-lamp-and-codeigniter.html" rel="alternate"></link><updated>2015-02-25T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-02-25:getting-started-with-lamp-and-codeigniter.html</id><summary type="html">&lt;p&gt;LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.&lt;/p&gt;
 &lt;h2&gt;Building a MySQL Database&lt;/h2&gt;
 &lt;p&gt;We will use a web interface to access data in our database:&lt;/p&gt;
 &lt;ul&gt;
@@ -699,7 +710,10 @@ In our application, the database configuration file is store at application/conf
 
 &lt;p&gt;In this snippet we query our database by order, using ascending order.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>JavaScript: Crash Course</title><link href="http://bt3gl.github.io/javascript-crash-course.html" rel="alternate"></link><updated>2015-02-15T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-02-15:javascript-crash-course.html</id><summary type="html">&lt;h1&gt;Installing &amp;amp; Setting up&lt;/h1&gt;
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>JavaScript: Crash Course</title><link href="http://bt3gl.github.io/javascript-crash-course.html" rel="alternate"></link><updated>2015-02-15T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-02-15:javascript-crash-course.html</id><summary type="html">&lt;h1&gt;Installing &amp;amp; Setting up&lt;/h1&gt;
 &lt;p&gt;JavaScript (JS) is a dynamic computer programming language. Install &lt;a href="https://developer.chrome.com/devtools/index"&gt;Google Dev Tools&lt;/a&gt; to proceed. &lt;/p&gt;
 &lt;h1&gt;JavaScript 101&lt;/h1&gt;
 &lt;p&gt;To include your example.js in an HTML page (usually placed right before &lt;/body&gt; will guarantee that elements are defined when the script is executed):&lt;/p&gt;
@@ -1080,4 +1094,7 @@ In our application, the database configuration file is store at application/conf
 
 
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/skucrq/javascript-crash-course"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/skucrq/javascript-crash-course"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>
