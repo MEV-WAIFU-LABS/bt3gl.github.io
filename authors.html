@@ -1,88 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>chmod +x singularity.sh</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mia Steinkirch">
-
-    <!-- Le styles -->
-    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 11pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-4 {
-        font-size: 8pt;
-     }
-     }
-    </style>
-    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
-    <link href="./theme/css/font-awesome.css" rel="stylesheet">
-    <link href="./theme/css/pygments.css" rel="stylesheet">
-
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="./theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
-
-    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
-
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-
-                          <ul class="nav pull-right">
-                                <li><a href="./authors.html">Who is this Replicant</a></li>
-                                <li><a href="./archives.html">Old Musing</a></li>
-                                <li>
-                                      <a href="https://github.com/bt3gl">The Language Within
-                                      <!--<i class="icon-github-sign icon-large" ></i>-->
-                                      </a></li>
-                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
-                                      </a></li>
-                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
-                                     </a></li>
-                          
-                          
-                          </ul>
-
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
+{% extends "base.html" %}
+{% block content %}
 <section id="content">
 
 <!-- Move this to CSS later -->
@@ -98,42 +15,58 @@ img {
 
 <br>
 
-<h1><b>Hello</b></h1>
-<br>
-  I am <a href="https://www.linkedin.com/in/bytegirl/"><b>Mia Steinkirch</b></a>, aka <b><a href="https://web.archive.org/web/20070808185215/http://fly.to/bytegirl">the byt3girl</a></b>,
-  
-  <ul>
-    <li> a <b> computer scientist and researcher</b> at the 
-        <a href="http://www.quantumgravityresearch.org/"><b>Quantum Gravity Research Institute</b></a>. 
-  My team and I are developing high-performance numerical simulations and artificial intelligence to 
-      uncover the <b>emergent quantum gravity theory</b>. I am based in <b>Malibu, CA</b> and <b>Maui, HI</b>.
-    <li>a regular <b>surfer, snowboarder and skateboarder</b>, chasing waves 
-      and slopes around the Earth whenever I can.
-     </ul>
-  
-<br>
 
+<h1><b>Hello World</b></h1>
+<br>
+  I am <a href="https://linkedin.com/in/mia-von-steinkirch/"><b>Mia Steinkirch</b></a>, 
+  a <b>senior software engineer</b> and <b>entrepreneur</b>,  a
+  former <b><a href="http://astro.sunysb.edu/steinkirch/index.html">astrophysicist</a></b>, and an avid <b><a href="https://www.instagram.com/innermost.limits.of.pure.fun/">surfer, 
+  skateboarder, and snowboarder</b></a>.  
 
- Previously, I was:
+  
+<br><br>
+
+<h2>Things I have been in the past:</h2>
   
 <ul>
+
+  <li>a <b>researcher</b> at the 
+        <a href="http://www.quantumgravityresearch.org/"><b>Quantum Gravity Research Institute</b></a>, where
+    I designed a <b>High-Performance Computational environment for scientific simulations (backed in AWS)</b>, I
+    developed <b>Python libraries/Jupyter notebooks for an emergent quantum gravity theory</b>,
+    and I taught <b>Agile and DevOps practices</b> for a team of 10+ scientists. 
+
   <li>a <b>senior software engineer</b> at
-   <b><a href="https://surfline.com">Surfline</a></b>, where I wrote a <b>clip rewind software</b> which uses AWS's 
-    <a href="https://aws.amazon.com/lambda/"><b>Lambda Function</b></a> + <b><a href="https://aws.amazon.com/sqs/">SQS</a></b> + 
-    <a href="https://aws.amazon.com/sns/"><b>SNS</a></b> infrastructure to create clips from 500+ surf cameras around the world
-                                          so that <b>surfers can see their surfed waves :)</b>. I also designed a <b>machine learning infrastructure for Surf Science</b>.
+   <b><a href="https://surfline.com">Surfline</a></b>, where I developed an <b>end-to-end cam rewind software in Python + 
+    MongoDB  + Terraform, backed on AWS's Lambda Function + SQS + SNS</b>, to retrieve clips from 500+ surf cameras so 
+    that surfers can see clips of their surfed waves. I also designed a 
+    <b>ML/Tensorflow infrastructure for Surf Science and forecasting science</b>, and organized a 
+    <b>worldwide cameras infrastructure backed on AWS + Docker, using Wowza Streaming Engine</b>.
  
+   
     
-  <li>a <b>senior infrastructure software engineer</b> at <b><a href="https://codeascraft.com/">Etsy</a></b>, where I created 
-    an infrastructure using <a href="https://osquery.readthedocs.io/en/stable/"><b>OSQuery</b></a> and <a href="https://github.com/Yelp/elastalert">
-                                                                                                                                            <b>Elastalert</b></a> to inspect and detect <b>security anomalies in the fleet</b>. I also designed
-                                                                                                                                            a <b>machine learning infrastructure for analyzing that security data</b>.
+  <li>a <b>senior infrastructure software engineer</b> at <b><a href="https://codeascraft.com/">Etsy</a></b>, where I 
+    developed an <b>incident response infrastructure</b> using <a href="https://osquery.readthedocs.io/en/stable/"><b>OSQuery</b></a> 
+    to retrieve Etsy's fleet data (with customized queries) and 
+    <a href="https://github.com/Yelp/elastalert"><b>Elastalert</b></a> for <b>alerting, inspecting and detecting 
+    security anomalies</b> in both Etsy's corp 
+    and engineering fleet (backed in <a href="https://cloud.google.com/"><b>GCP</b></a>).
+    I also designed a <b>machine learning infrastructure in Python, Java + Kafka</b> for analyzing security logs and data. 
+  
   <li>a <b>senior software engineer</b> at
-   <b><a href="https://www.apple.com/business/docs/iOS_Security_Guide.pdf">Apple</a></b>, where I created a couple of software to help
-                                                                          with <b>Apple's internal security</b> and I also helped developing <b>Apple's Deep Learning toolkit</b> in CUDA, for richer data augmentation for image recognition.
-  <li>a <b>software engineer</b> at <b><a href="https://engineeringblog.yelp.com/">Yelp</a></b>, where I created a <b>machine learning
-                                                                            software to help detecting DNS and other security endpoints security</b>.
-    <li>a <b>PhD graduate researcher</b> at
+   <b><a href="https://www.apple.com/business/docs/iOS_Security_Guide.pdf">Apple</a></b>, 
+    where I developed software to help with <b>Apple's internal security and incident response, in Swift</b>. I also 
+    researched how to <b>harden iOS Security (iPhone's operating system), in Swift</b>, and
+I helped writing <b>Apple's Deep Learning toolkit for richer data augmentation for image recognition, in CUDA and C++</b>.
+    
+   
+  
+  
+  <li>a <b>software engineer</b> at <b><a href="https://engineeringblog.yelp.com/">Yelp</a></b>, where I 
+    created an <b>in-house machine learning software for DNS/Web endpoint data analysis (in Python and MongoDB)</b>.
+
+  
+  <li>a <b>PhD graduate researcher</b> at
    <b>a <a href="https://www.lanl.gov/projects/national-security-education-center/space-earth-center/astrophysics-cosomology.php">Los
      Alamos National Laboratory</a></b>, where I developed <b>Monte Carlo simulations and data analysis to find the <a href="https://en.wikipedia.org/wiki/Neutron_star">Physics
       of Neutron Stars</a></b>.
@@ -142,7 +75,14 @@ img {
    <li>a <b>undergraduate researcher</b> at
    <b><a href="https://www.nasa.gov/goddard">NASA's Goddard Space Flight Center</a></b>, where I studied the 
      <b><a href="https://en.wikipedia.org/wiki/Active_galactic_nucleus">Physics of Active Galactic Nuclei</a></b>.
-</ul>
+
+        <li>a <b>digital nomad</b> for several years. I have lived in several awesome places including: <b> 
+    New York City, Port Jefferson, San Francisco, Cupertino, Maui, Waikiki, Haleiwa, West Hollywood, Malibu, Topanga,
+      Huntington Beach, Encinitas, Solana Beach, Bear Mountain, Washington DC, Sao Paulo, Curitiba, Santiago, Orlando, and Worcester</b>.</li>
+  
+
+  
+  </ul>
   
 
  <br>
@@ -178,8 +118,6 @@ img {
 
 <br><br>
 
-  
-  
 
 <h2>Misc</h2>
        <ul>
@@ -189,14 +127,18 @@ img {
            <li>The pictures in this blog were selected from <b><a href="https://www.reddit.com/r/Cyberpunk/">reddit cyberpunk</a></b> and my favorite graphic novels, games, and movies (I do not own their copyright).
             <li>Sometimes I like <b><a href="https://vimeo.com/user82259228">to drone & make art</a></b>.
            <li><b><i>Impossible is just another state of mind.</b></i></li>
-           <li><b><i>Treat everything you perceive as a dream.</b></i></li>
            <li><b><i>Kindness is wisdom.</b></i></li>
-           <li><b><i>Stay rebel ☠️.</b></i></li>
+        
            <!--and... When everything goes wrong, treat disaster as a way to wake up.-->
        </ul>
        </p>
   </dl>
-        </div><!--/span-->
+
+
+
+
+
+</div><!--/span-->
 
 <!--
 On the back part of the step, toward the right, I saw a small iridescent sphere of almost unbearable brilliance. At first I thought it was revolving; then I realised that this movement was an illusion created by the dizzying world it bounded. The Aleph's diameter was probably little more than an inch, but all space was there, actual and undiminished. Each thing (a mirror's face, let us say) was infinite things, since I distinctly saw it from every angle of the universe. I saw the teeming sea; I saw daybreak and nightfall; I saw the multitudes of America; I saw a silvery cobweb in the center of a black pyramid; I saw a splintered labyrinth (it was London); I saw, close up, unending eyes watching themselves in me as in a mirror; I saw all the mirrors on earth and none of them reflected me; I saw in a backyard of Soler Street the same tiles that thirty years before I'd seen in the entrance of a house in Fray Bentos; I saw bunches of grapes, snow, tobacco, lodes of metal, steam; I saw convex equatorial deserts and each one of their grains of sand...
@@ -213,24 +155,4 @@ On the back part of the step, toward the right, I saw a small iridescent sphere 
   </body>
 </html>
 
-        </div><!--/span-->
-
-
-      </div><!--/row-->
-
-
-
-      <footer>
-        <address id="about">
-
-        </address><!-- /#about -->
-
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-
-    <script src="./theme/js/jquery-1.7.2.min.js"></script>
-    <script src="./theme/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  {% endblock %}
