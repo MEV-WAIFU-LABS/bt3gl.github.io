@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Quick & Dirty iOS ARKit with "Post Malone Balloon"</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Quick & Dirty iOS ARKit with "Post Malone Balloon"">
+                                        Quick & Dirty iOS ARKit with "Post Malone Balloon"
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2018-06-24T00:00:00">
+      Sun 24 June 2018 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/ios-arkit-ar.html"><i class="icon-folder-open"></i>ios, arkit, ar</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px" /></p>
+<p><em>Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.</em></p>
+<p>Hi Everyone!</p>
+<p>In this post, I  show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>, a framework that provides you high level classes for <strong>tracking</strong>, <strong>scene understanding</strong> and <strong>rendering</strong>. More specifically, ARKit is a session based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.</p>
+<p>This app runs an ARKit world tracking session with content displayed in a <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a> 2D view. Every session has a scene that will render the virtual objects in the real world, accessed by means of the iOS device sensors.</p>
+<p>But, before everything, I recommend you to watch <a href="https://developer.apple.com/videos/play/wwdc2017/602/">WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'</a>. It gives a nice overview of ARKit's capabilities.</p>
+<h2>The source code for AR_PostMalone the following structure:</h2>
+<h3><code>Info.plist</code></h3>
+<p>An information property list file is a XML file that contains essential configuration information for a bundled executable. Example of the information you want to add is:</p>
+<ul>
+<li>The name of your app (<code>&lt;string&gt;PostMaloneBalloon&lt;/string&gt;</code>).</li>
+<li>Camera usage (<code>&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;</code>).</li>
+<li>Frameworks you need (<code>&lt;key&gt;UIRequiredDeviceCapabilities&lt;/key&gt;</code> with <code>&lt;string&gt;armv7&lt;/string&gt;</code> and <code>&lt;string&gt;arkit&lt;/string&gt;</code>).</li>
+</ul>
+<h3><code>Assets.xcassets</code> directory</h3>
+<p>This is where you place assets such as the images used in your App (Post Malone head) and icons. A file <code>Content.json</code> is placed inside every directory to describe the assets.</p>
+<h3><code>Base.lproj</code> directory</h3>
+<p>Contains two <a href="https://www.raywenderlich.com/160521/storyboards-tutorial-ios-11-part-1">story board files</a>:</p>
+<ul>
+<li><code>LaunchScreen.storyboard</code>.</li>
+<li><code>Main.storyboard</code>.</li>
+</ul>
+<h3><code>Scene.swift</code></h3>
+<p>Anchors are 3D points that correspond real world features that ARKit detects. Anchors are created in this class, together with the Sprite scene (Scene.sks). The class <code>Scene</code> controls how the App is operating within the scenes. Rendering brings tracking and scene understanding together with your content.</p>
+<p>For our App, we are:</p>
+<ul>
+<li>Defining the method <code>touchesBegan</code>, where we define what happens when we click the scene.</li>
+<li>The sequence of movements is defined by <code>let sequence = SKAction.sequence([popSound, moveDown, moveDownFloating, moveToBottom])</code>.</li>
+<li>When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (<code>moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown</code>).</li>
+<li>The balloon either pops (<code>let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)</code>) or fades after a second (<code>fadeOut = SKAction.fadeOut(withDuration: 1.0)</code>).</li>
+<li>An ARAnchor uses a 4×4 matrix represents the combined position, rotation or orientation, and scale of an object in three-dimensional space (as in <code>var translation = matrix_identity_float4x4</code>).</li>
+</ul>
+<h3><code>ViewController.swift</code></h3>
+<p>This view is managed by the class ViewController, which inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
+<ul>
+<li>
+<p>Views</p>
+<ul>
+<li>Scaling and placing the view.</li>
+<li>View when it loads (and load the pre-defined scene from <a href="https://developer.apple.com/documentation/spritekit/skscene">SKScene</a>).</li>
+<li>View to appear and disappear.</li>
+<li>Run.</li>
+</ul>
+</li>
+<li>
+<p>Sessions</p>
+<ul>
+<li>Session interrupted.</li>
+<li>Session ended.</li>
+</ul>
+</li>
+</ul>
+<h3><code>AppDelegate.swift</code></h3>
+<p>This is where we call the class <code>AppDelegate</code>, which responds for <code>UIApplicationMain</code>. In this class we create a variable that will work as the window UI and we have UI methods for:</p>
+<ul>
+<li>See if the application is about to move from active to inactive state (for example, pause ongoing tasks).</li>
+<li>Release shared resources and  save user data.</li>
+<li>Change from the background to the active state.</li>
+<li>Restart any tasks that were paused while the application was inactive.</li>
+<li>Termination actions for when the application is about to terminate (for example, to save data if appropriate).</li>
+</ul>
+<h3>Some Terminology</h3>
+<ul>
+<li>
+<p><strong>Field of view</strong>: measured in degrees, is the extent of the observable world that is seen at any given moment (humans have a FOV of around 180°, but most HMDs offer between 50 and 110°).</p>
+</li>
+<li>
+<p><strong>Latency</strong>: In VR, a 20 millisecond latency is considered low and acceptable for a comfortable experience.</p>
+</li>
+<li>
+<p><strong>Haptics</strong>: recreate the sense of touch by applying forces, vibrations, or motions to the user, through feedback devices (example, vibrating game controllers).</p>
+</li>
+<li>
+<p><strong>Stitching</strong>: the process of combining multiple video sources with overlapping fields of view to produce a fully immersive 360°. </p>
+</li>
+<li>
+<p><strong>Visual Inertial Odometry</strong>: ARKit analyzes the phone camera and motion data in order to keep track of the world around i
+ARSession object that manages the motion tracking and image processing.</p>
+</li>
+</ul>
+<hr />
+<p><strong>Love, Gratitude &amp; Peace 🌺,</strong></p>
+<p><strong>The Byt3girl</strong></p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1506,6 +1506,7 @@ Transfer-Encoding: chunked
 &lt;li&gt;We send the invalid command and a valid command with the argument that we will keep: &lt;code&gt;ION HEX\nMD5 flag&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;We send the invalid command and a command without an argument: &lt;code&gt;edisStore...\nGET&lt;/code&gt; (this will get the last valid argument (&lt;em&gt;flag&lt;/em&gt;), returning us the flag!).&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Redis"></category><category term="Python"></category><category term="NoSQL"></category><category term="ECB"></category><category term="AES"></category><category term="PyCrypto"></category><category term="socket"></category><category term="Wireshark"></category></entry><entry><title>CSAW CTF 2014 - Cryptography 200 - Psifer School</title><link href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200-psifer-school.html" rel="alternate"></link><updated>2014-09-21T00:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-21:csaw-ctf-2014-cryptography-200-psifer-school.html</id><summary type="html">&lt;p&gt;This is the first crypto-problem, and it was supposed to be the easiest one. For this reason I was expecting simple cryptographic algorithms, which turned out to be true.&lt;/p&gt;
 &lt;p&gt;The problem starts with the following text:&lt;/p&gt;
