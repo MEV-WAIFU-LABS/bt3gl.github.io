@@ -246,105 +246,6 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><updated>2018-06-01T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-06-01:getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px" /&gt;&lt;/p&gt;
-&lt;p&gt;Hey Everyone!&lt;/p&gt;
-&lt;p&gt;The VR world has a lot of &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt; and there is so many things I have been learning and I want to share with you! I am starting to write a series of posts diving into React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this github repository&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Today I am showing how easy is to start with React in 5 minutes.&lt;/p&gt;
-&lt;h3&gt;What's React?&lt;/h3&gt;
-&lt;p&gt;From &lt;a href="https://reactjs.org/tutorial/tutorial.html#what-is-react"&gt;React's documentation&lt;/a&gt;: &lt;strong&gt;"React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;Some Concepts&lt;/h3&gt;
-&lt;h4&gt;Components&lt;/h4&gt;
-&lt;p&gt;Everything in React is a component, and these usually take the form of JavaScript classes.&lt;/p&gt;
-&lt;p&gt;Starting with &lt;code&gt;React.Component&lt;/code&gt;, the &lt;code&gt;render&lt;/code&gt; method returns a description of what you want to see on the screen, returning a &lt;code&gt;React element&lt;/code&gt;, which is a lightweight description of what to render.&lt;/p&gt;
-&lt;h3&gt;JSX&lt;/h3&gt;
-&lt;p&gt;React developers use a syntax called &lt;code&gt;JSX&lt;/code&gt; which makes these structures easier. For example,  the &lt;code&gt;&amp;lt;div /&amp;gt;&lt;/code&gt; syntax is transformed at build time to &lt;code&gt;React.createElement('div')&lt;/code&gt;. You can put any JavaScript expressions within braces inside JSX!&lt;/p&gt;
-&lt;h4&gt;Data&lt;/h4&gt;
-&lt;p&gt;There are two types of data in React:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;state: private and can be changed from within the component itself.&lt;/li&gt;
-&lt;li&gt;props: external, and not controlled by the component itself.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A component can change its internal state directly but it can not change its props directly.&lt;/p&gt;
-&lt;h3&gt;OK, Just Show me React Already!&lt;/h3&gt;
-&lt;p&gt;OK!&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Install Node.js and Yarn.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;brew&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Install &lt;a href="https://github.com/facebook/create-react-app"&gt;create-react-app&lt;/a&gt;. This awesome framework abstracts away all the complexity of implementing &lt;a href="https://webpack.js.org/"&gt;Webpack&lt;/a&gt;, &lt;a href="https://babeljs.io/"&gt;Babel&lt;/a&gt;, a dev server, a production build process, and other critical things.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Create Your App&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;react&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ol&gt;
-&lt;li&gt;Run it!&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;yarn&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;You now have your app running at &lt;code&gt;http://localhost:3000/&lt;/code&gt;! The components of your app are the following:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;node_modules&lt;/code&gt;: holds all the third-party code, such as React.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public&lt;/code&gt;: where our static assets go, like our favicon. It also keeps the project's HTML file. Because React is all JavaScript, you only really need the HTML file to update the head (like title and meta tags).&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;src&lt;/code&gt; is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Go to &lt;code&gt;src&lt;/code&gt; and edit &lt;code&gt;App.js&lt;/code&gt; (and &lt;code&gt;App.css&lt;/code&gt;) to add things you want React to render:&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nb"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;react&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="nx"&gt;logo&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./logo.svg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;./App.css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="nb"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt; &lt;span class="nx"&gt;extends&lt;/span&gt; &lt;span class="nb"&gt;Component&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nb"&gt;render&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;header&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-header&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;img&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;logo&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-logo&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;alt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;logo&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-title&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;Welcome&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="k"&gt;header&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt; &lt;span class="n"&gt;className&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;App-intro&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class="nx"&gt;HELLO&lt;/span&gt; &lt;span class="nx"&gt;THERE&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
-          &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nb"&gt;src&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;App.js&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="nb"&gt;save&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;reload.&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nx"&gt;p&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nb"&gt;div&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="p"&gt;);&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="nx"&gt;export&lt;/span&gt; &lt;span class="nb"&gt;default&lt;/span&gt; &lt;span class="nx"&gt;App&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You will see the additions instantly updated in your browser at &lt;code&gt;http://localhost:3000/&lt;/code&gt;. Also, keep in mind that &lt;code&gt;index.js&lt;/code&gt; is where all of your React code lives.&lt;/p&gt;
-&lt;h3&gt;Voilà! Dat's it? Yes, datzit! &amp;lt;3&lt;/h3&gt;
-&lt;h2&gt;References to get Started&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://reactjs.org/tutorial/tutorial.html"&gt;React Tutorial&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.fullstackreact.com/30-days-of-react/"&gt;30 Days of React&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.robinwieruch.de/the-road-to-learn-react/."&gt;The Road to Learn React&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>Fun with Genetic Algorithms</title><link href="http://bt3gl.github.io/fun-with-genetic-algorithms.html" rel="alternate"></link><updated>2018-03-15T04:22:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-03-15:fun-with-genetic-algorithms.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=6j_3MuyEMt0"&gt;&lt;img alt="hacking" height="300px" src="./cyberpunk/h1.png" width="400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Natural selection is the world optimizing for survival on Earth. Every life form on Earth is a solution generated by evolution's algorithm, which evolves a population of individuals over generations, optimizing for survival. This is a way to describe this algorithm:&lt;/p&gt;
 &lt;ol&gt;
@@ -578,4 +479,113 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry><entry><title>18 Tips for Website Performance</title><link href="http://bt3gl.github.io/18-tips-for-website-performance.html" rel="alternate"></link><updated>2017-12-12T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-12:18-tips-for-website-performance.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px" /&gt;&lt;/p&gt;
+&lt;h2&gt;1. Test your Website’s Speed&lt;/h2&gt;
+&lt;p&gt;Use a website speed test tool to analyze the overall speed of your website. For instance, &lt;a href="https://tools.keycdn.com/speed"&gt;KeyCDN’s website speed test tool&lt;/a&gt; or &lt;a href="http://www.webpagetest.org/"&gt;WebPageTest&lt;/a&gt; can useful (and they both support HTTP/2). You could also use a &lt;a href="https://www.ej-technologies.com/products/jprofiler/overview.html"&gt;JavaScript&lt;/a&gt; profiler.&lt;/p&gt;
+&lt;h2&gt;2. Load Test Your Site&lt;/h2&gt;
+&lt;p&gt;Load test your website to check for any bottlenecks. Some cool tools for this task:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.blitz.io/"&gt;Blirz&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wondernetwork.com/loadtesting"&gt;Wonder Network&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://loadimpact.com/"&gt;Load Impact&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://loader.io/"&gt;Loader&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;3. Use Performance Tools&lt;/h2&gt;
+&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc).&lt;/p&gt;
+&lt;p&gt;Additionally, check &lt;a href="https://developers.google.com/speed/"&gt;Google's performance resources&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;4. Reduce the number of HTTP Requests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;If your JS code is small enough, you can have it inline.&lt;/li&gt;
+&lt;li&gt;Reduce the number of third party plugins and frameworks.&lt;/li&gt;
+&lt;li&gt;Have less code.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;5. Clean up your JS and CSS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Remove unnecessary characters (whitespace, new line, comments).&lt;/li&gt;
+&lt;li&gt;Some useful tools are &lt;a href="https://www.npmjs.com/package/gulp-uglify"&gt;grunt ugligy&lt;/a&gt; and &lt;a href="https://www.npmjs.com/package/gulp-clean-css"&gt;gulp-clean-css&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;6.  Avoid Redirects&lt;/h2&gt;
+&lt;p&gt;301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.&lt;/p&gt;
+&lt;h2&gt;7. Image Optimization&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use compression tools such as &lt;a href="https://github.com/toy/image_optim"&gt;image_optim&lt;/a&gt;, &lt;a href="https://tinypng.com/"&gt;tinypgn&lt;/a&gt;, &lt;a href="https://pngmini.com/"&gt;pngmini&lt;/a&gt;, &lt;a href="https://www.jpegmini.com"&gt;jpegmini&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use responsive images in HTML with &lt;strong&gt;&lt;em&gt;srcset&lt;/em&gt;&lt;/strong&gt; and sizes attributes to serve different scaled images, based on the size of the display.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;8.  Render Blocking Resources blocking the DOM&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provides a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
+&lt;p&gt;Here some tips for DOM resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CSS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Concatenate all CSS files in one.&lt;/li&gt;
+&lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
+&lt;li&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;JavaScript&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;&lt;em&gt;async&lt;/em&gt;&lt;/strong&gt; tag allows the script to be downloaded in the background without blocking.&lt;/li&gt;
+&lt;li&gt;Move JS scripts to the bottom of the page, right before the &lt;/body&gt; tag.&lt;/li&gt;
+&lt;li&gt;Concatenate all JS files in one.&lt;/li&gt;
+&lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;9. Reduce Latency with a CDN.&lt;/h2&gt;
+&lt;p&gt;You can test the latency of your website by using sending out ICMP packets to its address (by ping in your terminal or &lt;a href="https://tools.keycdn.com/ping"&gt;UI tools&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Content Delivery Networks are servers that maintain cached copies of the content of a website (images, CSS, JS, fonts), so that they can be retrieved from the closest physical location for reduced latency. Here some nice guides for &lt;a href="https://www.keycdn.com/support/google-cloud-storage-cdn-integration/"&gt;google cloud storage&lt;/a&gt; and &lt;a href="https://www.keycdn.com/support/aws-s3-cdn-integration/"&gt;AWS S3&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;10. Time to first byte (TTFB)&lt;/h2&gt;
+&lt;p&gt;TTFB is the measurement of the responsiveness of a web server, as the time that takes for the browser to start receiving information after it has requested it from the server.&lt;/p&gt;
+&lt;p&gt;TTFB is calculated as &lt;strong&gt;HTTP request time + Process request time + HTTP response time&lt;/strong&gt;, and can be check at the &lt;a href="https://developers.google.com/web/tools/chrome-devtools/"&gt;Chrome Dev Tools&lt;/a&gt; (the green bar).&lt;/p&gt;
+&lt;h2&gt;11. Browser Cache&lt;/h2&gt;
+&lt;p&gt;Let the browser cache some data (with a max-age of a week) by using HTTP headers such as &lt;strong&gt;&lt;em&gt;Cache-control&lt;/em&gt;&lt;/strong&gt; and &lt;strong&gt;&lt;em&gt;Expires&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;12. Prefetching&lt;/h2&gt;
+&lt;p&gt;DNS prefetching can be a good solution to resolve domain names before a user follows a link. It's implemented in the &lt;strong&gt;&lt;em&gt;HEADER&lt;/em&gt;&lt;/strong&gt; session with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dns-prefetch&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;//www.example.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;13. Preconnecting&lt;/h2&gt;
+&lt;p&gt;With the &lt;strong&gt;&lt;em&gt;preconnect&lt;/em&gt;&lt;/strong&gt; label, the browser can set up early connections (such as DNS lookup, TLS negotiation, etc.) before an HTTP request is sent to the server. This can be implemented with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//CDNHOST.com&amp;#39; rel=&amp;#39;preconnect&amp;#39; crossorigin&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;14. HTTP/2&lt;/h2&gt;
+&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs a SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
+&lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
+&lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//(.+\.)?domain\.com/ [NC]&lt;/span&gt;
+&lt;span class="n"&gt;RewriteCond&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;HTTP_REFERER&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="o"&gt;!^&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;
+&lt;span class="n"&gt;RewriteRule&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.(&lt;/span&gt;&lt;span class="n"&gt;jpe&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;gif&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;bmp&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;png&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//i.imgur.com/DONT_DISPLAY.gif [L]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;16. Enable Gzip Compression&lt;/h2&gt;
+&lt;p&gt;Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enable in the &lt;code&gt;.htaccess&lt;/code&gt; file (Apache) or &lt;code&gt;nginx.conf&lt;/code&gt; (Nginx).&lt;/p&gt;
+&lt;h2&gt;17. Optimizing Video&lt;/h2&gt;
+&lt;p&gt;Matching the file type to the optimal platform reduces playback issues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.mp4&lt;/code&gt; is a good quality video with a small file size and is the recommended format for YouTube and Vimeo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.mov&lt;/code&gt; is a high quality video with a large file size. This file type doesn't play on windows without the help of VLC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.wmv&lt;/code&gt; is a good quality video with a large file size. It is also hard to play this format on Mac machines unless you have VLC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;.flv&lt;/code&gt; is a small file size, but need extra steps to bring up the quality. This format doesn’t play natively on most Mac and Windows machines.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
+&lt;h2&gt;18. Automate&lt;/h2&gt;
+&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>
