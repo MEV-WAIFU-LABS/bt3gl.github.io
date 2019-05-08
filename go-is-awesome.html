@@ -119,89 +119,90 @@
 <h3>3 Pointers</h3>
 <p>Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.</p>
 <p>For example, you can pass your <strong>data struct</strong> along functions in very clean way:</p>
-<div class="highlight"><pre><span class="nx">type</span> <span class="nx">Route</span> <span class="nx">struct</span> <span class="p">{</span>
-    <span class="nx">service</span>        <span class="nx">string</span>
-    <span class="nx">url</span>            <span class="nx">string</span>
+<div class="highlight"><pre><span class="n">type</span> <span class="n">Route</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">service</span>        <span class="n">string</span>
+    <span class="n">url</span>            <span class="n">string</span>
 <span class="p">}</span>
 
 
-<span class="nx">func</span> <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="nx">requestPacket</span> <span class="nx">uint8</span><span class="p">,</span> <span class="nx">service</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">url</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">routes</span><span class="cp">[</span><span class="nx">requestPacket</span><span class="cp">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">UDP_Route</span><span class="p">{</span><span class="nx">service</span><span class="o">:</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">}</span>
+<span class="n">func</span> <span class="n">AddRoute</span><span class="p">(</span><span class="n">routes</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">,</span> <span class="n">requestPacket</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">service</span> <span class="n">string</span><span class="p">,</span> <span class="n">url</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">routes</span><span class="p">[</span><span class="n">requestPacket</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">UDP_Route</span><span class="p">{</span><span class="n">service</span><span class="o">:</span> <span class="n">service</span><span class="p">,</span> <span class="n">url</span><span class="o">:</span> <span class="n">url</span><span class="p">}</span>
 <span class="p">}</span>
 
 
-<span class="nx">func</span> <span class="nx">InitializeRoutes</span><span class="p">()</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">{</span>
-    <span class="nx">routes</span> <span class="o">:=</span> <span class="nx">make</span><span class="p">(</span><span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">)</span>
-    <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">routes</span>
+<span class="n">func</span> <span class="n">InitializeRoutes</span><span class="p">()</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span> <span class="p">{</span>
+    <span class="n">routes</span> <span class="o">:=</span> <span class="n">make</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">)</span>
+    <span class="n">AddRoute</span><span class="p">(</span><span class="n">routes</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">routes</span>
 <span class="p">}</span>
 
 
-<span class="nx">func</span> <span class="nx">UDP_Handler</span><span class="p">(</span><span class="nx">routes</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span> 
-    <span class="kd">var</span> <span class="nx">route</span> <span class="o">*</span><span class="nx">UDP_Route</span> <span class="o">=</span> <span class="nx">routes</span><span class="cp">[</span><span class="nx">packetType</span><span class="cp">]</span>
-<span class="err">````</span>
-
-<span class="err">###</span><span class="mi">4</span> <span class="nx">Performance</span> <span class="nx">and</span> <span class="nx">Goroutines</span>
-
-<span class="nx">Most</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">modern</span> <span class="nx">programming</span> <span class="nx">languages</span><span class="p">(</span><span class="nx">like</span> <span class="nx">Java</span><span class="p">,</span> <span class="nx">Python</span> <span class="nx">etc</span><span class="p">.)</span> <span class="nx">are</span> <span class="nx">from</span> <span class="nx">the</span> <span class="err">’</span><span class="mi">90</span><span class="nx">s</span> <span class="nx">single</span> <span class="nx">threaded</span> <span class="nx">environment</span><span class="p">.</span> <span class="nx">Go</span><span class="p">,</span> <span class="k">in</span> <span class="nx">another</span> <span class="nx">hand</span><span class="p">,</span> <span class="nx">offers</span> <span class="nx">some</span> <span class="nx">great</span> <span class="nx">concurrency</span> <span class="nx">primitives</span> <span class="nx">and</span> <span class="nx">makes</span> <span class="nx">it</span> <span class="nx">extremely</span> <span class="nx">easy</span> <span class="nx">to</span> <span class="nx">implement</span> <span class="nx">a</span> <span class="nx">concurrent</span> <span class="nx">system</span><span class="p">.</span> <span class="nx">Go</span> <span class="nx">routines</span> <span class="nx">are</span> <span class="nx">cheap</span><span class="p">,</span> <span class="nx">lightweight</span> <span class="nx">threads</span> <span class="nx">of</span> <span class="nx">execution</span><span class="p">.</span> <span class="nx">Spawning</span> <span class="nx">a</span> <span class="nx">go</span> <span class="nx">routine</span> <span class="nx">is</span> <span class="nx">as</span> <span class="nx">simple</span> <span class="nx">as</span> <span class="nx">adding</span> <span class="nx">the</span> <span class="err">`</span><span class="nx">go</span><span class="err">`</span> <span class="nx">keyword</span> <span class="nx">before</span> <span class="nx">a</span> <span class="kd">function</span><span class="p">.</span>
+<span class="n">func</span> <span class="n">UDP_Handler</span><span class="p">(</span><span class="n">routes</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span> 
+    <span class="n">var</span> <span class="n">route</span> <span class="o">*</span><span class="n">UDP_Route</span> <span class="o">=</span> <span class="n">routes</span><span class="p">[</span><span class="n">packetType</span><span class="p">]</span>
 </pre></div>
 
 
-<p>func GorotineExample() {
-    time.Sleep(10)
-    go fmt.Println("go routine ftw")</p>
-<div class="highlight"><pre><span class="n">Go</span> <span class="n">tends</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">better</span> <span class="n">because</span> <span class="n">of</span> <span class="n">this</span> <span class="n">concurrency</span> <span class="n">model</span> <span class="n">and</span> <span class="n">CPU</span> <span class="n">scalability</span><span class="p">.</span> <span class="n">Whenever</span> <span class="n">you</span> <span class="n">need</span> <span class="n">to</span> <span class="n">process</span> <span class="n">some</span> <span class="n">internal</span> <span class="n">request</span><span class="p">,</span> <span class="n">you</span> <span class="n">just</span> <span class="n">use</span> <span class="n">a</span> <span class="n">Goroutine</span><span class="p">,</span> <span class="n">which</span> <span class="n">are</span> <span class="mi">10</span><span class="n">x</span> <span class="n">cheaper</span> <span class="n">in</span> <span class="n">resources</span> <span class="n">than</span> <span class="n">Python</span> <span class="n">Threads</span><span class="p">.</span> <span class="n">So</span> <span class="n">you</span> <span class="n">save</span> <span class="n">lots</span> <span class="n">of</span> <span class="n">resources</span> <span class="p">(</span><span class="n">Memory</span><span class="p">,</span> <span class="n">CPU</span><span class="p">)</span> <span class="n">because</span> <span class="n">of</span> <span class="n">the</span> <span class="n">built</span> <span class="n">in</span> <span class="n">language</span> <span class="n">features</span><span class="p">.</span>
-
-<span class="n">In</span> <span class="n">addition</span> <span class="n">goroutines</span> <span class="n">have</span> <span class="n">growable</span> <span class="n">segmented</span> <span class="n">stacks</span> <span class="p">(</span><span class="n">use</span> <span class="n">more</span> <span class="n">memory</span> <span class="n">only</span> <span class="n">when</span> <span class="n">needed</span><span class="p">),</span> <span class="n">have</span> <span class="n">a</span> <span class="n">faster</span> <span class="n">startup</span> <span class="n">time</span> <span class="n">than</span> <span class="n">threads</span><span class="p">,</span> <span class="n">come</span> <span class="n">with</span> <span class="n">built</span><span class="o">-</span><span class="n">in</span> <span class="n">primitives</span> <span class="n">to</span> <span class="n">communicate</span> <span class="n">safely</span> <span class="n">between</span> <span class="n">themselves</span> <span class="p">(</span><span class="o">**</span><span class="n">channels</span><span class="o">**:</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">pipe</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">goroutine</span> <span class="n">where</span> <span class="n">to</span> <span class="n">send</span> <span class="n">the</span> <span class="n">output</span> <span class="n">of</span> <span class="n">goroutine</span> <span class="n">and</span> <span class="n">where</span> <span class="n">to</span> <span class="n">assign</span> <span class="n">the</span> <span class="n">output</span> <span class="n">from</span> <span class="n">the</span> <span class="n">channel</span> <span class="n">itself</span><span class="p">),</span> <span class="n">allow</span> <span class="n">you</span> <span class="n">to</span> <span class="n">avoid</span> <span class="n">having</span> <span class="n">to</span> <span class="n">resort</span> <span class="n">to</span> <span class="n">mutex</span> <span class="n">locking</span> <span class="n">when</span> <span class="n">sharing</span> <span class="n">data</span> <span class="n">structures</span><span class="p">,</span> <span class="n">and</span> <span class="n">goroutines</span> <span class="n">and</span> <span class="n">OS</span> <span class="n">threads</span> <span class="k">do</span> <span class="n">not</span> <span class="n">have</span> <span class="mi">1</span><span class="o">:</span><span class="mi">1</span> <span class="n">mapping</span> <span class="p">(</span><span class="n">a</span> <span class="n">single</span> <span class="n">goroutine</span> <span class="n">can</span> <span class="n">run</span> <span class="n">on</span> <span class="n">multiple</span> <span class="n">threads</span><span class="p">).</span>
-
-<span class="cp">###7 You Don’t Need Web Framework</span>
-
-<span class="n">Go</span> <span class="n">has</span> <span class="n">http</span><span class="p">,</span> <span class="n">json</span><span class="p">,</span> <span class="n">html</span> <span class="n">templating</span> <span class="n">built</span> <span class="n">in</span> <span class="n">language</span> <span class="n">natively</span> <span class="n">and</span> <span class="n">you</span> <span class="n">can</span> <span class="n">build</span> <span class="n">very</span> <span class="n">complex</span> <span class="n">API</span> <span class="n">services</span> <span class="n">without</span> <span class="n">even</span> <span class="n">thinking</span> <span class="n">about</span> <span class="n">finding</span> <span class="n">library</span> <span class="n">on</span> <span class="n">Github</span><span class="p">.</span>
-
-<span class="n">For</span> <span class="n">instance</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">spin</span> <span class="n">a</span> <span class="n">webpage</span> <span class="n">this</span> <span class="n">easy</span> <span class="p">(</span><span class="n">check</span> <span class="n">it</span> <span class="n">out</span> <span class="n">yourself</span><span class="o">!</span><span class="p">)</span><span class="o">:</span>
+<h3>4 Performance and Goroutines</h3>
+<p>Most of the modern programming languages(like Java, Python etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function.</p>
+<div class="highlight"><pre><span class="n">func</span> <span class="nf">GorotineExample</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">go</span> <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="s">&quot;go routine ftw&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<p>package main</p>
-<p>import (
-    "flag"
-    "html/template"
-    "log"
-    "net/http"
-)</p>
-<p>var addr = flag.String("addr", ":1718", "http service address") // Q=17, R=18</p>
-<p>var templ = template.Must(template.New("qr").Parse(templateStr))</p>
-<p>func main() {
-    flag.Parse()
-    http.Handle("/", http.HandlerFunc(QR))
-    err := http.ListenAndServe(*addr, nil)
-    if err != nil {
-        log.Fatal("ListenAndServe:", err)
-    }
-}</p>
-<p>func QR(w http.ResponseWriter, req *http.Request) {
-    templ.Execute(w, req.FormValue("s"))
-}</p>
-<p>const templateStr = `
-<html>
-<head>
-<title>QR Link Generator</title>
-</head>
-<body>
-{{if .}}
-<img src="http://chart.apis.google.com/chart?chs=300x300&cht=qr&choe=UTF-8&chl={{.}}" />
-<br>
-{{.}}
-<br>
-<br>
-{{end}}
-<form action="/" name=f method="GET"><input maxLength=1024 size=70
-name=s value="" title="Text to QR Encode"><input type=submit
-value="Show QR" name=qr>
-</form>
-</body>
-</html>
-```</p>
+<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
+<p>In addition goroutines have growable segmented stacks (use more memory only when needed), have a faster startup time than threads, come with built-in primitives to communicate safely between themselves (<strong>channels</strong>: kind of pipe to specify goroutine where to send the output of goroutine and where to assign the output from the channel itself), allow you to avoid having to resort to mutex locking when sharing data structures, and goroutines and OS threads do not have 1:1 mapping (a single goroutine can run on multiple threads).</p>
+<h3>7 You Don’t Need Web Framework</h3>
+<p>Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.</p>
+<p>For instance, you can spin a webpage this easy (check it out yourself!):</p>
+<div class="highlight"><pre><span class="nx">package</span> <span class="nx">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s2">&quot;flag&quot;</span>
+    <span class="s2">&quot;html/template&quot;</span>
+    <span class="s2">&quot;log&quot;</span>
+    <span class="s2">&quot;net/http&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="n">addr</span> <span class="o">=</span> <span class="nx">flag.String</span><span class="p">(</span><span class="s2">&quot;addr&quot;</span><span class="p">,</span> <span class="s2">&quot;:1718&quot;</span><span class="p">,</span> <span class="s2">&quot;http service address&quot;</span><span class="p">)</span> <span class="c1">// Q=17, R=18</span>
+
+<span class="kd">var</span> <span class="n">templ</span> <span class="o">=</span> <span class="nx">template.Must</span><span class="p">(</span><span class="nx">template.New</span><span class="p">(</span><span class="s2">&quot;qr&quot;</span><span class="p">)</span><span class="bp">.</span><span class="nb">Parse</span><span class="p">(</span><span class="nx">templateStr</span><span class="p">))</span>
+
+<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag.Parse</span><span class="p">()</span>
+    <span class="nx">http.Handle</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nx">http.HandlerFunc</span><span class="p">(</span><span class="nx">QR</span><span class="p">))</span>
+    <span class="nb">err</span> <span class="o">:=</span> <span class="nx">http.ListenAndServe</span><span class="p">(</span><span class="o">*</span><span class="nx">addr</span><span class="p">,</span> <span class="nx">nil</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">err</span> <span class="o">!=</span> <span class="nx">nil</span> <span class="p">{</span>
+        <span class="k">log</span><span class="bp">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s2">&quot;ListenAndServe:&quot;</span><span class="p">,</span> <span class="nb">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">func</span> <span class="nx">QR</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http.ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http.Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">templ.Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">req.FormValue</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nx">const</span> <span class="n">templateStr</span> <span class="o">=</span> <span class="err">`</span>
+<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">title</span><span class="o">&gt;</span><span class="nx">QR</span> <span class="k">Link</span> <span class="nx">Generator</span><span class="o">&lt;/</span><span class="nb">title</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">body</span><span class="o">&gt;</span>
+<span class="p">{{</span><span class="k">if</span> <span class="nx">.</span><span class="p">}}</span>
+<span class="o">&lt;</span><span class="nb">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://chart.apis.google.com/chart?chs=300x300&amp;cht=qr&amp;choe=UTF-8&amp;chl={{.}}&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
+<span class="p">{{</span><span class="nx">.</span><span class="p">}}</span>
+<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
+<span class="p">{{</span><span class="nb">end</span><span class="p">}}</span>
+<span class="o">&lt;</span><span class="nb">form</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="n">name</span><span class="o">=</span><span class="nb">f</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="o">&gt;&lt;</span><span class="nb">input</span> <span class="n">maxLength</span><span class="o">=</span><span class="mi">1024</span> <span class="n">size</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">name</span><span class="o">=</span><span class="nb">s</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Text to QR Encode&quot;</span><span class="o">&gt;&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="nx">submit</span>
+<span class="n">value</span><span class="o">=</span><span class="s2">&quot;Show QR&quot;</span> <span class="n">name</span><span class="o">=</span><span class="nx">qr</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">form</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span>
+</pre></div>
+
+
 <h3>8 Your Django framework would not crash</h3>
 <p>Go heavily relies on static code analysis. Examples include <a href="https://golang.org/doc/">godoc</a> for documentation, <a href="https://golang.org/cmd/gofmt/">gofmt</a> for code formatting, <a href="https://github.com/golang/lint">golint</a> for code style linting, and many others.</p>
 <p>Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.</p>
