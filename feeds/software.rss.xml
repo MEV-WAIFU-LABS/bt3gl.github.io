@@ -9,19 +9,18 @@
 &lt;p&gt;Type system is really important for large scale applications. Python is great and fun language but sometimes you are just getting unusual exceptions because trying to use variable as an integer but it turning out that it’s a string.&lt;/p&gt;
 &lt;h3&gt;3 Pointers&lt;/h3&gt;
 &lt;p&gt;Go aims to provide a modern equivalent of C in some areas and has brought back pointers. Most modern languages do not provide pointers,but sometimes pointers help solve a lot of common issues and play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
-&lt;p&gt;For example, you can pass your data struct along functions in very clean way:&lt;/p&gt;
+&lt;p&gt;For example, you can pass your &lt;strong&gt;data struct&lt;/strong&gt; along functions in very clean way:&lt;/p&gt;
 &lt;p&gt;```
-type UDP_Route struct {
-    responsePacket uint8
+type Route struct {
     service        string
     url            string
 }&lt;/p&gt;
-&lt;p&gt;func AddRoute(routes map[uint8]*UDP_Route, requestPacket uint8, responsePacket uint8, service string, url string) {
-    routes[requestPacket] = &amp;amp;UDP_Route{service: service, responsePacket: responsePacket, url: url}
+&lt;p&gt;func AddRoute(routes map[uint8]*UDP_Route, requestPacket uint8, service string, url string) {
+    routes[requestPacket] = &amp;amp;UDP_Route{service: service, url: url}
 }&lt;/p&gt;
 &lt;p&gt;func InitializeRoutes() map[uint8]&lt;em&gt;UDP_Route {
     routes := make(map[uint8]&lt;/em&gt;UDP_Route)
-  AddRoute(routes, NEXT_PACKET_TYPE_V4_MASTER_RELAY_REPORT, NEXT_PACKET_TYPE_V4_MASTER_RELAY_RESPONSE, "database-frontend", "http://database-frontend:8000/v2/database-frontend/update")
+    AddRoute(routes, service, url)
     return routes
 }&lt;/p&gt;
 &lt;p&gt;func UDP_Handler(routes map[uint8]&lt;em&gt;UDP_Route, ...) { 
