@@ -22,10 +22,10 @@
 &lt;/ol&gt;
 &lt;p&gt;Cool, right? :)&lt;/p&gt;
 &lt;hr /&gt;
-&lt;h3&gt;Some references&lt;/h3&gt;
+&lt;h3&gt;Some learning references&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://skaffold.dev/."&gt;Official documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is."&gt;GCP documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/"&gt;Official documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is"&gt;Skaffold &amp;amp; GCP documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
