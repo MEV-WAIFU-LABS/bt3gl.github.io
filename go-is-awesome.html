@@ -119,31 +119,31 @@
 <h3>3 Pointers</h3>
 <p>Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.</p>
 <p>For example, you can pass your <strong>data struct</strong> along functions in very clean way:</p>
-<div class="highlight"><pre><span class="n">type</span> <span class="n">Route</span> <span class="k">struct</span> <span class="p">{</span>
-    <span class="n">service</span>        <span class="n">string</span>
-    <span class="n">url</span>            <span class="n">string</span>
+<div class="highlight"><pre><span class="kd">type</span> <span class="nx">Route</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">service</span>        <span class="kt">string</span>
+    <span class="nx">url</span>            <span class="kt">string</span>
 <span class="p">}</span>
 
 
-<span class="n">func</span> <span class="n">AddRoute</span><span class="p">(</span><span class="n">routes</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">,</span> <span class="n">requestPacket</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">service</span> <span class="n">string</span><span class="p">,</span> <span class="n">url</span> <span class="n">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">routes</span><span class="p">[</span><span class="n">requestPacket</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">UDP_Route</span><span class="p">{</span><span class="n">service</span><span class="o">:</span> <span class="n">service</span><span class="p">,</span> <span class="n">url</span><span class="o">:</span> <span class="n">url</span><span class="p">}</span>
+<span class="kd">func</span> <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="nx">requestPacket</span> <span class="kt">uint8</span><span class="p">,</span> <span class="nx">service</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">routes</span><span class="p">[</span><span class="nx">requestPacket</span><span class="p">]</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">UDP_Route</span><span class="p">{</span><span class="nx">service</span><span class="p">:</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">}</span>
 <span class="p">}</span>
 
 
-<span class="n">func</span> <span class="n">InitializeRoutes</span><span class="p">()</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span> <span class="p">{</span>
-    <span class="n">routes</span> <span class="o">:=</span> <span class="n">make</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">)</span>
-    <span class="n">AddRoute</span><span class="p">(</span><span class="n">routes</span><span class="p">,</span> <span class="n">service</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">routes</span>
+<span class="kd">func</span> <span class="nx">InitializeRoutes</span><span class="p">()</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">{</span>
+    <span class="nx">routes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">)</span>
+    <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">routes</span>
 <span class="p">}</span>
 
 
-<span class="n">func</span> <span class="n">UDP_Handler</span><span class="p">(</span><span class="n">routes</span> <span class="n">map</span><span class="p">[</span><span class="n">uint8</span><span class="p">]</span><span class="o">*</span><span class="n">UDP_Route</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span> 
-    <span class="n">var</span> <span class="n">route</span> <span class="o">*</span><span class="n">UDP_Route</span> <span class="o">=</span> <span class="n">routes</span><span class="p">[</span><span class="n">packetType</span><span class="p">]</span>
+<span class="kd">func</span> <span class="nx">UDP_Handler</span><span class="p">(</span><span class="nx">routes</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="kd">var</span> <span class="nx">route</span> <span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">=</span> <span class="nx">routes</span><span class="p">[</span><span class="nx">packetType</span><span class="p">]</span>
 </pre></div>
 
 
 <h3>4 Performance and Goroutines</h3>
-<p>Most of the modern programming languages(like Java, Python etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function.</p>
+<p>Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function.</p>
 <div class="highlight"><pre><span class="n">func</span> <span class="nf">GorotineExample</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">time</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
     <span class="n">go</span> <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="s">&quot;go routine ftw&quot;</span><span class="p">)</span>
