@@ -120,7 +120,8 @@
 <h3>3 Django will crash process because of this</h3>
 <p>Go will let you know about this issue during compile time as a compiler error.</p>
 <h3>4 Performance and Goroutines</h3>
-<p>Go tends to perform better because of his concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
+<p>Go offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function. </p>
+<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
 <h3>5 You Don’t Need Web Framework</h3>
 <p>Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.</p>
 <h3>6 Fun Factor</h3>
