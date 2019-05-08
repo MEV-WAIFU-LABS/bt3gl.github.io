@@ -41,6 +41,7 @@
 &lt;li&gt;&lt;a href="https://skaffold.dev/"&gt;Official documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is"&gt;Skaffold &amp;amp; GCP documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/docs/references/yaml/"&gt;Skaffold Yaml References&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
