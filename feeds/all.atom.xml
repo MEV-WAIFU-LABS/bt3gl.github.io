@@ -8,15 +8,24 @@
 &lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
 &lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
 &lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
-&lt;li&gt;It makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application.&lt;/li&gt;
-&lt;li&gt;By default, it will automatically stream the logs from the pod(s).&lt;/li&gt;
 &lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same &lt;code&gt;skaffold.yaml&lt;/code&gt; file to do deployments to your clusters in your continuous deployment system.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;This is possible because different parts of Skaffold are exposed through different commands:
+* In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local development workflow on Minikube/Docker-for-Desktop) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:
+    1. Build container images (either locally or remotely),
+    2. Push container images (unless the target is local cluster),
+    3. Update Kubernetes manifests with the correct image tags,
+    4. Deploy your application with &lt;code&gt;kubectl apply&lt;/code&gt;,
+    5. Stream logs from the deployed/running Pods.
+    6 Watch for changes in the source code or Kubernetes manifests, and repeat 1-5&lt;/p&gt;
 &lt;h3&gt;Some references&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://skaffold.dev/."&gt;Official documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is."&gt;GCP documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;

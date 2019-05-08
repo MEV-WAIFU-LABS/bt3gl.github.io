@@ -118,15 +118,24 @@
 <li>It uses <code>yaml</code> configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.</li>
 <li>These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.</li>
 <li>Skaffold <strong>watches your local development directory for filesystem changes</strong> and automatically builds and deploy your application to any local or remote Kubernetes cluster.</li>
-<li>It makes development very easy: all you need to do is run <code>skaffold dev</code> to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application.</li>
-<li>By default, it will automatically stream the logs from the pod(s).</li>
 <li>It is integrated to <code>kubectl</code> and <a href="https://cloud.google.com/gcp">GCP</a>.</li>
+<li>Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same <code>skaffold.yaml</code> file to do deployments to your clusters in your continuous deployment system.</li>
 </ul>
+<p>This is possible because different parts of Skaffold are exposed through different commands:
+* In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:
+    1. Build container images (either locally or remotely),
+    2. Push container images (unless the target is local cluster),
+    3. Update Kubernetes manifests with the correct image tags,
+    4. Deploy your application with <code>kubectl apply</code>,
+    5. Stream logs from the deployed/running Pods.
+    6 Watch for changes in the source code or Kubernetes manifests, and repeat 1-5</p>
 <h3>Some references</h3>
 <ul>
 <li><a href="https://skaffold.dev/.">Official documentation</a></li>
 <li><a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is.">GCP documentation</a></li>
 <li><a href="https://github.com/GoogleContainerTools/skaffold">Github repository with examples</a>.</li>
+<li><a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples">Skaffold examples</a>.</li>
+<li><a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud">Skaffold: From code on your laptop to cloud</a>.</li>
 </ul>
 <hr />
 <p><strong>Love, Gratitude &amp; Peace 🌺,</strong></p>
