@@ -120,14 +120,15 @@
 <li>It is integrated to <code>kubectl</code> and <a href="https://cloud.google.com/gcp">GCP</a>.</li>
 <li>Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same <code>skaffold.yaml</code> file to do deployments to your clusters in your continuous deployment system.</li>
 </ul>
-<p>In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold:</p>
+<p>In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local dev workflow: <a href="https://kubernetes.io/docs/setup/minikube/">Minikube</a>, etc.) or <code>skaffold run</code> (continuous dev workflow: <a href="https://jenkins.io/">Jenkins</a>, <a href="https://travis-ci.org/">Travis CI</a>, etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application.</p>
+<p>In this single command, Skaffold:</p>
 <ol>
 <li>builds container images (locally or remotely),</li>
 <li>pushes container images if target is not local cluster,</li>
 <li>updates Kubernetes manifests with image tags,</li>
 <li>deploys your application with <code>kubectl apply</code>,</li>
-<li>stream logs from the pods,</li>
-<li>watch for changes in the source code and Kubernetes manifests, and  then repeat 1-5.</li>
+<li>streams logs from the pods,</li>
+<li>watches for changes in the source code and Kubernetes manifests, and  then repeat 1-5.</li>
 </ol>
 <p>Cool, right? :)</p>
 <hr />

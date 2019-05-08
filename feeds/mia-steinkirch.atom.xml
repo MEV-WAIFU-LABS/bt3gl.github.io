@@ -10,14 +10,15 @@
 &lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same &lt;code&gt;skaffold.yaml&lt;/code&gt; file to do deployments to your clusters in your continuous deployment system.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local development workflow on Minikube/Docker-for-Desktop) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold:&lt;/p&gt;
+&lt;p&gt;In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local dev workflow: &lt;a href="https://kubernetes.io/docs/setup/minikube/"&gt;Minikube&lt;/a&gt;, etc.) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous dev workflow: &lt;a href="https://jenkins.io/"&gt;Jenkins&lt;/a&gt;, &lt;a href="https://travis-ci.org/"&gt;Travis CI&lt;/a&gt;, etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application.&lt;/p&gt;
+&lt;p&gt;In this single command, Skaffold:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;builds container images (locally or remotely),&lt;/li&gt;
 &lt;li&gt;pushes container images if target is not local cluster,&lt;/li&gt;
 &lt;li&gt;updates Kubernetes manifests with image tags,&lt;/li&gt;
 &lt;li&gt;deploys your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
-&lt;li&gt;stream logs from the pods,&lt;/li&gt;
-&lt;li&gt;watch for changes in the source code and Kubernetes manifests, and  then repeat 1-5.&lt;/li&gt;
+&lt;li&gt;streams logs from the pods,&lt;/li&gt;
+&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and  then repeat 1-5.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Cool, right? :)&lt;/p&gt;
 &lt;hr /&gt;
