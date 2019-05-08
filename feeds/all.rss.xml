@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 05 Apr 2019 05:00:00 -0400</lastBuildDate><item><title>Forget Docker Compose: You Want Skaffold</title><link>http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;I still remember, back in 2015, when I was at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt; and I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
+&lt;p&gt;I still remember, back in 2015 when I was at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt;, and I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
 &lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a tool released by Google a yar ago, and designed to make local Kubernetes development very easy! &lt;/p&gt;
 &lt;p&gt;It's kinda like a command line utility that allows for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
 &lt;ul&gt;
