@@ -5,6 +5,20 @@
 &lt;ul&gt;
 &lt;li&gt;It runs as a binary in your local machine (e.g. &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
 &lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apiVersion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;skaffold&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1beta9&lt;/span&gt;
+&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Config&lt;/span&gt;
+&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gcr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;io&lt;/span&gt;&lt;span class="sr"&gt;/k8s-skaffold/s&lt;/span&gt;&lt;span class="n"&gt;kaffold&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;
+&lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;kubectl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;manifests&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;k8s&lt;/span&gt;&lt;span class="o"&gt;-*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
 &lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
 &lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
 &lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
