@@ -7,7 +7,7 @@
 &lt;h3&gt;2 Static Type System&lt;/h3&gt;
 &lt;p&gt;Type system is really important for large scale applications. Python sometimes will give you unusual exceptions (e.g. you are trying to use a variable as an integer but it turning out that it’s a string). Go will tell you write alway that it won't work.&lt;/p&gt;
 &lt;h3&gt;3 Pointers&lt;/h3&gt;
-&lt;p&gt;Go aims to provide a modern equivalent of C in some areas and has brought back pointers. Most modern languages do not provide pointers,but sometimes pointers help solve a lot of common issues and play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
+&lt;p&gt;Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
 &lt;p&gt;For example, you can pass your &lt;strong&gt;data struct&lt;/strong&gt; along functions in very clean way:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Route&lt;/span&gt; &lt;span class="nx"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;service&lt;/span&gt;        &lt;span class="nx"&gt;string&lt;/span&gt;
