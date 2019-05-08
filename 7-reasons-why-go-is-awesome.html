@@ -152,6 +152,7 @@
 
 <p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.</p>
 <p>In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (by using <code>channel</code>: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.</p>
+<p>Finally, Go has the <code>defer</code> statement, which ensure that a function call is performed later in a program’s execution (for instance, for cleanup). The deferred call's arguments are evaluated right way, but the function call is not executed until the function returns.  </p>
 <h3>5 You Don’t Need a Web Framework</h3>
 <p>Go has <code>http</code>, <code>json</code>, <code>html</code> templating built in language natively and you can build very complex API services very easily.</p>
 <p>For instance, you can spin up a webpage this easy (check it out yourself!):</p>
