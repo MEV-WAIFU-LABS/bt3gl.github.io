@@ -144,62 +144,62 @@
 
 <h3>4 Performance and Goroutines</h3>
 <p>Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function.</p>
-<div class="highlight"><pre><span class="n">func</span> <span class="nf">GorotineExample</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">time</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">go</span> <span class="n">fmt</span><span class="p">.</span><span class="n">Println</span><span class="p">(</span><span class="s">&quot;go routine ftw&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span class="kd">func</span> <span class="nx">GorotineExample</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;go routine ftw&quot;</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
-<p>In addition goroutines have growable segmented stacks (use more memory only when needed), have a faster startup time than threads, come with built-in primitives to communicate safely between themselves (<strong>channels</strong>: kind of pipe to specify goroutine where to send the output of goroutine and where to assign the output from the channel itself), allow you to avoid having to resort to mutex locking when sharing data structures, and goroutines and OS threads do not have 1:1 mapping (a single goroutine can run on multiple threads).</p>
+<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.</p>
+<p>In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (<strong>channels</strong>: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.</p>
 <h3>7 You Don’t Need Web Framework</h3>
 <p>Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.</p>
 <p>For instance, you can spin a webpage this easy (check it out yourself!):</p>
-<div class="highlight"><pre><span class="nx">package</span> <span class="nx">main</span>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s2">&quot;flag&quot;</span>
-    <span class="s2">&quot;html/template&quot;</span>
-    <span class="s2">&quot;log&quot;</span>
-    <span class="s2">&quot;net/http&quot;</span>
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;html/template&quot;</span>
+    <span class="s">&quot;log&quot;</span>
+    <span class="s">&quot;net/http&quot;</span>
 <span class="p">)</span>
 
-<span class="kd">var</span> <span class="n">addr</span> <span class="o">=</span> <span class="nx">flag.String</span><span class="p">(</span><span class="s2">&quot;addr&quot;</span><span class="p">,</span> <span class="s2">&quot;:1718&quot;</span><span class="p">,</span> <span class="s2">&quot;http service address&quot;</span><span class="p">)</span> <span class="c1">// Q=17, R=18</span>
+<span class="kd">var</span> <span class="nx">addr</span> <span class="p">=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;:1718&quot;</span><span class="p">,</span> <span class="s">&quot;http service address&quot;</span><span class="p">)</span> <span class="c1">// Q=17, R=18</span>
 
-<span class="kd">var</span> <span class="n">templ</span> <span class="o">=</span> <span class="nx">template.Must</span><span class="p">(</span><span class="nx">template.New</span><span class="p">(</span><span class="s2">&quot;qr&quot;</span><span class="p">)</span><span class="bp">.</span><span class="nb">Parse</span><span class="p">(</span><span class="nx">templateStr</span><span class="p">))</span>
+<span class="kd">var</span> <span class="nx">templ</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;qr&quot;</span><span class="p">).</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">templateStr</span><span class="p">))</span>
 
-<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">flag.Parse</span><span class="p">()</span>
-    <span class="nx">http.Handle</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="nx">http.HandlerFunc</span><span class="p">(</span><span class="nx">QR</span><span class="p">))</span>
-    <span class="nb">err</span> <span class="o">:=</span> <span class="nx">http.ListenAndServe</span><span class="p">(</span><span class="o">*</span><span class="nx">addr</span><span class="p">,</span> <span class="nx">nil</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">err</span> <span class="o">!=</span> <span class="nx">nil</span> <span class="p">{</span>
-        <span class="k">log</span><span class="bp">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s2">&quot;ListenAndServe:&quot;</span><span class="p">,</span> <span class="nb">err</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">QR</span><span class="p">))</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="o">*</span><span class="nx">addr</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">&quot;ListenAndServe:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">func</span> <span class="nx">QR</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http.ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http.Request</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">templ.Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">req.FormValue</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">))</span>
+<span class="kd">func</span> <span class="nx">QR</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">templ</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">FormValue</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">))</span>
 <span class="p">}</span>
 
-<span class="nx">const</span> <span class="n">templateStr</span> <span class="o">=</span> <span class="err">`</span>
-<span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nb">head</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nb">title</span><span class="o">&gt;</span><span class="nx">QR</span> <span class="k">Link</span> <span class="nx">Generator</span><span class="o">&lt;/</span><span class="nb">title</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nb">head</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nb">body</span><span class="o">&gt;</span>
-<span class="p">{{</span><span class="k">if</span> <span class="nx">.</span><span class="p">}}</span>
-<span class="o">&lt;</span><span class="nb">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;http://chart.apis.google.com/chart?chs=300x300&amp;cht=qr&amp;choe=UTF-8&amp;chl={{.}}&quot;</span> <span class="o">/&gt;</span>
-<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-<span class="p">{{</span><span class="nx">.</span><span class="p">}}</span>
-<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-<span class="o">&lt;</span><span class="nx">br</span><span class="o">&gt;</span>
-<span class="p">{{</span><span class="nb">end</span><span class="p">}}</span>
-<span class="o">&lt;</span><span class="nb">form</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="n">name</span><span class="o">=</span><span class="nb">f</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="o">&gt;&lt;</span><span class="nb">input</span> <span class="n">maxLength</span><span class="o">=</span><span class="mi">1024</span> <span class="n">size</span><span class="o">=</span><span class="mi">70</span>
-<span class="n">name</span><span class="o">=</span><span class="nb">s</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Text to QR Encode&quot;</span><span class="o">&gt;&lt;</span><span class="nb">input</span> <span class="k">type</span><span class="o">=</span><span class="nx">submit</span>
-<span class="n">value</span><span class="o">=</span><span class="s2">&quot;Show QR&quot;</span> <span class="n">name</span><span class="o">=</span><span class="nx">qr</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nb">form</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nb">body</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="kd">const</span> <span class="nx">templateStr</span> <span class="p">=</span> <span class="err">`</span>
+<span class="p">&lt;</span><span class="nx">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">title</span><span class="p">&gt;</span><span class="nx">QR</span> <span class="nx">Link</span> <span class="nx">Generator</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">{{</span><span class="k">if</span> <span class="p">.}}</span>
+<span class="p">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="p">=</span><span class="s">&quot;http://chart.apis.google.com/chart?chs=300x300&amp;cht=qr&amp;choe=UTF-8&amp;chl={{.}}&quot;</span> <span class="o">/</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">{{.}}</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">{{</span><span class="nx">end</span><span class="p">}}</span>
+<span class="p">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="p">=</span><span class="s">&quot;/&quot;</span> <span class="nx">name</span><span class="p">=</span><span class="nx">f</span> <span class="nx">method</span><span class="p">=</span><span class="s">&quot;GET&quot;</span><span class="p">&gt;&lt;</span><span class="nx">input</span> <span class="nx">maxLength</span><span class="p">=</span><span class="mi">1024</span> <span class="nx">size</span><span class="p">=</span><span class="mi">70</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">s</span> <span class="nx">value</span><span class="p">=</span><span class="s">&quot;&quot;</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Text to QR Encode&quot;</span><span class="p">&gt;&lt;</span><span class="nx">input</span> <span class="kd">type</span><span class="p">=</span><span class="nx">submit</span>
+<span class="nx">value</span><span class="p">=</span><span class="s">&quot;Show QR&quot;</span> <span class="nx">name</span><span class="p">=</span><span class="nx">qr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">form</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">html</span><span class="p">&gt;</span>
 </pre></div>
 
 
