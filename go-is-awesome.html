@@ -120,27 +120,82 @@
 <h3>3 Pointers</h3>
 <p>Go aims to provide a modern equivalent of C in some areas and has brought back pointers. Most modern languages do not provide pointers,but sometimes pointers help solve a lot of common issues and play a far important role when it comes to memory layout and building low level system tools.</p>
 <p>For example, you can pass your <strong>data struct</strong> along functions in very clean way:</p>
-<p>```
-type Route struct {
-    service        string
-    url            string
+<div class="highlight"><pre><span class="nx">type</span> <span class="nx">Route</span> <span class="nx">struct</span> <span class="p">{</span>
+    <span class="nx">service</span>        <span class="nx">string</span>
+    <span class="nx">url</span>            <span class="nx">string</span>
+<span class="p">}</span>
+
+
+<span class="nx">func</span> <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="nx">requestPacket</span> <span class="nx">uint8</span><span class="p">,</span> <span class="nx">service</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">url</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">routes</span><span class="cp">[</span><span class="nx">requestPacket</span><span class="cp">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nx">UDP_Route</span><span class="p">{</span><span class="nx">service</span><span class="o">:</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="nx">func</span> <span class="nx">InitializeRoutes</span><span class="p">()</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">{</span>
+    <span class="nx">routes</span> <span class="o">:=</span> <span class="nx">make</span><span class="p">(</span><span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">)</span>
+    <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">routes</span>
+<span class="p">}</span>
+
+
+<span class="nx">func</span> <span class="nx">UDP_Handler</span><span class="p">(</span><span class="nx">routes</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">uint8</span><span class="cp">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span> 
+    <span class="kd">var</span> <span class="nx">route</span> <span class="o">*</span><span class="nx">UDP_Route</span> <span class="o">=</span> <span class="nx">routes</span><span class="cp">[</span><span class="nx">packetType</span><span class="cp">]</span>
+<span class="err">````</span>
+
+<span class="err">###</span><span class="mi">4</span> <span class="nx">Performance</span> <span class="nx">and</span> <span class="nx">Goroutines</span>
+
+<span class="nx">Go</span> <span class="nx">offers</span> <span class="nx">some</span> <span class="nx">great</span> <span class="nx">concurrency</span> <span class="nx">primitives</span> <span class="nx">and</span> <span class="nx">makes</span> <span class="nx">it</span> <span class="nx">extremely</span> <span class="nx">easy</span> <span class="nx">to</span> <span class="nx">implement</span> <span class="nx">a</span> <span class="nx">concurrent</span> <span class="nx">system</span><span class="p">.</span> <span class="nx">Go</span> <span class="nx">routines</span> <span class="nx">are</span> <span class="nx">cheap</span><span class="p">,</span> <span class="nx">lightweight</span> <span class="nx">threads</span> <span class="nx">of</span> <span class="nx">execution</span><span class="p">.</span> <span class="nx">Spawning</span> <span class="nx">a</span> <span class="nx">go</span> <span class="nx">routine</span> <span class="nx">is</span> <span class="nx">as</span> <span class="nx">simple</span> <span class="nx">as</span> <span class="nx">adding</span> <span class="nx">the</span> <span class="err">`</span><span class="nx">go</span><span class="err">`</span> <span class="nx">keyword</span> <span class="nx">before</span> <span class="nx">a</span> <span class="kd">function</span><span class="p">.</span> 
+
+ <span class="nx">Go</span> <span class="nx">tends</span> <span class="nx">to</span> <span class="nx">perform</span> <span class="nx">better</span> <span class="nx">because</span> <span class="nx">of</span> <span class="k">this</span> <span class="nx">concurrency</span> <span class="nx">model</span> <span class="nx">and</span> <span class="nx">CPU</span> <span class="nx">scalability</span><span class="p">.</span> <span class="nx">Whenever</span> <span class="nx">you</span> <span class="nx">need</span> <span class="nx">to</span> <span class="nx">process</span> <span class="nx">some</span> <span class="nx">internal</span> <span class="nx">request</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">just</span> <span class="nx">use</span> <span class="nx">a</span> <span class="nx">Goroutine</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">are</span> <span class="mi">10</span><span class="nx">x</span> <span class="nx">cheaper</span> <span class="k">in</span> <span class="nx">resources</span> <span class="nx">than</span> <span class="nx">Python</span> <span class="nx">Threads</span><span class="p">.</span> <span class="nx">So</span> <span class="nx">you</span> <span class="nx">save</span> <span class="nx">lots</span> <span class="nx">of</span> <span class="nx">resources</span> <span class="p">(</span><span class="nx">Memory</span><span class="p">,</span> <span class="nx">CPU</span><span class="p">)</span> <span class="nx">because</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">built</span> <span class="k">in</span> <span class="nx">language</span> <span class="nx">features</span><span class="p">.</span>
+
+<span class="err">###</span><span class="mi">7</span> <span class="nx">You</span> <span class="nx">Don</span><span class="err">’</span><span class="nx">t</span> <span class="nx">Need</span> <span class="nx">Web</span> <span class="nx">Framework</span>
+
+<span class="nx">Go</span> <span class="nx">has</span> <span class="nx">http</span><span class="p">,</span> <span class="nx">json</span><span class="p">,</span> <span class="nx">html</span> <span class="nx">templating</span> <span class="nx">built</span> <span class="k">in</span> <span class="nx">language</span> <span class="nx">natively</span> <span class="nx">and</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">build</span> <span class="nx">very</span> <span class="nx">complex</span> <span class="nx">API</span> <span class="nx">services</span> <span class="nx">without</span> <span class="nx">even</span> <span class="nx">thinking</span> <span class="nx">about</span> <span class="nx">finding</span> <span class="nx">library</span> <span class="nx">on</span> <span class="nx">Github</span><span class="p">.</span>
+
+<span class="nx">For</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">spin</span> <span class="nx">a</span> <span class="nx">webpage</span> <span class="k">this</span> <span class="nx">easy</span> <span class="p">(</span><span class="nx">check</span> <span class="nx">it</span> <span class="nx">out</span> <span class="nx">yourself</span><span class="o">!</span><span class="p">)</span><span class="o">:</span>
+</pre></div>
+
+
+<p>package main</p>
+<p>import (
+    "flag"
+    "html/template"
+    "log"
+    "net/http"
+)</p>
+<p>var addr = flag.String("addr", ":1718", "http service address") // Q=17, R=18</p>
+<p>var templ = template.Must(template.New("qr").Parse(templateStr))</p>
+<p>func main() {
+    flag.Parse()
+    http.Handle("/", http.HandlerFunc(QR))
+    err := http.ListenAndServe(*addr, nil)
+    if err != nil {
+        log.Fatal("ListenAndServe:", err)
+    }
 }</p>
-<p>func AddRoute(routes map[uint8]*UDP_Route, requestPacket uint8, service string, url string) {
-    routes[requestPacket] = &amp;UDP_Route{service: service, url: url}
+<p>func QR(w http.ResponseWriter, req *http.Request) {
+    templ.Execute(w, req.FormValue("s"))
 }</p>
-<p>func InitializeRoutes() map[uint8]<em>UDP_Route {
-    routes := make(map[uint8]</em>UDP_Route)
-    AddRoute(routes, service, url)
-    return routes
-}</p>
-<p>func UDP_Handler(routes map[uint8]<em>UDP_Route, ...) { 
-    var route </em>UDP_Route = routes[packetType]
-````</p>
-<h3>4 Performance and Goroutines</h3>
-<p>Go offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function. </p>
-<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
-<h3>7 You Don’t Need Web Framework</h3>
-<p>Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.</p>
+<p>const templateStr = `
+<html>
+<head>
+<title>QR Link Generator</title>
+</head>
+<body>
+{{if .}}
+<img src="http://chart.apis.google.com/chart?chs=300x300&cht=qr&choe=UTF-8&chl={{.}}" />
+<br>
+{{.}}
+<br>
+<br>
+{{end}}
+<form action="/" name=f method="GET"><input maxLength=1024 size=70
+name=s value="" title="Text to QR Encode"><input type=submit
+value="Show QR" name=qr>
+</form>
+</body>
+</html>
+```</p>
 <h3>8 Fun Factor</h3>
 <p>Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  </p>
 <h2>Resources to Learn Go</h2>
