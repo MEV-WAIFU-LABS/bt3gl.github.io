@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/software.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 05 Apr 2019 05:00:00 -0400</lastBuildDate><item><title>Forget Docker Compose, you want Skaffold</title><link>http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;I still remember, back in 2015, when I was at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt; and I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
-&lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Skaffold is tool designed to make local Kubernetes development very easy! It's kinda like a command line utility that allows for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
+&lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a tool released by Google a yar ago, and designed to make local Kubernetes development very easy! &lt;/p&gt;
+&lt;p&gt;It's kinda like a command line utility that allows for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It runs as a binary in your local machine.&lt;/li&gt;
 &lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
@@ -26,6 +26,7 @@
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
