@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>7 Reasons why Go is Awesome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 7 Reasons why Go is Awesome">
+                                        7 Reasons why Go is Awesome
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-04-02T05:00:00">
+      Tue 02 April 2019 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/software.html"><i class="icon-folder-open"></i>software</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/golang.html"><i class="icon-tag"></i>golang</a>
+	<a href="./tag/algorithms.html"><i class="icon-tag"></i>algorithms</a>
+	<a href="./tag/awesome.html"><i class="icon-tag"></i>awesome</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /></p>
+<p>For years, I have been advocating <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures">Python as the most useful language we have</a>. Only recently, I have been shifting my mind a little to another awesome language: <a href="https://golang.org/">Golang, also know as Go</a>!</p>
+<p>Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++), while containing many features of modern languages.</p>
+<h3>1 It Compiles Into a Single Binary</h3>
+<p>Golang builds as a compiled language and, using static linking, it combines all dependency libraries and modules into one single binary file based on OS type and architecture. Which means that if you are compiling your backend application on your laptop with Linux X86 CPU, you can just upload the compiled binary into your server and it will work, without installing any dependencies.</p>
+<h3>2 Static Type System</h3>
+<p>Type system is really important for large scale applications. Python sometimes will give you unusual exceptions (e.g. you are trying to use a variable as an integer but it turns out that it’s a string). Go will tell you write alway that it won't work.</p>
+<h3>3 Pointers</h3>
+<p>Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.</p>
+<p>For example, you can pass your <strong>data struct</strong> along functions in very clean way:</p>
+<div class="highlight"><pre><span class="kd">type</span> <span class="nx">Route</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">service</span>        <span class="kt">string</span>
+    <span class="nx">url</span>            <span class="kt">string</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="nx">requestPacket</span> <span class="kt">uint8</span><span class="p">,</span> <span class="nx">service</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">routes</span><span class="p">[</span><span class="nx">requestPacket</span><span class="p">]</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">UDP_Route</span><span class="p">{</span><span class="nx">service</span><span class="p">:</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nx">InitializeRoutes</span><span class="p">()</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">{</span>
+    <span class="nx">routes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">)</span>
+    <span class="nx">AddRoute</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="nx">service</span><span class="p">,</span> <span class="nx">url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">routes</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span> <span class="nx">UDP_Handler</span><span class="p">(</span><span class="nx">routes</span> <span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">]</span><span class="o">*</span><span class="nx">UDP_Route</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="kd">var</span> <span class="nx">route</span> <span class="o">*</span><span class="nx">UDP_Route</span> <span class="p">=</span> <span class="nx">routes</span><span class="p">[</span><span class="nx">packetType</span><span class="p">]</span>
+</pre></div>
+
+
+<h3>4 Performance and Goroutines</h3>
+<p>Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function.</p>
+<div class="highlight"><pre><span class="kd">func</span> <span class="nx">GorotineExample</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">go</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;go routine ftw&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.</p>
+<p>In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (by using <code>channel</code>: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.</p>
+<h3>5 You Don’t Need a Web Framework</h3>
+<p>Go has <code>http</code>, <code>json</code>, <code>html</code> templating built in language natively and you can build very complex API services very easily.</p>
+<p>For instance, you can spin up a webpage this easy (check it out yourself!):</p>
+<div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;flag&quot;</span>
+    <span class="s">&quot;html/template&quot;</span>
+    <span class="s">&quot;log&quot;</span>
+    <span class="s">&quot;net/http&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">addr</span> <span class="p">=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;addr&quot;</span><span class="p">,</span> <span class="s">&quot;:1718&quot;</span><span class="p">,</span> <span class="s">&quot;http service address&quot;</span><span class="p">)</span> <span class="c1">// Q=17, R=18</span>
+
+<span class="kd">var</span> <span class="nx">templ</span> <span class="p">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">Must</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;qr&quot;</span><span class="p">).</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">templateStr</span><span class="p">))</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">QR</span><span class="p">))</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="o">*</span><span class="nx">addr</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">&quot;ListenAndServe:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">QR</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">req</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">templ</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">FormValue</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">templateStr</span> <span class="p">=</span> <span class="err">`</span>
+<span class="p">&lt;</span><span class="nx">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">title</span><span class="p">&gt;</span><span class="nx">QR</span> <span class="nx">Link</span> <span class="nx">Generator</span><span class="p">&lt;</span><span class="o">/</span><span class="nx">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">{{</span><span class="k">if</span> <span class="p">.}}</span>
+<span class="p">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="p">=</span><span class="s">&quot;http://chart.apis.google.com/chart?chs=300x300&amp;cht=qr&amp;choe=UTF-8&amp;chl={{.}}&quot;</span> <span class="o">/</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">{{.}}</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nx">br</span><span class="p">&gt;</span>
+<span class="p">{{</span><span class="nx">end</span><span class="p">}}</span>
+<span class="p">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="p">=</span><span class="s">&quot;/&quot;</span> <span class="nx">name</span><span class="p">=</span><span class="nx">f</span> <span class="nx">method</span><span class="p">=</span><span class="s">&quot;GET&quot;</span><span class="p">&gt;&lt;</span><span class="nx">input</span> <span class="nx">maxLength</span><span class="p">=</span><span class="mi">1024</span> <span class="nx">size</span><span class="p">=</span><span class="mi">70</span>
+<span class="nx">name</span><span class="p">=</span><span class="nx">s</span> <span class="nx">value</span><span class="p">=</span><span class="s">&quot;&quot;</span> <span class="nx">title</span><span class="p">=</span><span class="s">&quot;Text to QR Encode&quot;</span><span class="p">&gt;&lt;</span><span class="nx">input</span> <span class="kd">type</span><span class="p">=</span><span class="nx">submit</span>
+<span class="nx">value</span><span class="p">=</span><span class="s">&quot;Show QR&quot;</span> <span class="nx">name</span><span class="p">=</span><span class="nx">qr</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">form</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="o">/</span><span class="nx">html</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<h3>6 Your Django framework would not crash</h3>
+<p>Go heavily relies on static code analysis. Examples include <a href="https://golang.org/doc/">godoc</a> for documentation, <a href="https://golang.org/cmd/gofmt/">gofmt</a> for code formatting, <a href="https://github.com/golang/lint">golint</a> for code style linting, and many others.</p>
+<p>Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.</p>
+<h3>7 Fun Factor</h3>
+<p>Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn and easy to write!</p>
+<hr />
+<h2>Some Resources to Learn Go</h2>
+<ul>
+<li>Start with the <a href="https://golang.org/">official documentation</a>.</li>
+<li>Take a look at <a href="https://gobyexample.com/">Go by Example</a>.</li>
+<li>Take a <a href="https://tour.golang.org/welcome/1">tour through Go</a>.</li>
+<li>Subscribe to <a href="https://golangweekly.com/">Go weekly</a>.</li>
+<li>Check <a href="https://www.reddit.com/r/golang">Reddit's channel</a>.</li>
+<li>Watch some <a href="https://www.youtube.com/channel/UC_BzFbxG2za3bp5NRRRXJSw">JustForFunc videos</a>.</li>
+</ul>
+<hr />
+<p><strong>Love, Gratitude &amp; Peace 🌺,</strong></p>
+<p><strong>The Byt3girl</strong></p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

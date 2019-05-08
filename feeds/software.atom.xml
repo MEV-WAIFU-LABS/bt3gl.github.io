@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/software.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-04-02T05:00:00-04:00</updated><entry><title>Go is Awesome</title><link href="http://bt3gl.github.io/go-is-awesome.html" rel="alternate"></link><updated>2019-04-02T05:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-04-02:go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/software.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-04-02T05:00:00-04:00</updated><entry><title>7 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/7-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2019-04-02T05:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-04-02:7-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;For years, I have been advocating &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;Python as the most useful language we have&lt;/a&gt;. Only recently, I have been shifting my mind a little to another awesome language: &lt;a href="https://golang.org/"&gt;Golang, also know as Go&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++), while containing many features of modern languages.&lt;/p&gt;
 &lt;h3&gt;1 It Compiles Into a Single Binary&lt;/h3&gt;
@@ -42,7 +42,7 @@
 
 &lt;p&gt;Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.&lt;/p&gt;
 &lt;p&gt;In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (by using &lt;code&gt;channel&lt;/code&gt;: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.&lt;/p&gt;
-&lt;h3&gt;7 You Don’t Need a Web Framework&lt;/h3&gt;
+&lt;h3&gt;5 You Don’t Need a Web Framework&lt;/h3&gt;
 &lt;p&gt;Go has &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;json&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt; templating built in language natively and you can build very complex API services very easily.&lt;/p&gt;
 &lt;p&gt;For instance, you can spin up a webpage this easy (check it out yourself!):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;
@@ -93,12 +93,13 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h3&gt;8 Your Django framework would not crash&lt;/h3&gt;
+&lt;h3&gt;6 Your Django framework would not crash&lt;/h3&gt;
 &lt;p&gt;Go heavily relies on static code analysis. Examples include &lt;a href="https://golang.org/doc/"&gt;godoc&lt;/a&gt; for documentation, &lt;a href="https://golang.org/cmd/gofmt/"&gt;gofmt&lt;/a&gt; for code formatting, &lt;a href="https://github.com/golang/lint"&gt;golint&lt;/a&gt; for code style linting, and many others.&lt;/p&gt;
 &lt;p&gt;Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.&lt;/p&gt;
-&lt;h3&gt;8 Fun Factor&lt;/h3&gt;
-&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  &lt;/p&gt;
-&lt;h2&gt;Resources to Learn Go&lt;/h2&gt;
+&lt;h3&gt;7 Fun Factor&lt;/h3&gt;
+&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn and easy to write!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Some Resources to Learn Go&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Start with the &lt;a href="https://golang.org/"&gt;official documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Take a look at &lt;a href="https://gobyexample.com/"&gt;Go by Example&lt;/a&gt;.&lt;/li&gt;
@@ -106,7 +107,6 @@
 &lt;li&gt;Subscribe to &lt;a href="https://golangweekly.com/"&gt;Go weekly&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Check &lt;a href="https://www.reddit.com/r/golang"&gt;Reddit's channel&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Watch some &lt;a href="https://www.youtube.com/channel/UC_BzFbxG2za3bp5NRRRXJSw"&gt;JustForFunc videos&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Try it!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
