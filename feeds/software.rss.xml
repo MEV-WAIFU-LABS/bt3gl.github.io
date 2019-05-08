@@ -3,21 +3,22 @@
 &lt;p&gt;I still remember, back in 2015 at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt;, when I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
 &lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;released a year ago by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;It runs as a binary in your local machine (e.g. easily install with &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;brew&lt;/a&gt;, etc.).&lt;/li&gt;
+&lt;li&gt;It runs as a binary in your local machine (e.g. &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
 &lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
 &lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
 &lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
 &lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same &lt;code&gt;skaffold.yaml&lt;/code&gt; file to do deployments to your clusters in your continuous deployment system.&lt;/li&gt;
+&lt;li&gt;In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local development workflow on Minikube/Docker-for-Desktop) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:&lt;/li&gt;
+&lt;li&gt;Build container images (either locally or remotely),&lt;/li&gt;
+&lt;li&gt;Push container images (unless the target is local cluster),&lt;/li&gt;
+&lt;li&gt;Update Kubernetes manifests with the correct image tags,&lt;/li&gt;
+&lt;li&gt;Deploy your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;Stream logs from the deployed/running Pods,&lt;/li&gt;
+&lt;li&gt;Watch for changes in the source code or Kubernetes manifests, and repeat 1-5&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;This is possible because different parts of Skaffold are exposed through different commands:
-* In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local development workflow on Minikube/Docker-for-Desktop) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:
-    1. Build container images (either locally or remotely),
-    2. Push container images (unless the target is local cluster),
-    3. Update Kubernetes manifests with the correct image tags,
-    4. Deploy your application with &lt;code&gt;kubectl apply&lt;/code&gt;,
-    5. Stream logs from the deployed/running Pods.
-    6 Watch for changes in the source code or Kubernetes manifests, and repeat 1-5&lt;/p&gt;
+&lt;p&gt;Cool, right? :)&lt;/p&gt;
+&lt;hr /&gt;
 &lt;h3&gt;Some references&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://skaffold.dev/."&gt;Official documentation&lt;/a&gt;&lt;/li&gt;

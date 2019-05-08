@@ -113,21 +113,22 @@
 <p>I still remember, back in 2015 at <a href="https://engineeringblog.yelp.com/">Yelp</a>, when I learned about <a href="https://docs.docker.com/compose/">Docker Compose</a>. It was beautiful, like magic.</p>
 <p>It kinda felt the same when I recently found out about <a href="https://skaffold.dev/">Skaffold</a>, a command line tool <a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes">released a year ago by Google</a>, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. Check this out:</p>
 <ul>
-<li>It runs as a binary in your local machine (e.g. easily install with <a href="https://formulae.brew.sh/formula/skaffold">brew</a>, etc.).</li>
+<li>It runs as a binary in your local machine (e.g. <a href="https://formulae.brew.sh/formula/skaffold">easy install with brew</a>, etc.).</li>
 <li>It uses <code>yaml</code> configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.</li>
 <li>These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.</li>
 <li>Skaffold <strong>watches your local development directory for filesystem changes</strong> and automatically builds and deploy your application to any local or remote Kubernetes cluster.</li>
 <li>It is integrated to <code>kubectl</code> and <a href="https://cloud.google.com/gcp">GCP</a>.</li>
 <li>Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same <code>skaffold.yaml</code> file to do deployments to your clusters in your continuous deployment system.</li>
+<li>In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:</li>
+<li>Build container images (either locally or remotely),</li>
+<li>Push container images (unless the target is local cluster),</li>
+<li>Update Kubernetes manifests with the correct image tags,</li>
+<li>Deploy your application with <code>kubectl apply</code>,</li>
+<li>Stream logs from the deployed/running Pods,</li>
+<li>Watch for changes in the source code or Kubernetes manifests, and repeat 1-5</li>
 </ul>
-<p>This is possible because different parts of Skaffold are exposed through different commands:
-* In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:
-    1. Build container images (either locally or remotely),
-    2. Push container images (unless the target is local cluster),
-    3. Update Kubernetes manifests with the correct image tags,
-    4. Deploy your application with <code>kubectl apply</code>,
-    5. Stream logs from the deployed/running Pods.
-    6 Watch for changes in the source code or Kubernetes manifests, and repeat 1-5</p>
+<p>Cool, right? :)</p>
+<hr />
 <h3>Some references</h3>
 <ul>
 <li><a href="https://skaffold.dev/.">Official documentation</a></li>
