@@ -114,7 +114,7 @@
 <p>It kinda felt the same when I recently found out about <a href="https://skaffold.dev/">Skaffold</a>, a tool released by Google a yar ago, and designed to make local Kubernetes development very easy! </p>
 <p>It's kinda like a command line utility that allows for iterative local development against a Kubernetes cluster. Check this out:</p>
 <ul>
-<li>It runs as a binary in your local machine.</li>
+<li>It runs as a binary in your local machine (e.g. easily install with <a href="https://formulae.brew.sh/formula/skaffold">brew</a>, etc.).</li>
 <li>It uses <code>yaml</code> configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.</li>
 <li>These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.</li>
 <li>Skaffold <strong>watches your local development directory for filesystem changes</strong> and automatically builds and deploy your application to any local or remote Kubernetes cluster.</li>
