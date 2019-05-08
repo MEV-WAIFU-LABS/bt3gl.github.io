@@ -87,7 +87,7 @@ value="Show QR" name=qr&gt;
 &lt;/html&gt;
 ```&lt;/p&gt;
 &lt;h3&gt;8 Your Django framework would not crash&lt;/h3&gt;
-&lt;p&gt;Go heavily relies on static code analysis. Examples include &lt;a href=""&gt;godoc&lt;/a&gt; for documentation, &lt;a href=""&gt;gofmt&lt;/a&gt; for code formatting, &lt;a href=""&gt;golint&lt;/a&gt; for code style linting, and many others.&lt;/p&gt;
+&lt;p&gt;Go heavily relies on static code analysis. Examples include &lt;a href="https://golang.org/doc/"&gt;godoc&lt;/a&gt; for documentation, &lt;a href="https://golang.org/cmd/gofmt/"&gt;gofmt&lt;/a&gt; for code formatting, &lt;a href="https://github.com/golang/lint"&gt;golint&lt;/a&gt; for code style linting, and many others.&lt;/p&gt;
 &lt;p&gt;Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.&lt;/p&gt;
 &lt;h3&gt;8 Fun Factor&lt;/h3&gt;
 &lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  &lt;/p&gt;
