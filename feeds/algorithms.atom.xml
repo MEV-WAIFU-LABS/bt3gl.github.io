@@ -9,7 +9,7 @@
 &lt;p&gt;Type system is really important for large scale applications. Python is great and fun language but sometimes you are just getting unusual exceptions because trying to use variable as an integer but it turning out that it’s a string.&lt;/p&gt;
 &lt;h3&gt;3 Django will crash process because of this&lt;/h3&gt;
 &lt;p&gt;Go will let you know about this issue during compile time as a compiler error.&lt;/p&gt;
-&lt;h3&gt;4 Performance and Goroutine&lt;/h3&gt;
+&lt;h3&gt;4 Performance and Goroutines&lt;/h3&gt;
 &lt;p&gt;Go tends to perform better because of his concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.&lt;/p&gt;
 &lt;h3&gt;5 You Don’t Need Web Framework&lt;/h3&gt;
 &lt;p&gt;Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.&lt;/p&gt;
@@ -19,6 +19,9 @@
 &lt;ul&gt;
 &lt;li&gt;Start with the &lt;a href="https://golang.org/"&gt;official documentation&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Take a look at &lt;a href="https://gobyexample.com/"&gt;Go by Example&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Subscribe to &lt;a href="https://golangweekly.com/"&gt;Go weekly&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Check &lt;a href="https://www.reddit.com/r/golang"&gt;Reddit's channel&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Try it!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
