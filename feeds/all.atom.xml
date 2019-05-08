@@ -15,7 +15,7 @@
 &lt;h3&gt;5 You Don’t Need Web Framework&lt;/h3&gt;
 &lt;p&gt;Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.&lt;/p&gt;
 &lt;h3&gt;6 Fun Factor&lt;/h3&gt;
-&lt;p&gt;Go is quick to learn, easy to write and just fun!  You should give it a swirl ;)&lt;/p&gt;
+&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  &lt;/p&gt;
 &lt;h2&gt;Resources to Learn Go&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Start with the &lt;a href="https://golang.org/"&gt;official documentation&lt;/a&gt;.&lt;/li&gt;
