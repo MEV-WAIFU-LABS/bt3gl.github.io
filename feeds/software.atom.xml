@@ -97,7 +97,8 @@
 &lt;p&gt;Go heavily relies on static code analysis. Examples include &lt;a href="https://golang.org/doc/"&gt;godoc&lt;/a&gt; for documentation, &lt;a href="https://golang.org/cmd/gofmt/"&gt;gofmt&lt;/a&gt; for code formatting, &lt;a href="https://github.com/golang/lint"&gt;golint&lt;/a&gt; for code style linting, and many others.&lt;/p&gt;
 &lt;p&gt;Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.&lt;/p&gt;
 &lt;h3&gt;7 Fun Factor&lt;/h3&gt;
-&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn and easy to write!&lt;/p&gt;
+&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn and easy to write!
+Plus many of cool stuff has been written in Go, such as &lt;a href="https://www.docker.com"&gt;Docker&lt;/a&gt;, &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;, and &lt;a href="https://www.terraform.io/"&gt;Terraform&lt;/a&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Some Resources to Learn Go&lt;/h2&gt;
 &lt;ul&gt;
