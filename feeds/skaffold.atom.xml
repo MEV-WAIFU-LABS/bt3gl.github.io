@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/skaffold.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-04-05T05:00:00-04:00</updated><entry><title>Forget Docker Compose, you want Skaffold</title><link href="http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html" rel="alternate"></link><updated>2019-04-05T05:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-04-05:forget-docker-compose-you-want-skaffold.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;I still remember, back in 2015, when I was at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt; and I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
+&lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Skaffold is tool designed to make local Kubernetes development very easy! Check this out:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It runs as a binary in your local machine.&lt;/li&gt;
+&lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
+&lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
+&lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
+&lt;li&gt;It makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application.&lt;/li&gt;
+&lt;li&gt;By default, it will automatically stream the logs from the pod(s).&lt;/li&gt;
+&lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Some references&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/."&gt;Official documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is."&gt;GCP documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Love, Gratitude &amp;amp; Peace 🌺,&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Byt3girl&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry></feed>

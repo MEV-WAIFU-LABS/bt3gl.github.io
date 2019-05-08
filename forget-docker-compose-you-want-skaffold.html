@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Forget Docker Compose, you want Skaffold</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Forget Docker Compose, you want Skaffold">
+                                        Forget Docker Compose, you want Skaffold
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-04-05T05:00:00">
+      Fri 05 April 2019 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/software.html"><i class="icon-folder-open"></i>software</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/docker.html"><i class="icon-tag"></i>docker</a>
+	<a href="./tag/microservices.html"><i class="icon-tag"></i>microservices</a>
+	<a href="./tag/skaffold.html"><i class="icon-tag"></i>skaffold</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/" width="390px" /></p>
+<p>I still remember, back in 2015, when I was at <a href="https://engineeringblog.yelp.com/">Yelp</a> and I learned about <a href="https://docs.docker.com/compose/">Docker Compose</a>. It was beautiful, like magic.</p>
+<p>It kinda felt the same when I recently found out about <a href="https://skaffold.dev/">Skaffold</a>.</p>
+<p>Skaffold is tool designed to make local Kubernetes development very easy! Check this out:</p>
+<ul>
+<li>It runs as a binary in your local machine.</li>
+<li>It uses <code>yaml</code> configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.</li>
+<li>These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.</li>
+<li>Skaffold <strong>watches your local development directory for filesystem changes</strong> and automatically builds and deploy your application to any local or remote Kubernetes cluster.</li>
+<li>It makes development very easy: all you need to do is run <code>skaffold dev</code> to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application.</li>
+<li>By default, it will automatically stream the logs from the pod(s).</li>
+<li>It is integrated to <code>kubectl</code> and <a href="https://cloud.google.com/gcp">GCP</a>.</li>
+</ul>
+<h3>Some references</h3>
+<ul>
+<li><a href="https://skaffold.dev/.">Official documentation</a></li>
+<li><a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is.">GCP documentation</a></li>
+<li><a href="https://github.com/GoogleContainerTools/skaffold">Github repository with examples</a>.</li>
+</ul>
+<hr />
+<p><strong>Love, Gratitude &amp; Peace 🌺,</strong></p>
+<p><strong>The Byt3girl</strong></p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

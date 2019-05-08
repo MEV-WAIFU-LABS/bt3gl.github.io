@@ -84,6 +84,44 @@
       <div class="row">
         <div class="span9" id="content">
         <div class="article">
+                <h1><a href="./functional-python-stuff-super-quick.html">Functional Python Stuff Super Quick</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2015-03-01T00:00:00">
+      Sun 01 March 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><h3>Python has <strong>First Class Functions</strong></h3>
+<div class="highlight"><pre><span class="n">def</span> <span class="n">create_adder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">def</span> <span class="n">adder</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">adder</span>
+</pre></div>
+
+
+<p>Such that:</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span> <span class="o">=</span> <span class="n">create_adder</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add_10</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  
+<span class="mi">13</span>
+</pre></div>
+
+
+<h3>Python has <strong>Anonymous Functions</strong></h3>
+<div class="highlight"><pre><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="n">True</span>
+</pre></div>
+
+
+<h3>Python has Built-in <strong>Higher Order Functions</strong></h3>
+<div class="highlight"><pre><span class="n">map</span><span class="p">(</span><span class="n">add_10</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>   <span class="err">#</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">filter</span><span class="p">(</span><span class="n">lambda ...</span></pre></div>
+                        <a class="btn primary xsmall" href="./functional-python-stuff-super-quick.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
                 <h1><a href="./getting-started-with-lamp-and-codeigniter.html">Getting started with LAMP and CodeIgniter</a></h1>
                 <div class="well small"><footer class="post-info">
 <abbr class="published" title="2015-02-25T00:00:00">
@@ -297,34 +335,6 @@
                 <div class="summary"><p>This is the second post based on my readings from <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>. Yesterday I talked about Python's <a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html">socket module</a> and today I'm talking about the <a href="http://www.paramiko.org/">paramiko</a> module.</p>
 <p><strong>Paramiko</strong> is awesome!!! It uses my dear <a href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> to give us access to the <a href="http://en.wikipedia.org/wiki/SSH2">SSH2 protocol</a>, and it has a ...</p>
                         <a class="btn primary xsmall" href="./black-hat-python-the-paramiko-module.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./black-hat-python-networking-the-socket-module.html">Black Hat Python Networking: The Socket Module</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-12-10T00:00:00">
-      Wed 10 December 2014 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/networking.html"><i class="icon-folder-open"></i>Networking</a>
-
-
-<span class="label">Tags</span>
-	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
-	<a href="./tag/netcat.html"><i class="icon-tag"></i>netcat</a>
-	<a href="./tag/socket.html"><i class="icon-tag"></i>socket</a>
-	<a href="./tag/threading.html"><i class="icon-tag"></i>threading</a>
-	<a href="./tag/subprocess.html"><i class="icon-tag"></i>subprocess</a>
-	<a href="./tag/udp.html"><i class="icon-tag"></i>UDP</a>
-	<a href="./tag/tcp.html"><i class="icon-tag"></i>TCP</a>
-	<a href="./tag/book.html"><i class="icon-tag"></i>Book</a>
-	<a href="./tag/getopt.html"><i class="icon-tag"></i>getopt</a>
-	<a href="./tag/proxy.html"><i class="icon-tag"></i>proxy</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>Last week I got my copy of <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>, the new <a href="https://twitter.com/jms_dot_py">Justin Seitz</a>'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!</p>
-<p>I have been wanting to write about Python's network resources for a while and now this is my chance ...</p>
-                        <a class="btn primary xsmall" href="./black-hat-python-networking-the-socket-module.html">more ...</a>
                 </div>
         </div>
         <hr />
