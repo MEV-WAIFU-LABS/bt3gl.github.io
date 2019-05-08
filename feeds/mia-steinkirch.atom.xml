@@ -7,14 +7,32 @@
 &lt;p&gt;Golang built as a compiled language and using static linking it actually combining all dependency libraries and modules into one single binary file based on OS type and architecture. Which means if you are compiling your backend application on your laptop with Linux X86 CPU you can just upload compiled binary into server and it will work, without installing any dependencies.&lt;/p&gt;
 &lt;h3&gt;2 Static Type System&lt;/h3&gt;
 &lt;p&gt;Type system is really important for large scale applications. Python is great and fun language but sometimes you are just getting unusual exceptions because trying to use variable as an integer but it turning out that it’s a string.&lt;/p&gt;
-&lt;h3&gt;3 Django will crash process because of this&lt;/h3&gt;
-&lt;p&gt;Go will let you know about this issue during compile time as a compiler error.&lt;/p&gt;
+&lt;h3&gt;3 Pointers&lt;/h3&gt;
+&lt;p&gt;Go aims to provide a modern equivalent of C in some areas and has brought back pointers. Most modern languages do not provide pointers,but sometimes pointers help solve a lot of common issues and play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
+&lt;p&gt;For example, you can pass your data struct along functions in very clean way:&lt;/p&gt;
+&lt;p&gt;```
+type UDP_Route struct {
+    responsePacket uint8
+    service        string
+    url            string
+}&lt;/p&gt;
+&lt;p&gt;func AddRoute(routes map[uint8]*UDP_Route, requestPacket uint8, responsePacket uint8, service string, url string) {
+    routes[requestPacket] = &amp;amp;UDP_Route{service: service, responsePacket: responsePacket, url: url}
+}&lt;/p&gt;
+&lt;p&gt;func InitializeRoutes() map[uint8]&lt;em&gt;UDP_Route {
+    routes := make(map[uint8]&lt;/em&gt;UDP_Route)
+  AddRoute(routes, NEXT_PACKET_TYPE_V4_MASTER_RELAY_REPORT, NEXT_PACKET_TYPE_V4_MASTER_RELAY_RESPONSE, "database-frontend", "http://database-frontend:8000/v2/database-frontend/update")
+    return routes
+}&lt;/p&gt;
+&lt;p&gt;func UDP_Handler(routes map[uint8]&lt;em&gt;UDP_Route, ...) { 
+    var route &lt;/em&gt;UDP_Route = routes[packetType]
+````&lt;/p&gt;
 &lt;h3&gt;4 Performance and Goroutines&lt;/h3&gt;
 &lt;p&gt;Go offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the &lt;code&gt;go&lt;/code&gt; keyword before a function. &lt;/p&gt;
 &lt;p&gt;Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.&lt;/p&gt;
-&lt;h3&gt;5 You Don’t Need Web Framework&lt;/h3&gt;
+&lt;h3&gt;7 You Don’t Need Web Framework&lt;/h3&gt;
 &lt;p&gt;Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.&lt;/p&gt;
-&lt;h3&gt;6 Fun Factor&lt;/h3&gt;
+&lt;h3&gt;8 Fun Factor&lt;/h3&gt;
 &lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  &lt;/p&gt;
 &lt;h2&gt;Resources to Learn Go&lt;/h2&gt;
 &lt;ul&gt;

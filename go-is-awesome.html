@@ -117,14 +117,32 @@
 <p>Golang built as a compiled language and using static linking it actually combining all dependency libraries and modules into one single binary file based on OS type and architecture. Which means if you are compiling your backend application on your laptop with Linux X86 CPU you can just upload compiled binary into server and it will work, without installing any dependencies.</p>
 <h3>2 Static Type System</h3>
 <p>Type system is really important for large scale applications. Python is great and fun language but sometimes you are just getting unusual exceptions because trying to use variable as an integer but it turning out that it’s a string.</p>
-<h3>3 Django will crash process because of this</h3>
-<p>Go will let you know about this issue during compile time as a compiler error.</p>
+<h3>3 Pointers</h3>
+<p>Go aims to provide a modern equivalent of C in some areas and has brought back pointers. Most modern languages do not provide pointers,but sometimes pointers help solve a lot of common issues and play a far important role when it comes to memory layout and building low level system tools.</p>
+<p>For example, you can pass your data struct along functions in very clean way:</p>
+<p>```
+type UDP_Route struct {
+    responsePacket uint8
+    service        string
+    url            string
+}</p>
+<p>func AddRoute(routes map[uint8]*UDP_Route, requestPacket uint8, responsePacket uint8, service string, url string) {
+    routes[requestPacket] = &amp;UDP_Route{service: service, responsePacket: responsePacket, url: url}
+}</p>
+<p>func InitializeRoutes() map[uint8]<em>UDP_Route {
+    routes := make(map[uint8]</em>UDP_Route)
+  AddRoute(routes, NEXT_PACKET_TYPE_V4_MASTER_RELAY_REPORT, NEXT_PACKET_TYPE_V4_MASTER_RELAY_RESPONSE, "database-frontend", "http://database-frontend:8000/v2/database-frontend/update")
+    return routes
+}</p>
+<p>func UDP_Handler(routes map[uint8]<em>UDP_Route, ...) { 
+    var route </em>UDP_Route = routes[packetType]
+````</p>
 <h3>4 Performance and Goroutines</h3>
 <p>Go offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the <code>go</code> keyword before a function. </p>
 <p>Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are 10x cheaper in resources than Python Threads. So you save lots of resources (Memory, CPU) because of the built in language features.</p>
-<h3>5 You Don’t Need Web Framework</h3>
+<h3>7 You Don’t Need Web Framework</h3>
 <p>Go has http, json, html templating built in language natively and you can build very complex API services without even thinking about finding library on Github.</p>
-<h3>6 Fun Factor</h3>
+<h3>8 Fun Factor</h3>
 <p>Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn, easy to write and just fun!  </p>
 <h2>Resources to Learn Go</h2>
 <ul>
