@@ -119,14 +119,16 @@
 <li>Skaffold <strong>watches your local development directory for filesystem changes</strong> and automatically builds and deploy your application to any local or remote Kubernetes cluster.</li>
 <li>It is integrated to <code>kubectl</code> and <a href="https://cloud.google.com/gcp">GCP</a>.</li>
 <li>Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same <code>skaffold.yaml</code> file to do deployments to your clusters in your continuous deployment system.</li>
-<li>In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold can:</li>
-<li>Build container images (either locally or remotely),</li>
-<li>Push container images (unless the target is local cluster),</li>
-<li>Update Kubernetes manifests with the correct image tags,</li>
-<li>Deploy your application with <code>kubectl apply</code>,</li>
-<li>Stream logs from the deployed/running Pods,</li>
-<li>Watch for changes in the source code or Kubernetes manifests, and repeat 1-5</li>
 </ul>
+<p>In resume, Skaffold makes development very easy: all you need to do is run <code>skaffold dev</code> (local development workflow on Minikube/Docker-for-Desktop) or <code>skaffold run</code> (continuous deployment environments like Jenkins, Travis CI etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application. In this single command, Skaffold:</p>
+<ol>
+<li>builds container images (locally or remotely),</li>
+<li>pushes container images if target is not local cluster,</li>
+<li>updates Kubernetes manifests with image tags,</li>
+<li>deploys your application with <code>kubectl apply</code>,</li>
+<li>stream logs from the pods,</li>
+<li>watch for changes in the source code and Kubernetes manifests, and  then repeat 1-5.</li>
+</ol>
 <p>Cool, right? :)</p>
 <hr />
 <h3>Some references</h3>
