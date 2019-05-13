@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>tmux shortcuts & cheatsheet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to tmux shortcuts & cheatsheet">
+                                        tmux shortcuts & cheatsheet
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-11-02T07:00:00">
+      Mon 02 November 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/software.html"><i class="icon-folder-open"></i>software</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/tmux.html"><i class="icon-tag"></i>tmux</a>
+	<a href="./tag/tools.html"><i class="icon-tag"></i>tools</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /></p>
+<p>If you are not using <a href="https://github.com/tmux/tmux">tmux</a> yet, you are missing it out.
+Here soms shortcuts and configs to help you out.</p>
+<h2>Starting Sessions</h2>
+<p>start new:</p>
+<div class="highlight"><pre><span class="n">tmux</span>
+</pre></div>
+
+
+<p>start new with session name:</p>
+<div class="highlight"><pre><span class="n">tmux</span> <span class="n">new</span> <span class="o">-</span><span class="n">s</span> <span class="n">myname</span>
+</pre></div>
+
+
+<p>attach</p>
+<div class="highlight"><pre>    <span class="n">tmux</span> <span class="n">a</span>  <span class="err">#</span>  <span class="p">(</span><span class="n">or</span> <span class="n">at</span><span class="p">,</span> <span class="n">or</span> <span class="n">attach</span><span class="p">)</span>
+</pre></div>
+
+
+<p>attach to named</p>
+<div class="highlight"><pre><span class="n">tmux</span> <span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">myname</span>
+</pre></div>
+
+
+<p>ssh attach</p>
+<div class="highlight"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">A</span> <span class="n">remote_machine</span> <span class="o">-</span><span class="n">tt</span> <span class="n">agenttmux</span> <span class="n">atach</span>
+</pre></div>
+
+
+<p>list sessions</p>
+<div class="highlight"><pre><span class="n">tmux</span> <span class="n">ls</span>
+</pre></div>
+
+
+<h2>Killing sessions</h2>
+<div class="highlight"><pre><span class="n">tmux</span> <span class="n">kill</span><span class="o">-</span><span class="n">session</span> <span class="o">-</span><span class="n">t</span> <span class="n">myname</span>
+</pre></div>
+
+
+<p>kill all the tmux sessions</p>
+<div class="highlight"><pre><span class="n">tmux</span> <span class="n">ls</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">:</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span><span class="p">.</span> <span class="o">-</span><span class="n">f1</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="n">substr</span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)}</span><span class="err">&#39;</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">kill</span>
+</pre></div>
+
+
+<p>In tmux, hit the prefix <code>ctrl+b</code> (my modified prefix is ctrl+a) and then:</p>
+<h2>Inside Sessions</h2>
+<div class="highlight"><pre>    <span class="p">:</span><span class="nb">new</span><span class="o">&lt;</span><span class="nx">CR</span><span class="o">&gt;</span>  <span class="nb">new</span> <span class="nx">session</span>
+    <span class="nb">s</span>  <span class="nb">list</span> <span class="nx">sessions</span>
+    <span class="err">$</span>  <span class="nb">name</span> <span class="nx">session</span>
+</pre></div>
+
+
+<h2>Windows (tabs)</h2>
+<div class="highlight"><pre>    <span class="n">c</span>  <span class="n">new</span> <span class="n">window</span>
+    <span class="n">w</span>  <span class="n">list</span> <span class="n">windows</span>
+    <span class="n">f</span>  <span class="n">find</span> <span class="n">window</span>
+    <span class="p">,</span>  <span class="n">name</span> <span class="n">window</span>
+    <span class="o">&amp;</span>  <span class="n">kill</span> <span class="n">window</span>
+</pre></div>
+
+
+<h2>Panes (splits)</h2>
+<p>Configs from my <a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf">tmux.conf</a>:</p>
+<div class="highlight"><pre><span class="o">-</span>  <span class="nx">vertical</span> <span class="nb">split</span>
+<span class="o">|</span>  <span class="nx">horizontal</span> <span class="nb">split</span>
+
+<span class="nx">o</span>  <span class="nx">swap</span> <span class="nx">panes</span>
+<span class="nx">q</span>  <span class="nx">show</span> <span class="nx">pane</span> <span class="nx">numbers</span>
+<span class="nx">x</span>  <span class="nb">kill</span> <span class="nx">pane</span>
+<span class="o">+</span>  <span class="nx">break</span> <span class="nx">pane</span> <span class="k">into</span> <span class="n">window</span> <span class="p">(</span><span class="nx">e.g.</span> <span class="k">to</span> <span class="k">select</span> <span class="nx">text</span> <span class="k">by</span> <span class="nx">mouse</span> <span class="k">to</span> <span class="nx">copy</span><span class="p">)</span>
+<span class="o">-</span>  <span class="nx">restore</span> <span class="nx">pane</span> <span class="nb">from</span> <span class="nx">window</span>
+<span class="err">⍽</span>  <span class="nx">space</span> <span class="o">-</span> <span class="nx">toggle</span> <span class="nx">between</span> <span class="nx">layouts</span>
+<span class="o">&lt;</span><span class="nb">prefix</span><span class="o">&gt;</span> <span class="nx">q</span> <span class="p">(</span><span class="nx">Show</span> <span class="nx">pane</span> <span class="nx">numbers</span><span class="p">,</span> <span class="nx">when</span> <span class="nx">the</span> <span class="nx">numbers</span> <span class="nx">show</span> <span class="nb">up</span> <span class="k">type</span> <span class="nx">the</span> <span class="nb">key</span> <span class="k">to</span> <span class="nx">goto</span> <span class="nx">that</span> <span class="nx">pane</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">prefix</span><span class="o">&gt;</span> <span class="p">{</span> <span class="p">(</span><span class="nx">Move</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">pane</span> <span class="nb">left</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">prefix</span><span class="o">&gt;</span> <span class="p">}</span> <span class="p">(</span><span class="nx">Move</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">pane</span> <span class="nb">right</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">prefix</span><span class="o">&gt;</span> <span class="nb">z</span> <span class="nx">toggle</span> <span class="nx">pane</span> <span class="nx">zoom</span>
+</pre></div>
+
+
+<h2>Sync Panes</h2>
+<p>You can do this by switching to the appropriate window, typing your Tmux prefix (commonly Ctrl-B or Ctrl-A) and then a colon to bring up a Tmux command line, and typing:</p>
+<div class="highlight"><pre><span class="o">:</span><span class="n">setw</span> <span class="n">synchronize</span><span class="o">-</span><span class="n">panes</span>
+</pre></div>
+
+
+<p>You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. This option is specific to one window, so it won’t change the way your other sessions or windows operate. When you’re done, toggle it off again by repeating the command. <a href="http://blog.sanctum.geek.nz/sync-tmux-panes/">tip source</a></p>
+<h2>Resizing Panes</h2>
+<p>You can also resize panes if you don’t like the layout defaults. I personally rarely need to do this, though it’s handy to know how. Here is the basic syntax to resize panes:</p>
+<div class="highlight"><pre>    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="p">(</span><span class="n">By</span> <span class="k">default</span> <span class="n">it</span> <span class="n">resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">down</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">U</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">upward</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">L</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">left</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">R</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">right</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">down</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">U</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">upward</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">L</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">left</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">R</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">right</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">t</span> <span class="mi">2</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">with</span> <span class="n">the</span> <span class="n">id</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">down</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">L</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">with</span> <span class="n">the</span> <span class="n">id</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">left</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Copy mode</h2>
+<p>Pressing PREFIX [ places us in Copy mode. We can then use our movement keys to move our cursor around the screen. By default, the arrow keys work. we set our configuration file to use Vim keys for moving between windows and resizing panes so we wouldn’t have to take our hands off the home row. tmux has a vi mode for working with the buffer as well. To enable it, add this line to .tmux.conf:</p>
+<div class="highlight"><pre><span class="n">setw</span> <span class="o">-</span><span class="n">g</span> <span class="n">mode</span><span class="o">-</span><span class="n">keys</span> <span class="n">vi</span>
+</pre></div>
+
+
+<p>With this option set, we can use h, j, k, and l to move around our buffer.</p>
+<p>To get out of Copy mode, we just press the ENTER key. Moving around one character at a time isn’t very efficient. Since we enabled vi mode, we can also use some other visible shortcuts to move around the buffer.</p>
+<p>For example, we can use "w" to jump to the next word and "b" to jump back one word. And we can use "f", followed by any character, to jump to that character on the same line, and "F" to jump backwards on the line.</p>
+<div class="highlight"><pre>       <span class="n">Function</span>                <span class="n">vi</span>             <span class="n">emacs</span>
+       <span class="n">Back</span> <span class="n">to</span> <span class="n">indentation</span>     <span class="o">^</span>              <span class="n">M</span><span class="o">-</span><span class="n">m</span>
+       <span class="n">Clear</span> <span class="n">selection</span>         <span class="n">Escape</span>         <span class="n">C</span><span class="o">-</span><span class="n">g</span>
+       <span class="n">Copy</span> <span class="n">selection</span>          <span class="n">Enter</span>          <span class="n">M</span><span class="o">-</span><span class="n">w</span>
+       <span class="n">Cursor</span> <span class="n">down</span>             <span class="n">j</span>              <span class="n">Down</span>
+       <span class="n">Cursor</span> <span class="n">left</span>             <span class="n">h</span>              <span class="n">Left</span>
+       <span class="n">Cursor</span> <span class="n">right</span>            <span class="n">l</span>              <span class="n">Right</span>
+       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">bottom</span> <span class="n">line</span>   <span class="n">L</span>
+       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">middle</span> <span class="n">line</span>   <span class="n">M</span>              <span class="n">M</span><span class="o">-</span><span class="n">r</span>
+       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">top</span> <span class="n">line</span>      <span class="n">H</span>              <span class="n">M</span><span class="o">-</span><span class="n">R</span>
+       <span class="n">Cursor</span> <span class="n">up</span>               <span class="n">k</span>              <span class="n">Up</span>
+       <span class="n">Delete</span> <span class="n">entire</span> <span class="n">line</span>      <span class="n">d</span>              <span class="n">C</span><span class="o">-</span><span class="n">u</span>
+       <span class="n">Delete</span> <span class="n">to</span> <span class="n">end</span> <span class="n">of</span> <span class="n">line</span>   <span class="n">D</span>              <span class="n">C</span><span class="o">-</span><span class="n">k</span>
+       <span class="n">End</span> <span class="n">of</span> <span class="n">line</span>             <span class="err">$</span>              <span class="n">C</span><span class="o">-</span><span class="n">e</span>
+       <span class="n">Goto</span> <span class="n">line</span>               <span class="o">:</span>              <span class="n">g</span>
+       <span class="n">Half</span> <span class="n">page</span> <span class="n">down</span>          <span class="n">C</span><span class="o">-</span><span class="n">d</span>            <span class="n">M</span><span class="o">-</span><span class="n">Down</span>
+       <span class="n">Half</span> <span class="n">page</span> <span class="n">up</span>            <span class="n">C</span><span class="o">-</span><span class="n">u</span>            <span class="n">M</span><span class="o">-</span><span class="n">Up</span>
+       <span class="n">Next</span> <span class="n">page</span>               <span class="n">C</span><span class="o">-</span><span class="n">f</span>            <span class="n">Page</span> <span class="n">down</span>
+       <span class="n">Next</span> <span class="n">word</span>               <span class="n">w</span>              <span class="n">M</span><span class="o">-</span><span class="n">f</span>
+       <span class="n">Paste</span> <span class="n">buffer</span>            <span class="n">p</span>              <span class="n">C</span><span class="o">-</span><span class="n">y</span>
+       <span class="n">Previous</span> <span class="n">page</span>           <span class="n">C</span><span class="o">-</span><span class="n">b</span>            <span class="n">Page</span> <span class="n">up</span>
+       <span class="n">Previous</span> <span class="n">word</span>           <span class="n">b</span>              <span class="n">M</span><span class="o">-</span><span class="n">b</span>
+       <span class="n">Quit</span> <span class="n">mode</span>               <span class="n">q</span>              <span class="n">Escape</span>
+       <span class="n">Scroll</span> <span class="n">down</span>             <span class="n">C</span><span class="o">-</span><span class="n">Down</span> <span class="n">or</span> <span class="n">J</span>    <span class="n">C</span><span class="o">-</span><span class="n">Down</span>
+       <span class="n">Scroll</span> <span class="n">up</span>               <span class="n">C</span><span class="o">-</span><span class="n">Up</span> <span class="n">or</span> <span class="n">K</span>      <span class="n">C</span><span class="o">-</span><span class="n">Up</span>
+       <span class="n">Search</span> <span class="n">again</span>            <span class="n">n</span>              <span class="n">n</span>
+       <span class="n">Search</span> <span class="n">backward</span>         <span class="o">?</span>              <span class="n">C</span><span class="o">-</span><span class="n">r</span>
+       <span class="n">Search</span> <span class="n">forward</span>          <span class="o">/</span>              <span class="n">C</span><span class="o">-</span><span class="n">s</span>
+       <span class="n">Start</span> <span class="n">of</span> <span class="n">line</span>           <span class="mi">0</span>              <span class="n">C</span><span class="o">-</span><span class="n">a</span>
+       <span class="n">Start</span> <span class="n">selection</span>         <span class="n">Space</span>          <span class="n">C</span><span class="o">-</span><span class="n">Space</span>
+       <span class="n">Transpose</span> <span class="n">chars</span>                        <span class="n">C</span><span class="o">-</span><span class="n">t</span>
+</pre></div>
+
+
+<h2>Misc</h2>
+<div class="highlight"><pre>    <span class="n">d</span>  <span class="n">detach</span>
+    <span class="n">t</span>  <span class="n">big</span> <span class="n">clock</span>
+    <span class="o">?</span>  <span class="n">list</span> <span class="n">shortcuts</span>
+    <span class="o">:</span>  <span class="n">prompt</span>
+</pre></div>
+
+
+<h2>Configurations Options</h2>
+<div class="highlight"><pre>    <span class="err">#</span> <span class="n">Mouse</span> <span class="n">support</span> <span class="o">-</span> <span class="n">set</span> <span class="n">to</span> <span class="n">on</span> <span class="k">if</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">mouse</span>
+    <span class="o">*</span> <span class="n">setw</span> <span class="o">-</span><span class="n">g</span> <span class="n">mode</span><span class="o">-</span><span class="n">mouse</span> <span class="n">off</span>
+    <span class="o">*</span> <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">mouse</span><span class="o">-</span><span class="n">select</span><span class="o">-</span><span class="n">pane</span> <span class="n">off</span>
+    <span class="o">*</span> <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">mouse</span><span class="o">-</span><span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="n">off</span>
+    <span class="o">*</span> <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">mouse</span><span class="o">-</span><span class="n">select</span><span class="o">-</span><span class="n">window</span> <span class="n">off</span>
+
+    <span class="err">#</span> <span class="n">Set</span> <span class="n">the</span> <span class="k">default</span> <span class="n">terminal</span> <span class="n">mode</span> <span class="n">to</span> <span class="mi">256</span><span class="n">color</span> <span class="n">mode</span>
+    <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="k">default</span><span class="o">-</span><span class="n">terminal</span> <span class="s">&quot;screen-256color&quot;</span>
+
+    <span class="err">#</span> <span class="n">enable</span> <span class="n">activity</span> <span class="n">alerts</span>
+    <span class="n">setw</span> <span class="o">-</span><span class="n">g</span> <span class="n">monitor</span><span class="o">-</span><span class="n">activity</span> <span class="n">on</span>
+    <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">visual</span><span class="o">-</span><span class="n">activity</span> <span class="n">on</span>
+
+    <span class="err">#</span> <span class="n">Center</span> <span class="n">the</span> <span class="n">window</span> <span class="n">list</span>
+    <span class="n">set</span> <span class="o">-</span><span class="n">g</span> <span class="n">status</span><span class="o">-</span><span class="n">justify</span> <span class="n">centre</span>
+
+    <span class="err">#</span> <span class="n">Maximize</span> <span class="n">and</span> <span class="n">restore</span> <span class="n">a</span> <span class="n">pane</span>
+    <span class="n">unbind</span> <span class="n">Up</span> <span class="n">bind</span> <span class="n">Up</span> <span class="n">new</span><span class="o">-</span><span class="n">window</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">n</span> <span class="n">tmp</span> <span class="err">\</span><span class="p">;</span> <span class="n">swap</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">s</span> <span class="n">tmp</span><span class="mf">.1</span> <span class="err">\</span><span class="p">;</span> <span class="n">select</span><span class="o">-</span><span class="n">window</span> <span class="o">-</span><span class="n">t</span> <span class="n">tmp</span>
+    <span class="n">unbind</span> <span class="n">Down</span>
+    <span class="n">bind</span> <span class="n">Down</span> <span class="n">last</span><span class="o">-</span><span class="n">window</span> <span class="err">\</span><span class="p">;</span> <span class="n">swap</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">s</span> <span class="n">tmp</span><span class="mf">.1</span> <span class="err">\</span><span class="p">;</span> <span class="n">kill</span><span class="o">-</span><span class="n">window</span> <span class="o">-</span><span class="n">t</span> <span class="n">tmp</span>
+</pre></div>
+
+
+<hr />
+<h2>Resources:</h2>
+<ul>
+<li><a href="http://pragprog.com/book/bhtmux/tmux">tmux: Productive Mouse-Free Development</a></li>
+<li><a href="http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows">How to reorder windows</a></li>
+</ul>
+<p>Aloha, Mia</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -167,4 +167,186 @@ Plus several cool stuff has been written in Go, such as &lt;a href="https://www.
 &lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry><entry><title>tmux shortcuts &amp; cheatsheet</title><link href="http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html" rel="alternate"></link><updated>2015-11-02T07:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-11-02:tmux-shortcuts-cheatsheet.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;If you are not using &lt;a href="https://github.com/tmux/tmux"&gt;tmux&lt;/a&gt; yet, you are missing it out.
+Here soms shortcuts and configs to help you out.&lt;/p&gt;
+&lt;h2&gt;Starting Sessions&lt;/h2&gt;
+&lt;p&gt;start new:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;start new with session name:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;myname&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;attach&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;attach&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;attach to named&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;myname&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ssh attach&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ssh&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="n"&gt;remote_machine&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tt&lt;/span&gt; &lt;span class="n"&gt;agenttmux&lt;/span&gt; &lt;span class="n"&gt;atach&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;list sessions&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Killing sessions&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;session&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;myname&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;kill all the tmux sessions&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tmux&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;grep&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cut&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f1&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;awk&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;xargs&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In tmux, hit the prefix &lt;code&gt;ctrl+b&lt;/code&gt; (my modified prefix is ctrl+a) and then:&lt;/p&gt;
+&lt;h2&gt;Inside Sessions&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;new&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;CR&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;  &lt;span class="nb"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;session&lt;/span&gt;
+    &lt;span class="nb"&gt;s&lt;/span&gt;  &lt;span class="nb"&gt;list&lt;/span&gt; &lt;span class="nx"&gt;sessions&lt;/span&gt;
+    &lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="nb"&gt;name&lt;/span&gt; &lt;span class="nx"&gt;session&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Windows (tabs)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;c&lt;/span&gt;  &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt;
+    &lt;span class="n"&gt;w&lt;/span&gt;  &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;windows&lt;/span&gt;
+    &lt;span class="n"&gt;f&lt;/span&gt;  &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt;
+    &lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;  &lt;span class="n"&gt;kill&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Panes (splits)&lt;/h2&gt;
+&lt;p&gt;Configs from my &lt;a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf"&gt;tmux.conf&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt;  &lt;span class="nx"&gt;vertical&lt;/span&gt; &lt;span class="nb"&gt;split&lt;/span&gt;
+&lt;span class="o"&gt;|&lt;/span&gt;  &lt;span class="nx"&gt;horizontal&lt;/span&gt; &lt;span class="nb"&gt;split&lt;/span&gt;
+
+&lt;span class="nx"&gt;o&lt;/span&gt;  &lt;span class="nx"&gt;swap&lt;/span&gt; &lt;span class="nx"&gt;panes&lt;/span&gt;
+&lt;span class="nx"&gt;q&lt;/span&gt;  &lt;span class="nx"&gt;show&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nx"&gt;numbers&lt;/span&gt;
+&lt;span class="nx"&gt;x&lt;/span&gt;  &lt;span class="nb"&gt;kill&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt;
+&lt;span class="o"&gt;+&lt;/span&gt;  &lt;span class="nx"&gt;break&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="k"&gt;into&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e.g.&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="nx"&gt;mouse&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;-&lt;/span&gt;  &lt;span class="nx"&gt;restore&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nb"&gt;from&lt;/span&gt; &lt;span class="nx"&gt;window&lt;/span&gt;
+&lt;span class="err"&gt;⍽&lt;/span&gt;  &lt;span class="nx"&gt;space&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nx"&gt;toggle&lt;/span&gt; &lt;span class="nx"&gt;between&lt;/span&gt; &lt;span class="nx"&gt;layouts&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;q&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Show&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nx"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;when&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;numbers&lt;/span&gt; &lt;span class="nx"&gt;show&lt;/span&gt; &lt;span class="nb"&gt;up&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;key&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="nx"&gt;goto&lt;/span&gt; &lt;span class="nx"&gt;that&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Move&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;current&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nb"&gt;left&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;Move&lt;/span&gt; &lt;span class="nx"&gt;the&lt;/span&gt; &lt;span class="nx"&gt;current&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nb"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;z&lt;/span&gt; &lt;span class="nx"&gt;toggle&lt;/span&gt; &lt;span class="nx"&gt;pane&lt;/span&gt; &lt;span class="nx"&gt;zoom&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Sync Panes&lt;/h2&gt;
+&lt;p&gt;You can do this by switching to the appropriate window, typing your Tmux prefix (commonly Ctrl-B or Ctrl-A) and then a colon to bring up a Tmux command line, and typing:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;setw&lt;/span&gt; &lt;span class="n"&gt;synchronize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;panes&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. This option is specific to one window, so it won’t change the way your other sessions or windows operate. When you’re done, toggle it off again by repeating the command. &lt;a href="http://blog.sanctum.geek.nz/sync-tmux-panes/"&gt;tip source&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Resizing Panes&lt;/h2&gt;
+&lt;p&gt;You can also resize panes if you don’t like the layout defaults. I personally rarely need to do this, though it’s handy to know how. Here is the basic syntax to resize panes:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;upward&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;U&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;upward&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;PREFIX&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Resizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;cells&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Copy mode&lt;/h2&gt;
+&lt;p&gt;Pressing PREFIX [ places us in Copy mode. We can then use our movement keys to move our cursor around the screen. By default, the arrow keys work. we set our configuration file to use Vim keys for moving between windows and resizing panes so we wouldn’t have to take our hands off the home row. tmux has a vi mode for working with the buffer as well. To enable it, add this line to .tmux.conf:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;setw&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt; &lt;span class="n"&gt;vi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With this option set, we can use h, j, k, and l to move around our buffer.&lt;/p&gt;
+&lt;p&gt;To get out of Copy mode, we just press the ENTER key. Moving around one character at a time isn’t very efficient. Since we enabled vi mode, we can also use some other visible shortcuts to move around the buffer.&lt;/p&gt;
+&lt;p&gt;For example, we can use "w" to jump to the next word and "b" to jump back one word. And we can use "f", followed by any character, to jump to that character on the same line, and "F" to jump backwards on the line.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;       &lt;span class="n"&gt;Function&lt;/span&gt;                &lt;span class="n"&gt;vi&lt;/span&gt;             &lt;span class="n"&gt;emacs&lt;/span&gt;
+       &lt;span class="n"&gt;Back&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;indentation&lt;/span&gt;     &lt;span class="o"&gt;^&lt;/span&gt;              &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;
+       &lt;span class="n"&gt;Clear&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;         &lt;span class="n"&gt;Escape&lt;/span&gt;         &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;
+       &lt;span class="n"&gt;Copy&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;          &lt;span class="n"&gt;Enter&lt;/span&gt;          &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt;             &lt;span class="n"&gt;j&lt;/span&gt;              &lt;span class="n"&gt;Down&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;             &lt;span class="n"&gt;h&lt;/span&gt;              &lt;span class="n"&gt;Left&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;            &lt;span class="n"&gt;l&lt;/span&gt;              &lt;span class="n"&gt;Right&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;bottom&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;   &lt;span class="n"&gt;L&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;middle&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;   &lt;span class="n"&gt;M&lt;/span&gt;              &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;top&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;      &lt;span class="n"&gt;H&lt;/span&gt;              &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;R&lt;/span&gt;
+       &lt;span class="n"&gt;Cursor&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt;               &lt;span class="n"&gt;k&lt;/span&gt;              &lt;span class="n"&gt;Up&lt;/span&gt;
+       &lt;span class="n"&gt;Delete&lt;/span&gt; &lt;span class="n"&gt;entire&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;      &lt;span class="n"&gt;d&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;
+       &lt;span class="n"&gt;Delete&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;   &lt;span class="n"&gt;D&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;
+       &lt;span class="n"&gt;End&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;             &lt;span class="err"&gt;$&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;
+       &lt;span class="n"&gt;Goto&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;               &lt;span class="o"&gt;:&lt;/span&gt;              &lt;span class="n"&gt;g&lt;/span&gt;
+       &lt;span class="n"&gt;Half&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt;          &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;            &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;
+       &lt;span class="n"&gt;Half&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt;            &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt;            &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Up&lt;/span&gt;
+       &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;               &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;            &lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt;
+       &lt;span class="n"&gt;Next&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;               &lt;span class="n"&gt;w&lt;/span&gt;              &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;
+       &lt;span class="n"&gt;Paste&lt;/span&gt; &lt;span class="n"&gt;buffer&lt;/span&gt;            &lt;span class="n"&gt;p&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;
+       &lt;span class="n"&gt;Previous&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt;           &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;            &lt;span class="n"&gt;Page&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt;
+       &lt;span class="n"&gt;Previous&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;           &lt;span class="n"&gt;b&lt;/span&gt;              &lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;
+       &lt;span class="n"&gt;Quit&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;               &lt;span class="n"&gt;q&lt;/span&gt;              &lt;span class="n"&gt;Escape&lt;/span&gt;
+       &lt;span class="n"&gt;Scroll&lt;/span&gt; &lt;span class="n"&gt;down&lt;/span&gt;             &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;J&lt;/span&gt;    &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Down&lt;/span&gt;
+       &lt;span class="n"&gt;Scroll&lt;/span&gt; &lt;span class="n"&gt;up&lt;/span&gt;               &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Up&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;K&lt;/span&gt;      &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Up&lt;/span&gt;
+       &lt;span class="n"&gt;Search&lt;/span&gt; &lt;span class="n"&gt;again&lt;/span&gt;            &lt;span class="n"&gt;n&lt;/span&gt;              &lt;span class="n"&gt;n&lt;/span&gt;
+       &lt;span class="n"&gt;Search&lt;/span&gt; &lt;span class="n"&gt;backward&lt;/span&gt;         &lt;span class="o"&gt;?&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
+       &lt;span class="n"&gt;Search&lt;/span&gt; &lt;span class="n"&gt;forward&lt;/span&gt;          &lt;span class="o"&gt;/&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;
+       &lt;span class="n"&gt;Start&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;           &lt;span class="mi"&gt;0&lt;/span&gt;              &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;
+       &lt;span class="n"&gt;Start&lt;/span&gt; &lt;span class="n"&gt;selection&lt;/span&gt;         &lt;span class="n"&gt;Space&lt;/span&gt;          &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Space&lt;/span&gt;
+       &lt;span class="n"&gt;Transpose&lt;/span&gt; &lt;span class="n"&gt;chars&lt;/span&gt;                        &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Misc&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;d&lt;/span&gt;  &lt;span class="n"&gt;detach&lt;/span&gt;
+    &lt;span class="n"&gt;t&lt;/span&gt;  &lt;span class="n"&gt;big&lt;/span&gt; &lt;span class="n"&gt;clock&lt;/span&gt;
+    &lt;span class="o"&gt;?&lt;/span&gt;  &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;shortcuts&lt;/span&gt;
+    &lt;span class="o"&gt;:&lt;/span&gt;  &lt;span class="n"&gt;prompt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Configurations Options&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Mouse&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;setw&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mouse&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;resize&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
+    &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Set&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;terminal&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;
+    &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;terminal&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;screen-256color&amp;quot;&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="n"&gt;alerts&lt;/span&gt;
+    &lt;span class="n"&gt;setw&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;monitor&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+    &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;visual&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Center&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+    &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;justify&lt;/span&gt; &lt;span class="n"&gt;centre&lt;/span&gt;
+
+    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Maximize&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;restore&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;pane&lt;/span&gt;
+    &lt;span class="n"&gt;unbind&lt;/span&gt; &lt;span class="n"&gt;Up&lt;/span&gt; &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="n"&gt;Up&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;swap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="mf"&gt;.1&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;
+    &lt;span class="n"&gt;unbind&lt;/span&gt; &lt;span class="n"&gt;Down&lt;/span&gt;
+    &lt;span class="n"&gt;bind&lt;/span&gt; &lt;span class="n"&gt;Down&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;swap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="mf"&gt;.1&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;kill&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;tmp&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;Resources:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://pragprog.com/book/bhtmux/tmux"&gt;tmux: Productive Mouse-Free Development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows"&gt;How to reorder windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aloha, Mia&lt;/p&gt;</summary><category term="tmux"></category><category term="tools"></category></entry></feed>
