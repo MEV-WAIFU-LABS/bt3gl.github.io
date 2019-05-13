@@ -109,8 +109,8 @@
 	<a href="./tag/tools.html"><i class="icon-tag"></i>tools</a>
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /></p>
-<p>If you are not using <a href="https://github.com/tmux/tmux">tmux</a> yet, you are missing it out.
-Here soms shortcuts and configs to help you out.</p>
+<p>If you are not using <a href="https://github.com/tmux/tmux">tmux</a> yet, you are missing it out!</p>
+<p>Here some shortcuts and configs to help you to start.</p>
 <h2>Starting Sessions</h2>
 <p>start new:</p>
 <div class="highlight"><pre><span class="n">tmux</span>
@@ -193,9 +193,11 @@ Here soms shortcuts and configs to help you out.</p>
 </pre></div>
 
 
-<p>You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. This option is specific to one window, so it won’t change the way your other sessions or windows operate. When you’re done, toggle it off again by repeating the command. <a href="http://blog.sanctum.geek.nz/sync-tmux-panes/">tip source</a></p>
+<p>You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. 
+This option is specific to one window, so it won’t change the way your other sessions or windows operate.
+ When you’re done, toggle it off again by repeating the command.</p>
 <h2>Resizing Panes</h2>
-<p>You can also resize panes if you don’t like the layout defaults. I personally rarely need to do this, though it’s handy to know how. Here is the basic syntax to resize panes:</p>
+<p>You can also resize panes if you don’t like the layout defaults. I personally rarely need to do this. Here is the basic syntax to resize panes:</p>
 <div class="highlight"><pre>    <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="p">(</span><span class="n">By</span> <span class="k">default</span> <span class="n">it</span> <span class="n">resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">down</span><span class="p">)</span>
     <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">U</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">upward</span><span class="p">)</span>
     <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">L</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">left</span><span class="p">)</span>
@@ -206,49 +208,6 @@ Here soms shortcuts and configs to help you out.</p>
     <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">R</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">pane</span> <span class="n">right</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
     <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">t</span> <span class="mi">2</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">with</span> <span class="n">the</span> <span class="n">id</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">down</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
     <span class="n">PREFIX</span> <span class="o">:</span> <span class="n">resize</span><span class="o">-</span><span class="n">pane</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">L</span> <span class="mi">20</span> <span class="p">(</span><span class="n">Resizes</span> <span class="n">the</span> <span class="n">pane</span> <span class="n">with</span> <span class="n">the</span> <span class="n">id</span> <span class="n">of</span> <span class="mi">2</span> <span class="n">left</span> <span class="n">by</span> <span class="mi">20</span> <span class="n">cells</span><span class="p">)</span>
-</pre></div>
-
-
-<h2>Copy mode</h2>
-<p>Pressing PREFIX [ places us in Copy mode. We can then use our movement keys to move our cursor around the screen. By default, the arrow keys work. we set our configuration file to use Vim keys for moving between windows and resizing panes so we wouldn’t have to take our hands off the home row. tmux has a vi mode for working with the buffer as well. To enable it, add this line to .tmux.conf:</p>
-<div class="highlight"><pre><span class="n">setw</span> <span class="o">-</span><span class="n">g</span> <span class="n">mode</span><span class="o">-</span><span class="n">keys</span> <span class="n">vi</span>
-</pre></div>
-
-
-<p>With this option set, we can use h, j, k, and l to move around our buffer.</p>
-<p>To get out of Copy mode, we just press the ENTER key. Moving around one character at a time isn’t very efficient. Since we enabled vi mode, we can also use some other visible shortcuts to move around the buffer.</p>
-<p>For example, we can use "w" to jump to the next word and "b" to jump back one word. And we can use "f", followed by any character, to jump to that character on the same line, and "F" to jump backwards on the line.</p>
-<div class="highlight"><pre>       <span class="n">Function</span>                <span class="n">vi</span>             <span class="n">emacs</span>
-       <span class="n">Back</span> <span class="n">to</span> <span class="n">indentation</span>     <span class="o">^</span>              <span class="n">M</span><span class="o">-</span><span class="n">m</span>
-       <span class="n">Clear</span> <span class="n">selection</span>         <span class="n">Escape</span>         <span class="n">C</span><span class="o">-</span><span class="n">g</span>
-       <span class="n">Copy</span> <span class="n">selection</span>          <span class="n">Enter</span>          <span class="n">M</span><span class="o">-</span><span class="n">w</span>
-       <span class="n">Cursor</span> <span class="n">down</span>             <span class="n">j</span>              <span class="n">Down</span>
-       <span class="n">Cursor</span> <span class="n">left</span>             <span class="n">h</span>              <span class="n">Left</span>
-       <span class="n">Cursor</span> <span class="n">right</span>            <span class="n">l</span>              <span class="n">Right</span>
-       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">bottom</span> <span class="n">line</span>   <span class="n">L</span>
-       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">middle</span> <span class="n">line</span>   <span class="n">M</span>              <span class="n">M</span><span class="o">-</span><span class="n">r</span>
-       <span class="n">Cursor</span> <span class="n">to</span> <span class="n">top</span> <span class="n">line</span>      <span class="n">H</span>              <span class="n">M</span><span class="o">-</span><span class="n">R</span>
-       <span class="n">Cursor</span> <span class="n">up</span>               <span class="n">k</span>              <span class="n">Up</span>
-       <span class="n">Delete</span> <span class="n">entire</span> <span class="n">line</span>      <span class="n">d</span>              <span class="n">C</span><span class="o">-</span><span class="n">u</span>
-       <span class="n">Delete</span> <span class="n">to</span> <span class="n">end</span> <span class="n">of</span> <span class="n">line</span>   <span class="n">D</span>              <span class="n">C</span><span class="o">-</span><span class="n">k</span>
-       <span class="n">End</span> <span class="n">of</span> <span class="n">line</span>             <span class="err">$</span>              <span class="n">C</span><span class="o">-</span><span class="n">e</span>
-       <span class="n">Goto</span> <span class="n">line</span>               <span class="o">:</span>              <span class="n">g</span>
-       <span class="n">Half</span> <span class="n">page</span> <span class="n">down</span>          <span class="n">C</span><span class="o">-</span><span class="n">d</span>            <span class="n">M</span><span class="o">-</span><span class="n">Down</span>
-       <span class="n">Half</span> <span class="n">page</span> <span class="n">up</span>            <span class="n">C</span><span class="o">-</span><span class="n">u</span>            <span class="n">M</span><span class="o">-</span><span class="n">Up</span>
-       <span class="n">Next</span> <span class="n">page</span>               <span class="n">C</span><span class="o">-</span><span class="n">f</span>            <span class="n">Page</span> <span class="n">down</span>
-       <span class="n">Next</span> <span class="n">word</span>               <span class="n">w</span>              <span class="n">M</span><span class="o">-</span><span class="n">f</span>
-       <span class="n">Paste</span> <span class="n">buffer</span>            <span class="n">p</span>              <span class="n">C</span><span class="o">-</span><span class="n">y</span>
-       <span class="n">Previous</span> <span class="n">page</span>           <span class="n">C</span><span class="o">-</span><span class="n">b</span>            <span class="n">Page</span> <span class="n">up</span>
-       <span class="n">Previous</span> <span class="n">word</span>           <span class="n">b</span>              <span class="n">M</span><span class="o">-</span><span class="n">b</span>
-       <span class="n">Quit</span> <span class="n">mode</span>               <span class="n">q</span>              <span class="n">Escape</span>
-       <span class="n">Scroll</span> <span class="n">down</span>             <span class="n">C</span><span class="o">-</span><span class="n">Down</span> <span class="n">or</span> <span class="n">J</span>    <span class="n">C</span><span class="o">-</span><span class="n">Down</span>
-       <span class="n">Scroll</span> <span class="n">up</span>               <span class="n">C</span><span class="o">-</span><span class="n">Up</span> <span class="n">or</span> <span class="n">K</span>      <span class="n">C</span><span class="o">-</span><span class="n">Up</span>
-       <span class="n">Search</span> <span class="n">again</span>            <span class="n">n</span>              <span class="n">n</span>
-       <span class="n">Search</span> <span class="n">backward</span>         <span class="o">?</span>              <span class="n">C</span><span class="o">-</span><span class="n">r</span>
-       <span class="n">Search</span> <span class="n">forward</span>          <span class="o">/</span>              <span class="n">C</span><span class="o">-</span><span class="n">s</span>
-       <span class="n">Start</span> <span class="n">of</span> <span class="n">line</span>           <span class="mi">0</span>              <span class="n">C</span><span class="o">-</span><span class="n">a</span>
-       <span class="n">Start</span> <span class="n">selection</span>         <span class="n">Space</span>          <span class="n">C</span><span class="o">-</span><span class="n">Space</span>
-       <span class="n">Transpose</span> <span class="n">chars</span>                        <span class="n">C</span><span class="o">-</span><span class="n">t</span>
 </pre></div>
 
 
