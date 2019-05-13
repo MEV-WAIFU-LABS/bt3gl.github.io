@@ -167,7 +167,7 @@ Plus several cool stuff has been written in Go, such as &lt;a href="https://www.
 &lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 02 Dec 2018 06:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2018-12-02:8-reasons-why-go-is-awesome.html</guid><category>golang</category><category>algorithms</category><category>awesome</category></item><item><title>tmux shortcuts &amp; cheatsheet</title><link>http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 02 Dec 2018 06:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2018-12-02:8-reasons-why-go-is-awesome.html</guid><category>golang</category><category>algorithms</category><category>awesome</category></item><item><title>tmux shortcuts &amp; cheatsheet</title><link>http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/tmux.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;If you are not using &lt;a href="https://github.com/tmux/tmux"&gt;tmux&lt;/a&gt; yet, you are missing it out!&lt;/p&gt;
 &lt;p&gt;Here some shortcuts and configs to help you to start.&lt;/p&gt;
 &lt;h2&gt;Starting Sessions&lt;/h2&gt;
@@ -278,7 +278,7 @@ This option is specific to one window, so it won’t change the way your other s
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Configurations Options&lt;/h2&gt;
+&lt;h2&gt;Config Options&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Mouse&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;
     &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;setw&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mouse&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
     &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;set&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="n"&gt;mouse&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pane&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;
