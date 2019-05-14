@@ -39,7 +39,8 @@
 &lt;p&gt;A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing abstraction of a client's request and its response.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Back to my end-to-end Application&lt;/h1&gt;
-&lt;p&gt;As I mentioned in the beginning, a way to illustrate system design is to look at a real end-to-end application deployed at AWS. For the surf video clip example that I mentioned, the architecture involves API event notifications, S3 buckets, an SNS topic, an SQS queue, and a Lambda function.&lt;/p&gt;
+&lt;p&gt;A good way to illustrate system design is looking at a real end-to-end application deployed at AWS. &lt;/p&gt;
+&lt;p&gt;For the surf clips example that I mention before, the architecture involves API event notifications, S3 buckets, an SNS topic, an SQS queue, and a Lambda function.&lt;/p&gt;
 &lt;p&gt;The SQS queue stores the event for asynchronous processing (e.g. requesting certain clip edit). The Lambda function parses the event (e.g. run FFMPEG), and sends a notification message to the SNS topic (e.g. "clip is ready). A topic groups together messages of the same type which might be of interest to a set of subscribers (e.g. "video_production" for front end API):&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/aws.png" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in Terraform, in a very neat way. &lt;/p&gt;
