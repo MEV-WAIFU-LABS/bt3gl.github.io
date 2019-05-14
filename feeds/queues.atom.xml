@@ -25,12 +25,8 @@
 &lt;p&gt;Simply put, you can scale your system &lt;strong&gt;vertically&lt;/strong&gt; (e.g. adding more CPU, RAM to your existing machine), or &lt;strong&gt;horizontally&lt;/strong&gt; (adding more machines into your pool of resources).&lt;/p&gt;
 &lt;h3&gt;Database&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Do we need a relational database that is based on tabular design (e.g. MySQL) or non-relational NoSQL, which is document-based (e.g. MongoDB)?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Do we need &lt;strong&gt;Database replication&lt;/strong&gt; (e.g. the frequent copying data from a database in one server to a database in another, so that all users share the same level of information)?&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;Do we need a relational database that is based on tabular design (e.g. MySQL) or non-relational NoSQL, which is document-based (e.g. MongoDB)?&lt;/li&gt;
+&lt;li&gt;Do we need &lt;strong&gt;Database replication&lt;/strong&gt; (e.g. the frequent copying data from a database in one server to a database in another, so that all users share the same level of information)?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Caching&lt;/h3&gt;
 &lt;p&gt;There are several types of &lt;strong&gt;caches&lt;/strong&gt; that can be used in your application: &lt;strong&gt;application caching&lt;/strong&gt;, &lt;strong&gt;database caching&lt;/strong&gt;, &lt;strong&gt;in-memory caches&lt;/strong&gt;, &lt;strong&gt;global cache&lt;/strong&gt;, &lt;strong&gt;distributed cache&lt;/strong&gt;.&lt;/p&gt;
