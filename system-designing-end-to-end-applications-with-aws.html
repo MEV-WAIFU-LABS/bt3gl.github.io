@@ -157,7 +157,7 @@
 <p>The SQS queue stores the event for asynchronous processing (e.g. requesting certain clip edit). The Lambda function parses the event (e.g. run FFMPEG), and sends a notification message to the SNS topic (e.g. "clip is ready"). A topic groups together messages of the same type which might be of interest to a set of subscribers (e.g. "video_production" for front end API):</p>
 <p><img alt="cyberpunk" height="270px" src="./cyberpunk/aws.png" width="390px" /></p>
 <p>Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in <a href="https://www.terraform.io/">Terraform</a>, in a very neat way. </p>
-<p>For instance, our Lambda function would be something like:</p>
+<p>For instance, our Lambda function would be allocated by some code like:</p>
 <div class="highlight"><pre><span class="nx">resource</span> <span class="s2">&quot;aws_lambda_function&quot;</span>  <span class="p">{</span>
   <span class="n">function_name</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">FUNCTION_NAME</span><span class="o">&gt;</span>
   <span class="n">runtime</span>       <span class="o">=</span> <span class="s2">&quot;python2.7&quot;</span>
