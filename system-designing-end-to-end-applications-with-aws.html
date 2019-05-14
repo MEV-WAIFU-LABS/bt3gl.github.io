@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>System Designing End-to-end Applications with AWS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to System Designing End-to-end Applications with AWS">
+                                        System Designing End-to-end Applications with AWS
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-05-02T09:00:00">
+      Thu 02 May 2019 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/design.html"><i class="icon-folder-open"></i>design</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/aws.html"><i class="icon-tag"></i>aws</a>
+	<a href="./tag/scalability.html"><i class="icon-tag"></i>scalability</a>
+	<a href="./tag/queues.html"><i class="icon-tag"></i>queues</a>
+	<a href="./tag/lambda.html"><i class="icon-tag"></i>lambda</a>
+	<a href="./tag/sqs.html"><i class="icon-tag"></i>sqs</a>
+	<a href="./tag/mobgodb.html"><i class="icon-tag"></i>mobgodb</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/city.jpg" width="390px" /></p>
+<p><strong><a href="https://en.wikipedia.org/wiki/Systems_design">System design</a></strong> is a really interesting open-ended subject in software engineering, and the way you tackle it tends to be related to how much experience you have in the industry. Every time I learn about a new application or service, I try to imagine its design and, mostly, I love to learn when and why  my approach sometimes is off :).</p>
+<p>One of my favorite projects in my software career was when I had to implement an end-to-end application to perform some manipulations (with <a href="https://ffmpeg.org/">FFMPEG</a>) on surf video clips that were available in some cloud storage resource (say, <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">S3 buckets</a>).</p>
+<p>The app I wrote was a Python software running in <a href="https://aws.amazon.com/lambda/">AWS Lambda</a>, which would be triggered by messages from a <a href="https://aws.amazon.com/sqs/">SQS</a> queue. The lambda function would then retrieve some specific clip, trim and edit it, and then it would 1) save the new clips to a destination bucket, 2) add their metadata to a <a href="https://www.mongodb.com/">MongoDB</a> database, and 3) send a notification to a topic in a <a href="https://aws.amazon.com/sns/">SNS</a> service, so that the front end bit could pick it up.</p>
+<p><a href="https://en.wikipedia.org/wiki/Anonymous_function">Lambda functions</a> are simply awesome because they abstract several layers in your design (e.g. serverless, anonymous) and they are super easy to set up. But I am getting ahead myself, let's talk a little more about high level design!</p>
+<h1>Design: Where to start?</h1>
+<p>When we are designing a system, these are some first questions to think about:</p>
+<h2>Scope of the System</h2>
+<ul>
+<li><strong>User cases</strong>: Who is going to use it? How are they going to use it?</li>
+<li><strong>Constraints</strong> : Amount of traffic, amount of data, scale of the system such as requests per second, requests types, data written per second, data read per second, special system requirements (e.g. multi-threading, read or write oriented, etc.)?</li>
+<li><strong>High level architecture design</strong>: Application service layer, different services required, data storage layer?</li>
+<li><strong>Understanding bottlenecks</strong>: Do we need a load balancer and many instances behind it to handle user requests? Is data large enough so that you need to distribute your database on multiple machines? What are the downsides from doing that?</li>
+<li><strong>User interface</strong>: Is this a full web app, with a web interface? Or just a RESTful API?</li>
+</ul>
+<h2>Availability &amp; Reliability</h2>
+<ul>
+<li>How things can fail, especially in a distributed environment?</li>
+<li>How to design a system to cope with network failures?</li>
+<li>Should be 100% reliable? </li>
+<li>Do we need high availability? Do we need to have multiple replicas of services running in the system, so that if a few services die down the system still remains available and running? Redundancy removes the single point of failure in the system.</li>
+</ul>
+<h2>Scaling</h2>
+<p>Simply put, you can scale your system <strong>vertically</strong> (e.g. adding more CPU, RAM to your existing machine), or <strong>horizontlly</strong> (adding more machines into your pool of resources).</p>
+<h3>Database</h3>
+<p>Choose whether you will use a relational database that is based on tabular design (e.g. MySQL) or non-relational NoSQL, which is document-based (e.g. MongoDB).</p>
+<p><strong>Database replication</strong> is the frequent copying data from a database in one server to a database in another, so that all users share the same level of information. </p>
+<h3>Caching</h3>
+<p>There are several types of <strong>caches</strong> that can be used in your application: <strong>application caching</strong>, <strong>database caching</strong>, <strong>in-memory caches</strong>, <strong>global cache</strong>, <strong>distributed cache</strong>.</p>
+<p>One example of a popular open source cache is <a href="http://memcached.org/">Memcached</a> (which can work both as a local cache and distributed cache). Memcached is used in many large web sites, and even though it can be very powerful, it is simply an in-memory key value store, optimized for arbitrary data storage and fast lookups.</p>
+<h3>Load balancing</h3>
+<p><strong>Load balancers</strong> are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.</p>
+<p>Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.</p>
+<h3>Queues and Asynchronous requests</h3>
+<p><strong>Queues</strong> are a common way to bring asynchrony into you system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps achieving performance and availability.</p>
+<p>A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing abstraction of a client's request and its response.</p>
+<hr />
+<h1>Back to my end-to-end Application</h1>
+<p>As I mentioned in the beginning, a way to illustrate system design is to look at a real end-to-end application deployed at AWS. For the surf video clip example that I mentioned, the architecture involves API event notifications, S3 buckets, an SNS topic, an SQS queue, and a Lambda function.</p>
+<p>The SQS queue stores the event for asynchronous processing (e.g. requesting certain clip edit). The Lambda function parses the event (e.g. run FFMPEG), and sends a notification message to the SNS topic (e.g. "clip is ready). A topic groups together messages of the same type which might be of interest to a set of subscribers (e.g. "video_production" for front end API):</p>
+<p><img alt="cyberpunk" height="270px" src="./cyberpunk/aws.png" width="390px" /></p>
+<p>Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in Terraform, in a very neat way. </p>
+<p>For instance, our Lambda function would be something like:</p>
+<div class="highlight"><pre><span class="nx">resource</span> <span class="s2">&quot;aws_lambda_function&quot;</span>  <span class="p">{</span>
+  <span class="n">function_name</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">FUNCTION_NAME</span><span class="o">&gt;</span>
+  <span class="n">runtime</span>       <span class="o">=</span> <span class="s2">&quot;python2.7&quot;</span>
+  <span class="n">timeout</span>       <span class="o">=</span> <span class="mi">120</span>
+  <span class="n">s3_bucket</span>     <span class="o">=</span> <span class="o">&lt;</span><span class="nx">BUCKET</span> <span class="k">WHERE</span> <span class="bp">.</span><span class="nb">ZIP</span> <span class="nx">IS</span><span class="o">&gt;</span>
+  <span class="n">s3_key</span>        <span class="o">=</span> <span class="s2">&quot;${var.producer_zip}&quot;</span>
+  <span class="n">handler</span>       <span class="o">=</span> <span class="s2">&quot;&lt;CODE HANDLER&gt;</span>
+<span class="s2">  role          = &quot;</span><span class="err">$</span><span class="p">{</span><span class="nx">aws_iam_role.lambda_role.arn</span><span class="p">}</span><span class="s2">&quot;</span>
+<span class="s2">  memory_size   = 1024</span>
+
+<span class="s2">  vpc_config = {</span>
+<span class="s2">      ...</span>
+<span class="s2">  }</span>
+
+<span class="s2">  environment {</span>
+<span class="s2">    variables = {</span>
+<span class="s2">        ...</span>
+<span class="s2">    }</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+</pre></div>
+
+
+<p>Similarly, other AWS resources such as the SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have their code snippets as well:</p>
+<div class="highlight"><pre><span class="nx">resource</span> <span class="s2">&quot;aws_s3_bucket&quot;</span> <span class="p">{</span>
+  <span class="n">bucket</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">bucket_name</span><span class="o">&gt;</span>
+  <span class="n">acl</span>    <span class="o">=</span> <span class="s2">&quot;public-read&quot;</span>
+  <span class="nx">cors_rule</span> <span class="p">{</span>
+    <span class="n">allowed_headers</span> <span class="o">=</span> <span class="err">[</span><span class="s2">&quot;*&quot;</span><span class="cp">]</span>
+    allowed_methods = <span class="cp">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;HEAD&quot;</span><span class="cp">]</span>
+    allowed_origins = <span class="cp">[</span><span class="s2">&quot;*&quot;</span><span class="cp">]</span>
+    max_age_seconds = 86400
+  }
+}
+</pre></div>
+
+
+<p>Now all you need is a couple of commands (such as a <code>terraform apply</code>) and your system is set. </p>
+<p>This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where design meets code and infrastructure as a code. Pretty awesome to live in 2019.</p>
+<hr />
+<h1>Learning References</h1>
+<ul>
+<li><a href="http://www.lecloud.net/tagged/scalability">Scalability for Dummies</a></li>
+<li><a href="http://www.aosabook.org/en/distsys.html">Scalable Web Architecture and Distributed Systems</a></li>
+<li><a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html">Scalable System Design Patterns</a></li>
+<li><a href="https://medium.com/hulu-tech-blog/the-challenges-of-live-linear-video-ingest-part-one-live-versus-on-demand-system-requirements-89238f3af4f6">Hulu's "The Challenges of Live Video"</a>.</li>
+<li><a href="https://www.u-cursos.cl/usuario/f133dab21b6cbf814b4607124f431358/mi_blog/r/head_first_design_patterns.pdf">Heads First - Design Pattern</a>.</li>
+</ul>
+<hr />
+<p>Aloha,
+Mia</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
