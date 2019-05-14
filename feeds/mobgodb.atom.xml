@@ -82,7 +82,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now, all you need is a couple of commands (such as a &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
+&lt;p&gt;Now, all you need is a couple of commands (such as &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
 &lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
@@ -94,5 +94,7 @@
 &lt;li&gt;&lt;a href="https://www.u-cursos.cl/usuario/f133dab21b6cbf814b4607124f431358/mi_blog/r/head_first_design_patterns.pdf"&gt;Heads First - Design Pattern&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;Aloha,
-Mia&lt;/p&gt;</summary><category term="aws"></category><category term="scalability"></category><category term="queues"></category><category term="lambda"></category><category term="sqs"></category><category term="mobgodb"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;
+Aloha,
+Mia
+&lt;/strong&gt;&lt;/p&gt;</summary><category term="aws"></category><category term="scalability"></category><category term="queues"></category><category term="lambda"></category><category term="sqs"></category><category term="mobgodb"></category></entry></feed>

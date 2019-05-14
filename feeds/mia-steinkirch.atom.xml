@@ -82,7 +82,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now, all you need is a couple of commands (such as a &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
+&lt;p&gt;Now, all you need is a couple of commands (such as &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
 &lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
@@ -94,8 +94,10 @@
 &lt;li&gt;&lt;a href="https://www.u-cursos.cl/usuario/f133dab21b6cbf814b4607124f431358/mi_blog/r/head_first_design_patterns.pdf"&gt;Heads First - Design Pattern&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;Aloha,
-Mia&lt;/p&gt;</summary><category term="aws"></category><category term="scalability"></category><category term="queues"></category><category term="lambda"></category><category term="sqs"></category><category term="mobgodb"></category></entry><entry><title>Forget Docker Compose: You Want Skaffold</title><link href="http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html" rel="alternate"></link><updated>2019-01-05T05:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-01-05:forget-docker-compose-you-want-skaffold.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;
+Aloha,
+Mia
+&lt;/strong&gt;&lt;/p&gt;</summary><category term="aws"></category><category term="scalability"></category><category term="queues"></category><category term="lambda"></category><category term="sqs"></category><category term="mobgodb"></category></entry><entry><title>Forget Docker Compose: You Want Skaffold</title><link href="http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html" rel="alternate"></link><updated>2019-01-05T05:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-01-05:forget-docker-compose-you-want-skaffold.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;I still remember, back in 2015 at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt;, when I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
 &lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
 &lt;ul&gt;
