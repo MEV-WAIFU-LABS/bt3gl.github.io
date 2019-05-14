@@ -68,7 +68,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Similarly, other AWS resources such as the SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have their code snippets as well:&lt;/p&gt;
+&lt;p&gt;Similarly, other AWS resources such as SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have Terraform code snippets as well:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;aws_s3_bucket&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;bucket_name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
   &lt;span class="n"&gt;acl&lt;/span&gt;    &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;public-read&amp;quot;&lt;/span&gt;
@@ -82,8 +82,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now all you need is a couple of commands (such as a &lt;code&gt;terraform apply&lt;/code&gt;) and your system is set. &lt;/p&gt;
-&lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where design meets code and infrastructure as a code. Pretty awesome to live in 2019.&lt;/p&gt;
+&lt;p&gt;Now, all you need is a couple of commands (such as a &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
+&lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
 &lt;ul&gt;

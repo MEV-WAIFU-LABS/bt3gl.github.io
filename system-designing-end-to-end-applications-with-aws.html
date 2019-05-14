@@ -181,7 +181,7 @@
 </pre></div>
 
 
-<p>Similarly, other AWS resources such as the SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have their code snippets as well:</p>
+<p>Similarly, other AWS resources such as SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have Terraform code snippets as well:</p>
 <div class="highlight"><pre><span class="nx">resource</span> <span class="s2">&quot;aws_s3_bucket&quot;</span> <span class="p">{</span>
   <span class="n">bucket</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">bucket_name</span><span class="o">&gt;</span>
   <span class="n">acl</span>    <span class="o">=</span> <span class="s2">&quot;public-read&quot;</span>
@@ -195,8 +195,8 @@
 </pre></div>
 
 
-<p>Now all you need is a couple of commands (such as a <code>terraform apply</code>) and your system is set. </p>
-<p>This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where design meets code and infrastructure as a code. Pretty awesome to live in 2019.</p>
+<p>Now, all you need is a couple of commands (such as a <code>terraform apply</code>) and your system would be up and running. </p>
+<p>This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where <strong>design meets code and infrastructure as a code</strong>. Pretty awesome to live in 2019.</p>
 <hr />
 <h1>Learning References</h1>
 <ul>
