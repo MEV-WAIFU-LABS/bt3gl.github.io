@@ -43,7 +43,7 @@
 &lt;p&gt;For the surf clips example I mentioned above, the architecture involves API event notifications, S3 buckets, an SNS topic, an SQS queue, and a Lambda function.&lt;/p&gt;
 &lt;p&gt;The SQS queue stores the event for asynchronous processing (e.g. requesting certain clip edit). The Lambda function parses the event (e.g. run FFMPEG), and sends a notification message to the SNS topic (e.g. "clip is ready"). A topic groups together messages of the same type which might be of interest to a set of subscribers (e.g. "video_production" for front end API):&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/aws.png" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in Terraform, in a very neat way. &lt;/p&gt;
+&lt;p&gt;Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in &lt;a href="https://www.terraform.io/"&gt;Terraform&lt;/a&gt;, in a very neat way. &lt;/p&gt;
 &lt;p&gt;For instance, our Lambda function would be something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;aws_lambda_function&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="n"&gt;function_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FUNCTION_NAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
