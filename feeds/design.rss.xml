@@ -4,7 +4,6 @@
 &lt;p&gt;One of my favorite projects in my software career was when I had to implement an end-to-end application to perform some manipulations (with &lt;a href="https://ffmpeg.org/"&gt;FFMPEG&lt;/a&gt;) on surf video clips that were available in some cloud storage resource (say, &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html"&gt;S3 buckets&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;The app I wrote was a Python software running in &lt;a href="https://aws.amazon.com/lambda/"&gt;AWS Lambda&lt;/a&gt;, which would be triggered by messages from a &lt;a href="https://aws.amazon.com/sqs/"&gt;SQS&lt;/a&gt; queue. The lambda function would then retrieve some specific clip, trim and edit it, and then it would 1) save the new clips to a destination bucket, 2) add their metadata to a &lt;a href="https://www.mongodb.com/"&gt;MongoDB&lt;/a&gt; database, and 3) send a notification to a topic in a &lt;a href="https://aws.amazon.com/sns/"&gt;SNS&lt;/a&gt; service, so that the front end bit could pick it up.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Anonymous_function"&gt;Lambda functions&lt;/a&gt; are simply awesome because they abstract several layers in your design (e.g. serverless, anonymous) and they are super easy to set up. But I am getting ahead myself, let's talk a little more about high-level system design!&lt;/p&gt;
-&lt;h1&gt;Design: Where to start?&lt;/h1&gt;
 &lt;p&gt;When we are designing a system, these are some first questions to think about:&lt;/p&gt;
 &lt;h2&gt;Scope of the System&lt;/h2&gt;
 &lt;ul&gt;
