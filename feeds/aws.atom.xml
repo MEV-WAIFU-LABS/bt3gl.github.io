@@ -28,10 +28,10 @@
 &lt;li&gt;Do we need a &lt;strong&gt;relational database&lt;/strong&gt; that is based on tabular design (e.g. MySQL) or &lt;strong&gt;non-relational NoSQL&lt;/strong&gt;, which is document-based (e.g. MongoDB)?&lt;/li&gt;
 &lt;li&gt;Do we need &lt;strong&gt;Database replication&lt;/strong&gt; (e.g. the frequent copying data from a database in one server to a database in another, so that all users share the same level of information)?&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;Caching&lt;/h3&gt;
+&lt;h3&gt;Caching and Fast lookups&lt;/h3&gt;
 &lt;p&gt;There are several types of &lt;strong&gt;caches&lt;/strong&gt; that can be used in your application: &lt;strong&gt;application caching&lt;/strong&gt;, &lt;strong&gt;database caching&lt;/strong&gt;, &lt;strong&gt;in-memory caches&lt;/strong&gt;, &lt;strong&gt;global cache&lt;/strong&gt;, &lt;strong&gt;distributed cache&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;One example of a popular open source cache is &lt;a href="http://memcached.org/"&gt;Memcached&lt;/a&gt; (which can work both as a local cache and distributed cache). Memcached is used in many large web sites, and even though it can be very powerful, it is simply an in-memory key value store, optimized for arbitrary data storage and fast lookups.&lt;/p&gt;
-&lt;h3&gt;Load balancing&lt;/h3&gt;
+&lt;h3&gt;Load balancing and Redundancy&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Load balancers&lt;/strong&gt; are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.&lt;/p&gt;
 &lt;p&gt;Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.&lt;/p&gt;
 &lt;h3&gt;Queues and Asynchronous requests&lt;/h3&gt;

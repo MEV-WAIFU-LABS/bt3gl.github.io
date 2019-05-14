@@ -141,10 +141,10 @@
 <li>Do we need a <strong>relational database</strong> that is based on tabular design (e.g. MySQL) or <strong>non-relational NoSQL</strong>, which is document-based (e.g. MongoDB)?</li>
 <li>Do we need <strong>Database replication</strong> (e.g. the frequent copying data from a database in one server to a database in another, so that all users share the same level of information)?</li>
 </ul>
-<h3>Caching</h3>
+<h3>Caching and Fast lookups</h3>
 <p>There are several types of <strong>caches</strong> that can be used in your application: <strong>application caching</strong>, <strong>database caching</strong>, <strong>in-memory caches</strong>, <strong>global cache</strong>, <strong>distributed cache</strong>.</p>
 <p>One example of a popular open source cache is <a href="http://memcached.org/">Memcached</a> (which can work both as a local cache and distributed cache). Memcached is used in many large web sites, and even though it can be very powerful, it is simply an in-memory key value store, optimized for arbitrary data storage and fast lookups.</p>
-<h3>Load balancing</h3>
+<h3>Load balancing and Redundancy</h3>
 <p><strong>Load balancers</strong> are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.</p>
 <p>Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.</p>
 <h3>Queues and Asynchronous requests</h3>
