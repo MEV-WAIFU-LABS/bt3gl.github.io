@@ -8,7 +8,7 @@
 &lt;h2&gt;Scope of the System&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;User cases&lt;/strong&gt;: Who is going to use it? How are they going to use it?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Constraints&lt;/strong&gt; : Amount of traffic, amount of data, scale of the system such as requests per second, requests types, data written per second, data read per second, special system requirements (e.g. multi-threading, read or write oriented, etc.)?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constraints&lt;/strong&gt;: Amount of traffic, amount of data, scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write oriented, etc.)?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;High level architecture design&lt;/strong&gt;: Application service layer, different services required, data storage layer?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Understanding bottlenecks&lt;/strong&gt;: Do we need a load balancer and many instances behind it to handle user requests? Is data large enough so that you need to distribute your database on multiple machines? What are the downsides from doing that?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;User interface&lt;/strong&gt;: Is this a full web app, with a web interface? Or just a RESTful API?&lt;/li&gt;
