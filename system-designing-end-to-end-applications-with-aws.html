@@ -130,11 +130,12 @@
 <ul>
 <li>How things can fail, especially in a distributed environment?</li>
 <li>How to design a system to cope with network failures?</li>
-<li>Should be 100% reliable? </li>
-<li>Do we need high availability? Do we need to have multiple replicas of services running in the system, so that if a few services die down the system still remains available and running? Redundancy removes the single point of failure in the system.</li>
+<li>Should the system be 100% reliable? </li>
+<li>Do we need high availability? </li>
+<li>Do we need redundancy (e.g. multiple replicas of services running in the system, so that if a few services die down the system still remains available and running)?</li>
 </ul>
 <h2>Scaling</h2>
-<p>Simply put, you can scale your system <strong>vertically</strong> (e.g. adding more CPU, RAM to your existing machine), or <strong>horizontlly</strong> (adding more machines into your pool of resources).</p>
+<p>Simply put, you can scale your system <strong>vertically</strong> (e.g. adding more CPU, RAM to your existing machine), or <strong>horizontally</strong> (adding more machines into your pool of resources).</p>
 <h3>Database</h3>
 <p>Choose whether you will use a relational database that is based on tabular design (e.g. MySQL) or non-relational NoSQL, which is document-based (e.g. MongoDB).</p>
 <p><strong>Database replication</strong> is the frequent copying data from a database in one server to a database in another, so that all users share the same level of information. </p>

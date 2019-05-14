@@ -17,11 +17,12 @@
 &lt;ul&gt;
 &lt;li&gt;How things can fail, especially in a distributed environment?&lt;/li&gt;
 &lt;li&gt;How to design a system to cope with network failures?&lt;/li&gt;
-&lt;li&gt;Should be 100% reliable? &lt;/li&gt;
-&lt;li&gt;Do we need high availability? Do we need to have multiple replicas of services running in the system, so that if a few services die down the system still remains available and running? Redundancy removes the single point of failure in the system.&lt;/li&gt;
+&lt;li&gt;Should the system be 100% reliable? &lt;/li&gt;
+&lt;li&gt;Do we need high availability? &lt;/li&gt;
+&lt;li&gt;Do we need redundancy (e.g. multiple replicas of services running in the system, so that if a few services die down the system still remains available and running)?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Scaling&lt;/h2&gt;
-&lt;p&gt;Simply put, you can scale your system &lt;strong&gt;vertically&lt;/strong&gt; (e.g. adding more CPU, RAM to your existing machine), or &lt;strong&gt;horizontlly&lt;/strong&gt; (adding more machines into your pool of resources).&lt;/p&gt;
+&lt;p&gt;Simply put, you can scale your system &lt;strong&gt;vertically&lt;/strong&gt; (e.g. adding more CPU, RAM to your existing machine), or &lt;strong&gt;horizontally&lt;/strong&gt; (adding more machines into your pool of resources).&lt;/p&gt;
 &lt;h3&gt;Database&lt;/h3&gt;
 &lt;p&gt;Choose whether you will use a relational database that is based on tabular design (e.g. MySQL) or non-relational NoSQL, which is document-based (e.g. MongoDB).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Database replication&lt;/strong&gt; is the frequent copying data from a database in one server to a database in another, so that all users share the same level of information. &lt;/p&gt;
