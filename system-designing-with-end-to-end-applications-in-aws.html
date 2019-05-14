@@ -117,7 +117,7 @@
 <p>One of my favorite projects in my software career was when I had to implement an end-to-end application to perform some manipulations (with <a href="https://ffmpeg.org/">FFMPEG</a>) on surf video clips that were available in some cloud storage resource (say, <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html">S3 buckets</a>).</p>
 <p>The app I wrote was a Python software running in <a href="https://aws.amazon.com/lambda/">AWS Lambda</a>, which would be triggered by messages from an <a href="https://aws.amazon.com/sqs/">SQS</a> queue. The function would then retrieve some specific clip, trim and edit it, and then it would 1) save the new clips to a destination bucket, 2) add their metadata to a <a href="https://www.mongodb.com/">MongoDB</a> database, and 3) send a notification to a topic in an <a href="https://aws.amazon.com/sns/">SNS</a> service, so that the front end bit could pick it up.</p>
 <p><a href="https://en.wikipedia.org/wiki/Anonymous_function">Lambda functions</a> are simply awesome because they abstract several layers in your design (e.g. serverless, anonymous) and they are super easy to set up. But I am getting ahead myself, let's talk a little more about high-level system design!</p>
-<p>When we are designing a system, these are some first questions to think about:</p>
+<p>Whenever you are designing a system, these are some first questions to think about:</p>
 <h2>Scope of the System</h2>
 <ul>
 <li><strong>User cases</strong>: Who is going to use it? How are they going to use it?</li>
