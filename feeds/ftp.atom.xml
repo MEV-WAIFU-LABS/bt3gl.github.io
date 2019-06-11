@@ -19,12 +19,12 @@
 &lt;li&gt;Search for password choosing the options string and packet bytes.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Clicking on &lt;em&gt;Follow TCP Stream&lt;/em&gt; gives:
-&lt;img alt="" src="http://i.imgur.com/c61P5Aj.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/c61P5Aj.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. This is a misleading information!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4&gt;But We Were Almost There!&lt;/h4&gt;
 &lt;p&gt;Now, if we search for &lt;em&gt;flag&lt;/em&gt; we actually find something:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/knuwJFq.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/knuwJFq.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We find the packet with a file named flag! Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Solution 2: Looking for the FTP Protocols&lt;/h2&gt;
@@ -39,12 +39,12 @@
 
 
 &lt;p&gt;Cool, we found a few packets:
-&lt;img alt="" src="http://i.imgur.com/cWhiXZD.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/cWhiXZD.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Extracting the File&lt;/h2&gt;
 &lt;p&gt;Once we find the packet with any of the methods above, we right-click it selecting &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This leads to:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/LZTse2s.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/LZTse2s.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The file &lt;em&gt;flag.png&lt;/em&gt; is our flag. To extract it we  click in the &lt;em&gt;Save as&lt;/em&gt; button, then in the terminal we can use the command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
@@ -52,7 +52,7 @@ s.whatever: Zip archive data, at least v2.0 to extract
 
 
 &lt;p&gt;Awesome, so all we need is to &lt;em&gt;unzip&lt;/em&gt; this file and we get &lt;em&gt;flag.png&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
 &lt;h4&gt;Extra: Finding files with &lt;em&gt;File Signatures&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;If we don't know the name of the file we are looking for, but we know its type, we can search for its &lt;a href="http://en.wikipedia.org/wiki/File_signature"&gt;file signature&lt;/a&gt;, which can be found &lt;a href="http://en.wikipedia.org/wiki/List_of_file_signatures"&gt;here&lt;/a&gt; (a hex value).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;

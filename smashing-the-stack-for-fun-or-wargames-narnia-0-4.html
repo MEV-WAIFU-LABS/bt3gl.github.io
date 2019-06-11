@@ -122,7 +122,7 @@
 <h3>A Process' Virtual Memory</h3>
 <p>When a program starts a process, the OS kernel provides it a piece of <a href="http://en.wikipedia.org/wiki/Computer_memory">physical memory</a>. However, all that the process sees is the <a href="http://en.wikipedia.org/wiki/Virtual_memory">virtual memory space</a> and its size and starting address. Each time a process wants to read or write to physical memory, its request must be translated from a virtual memory address to a physical memory address.</p>
 <p>I like <a href="http://www.dirac.org/linux/gdb/">Peter Jay Salzman</a>'s picture showing the process' virtual memory in terms of its address.</p>
-<p><img alt="" src="http://i.imgur.com/RYEpFEA.png" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/RYEpFEA.png" /></p>
 <p>The <em>text</em> and <em>data</em> segments are the places where the program puts the code and the static data (<em>e.g</em>., global variables). This region is normally marked read-only and any attempt to write to it will result in a <a href="http://en.wikipedia.org/wiki/Segmentation_fault">segmentation violation</a>.</p>
 <p>Notice that arguments and environment variables get a special place in the top of the Stack (higher address).</p>
 <p>Although the <a href="http://en.wikipedia.org/wiki/Heap_(data_structure)">Heap</a> can be also fun to play with, for the purpose of these games, we will concentrate in the <strong>Stack</strong>. Remember, the <a href="https://stackoverflow.com/questions/664744/what-is-the-direction-of-stack-growth-in-most-modern-systems">direction of which the Stack grows</a> is system-dependent.</p>

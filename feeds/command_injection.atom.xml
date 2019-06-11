@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/command_injection.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-16T06:01:00-04:00</updated><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/command_injection.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-16T06:01:00-04:00</updated><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
 &lt;p&gt;Let the game begin.&lt;/p&gt;
@@ -174,7 +174,7 @@ this is the front page
 &lt;p&gt;Yes, we can.&lt;/p&gt;
 &lt;h3&gt;Level 9: OS Command Injection&lt;/h3&gt;
 &lt;p&gt;This level's page has a search form. If we try to submit a word, for example &lt;em&gt;secret&lt;/em&gt;, we get several variations of this word:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ZQwlqsQl.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ZQwlqsQl.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We inspect the source code:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;natas9&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -244,7 +244,7 @@ Output:
 &lt;blockquote&gt;
 &lt;p&gt;cookies are protected with XOR encryption&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/aD4CKbY.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/aD4CKbY.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Let's inspect the source code in several steps. First, we have this suspicious array:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;defaultdata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;showpassword&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;no&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;bgcolor&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -358,7 +358,7 @@ qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
 &lt;p&gt;This results in the code we need to add to the cookie. We do this through the plugin. Refreshing the page returns our password.&lt;/p&gt;
 &lt;h3&gt;Level 12: File Inclusion Attack&lt;/h3&gt;
 &lt;p&gt;This challenge starts with a JPG file uploader:
-&lt;img alt="" src="http://i.imgur.com/xcSJ5kr.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/xcSJ5kr.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Inspecting the source code, we see that the first function returns a random string of length 10:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;genRandomString&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;$length&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -465,16 +465,16 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;Then we go to the proxy tab and then options and we confirm Burp's Proxy listener is active at &lt;em&gt;127.0.0.1:8080&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/5xkHB29.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/5xkHB29.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We set the proxy configuration in our system to this address:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Back in Burp, we go to &lt;em&gt;Proxy --&amp;gt; Intercept&lt;/em&gt; and mark it ON:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
 &lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload out exploit.&lt;/p&gt;
 &lt;p&gt;Before we forward this request to the server, we open it in Burp and we change the name of the random string in &lt;em&gt;jpg&lt;/em&gt; to our &lt;em&gt;php&lt;/em&gt; exploit:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The browser will return the link for the file:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SGjbVsy.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/SGjbVsy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Clicking it will reveal the password.&lt;/p&gt;
 &lt;h3&gt;Level 13: File Inclusion Attack II&lt;/h3&gt;
 &lt;p&gt;This level looks like the previous one, except by the message:&lt;/p&gt;
@@ -518,7 +518,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;and following the previous steps, leads to the password for the next level.&lt;/p&gt;
 &lt;h3&gt;Level 14: SQL Injection&lt;/h3&gt;
 &lt;p&gt;This level starts with a &lt;em&gt;username&lt;/em&gt; and &lt;em&gt;password&lt;/em&gt; form:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qDA3nCP.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/qDA3nCP.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Looking at the source code, we see THE connection to  a MySQL server, and a SQL query to look for a record in the database:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;array_key_exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;username&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$_REQUEST&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -548,7 +548,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;http://natas14.natas.labs.overthewire.org/index.php?username=admin&amp;amp;password=pass&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;returns:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mWhSVxh.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/mWhSVxh.png" /&gt;&lt;/p&gt;
 &lt;p&gt;A crafted query using &lt;a href="https://www.owasp.org/index.php/SQL_Injection"&gt;SQL Injection&lt;/a&gt; (SQLi) can return whatever we want :).&lt;/p&gt;
 &lt;h4&gt;Crafting the attack:&lt;/h4&gt;
 &lt;p&gt;Without any injection, a regular query with words &lt;em&gt;admin&lt;/em&gt; and &lt;em&gt;pass&lt;/em&gt; would look like this:&lt;/p&gt;
@@ -578,7 +578,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;h2&gt;Now the Juice: Scripting Attacks&lt;/h2&gt;
 &lt;h3&gt;Level 15: SQL Injection II&lt;/h3&gt;
 &lt;p&gt;This level starts with a  form to check the existence of some username:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The source code is almost equal to the previous level, with exception of this part:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
@@ -678,7 +678,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;After around 10 minutes we have our password.&lt;/p&gt;
 &lt;h3&gt;Level 16: OS Command Injection III&lt;/h3&gt;
 &lt;p&gt;This level starts with a searching form:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/kMHZzZ9.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/kMHZzZ9.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The source code is similar to the 9th and 10th levels:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;pre&amp;gt;&lt;/span&gt;
 &lt;span class="err"&gt;&amp;lt;&lt;/span&gt;?
@@ -969,7 +969,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;blockquote&gt;
 &lt;p&gt;This page uses mostly the same code as the previous level, but session IDs are no longer sequential...&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/OQ7LATt.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/OQ7LATt.png" /&gt;&lt;/p&gt;
 &lt;p&gt;This time we have no access to the source code to see how the session IDs are created. However, we have access to the values in the cookie which are created by the session.&lt;/p&gt;
 &lt;p&gt;We write the following snippet:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cookie&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PHPSESSID=&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;

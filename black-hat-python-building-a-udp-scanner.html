@@ -173,10 +173,10 @@ Remember that ICMP is essentially a special control protocol that issues error r
 <h2>Decoding the IP and ICMP Layers</h2>
 <h3>The IP Header</h3>
 <p>A typical IP header has the following structure, where each field belongs to a variable (this header is originally <a href="http://minirighi.sourceforge.net/html/structip.html">written in C</a>):</p>
-<p><img alt="" src="http://i.imgur.com/3fmVLJS.jpg" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/3fmVLJS.jpg" /></p>
 <h3>The ICMP Header</h3>
 <p>In the same way, ICMP can vary in its content but each message contains three elements that are consistent: <strong>type</strong> and <strong>code</strong> (tells the receiving host what type of ICMP message is arriving for decoding) and <strong>checksum</strong> fields.</p>
-<p><img alt="" src="http://i.imgur.com/gsUPKRa.gif" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/gsUPKRa.gif" /></p>
 <p>For our scanner, we are looking for a <strong>type value of 3</strong> and a <strong>code value of 3</strong>, which are the <strong>Destination Unreachable</strong> class and <strong>Port Unreachable</strong> <a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages">errors in ICMP messages</a>.</p>
 <p>To represent this header, we create a class, with the help of Python's <a href="https://docs.python.org/2/library/ctypes.html">ctypes</a> library:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">ctypes</span>

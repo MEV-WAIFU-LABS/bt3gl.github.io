@@ -156,7 +156,7 @@ Say stars <span class="k">for </span>more
 
 
 <p>The first option <em>constellation</em>, shows a very interesting scheme:</p>
-<p><img alt="" src="http://i.imgur.com/OzVjrVh.png" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/OzVjrVh.png" /></p>
 <p>Choosing the options <strong>namestar</strong> we are able to pick a (new) name to add a key. Picking the option <strong>showstar</strong> we are able to see the key for some name (for example, for Wahkoowar, Makawee, or any new name we had added before).</p>
 <p>So, from the above scheme, we know:</p>
 <ol>
@@ -170,7 +170,7 @@ Say stars <span class="k">for </span>more
 <p>Wahkoowah and Makawee have a shared secret key. The way they share this key without knowing each other's private key is by this tricky transformation:</p>
 </li>
 </ol>
-<p><img alt="" src="http://i.imgur.com/TwxShK9.jpg" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/TwxShK9.jpg" /></p>
 <p>Notice that we can move the multiplications' modulo operation to the end, due to <a href="http://en.wikipedia.org/wiki/Modular_arithmetic#Congruence_relation">this propriety</a>.</p>
 <p>In conclusion, all we need to do is to convince Wahkoowah  that we are Makawee (by telling him we are Makawee, so he can use his public key, and by sending him a correct <em>t_m</em>). If this works, he will give us a token. Then, if we send this token to Makawee, we get our flag.</p>
 <h3>A Dialogue with Wankoowah</h3>
@@ -258,7 +258,7 @@ Disguise does not <span class="nb">help</span>
 <p>Every key in this problem is given by <em>mudulus p</em>. This means that we have infinite values that map to the same original key. My first attempt was to multiply the original key by p, so that, when it receives the modulo operation, it circles once more returning to the original value.</p>
 <p>It didn't work. The reason is that p is too large. When multiplied by the key (that is large itself) we loose precision and we don't go back to the original value. We need to keep the values in the same scale!</p>
 <p>Let's take a look again at the way the messages are generated:</p>
-<p><img alt="" src="http://i.imgur.com/Hz5uf7X.jpg" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/Hz5uf7X.jpg" /></p>
 <p>We notice that the public key is exponentiated by r_m. It means that, if r_m is an even number, two values of the public key are mapped to the same value of the final message: +pubk and -pubk.</p>
 <p>That's all we need! We are going to disguise Makawee by creating a <em>star</em> with the negative value of Wahkoowah's key.</p>
 <h3>Automatizing the Process and getting the Flag!</h3>

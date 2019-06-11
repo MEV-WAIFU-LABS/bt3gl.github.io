@@ -5,7 +5,7 @@
 &lt;hr /&gt;
 &lt;h2&gt;Level 1: Environment Variables&lt;/h2&gt;
 &lt;p&gt;When I booted the image  I got this first message:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/O9ixhUv.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/O9ixhUv.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;In the  &lt;em&gt;level01&lt;/em&gt; folder I found:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -15,7 +15,7 @@
 &lt;p&gt;The C source code of this binary:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/DgB55I8.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/DgB55I8.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Checking the code closely we notice the following lines:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;  &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Current time: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="n"&gt;fflush&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;stdout&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -505,7 +505,7 @@ chmod +x date
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/qhYyiK8.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/qhYyiK8.png" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;You can verify their sizes and where they are mounted with:&lt;/li&gt;
 &lt;/ul&gt;

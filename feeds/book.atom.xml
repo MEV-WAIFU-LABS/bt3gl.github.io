@@ -129,7 +129,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;This  is how this packet looks like in &lt;a href=""&gt;Wireshark&lt;/a&gt;:
-&lt;img alt="" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;To send the same packet over again we can simply add the &lt;strong&gt;loop=1&lt;/strong&gt; argument within the &lt;strong&gt;send&lt;/strong&gt; method:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;packet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;loop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -141,7 +141,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;Which looks like this in Wireshark:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sending &amp;amp; Receiving a Packet&lt;/h3&gt;
 &lt;p&gt;Scapy also has the ability to listen for responses to packets it sends (for example, ICMP ping requests).&lt;/p&gt;
 &lt;p&gt;As in the send method, Scapy has two types of packet sending &amp;amp; receiving, based on the network layer.&lt;/p&gt;
@@ -381,7 +381,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;p&gt;Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.&lt;/p&gt;
 &lt;p&gt;The best way to test this is using a Windows virtual machine (take a look in &lt;a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html"&gt;this guide I wrote&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Before the attack, go to the Windows box, open the terminal (&lt;code&gt;cmd&lt;/code&gt;) and check the IP and gateway IP address with&lt;code&gt;ipconfig&lt;/code&gt;. Then check the associated  ARP cache entry MAC address with &lt;code&gt;arp -a&lt;/code&gt;. We are going to use the former information and we will see the ARP data being changed:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Following is our ARP poisoning script (based on &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;). The script does the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -514,7 +514,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 
 
 &lt;p&gt;we see the changes in the victim's machine (Windows):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Now open in Wireshark the PCAP file resulting from the script. BAM! The entire traffic from the victim is in your hand!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a name="pcap"&gt;&lt;/a&gt; PCAP Processing to Find Images&lt;/h2&gt;
@@ -998,7 +998,7 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
 &lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which  contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
 &lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Client&lt;/h2&gt;
 &lt;p&gt;Let's start from the beginning. Whenever you want to create a TCP connection with the &lt;strong&gt;socket&lt;/strong&gt; module, you do two things: create a socket object and then connect to a host in some port:&lt;/p&gt;

@@ -130,12 +130,12 @@
 <li>Search for password choosing the options string and packet bytes.</li>
 </ol>
 <p>Clicking on <em>Follow TCP Stream</em> gives:
-<img alt="" src="http://i.imgur.com/c61P5Aj.png" /></p>
+<img alt="cyber" src="http://i.imgur.com/c61P5Aj.png" /></p>
 <p>Nope. This is a misleading information!</p>
 <hr />
 <h4>But We Were Almost There!</h4>
 <p>Now, if we search for <em>flag</em> we actually find something:</p>
-<p><img alt="" src="http://i.imgur.com/knuwJFq.png" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/knuwJFq.png" /></p>
 <p>We find the packet with a file named flag! Awesome.</p>
 <hr />
 <h2>Solution 2: Looking for the FTP Protocols</h2>
@@ -150,12 +150,12 @@
 
 
 <p>Cool, we found a few packets:
-<img alt="" src="http://i.imgur.com/cWhiXZD.png" /></p>
+<img alt="cyber" src="http://i.imgur.com/cWhiXZD.png" /></p>
 <p>We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.</p>
 <hr />
 <h2>Extracting the File</h2>
 <p>Once we find the packet with any of the methods above, we right-click it selecting <em>Follow TCP Stream</em>. This leads to:</p>
-<p><img alt="" src="http://i.imgur.com/LZTse2s.png" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/LZTse2s.png" /></p>
 <p>The file <em>flag.png</em> is our flag. To extract it we  click in the <em>Save as</em> button, then in the terminal we can use the command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
@@ -163,7 +163,7 @@ s.whatever: Zip archive data, at least v2.0 to extract
 
 
 <p>Awesome, so all we need is to <em>unzip</em> this file and we get <em>flag.png</em>:</p>
-<p><img alt="" src="http://i.imgur.com/WcxyITv.png" /></p>
+<p><img alt="cyber" src="http://i.imgur.com/WcxyITv.png" /></p>
 <h4>Extra: Finding files with <em>File Signatures</em></h4>
 <p>If we don't know the name of the file we are looking for, but we know its type, we can search for its <a href="http://en.wikipedia.org/wiki/File_signature">file signature</a>, which can be found <a href="http://en.wikipedia.org/wiki/List_of_file_signatures">here</a> (a hex value).</p>
 <p><strong>Hack all the Things!</strong></p>

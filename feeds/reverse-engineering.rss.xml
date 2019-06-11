@@ -6,7 +6,7 @@
 &lt;p&gt;A terrorist has changed his picture in a social network. What is the hidden message?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;And the following image:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/6NIu64us.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/6NIu64us.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;For this problem, I use &lt;a href="http://www.outguess.org/download.php"&gt;OutGuess&lt;/a&gt;, which can be installed as:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;tar -zxvf outguess-0.2.tar.gz
 &lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;outguess
@@ -31,8 +31,8 @@ We should blow up the bridge at midnight
 &lt;p&gt;Find the flag.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Together with two pictures:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/sbSwBju.jpg" /&gt;
-&lt;img alt="" src="http://i.imgur.com/mpcIKWt.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/sbSwBju.jpg" /&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/mpcIKWt.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;After the usual inspection (tail, file, diff, compare), I applied my knowledge of a former astrophysicist to inspect what would happen if I added or subtracted the picture. I wrote the following script:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 
@@ -53,7 +53,7 @@ We should blow up the bridge at midnight
 
 
 &lt;p&gt;Running it, give us the flag!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mvj8OJl.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/mvj8OJl.png" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Guess the number: Reverse Engineering&lt;/h2&gt;
 &lt;p&gt;This problem starts with another not very informative text:&lt;/p&gt;
@@ -95,7 +95,7 @@ We should blow up the bridge at midnight
 &lt;p&gt;Row Major Order&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;And it gives us two pictures: a map and a sudoku.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/U9Zq4wp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/U9Zq4wp.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We solve the sudoku and write the solution in a script to reorder the blocks:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
 
@@ -128,7 +128,7 @@ We should blow up the bridge at midnight
 
 
 &lt;p&gt;This gives us our flag:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/sA7JPrl.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/sA7JPrl.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 26 Sep 2014 04:20:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-09-26:the-sharif-university-ctf-2014.html</guid><category>CTF</category><category>Steganography</category><category>jad</category><category>OutGuess</category></item><item><title>CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</title><link>http://bt3gl.github.io/csaw-ctf-2014-reverse-engineering-100-eggshells.html</link><description>&lt;p&gt;This is the first exploitation problem and it starts with the following text:&lt;/p&gt;

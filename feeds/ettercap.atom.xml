@@ -7,7 +7,7 @@
 &lt;p&gt;Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.&lt;/p&gt;
 &lt;h2&gt;The OSI Model&lt;/h2&gt;
 &lt;p&gt;The &lt;a href="http://en.wikipedia.org/wiki/OSI_model"&gt;Open Systems Interconnection&lt;/a&gt; (OSI) model  was published in 1983 and is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/dZyiOTX.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/dZyiOTX.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Protocols are separated according to their function and the hierarchy makes it easier to understand network communication:&lt;/p&gt;
 &lt;h3&gt;Layer 1: Physical Layer&lt;/h3&gt;
 &lt;p&gt;Represents the physical and electrical medium through which the network data is transferred.&lt;/p&gt;
@@ -40,7 +40,7 @@
 &lt;h2&gt;Switches and Routers&lt;/h2&gt;
 &lt;p&gt;There are four primary ways to capture traffic from a target device on a
 &lt;strong&gt;switched&lt;/strong&gt; network: using a &lt;strong&gt;hub&lt;/strong&gt;, using a &lt;strong&gt;tap&lt;/strong&gt;, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
 &lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.&lt;/p&gt;
 &lt;hr /&gt;
@@ -73,7 +73,7 @@ router.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/IPv4"&gt;IPv4&lt;/a&gt; addresses are 32-bit addresses used to uniquely identify devices connected in a network. They are represented by the dotted-quad notation with four sets of 8 bits, represented by  decimal numbers between 0 and 255.&lt;/p&gt;
 &lt;p&gt;In addition, an IP address consists of two parts: a &lt;strong&gt;network address&lt;/strong&gt; and a &lt;strong&gt;host address&lt;/strong&gt;. The network address identifies the &lt;em&gt;local area network&lt;/em&gt; (LAN), and the host address identifies the device on that network.&lt;/p&gt;
 &lt;p&gt;The determination of these two parts is given by another set of addressing information, the &lt;strong&gt;network mask&lt;/strong&gt; (netmask or subnet mask), which is also 32 bit longs. In the netmask, every bit set to 1 identifies the portion of the IP address that belongs to the network address. Remaining bits set to 0 identify the host address:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/a7Evq9z.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/a7Evq9z.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Additionally, the IP packet header contain informations such as:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;

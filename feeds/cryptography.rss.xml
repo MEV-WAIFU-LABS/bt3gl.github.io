@@ -389,7 +389,7 @@ Say stars &lt;span class="k"&gt;for &lt;/span&gt;more
 
 
 &lt;p&gt;The first option &lt;em&gt;constellation&lt;/em&gt;, shows a very interesting scheme:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/OzVjrVh.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/OzVjrVh.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Choosing the options &lt;strong&gt;namestar&lt;/strong&gt; we are able to pick a (new) name to add a key. Picking the option &lt;strong&gt;showstar&lt;/strong&gt; we are able to see the key for some name (for example, for Wahkoowar, Makawee, or any new name we had added before).&lt;/p&gt;
 &lt;p&gt;So, from the above scheme, we know:&lt;/p&gt;
 &lt;ol&gt;
@@ -403,7 +403,7 @@ Say stars &lt;span class="k"&gt;for &lt;/span&gt;more
 &lt;p&gt;Wahkoowah and Makawee have a shared secret key. The way they share this key without knowing each other's private key is by this tricky transformation:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/TwxShK9.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/TwxShK9.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;Notice that we can move the multiplications' modulo operation to the end, due to &lt;a href="http://en.wikipedia.org/wiki/Modular_arithmetic#Congruence_relation"&gt;this propriety&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In conclusion, all we need to do is to convince Wahkoowah  that we are Makawee (by telling him we are Makawee, so he can use his public key, and by sending him a correct &lt;em&gt;t_m&lt;/em&gt;). If this works, he will give us a token. Then, if we send this token to Makawee, we get our flag.&lt;/p&gt;
 &lt;h3&gt;A Dialogue with Wankoowah&lt;/h3&gt;
@@ -491,7 +491,7 @@ Disguise does not &lt;span class="nb"&gt;help&lt;/span&gt;
 &lt;p&gt;Every key in this problem is given by &lt;em&gt;mudulus p&lt;/em&gt;. This means that we have infinite values that map to the same original key. My first attempt was to multiply the original key by p, so that, when it receives the modulo operation, it circles once more returning to the original value.&lt;/p&gt;
 &lt;p&gt;It didn't work. The reason is that p is too large. When multiplied by the key (that is large itself) we loose precision and we don't go back to the original value. We need to keep the values in the same scale!&lt;/p&gt;
 &lt;p&gt;Let's take a look again at the way the messages are generated:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/Hz5uf7X.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/Hz5uf7X.jpg" /&gt;&lt;/p&gt;
 &lt;p&gt;We notice that the public key is exponentiated by r_m. It means that, if r_m is an even number, two values of the public key are mapped to the same value of the final message: +pubk and -pubk.&lt;/p&gt;
 &lt;p&gt;That's all we need! We are going to disguise Makawee by creating a &lt;em&gt;star&lt;/em&gt; with the negative value of Wahkoowah's key.&lt;/p&gt;
 &lt;h3&gt;Automatizing the Process and getting the Flag!&lt;/h3&gt;
@@ -878,7 +878,7 @@ ASIS
 &lt;p&gt;Hack all the things! (:&lt;/p&gt;
 &lt;hr /&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 13 Oct 2014 02:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-10-13:on-paillier-ciphersystem-binary-search-and-the-asis-ctf-2014.html</guid><category>CTF</category><category>Paillier</category><category>Python</category><category>Binary_Search</category><category>Oracle</category><category>Decimal</category></item><item><title>Cryptography War: Beating Krypton</title><link>http://bt3gl.github.io/cryptography-war-beating-krypton.html</link><description>&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/nZqQILK.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 13 Oct 2014 02:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2014-10-13:on-paillier-ciphersystem-binary-search-and-the-asis-ctf-2014.html</guid><category>CTF</category><category>Paillier</category><category>Python</category><category>Binary_Search</category><category>Oracle</category><category>Decimal</category></item><item><title>Cryptography War: Beating Krypton</title><link>http://bt3gl.github.io/cryptography-war-beating-krypton.html</link><description>&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/nZqQILK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;Continuing to talk about&lt;/a&gt; the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I'll briefly go through &lt;a href="http://overthewire.org/wargames/krypton/"&gt;Krypton&lt;/a&gt;, the cryptography episode.&lt;/p&gt;
 &lt;p&gt;The problems are very straightforward and very similar to those from the last &lt;a href="https://ctf.isis.poly.edu/"&gt;CSAW CTF&lt;/a&gt; (&lt;a href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200.html"&gt;see my post here&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: if you haven't played WarGames but you are planing to, PLEASE DON'T READY ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.&lt;/p&gt;

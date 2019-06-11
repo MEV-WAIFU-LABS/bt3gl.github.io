@@ -115,8 +115,8 @@ secretspace.com.    285 IN  A   72.167.232.29
 &lt;p&gt;The IP 72.167.232.29  leads to another generic page with no hints and with nothing in special in the source code. Wrong direction...&lt;/p&gt;
 &lt;p&gt;All right, let's give a last try and open the tables from the MySQL dump file inside a nice GUI. I use &lt;a href="http://www.phpmyadmin.net/home_page/index.php"&gt;phpMyAdmin&lt;/a&gt;, which I showed how to install and to configure in my tutorial about setting up a &lt;a href="https://coderwall.com/p/syyk0g?i=5&amp;amp;p=1&amp;amp;q=author%3Abt3gl&amp;amp;t%5B%5D=bt3gl"&gt;LAMP server&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We open &lt;code&gt;localhost/phpmyadmin&lt;/code&gt; in our browser. First we go  to &lt;em&gt;Databases&lt;/em&gt; and then &lt;em&gt;Create Database&lt;/em&gt; with any name we want. Then we  &lt;em&gt;Import&lt;/em&gt; &lt;code&gt;`mysql_backup.sql&lt;/code&gt; to this database. All the tables are loaded. Let's use the &lt;em&gt;Search&lt;/em&gt; option to look for &lt;em&gt;key&lt;/em&gt; or &lt;em&gt;flag&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/tVOY1VJ.png" /&gt;
-&lt;img alt="" src="http://i.imgur.com/jY7CbLZ.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/tVOY1VJ.png" /&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/jY7CbLZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. Nothing in special. By the way, &lt;code&gt;`default_pingback_flag1&lt;/code&gt; is just a &lt;strong&gt;Wordpress&lt;/strong&gt; flag indicating the default status of ping backs when new blog posts are published.&lt;/p&gt;
 &lt;p&gt;Let's continue our search. If we look  inside each of the tables we find:&lt;/p&gt;
 &lt;ul&gt;
@@ -125,7 +125,7 @@ secretspace.com.    285 IN  A   72.167.232.29
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Oh, wait! We found a hashed password!
-&lt;img alt="" src="http://i.imgur.com/FiQONze.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/FiQONze.png" /&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
@@ -363,7 +363,7 @@ Saving to: ‘analytics.js’
 
 
 &lt;p&gt;Opening the URL leads to this picture:
-&lt;img alt="" src="http://i.imgur.com/CNEQhfG.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/CNEQhfG.png" /&gt;&lt;/p&gt;
 &lt;p&gt;LOL. Funny, but no flag yet...&lt;/p&gt;
 &lt;p&gt;It should be in the PDF somewhere!&lt;/p&gt;
 &lt;hr /&gt;
@@ -499,7 +499,7 @@ obj 8 0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/b03EehK.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/b03EehK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;OK, we were luck. Keep reading if you think this was too easy.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Analyzing the ID and the Streams in a PDF File&lt;/h2&gt;
@@ -752,12 +752,12 @@ Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class
 &lt;li&gt;Search for password choosing the options string and packet bytes.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Clicking on &lt;em&gt;Follow TCP Stream&lt;/em&gt; gives:
-&lt;img alt="" src="http://i.imgur.com/c61P5Aj.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/c61P5Aj.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. This is a misleading information!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h4&gt;But We Were Almost There!&lt;/h4&gt;
 &lt;p&gt;Now, if we search for &lt;em&gt;flag&lt;/em&gt; we actually find something:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/knuwJFq.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/knuwJFq.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We find the packet with a file named flag! Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Solution 2: Looking for the FTP Protocols&lt;/h2&gt;
@@ -772,12 +772,12 @@ Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class
 
 
 &lt;p&gt;Cool, we found a few packets:
-&lt;img alt="" src="http://i.imgur.com/cWhiXZD.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/cWhiXZD.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Extracting the File&lt;/h2&gt;
 &lt;p&gt;Once we find the packet with any of the methods above, we right-click it selecting &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This leads to:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/LZTse2s.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/LZTse2s.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The file &lt;em&gt;flag.png&lt;/em&gt; is our flag. To extract it we  click in the &lt;em&gt;Save as&lt;/em&gt; button, then in the terminal we can use the command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
@@ -785,7 +785,7 @@ s.whatever: Zip archive data, at least v2.0 to extract
 
 
 &lt;p&gt;Awesome, so all we need is to &lt;em&gt;unzip&lt;/em&gt; this file and we get &lt;em&gt;flag.png&lt;/em&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/WcxyITv.png" /&gt;&lt;/p&gt;
 &lt;h4&gt;Extra: Finding files with &lt;em&gt;File Signatures&lt;/em&gt;&lt;/h4&gt;
 &lt;p&gt;If we don't know the name of the file we are looking for, but we know its type, we can search for its &lt;a href="http://en.wikipedia.org/wiki/File_signature"&gt;file signature&lt;/a&gt;, which can be found &lt;a href="http://en.wikipedia.org/wiki/List_of_file_signatures"&gt;here&lt;/a&gt; (a hex value).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hack all the Things!&lt;/strong&gt;&lt;/p&gt;

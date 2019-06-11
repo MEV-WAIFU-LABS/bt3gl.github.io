@@ -30,7 +30,7 @@
 
 
 &lt;p&gt;Yay! We found something over a &lt;strong&gt;telnet&lt;/strong&gt; protocol:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mUN4b1n.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/mUN4b1n.png" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Following the TCP Stream&lt;/h2&gt;
 &lt;p&gt;Now, all we need to do is to right-click in the line and choose &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This  returns:&lt;/p&gt;

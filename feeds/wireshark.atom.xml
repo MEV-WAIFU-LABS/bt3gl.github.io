@@ -129,7 +129,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;This  is how this packet looks like in &lt;a href=""&gt;Wireshark&lt;/a&gt;:
-&lt;img alt="" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;To send the same packet over again we can simply add the &lt;strong&gt;loop=1&lt;/strong&gt; argument within the &lt;strong&gt;send&lt;/strong&gt; method:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;packet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;loop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -141,7 +141,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;Which looks like this in Wireshark:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sending &amp;amp; Receiving a Packet&lt;/h3&gt;
 &lt;p&gt;Scapy also has the ability to listen for responses to packets it sends (for example, ICMP ping requests).&lt;/p&gt;
 &lt;p&gt;As in the send method, Scapy has two types of packet sending &amp;amp; receiving, based on the network layer.&lt;/p&gt;
@@ -381,7 +381,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;p&gt;Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.&lt;/p&gt;
 &lt;p&gt;The best way to test this is using a Windows virtual machine (take a look in &lt;a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html"&gt;this guide I wrote&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Before the attack, go to the Windows box, open the terminal (&lt;code&gt;cmd&lt;/code&gt;) and check the IP and gateway IP address with&lt;code&gt;ipconfig&lt;/code&gt;. Then check the associated  ARP cache entry MAC address with &lt;code&gt;arp -a&lt;/code&gt;. We are going to use the former information and we will see the ARP data being changed:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Following is our ARP poisoning script (based on &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;). The script does the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -514,7 +514,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 
 
 &lt;p&gt;we see the changes in the victim's machine (Windows):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Now open in Wireshark the PCAP file resulting from the script. BAM! The entire traffic from the victim is in your hand!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a name="pcap"&gt;&lt;/a&gt; PCAP Processing to Find Images&lt;/h2&gt;
@@ -850,7 +850,7 @@ Detected: 16 faces
 &lt;p&gt;Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.&lt;/p&gt;
 &lt;h2&gt;The OSI Model&lt;/h2&gt;
 &lt;p&gt;The &lt;a href="http://en.wikipedia.org/wiki/OSI_model"&gt;Open Systems Interconnection&lt;/a&gt; (OSI) model  was published in 1983 and is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/dZyiOTX.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/dZyiOTX.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Protocols are separated according to their function and the hierarchy makes it easier to understand network communication:&lt;/p&gt;
 &lt;h3&gt;Layer 1: Physical Layer&lt;/h3&gt;
 &lt;p&gt;Represents the physical and electrical medium through which the network data is transferred.&lt;/p&gt;
@@ -883,7 +883,7 @@ Detected: 16 faces
 &lt;h2&gt;Switches and Routers&lt;/h2&gt;
 &lt;p&gt;There are four primary ways to capture traffic from a target device on a
 &lt;strong&gt;switched&lt;/strong&gt; network: using a &lt;strong&gt;hub&lt;/strong&gt;, using a &lt;strong&gt;tap&lt;/strong&gt;, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
 &lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.&lt;/p&gt;
 &lt;hr /&gt;
@@ -916,7 +916,7 @@ router.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/IPv4"&gt;IPv4&lt;/a&gt; addresses are 32-bit addresses used to uniquely identify devices connected in a network. They are represented by the dotted-quad notation with four sets of 8 bits, represented by  decimal numbers between 0 and 255.&lt;/p&gt;
 &lt;p&gt;In addition, an IP address consists of two parts: a &lt;strong&gt;network address&lt;/strong&gt; and a &lt;strong&gt;host address&lt;/strong&gt;. The network address identifies the &lt;em&gt;local area network&lt;/em&gt; (LAN), and the host address identifies the device on that network.&lt;/p&gt;
 &lt;p&gt;The determination of these two parts is given by another set of addressing information, the &lt;strong&gt;network mask&lt;/strong&gt; (netmask or subnet mask), which is also 32 bit longs. In the netmask, every bit set to 1 identifies the portion of the IP address that belongs to the network address. Remaining bits set to 0 identify the host address:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/a7Evq9z.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/a7Evq9z.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Additionally, the IP packet header contain informations such as:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1842,7 +1842,7 @@ a network, it would be assigned an address by hand.&lt;/p&gt;
 
 
 &lt;p&gt;Yay! We found something over a &lt;strong&gt;telnet&lt;/strong&gt; protocol:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/mUN4b1n.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/mUN4b1n.png" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Following the TCP Stream&lt;/h2&gt;
 &lt;p&gt;Now, all we need to do is to right-click in the line and choose &lt;em&gt;Follow TCP Stream&lt;/em&gt;. This  returns:&lt;/p&gt;

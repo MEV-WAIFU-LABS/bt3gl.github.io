@@ -129,7 +129,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;This  is how this packet looks like in &lt;a href=""&gt;Wireshark&lt;/a&gt;:
-&lt;img alt="" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
+&lt;img alt="cyber" src="http://i.imgur.com/jjuWHaZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;To send the same packet over again we can simply add the &lt;strong&gt;loop=1&lt;/strong&gt; argument within the &lt;strong&gt;send&lt;/strong&gt; method:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;packet&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;loop&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -141,7 +141,7 @@ Sent 1 packets.
 
 
 &lt;p&gt;Which looks like this in Wireshark:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/lv89lc3.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sending &amp;amp; Receiving a Packet&lt;/h3&gt;
 &lt;p&gt;Scapy also has the ability to listen for responses to packets it sends (for example, ICMP ping requests).&lt;/p&gt;
 &lt;p&gt;As in the send method, Scapy has two types of packet sending &amp;amp; receiving, based on the network layer.&lt;/p&gt;
@@ -381,7 +381,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;p&gt;Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.&lt;/p&gt;
 &lt;p&gt;The best way to test this is using a Windows virtual machine (take a look in &lt;a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html"&gt;this guide I wrote&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Before the attack, go to the Windows box, open the terminal (&lt;code&gt;cmd&lt;/code&gt;) and check the IP and gateway IP address with&lt;code&gt;ipconfig&lt;/code&gt;. Then check the associated  ARP cache entry MAC address with &lt;code&gt;arp -a&lt;/code&gt;. We are going to use the former information and we will see the ARP data being changed:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Following is our ARP poisoning script (based on &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;). The script does the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -514,7 +514,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 
 
 &lt;p&gt;we see the changes in the victim's machine (Windows):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/RFdIz4H.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Now open in Wireshark the PCAP file resulting from the script. BAM! The entire traffic from the victim is in your hand!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a name="pcap"&gt;&lt;/a&gt; PCAP Processing to Find Images&lt;/h2&gt;
@@ -710,10 +710,10 @@ Remember that ICMP is essentially a special control protocol that issues error r
 &lt;h2&gt;Decoding the IP and ICMP Layers&lt;/h2&gt;
 &lt;h3&gt;The IP Header&lt;/h3&gt;
 &lt;p&gt;A typical IP header has the following structure, where each field belongs to a variable (this header is originally &lt;a href="http://minirighi.sourceforge.net/html/structip.html"&gt;written in C&lt;/a&gt;):&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/3fmVLJS.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/3fmVLJS.jpg" /&gt;&lt;/p&gt;
 &lt;h3&gt;The ICMP Header&lt;/h3&gt;
 &lt;p&gt;In the same way, ICMP can vary in its content but each message contains three elements that are consistent: &lt;strong&gt;type&lt;/strong&gt; and &lt;strong&gt;code&lt;/strong&gt; (tells the receiving host what type of ICMP message is arriving for decoding) and &lt;strong&gt;checksum&lt;/strong&gt; fields.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="http://i.imgur.com/gsUPKRa.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/gsUPKRa.gif" /&gt;&lt;/p&gt;
 &lt;p&gt;For our scanner, we are looking for a &lt;strong&gt;type value of 3&lt;/strong&gt; and a &lt;strong&gt;code value of 3&lt;/strong&gt;, which are the &lt;strong&gt;Destination Unreachable&lt;/strong&gt; class and &lt;strong&gt;Port Unreachable&lt;/strong&gt; &lt;a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages"&gt;errors in ICMP messages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To represent this header, we create a class, with the help of Python's &lt;a href="https://docs.python.org/2/library/ctypes.html"&gt;ctypes&lt;/a&gt; library:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ctypes&lt;/span&gt;
