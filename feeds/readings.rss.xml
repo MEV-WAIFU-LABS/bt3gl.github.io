@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/readings.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 09 Jun 2019 04:19:00 -0400</lastBuildDate><item><title>19'Week 24's Best Articles</title><link>http://bt3gl.github.io/19week-24s-best-articles.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/news1.jpg" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;Cool things I found last week in the interwebz.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/readings.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 09 Jun 2019 04:19:00 -0400</lastBuildDate><item><title>19'Week 24's Interwebz Best</title><link>http://bt3gl.github.io/19week-24s-interwebz-best.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/news1.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;h2&gt;Tech&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://towardsdatascience.com/demystifying-startup-equity-with-data-science-d63320fc57dc"&gt;Demystifying Startup Equity with Data Science&lt;/a&gt;.&lt;/li&gt;
@@ -18,10 +17,12 @@
 &lt;/ul&gt;
 &lt;h2&gt;Life&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://medium.com/publishous/7-psychological-superpowers-few-people-have-that-you-can-use-to-set-yourself-apart-925fcee821d4"&gt;7 Psychological Superpowers Few People Have&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;"Hide your intelligence", "Stop Taking Everything So Seriously", and "Resist Group Think" ;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/publishous/7-psychological-superpowers-few-people-have-that-you-can-use-to-set-yourself-apart-925fcee821d4"&gt;7 Psychological Superpowers Few People Have&lt;/a&gt;.&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;"Hide your intelligence", "Stop Taking Everything So Seriously", and "Resist Group Think" ;)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://thriveglobal.com/stories/how-to-stop-perfection-anxiety-tips-arianna-huffington/"&gt;It’s Time to End Perfection Anxiety Once and For All&lt;/a&gt;. &lt;ul&gt;
-&lt;li&gt;I loved "Share an imperfect photo of yourself on social media."&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;"Share an imperfect photo of yourself on social media."&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.upworthy.com/patagonia-s-ceo-is-donating-company-s-entire-10-m-trump-tax-cut-to-fight-climate-change"&gt;Patagonia’s CEO is donating company’s entire $10M Trump tax cut to fight climate change&lt;/a&gt;.&lt;/li&gt;
@@ -44,4 +45,4 @@
 &lt;li&gt;06/14: DeepMind 2019 ICML Night 2 in Long Beach.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 09 Jun 2019 04:19:00 -0400</pubDate><guid>tag:bt3gl.github.io,2019-06-09:19week-24s-best-articles.html</guid></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 09 Jun 2019 04:19:00 -0400</pubDate><guid>tag:bt3gl.github.io,2019-06-09:19week-24s-interwebz-best.html</guid></item></channel></rss>

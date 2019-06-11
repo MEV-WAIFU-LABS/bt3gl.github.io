@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/mia-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-06-09T04:19:00-04:00</updated><entry><title>19'Week 24's Best Articles</title><link href="http://bt3gl.github.io/19week-24s-best-articles.html" rel="alternate"></link><updated>2019-06-09T04:19:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-06-09:19week-24s-best-articles.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/news1.jpg" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;Cool things I found last week in the interwebz.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/mia-steinkirch.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-06-09T04:19:00-04:00</updated><entry><title>19'Week 24's Interwebz Best</title><link href="http://bt3gl.github.io/19week-24s-interwebz-best.html" rel="alternate"></link><updated>2019-06-09T04:19:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-06-09:19week-24s-interwebz-best.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/news1.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;h2&gt;Tech&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://towardsdatascience.com/demystifying-startup-equity-with-data-science-d63320fc57dc"&gt;Demystifying Startup Equity with Data Science&lt;/a&gt;.&lt;/li&gt;
@@ -18,10 +17,12 @@
 &lt;/ul&gt;
 &lt;h2&gt;Life&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://medium.com/publishous/7-psychological-superpowers-few-people-have-that-you-can-use-to-set-yourself-apart-925fcee821d4"&gt;7 Psychological Superpowers Few People Have&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;"Hide your intelligence", "Stop Taking Everything So Seriously", and "Resist Group Think" ;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/publishous/7-psychological-superpowers-few-people-have-that-you-can-use-to-set-yourself-apart-925fcee821d4"&gt;7 Psychological Superpowers Few People Have&lt;/a&gt;.&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;"Hide your intelligence", "Stop Taking Everything So Seriously", and "Resist Group Think" ;)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://thriveglobal.com/stories/how-to-stop-perfection-anxiety-tips-arianna-huffington/"&gt;It’s Time to End Perfection Anxiety Once and For All&lt;/a&gt;. &lt;ul&gt;
-&lt;li&gt;I loved "Share an imperfect photo of yourself on social media."&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;"Share an imperfect photo of yourself on social media."&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.upworthy.com/patagonia-s-ceo-is-donating-company-s-entire-10-m-trump-tax-cut-to-fight-climate-change"&gt;Patagonia’s CEO is donating company’s entire $10M Trump tax cut to fight climate change&lt;/a&gt;.&lt;/li&gt;
