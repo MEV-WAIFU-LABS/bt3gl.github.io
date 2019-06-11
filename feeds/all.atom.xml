@@ -1,2 +1,480 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-06-11T07:53:52Z</updated></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-03-29T09:00:00-04:00</updated><entry><title>You Never Have to Apologize For...</title><link href="http://bt3gl.github.io/you-never-have-to-apologize-for.html" rel="alternate"></link><updated>2019-03-29T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-03-29:you-never-have-to-apologize-for.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/sol.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Embrace your vulnerability.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;"It's human to struggle, and unless you're hurting other people, there's no reason to apologize." - Arianna Huffington &lt;/p&gt;
+&lt;h2&gt;Things you should never apologize for ;)&lt;/h2&gt;
+&lt;h4&gt;1. Removing someone from your life that repeatedly crosses your boundaries.&lt;/h4&gt;
+&lt;h4&gt;2. Being who we are, and feeling our feelings.&lt;/h4&gt;
+&lt;h4&gt;3. Trusting your instincts, even if you can't explain it.&lt;/h4&gt;
+&lt;h4&gt;4. If we are not truly sorry.&lt;/h4&gt;
+&lt;h4&gt;5. Quality me time (taking care of ourselves).&lt;/h4&gt;
+&lt;h4&gt;6. Your opinion. There is no right or wrong opinion, just different insights.&lt;/h4&gt;
+&lt;h4&gt;7. Standing up for what you believe in.&lt;/h4&gt;
+&lt;h4&gt;8. Living life the way we choose to, regardless of fitting in with other people's norms.&lt;/h4&gt;
+&lt;h4&gt;9. Making decisions about your own future that don't do any harm to anyone.&lt;/h4&gt;
+&lt;h4&gt;10. Being sensitive.&lt;/h4&gt;
+&lt;hr /&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://tinybuddha.com/"&gt;Tiny Buddha&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="mindfulness"></category><category term="TheGame"></category><category term="reality"></category></entry><entry><title>System Designing with End-to-end Applications in AWS</title><link href="http://bt3gl.github.io/system-designing-with-end-to-end-applications-in-aws.html" rel="alternate"></link><updated>2018-04-15T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-04-15:system-designing-with-end-to-end-applications-in-aws.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/city.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://en.wikipedia.org/wiki/Systems_design"&gt;System design&lt;/a&gt;&lt;/strong&gt; is a really interesting open-ended subject in software engineering, and the way you tackle it tends to be related to how much experience you have in the industry. Every time I learn about a new application or service, I try to imagine its design. I love to learn when and why my approach was off :).&lt;/p&gt;
+&lt;p&gt;One of my favorite projects in my software career was when I had to implement an end-to-end application to perform some manipulations (with &lt;a href="https://ffmpeg.org/"&gt;FFMPEG&lt;/a&gt;) on surf video clips that were available in some cloud storage resource (say, &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html"&gt;S3 buckets&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The app I wrote was a Python software running in &lt;a href="https://aws.amazon.com/lambda/"&gt;AWS Lambda&lt;/a&gt;, which would be triggered by messages from an &lt;a href="https://aws.amazon.com/sqs/"&gt;SQS&lt;/a&gt; queue. The function would then retrieve some specific clip, trim and edit it, and then it would 1) save the new clips to a destination bucket, 2) add their metadata to a &lt;a href="https://www.mongodb.com/"&gt;MongoDB&lt;/a&gt; database, and 3) send a notification to a topic in an &lt;a href="https://aws.amazon.com/sns/"&gt;SNS&lt;/a&gt; service, so that the front end bit could pick it up.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Anonymous_function"&gt;Lambda functions&lt;/a&gt; are simply awesome because they abstract several layers in your design (e.g. serverless, anonymous) and they are super easy to set up. But I am getting ahead myself, let's talk a little more about high-level system design!&lt;/p&gt;
+&lt;p&gt;Whenever you are designing a system, these are some first questions to think about:&lt;/p&gt;
+&lt;h2&gt;Scope of the System&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;User cases&lt;/strong&gt;: Who is going to use it? How are they going to use it?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constraints&lt;/strong&gt;: Amount of traffic, amount of data, scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write oriented, etc.)?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;High level architecture design&lt;/strong&gt;: Application service layer, different services required, data storage layer?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Understanding bottlenecks&lt;/strong&gt;: Do we need a load balancer and many instances behind it to handle user requests? Is data large enough so that you need to distribute your database on multiple machines? What are the downsides from doing that?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User interface&lt;/strong&gt;: Is this a full web app, with a web interface? Or just a RESTful API?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Availability &amp;amp; Reliability&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How things can fail, especially in a distributed environment?&lt;/li&gt;
+&lt;li&gt;How to design a system to cope with network failures?&lt;/li&gt;
+&lt;li&gt;Should the system be 100% reliable? &lt;/li&gt;
+&lt;li&gt;Do we need high availability? &lt;/li&gt;
+&lt;li&gt;Do we need redundancy (e.g. multiple replicas of services running in the system, so that if a few services die down the system still remains available and running)?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Scaling&lt;/h2&gt;
+&lt;p&gt;Simply put, you can scale your system &lt;strong&gt;vertically&lt;/strong&gt; (e.g. adding more CPU, RAM to your existing machine), or &lt;strong&gt;horizontally&lt;/strong&gt; (adding more machines into your pool of resources).&lt;/p&gt;
+&lt;h3&gt;Database&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Do we need a &lt;strong&gt;relational database&lt;/strong&gt; that is based on tabular design (e.g. MySQL) or &lt;strong&gt;non-relational NoSQL&lt;/strong&gt;, which is document-based (e.g. MongoDB)?&lt;/li&gt;
+&lt;li&gt;Do we need &lt;strong&gt;Database replication&lt;/strong&gt; (e.g. the frequent copying data from a database in one server to a database in another, so that all users share the same level of information)?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Caching and Fast lookups&lt;/h3&gt;
+&lt;p&gt;There are several types of &lt;strong&gt;caches&lt;/strong&gt; that can be used in your application: &lt;strong&gt;application caching&lt;/strong&gt;, &lt;strong&gt;database caching&lt;/strong&gt;, &lt;strong&gt;in-memory caches&lt;/strong&gt;, &lt;strong&gt;global cache&lt;/strong&gt;, &lt;strong&gt;distributed cache&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;One example of a popular open source cache is &lt;a href="http://memcached.org/"&gt;Memcached&lt;/a&gt; (which can work both as a local cache and distributed cache). Memcached is used in many large web sites, and even though it can be very powerful, it is simply an in-memory key value store, optimized for arbitrary data storage and fast lookups.&lt;/p&gt;
+&lt;h3&gt;Load balancing and Redundancy&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Load balancers&lt;/strong&gt; are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.&lt;/p&gt;
+&lt;p&gt;Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.&lt;/p&gt;
+&lt;h3&gt;Queues and Asynchronous requests&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Queues&lt;/strong&gt; are a common way to bring asynchrony into you system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps achieving performance and availability.&lt;/p&gt;
+&lt;p&gt;A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing abstraction of a client's request and its response.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1&gt;Back to my end-to-end Application&lt;/h1&gt;
+&lt;p&gt;A good way to illustrate system design is looking at a real end-to-end application deployed at AWS. &lt;/p&gt;
+&lt;p&gt;For the surf clips example I mentioned above, the architecture involves API event notifications, S3 buckets, an SNS topic, an SQS queue, and a Lambda function.&lt;/p&gt;
+&lt;p&gt;The SQS queue stores the event for asynchronous processing (e.g. requesting certain clip edit). The Lambda function parses the event (e.g. run FFMPEG), and sends a notification message to the SNS topic (e.g. "clip is ready"). A topic groups together messages of the same type which might be of interest to a set of subscribers (e.g. "video_production" for front end API):&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/aws.png" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;Together with the (Python) app source code to be run as a Lambda function, you can set all the components of your system in &lt;a href="https://www.terraform.io/"&gt;Terraform&lt;/a&gt;, in a very neat way. &lt;/p&gt;
+&lt;p&gt;For instance, our Lambda function would be allocated by some code like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;aws_lambda_function&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;function_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FUNCTION_NAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="n"&gt;runtime&lt;/span&gt;       &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;python2.7&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;timeout&lt;/span&gt;       &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;
+  &lt;span class="n"&gt;s3_bucket&lt;/span&gt;     &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;BUCKET&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;ZIP&lt;/span&gt; &lt;span class="nx"&gt;IS&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="n"&gt;s3_key&lt;/span&gt;        &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${var.producer_zip}&amp;quot;&lt;/span&gt;
+  &lt;span class="n"&gt;handler&lt;/span&gt;       &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;CODE HANDLER&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;  role          = &amp;quot;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;aws_iam_role.lambda_role.arn&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;  memory_size   = 1024&lt;/span&gt;
+
+&lt;span class="s2"&gt;  vpc_config = {&lt;/span&gt;
+&lt;span class="s2"&gt;      ...&lt;/span&gt;
+&lt;span class="s2"&gt;  }&lt;/span&gt;
+
+&lt;span class="s2"&gt;  environment {&lt;/span&gt;
+&lt;span class="s2"&gt;    variables = {&lt;/span&gt;
+&lt;span class="s2"&gt;        ...&lt;/span&gt;
+&lt;span class="s2"&gt;    }&lt;/span&gt;
+&lt;span class="s2"&gt;  }&lt;/span&gt;
+&lt;span class="s2"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Similarly, other AWS resources such as SQS, SNS, their topics, and buckets, such as the final destination S3 bucket (where the final clips would be stored), would have Terraform code snippets as well:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;aws_s3_bucket&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;bucket_name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="n"&gt;acl&lt;/span&gt;    &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;public-read&amp;quot;&lt;/span&gt;
+  &lt;span class="nx"&gt;cors_rule&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;allowed_headers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+    allowed_methods = &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;HEAD&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+    allowed_origins = &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;*&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;
+    max_age_seconds = 86400
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, all you need is a couple of commands (such as &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
+&lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h1&gt;Learning References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.lecloud.net/tagged/scalability"&gt;Scalability for Dummies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.aosabook.org/en/distsys.html"&gt;Scalable Web Architecture and Distributed Systems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html"&gt;Scalable System Design Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/hulu-tech-blog/the-challenges-of-live-linear-video-ingest-part-one-live-versus-on-demand-system-requirements-89238f3af4f6"&gt;Hulu's "The Challenges of Live Video"&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.u-cursos.cl/usuario/f133dab21b6cbf814b4607124f431358/mi_blog/r/head_first_design_patterns.pdf"&gt;Heads First - Design Pattern&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;
+Aloha,
+Mia
+&lt;/strong&gt;&lt;/p&gt;</summary><category term="aws"></category><category term="scalability"></category><category term="queues"></category><category term="lambda"></category><category term="sqs"></category><category term="mobgodb"></category></entry><entry><title>Forget Docker Compose: You Want Skaffold</title><link href="http://bt3gl.github.io/forget-docker-compose-you-want-skaffold.html" rel="alternate"></link><updated>2018-04-02T05:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-04-02:forget-docker-compose-you-want-skaffold.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;I still remember, back in 2015 at &lt;a href="https://engineeringblog.yelp.com/"&gt;Yelp&lt;/a&gt;, when I learned about &lt;a href="https://docs.docker.com/compose/"&gt;Docker Compose&lt;/a&gt;. It was beautiful, like magic.&lt;/p&gt;
+&lt;p&gt;It kinda felt the same when I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. Check this out:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It runs as a binary in your local machine (e.g. &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
+&lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apiVersion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;skaffold&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1beta9&lt;/span&gt;
+&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Config&lt;/span&gt;
+&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gcr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;io&lt;/span&gt;&lt;span class="sr"&gt;/k8s-skaffold/s&lt;/span&gt;&lt;span class="n"&gt;kaffold&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;
+&lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;kubectl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;manifests&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+      &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;k8s&lt;/span&gt;&lt;span class="o"&gt;-*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
+&lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
+&lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same &lt;code&gt;skaffold.yaml&lt;/code&gt; file to do deployments to your clusters in your continuous deployment system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local dev workflow: &lt;a href="https://kubernetes.io/docs/setup/minikube/"&gt;Minikube&lt;/a&gt;, etc.) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous dev workflow: &lt;a href="https://jenkins.io/"&gt;Jenkins&lt;/a&gt;, &lt;a href="https://travis-ci.org/"&gt;Travis CI&lt;/a&gt;, etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application.&lt;/p&gt;
+&lt;p&gt;In this single command, Skaffold:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;builds container images (locally or remotely),&lt;/li&gt;
+&lt;li&gt;pushes container images if target is not local cluster,&lt;/li&gt;
+&lt;li&gt;updates Kubernetes manifests with image tags,&lt;/li&gt;
+&lt;li&gt;deploys your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;streams logs from the pods,&lt;/li&gt;
+&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and  then repeat 1-5.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cool, right? :)&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3&gt;Some learning references&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/"&gt;Official documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is"&gt;Skaffold &amp;amp; GCP documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/docs/references/yaml/"&gt;Skaffold Yaml References&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>8 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/8-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2018-01-12T06:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-12:8-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;For years, I have been advocating &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;Python as the most useful language we have&lt;/a&gt;. Only recently, I have been shifting my mind a little to another awesome language: &lt;a href="https://golang.org/"&gt;Golang, also know as Go&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++), while containing many features of modern languages.&lt;/p&gt;
+&lt;h3&gt;1 It Compiles Into a Single Binary&lt;/h3&gt;
+&lt;p&gt;Golang builds as a compiled language and, using static linking, it combines all dependency libraries and modules into one single binary file based on OS type and architecture. Which means that if you are compiling your backend application on your laptop with Linux X86 CPU, you can just upload the compiled binary into your server and it will work, without installing any dependencies.&lt;/p&gt;
+&lt;h3&gt;2 Static Type System&lt;/h3&gt;
+&lt;p&gt;Type system is really important for large scale applications. Python sometimes will give you unusual exceptions (e.g. you are trying to use a variable as an integer but it turns out that it’s a string). Go will tell you write alway that it won't work.&lt;/p&gt;
+&lt;h3&gt;3 Pointers&lt;/h3&gt;
+&lt;p&gt;Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
+&lt;p&gt;For example, you can pass your &lt;strong&gt;data struct&lt;/strong&gt; along functions in very clean way:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Route&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;service&lt;/span&gt;        &lt;span class="kt"&gt;string&lt;/span&gt;
+    &lt;span class="nx"&gt;url&lt;/span&gt;            &lt;span class="kt"&gt;string&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;AddRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt; &lt;span class="kd"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;requestPacket&lt;/span&gt; &lt;span class="kt"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;service&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt; &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;routes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;requestPacket&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nx"&gt;service&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;service&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;InitializeRoutes&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="kd"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;routes&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nb"&gt;make&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nx"&gt;AddRoute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;service&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;routes&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;UDP_Handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;routes&lt;/span&gt; &lt;span class="kd"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;uint8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; 
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;route&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;UDP_Route&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;routes&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;packetType&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;4 Performance and Goroutines&lt;/h3&gt;
+&lt;p&gt;Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the &lt;code&gt;go&lt;/code&gt; keyword before a function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;GorotineExample&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;go routine ftw&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.&lt;/p&gt;
+&lt;p&gt;In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (by using &lt;code&gt;channel&lt;/code&gt;: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.&lt;/p&gt;
+&lt;p&gt;Finally, Go has the &lt;code&gt;defer&lt;/code&gt; statement, which ensure that a function call is performed later in a program’s execution (for instance, for cleanup). The deferred call's arguments are evaluated right way, but the function call is not executed until the function returns.  &lt;/p&gt;
+&lt;h3&gt;5 You Don’t Need a Web Framework&lt;/h3&gt;
+&lt;p&gt;Go has &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;json&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt; templating built in language natively and you can build very complex API services very easily.&lt;/p&gt;
+&lt;p&gt;For instance, you can spin up a webpage this easy (check it out yourself!):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;flag&amp;quot;&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;html/template&amp;quot;&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;log&amp;quot;&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;net/http&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;addr&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;String&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;addr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;:1718&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http service address&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;// Q=17, R=18&lt;/span&gt;
+
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;templ&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;template&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Must&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;template&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;New&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;qr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;Parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;templateStr&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Parse&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Handle&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;HandlerFunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;QR&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="nx"&gt;err&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ListenAndServe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;addr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nx"&gt;err&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="kc"&gt;nil&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Fatal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ListenAndServe:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;err&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;QR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;w&lt;/span&gt; &lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ResponseWriter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;req&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;templ&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;w&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;req&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;FormValue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;s&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;templateStr&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nx"&gt;QR&lt;/span&gt; &lt;span class="nx"&gt;Link&lt;/span&gt; &lt;span class="nx"&gt;Generator&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;.}}&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;img&lt;/span&gt; &lt;span class="nx"&gt;src&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://chart.apis.google.com/chart?chs=300x300&amp;amp;cht=qr&amp;amp;choe=UTF-8&amp;amp;chl={{.}}&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{{.}}&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;br&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;{{&lt;/span&gt;&lt;span class="nx"&gt;end&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;form&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;f&lt;/span&gt; &lt;span class="nx"&gt;method&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="nx"&gt;maxLength&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1024&lt;/span&gt; &lt;span class="nx"&gt;size&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;70&lt;/span&gt;
+&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;s&lt;/span&gt; &lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Text to QR Encode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;input&lt;/span&gt; &lt;span class="kd"&gt;type&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;submit&lt;/span&gt;
+&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Show QR&amp;quot;&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;qr&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;form&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;6 Your Django framework would not crash&lt;/h3&gt;
+&lt;p&gt;Go heavily relies on static code analysis. Examples include &lt;a href="https://golang.org/doc/"&gt;godoc&lt;/a&gt; for documentation, &lt;a href="https://golang.org/cmd/gofmt/"&gt;gofmt&lt;/a&gt; for code formatting, &lt;a href="https://github.com/golang/lint"&gt;golint&lt;/a&gt; for code style linting, and many others.&lt;/p&gt;
+&lt;p&gt;Those tools are commonly implemented as stand-alone command line applications and integrate easily with any coding environment.&lt;/p&gt;
+&lt;h3&gt;7 Workspaces are Simple&lt;/h3&gt;
+&lt;p&gt;Golang code must be kept inside a workspace:  a directory hierarchy with three directories at its root:
+&lt;em&gt; &lt;code&gt;src&lt;/code&gt; contains go source files organized into packages,
+&lt;/em&gt; &lt;code&gt;pkg&lt;/code&gt; contains package objects,
+* &lt;code&gt;bin&lt;/code&gt; contains executable commands.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;GOPATH&lt;/code&gt; environment variable determines the location of the workspace. It is the only environment variable that you have to set when developing Go code.&lt;/p&gt;
+&lt;h3&gt;8 Fun Factor&lt;/h3&gt;
+&lt;p&gt;Go is a relatively simple language and was designed with a very minimalistic approach: quick to learn and easy to write!
+Plus several cool stuff has been written in Go, such as &lt;a href="https://www.docker.com"&gt;Docker&lt;/a&gt;, &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;, and &lt;a href="https://www.terraform.io/"&gt;Terraform&lt;/a&gt;.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Some Resources to Learn Go&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with the &lt;a href="https://golang.org/"&gt;official documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Take a look at &lt;a href="https://gobyexample.com/"&gt;Go by Example&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Take a &lt;a href="https://tour.golang.org/welcome/1"&gt;tour through Go&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Subscribe to &lt;a href="https://golangweekly.com/"&gt;Go weekly&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Check &lt;a href="https://www.reddit.com/r/golang"&gt;Reddit's channel&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Watch some &lt;a href="https://www.youtube.com/channel/UC_BzFbxG2za3bp5NRRRXJSw"&gt;JustForFunc videos&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/understanding-data-types-in-go"&gt;Understanding Data Types in Go&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><updated>2017-12-17T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px" /&gt;&lt;/p&gt;
+&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
+&lt;h2&gt;How Amigo Works&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; For each attribute in a project, Amigo creates an updated report. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iii)&lt;/strong&gt; Amigo checks the previous report for differences (verifying when the data was modified). If there is a diff, Amigo logs the report for this diff.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iv)&lt;/strong&gt; Amigo saves the resources data in a database and then it checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt;, reporting everything that violates those rules.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;v)&lt;/strong&gt; The &lt;strong&gt;science&lt;/strong&gt; generated by Amigo can be fed into ELK.&lt;/p&gt;
+&lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
+&lt;h3&gt;Setting a Virtual Environment&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Installing Amigo&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Creating a Service Account&lt;/h3&gt;
+&lt;p&gt;This should be done once, at the first time you run Amigo:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the IAM roles &lt;strong&gt;Security Reviewer&lt;/strong&gt; and &lt;strong&gt;Viewer permissions&lt;/strong&gt; to the service account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Download the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt; to a safe directory (e.g. your home directory). If amigo runs in other machines (or other people in the same organization is running Amigo), this key can be shared (and step 1. and 2. do not need to be repeated).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Setting gcloud&lt;/h3&gt;
+&lt;p&gt;Install &lt;a href="https://cloud.google.com/sdk/downloads"&gt;gcloud SDK&lt;/a&gt; and authenticate with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;gcloud&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can also check whether env variable &lt;code&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; is pointing to the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Setting the Config file&lt;/h3&gt;
+&lt;p&gt;Copy &lt;code&gt;config.yaml_example&lt;/code&gt; to &lt;code&gt;config.yaml&lt;/code&gt; and customize it.&lt;/p&gt;
+&lt;p&gt;In the bottom of this file you are able to edit the attributes that you want to report on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;### Attributes to inspect&lt;/span&gt;
+&lt;span class="nl"&gt;gcp_attributes:&lt;/span&gt;
+    &lt;span class="nl"&gt;compute:&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;firewalls&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;networks&lt;/span&gt;
+        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;snapshots&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Setting the Rules file&lt;/h3&gt;
+&lt;p&gt;Inspect &lt;code&gt;rules.yaml&lt;/code&gt; either removing or adding rules that should be searched in the reports.&lt;/p&gt;
+&lt;h3&gt;Running Amigo&lt;/h3&gt;
+&lt;p&gt;Run amigo with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;amigo&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This retrieves the data from GCP and generate JSON reports. These reports will be save where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
+&lt;p&gt;It is advised to watch for STERR and STDOUT in the &lt;code&gt;log_file&lt;/code&gt; file defined in &lt;code&gt;config.yaml&lt;/code&gt; (default to &lt;code&gt;amigo_log.txt&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;amigo_log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Alerting with Amigo&lt;/h3&gt;
+&lt;p&gt;Relevant reports (e.g. diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g. &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;Creating Custom rules&lt;/h2&gt;
+&lt;h3&gt;Firewalls Resource&lt;/h3&gt;
+&lt;p&gt;Firewall reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#firewall&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/networks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;direction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;INGRESS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceRanges&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;0.0.0.0/0&amp;quot;&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;name&amp;quot;: &amp;quot;default-allow-icmp&amp;quot;,
+  &amp;quot;priority&amp;quot;: 65534,
+  &amp;quot;allowed&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;IPProtocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;icmp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/firewalls/default-allow-icmp&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;Allow ICMP from anywhere&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Networks Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Default network for the project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;subnetworks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/regions/&amp;lt;region&amp;gt;/subnetworks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;autoCreateSubnetworks&amp;quot;: true,
+  &amp;quot;routingConfig&amp;quot;: {
+    &amp;quot;routingMode&amp;quot;: &amp;quot;REGIONAL&amp;quot;
+  },
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/networks/default&amp;quot;,
+  &amp;quot;name&amp;quot;: &amp;quot;default&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Snapshots Resource&lt;/h3&gt;
+&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#snapshot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;storageBytes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/zones/us-central1-c/disks/deployhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;storageBytesStatus&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;UP_TO_DATE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;labelFingerprint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;sourceDiskId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;diskSizeGb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;size&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;licenses&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7&amp;quot;&lt;/span&gt;
+  &lt;span class="cp"&gt;]&lt;/span&gt;,
+  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
+  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
+  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/snapshots/snapshot-1-deployhost&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Instance Template Resource&lt;/h3&gt;
+&lt;p&gt;Instance Template reports have this format:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#instanceTemplate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;machineType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="cp"&gt;]&lt;/span&gt;
+    },
+    &amp;quot;disks&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;deviceName&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;persistent-disk-0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#attachedDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;initializeParams&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;sourceImage&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;global/images/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;diskType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pd-standard&amp;quot;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;autoDelete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;boot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READ_WRITE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;interface&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SCSI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PERSISTENT&amp;quot;&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="cp"&gt;]&lt;/span&gt;,
+    &amp;quot;scheduling&amp;quot;: {
+      &amp;quot;automaticRestart&amp;quot;: true,
+      &amp;quot;preemptible&amp;quot;: false,
+      &amp;quot;onHostMaintenance&amp;quot;: &amp;quot;MIGRATE&amp;quot;
+    },
+    &amp;quot;serviceAccounts&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;scopes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
+          &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/auth/compute.readonly&amp;quot;&lt;/span&gt;
+        &lt;span class="cp"&gt;]&lt;/span&gt;,
+        &amp;quot;email&amp;quot;: &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt;&lt;span class="na"&gt;-account-email&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+      }
+    ],
+    &amp;quot;metadata&amp;quot;: {
+      &amp;quot;items&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;metadata&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#metadata&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;creationTimestamp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2017-11-14T12:24:00.744-08:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;selfLink&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;project-name&amp;gt;/global/instanceTemplates/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>

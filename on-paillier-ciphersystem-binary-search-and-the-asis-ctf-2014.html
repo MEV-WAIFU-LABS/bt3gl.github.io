@@ -112,7 +112,7 @@
 	<a href="./tag/oracle.html"><i class="icon-tag"></i>Oracle</a>
 	<a href="./tag/decimal.html"><i class="icon-tag"></i>Decimal</a>
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="cyber" src="http://i.imgur.com/7LMyBGx.png" /></p>
+                <p><img alt="" src="http://i.imgur.com/7LMyBGx.png" /></p>
 <p>The <a href="http://asis-ctf.ir/home/">ASIS CTF</a> happened last weekend. Although I ended up not playing all I wanted, I did spend some time working on a crypto challenge that was worth a lot of points in the game. The challenge was about a sort of not well-known system, the <a href="http://en.wikipedia.org/wiki/Paillier_cryptosystem">Paillier cryptosystem</a>.</p>
 <hr />
 <h2>The Cryptosystem</h2>
@@ -138,9 +138,9 @@ Tell us your choice:
 <p>What matter for us is the fact that this system has a <a href="http://en.wikipedia.org/wiki/Homomorphic_encryption">homomorphic</a> propriety. Well, from Latin, <em>homo</em> means <em>the same</em> (like <em>homogeneous</em>) and <em>morphic</em> means <em>form</em> (like <em>metamorphosis</em>). So this propriety says that the cipher  conserves the form of the message, even if we play  with it. This propriety in a cryptographic algorithm is also called <a href="http://en.wikipedia.org/wiki/Malleability_(cryptography)">malleability</a>.</p>
 <p>In other words, if we know only the public key (which is the <a href="http://en.wikipedia.org/wiki/Modulo_operation">modulo</a>m <strong>n</strong>, a multiplication of two large prime numbers), we can manipulate the cipher and still get the original content of the plain message.</p>
 <p>For example, the multiplication of a <strong>cipher 1</strong> by a <strong>cipher 2</strong> is decrypted as a sum of the <strong>message 1</strong> to <strong>message 2</strong>:</p>
-<p><img alt="cyber" src="http://i.imgur.com/EBrjNjO.png" /></p>
+<p><img alt="" src="http://i.imgur.com/EBrjNjO.png" /></p>
 <p>And, look at this: we can also exponentiate the cipher by some constant <strong>k</strong>!</p>
-<p><img alt="cyber" src="http://i.imgur.com/UONTcAb.png" /></p>
+<p><img alt="" src="http://i.imgur.com/UONTcAb.png" /></p>
 <p>Pretty cool, huh? I think so... :)</p>
 <h3>Simple implementation of a Paillier system</h3>
 <p>Let's highlight the implementation of this system in Python. All we need is a large prime number generator, which we can borrow from <a href="https://www.dlitz.net/software/pycrypto/">pyCrypto</a>.</p>
