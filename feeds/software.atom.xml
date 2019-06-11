@@ -47,7 +47,7 @@
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>8 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/8-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2018-01-12T06:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-12:8-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>8 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/8-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2018-01-12T06:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-12:8-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;For years, I have been advocating &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;Python as the most useful language we have&lt;/a&gt;. Only recently, I have been shifting my mind a little to another awesome language: &lt;a href="https://golang.org/"&gt;Golang, also know as Go&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++), while containing many features of modern languages.&lt;/p&gt;
 &lt;h3&gt;1 It Compiles Into a Single Binary&lt;/h3&gt;
@@ -167,7 +167,7 @@ Plus several cool stuff has been written in Go, such as &lt;a href="https://www.
 &lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, Mia&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry><entry><title>tmux shortcuts &amp; cheatsheet</title><link href="http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html" rel="alternate"></link><updated>2015-11-02T07:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-11-02:tmux-shortcuts-cheatsheet.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/tmux.jpg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry><entry><title>tmux shortcuts &amp; cheatsheet</title><link href="http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html" rel="alternate"></link><updated>2015-11-02T07:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-11-02:tmux-shortcuts-cheatsheet.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/tmux.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;If you are not using &lt;a href="https://github.com/tmux/tmux"&gt;tmux&lt;/a&gt; yet, you are missing it out!&lt;/p&gt;
 &lt;p&gt;Here some shortcuts and configs to help you to start.&lt;/p&gt;
 &lt;h2&gt;Starting Sessions&lt;/h2&gt;
@@ -308,4 +308,5 @@ This option is specific to one window, so it won’t change the way your other s
 &lt;li&gt;&lt;a href="http://pragprog.com/book/bhtmux/tmux"&gt;tmux: Productive Mouse-Free Development&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://superuser.com/questions/343572/tmux-how-do-i-reorder-my-windows"&gt;How to reorder windows&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Aloha, Mia&lt;/p&gt;</summary><category term="tmux"></category><category term="tools"></category></entry></feed>
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="tmux"></category><category term="tools"></category></entry></feed>
