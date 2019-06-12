@@ -87,6 +87,7 @@
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/terraform-providers/terraform-provider-aws"&gt;Terraform Provider AWS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.lecloud.net/tagged/scalability"&gt;Scalability for Dummies&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.aosabook.org/en/distsys.html"&gt;Scalable Web Architecture and Distributed Systems&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html"&gt;Scalable System Design Patterns&lt;/a&gt;&lt;/li&gt;
