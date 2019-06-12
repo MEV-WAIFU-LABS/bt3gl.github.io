@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Thinking about Machine Learning Data Pipelines</title>
+    <title>Data Pipelines in Python</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mia Steinkirch">
@@ -89,8 +89,8 @@
                         <h1>
                                 <a href=""
                                         rel="bookmark"
-                                        title="Permalink to Thinking about Machine Learning Data Pipelines">
-                                        Thinking about Machine Learning Data Pipelines
+                                        title="Permalink to Data Pipelines in Python">
+                                        Data Pipelines in Python
                                 </a>
                         </h1>
                 </header>
@@ -112,34 +112,35 @@
 	<a href="./tag/luigi.html"><i class="icon-tag"></i>luigi</a>
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /></p>
-<p>Almost every day I have a new idea of some machine learning model for an app or some feature. Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
-<p>For example, for a movie dataset from external source on internet:</p>
+<p>Almost every day I have a new idea to run in some machine learning model or problem, and this field is only getting bigger. As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for any  research dump on Data Pipelines</a> (PR your contribution!), in this post I add my little summary on how it goes for Python.</p>
+<p>To continue to get value out of machine learning models one needs an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
+<p>Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model.</p>
+<p>Examples:</p>
 <ul>
 <li>
-<p>If we are in AWS, we could upload it to <strong>S3</strong> and and then bring to <strong>Dynamo DB</strong>. The data could be ingested as a one time full-load as a batch or as a real-time stream.</p>
+<p>a movie dataset from external source on internet: bring it to S3 and upload it into Dynamo DB. The data can be ingested as a one time full-load as a batch or as a real-time stream of data.</p>
 </li>
 <li>
-<p>There may be a need to do <strong>both batch and stream or just a batch or a stream</strong>. In this case, the data could be <strong>full-loaded of data into Dynamo DB</strong> and then <strong>stream new records into Kinesis stream using the Lambda function</strong> as a source simulator.</p>
+<p>There may be a need to do both batch and stream or just a batch or a stream. The data can be full-loaded of data into Dynamo DB and then stream new records into Kinesis stream using the Lambda function as a source simulator.</p>
 </li>
 <li>
-<p>We could create a <strong>schema on the data stored in S3 and DynamoDB and perform ETL</strong> on the data to prepare it for the machine learning process.</p>
+<p>One can create a schema on the data stored in S3 and DynamoDB and perform ETL on the data to prepare it for the machine learning process.</p>
 </li>
 <li>
-<p>If we have an <strong>AWS S3 data lake</strong> ready, we could use <strong>Amazon Sagemaker for model training and inference</strong>.</p>
+<p>If one has an AWS S3 data lake ready, one can use Amazon Sagemaker for model training and inference.</p>
 </li>
 </ul>
-<p>As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for my persona research (dumps...) on Data Pipelines</a> (PR your contribution!), in this post I add my little intro on the topic.</p>
 <h2>ETL: Extract, Transform, and Load</h2>
 <p>These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:</p>
 <ul>
-<li><strong>Extract</strong>: sensors wait for upstream data sources.</li>
-<li><strong>Transform</strong>: business logic is applied (e.g. filtering, grouping, and aggregation to translate raw data into analysis-ready datasets).</li>
-<li><strong>Load</strong>: processed data is transported to a final destination.</li>
+<li>Extract: sensors wait for upstream data sources.</li>
+<li>Transform: business logic is applied (e.g. filtering, grouping, and aggregation to translate raw data into analysis-ready datasets).</li>
+<li>Load: processed data is transported to a final destination.</li>
 </ul>
 <h3>Airflow</h3>
 <p><a href="https://github.com/apache/airflow">Apache Airflow</a> was a tool <a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8">developed by Airbnb in 2014 and later open-sourced</a>. It is a platform to programmatically author, schedule, and monitor workflows. When workflows are defined as code, they become more maintainable, versionable, testable, and collaborative.</p>
-<p>You can use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.</p>
-<p>The key concepts are:</p>
+<p>Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.</p>
+<p>The key concepts are as follows:</p>
 <ul>
 <li>DAG: a directed acyclic graph object that ties together all the tasks in a cohesive workflow and dictates the execution frequency (i.e. schedule).</li>
 <li>task: a unit of work to be executed that should be both atomic and idempotent. In Airflow there are two types of tasks: Operators and Sensors.</li>
@@ -189,8 +190,11 @@
 
 
 <h3>Luigi</h3>
-<p><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization etc. It also comes with Hadoop support built in.</p>
-<p>The basic unit of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.</p>
+<ul>
+<li><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization etc. It also comes with Hadoop support built in.</li>
+<li>The basic unit of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. </li>
+<li>All tasks can be feed into a final table (e.g. on Redshift) into one file.</li>
+</ul>
 <p>Here is <a href="https://towardsdatascience.com/data-pipelines-luigi-airflow-everything-you-need-to-know-18dc741449b7">an example of a simple workflow in Luigi</a>:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">luigi</span>
 
@@ -290,6 +294,81 @@
 <li><a href="https://github.com/astronomer/astronomer">Astronomer: Airflow as a Service</a>.</li>
 <li><a href="https://github.com/aws-samples/data-pipeline-samples/tree/master/samples">Data pipeline samples</a>.</li>
 <li><a href="GoogleCloudPlatform/DataflowTemplates">GCP Dataflow templates</a>.</li>
+</ul>
+<hr />
+<h2>Classic Big Data Pipelines</h2>
+<p>Major constituents of a big data analytic pipeline:</p>
+<ul>
+<li>The messaging system</li>
+<li>Distribution of messages to various nodes for further processing.</li>
+<li>Analytic processing, to derive inferences from data (e.g. application of machine learning of data).</li>
+<li>Data storage system for storing results.</li>
+<li>Interfaces or consumption of results data (e.g. visualization tools, alerts, etc).</li>
+</ul>
+<p>Additionally:</p>
+<ul>
+<li>
+<p>Real-time tracking and keeping results accurately up to date can be satisfied by building a lambda architecture. Lambda architecture takes advantage of both batch and stream-processing methods. It attempts to balance throughput, latency and fault-tolerance by using batch processing, while simultaneously using real-time stream processing to provide views of data.</p>
+</li>
+<li>
+<p>Component parts can be dynamically managed using Docker. Along with docker-compose file and/or skaffold, multi-containers application can be orchestred and the service configuration can be versioned for easy deploy.</p>
+</li>
+</ul>
+<h2>Messaging Platforms</h2>
+<ul>
+<li>Stream processing allows processing data in real time (optimizing latency of batch processing and of stream processing. </li>
+</ul>
+<h4>Apache Kafka Clusters</h4>
+<ul>
+<li>Kafka is a high-throughput, distributed, publish-subscribe messaging system. </li>
+<li>Data can be ingested from multiple sources into Kafka, before passing it to compute and storage systems.</li>
+<li>Kafka provides two mechanisms: Producer and Listener. The API writes the data to the producer, ensuring it handles high volume and high frequency data.</li>
+<li>Another advantage of using Kafka is the  mapping of use cases of each queue. The designer can design the queues to be separated by use cases, thus keeping the processing logic to a required minimum. We need not write unnecessary code to handle those use cases, which will never arrive in a queue.</li>
+<li>One can add a secondary Kafka sub-system, predictive modeling with Apache Spark, and Elasticsearch.</li>
+</ul>
+<h4>Kinesis Firehouse</h4>
+<h2>Compute Engines/Ingestion</h2>
+<h4>Apache Spark</h4>
+<ul>
+<li>Spark Streaming can be used here to ensure that messages received are spread out on the cluster and processed efficiently. </li>
+<li>Other notable advantages of this is that a processing time window can be configured as needed.</li>
+<li>Fast and scalable solution as it employs in memory architecture.</li>
+<li>Spark is a faster faster than Hadoop's MapReduce architecture.</li>
+</ul>
+<h4>Hadoop MapReduce</h4>
+<ul>
+<li>Hadoop Distributed File System (HDFS) is a  popular data storage system.</li>
+<li>Distributed File Systems are client/server-based application that allows clients to access and process data stored on the server as if it were on their own computer.</li>
+</ul>
+<h2>Data Warehouse/Stores</h2>
+<h3>Redshift</h3>
+<ul>
+<li>SQL interfaces, and the ease to process petabytes of data.</li>
+<li>Easy to maintain database that is optimized for analytical queries such as joins and aggregations</li>
+</ul>
+<h4>S3 or any  Cloud Filesystems</h4>
+<ul>
+<li>Underline data lake, backups, redundancy.</li>
+</ul>
+<h4>Hive</h4>
+<h4>RDS</h4>
+<h4>EMR</h4>
+<h2>Analytics and visualizations</h2>
+<h4>Periscope Data</h4>
+<ul>
+<li>A lightweight analytics tool where you can write SQL to create charts. It's a full featured dashboard tool.</li>
+<li>Periscope can connect to data sources (e.g. Redshift) easily as they are both cloud solutions.</li>
+</ul>
+<h4>Analytics and visualizations Learning References:</h4>
+<ul>
+<li><a href="https://mode.com/sql-tutorial/introduction-to-sql/">Introduction to SQL</a>.</li>
+<li><a href="https://www.khanacademy.org/computing/computer-programming/sql">Khan's SQL course</a>.</li>
+</ul>
+<h2>Alerting</h2>
+<h4>Elastalert</h4>
+<hr />
+<h3>Learning References</h3>
+<ul>
 <li><a href="https://github.com/binhnguyennus/awesome-scalability">Awesome Scalability: a lot of articles and resources on the subject</a>.</li>
 </ul>
 <h4>Enterprise Solutions</h4>
