@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/etl.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2019-02-16T04:19:00-05:00</updated><entry><title>Data Pipelines in Python</title><link href="http://bt3gl.github.io/data-pipelines-in-python.html" rel="alternate"></link><updated>2019-02-16T04:19:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2019-02-16:data-pipelines-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;Almost every day I have a new idea for a Machine Learning model or problem. The field is just getting bigger and more accessible. As I started a little &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;github repo for any  research dump on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post I add my little summary on how it goes for Python.&lt;/p&gt;
+&lt;p&gt;Almost every day I have a new idea to run in some machine learning model or problem, and this field is only getting bigger. As I start a little &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;github repo for any  research dump on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post I add my little summary on how it goes for Python.&lt;/p&gt;
 &lt;p&gt;To continue to get value out of machine learning models one needs an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.&lt;/p&gt;
 &lt;p&gt;Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model.&lt;/p&gt;
 &lt;p&gt;Examples:&lt;/p&gt;
@@ -285,4 +285,6 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.coursera.org/lecture/big-data-integration-processing/big-data-processing-pipelines-c4Wyd"&gt;Coursera's Big Data Pipeline course&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=3JYDT8lap5U"&gt;Industrial Machine Learning Talk&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="python"></category><category term="data"></category><category term="airflow"></category><category term="etl"></category><category term="luigi"></category></entry></feed>
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="python"></category><category term="data"></category><category term="airflow"></category><category term="etl"></category><category term="luigi"></category></entry></feed>
