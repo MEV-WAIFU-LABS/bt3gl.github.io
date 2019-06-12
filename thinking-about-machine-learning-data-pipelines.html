@@ -112,11 +112,11 @@
 	<a href="./tag/luigi.html"><i class="icon-tag"></i>luigi</a>
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /></p>
-<p>Almost every day I have a new idea of some machine learning model for an app or some feature. Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
-<p>For example, for a movie dataset from external source on internet:</p>
+<p>Almost every day I have a new idea of some machine learning model for an app or some feature. Machine learning involves tasks that include data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
+<p>For example, for a movie dataset from an external source on the internet:</p>
 <ul>
 <li>
-<p>If we are in AWS, we could upload it to <strong>S3</strong> and and then bring to <strong>Dynamo DB</strong>. The data could be ingested as a one time full-load as a batch or as a real-time stream.</p>
+<p>If we are in AWS, we could upload it to <strong>S3</strong> and then bring to <strong>Dynamo DB</strong>. The data could be ingested as a one-time full-load as a batch or as a real-time stream.</p>
 </li>
 <li>
 <p>There may be a need to do <strong>both batch and stream or just a batch or a stream</strong>. In this case, the data could be <strong>full-loaded of data into Dynamo DB</strong> and then <strong>stream new records into Kinesis stream using the Lambda function</strong> as a source simulator.</p>
@@ -128,7 +128,7 @@
 <p>If we have an <strong>AWS S3 data lake</strong> ready, we could use <strong>Amazon Sagemaker for model training and inference</strong>.</p>
 </li>
 </ul>
-<p>As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for my persona research (dumps...) on Data Pipelines</a> (PR your contribution!), in this post I add my little intro on the topic.</p>
+<p>As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for my personal research (dumps...) on Data Pipelines</a> (PR your contribution!), in this post I add my little intro on the topic.</p>
 <h2>ETL: Extract, Transform, and Load</h2>
 <p>These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:</p>
 <ul>
@@ -150,7 +150,7 @@
 <ul>
 <li>job definitions (in source control).</li>
 <li>CLI: to test, run, backfill, describe and clear parts of your DAGs.</li>
-<li>web application: to explore your DAGs definition, their dependencies, progress, metadata and logs (built in Flask).</li>
+<li>web application: to explore your DAGs definition, their dependencies, progress, metadata, and logs (built in Flask).</li>
 <li>metadata repository (in MySQL or Postgres): keeps track of task job statuses.</li>
 <li>array of workers: runs jobs task instances in a distributed fashion.</li>
 <li>scheduler: fires up the task instances that are ready.</li>
@@ -189,8 +189,8 @@
 
 
 <h3>Luigi</h3>
-<p><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization etc. It also comes with Hadoop support built in.</p>
-<p>The basic unit of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.</p>
+<p><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization, etc. It also comes with Hadoop support built in.</p>
+<p>The basic units of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.</p>
 <p>Here is <a href="https://towardsdatascience.com/data-pipelines-luigi-airflow-everything-you-need-to-know-18dc741449b7">an example of a simple workflow in Luigi</a>:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">luigi</span>
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/data.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-05-16T04:19:00-04:00</updated><entry><title>Thinking about Machine Learning Data Pipelines</title><link href="http://bt3gl.github.io/thinking-about-machine-learning-data-pipelines.html" rel="alternate"></link><updated>2018-05-16T04:19:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-05-16:thinking-about-machine-learning-data-pipelines.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;Almost every day I have a new idea of some machine learning model for an app or some feature. Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.&lt;/p&gt;
-&lt;p&gt;For example, for a movie dataset from external source on internet:&lt;/p&gt;
+&lt;p&gt;Almost every day I have a new idea of some machine learning model for an app or some feature. Machine learning involves tasks that include data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.&lt;/p&gt;
+&lt;p&gt;For example, for a movie dataset from an external source on the internet:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;If we are in AWS, we could upload it to &lt;strong&gt;S3&lt;/strong&gt; and and then bring to &lt;strong&gt;Dynamo DB&lt;/strong&gt;. The data could be ingested as a one time full-load as a batch or as a real-time stream.&lt;/p&gt;
+&lt;p&gt;If we are in AWS, we could upload it to &lt;strong&gt;S3&lt;/strong&gt; and then bring to &lt;strong&gt;Dynamo DB&lt;/strong&gt;. The data could be ingested as a one-time full-load as a batch or as a real-time stream.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;There may be a need to do &lt;strong&gt;both batch and stream or just a batch or a stream&lt;/strong&gt;. In this case, the data could be &lt;strong&gt;full-loaded of data into Dynamo DB&lt;/strong&gt; and then &lt;strong&gt;stream new records into Kinesis stream using the Lambda function&lt;/strong&gt; as a source simulator.&lt;/p&gt;
@@ -16,7 +16,7 @@
 &lt;p&gt;If we have an &lt;strong&gt;AWS S3 data lake&lt;/strong&gt; ready, we could use &lt;strong&gt;Amazon Sagemaker for model training and inference&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As I start a little &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;github repo for my persona research (dumps...) on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post I add my little intro on the topic.&lt;/p&gt;
+&lt;p&gt;As I start a little &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;github repo for my personal research (dumps...) on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post I add my little intro on the topic.&lt;/p&gt;
 &lt;h2&gt;ETL: Extract, Transform, and Load&lt;/h2&gt;
 &lt;p&gt;These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:&lt;/p&gt;
 &lt;ul&gt;
@@ -38,7 +38,7 @@
 &lt;ul&gt;
 &lt;li&gt;job definitions (in source control).&lt;/li&gt;
 &lt;li&gt;CLI: to test, run, backfill, describe and clear parts of your DAGs.&lt;/li&gt;
-&lt;li&gt;web application: to explore your DAGs definition, their dependencies, progress, metadata and logs (built in Flask).&lt;/li&gt;
+&lt;li&gt;web application: to explore your DAGs definition, their dependencies, progress, metadata, and logs (built in Flask).&lt;/li&gt;
 &lt;li&gt;metadata repository (in MySQL or Postgres): keeps track of task job statuses.&lt;/li&gt;
 &lt;li&gt;array of workers: runs jobs task instances in a distributed fashion.&lt;/li&gt;
 &lt;li&gt;scheduler: fires up the task instances that are ready.&lt;/li&gt;
@@ -77,8 +77,8 @@
 
 
 &lt;h3&gt;Luigi&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://github.com/spotify/luigi"&gt;Luigi data pipelining&lt;/a&gt; is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization etc. It also comes with Hadoop support built in.&lt;/p&gt;
-&lt;p&gt;The basic unit of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/spotify/luigi"&gt;Luigi data pipelining&lt;/a&gt; is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization, etc. It also comes with Hadoop support built in.&lt;/p&gt;
+&lt;p&gt;The basic units of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.&lt;/p&gt;
 &lt;p&gt;Here is &lt;a href="https://towardsdatascience.com/data-pipelines-luigi-airflow-everything-you-need-to-know-18dc741449b7"&gt;an example of a simple workflow in Luigi&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;luigi&lt;/span&gt;
 
