@@ -105,7 +105,7 @@
 
 
 </footer><!-- /.post-info -->                </div>
-                <p><a href="https://github.com/bt3gl/threat_intel">Threat intel 🍒</a> is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:</p>
+                <p><a href="https://github.com/bt3gl/threat_intel">Threat Intel 🍒</a> is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:</p>
 <ul>
 <li>OpenDNS Investigate API</li>
 <li>VirusTotal API v2.0</li>
@@ -149,7 +149,7 @@ to save you the bandwidth for the multiple calls about the same domains or IPs:<
 <h4>Domain categorization</h4>
 <p>Calls <code>domains/categorization/?showLabels</code> Investigate API endpoint.
 It takes a list (or any other Python enumerable) of domains and returns
-the categories associated with this domains by OpenDNS along with a [-1, 0, 1] score, where -1 is a malicious status.</p>
+the categories associated with these domains by OpenDNS along with a [-1, 0, 1] score, where -1 is a malicious status.</p>
 <div class="highlight"><pre><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;google.com&quot;</span><span class="p">,</span> <span class="s">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s">&quot;bibikun.ru&quot;</span><span class="p">]</span>
 <span class="n">investigate</span><span class="o">.</span><span class="n">categorization</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
 </pre></div>
@@ -196,7 +196,7 @@ associated with each domain.</p>
 
 <h4>Co-occurrences for a domain</h4>
 <p>Calls <code>recommendations/name/</code> Investigate API endpoint.
-Use this method to find out a list of co-occurence domains (domains that are being accessed by the same users within a small window of time) to the one given in a list, or any other Python enumerable.</p>
+Use this method to find out a list of co-occurrence domains (domains that are being accessed by the same users within a small window of time) to the one given in a list, or any other Python enumerable.</p>
 <div class="highlight"><pre><span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;google.com&quot;</span><span class="p">,</span> <span class="s">&quot;baidu.com&quot;</span><span class="p">,</span> <span class="s">&quot;bibikun.ru&quot;</span><span class="p">]</span>
 <span class="n">investigate</span><span class="o">.</span><span class="n">cooccurrences</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
 </pre></div>
@@ -326,7 +326,7 @@ Use this method to find out related domains to the IP addresses given in a list,
 <h4>WHOIS information for a domain</h4>
 <h5>WHOIS information for an email</h5>
 <p>Calls <code>whois/emails/{email}</code> Investigate API endpoint.</p>
-<p>Use this method to see WHOIS information for the email address. (For now the OpenDNS API will only return at most 500 results)</p>
+<p>Use this method to see WHOIS information for the email address. (For now, the OpenDNS API will only return at most 500 results)</p>
 <div class="highlight"><pre><span class="n">emails</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;dns-admin@google.com&quot;</span><span class="p">]</span>
 <span class="n">investigate</span><span class="o">.</span><span class="n">whois_emails</span><span class="p">(</span><span class="n">emails</span><span class="p">)</span>
 </pre></div>
@@ -352,7 +352,7 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 <h5>WHOIS information for a nameserver</h5>
 <p>Calls <code>whois/nameservers/{nameserver}</code> Investigate API endpoint.</p>
-<p>Use this method to see WHOIS information for the nameserver. (For now the OpenDNS API will only return at most 500 results)</p>
+<p>Use this method to see WHOIS information for the nameserver. (For now, the OpenDNS API will only return at most 500 results)</p>
 <div class="highlight"><pre><span class="n">nameservers</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;ns2.google.com&quot;</span><span class="p">]</span>
 <span class="n">investigate</span><span class="o">.</span><span class="n">whois_nameservers</span><span class="p">(</span><span class="n">nameservers</span><span class="p">)</span>
 </pre></div>
@@ -470,7 +470,7 @@ possible to query for the reports about:</p>
 </pre></div>
 
 
-<p>VirusTotal API calls allow to squeeze a list of file hashes or URLs into a single HTTP call.
+<p>VirusTotal API calls allow squeezing a list of file hashes or URLs into a single HTTP call.
 Depending on the API version you are using (public or private) you may need to tune the maximum number
 of the resources (file hashes or URLs) that could be passed in a single API call.
 You can do it with the <code>resources_per_req</code> parameter:</p>
@@ -481,7 +481,7 @@ You can do it with the <code>resources_per_req</code> parameter:</p>
 <p>When using the public API your standard request rate allows you too put maximum 4 resources per request.
 With private API you are able to put up to 25 resources per call. That is also the default value if you
 don't pass the <code>resources_per_req</code> parameter.</p>
-<p>Of course when calling the API wrapper methods in the <code>VirusTotalApi</code> class you can pass as many resources
+<p>Of course, when calling the API wrapper methods in the <code>VirusTotalApi</code> class you can pass as many resources
 as you want and the wrapper will take care of producing as many API calls as necessary to satisfy the request rate.</p>
 <p>Similarly to OpenDNS API wrapper, you can also specify the file name where the responses will be cached:</p>
 <div class="highlight"><pre><span class="n">vt</span> <span class="o">=</span> <span class="n">VirusTotalApi</span><span class="p">(</span><span class="s">&quot;&lt;VIRUSTOTAL-API-KEY-HERE&gt;&quot;</span><span class="p">,</span> <span class="n">cache_file_name</span><span class="o">=</span><span class="s">&quot;/tmp/cache.virustotal.json&quot;</span><span class="p">)</span>
@@ -588,8 +588,8 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):</
 <h4>Hash rescan endpoint</h4>
 <p>Calls <code>file/rescan</code> VirusTotal API endpoint. Use to rescan a previously submitted file.
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
-<h4>Hash behaviour endpoint</h4>
-<p>Calls <code>file/behaviour</code> VirusTotal API endpoint. Use to get a report about the behaviour of the file when executed in a sandboxed environment (Cuckoo sandbox).
+<h4>Hash behavior endpoint</h4>
+<p>Calls <code>file/behaviour</code> VirusTotal API endpoint. Use to get a report about the behavior of the file when executed in a sandboxed environment (Cuckoo sandbox).
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):</p>
 <div class="highlight"><pre><span class="n">file_hashes</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">&quot;99017f6eebbac24f351415dd410d522d&quot;</span><span class="p">,</span>
@@ -679,7 +679,7 @@ Pass a list or any other Python enumerable containing the IP addresses:</p>
 
 
 <h4>URL live feed endpoint</h4>
-<p>Calls <code>url/distribution</code> VirusTotal API endpoint. Use to get a live a feed with the latest URLs submitted to VirusTotal.</p>
+<p>Calls <code>url/distribution</code> VirusTotal API endpoint. Use to get a live feed with the latest URLs submitted to VirusTotal.</p>
 <div class="highlight"><pre><span class="n">vt</span><span class="o">.</span><span class="n">get_url_distribution</span><span class="p">()</span>
 </pre></div>
 
@@ -697,14 +697,14 @@ Pass a list or any other Python enumerable containing the IP addresses:</p>
 
 
 <h4>File date endpoint</h4>
-<p>Calls <code>file/clusters</code> VirusTotal API endpoint. Use to list simililarity clusters for a given time frame.</p>
+<p>Calls <code>file/clusters</code> VirusTotal API endpoint. Use to list similarity clusters for a given time frame.</p>
 <div class="highlight"><pre><span class="n">vt</span><span class="o">.</span><span class="n">get_file_clusters</span><span class="p">()</span>
 </pre></div>
 
 
 <hr />
 <h3>ShadowServer API</h3>
-<p><a href="http://shadowserver.org/">ShadowServer</a> provides and <a href="http://bin-test.shadowserver.org/">API</a> that allows to test
+<p><a href="http://shadowserver.org/">ShadowServer</a> provides an <a href="http://bin-test.shadowserver.org/">API</a> that allows to test
 the hashes against a list of known software applications.</p>
 <p>To use the ShadowServer API wrapper import <code>ShadowServerApi</code> class from <code>threat_intel.shadowserver</code> module:</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">threat_intel.shadowserver</span> <span class="kn">import</span> <span class="n">ShadowServerApi</span>

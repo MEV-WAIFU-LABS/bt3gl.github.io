@@ -121,8 +121,8 @@
 <h2>Scope of the System</h2>
 <ul>
 <li><strong>User cases</strong>: Who is going to use it? How are they going to use it?</li>
-<li><strong>Constraints</strong>: Amount of traffic, amount of data, scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write oriented, etc.)?</li>
-<li><strong>High level architecture design</strong>: Application service layer, different services required, data storage layer?</li>
+<li><strong>Constraints</strong>: Amount of traffic, amount of data, the scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write-oriented, etc.)?</li>
+<li><strong> High-level architecture design</strong>: Application service layer, different services required, data storage layer?</li>
 <li><strong>Understanding bottlenecks</strong>: Do we need a load balancer and many instances behind it to handle user requests? Is data large enough so that you need to distribute your database on multiple machines? What are the downsides from doing that?</li>
 <li><strong>User interface</strong>: Is this a full web app, with a web interface? Or just a RESTful API?</li>
 </ul>
@@ -148,8 +148,8 @@
 <p><strong>Load balancers</strong> are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.</p>
 <p>Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.</p>
 <h3>Queues and Asynchronous requests</h3>
-<p><strong>Queues</strong> are a common way to bring asynchrony into you system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps achieving performance and availability.</p>
-<p>A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing abstraction of a client's request and its response.</p>
+<p><strong>Queues</strong> are a common way to bring asynchrony into your system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps to achieve performance and availability.</p>
+<p>A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing an abstraction of a client's request and its response.</p>
 <hr />
 <h1>Back to my end-to-end Application</h1>
 <p>A good way to illustrate system design is looking at a real end-to-end application deployed at AWS. </p>
@@ -196,7 +196,7 @@
 
 
 <p>Now, all you need is a couple of commands (such as <code>terraform apply</code>) and your system would be up and running. </p>
-<p>This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where <strong>design meets code and infrastructure as a code</strong>. Pretty awesome to live in 2019.</p>
+<p>This was a high-level overview of how you would start designing and implementing real-world end-to-end applications, where <strong>design meets code and infrastructure as a code</strong>. Pretty awesome to live in 2019.</p>
 <hr />
 <h1>Learning References</h1>
 <ul>
@@ -208,8 +208,7 @@
 </ul>
 <hr />
 <p><strong>
-Aloha,
-Mia
+Aloha, bt3
 </strong></p>
                 </div><!-- /.entry-content -->
         </article>

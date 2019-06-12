@@ -4,7 +4,7 @@
 &lt;ol&gt;
 &lt;li&gt;The algorithm begins by creating a random initial population.&lt;/li&gt;
 &lt;li&gt;Select the fittest individuals to be the parents of the next generation (a score). Randomly select some of the non-fittest individuals to be parents as well, increasing the chance of finding a global optimum.&lt;/li&gt;
-&lt;li&gt;Crossover the selected parents, creating new individuals. There will be a chance that the child will have a random mutation of it's numbers.&lt;/li&gt;
+&lt;li&gt;Crossover the selected parents, creating new individuals. There will be a chance that the child will have a random mutation of its numbers.&lt;/li&gt;
 &lt;li&gt;Calculate the average population fitness. Rinse and repeat.&lt;/li&gt;
 &lt;li&gt;When the average population fitness is ~0 (or close to it), stop evolving.&lt;/li&gt;
 &lt;/ol&gt;
@@ -17,7 +17,7 @@
     &lt;span class="n"&gt;Crossover&lt;/span&gt;
     &lt;span class="n"&gt;Mutation&lt;/span&gt;
     &lt;span class="n"&gt;Compute&lt;/span&gt; &lt;span class="n"&gt;fitness&lt;/span&gt;
-&lt;span class="n"&gt;UNTIL&lt;/span&gt; &lt;span class="n"&gt;population&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;converged&lt;/span&gt;
+&lt;span class="n"&gt;UNTIL&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;population&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;converged&lt;/span&gt;
 &lt;span class="n"&gt;STOP&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

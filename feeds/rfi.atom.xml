@@ -275,17 +275,17 @@
 &lt;li&gt;&lt;a href="https://developers.google.com/speed/public-dns/docs/security"&gt;Google's Public DNS&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="XSS"></category><category term="CSRF"></category><category term="XSSI"></category><category term="Buffer_Overflow"></category><category term="LFI"></category><category term="RFI"></category><category term="iframe"></category><category term="SQLi"></category></entry><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><updated>2014-10-22T06:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities  found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="XSS"></category><category term="CSRF"></category><category term="XSSI"></category><category term="Buffer_Overflow"></category><category term="LFI"></category><category term="RFI"></category><category term="iframe"></category><category term="SQLi"></category></entry><entry><title>Exploring D-CTF Quals 2014's Exploits</title><link href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html" rel="alternate"></link><updated>2014-10-22T06:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-22:exploring-d-ctf-quals-2014s-exploits.html</id><summary type="html">&lt;p&gt;Last weekend I played some of the &lt;a href="http://dctf.defcamp.ro/challs"&gt;DEFCAMP CTF Quals&lt;/a&gt;. It was pretty intense. For (my own)  organizational purposes, I made a list of all the technologies and vulnerabilities found in this CTF, some based on my team's game, some based on the &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/"&gt;CTF write-ups git repo&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Vulnerabilities&lt;/h2&gt;
 &lt;h3&gt;Remote File Inclusion and Local File Inclusion Vulnerabilities&lt;/h3&gt;
 &lt;p&gt;In &lt;a href="http://projects.webappsec.org/w/page/13246955/Remote%20File%20Inclusion"&gt;Remote File Inclusion&lt;/a&gt; (RFI) an attacker can load exploits to the server. An attacker can use RFI to run exploits in both server and client sides. PHP's &lt;a href="http://php.net/manual/en/function.include.php"&gt;include()&lt;/a&gt; is extremely vulnerable to RFI attacks.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion"&gt;Local File Inclusion&lt;/a&gt; (LFI) is similar to RFI but only files that are currently in the server can be included.  This type of vulnerability is seem in forms for file uploading (with improper sanitation).&lt;/p&gt;
-&lt;p&gt;An example of RFI exploitation is the case where the form only accepts some type of extensions (such as JPG or PNG) but the verification is made in the client side. In this case, an attacker can tamper the HTTP requests to send shell code (with PHP extension, for example). I've shown examples of this attack in the  &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas post&lt;/a&gt;. There  I've explained that the trick was to rename a PHP shell code to one of these safe extensions.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion"&gt;Local File Inclusion&lt;/a&gt; (LFI) is similar to RFI but only files that are currently in the server can be included.  This type of vulnerability is seemed in forms for file uploading (with improper sanitation).&lt;/p&gt;
+&lt;p&gt;An example of RFI exploitation is the case where the form only accepts some type of extensions (such as JPG or PNG) but the verification is made in the client side. In this case, an attacker can tamper the HTTP requests to send shellcode (with PHP extension, for example). I've shown examples of this attack in the  &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas post&lt;/a&gt;. There  I've explained that the trick was to rename a PHP shell code to one of these safe extensions.&lt;/p&gt;
 &lt;h3&gt;TimThumb and LFI&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://code.google.com/p/timthumb/"&gt;TimThumb&lt;/a&gt; is a PHP script for manipulating web images. It was recently &lt;a href="http://www.binarymoon.co.uk/2014/09/timthumb-end-life/"&gt;discontinued because of security issues&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;With TimThumb 1.33, an attacker is able to upload a shell by appending it to an image. All  she needs to do is to have it in some online subdomain. TimThumb will store this image in a cache folder and generate a MD5 of the full path of the shell. The last step is to perform a LFI attack with the shell in this folder. Check this &lt;a href="http://kaoticcreations.blogspot.com/2011/12/lfi-tip-how-to-read-source-code-using.html"&gt;example of LFI exploitation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With TimThumb 1.33, an attacker is able to upload a shell by appending it to an image. All she needs to do is to have it in some online subdomain. TimThumb will store this image in a cache folder and generate an MD5 of the full path of the shell. The last step is to perform an LFI attack with the shell in this folder. Check this &lt;a href="http://kaoticcreations.blogspot.com/2011/12/lfi-tip-how-to-read-source-code-using.html"&gt;example of LFI exploitation&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;CMS Mini and RFI&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://www.mini-print.com/"&gt;CMS Mini&lt;/a&gt; is file system to build simple websites. It has &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt; such as &lt;a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)"&gt;CSRF&lt;/a&gt;, RFI, and &lt;a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)"&gt;XSS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.mini-print.com/"&gt;CMS Mini&lt;/a&gt; is a file system to build simple websites. It has &lt;a href="http://www.exploit-db.com/exploits/33030/"&gt;several vulnerabilities&lt;/a&gt; such as &lt;a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)"&gt;CSRF&lt;/a&gt;, RFI, and &lt;a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)"&gt;XSS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;An example of RFI vulnerability in CMS Mini is explored using curl:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://&lt;/span&gt;
 &lt;span class="err"&gt;[target/IP]/cmsmini/admin/edit.php?path=&amp;amp;name=../../../../../etc/passwd&lt;/span&gt;
@@ -308,7 +308,7 @@
 
 
 &lt;h3&gt;Gitlist and Remote Command Execution&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://gitlist.org/"&gt;Gitlist&lt;/a&gt; is an application to browse github repositories in a browser. The  versions up to 5.0 are known for &lt;a href="http://www.websecuritywatch.com/arbitrary-command-execution-in-gitlist/"&gt;allowing remote attackers to execute arbitrary commands via shell&lt;/a&gt;, a type of &lt;a href="http://cwe.mitre.org/data/definitions/77.html"&gt;command injection&lt;/a&gt;. Exploits for this vulnerability can be seen at &lt;a href="http://hatriot.github.io/blog/2014/06/29/gitlist-rce/"&gt;hatriot&lt;/a&gt;, at &lt;a href="http://packetstormsecurity.com/files/127364/Gitlist-Unauthenticated-Remote-Command-Execution.html"&gt;packet storm&lt;/a&gt;, at &lt;a href="http://en.1337day.com/exploit/22391"&gt;1337day&lt;/a&gt;, and at &lt;a href="http://www.exploit-db.com/exploits/33990/"&gt;exploit-db&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://gitlist.org/"&gt;Gitlist&lt;/a&gt; is an application to browse GitHub repositories in a browser. The versions up to 5.0 are known for &lt;a href="http://www.websecuritywatch.com/arbitrary-command-execution-in-gitlist/"&gt;allowing remote attackers to execute arbitrary commands via shell&lt;/a&gt;, a type of &lt;a href="http://cwe.mitre.org/data/definitions/77.html"&gt;command injection&lt;/a&gt;. Exploits for this vulnerability can be seen at &lt;a href="http://hatriot.github.io/blog/2014/06/29/gitlist-rce/"&gt;hatriot&lt;/a&gt;, at &lt;a href="http://packetstormsecurity.com/files/127364/Gitlist-Unauthenticated-Remote-Command-Execution.html"&gt;packet storm&lt;/a&gt;, at &lt;a href="http://en.1337day.com/exploit/22391"&gt;1337day&lt;/a&gt;, and at &lt;a href="http://www.exploit-db.com/exploits/33990/"&gt;exploit-db&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this CTF, the following command could be used to look for the flag:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;http://10.13.37.33/gitlist/redis/blame/unstable/README%22%22%60ls%20-al%60&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -316,7 +316,7 @@
 
 &lt;h3&gt;LibreOffice's Socket Connections&lt;/h3&gt;
 &lt;p&gt;LibreOffice's has a binary &lt;a href="http://www.processlibrary.com/en/directory/files/soffice/66728/"&gt;soffice.bin&lt;/a&gt; that takes socket connections on the &lt;em&gt;port 2002&lt;/em&gt; (in this CTF, in the VPN's localhost).&lt;/p&gt;
-&lt;p&gt;For instance, the  command &lt;a href="http://linux.die.net/man/1/unoconv"&gt;unoconv&lt;/a&gt; can be used  to convert a file to a LibreOffice supported format. The flag &lt;strong&gt;-c&lt;/strong&gt; opens a connection by the client to connect to an LibreOffice instance. It also can be used by the listener to make LibreOffice listen.&lt;/p&gt;
+&lt;p&gt;For instance, the command &lt;a href="http://linux.die.net/man/1/unoconv"&gt;unoconv&lt;/a&gt; can be used to convert a file to a LibreOffice supported format. The flag &lt;strong&gt;-c&lt;/strong&gt; opens a connection by the client to connect to an LibreOffice instance. It also can be used by the listener to make LibreOffice listen.&lt;/p&gt;
 &lt;p&gt;From the documentation, the default connection string is:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;Default connection string is &amp;quot;socket,host=localhost,port=2002;urp;StarOffice.ComponentContext&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -327,13 +327,13 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;An example of payload can be seen &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/web-400"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An example of a payload can be seen &lt;a href="https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/web-400"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;ColdFusion and Local File Disclosure&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Adobe_ColdFusion"&gt;ColdFusion&lt;/a&gt; is an old web application development platform. It carries its own (interpreted) language, &lt;strong&gt;CFM&lt;/strong&gt;, with a Java backend.&lt;/p&gt;
 &lt;p&gt;CFM has scripting features like ASP and PHP, and syntax resembling HTML and JavaScript.  ColdFusion scripts  have &lt;strong&gt;cfm&lt;/strong&gt; and &lt;strong&gt;cfc&lt;/strong&gt; file extension. For instance,  &lt;a href="http://www.adobe.com/products/coldfusion-family.html"&gt;Adobe ColdFusion 11&lt;/a&gt; and &lt;a href="http://www.getrailo.org/"&gt;Railio 4.2&lt;/a&gt;, the two platform accepting CFM,  were both released in the beginning of 2014.&lt;/p&gt;
-&lt;p&gt;The problem is that CFM is &lt;a href="http://www.intelligentexploit.com/view-details.html?id=12750"&gt;vulnerable to a variety of attacks&lt;/a&gt;, including &lt;a href="https://www.owasp.org/index.php/Full_Path_Disclosure"&gt;Local File Disclosure&lt;/a&gt; (LFD) and SQL injection (SQLi). Adding this to the fact that ColdFusion scripts  usually run on elevated privileged users, we have a very vulnerable platform.&lt;/p&gt;
+&lt;p&gt;The problem is that CFM is &lt;a href="http://www.intelligentexploit.com/view-details.html?id=12750"&gt;vulnerable to a variety of attacks&lt;/a&gt;, including &lt;a href="https://www.owasp.org/index.php/Full_Path_Disclosure"&gt;Local File Disclosure&lt;/a&gt; (LFD) and SQL injection (SQLi). Adding this to the fact that ColdFusion scripts usually run on elevated privileged users, we have a very vulnerable platform.&lt;/p&gt;
 &lt;h4&gt;SQL Injection (SQLi)&lt;/h4&gt;
-&lt;p&gt;&lt;a href="https://www.owasp.org/index.php/SQL_Injection"&gt;SQL Injection&lt;/a&gt; is a classic attack where one injects exploits in a &lt;a href="http://technet.microsoft.com/en-us/library/bb264565(v=sql.90).aspx"&gt;SQL query&lt;/a&gt;. Vulnerabilities of this type can be spot in queries such as &lt;strong&gt;index.php?id=1&lt;/strong&gt;. I showed some of these exploits in my &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.owasp.org/index.php/SQL_Injection"&gt;SQL Injection&lt;/a&gt; is a classic attack where one injects exploits in a &lt;a href="http://technet.microsoft.com/en-us/library/bb264565(v=sql.90).aspx"&gt;SQL query&lt;/a&gt;. Vulnerabilities of this type can be spotted in queries such as &lt;strong&gt;index.php?id=1&lt;/strong&gt;. I showed some of these exploits in my &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas post&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this CTF, these were  some of the  exploits that could be used:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;List everything  in a database, where &lt;strong&gt;0x3a&lt;/strong&gt; is the hexadecimal symbol for &lt;strong&gt;:&lt;/strong&gt;:&lt;/li&gt;
@@ -359,10 +359,10 @@
 &lt;p&gt;Notice the &lt;em&gt;trailing pair of hyphens&lt;/em&gt; &lt;strong&gt;--&lt;/strong&gt; which specifies to most database servers that the remainder of the statement is to be treated as a comment and not executed (it removes the trailing single-quote left over from the modified query). To learn more about how to mitigate SQLi, I recommend &lt;a href="https://www.owasp.org/index.php/SQL_Injection_Prevention_Cheat_Sheet"&gt;OWASP's SQLi Prevention Cheat Sheet&lt;/a&gt; and &lt;a href="http://owtf.github.io/boilerplate-templates/SQLinjection.html"&gt;this nice guide for SQLi mitigation&lt;/a&gt; by OWSAP OWTF.&lt;/p&gt;
 &lt;p&gt;By the way, it's useful in general to know &lt;a href="http://www.w3schools.com/tags/ref_urlencode.asp"&gt;HTML URL Encoding&lt;/a&gt; to craft these URLs.&lt;/p&gt;
 &lt;h3&gt;CesarFTP 0.99g and Buffer Overflow&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://www.softpedia.com/get/Internet/Servers/FTP-Servers/Cesar-FTP.shtml"&gt;CesarFTP 0.99g&lt;/a&gt; is an easy-to-use  FTP server. It is also known for having several vulnerabities, including &lt;a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2961"&gt;buffer overflow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.softpedia.com/get/Internet/Servers/FTP-Servers/Cesar-FTP.shtml"&gt;CesarFTP 0.99g&lt;/a&gt; is an easy-to-use  FTP server. It is also known for having several vulnerabilities, including &lt;a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2006-2961"&gt;buffer overflow&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For example, see this exploit for &lt;strong&gt;Metasploit&lt;/strong&gt; from &lt;a href="http://www.exploit-db.com/exploits/16713/"&gt;exploit-db&lt;/a&gt; (or &lt;a href="http://www.exploit-db.com/exploits/1906/"&gt;an older one here&lt;/a&gt;).&lt;/p&gt;
 &lt;h4&gt;File Disclosure of Password Hashes&lt;/h4&gt;
-&lt;p&gt;This vulnerability provides a 30 second window in the Administration panel, which can e use to write a shell code. The main idea is a &lt;a href="https://www.owasp.org/index.php/Path_Traversal"&gt;directory traversal&lt;/a&gt; to the &lt;strong&gt;password.proprieties&lt;/strong&gt; that can be used to login in the server.&lt;/p&gt;
+&lt;p&gt;This vulnerability provides a 30-second window in the Administration panel, which can e use to write a shellcode. The main idea is a &lt;a href="https://www.owasp.org/index.php/Path_Traversal"&gt;directory traversal&lt;/a&gt; to the &lt;strong&gt;password.proprieties&lt;/strong&gt; that can be used to login in the server.&lt;/p&gt;
 &lt;p&gt;Ingredients of this attack are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -388,7 +388,7 @@
 &lt;hr /&gt;
 &lt;h2&gt;Useful Tools&lt;/h2&gt;
 &lt;h3&gt;Vulnerability Scanners&lt;/h3&gt;
-&lt;p&gt;Vulnerability scanners can be useful for several problems. For instance, for a PHP static source code analyser, we can use &lt;a href="http://rips-scanner.sourceforge.net/"&gt;RIPS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vulnerability scanners can be useful for several problems. For instance, for a PHP static source code analyzer, we can use &lt;a href="http://rips-scanner.sourceforge.net/"&gt;RIPS&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In this CTF we had to scan for &lt;a href="http://en.wikipedia.org/wiki/Heartbleed"&gt;Heartbleed&lt;/a&gt;, and we used &lt;a href="https://gist.githubusercontent.com/eelsivart/10174134/raw/5c4306a11fadeba9d9f9385cdda689754ca4d362/heartbleed.py"&gt;this script&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Scapy&lt;/h3&gt;
 &lt;p&gt;&lt;a href="http://packetlife.net/blog/2011/may/23/introduction-scapy/"&gt;Scapy&lt;/a&gt; is a Python lib for crafting packets. It can be useful for problems such as &lt;a href="http://en.wikipedia.org/wiki/Port_knocking"&gt;port knocking&lt;/a&gt;. For illustration, check this &lt;a href="http://eindbazen.net/2011/12/phd-ctf-quals-2011-%E2%80%93-port-knocking/"&gt;example from PHD CTF 2011&lt;/a&gt; and this from &lt;a href="http://blog.dul.ac/2014/05/ASISCTF14/"&gt;ASIS CTF 2014&lt;/a&gt;. Check &lt;a href="https://code.google.com/p/pypk/source/browse/branches/release-0.1.0/knocker.py?r=3"&gt;this project&lt;/a&gt; too.&lt;/p&gt;
@@ -433,7 +433,7 @@
 
 
 &lt;h3&gt;MD5 Lookups&lt;/h3&gt;
-&lt;p&gt;Several hashes in this CTF needed to be searched. Google in general does a good job, but here are some specific websites: &lt;a href="http://hash-killer.com/"&gt;hash-killer&lt;/a&gt; and &lt;a href="http://www.md5this.com/"&gt;md5this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Several hashes in this CTF needed to be searched. Google, in general, does a good job, but here are some specific websites: &lt;a href="http://hash-killer.com/"&gt;hash-killer&lt;/a&gt; and &lt;a href="http://www.md5this.com/"&gt;md5this&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;In the Shell&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Hexadecimal decoders&lt;/strong&gt; are essential. You can use Python's &lt;a href="https://docs.python.org/2/library/functions.html#hex"&gt;hex&lt;/a&gt;:&lt;/li&gt;
@@ -496,7 +496,7 @@
 
 
 &lt;ul&gt;
-&lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from command line:&lt;/li&gt;
+&lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from the command line:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;netsh firewall &lt;span class="nb"&gt;set &lt;/span&gt;opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
 &lt;/pre&gt;&lt;/div&gt;

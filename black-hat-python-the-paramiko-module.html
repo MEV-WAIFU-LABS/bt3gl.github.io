@@ -116,11 +116,11 @@
 </footer><!-- /.post-info -->                </div>
                 <p>This is the second post based on my readings from <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>. Yesterday I talked about Python's <a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html">socket module</a> and today I'm talking about the <a href="http://www.paramiko.org/">paramiko</a> module.</p>
 <p><strong>Paramiko</strong> is awesome!!! It uses my dear <a href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> to give us access to the <a href="http://en.wikipedia.org/wiki/SSH2">SSH2 protocol</a>, and it has a flexible and easy to use API.</p>
-<p>You are going to see it with your own eyes: in this post we will see code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my <a href="https://github.com/bt3gl/My-Gray-Hacker-Resources">github repo</a>)!</p>
+<p>You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my <a href="https://github.com/bt3gl/My-Gray-Hacker-Resources">github repo</a>)!</p>
 <p>Shall we start?</p>
 <hr />
 <h2>A Simple SSH Client</h2>
-<p>The first program we are going to write is a SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.</p>
+<p>The first program we are going to write is an SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.</p>
 <p>But before we start, make sure you have  <strong>paramiko</strong> installed in our environment:</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo pip install paramiko
 </pre></div>
@@ -250,7 +250,7 @@
 <p>What if we also control the SSH server and we are able to send commands to our SSH client? This is exactly what we are going to do now: we are going to write a <strong>class</strong> for this server (with a little help of the <strong>socket</strong> module) and then we will be able to <strong>reverse the shell</strong>!</p>
 <p>As a note, this script is based in some of the <a href="https://github.com/paramiko/paramiko/blob/master/demo">paramiko demos</a> and we specifically use the key from their demo files (<a href="https://github.com/paramiko/paramiko/blob/master/demos/test_rsa.key">download here</a>).</p>
 <h3>The SSH Server</h3>
-<p>In our server script, we first  create a class <strong>Server</strong> that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:</p>
+<p>In our server script, we first create a class <strong>Server</strong> that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:</p>
 <div class="highlight"><pre><span class="n">HOST_KEY</span> <span class="o">=</span> <span class="n">paramiko</span><span class="o">.</span><span class="n">RSAKey</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;test_rsa.key&#39;</span><span class="p">)</span>
 <span class="n">USERNAME</span> <span class="o">=</span> <span class="s">&#39;buffy&#39;</span>
 <span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">&#39;killvampires&#39;</span>
@@ -275,7 +275,7 @@
 <li>Once a connection is established (the client tried to connect to the server and the socket accepted the connection), it creates a <strong>paramiko</strong> <a href="http://docs.paramiko.org/en/1.15/api/transport.html">Transport</a> object for this socket. In paramiko there are two main communication methods: <em>Transport</em>, which makes and maintains the encrypted connection, and <em>Channel</em>, which is like a socket for sending/receiving data over the encrypted session (the other three are Client, Message, and Packetizer).</li>
 <li>The program instantiates a <strong>Server</strong> object and starts the paramiko session with it.</li>
 <li>Authentication is attempted. If it is successful, we get a <strong>ClientConnected</strong> message.</li>
-<li>The server starts a loop where it will keep getting  input commands from the user and issuing it in the client. This is our reversed  shell!</li>
+<li>The server starts a loop where it will keep getting input commands from the user and issuing it in the client. This is our reversed shell!</li>
 </ol>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">getopt</span>
@@ -432,7 +432,7 @@ Welcome to Buffy<span class="err">&#39;</span>s SSH
 </pre></div>
 
 
-<p>Now we can send any command from the server side to run  in the client: we have a reversed shell!</p>
+<p>Now we can send any command from the server side to run in the client: we have a reversed shell!</p>
 <div class="highlight"><pre><span class="o">[</span>+<span class="o">]</span> Listening <span class="k">for </span>connection ...
 <span class="o">[</span>+<span class="o">]</span> Connection Established!
 <span class="o">[</span>+<span class="o">]</span> Authenticated!

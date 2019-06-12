@@ -49,14 +49,14 @@
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>8 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/8-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2018-01-12T06:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-12:8-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;For years, I have been advocating &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;Python as the most useful language we have&lt;/a&gt;. Only recently, I have been shifting my mind a little to another awesome language: &lt;a href="https://golang.org/"&gt;Golang, also know as Go&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++), while containing many features of modern languages.&lt;/p&gt;
+&lt;p&gt;Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++) while containing many features of modern languages.&lt;/p&gt;
 &lt;h3&gt;1 It Compiles Into a Single Binary&lt;/h3&gt;
 &lt;p&gt;Golang builds as a compiled language and, using static linking, it combines all dependency libraries and modules into one single binary file based on OS type and architecture. Which means that if you are compiling your backend application on your laptop with Linux X86 CPU, you can just upload the compiled binary into your server and it will work, without installing any dependencies.&lt;/p&gt;
 &lt;h3&gt;2 Static Type System&lt;/h3&gt;
-&lt;p&gt;Type system is really important for large scale applications. Python sometimes will give you unusual exceptions (e.g. you are trying to use a variable as an integer but it turns out that it’s a string). Go will tell you write alway that it won't work.&lt;/p&gt;
+&lt;p&gt;A type system is really important for large scale applications. Python sometimes will give you unusual exceptions (e.g. you are trying to use a variable as an integer but it turns out that it’s a string). Go will tell you to write alway that it won't work.&lt;/p&gt;
 &lt;h3&gt;3 Pointers&lt;/h3&gt;
-&lt;p&gt;Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low level system tools.&lt;/p&gt;
-&lt;p&gt;For example, you can pass your &lt;strong&gt;data struct&lt;/strong&gt; along functions in very clean way:&lt;/p&gt;
+&lt;p&gt;Aiming to provide a modern equivalent of C, Go has brought back pointers. Most modern languages do not provide pointers but sometimes pointers help to solve a lot of common issues: they can play a far important role when it comes to memory layout and building low-level system tools.&lt;/p&gt;
+&lt;p&gt;For example, you can pass your &lt;strong&gt;data struct&lt;/strong&gt; along with functions in a very clean way:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;type&lt;/span&gt; &lt;span class="nx"&gt;Route&lt;/span&gt; &lt;span class="kd"&gt;struct&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;service&lt;/span&gt;        &lt;span class="kt"&gt;string&lt;/span&gt;
     &lt;span class="nx"&gt;url&lt;/span&gt;            &lt;span class="kt"&gt;string&lt;/span&gt;
@@ -81,16 +81,16 @@
 
 
 &lt;h3&gt;4 Performance and Goroutines&lt;/h3&gt;
-&lt;p&gt;Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single threaded environment. Go, in another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Go routines are cheap, lightweight threads of execution. Spawning a go routine is as simple as adding the &lt;code&gt;go&lt;/code&gt; keyword before a function.&lt;/p&gt;
+&lt;p&gt;Most of the modern programming languages (like Java, Python, etc.) are from the ’90s single-threaded environment. Go, on another hand, offers some great concurrency primitives and makes it extremely easy to implement a concurrent system. Goroutines are cheap, lightweight threads of execution. Spawning a goroutine is as simple as adding the &lt;code&gt;go&lt;/code&gt; keyword before a function.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;func&lt;/span&gt; &lt;span class="nx"&gt;GorotineExample&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nx"&gt;time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;go&lt;/span&gt; &lt;span class="nx"&gt;fmt&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Println&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;go routine ftw&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which are much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built in language features.&lt;/p&gt;
+&lt;p&gt;Go tends to perform better because of this concurrency model and CPU scalability. Whenever you need to process some internal request, you just use a Goroutine, which is much cheaper in resources than Python's threads, saving lots of resources (Memory, CPU) because of the built-in language features.&lt;/p&gt;
 &lt;p&gt;In addition, goroutines have growable segmented stacks (use more memory only when needed), a faster startup time than threads, come with built-in primitives to communicate safely between themselves (by using &lt;code&gt;channel&lt;/code&gt;: kind of pipe to specify goroutine where to send the output), allow you to avoid having to resort to mutex locking when sharing data structures, and can run on multiple threads.&lt;/p&gt;
-&lt;p&gt;Finally, Go has the &lt;code&gt;defer&lt;/code&gt; statement, which ensure that a function call is performed later in a program’s execution (for instance, for cleanup). The deferred call's arguments are evaluated right way, but the function call is not executed until the function returns.  &lt;/p&gt;
+&lt;p&gt;Finally, Go has the &lt;code&gt;defer&lt;/code&gt; statement, which ensures that a function call is performed later in a program’s execution (for instance, for cleanup). The deferred call's arguments are evaluated right way, but the function call is not executed until the function returns.  &lt;/p&gt;
 &lt;h3&gt;5 You Don’t Need a Web Framework&lt;/h3&gt;
 &lt;p&gt;Go has &lt;code&gt;http&lt;/code&gt;, &lt;code&gt;json&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt; templating built in language natively and you can build very complex API services very easily.&lt;/p&gt;
 &lt;p&gt;For instance, you can spin up a webpage this easy (check it out yourself!):&lt;/p&gt;

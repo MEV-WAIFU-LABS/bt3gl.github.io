@@ -144,7 +144,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 
 <h2>Authorize your Machine at Heroku</h2>
-<h3>Create and add a SSH Key at Heroku:</h3>
+<h3>Create and add an SSH Key at Heroku:</h3>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
 <span class="err">$</span> <span class="n">heroku</span> <span class="n">keys</span><span class="o">:</span><span class="n">add</span>
 </pre></div>
@@ -152,7 +152,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 <p>The public and private keys will be at <code>~/.ssh</code>. I recommend always backup your keys. Never share your private key.</p>
 <h3>Creating a Git Repository</h3>
-<p>Heroku's push/commits work just like as Git. But instead of using the "origin" you use "heroku" (you can verify this later at .git/refs/remotes/). In other words, your project's control version (development) is done by using:</p>
+<p>Heroku's push/commits work just like Git. But instead of using the "origin" you use "heroku" (you can verify this later at .git/refs/remotes/). In other words, your project's control version (development) is done by using:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span> <span class="p">(</span><span class="n">or</span> <span class="n">any</span> <span class="n">branch</span> <span class="n">you</span> <span class="n">like</span><span class="p">)</span>
 </pre></div>
 
@@ -208,9 +208,9 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 
 <p>(if this is how you run your application).</p>
-<p>In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that start the web server. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.</p>
+<p>In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that starts the web server. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.</p>
 <h3>Using Foreman to Emulate Heroku</h3>
-<p>The Heroku Toolbet includes Foreman, used to run the app locally through the Procfile for testing purposes. The environment variables set at Heroku must be defined locally. Just create a file var.env with this information:</p>
+<p>The Heroku Toolbelt includes Foreman, used to run the app locally through the Procfile for testing purposes. The environment variables set at Heroku must be defined locally. Just create a file var.env with this information:</p>
 <div class="highlight"><pre><span class="n">FLASK_CONFIG</span><span class="o">=</span><span class="n">heroku</span>
 <span class="n">MAIL_USERNAME</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span>
 <span class="n">MAIL_PASSWORD</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">password</span><span class="o">&gt;</span>
@@ -254,7 +254,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 </pre></div>
 
 
-<p>In my app, I have a script for the deployment (such taking care of database and other setups for production). So, additionally, I run:</p>
+<p>In my app, I have a script for the deployment (such as taking care of database and other setups for production). So, additionally, I run:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">deploy</span>
 <span class="err">$</span> <span class="n">heroku</span> <span class="n">restart</span>
 </pre></div>

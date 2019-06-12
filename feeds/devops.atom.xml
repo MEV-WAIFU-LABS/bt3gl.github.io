@@ -340,7 +340,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 
 &lt;h2&gt;Authorize your Machine at Heroku&lt;/h2&gt;
-&lt;h3&gt;Create and add a SSH Key at Heroku:&lt;/h3&gt;
+&lt;h3&gt;Create and add an SSH Key at Heroku:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;keygen&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;rsa&lt;/span&gt;
 &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -348,7 +348,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 &lt;p&gt;The public and private keys will be at &lt;code&gt;~/.ssh&lt;/code&gt;. I recommend always backup your keys. Never share your private key.&lt;/p&gt;
 &lt;h3&gt;Creating a Git Repository&lt;/h3&gt;
-&lt;p&gt;Heroku's push/commits work just like as Git. But instead of using the "origin" you use "heroku" (you can verify this later at .git/refs/remotes/). In other words, your project's control version (development) is done by using:&lt;/p&gt;
+&lt;p&gt;Heroku's push/commits work just like Git. But instead of using the "origin" you use "heroku" (you can verify this later at .git/refs/remotes/). In other words, your project's control version (development) is done by using:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;branch&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;like&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -404,9 +404,9 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 
 &lt;p&gt;(if this is how you run your application).&lt;/p&gt;
-&lt;p&gt;In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that start the web server. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.&lt;/p&gt;
+&lt;p&gt;In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that starts the web server. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.&lt;/p&gt;
 &lt;h3&gt;Using Foreman to Emulate Heroku&lt;/h3&gt;
-&lt;p&gt;The Heroku Toolbet includes Foreman, used to run the app locally through the Procfile for testing purposes. The environment variables set at Heroku must be defined locally. Just create a file var.env with this information:&lt;/p&gt;
+&lt;p&gt;The Heroku Toolbelt includes Foreman, used to run the app locally through the Procfile for testing purposes. The environment variables set at Heroku must be defined locally. Just create a file var.env with this information:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;heroku&lt;/span&gt;
 &lt;span class="n"&gt;MAIL_USERNAME&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="n"&gt;MAIL_PASSWORD&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -450,7 +450,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;In my app, I have a script for the deployment (such taking care of database and other setups for production). So, additionally, I run:&lt;/p&gt;
+&lt;p&gt;In my app, I have a script for the deployment (such as taking care of database and other setups for production). So, additionally, I run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
 &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;restart&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -717,7 +717,7 @@ In our application, the database configuration file is store at application/conf
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Variables can be defined using multiple var statements, or in a single combined var statement. The value of a variable declared without a value is undefined.&lt;/p&gt;
+&lt;p&gt;Variables can be defined using multiple var statements or in a single combined var statement. The value of a variable declared without a value is undefined.&lt;/p&gt;
 &lt;h2&gt;Types in JavaScript&lt;/h2&gt;
 &lt;h3&gt;Primitive:&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt;

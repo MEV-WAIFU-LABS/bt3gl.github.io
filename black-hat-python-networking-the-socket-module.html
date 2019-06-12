@@ -116,8 +116,8 @@
 	<a href="./tag/getopt.html"><i class="icon-tag"></i>getopt</a>
 	<a href="./tag/proxy.html"><i class="icon-tag"></i>proxy</a>
 </footer><!-- /.post-info -->                </div>
-                <p>Last week I got my copy of <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>, the new <a href="https://twitter.com/jms_dot_py">Justin Seitz</a>'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!</p>
-<p>I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's <a href="https://docs.python.org/2/library/socket.html">socket</a> module, which  contains all the tools to write <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a>/<a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> clients and servers, including <a href="http://en.wikipedia.org/wiki/Raw_socket">raw sockets</a>. It's really nice! <strong>T-1000</strong> is loving it!</p>
+                <p>Last week I got my copy of <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>, the new <a href="https://twitter.com/jms_dot_py">Justin Seitz</a>'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!</p>
+<p>I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post, I discuss Python's <a href="https://docs.python.org/2/library/socket.html">socket</a> module, which contains all the tools to write <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a>/<a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> clients and servers, including <a href="http://en.wikipedia.org/wiki/Raw_socket">raw sockets</a>. It's really nice! <strong>T-1000</strong> is loving it!</p>
 <p>Ah, by the way, all the source codes in this post are available at <a href="https://github.com/bt3gl/My-Gray-Hacker-Resources">my repo</a>.</p>
 <p><img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /></p>
 <hr />
@@ -151,7 +151,7 @@
 <p>The simplicity of this script relies in making the following assumptions about the sockets:</p>
 <ul>
 <li>our <em>connection will always succeed</em>,</li>
-<li>the <em>server is always waiting for us to send data first</em> (as oppose to servers that expect to send data and then wait for response), and</li>
+<li>the <em>server is always waiting for us to send data first</em> (as opposed to servers that expect to send data and then wait for response), and</li>
 <li>the server will always send us data back in a <em>short time</em>.</li>
 </ul>
 <p>Let's run this script (notice that we get <em>Moved Permanently</em> because Google  issues HTTPS connections):</p>
@@ -180,9 +180,9 @@ The document has moved
 <p>Simple like that.</p>
 <hr />
 <h2>A TCP Server</h2>
-<p>Let's move on and write a <em>multi-threaded</em> TCP server. For this we will use Python's <a href="https://docs.python.org/2/library/threading.html">threading</a> module.</p>
-<p>First we define the IP address and port that we want the server to listen on.  We then define a <strong>handle_client</strong> function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending a <strong>ACK</strong> message.</p>
-<p>The main function for our server, <strong>tcp_server</strong>, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections  to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the <strong>addr</strong> variable).</p>
+<p>Let's move on and write a <em>multi-threaded</em> TCP server. For this, we will use Python's <a href="https://docs.python.org/2/library/threading.html">threading</a> module.</p>
+<p>First, we define the IP address and port that we want the server to listen on.  We then define a <strong>handle_client</strong> function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending an <strong>ACK</strong> message.</p>
+<p>The main function for our server, <strong>tcp_server</strong>, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the <strong>addr</strong> variable).</p>
 <p>At this point, the program creates a thread object for the function <strong>handle_client</strong> which we mentioned above:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">threading</span>
@@ -262,7 +262,7 @@ ACK
 
 <hr />
 <h2>A UDP Server</h2>
-<p>Below is an example of a very simple  UDP server. Notice that there is no <strong>listen</strong> or <strong>accept</strong>:</p>
+<p>Below is an example of a very simple  UDP server. Notice that there are no <strong>listen</strong> or <strong>accept</strong>:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
 
 <span class="n">BIND_IP</span> <span class="o">=</span> <span class="s">&#39;0.0.0.0&#39;</span>
@@ -459,7 +459,7 @@ ACK
 </pre></div>
 
 
-<p>The <strong>threading</strong> function calls <strong>client_handler</strong> which will either upload a file, or execute a command (in a special shell named <em>NETCAT</em>):</p>
+<p>The <strong>threading</strong> function calls <strong>client_handler</strong> which will either upload a file or execute a command (in a special shell named <em>NETCAT</em>):</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">client_handler</span><span class="p">(</span><span class="n">client_socket</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">UPLOAD</span>
     <span class="k">global</span> <span class="n">EXECUTE</span>
@@ -564,10 +564,10 @@ Transfer-Encoding: chunked
 <p>Cool, huh?</p>
 <hr />
 <h2>A TCP Proxy</h2>
-<p>A TCP proxy can be very useful for forwarding traffic and when assessing network-based softwares (for example, when you cannot run <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">Wireshark</a> or you cannot load drivers or tools in the machine you are exploiting).</p>
+<p>A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">Wireshark</a> or you cannot load drivers or tools in the machine you are exploiting).</p>
 <p>To create a proxy we need to verify if we need to <em>first initiate a connection</em> to the remote side. This will request data before going into our main loop and some server daemons expect you to do this first (for instance, FTP servers send a banner first).  We call this information <strong>receive_first</strong>.</p>
 <h3>The Main Function</h3>
-<p>So let us start with our <strong>main</strong> function. First we define the usage, which should have four more arguments together with  <strong>receive_first</strong>. Then we check these arguments to variables and start a listening socket:</p>
+<p>So let us start with our <strong>main</strong> function. First, we define the usage, which should have four more arguments together with  <strong>receive_first</strong>. Then we check these arguments to variables and start a listening socket:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
 <span class="kn">import</span> <span class="nn">threading</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -683,7 +683,7 @@ Transfer-Encoding: chunked
 </pre></div>
 
 
-<p>The <strong>response_handler</strong> function is used to modify the packet contents from the inbound traffic (for example, to  perform fuzzing, test for authentication, etc). The function <strong>request_handler</strong> does the same for outbound traffic:</p>
+<p>The <strong>response_handler</strong> function is used to modify the packet contents from the inbound traffic (for example, to perform fuzzing, test for authentication, etc). The function <strong>request_handler</strong> does the same for outbound traffic:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">request_handler</span><span class="p">(</span><span class="nb">buffer</span><span class="p">):</span>
     <span class="c"># perform packet modifications</span>
     <span class="nb">buffer</span> <span class="o">+=</span> <span class="s">&#39; Yaeah!&#39;</span>
@@ -708,7 +708,7 @@ Transfer-Encoding: chunked
 
 
 <h3>Firing Up our Proxy</h3>
-<p>Now we just need to run our script with some server. For example, for a FTP server at the standard port 21:</p>
+<p>Now we just need to run our script with some server. For example, for an FTP server at the standard port 21:</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo ./tcp_proxy.py localhost 21 ftp.target 21 True
 <span class="o">[</span>*<span class="o">]</span> Listening on localhost:21
 <span class="o">(</span>...<span class="o">)</span>
@@ -717,7 +717,7 @@ Transfer-Encoding: chunked
 
 <hr />
 <h2>Extra Stuff: The socket Object Methods</h2>
-<p>Additionally, let's  take a quick look to all the methods available with the <strong>socket</strong> object from the <strong>socket</strong> module. I think it's useful to have an idea of this list:</p>
+<p>Additionally, let's take a quick look to all the methods available with the <strong>socket</strong> object from the <strong>socket</strong> module. I think it's useful to have an idea of this list:</p>
 <ul>
 <li>
 <p><strong>socket.accept()</strong>: Accept a connection.</p>

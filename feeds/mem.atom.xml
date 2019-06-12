@@ -9,7 +9,7 @@
 &lt;p&gt;The given file has a funny extension &lt;em&gt;.mem.zip&lt;/em&gt;. Before we go ahead and unzip it, let's try to learn more about this file. To do this we choose to use the Linux's command &lt;a href="http://en.wikipedia.org/wiki/File_(command)"&gt;file&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;file --help
 Usage: file &lt;span class="o"&gt;[&lt;/span&gt;OPTION...&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;FILE...&lt;span class="o"&gt;]&lt;/span&gt;
-Determine &lt;span class="nb"&gt;type &lt;/span&gt;of FILEs.
+Determine the &lt;span class="nb"&gt;type &lt;/span&gt;of FILEs.
 
       --help                 display this &lt;span class="nb"&gt;help &lt;/span&gt;and &lt;span class="nb"&gt;exit&lt;/span&gt;
   -v, --version              output version information and &lt;span class="nb"&gt;exit&lt;/span&gt;
@@ -64,8 +64,8 @@ Archive:  firefox.mem.zip
 
 &lt;hr /&gt;
 &lt;h2&gt;Extra: Learning More about the &lt;em&gt;.mem&lt;/em&gt; File&lt;/h2&gt;
-&lt;p&gt;This is a very weird file extension. If you google &lt;em&gt;.mem&lt;/em&gt;, you don't find much, it's clear it's a memory file, but what now?  From the &lt;em&gt;file&lt;/em&gt; command, we learned that this is an &lt;em&gt;ELF 64-bit LSB core&lt;/em&gt;. Let's understand this  by parts.&lt;/p&gt;
-&lt;p&gt;An &lt;a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format"&gt;ELF&lt;/a&gt; file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.&lt;/p&gt;
+&lt;p&gt;This is a very weird file extension. If you google &lt;em&gt;.mem&lt;/em&gt;, you don't find much, it's clear it's a memory file, but what now?  From the &lt;em&gt;file&lt;/em&gt; command, we learned that this is an &lt;em&gt;ELF 64-bit LSB core&lt;/em&gt;. Let's understand this by parts.&lt;/p&gt;
+&lt;p&gt;A &lt;a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format"&gt;ELF&lt;/a&gt; file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.&lt;/p&gt;
 &lt;p&gt;In Linux, we can use the command &lt;a href="http://linux.die.net/man/1/readelf"&gt;readelf&lt;/a&gt; to displays information about ELF files:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;readelf firefox.mem
 Usage: readelf &amp;lt;option&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;&amp;gt; elf-file&lt;span class="o"&gt;(&lt;/span&gt;s&lt;span class="o"&gt;)&lt;/span&gt;

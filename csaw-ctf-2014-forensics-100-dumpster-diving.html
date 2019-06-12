@@ -120,7 +120,7 @@
 <p>The given file has a funny extension <em>.mem.zip</em>. Before we go ahead and unzip it, let's try to learn more about this file. To do this we choose to use the Linux's command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>file --help
 Usage: file <span class="o">[</span>OPTION...<span class="o">]</span> <span class="o">[</span>FILE...<span class="o">]</span>
-Determine <span class="nb">type </span>of FILEs.
+Determine the <span class="nb">type </span>of FILEs.
 
       --help                 display this <span class="nb">help </span>and <span class="nb">exit</span>
   -v, --version              output version information and <span class="nb">exit</span>
@@ -175,8 +175,8 @@ Archive:  firefox.mem.zip
 
 <hr />
 <h2>Extra: Learning More about the <em>.mem</em> File</h2>
-<p>This is a very weird file extension. If you google <em>.mem</em>, you don't find much, it's clear it's a memory file, but what now?  From the <em>file</em> command, we learned that this is an <em>ELF 64-bit LSB core</em>. Let's understand this  by parts.</p>
-<p>An <a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF</a> file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.</p>
+<p>This is a very weird file extension. If you google <em>.mem</em>, you don't find much, it's clear it's a memory file, but what now?  From the <em>file</em> command, we learned that this is an <em>ELF 64-bit LSB core</em>. Let's understand this by parts.</p>
+<p>A <a href="http://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF</a> file  (Executable and Linkable Format) is a standard file format for executables, object code, shared libraries, and core dumps. The cool thing about ELF is that it's not bound to any particular architecture.</p>
 <p>In Linux, we can use the command <a href="http://linux.die.net/man/1/readelf">readelf</a> to displays information about ELF files:</p>
 <div class="highlight"><pre><span class="nv">$ </span>readelf firefox.mem
 Usage: readelf &lt;option<span class="o">(</span>s<span class="o">)</span>&gt; elf-file<span class="o">(</span>s<span class="o">)</span>

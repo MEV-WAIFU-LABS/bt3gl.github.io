@@ -4,7 +4,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;OH NO WE'VE BEEN HACKED!!!!!! -- said the Eye Heart Fluffy Bunnies Blog owner.
 Life was grand for the fluff fanatic until one day the site's users started to get attacked! Apparently fluffy bunnies are not just a love of fun furry families but also furtive foreign governments. The notorious "Forgotten Freaks" hacking group was known to be targeting high powered politicians. Were the cute bunnies the next in their long list of conquests!??&lt;/p&gt;
-&lt;p&gt;Well... The fluff needs your stuff. I've pulled the logs from the server for you along with a backup of it's database and configuration. Figure out what is going on!&lt;/p&gt;
+&lt;p&gt;Well... The fluff needs your stuff. I've pulled the logs from the server for you along with a backup of its database and configuration. Figure out what is going on!&lt;/p&gt;
 &lt;p&gt;Written by brad_anton&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://ctf.isis.poly.edu/static/uploads/649bdf6804782af35cb9086512ca5e0d/CSAW2014-FluffyNoMore-v0.1.tar.bz2"&gt;CSAW2014-FluffyNoMore-v0.1.tar.bz2&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -114,14 +114,14 @@ secretspace.com.    285 IN  A   72.167.232.29
 
 &lt;p&gt;The IP 72.167.232.29  leads to another generic page with no hints and with nothing in special in the source code. Wrong direction...&lt;/p&gt;
 &lt;p&gt;All right, let's give a last try and open the tables from the MySQL dump file inside a nice GUI. I use &lt;a href="http://www.phpmyadmin.net/home_page/index.php"&gt;phpMyAdmin&lt;/a&gt;, which I showed how to install and to configure in my tutorial about setting up a &lt;a href="https://coderwall.com/p/syyk0g?i=5&amp;amp;p=1&amp;amp;q=author%3Abt3gl&amp;amp;t%5B%5D=bt3gl"&gt;LAMP server&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;We open &lt;code&gt;localhost/phpmyadmin&lt;/code&gt; in our browser. First we go  to &lt;em&gt;Databases&lt;/em&gt; and then &lt;em&gt;Create Database&lt;/em&gt; with any name we want. Then we  &lt;em&gt;Import&lt;/em&gt; &lt;code&gt;`mysql_backup.sql&lt;/code&gt; to this database. All the tables are loaded. Let's use the &lt;em&gt;Search&lt;/em&gt; option to look for &lt;em&gt;key&lt;/em&gt; or &lt;em&gt;flag&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;We open &lt;code&gt;localhost/phpmyadmin&lt;/code&gt; in our browser. First, we go to &lt;em&gt;Databases&lt;/em&gt; and then &lt;em&gt;Create Database&lt;/em&gt; with any name we want. Then we  &lt;em&gt;Import&lt;/em&gt; &lt;code&gt;`mysql_backup.sql&lt;/code&gt; to this database. All the tables are loaded. Let's use the &lt;em&gt;Search&lt;/em&gt; option to look for &lt;em&gt;key&lt;/em&gt; or &lt;em&gt;flag&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/tVOY1VJ.png" /&gt;
 &lt;img alt="cyber" src="http://i.imgur.com/jY7CbLZ.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Nope. Nothing in special. By the way, &lt;code&gt;`default_pingback_flag1&lt;/code&gt; is just a &lt;strong&gt;Wordpress&lt;/strong&gt; flag indicating the default status of ping backs when new blog posts are published.&lt;/p&gt;
 &lt;p&gt;Let's continue our search. If we look  inside each of the tables we find:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;The URL for the &lt;a href="http://ww17.blog.eyeheartfluffybunnies.com"&gt;blog&lt;/a&gt;, which doesn't render. However, in the source code there is a commented link that leads to a &lt;a href="http://ww17.blog.eyeheartfluffybunnies.com/?fp=Tnxj5vWdcChO2G66EhCHHqSAdskqgQmZEbVQIh1DCmrgCyQjbeNsPhkvCpIUcP19mwOmcCS1hIeFb9Aj3%2FP4fw%3D%3D&amp;amp;prvtof=RyfmkPY5YuWnUulUghSjPRX510XSb9C0HJ2xsUn%2Fd3Q%3D&amp;amp;poru=jcHIwHNMXYtWvhsucEK%2BtSMzUepfq46Tam%2BwGZBSFMjZiV2p3eqdw8zpPiLr76ixCoirz%2FR955vowRxEMBO%2FoQ%3D%3D&amp;amp;cifr=1&amp;amp;%22"&gt;cute website&lt;/a&gt;. Nothing else.&lt;/p&gt;
+&lt;p&gt;The URL for the &lt;a href="http://ww17.blog.eyeheartfluffybunnies.com"&gt;blog&lt;/a&gt;, which doesn't render. However, in the source code, there is a commented link that leads to a &lt;a href="http://ww17.blog.eyeheartfluffybunnies.com/?fp=Tnxj5vWdcChO2G66EhCHHqSAdskqgQmZEbVQIh1DCmrgCyQjbeNsPhkvCpIUcP19mwOmcCS1hIeFb9Aj3%2FP4fw%3D%3D&amp;amp;prvtof=RyfmkPY5YuWnUulUghSjPRX510XSb9C0HJ2xsUn%2Fd3Q%3D&amp;amp;poru=jcHIwHNMXYtWvhsucEK%2BtSMzUepfq46Tam%2BwGZBSFMjZiV2p3eqdw8zpPiLr76ixCoirz%2FR955vowRxEMBO%2FoQ%3D%3D&amp;amp;cifr=1&amp;amp;%22"&gt;cute website&lt;/a&gt;. Nothing else.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Oh, wait! We found a hashed password!
@@ -130,7 +130,7 @@ secretspace.com.    285 IN  A   72.167.232.29
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Cracking the Password&lt;/h2&gt;
-&lt;p&gt;We want to crack &lt;code&gt;$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1&lt;/code&gt; and for this we are going to use &lt;a href="http://hashcat.net/hashcat/"&gt;hashcat&lt;/a&gt;. If you are in &lt;a href="http://www.kali.org/"&gt;Kali&lt;/a&gt; or in any Debian distribution you can install it with:&lt;/p&gt;
+&lt;p&gt;We want to crack &lt;code&gt;$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1&lt;/code&gt; and for this, we are going to use &lt;a href="http://hashcat.net/hashcat/"&gt;hashcat&lt;/a&gt;. If you are in &lt;a href="http://www.kali.org/"&gt;Kali&lt;/a&gt; or in any Debian distribution you can install it with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;apt-get hashcat
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -265,7 +265,7 @@ Initializing hashcat v0.47 by atom with 8 threads and 32mb segment-size...
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;We start with the Apache's log, because they carry the connection information. If there is any important information in the log files, it should appears in the end, because the attack should be one of the last things that were logged.&lt;/p&gt;
+&lt;p&gt;We start with the Apache's log because they carry the connection information. If there is any important information in the log files, it should appear in the end, because the attack should be one of the last things that were logged.&lt;/p&gt;
 &lt;p&gt;It turned out that &lt;a href="http://en.wikipedia.org/wiki/Tail_(Unix)"&gt;Tailing&lt;/a&gt; the &lt;em&gt;apache&lt;/em&gt; logs did not reveal anything useful.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Inspecting var/logs/auth.log&lt;/h2&gt;
@@ -481,7 +481,7 @@ obj 8 0
 
  &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;extract&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;suspicious&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;segments&lt;/span&gt;
 
- &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;disassemble&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;ActionScript&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;VB&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;examine&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+ &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;shellcode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;disassemble&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;ActionScript&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;VB&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;examine&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -493,19 +493,19 @@ obj 8 0
 
 &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;PDF&lt;/span&gt; &lt;span class="n"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;contend&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 
 &lt;span class="mf"&gt;4.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/b03EehK.png" /&gt;&lt;/p&gt;
-&lt;p&gt;OK, we were luck. Keep reading if you think this was too easy.&lt;/p&gt;
+&lt;p&gt;OK, we were lucky. Keep reading if you think this was too easy.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Analyzing the ID and the Streams in a PDF File&lt;/h2&gt;
-&lt;p&gt;Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task we use the &lt;a href="http://blog.didierstevens.com/programs/pdf-tools/"&gt;PDF Tool&lt;/a&gt; suite, which is written in Python.&lt;/p&gt;
+&lt;p&gt;Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task, we use the &lt;a href="http://blog.didierstevens.com/programs/pdf-tools/"&gt;PDF Tool&lt;/a&gt; suite, which is written in Python.&lt;/p&gt;
 &lt;h4&gt;pdfid&lt;/h4&gt;
-&lt;p&gt;We start with &lt;em&gt;pdfid.py&lt;/em&gt;, which parses the PDF  looking for certain  keywords. We download and unzip that script, and then we make it an executable:&lt;/p&gt;
+&lt;p&gt;We start with &lt;em&gt;pdfid.py&lt;/em&gt;, which parses the PDF  looking for certain keywords. We download and unzip that script, and then we make it an executable:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdfid_v0_1_2.zip
 &lt;span class="nv"&gt;$ &lt;/span&gt;chmod a+x pdfid.py
 &lt;/pre&gt;&lt;/div&gt;
@@ -539,7 +539,7 @@ PDFiD 0.1.2 pdf.pdf
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;All right, no funny stuff going on here. We need to look deeper into each of the these streams.&lt;/p&gt;
+&lt;p&gt;All right, no funny stuff going on here. We need to look deeper into each of these streams.&lt;/p&gt;
 &lt;h4&gt;pdf-parser&lt;/h4&gt;
 &lt;p&gt;We download &lt;em&gt;pdf-parser.py&lt;/em&gt;, which is used to search for all the fundamental elements in a PDF file. Let's take a closer look:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdf-parser_V0_4_3.zip

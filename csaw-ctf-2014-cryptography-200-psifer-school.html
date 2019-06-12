@@ -114,7 +114,7 @@
 	<a href="./tag/pygenere.html"><i class="icon-tag"></i>pygenere</a>
 	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
 </footer><!-- /.post-info -->                </div>
-                <p>This is the first crypto-problem, and it was supposed to be the easiest one. For this reason I was expecting simple cryptographic algorithms, which turned out to be true.</p>
+                <p>This is the first crypto-problem, and it was supposed to be the easiest one. For this reason, I was expecting simple cryptographic algorithms, which turned out to be true.</p>
 <p>The problem starts with the following text:</p>
 <blockquote>
 <p>There's no heartbleed here. Why don't we use these ciphers?</p>
@@ -140,7 +140,7 @@
 <p>This text gives a cipher <code>wkh dqvzhu wr wklv vwdjh lv vxshuvlpsoh</code> and the hint <em>a famous ancient roman would be proud</em>. That's all we need to decipher it!</p>
 <h4>Frequency Analysis</h4>
 <p>The famous roman is <strong>Caesar</strong>, and <a href="http://en.wikipedia.org/wiki/Caesar_cipher">his cryptographic scheme</a> is one of the simplest possible. This cipher is also known as  <strong>rotation cipher</strong>, because all we do is rotating the letters by some value (the <strong>key</strong>). A modern version of it is called <strong>ROT13</strong>, meaning <strong>rotation by 13 places</strong>. This is a simple letter substitution cipher which replaces each letter with the 13th letter after it in the alphabet. In this case, we say that the <em>key is 13</em>.</p>
-<p>In our problem, we don't know the key. However there is a method to circumvent it: we can count how many times each letter appears in the text and then we use some previous knowledge about the frequency of each letter in the English words. For example, in the English language, <em>e</em>, <em>t</em>, <em>a</em>, <em>o</em>, and <em>n</em> are frequent letters while <em>z</em> or <em>v</em> are not. This means that we can analyse the frequency of each character to determine what's the most probable rotation key.</p>
+<p>In our problem, we don't know the key. However, there is a method to circumvent it: we can count how many times each letter appears in the text and then we use some previous knowledge about the frequency of each letter in the English words. For example, in the English language, <em>e</em>, <em>t</em>, <em>a</em>, <em>o</em>, and <em>n</em> are frequent letters while <em>z</em> or <em>v</em> is not. This means that we can analyze the frequency of each character to determine what's the most probable rotation key.</p>
 <p>To count the frequency of characters in our cipher, we write a snippet that creates a counter <a href="https://docs.python.org/2/tutorial/datastructures.html#dictionaries">dictionary (hash table)</a> with all the (lowercase) characters as the dictionary's keys. Note that we could have used Python's <a href="https://docs.python.org/2/library/collections.html#collections.Counter">Counter() data-structure</a> as well. We then iterate through each character in the message, counting their frequency, and returning a sorted list of these values:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">string</span>
 
@@ -161,7 +161,7 @@
 <h4>Deciphering the Cipher</h4>
 <p>Using a <a href="http://en.wikipedia.org/wiki/Letter_frequency">well-known table of word frequency values</a>, we write a snippet that does the following:</p>
 <ol>
-<li>First, for each of the 26 letters, we subtract its known frequency value from the  frequency obtained from our message.</li>
+<li>First, for each of the 26 letters, we subtract its known frequency value from the frequency obtained from our message.</li>
 <li>Second, we find what is the minimum value from those subtractions. The closest value is the most probable value for the rotation key.</li>
 </ol>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">delta</span><span class="p">(</span><span class="n">freq_word</span><span class="p">,</span> <span class="n">freq_eng</span><span class="p">):</span>
@@ -184,14 +184,14 @@
 </pre></div>
 
 
-<p>Once we have the key, we just plug it  back to the cipher algorithm, inverting the rotation to the other side, with <code>cipher(msg, -best_rotation)</code>. In this cipher function, we iterate through all the character in the message, checking whether it's a letter or a special character. If it is the former case we perform the following operations:</p>
+<p>Once we have the key, we just plug it back to the cipher algorithm, inverting the rotation to the other side, with <code>cipher(msg, -best_rotation)</code>. In this cipher function, we iterate through all the character in the message, checking whether it's a letter or a special character. If it is the former case we perform the following operations:</p>
 <ol>
 <li>We start getting the integer representing the <a href="http://en.wikipedia.org/wiki/Unicode">Unicode</a> code point of the character.</li>
 <li>To get its position in the alphabet and we subtract it from the Unicode value of <em>a</em>, given by <strong>ord('a')</strong> (this is 97).</li>
 <li>We add the key value to it to get the (absolute) shift position.</li>
-<li>Now we need to remember that this cipher is a ring, <em>i.e</em>, adding more stuff should always lead to a <em>spot</em> within the 26 letters in the alphabet. That's why we apply a <a href="http://en.wikipedia.org/wiki/Modulo_operation">module</a> operation to this number to get the <em>relative</em> position in the letter's table.</li>
+<li>Now we need to remember that this cipher is a ring, <em>i.e</em>, adding more stuff should always lead to a <em>spot</em> within the 26 letters in the alphabet. That's why we apply an <a href="http://en.wikipedia.org/wiki/Modulo_operation">module</a> operation to this number to get the <em>relative</em> position in the letter's table.</li>
 <li>Finally, we just need the value of the shift to the Unicode of <em>a</em> to get the position of the character in the cipher.</li>
-<li>Remember we are using <em>-key</em>, so instead of making a new cipher we are using the same steps to rotate the cipher to the other side to recover the message.</li>
+<li>Remember we are using <em>-key</em>, so instead of making a new cipher, we are using the same steps to rotate the cipher to the other side to recover the message.</li>
 </ol>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">cipher</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
     <span class="c"># Make the cipher</span>
@@ -212,7 +212,7 @@
 <p>Netcating several times can return other similar answers such as <strong>hopeyouautomate</strong> or <strong>easypeesy</strong> or <strong>notveryhard</strong>. They are all correct.</p>
 <h4>Automating the Response</h4>
 <p>To advance forward, we need to send one of the above answers to the socket. However, we only <strong>have 10 seconds</strong> to do this! It's clear that we need to automate this problem with a script.</p>
-<p>We can do this in many ways. In Python, for example, we can use the libraries <a href="https://docs.python.org/2/library/telnetlib.html">telnetlib</a> or <a href="https://docs.python.org/2/library/socket.html">socket</a> or even writing our <a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py">own netcat script</a>. We will use the former  for this exploit. Let us create a telnet connection with:</p>
+<p>We can do this in many ways. In Python, for example, we can use the libraries <a href="https://docs.python.org/2/library/telnetlib.html">telnetlib</a> or <a href="https://docs.python.org/2/library/socket.html">socket</a> or even writing our <a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py">own netcat script</a>. We will use the former for this exploit. Let us create a telnet connection with:</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">telnetlib</span> <span class="kn">import</span> <span class="n">Telnet</span>
 
 <span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
@@ -231,7 +231,7 @@
 
 
 <p>Here <code>socket.AF_UNIX, socket.AF_INET, socket.AF_INET6</code> are constants that represent the address (and protocol) families. The constants <code>socket.SOCK_STREAM, socket.SOCK_DGRAM, socket.SOCK_RAW, socket.SOCK_RDM, socket.SOCK_SEQPACKET</code>represent the socket types.</p>
-<p>To read the socket stream we would use commands such as <code>s.recv(2048)</code> and for writing we could use <code>s.sendall(answer)</code>.</p>
+<p>To read the socket stream we would use commands such as <code>s.recv(2048)</code> and for writing, we could use <code>s.sendall(answer)</code>.</p>
 <h4>Decrypting and Sending the Answer</h4>
 <p>Now, back to our problem. After creating the telnet connection, we read whatever comes in:</p>
 <div class="highlight"><pre><span class="n">tn</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="n">b</span><span class="s">&#39;psifer text: &#39;</span><span class="p">)</span>
@@ -266,13 +266,13 @@ not length that matters.</p>
 <p>We start looping over the length of our message, where for each iteration we create a blank list with the size of the message. This is a bit <em>space-expensive</em> and it should be optimized if we needed to scale for larger problems. It's fine for our current problem.</p>
 </li>
 <li>
-<p>We start a second loop, which will tell us about the shifts. This loop iterates again in the length of the message, this time adding the current character to the list we've created before and updating a pointer to the pacing value given in the first loop. Notice that we have a loop inside another, so this solutions has <em>O(n^2) runtime</em> and it also should be optimized for larger problems.</p>
+<p>We start a second loop, which will tell us about the shifts. This loop iterates again in the length of the message, this time adding the current character to the list we've created before and updated a pointer to the pacing value given in the first loop. Notice that we have a loop inside another, so this solution has <em>O(n^2) runtime</em> and it also should be optimized for larger problems.</p>
 </li>
 <li>
 <p>Inside this second loop, we check whether the pacing pointer is larger than the length of the message, and if this is the case, we register it in a shift counter. The former pointer receives the value of this shift. This is the end of the second loop.</p>
 </li>
 <li>
-<p>Back to the first loop, we add all the characters so far from our list into a the message string. But when should we stop doing this? Until we make sure that had a rotation that produces real words. I tried a few of common words, and 'you' worked just fine!</p>
+<p>Back to the first loop, we add all the characters so far from our list into the message string. But when should we stop doing this? Until we make sure that had a rotation that produces real words. I tried a few common words, and 'you' worked just fine!</p>
 </li>
 </ol>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">solve2</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
@@ -327,7 +327,7 @@ Last one.</p>
 </pre></div>
 
 
-<p>Reading it carefully give us thee last answer for the flag: <strong>NORMALWORD</strong>. Sweet!</p>
+<p>Reading it carefully give us the last answer for the flag: <strong>NORMALWORD</strong>. Sweet!</p>
 <h2>Final Words</h2>
 <p>If you like this solution, take a look at my  <a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-CSAW-CTF/cryptography/crypto-200">exploit for this problem</a>.</p>
 <p><strong>Hack all the things!</strong></p>

@@ -109,8 +109,8 @@
 	<a href="./tag/gpg.html"><i class="icon-tag"></i>GPG</a>
 </footer><!-- /.post-info -->                </div>
                 <p><a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Pretty Good Privacy</a> (PGP) is a model that provides cryptographic privacy and authentication for data communication. It was created by <a href="http://en.wikipedia.org/wiki/Phil_Zimmermann">Phil Zimmermann</a> in 1991. Today, PGP is a <a href="http://en.wikipedia.org/wiki/PGP_Corporation">company</a> that sells a proprietary encryption program, <a href="http://www.openpgp.org/">OpenPGP</a> is the open protocol that defines how PGP encryption works, and <a href="https://www.gnupg.org/">GnuGP</a> is the free software.</p>
-<p>The distribution of PGP keys can be done using the concept of <a href="http://en.wikipedia.org/wiki/Web_of_trust">web of trust</a>. This is a decentralized way of establishing the authenticity  of a public key and its owner. If you want a cute (ludic) picture of the web of trust, check <a href="https://twitter.com/doctorow">Cory Doctorow</a>'s book <a href="http://craphound.com/littlebrother/">Little Brother</a>.</p>
-<p>Almost 15 years after its creation, <a href="https://firstlook.org/theintercept/2014/10/28/smuggling-snowden-secrets/">PGP continues to be <em>pretty good</em></a>. But there is  still a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">need for new solutions</a> (and they appear to be <a href="http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html">coming soon</a>). Perhaps the main issue with PGP is its persistence. If one key is compromised, any message from the past can be read.  That's where the concept of <a href="http://en.wikipedia.org/wiki/Forward_secrecy">perfect forward secrecy </a> comes in play, but this is a subject to another post. Meanwhile, I wrote this tutorial and I hope you find it fun.</p>
+<p>The distribution of PGP keys can be done using the concept of <a href="http://en.wikipedia.org/wiki/Web_of_trust">web of trust</a>. This is a decentralized way of establishing the authenticity of a public key and its owner. If you want a cute (ludic) picture of the web of trust, check <a href="https://twitter.com/doctorow">Cory Doctorow</a>'s book <a href="http://craphound.com/littlebrother/">Little Brother</a>.</p>
+<p>Almost 15 years after its creation, <a href="https://firstlook.org/theintercept/2014/10/28/smuggling-snowden-secrets/">PGP continues to be <em>pretty good</em></a>. But there is still a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">need for new solutions</a> (and they appear to be <a href="http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html">coming soon</a>). Perhaps the main issue with PGP is its persistence. If one key is compromised, any message from the past can be read.  That's where the concept of <a href="http://en.wikipedia.org/wiki/Forward_secrecy">perfect forward secrecy </a> comes in play, but this is a subject to another post. Meanwhile, I wrote this tutorial and I hope you find it fun.</p>
 <h3>I. Creating  GPG keys</h3>
 <p>Simply type the following in the terminal:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --gen-key
@@ -134,7 +134,7 @@
 
 
 <h4>By sending the ASCII file</h4>
-<p>You can copy your key to an file to be shared:</p>
+<p>You can copy your key to a file to be shared:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --export --armor  YOUR_EMAIL &gt; YOUR_NAME-pubkey.asc
 </pre></div>
 
@@ -177,7 +177,7 @@
 </pre></div>
 
 
-<p>When you received similar <em>trusted</em> key, you can import it  into your GPG database:</p>
+<p>When you received a similar <em>trusted</em> key, you can import it  into your GPG database:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --import FILENAME
 </pre></div>
 
@@ -215,9 +215,9 @@
 
 
 <h3>VII. Encrypting and Decryptying Messages</h3>
-<p>With someone's <strong>public key</strong>, you can <strong>encrypt</strong> messages that can only be decrypted with her secret key. You can also <strong>verify signatures</strong> that were generated with her secret key.</p>
+<p>With someone's <strong>public key</strong>, you can <strong>encrypt</strong> messages that can only be decrypted with her secret key. You can also <strong>verify signatures</strong> that was generated with her secret key.</p>
 <p>In the other hand, with your secret key you can <strong>decrypt</strong> messages that were encrypted using your public key. You can also and  <strong>sign messages</strong>.</p>
-<p>With GPG, you  encrypt messages using the <code>--encrypt</code> flag.</p>
+<p>With GPG, you encrypt messages using the <code>--encrypt</code> flag.</p>
 <p>The command below encrypts the message signing with your private key (to guarantee that is coming from you). It also generates the message in a text format, instead of raw bytes:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --encrypt --sign --armor -r PERSON_EMAIL FILE_TO_BE_ENCRYPTED
 </pre></div>
@@ -251,7 +251,7 @@
 <p>Another nice (alpha) project is <a href="https://keybase.io/">keybase.io</a>. It's kind of a web of trust social network, where you can sign your key with your public profiles. Check <a href="https://keybase.io/bt3">mine here</a>. Encryption and decryption can be done in the command line with their <a href="https://keybase.io/docs/command_line">node.js</a> application. I don't trust uploading my private key anywhere, but I do think that the idea is better than a simple public key server.</p>
 <p>Finally, a word about browser plugins. Although there are several of them to encrypt webmail with OpenPGP,  such as <a href="https://chrome.google.com/webstore/detail/mymail-crypt-for-gmail/jcaobjhdnlpmopmjhijplpjhlplfkhba?hl=en-US">mymail-crypt</a> or  <a href="https://www.mailvelope.com/">Mailvelope</a>, I particularly don't recommend this solution if your message is very sensitive.</p>
 <p>If you are serious about ensuring your long-term privacy, the safest way to go is to use a text editor to write your email message, encrypting the message outside of the web browser, and then cutting and pasting into your webmail interface. This will guarantee that only the recipient will be able to read your email.</p>
-<p>If you really need something in your browser,  the creator of <a href="https://crypto.cat/">Cryptocat</a> recently released <a href="https://minilock.io/">minilock</a>. This tool  uses  <a href="http://en.wikipedia.org/wiki/Curve25519">Curve25519 elliptic curve cryptography</a> (the sames as in Cryptocat) so that the public keys are much shorter (and easier to share). Remember,  it's a new app, so it might not yet be the best choice for high-stakes environment (but  it's  worth keeping tabs on this project).</p>
+<p>If you really need something in your browser,  the creator of <a href="https://crypto.cat/">Cryptocat</a> recently released <a href="https://minilock.io/">minilock</a>. This tool uses <a href="http://en.wikipedia.org/wiki/Curve25519">Curve25519 elliptic curve cryptography</a> (the same as in Cryptocat) so that the public keys are much shorter (and easier to share). Remember,  it's a new app, so it might not yet be the best choice for the high-stakes environment (but it's worth keeping tabs on this project).</p>
 <hr />
 <h2>Further Readings</h2>
 <ul>

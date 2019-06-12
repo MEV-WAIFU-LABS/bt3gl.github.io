@@ -118,7 +118,7 @@
 <blockquote>
 <p>OH NO WE'VE BEEN HACKED!!!!!! -- said the Eye Heart Fluffy Bunnies Blog owner.
 Life was grand for the fluff fanatic until one day the site's users started to get attacked! Apparently fluffy bunnies are not just a love of fun furry families but also furtive foreign governments. The notorious "Forgotten Freaks" hacking group was known to be targeting high powered politicians. Were the cute bunnies the next in their long list of conquests!??</p>
-<p>Well... The fluff needs your stuff. I've pulled the logs from the server for you along with a backup of it's database and configuration. Figure out what is going on!</p>
+<p>Well... The fluff needs your stuff. I've pulled the logs from the server for you along with a backup of its database and configuration. Figure out what is going on!</p>
 <p>Written by brad_anton</p>
 <p><a href="https://ctf.isis.poly.edu/static/uploads/649bdf6804782af35cb9086512ca5e0d/CSAW2014-FluffyNoMore-v0.1.tar.bz2">CSAW2014-FluffyNoMore-v0.1.tar.bz2</a></p>
 </blockquote>
@@ -228,14 +228,14 @@ secretspace.com.    285 IN  A   72.167.232.29
 
 <p>The IP 72.167.232.29  leads to another generic page with no hints and with nothing in special in the source code. Wrong direction...</p>
 <p>All right, let's give a last try and open the tables from the MySQL dump file inside a nice GUI. I use <a href="http://www.phpmyadmin.net/home_page/index.php">phpMyAdmin</a>, which I showed how to install and to configure in my tutorial about setting up a <a href="https://coderwall.com/p/syyk0g?i=5&amp;p=1&amp;q=author%3Abt3gl&amp;t%5B%5D=bt3gl">LAMP server</a>.</p>
-<p>We open <code>localhost/phpmyadmin</code> in our browser. First we go  to <em>Databases</em> and then <em>Create Database</em> with any name we want. Then we  <em>Import</em> <code>`mysql_backup.sql</code> to this database. All the tables are loaded. Let's use the <em>Search</em> option to look for <em>key</em> or <em>flag</em>.</p>
+<p>We open <code>localhost/phpmyadmin</code> in our browser. First, we go to <em>Databases</em> and then <em>Create Database</em> with any name we want. Then we  <em>Import</em> <code>`mysql_backup.sql</code> to this database. All the tables are loaded. Let's use the <em>Search</em> option to look for <em>key</em> or <em>flag</em>.</p>
 <p><img alt="cyber" src="http://i.imgur.com/tVOY1VJ.png" />
 <img alt="cyber" src="http://i.imgur.com/jY7CbLZ.png" /></p>
 <p>Nope. Nothing in special. By the way, <code>`default_pingback_flag1</code> is just a <strong>Wordpress</strong> flag indicating the default status of ping backs when new blog posts are published.</p>
 <p>Let's continue our search. If we look  inside each of the tables we find:</p>
 <ul>
 <li>
-<p>The URL for the <a href="http://ww17.blog.eyeheartfluffybunnies.com">blog</a>, which doesn't render. However, in the source code there is a commented link that leads to a <a href="http://ww17.blog.eyeheartfluffybunnies.com/?fp=Tnxj5vWdcChO2G66EhCHHqSAdskqgQmZEbVQIh1DCmrgCyQjbeNsPhkvCpIUcP19mwOmcCS1hIeFb9Aj3%2FP4fw%3D%3D&amp;prvtof=RyfmkPY5YuWnUulUghSjPRX510XSb9C0HJ2xsUn%2Fd3Q%3D&amp;poru=jcHIwHNMXYtWvhsucEK%2BtSMzUepfq46Tam%2BwGZBSFMjZiV2p3eqdw8zpPiLr76ixCoirz%2FR955vowRxEMBO%2FoQ%3D%3D&amp;cifr=1&amp;%22">cute website</a>. Nothing else.</p>
+<p>The URL for the <a href="http://ww17.blog.eyeheartfluffybunnies.com">blog</a>, which doesn't render. However, in the source code, there is a commented link that leads to a <a href="http://ww17.blog.eyeheartfluffybunnies.com/?fp=Tnxj5vWdcChO2G66EhCHHqSAdskqgQmZEbVQIh1DCmrgCyQjbeNsPhkvCpIUcP19mwOmcCS1hIeFb9Aj3%2FP4fw%3D%3D&amp;prvtof=RyfmkPY5YuWnUulUghSjPRX510XSb9C0HJ2xsUn%2Fd3Q%3D&amp;poru=jcHIwHNMXYtWvhsucEK%2BtSMzUepfq46Tam%2BwGZBSFMjZiV2p3eqdw8zpPiLr76ixCoirz%2FR955vowRxEMBO%2FoQ%3D%3D&amp;cifr=1&amp;%22">cute website</a>. Nothing else.</p>
 </li>
 <li>
 <p>Oh, wait! We found a hashed password!
@@ -244,7 +244,7 @@ secretspace.com.    285 IN  A   72.167.232.29
 </ul>
 <hr />
 <h2>Cracking the Password</h2>
-<p>We want to crack <code>$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1</code> and for this we are going to use <a href="http://hashcat.net/hashcat/">hashcat</a>. If you are in <a href="http://www.kali.org/">Kali</a> or in any Debian distribution you can install it with:</p>
+<p>We want to crack <code>$P$BmHbpWPZrjt.2V8T2xDJfbDrAJZ9So1</code> and for this, we are going to use <a href="http://hashcat.net/hashcat/">hashcat</a>. If you are in <a href="http://www.kali.org/">Kali</a> or in any Debian distribution you can install it with:</p>
 <div class="highlight"><pre><span class="nv">$ </span>apt-get hashcat
 </pre></div>
 
@@ -379,7 +379,7 @@ Initializing hashcat v0.47 by atom with 8 threads and 32mb segment-size...
 </pre></div>
 
 
-<p>We start with the Apache's log, because they carry the connection information. If there is any important information in the log files, it should appears in the end, because the attack should be one of the last things that were logged.</p>
+<p>We start with the Apache's log because they carry the connection information. If there is any important information in the log files, it should appear in the end, because the attack should be one of the last things that were logged.</p>
 <p>It turned out that <a href="http://en.wikipedia.org/wiki/Tail_(Unix)">Tailing</a> the <em>apache</em> logs did not reveal anything useful.</p>
 <hr />
 <h2>Inspecting var/logs/auth.log</h2>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/threading.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-13T00:00:00-05:00</updated><entry><title>Black Hat Python: The Paramiko Module</title><link href="http://bt3gl.github.io/black-hat-python-the-paramiko-module.html" rel="alternate"></link><updated>2014-12-13T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-13:black-hat-python-the-paramiko-module.html</id><summary type="html">&lt;p&gt;This is the second post based on my readings from &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;. Yesterday I talked about Python's &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket module&lt;/a&gt; and today I'm talking about the &lt;a href="http://www.paramiko.org/"&gt;paramiko&lt;/a&gt; module.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Paramiko&lt;/strong&gt; is awesome!!! It uses my dear &lt;a href="https://www.dlitz.net/software/pycrypto/"&gt;PyCrypto&lt;/a&gt; to give us access to the &lt;a href="http://en.wikipedia.org/wiki/SSH2"&gt;SSH2 protocol&lt;/a&gt;, and it has a flexible and easy to use API.&lt;/p&gt;
-&lt;p&gt;You are going to see it with your own eyes: in this post we will see code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
+&lt;p&gt;You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;Shall we start?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A Simple SSH Client&lt;/h2&gt;
-&lt;p&gt;The first program we are going to write is a SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
+&lt;p&gt;The first program we are going to write is an SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
 &lt;p&gt;But before we start, make sure you have  &lt;strong&gt;paramiko&lt;/strong&gt; installed in our environment:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install paramiko
 &lt;/pre&gt;&lt;/div&gt;
@@ -135,7 +135,7 @@
 &lt;p&gt;What if we also control the SSH server and we are able to send commands to our SSH client? This is exactly what we are going to do now: we are going to write a &lt;strong&gt;class&lt;/strong&gt; for this server (with a little help of the &lt;strong&gt;socket&lt;/strong&gt; module) and then we will be able to &lt;strong&gt;reverse the shell&lt;/strong&gt;!&lt;/p&gt;
 &lt;p&gt;As a note, this script is based in some of the &lt;a href="https://github.com/paramiko/paramiko/blob/master/demo"&gt;paramiko demos&lt;/a&gt; and we specifically use the key from their demo files (&lt;a href="https://github.com/paramiko/paramiko/blob/master/demos/test_rsa.key"&gt;download here&lt;/a&gt;).&lt;/p&gt;
 &lt;h3&gt;The SSH Server&lt;/h3&gt;
-&lt;p&gt;In our server script, we first  create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
+&lt;p&gt;In our server script, we first create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HOST_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;paramiko&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RSAKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;test_rsa.key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;USERNAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;buffy&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;killvampires&amp;#39;&lt;/span&gt;
@@ -160,7 +160,7 @@
 &lt;li&gt;Once a connection is established (the client tried to connect to the server and the socket accepted the connection), it creates a &lt;strong&gt;paramiko&lt;/strong&gt; &lt;a href="http://docs.paramiko.org/en/1.15/api/transport.html"&gt;Transport&lt;/a&gt; object for this socket. In paramiko there are two main communication methods: &lt;em&gt;Transport&lt;/em&gt;, which makes and maintains the encrypted connection, and &lt;em&gt;Channel&lt;/em&gt;, which is like a socket for sending/receiving data over the encrypted session (the other three are Client, Message, and Packetizer).&lt;/li&gt;
 &lt;li&gt;The program instantiates a &lt;strong&gt;Server&lt;/strong&gt; object and starts the paramiko session with it.&lt;/li&gt;
 &lt;li&gt;Authentication is attempted. If it is successful, we get a &lt;strong&gt;ClientConnected&lt;/strong&gt; message.&lt;/li&gt;
-&lt;li&gt;The server starts a loop where it will keep getting  input commands from the user and issuing it in the client. This is our reversed  shell!&lt;/li&gt;
+&lt;li&gt;The server starts a loop where it will keep getting input commands from the user and issuing it in the client. This is our reversed shell!&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;paramiko&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;getopt&lt;/span&gt;
@@ -317,7 +317,7 @@ Welcome to Buffy&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s SSH
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now we can send any command from the server side to run  in the client: we have a reversed shell!&lt;/p&gt;
+&lt;p&gt;Now we can send any command from the server side to run in the client: we have a reversed shell!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Listening &lt;span class="k"&gt;for &lt;/span&gt;connection ...
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Connection Established!
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Authenticated!
@@ -343,8 +343,8 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
-&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which  contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
+&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post, I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
 &lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
@@ -378,7 +378,7 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;p&gt;The simplicity of this script relies in making the following assumptions about the sockets:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;our &lt;em&gt;connection will always succeed&lt;/em&gt;,&lt;/li&gt;
-&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as oppose to servers that expect to send data and then wait for response), and&lt;/li&gt;
+&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as opposed to servers that expect to send data and then wait for response), and&lt;/li&gt;
 &lt;li&gt;the server will always send us data back in a &lt;em&gt;short time&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let's run this script (notice that we get &lt;em&gt;Moved Permanently&lt;/em&gt; because Google  issues HTTPS connections):&lt;/p&gt;
@@ -407,9 +407,9 @@ The document has moved
 &lt;p&gt;Simple like that.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Server&lt;/h2&gt;
-&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
-&lt;p&gt;First we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending a &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
-&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections  to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
+&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this, we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
+&lt;p&gt;First, we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending an &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
+&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
 &lt;p&gt;At this point, the program creates a thread object for the function &lt;strong&gt;handle_client&lt;/strong&gt; which we mentioned above:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
@@ -489,7 +489,7 @@ ACK
 
 &lt;hr /&gt;
 &lt;h2&gt;A UDP Server&lt;/h2&gt;
-&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there is no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there are no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 
 &lt;span class="n"&gt;BIND_IP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;
@@ -686,7 +686,7 @@ ACK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file, or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;client_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_socket&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;UPLOAD&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;EXECUTE&lt;/span&gt;
@@ -791,10 +791,10 @@ Transfer-Encoding: chunked
 &lt;p&gt;Cool, huh?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Proxy&lt;/h2&gt;
-&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based softwares (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
+&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
 &lt;p&gt;To create a proxy we need to verify if we need to &lt;em&gt;first initiate a connection&lt;/em&gt; to the remote side. This will request data before going into our main loop and some server daemons expect you to do this first (for instance, FTP servers send a banner first).  We call this information &lt;strong&gt;receive_first&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;The Main Function&lt;/h3&gt;
-&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
+&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First, we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
@@ -910,7 +910,7 @@ Transfer-Encoding: chunked
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to  perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;request_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c"&gt;# perform packet modifications&lt;/span&gt;
     &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39; Yaeah!&amp;#39;&lt;/span&gt;
@@ -935,7 +935,7 @@ Transfer-Encoding: chunked
 
 
 &lt;h3&gt;Firing Up our Proxy&lt;/h3&gt;
-&lt;p&gt;Now we just need to run our script with some server. For example, for a FTP server at the standard port 21:&lt;/p&gt;
+&lt;p&gt;Now we just need to run our script with some server. For example, for an FTP server at the standard port 21:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo ./tcp_proxy.py localhost 21 ftp.target 21 True
 &lt;span class="o"&gt;[&lt;/span&gt;*&lt;span class="o"&gt;]&lt;/span&gt; Listening on localhost:21
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
@@ -944,7 +944,7 @@ Transfer-Encoding: chunked
 
 &lt;hr /&gt;
 &lt;h2&gt;Extra Stuff: The socket Object Methods&lt;/h2&gt;
-&lt;p&gt;Additionally, let's  take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
+&lt;p&gt;Additionally, let's take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;socket.accept()&lt;/strong&gt;: Accept a connection.&lt;/p&gt;

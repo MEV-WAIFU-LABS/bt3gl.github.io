@@ -20,7 +20,7 @@
 
 
 &lt;h3&gt;Creating a Service Account&lt;/h3&gt;
-&lt;p&gt;This should be done once, at the first time you run Amigo:&lt;/p&gt;
+&lt;p&gt;This should be done once, for the first time you run Amigo:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
@@ -59,7 +59,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This retrieves the data from GCP and generate JSON reports. These reports will be save where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
+&lt;p&gt;This retrieves the data from GCP and generates JSON reports. These reports will be saved where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
 &lt;p&gt;It is advised to watch for STERR and STDOUT in the &lt;code&gt;log_file&lt;/code&gt; file defined in &lt;code&gt;config.yaml&lt;/code&gt; (default to &lt;code&gt;amigo_log.txt&lt;/code&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;amigo_log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -191,4 +191,4 @@
 
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt; Thank you for reading, and let me know what you think!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 17 Dec 2017 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2017-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</guid></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Aloha, bt3&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 17 Dec 2017 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2017-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</guid></item></channel></rss>

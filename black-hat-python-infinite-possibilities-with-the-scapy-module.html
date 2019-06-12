@@ -142,7 +142,7 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
 <hr />
 <h1><a name="intro"></a> Scapy 101</h1>
 <h2>A Simple Packet and its Headers</h2>
-<p>The basic unit in a  network communication is the <em>packet</em>.  So let's create one!</p>
+<p>The basic unit in network communication is the <em>packet</em>.  So let's create one!</p>
 <p>Scapy builds packets by the <em>layers</em> and then by the <em>fields</em> in each layer. Each layer is nested inside the parent layer, represented by the <strong>&lt;</strong> and <strong>&gt;</strong> brackets.</p>
 <p>Let's start by specifying the packet's source IP and then its destination IP. This type of information goes in the <strong>IP header</strong>, which is a <em>layer 3 protocol</em> in the <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">0SI model</a>:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s">&quot;192.168.1.114&quot;</span><span class="p">)</span>
@@ -202,7 +202,7 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
 <p>In another hand, Scapy's method <a href="http://www.secdev.org/projects/scapy/doc/usage.html#sending-packets">sendp</a> works in the <em>layer 2</em>:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">sendp</span><span class="p">(</span><span class="n">Ether</span><span class="p">()</span><span class="o">/</span><span class="n">ip</span><span class="o">/</span><span class="n">tcp</span><span class="p">)</span>
 <span class="p">.</span>
-<span class="n">Sent</span> <span class="mi">1</span> <span class="n">packets</span><span class="p">.</span>
+<span class="n">Sent</span> <span class="mi">1</span> <span class="n">packet</span><span class="p">.</span>
 </pre></div>
 
 
@@ -339,7 +339,7 @@ Sent 3 packets, received 3 packets. 100.0% hits.
 
 
 <p>However, running the snippet above will not work.</p>
-<p>The reason is that crafting TCP sessions with Scapy circumvents the native TCP/IP stack. Since the host is unaware that Scapy is sending packets, the native host would receive an unsolicited SYN/ACK that is not associated with any known open session/socket. This would result in the host reseting the connection when receiving the SYN/ACK.</p>
+<p>The reason is that crafting TCP sessions with Scapy circumvents the native TCP/IP stack. Since the host is unaware that Scapy is sending packets, the native host would receive an unsolicited SYN/ACK that is not associated with any known open session/socket. This would result in the host resetting the connection when receiving the SYN/ACK.</p>
 <p>One solution is to use the host's firewall with <a href="http://en.wikipedia.org/wiki/Iptables">iptables</a> to block the outbound resets. For example, to drop all outbound packets that are TCP and destined for IP 192.168.1.25 from 192.168.1.114 to destination port 80, examining the flag bits, we can run:</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo iptables -A OUTPUT -p tcp -d 192.168.1.25 -s 192.168.1.114 --dport 80 --tcp-flags RST -j DROP
 </pre></div>
@@ -453,7 +453,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 </pre></div>
 
 
-<p>Scapy has also commands for network-based attack such as <a href="http://www.secdev.org/projects/scapy/doc/usage.html#tcp-traceroute">arpcachepoison  and srpflood</a>.</p>
+<p>Scapy has also commands for a network-based attack such as <a href="http://www.secdev.org/projects/scapy/doc/usage.html#tcp-traceroute">arpcachepoison and srpflood</a>.</p>
 <p>Additionally, we can use Scapy to re-create a packet that has been sniffed or received. The method <strong>command()</strong> returns a string of the commands necessary for this task.</p>
 <h3>Plotting</h3>
 <p>If you have <a href="http://www.gnuplot.info/">GnuPlot</a> installed, you can use the plot functionality with Scapy. It's pretty neat.</p>
@@ -489,19 +489,19 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 </pre></div>
 
 
-<p>Running this script when loading load some mail client (such as <a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a>) will allow us to see the login information, if they are sent to the server as plain text.</p>
+<p>Running this script when loading load some mail client (such as <a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a>) will allow us to see the login information if they are sent to the server as plain text.</p>
 <hr />
 <h2><a name="arp"></a> ARP Cache Poisoning</h2>
-<p>I talked about <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">ARP cache poisoning using command line arpspoof</a> in my guide about Wireshark. Here we are going to see how to implement similar tool using Scapy.</p>
-<p>ARP cache poisoning works by convincing a target machine that we are the gateway, and then convincing the gateway that all traffic should pass through our machine.</p>
+<p>I talked about <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">ARP cache poisoning using command line arpspoof</a> in my guide about Wireshark. Here we are going to see how to implement a similar tool using Scapy.</p>
+<p>ARP cache poisoning works by convincing a target machine that we are the gateway and then convincing the gateway that all traffic should pass through our machine.</p>
 <p>Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.</p>
-<p>The best way to test this is using a Windows virtual machine (take a look in <a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html">this guide I wrote</a>).</p>
+<p>The best way to test this is by using a Windows virtual machine (take a look in <a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html">this guide I wrote</a>).</p>
 <p>Before the attack, go to the Windows box, open the terminal (<code>cmd</code>) and check the IP and gateway IP address with<code>ipconfig</code>. Then check the associated  ARP cache entry MAC address with <code>arp -a</code>. We are going to use the former information and we will see the ARP data being changed:</p>
 <p><img alt="cyber" src="http://i.imgur.com/ME069uS.png" /></p>
 <p>Following is our ARP poisoning script (based on <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>). The script does the following steps:</p>
 <ol>
 <li>
-<p>Define constant values, set our interface card, and turn off output.</p>
+<p>Define constant values, set our interface card, and turn off the output.</p>
 </li>
 <li>
 <p>Resolve the gateway and target MAC address.</p>
@@ -612,7 +612,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 </pre></div>
 
 
-<p>To run it, we need to tell the local host machine (Kali Linux) to forward packets along both the gateway and the target IP address:</p>
+<p>To run it, we need to tell the local host machine (Kali Linux) to forward packets along with both the gateway and the target IP address:</p>
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo </span>1 /proc/sys/net/ipv4/ip_foward
 </pre></div>
 
@@ -648,7 +648,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 
 
 <h3>Analyzing PCAP Files</h3>
-<p>Based in one of the examples from <a href="">Black Hat Python</a> we are going to analyze images from HTTP traffic dumped in a PCAP file. We can do this with the library <a href="http://opencv.org/">opencv</a>. We also need to install <a href="http://www.numpy.org/">numpy</a> and <a href="http://www.scipy.org/">scipy</a>:</p>
+<p>Based on one of the examples from <a href="">Black Hat Python</a> we are going to analyze images from HTTP traffic dumped in a PCAP file. We can do this with the library <a href="http://opencv.org/">opencv</a>. We also need to install <a href="http://www.numpy.org/">numpy</a> and <a href="http://www.scipy.org/">scipy</a>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo pip install numpy
 <span class="nv">$ </span>sudo pip install scipy
 <span class="nv">$ </span>sudo yum install opencv-python
@@ -658,7 +658,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <p>To try to detect images that contain human faces, first either create or download some PCAP files with these images. Some dump sources:
 <a href="http://wiki.wireshark.org/SampleCaptures">here</a>, <a href="http://www.netresec.com/?page=PcapFiles">here</a>, <a href="http://www.pcapr.net/home">here</a>, and <a href="http://www.pcapr.net/browse?q=facebook+AND+png">here</a>.</p>
 <p>The following script does the following:</p>
-<p>1) The function <strong>http_assembler</strong> takes a PCAP and separates each TCP session in a dictionary. Then it loops in these section using the HTTP filter (which is the same as <em>Follow the TCP stream</em> in Wireshark). After the HTTP data is assembled, it parses the headers with the <strong>get_http_headers</strong> function and send to the <strong>extract_image</strong> function. If the image header are returned, it saves the image and try to detect faces with the function <strong>face_detect</strong>.</p>
+<p>1) The function <strong>http_assembler</strong> takes a PCAP and separates each TCP session in a dictionary. Then it loops in these sections using the HTTP filter (which is the same as <em>Follow the TCP stream</em> in Wireshark). After the HTTP data is assembled, it parses the headers with the <strong>get_http_headers</strong> function and send to the <strong>extract_image</strong> function. If the image header are returned, it saves the image and try to detect faces with the function <strong>face_detect</strong>.</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">http_assembler</span><span class="p">(</span><span class="n">PCAP</span><span class="p">):</span>
     <span class="n">carved_images</span><span class="p">,</span> <span class="n">faces_detected</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">rdpcap</span><span class="p">(</span><span class="n">PCAP</span><span class="p">)</span>
@@ -710,7 +710,7 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 
 
 <ol>
-<li>The <strong>extract_image</strong> function determine whether an image is in a HTTP response by checking by the <strong>'Content-Type'</strong> string.</li>
+<li>The <strong>extract_image</strong> function determines whether an image is in a HTTP response by checking by the <strong>'Content-Type'</strong> string.</li>
 </ol>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">extract_image</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">http_payload</span><span class="p">):</span>
     <span class="n">image</span><span class="p">,</span><span class="n">image_type</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/arp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-12T04:20:00-05:00</updated><entry><title>Wiresharking for Fun or Profit</title><link href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html" rel="alternate"></link><updated>2014-11-12T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-12:wiresharking-for-fun-or-profit.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; is an open source &lt;strong&gt;network packet analyzer&lt;/strong&gt; that allows live  traffic analysis, with support to several  protocols.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/arp.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-12T04:20:00-05:00</updated><entry><title>Wiresharking for Fun or Profit</title><link href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html" rel="alternate"></link><updated>2014-11-12T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-12:wiresharking-for-fun-or-profit.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; is an open source &lt;strong&gt;network packet analyzer&lt;/strong&gt; that allows live traffic analysis, with support to several protocols.&lt;/p&gt;
 &lt;p&gt;Wireshark also allows &lt;strong&gt;network forensic&lt;/strong&gt;, being very useful for CTFs for example (check my writeups for the  &lt;a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html"&gt;D-CTF Quals 2014&lt;/a&gt; and for the CSAW Quals 2014 in &lt;a href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html"&gt;Networking&lt;/a&gt; and &lt;a href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html"&gt;Forensics&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;In this blog post I introduce Wireshark and I talk about my favorite features.&lt;/p&gt;
+&lt;p&gt;In this blog post, I introduce Wireshark and I talk about my favorite features.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;The Network Architecture&lt;/h1&gt;
 &lt;p&gt;Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.&lt;/p&gt;
@@ -35,13 +35,13 @@
 &lt;h2&gt;Data Encapsulation&lt;/h2&gt;
 &lt;p&gt;The way the protocols on different layers of the OSI model communicate is through &lt;em&gt;data encapsulation&lt;/em&gt;, where each layer in the stack adds a header or footer to the packet.&lt;/p&gt;
 &lt;p&gt;The encapsulation protocol creates a &lt;a href="http://en.wikipedia.org/wiki/Protocol_data_unit"&gt;protocol data unit&lt;/a&gt; (PDU),  including the data with all header and footer information added to it. What we call &lt;em&gt;packet&lt;/em&gt; is the complete PDU.&lt;/p&gt;
-&lt;p&gt;For instance, in Wireshark we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the &lt;em&gt;display filter&lt;/em&gt; is &lt;strong&gt;tcp.pdu.time&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;For instance, in Wireshark, we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the &lt;em&gt;display filter&lt;/em&gt; is &lt;strong&gt;tcp.pdu.time&lt;/strong&gt;).&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Switches and Routers&lt;/h2&gt;
 &lt;p&gt;There are four primary ways to capture traffic from a target device on a
 &lt;strong&gt;switched&lt;/strong&gt; network: using a &lt;strong&gt;hub&lt;/strong&gt;, using a &lt;strong&gt;tap&lt;/strong&gt;, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
-&lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
+&lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers, the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Types of Traffic Packets&lt;/h2&gt;
@@ -95,7 +95,7 @@ router.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fragment offset&lt;/strong&gt;:  identification of whether a packet is a fragment.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Time to Live&lt;/strong&gt;: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created, and generally is decremented by 1 every time the packet is forwarded by a router.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time to Live&lt;/strong&gt;: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created and generally is decremented by 1 every time the packet is forwarded by a router.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Protocol&lt;/strong&gt;: identification of the type of packet coming next in the sequence.&lt;/p&gt;
@@ -149,7 +149,7 @@ router.&lt;/p&gt;
 &lt;p&gt;To make this work, the router replies response with a &lt;em&gt;double-headed packet&lt;/em&gt;, containing a copy of the IP header and the data that was sent in the original echo request.&lt;/p&gt;
 &lt;p&gt;PS: Check out  this post from Julia Evans on how to create a simple &lt;a href="http://jvns.ca/blog/2013/10/31/day-20-scapy-and-traceroute/"&gt;&lt;em&gt;Traceroute in 15 lines of code using Python's Scapy&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;The Transmission Control Protocol (Layer 4)&lt;/h3&gt;
-&lt;p&gt;Provides a reliable flow of data between two hosts with a &lt;strong&gt;three-way handshake&lt;/strong&gt;. The purpose is to allow the transmitting host to ensure that the destination host is up, and let the transmitting host check the availability of the port as well.&lt;/p&gt;
+&lt;p&gt;Provides a reliable flow of data between two hosts with a &lt;strong&gt;three-way handshake&lt;/strong&gt;. The purpose is to allow the transmitting host to ensure that the destination host is up and let the transmitting host check the availability of the port as well.&lt;/p&gt;
 &lt;p&gt;This handshake works as  follows:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Host A sends an initial packet with no data but with the synchronize (SYN) flag and the initial sequence number and &lt;a href="http://en.wikipedia.org/wiki/Maximum_segment_size"&gt;maximum segment size&lt;/a&gt; (MSS) for the communication process.&lt;/li&gt;
@@ -298,7 +298,7 @@ a network, it would be assigned an address by hand.&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Capture filters&lt;/strong&gt;: specified when packets are being captured. This method is good for performance of large captures.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Display filters&lt;/strong&gt;: applied to an existing set of collected packets. This method gives more versatility since you have the entire data available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In the following sessions I  show several examples of capture and display  filters.&lt;/p&gt;
+&lt;p&gt;In the following sessions, I  show several examples of capture and display  filters.&lt;/p&gt;
 &lt;h3&gt;Capture Filters by Host Address and Name&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Traffic associated with a host's IPV4 address (also works for a IPv6 network).&lt;/li&gt;
@@ -616,7 +616,7 @@ a network, it would be assigned an address by hand.&lt;/p&gt;
 &lt;h3&gt;Operating System Fingerprint&lt;/h3&gt;
 &lt;p&gt;Technique to determine the operating system on a system without have access to it.&lt;/p&gt;
 &lt;p&gt;In  &lt;strong&gt;Passive Fingerprinting&lt;/strong&gt;, an attacker can use certain fields within packets sent from the target to craft a stealthy fingerprint.&lt;/p&gt;
-&lt;p&gt;This is possible due the lack of specificity by protocol's &lt;a href="http://en.wikipedia.org/wiki/Request_for_Comments"&gt;RFCs&lt;/a&gt;: although the various fields contained in the TCP, UDP and IP headers are very specific, no default values are defined for these fields.&lt;/p&gt;
+&lt;p&gt;This is possible due the lack of specificity by protocol's &lt;a href="http://en.wikipedia.org/wiki/Request_for_Comments"&gt;RFCs&lt;/a&gt;: although the various fields contained in the TCP, UDP, and IP headers are very specific, no default values are defined for these fields.&lt;/p&gt;
 &lt;p&gt;For instance, the following header values can help one to distinguish between several operating systems:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;IP, Initial Time to Live&lt;/strong&gt;:&lt;ul&gt;

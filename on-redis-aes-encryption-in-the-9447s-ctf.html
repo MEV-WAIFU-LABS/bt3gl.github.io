@@ -166,11 +166,11 @@
 </pre></div>
 
 
-<p>This client script simply makes <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> encrypted packets  for a given host and port (the arguments), with the class <strong>EncryptedStream</strong>. It then sends the packets and prints out any received stream.</p>
+<p>This client script simply makes <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a> encrypted packets for a given host and port (the arguments), with the class <strong>EncryptedStream</strong>. It then sends the packets and prints out any received stream.</p>
 <p>The snippet also shows an example of a client packet, with some request options (which we will see the response later in the network dump).</p>
 <h3>The Server File</h3>
 <p>The second file was the <strong>server.py</strong> script, which is basically a <a href="http://redis.io/">Redis</a> like database (hence, the <em>nosql</em> title). Unlike SQL databases, Redis <em>maps keys to types of values</em>. In this challenge, the idea was to recover an entry that had the key <strong>flag</strong> returning the value of the flag.</p>
-<p>In the script below, besides creating this database, functions such as: <strong>AES decrypting</strong> (encryption), <strong>MD5</strong> (hashing), and <strong>hex</strong> (enconding) are implemented using Python's library:</p>
+<p>In the script below, besides creating this database, functions such as: <strong>AES decrypting</strong> (encryption), <strong>MD5</strong> (hashing), and <strong>hex</strong> (encoding) are implemented using Python's library:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
 

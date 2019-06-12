@@ -117,9 +117,9 @@
 	<a href="./tag/ettercap.html"><i class="icon-tag"></i>Ettercap</a>
 	<a href="./tag/arpspoof.html"><i class="icon-tag"></i>arpspoof</a>
 </footer><!-- /.post-info -->                </div>
-                <p><a href="https://www.wireshark.org/">Wireshark</a> is an open source <strong>network packet analyzer</strong> that allows live  traffic analysis, with support to several  protocols.</p>
+                <p><a href="https://www.wireshark.org/">Wireshark</a> is an open source <strong>network packet analyzer</strong> that allows live traffic analysis, with support to several protocols.</p>
 <p>Wireshark also allows <strong>network forensic</strong>, being very useful for CTFs for example (check my writeups for the  <a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html">D-CTF Quals 2014</a> and for the CSAW Quals 2014 in <a href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html">Networking</a> and <a href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html">Forensics</a>).</p>
-<p>In this blog post I introduce Wireshark and I talk about my favorite features.</p>
+<p>In this blog post, I introduce Wireshark and I talk about my favorite features.</p>
 <hr />
 <h1>The Network Architecture</h1>
 <p>Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.</p>
@@ -153,13 +153,13 @@
 <h2>Data Encapsulation</h2>
 <p>The way the protocols on different layers of the OSI model communicate is through <em>data encapsulation</em>, where each layer in the stack adds a header or footer to the packet.</p>
 <p>The encapsulation protocol creates a <a href="http://en.wikipedia.org/wiki/Protocol_data_unit">protocol data unit</a> (PDU),  including the data with all header and footer information added to it. What we call <em>packet</em> is the complete PDU.</p>
-<p>For instance, in Wireshark we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the <em>display filter</em> is <strong>tcp.pdu.time</strong>).</p>
+<p>For instance, in Wireshark, we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the <em>display filter</em> is <strong>tcp.pdu.time</strong>).</p>
 <hr />
 <h2>Switches and Routers</h2>
 <p>There are four primary ways to capture traffic from a target device on a
 <strong>switched</strong> network: using a <strong>hub</strong>, using a <strong>tap</strong>, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:</p>
 <p><img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /></p>
-<p>All of the techniques for switched network are available on <strong>routed</strong> networks as well. However, for routers the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
+<p>All of the techniques for switched network are available on <strong>routed</strong> networks as well. However, for routers, the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.</p>
 <hr />
 <h2>Types of Traffic Packets</h2>
@@ -213,7 +213,7 @@ router.</p>
 <p><strong>Fragment offset</strong>:  identification of whether a packet is a fragment.</p>
 </li>
 <li>
-<p><strong>Time to Live</strong>: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created, and generally is decremented by 1 every time the packet is forwarded by a router.</p>
+<p><strong>Time to Live</strong>: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created and generally is decremented by 1 every time the packet is forwarded by a router.</p>
 </li>
 <li>
 <p><strong>Protocol</strong>: identification of the type of packet coming next in the sequence.</p>
@@ -267,7 +267,7 @@ router.</p>
 <p>To make this work, the router replies response with a <em>double-headed packet</em>, containing a copy of the IP header and the data that was sent in the original echo request.</p>
 <p>PS: Check out  this post from Julia Evans on how to create a simple <a href="http://jvns.ca/blog/2013/10/31/day-20-scapy-and-traceroute/"><em>Traceroute in 15 lines of code using Python's Scapy</em></a>.</p>
 <h3>The Transmission Control Protocol (Layer 4)</h3>
-<p>Provides a reliable flow of data between two hosts with a <strong>three-way handshake</strong>. The purpose is to allow the transmitting host to ensure that the destination host is up, and let the transmitting host check the availability of the port as well.</p>
+<p>Provides a reliable flow of data between two hosts with a <strong>three-way handshake</strong>. The purpose is to allow the transmitting host to ensure that the destination host is up and let the transmitting host check the availability of the port as well.</p>
 <p>This handshake works as  follows:</p>
 <ol>
 <li>Host A sends an initial packet with no data but with the synchronize (SYN) flag and the initial sequence number and <a href="http://en.wikipedia.org/wiki/Maximum_segment_size">maximum segment size</a> (MSS) for the communication process.</li>
@@ -416,7 +416,7 @@ a network, it would be assigned an address by hand.</p>
 <li><strong>Capture filters</strong>: specified when packets are being captured. This method is good for performance of large captures.</li>
 <li><strong>Display filters</strong>: applied to an existing set of collected packets. This method gives more versatility since you have the entire data available.</li>
 </ul>
-<p>In the following sessions I  show several examples of capture and display  filters.</p>
+<p>In the following sessions, I  show several examples of capture and display  filters.</p>
 <h3>Capture Filters by Host Address and Name</h3>
 <ul>
 <li>Traffic associated with a host's IPV4 address (also works for a IPv6 network).</li>
@@ -734,7 +734,7 @@ a network, it would be assigned an address by hand.</p>
 <h3>Operating System Fingerprint</h3>
 <p>Technique to determine the operating system on a system without have access to it.</p>
 <p>In  <strong>Passive Fingerprinting</strong>, an attacker can use certain fields within packets sent from the target to craft a stealthy fingerprint.</p>
-<p>This is possible due the lack of specificity by protocol's <a href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs</a>: although the various fields contained in the TCP, UDP and IP headers are very specific, no default values are defined for these fields.</p>
+<p>This is possible due the lack of specificity by protocol's <a href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs</a>: although the various fields contained in the TCP, UDP, and IP headers are very specific, no default values are defined for these fields.</p>
 <p>For instance, the following header values can help one to distinguish between several operating systems:</p>
 <ul>
 <li><strong>IP, Initial Time to Live</strong>:<ul>

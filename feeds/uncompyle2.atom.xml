@@ -46,7 +46,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Let's learn a bit more about this tool with &lt;code&gt;uncompyle2 --help&lt;/code&gt;. The usage is straightfoward, but it's a good knowledge to learn about the &lt;em&gt;-o&lt;/em&gt; flag, which will decompile to a &lt;em&gt;.dis&lt;/em&gt; file instead of &lt;em&gt;stdout&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;Let's learn a bit more about this tool with &lt;code&gt;uncompyle2 --help&lt;/code&gt;. The usage is straightforward, but it's a good knowledge to learn about the &lt;em&gt;-o&lt;/em&gt; flag, which will decompile to a &lt;em&gt;.dis&lt;/em&gt; file instead of &lt;em&gt;stdout&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Usage: uncompyle2 &lt;span class="o"&gt;[&lt;/span&gt;OPTIONS&lt;span class="o"&gt;]&lt;/span&gt;... &lt;span class="o"&gt;[&lt;/span&gt; FILE | DIR&lt;span class="o"&gt;]&lt;/span&gt;...
 
 Examples:

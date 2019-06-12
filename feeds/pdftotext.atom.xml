@@ -11,7 +11,7 @@
 
  &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;We&lt;/span&gt; &lt;span class="n"&gt;extract&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;suspicious&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt; &lt;span class="n"&gt;segments&lt;/span&gt;
 
- &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;shell&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;disassemble&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;ActionScript&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;VB&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;examine&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+ &lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;shellcode&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;disassemble&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;JavaScript&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;ActionScript&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="n"&gt;VB&lt;/span&gt; &lt;span class="n"&gt;macro&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;we&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;examine&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -23,19 +23,19 @@
 
 &lt;span class="mf"&gt;2.&lt;/span&gt; &lt;span class="n"&gt;Open&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;PDF&lt;/span&gt; &lt;span class="n"&gt;viewer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 
-&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;contend&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
+&lt;span class="mf"&gt;3.&lt;/span&gt; &lt;span class="n"&gt;CTRL&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
 
 &lt;span class="mf"&gt;4.&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;see&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/b03EehK.png" /&gt;&lt;/p&gt;
-&lt;p&gt;OK, we were luck. Keep reading if you think this was too easy.&lt;/p&gt;
+&lt;p&gt;OK, we were lucky. Keep reading if you think this was too easy.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Analyzing the ID and the Streams in a PDF File&lt;/h2&gt;
-&lt;p&gt;Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task we use the &lt;a href="http://blog.didierstevens.com/programs/pdf-tools/"&gt;PDF Tool&lt;/a&gt; suite, which is written in Python.&lt;/p&gt;
+&lt;p&gt;Let's suppose we had no clue that the flag would just be a text in the file. In this case, we would want to examine the file's structure. For this task, we use the &lt;a href="http://blog.didierstevens.com/programs/pdf-tools/"&gt;PDF Tool&lt;/a&gt; suite, which is written in Python.&lt;/p&gt;
 &lt;h4&gt;pdfid&lt;/h4&gt;
-&lt;p&gt;We start with &lt;em&gt;pdfid.py&lt;/em&gt;, which parses the PDF  looking for certain  keywords. We download and unzip that script, and then we make it an executable:&lt;/p&gt;
+&lt;p&gt;We start with &lt;em&gt;pdfid.py&lt;/em&gt;, which parses the PDF  looking for certain keywords. We download and unzip that script, and then we make it an executable:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdfid_v0_1_2.zip
 &lt;span class="nv"&gt;$ &lt;/span&gt;chmod a+x pdfid.py
 &lt;/pre&gt;&lt;/div&gt;
@@ -69,7 +69,7 @@ PDFiD 0.1.2 pdf.pdf
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;All right, no funny stuff going on here. We need to look deeper into each of the these streams.&lt;/p&gt;
+&lt;p&gt;All right, no funny stuff going on here. We need to look deeper into each of these streams.&lt;/p&gt;
 &lt;h4&gt;pdf-parser&lt;/h4&gt;
 &lt;p&gt;We download &lt;em&gt;pdf-parser.py&lt;/em&gt;, which is used to search for all the fundamental elements in a PDF file. Let's take a closer look:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;unzip pdf-parser_V0_4_3.zip

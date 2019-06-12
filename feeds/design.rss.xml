@@ -8,8 +8,8 @@
 &lt;h2&gt;Scope of the System&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;User cases&lt;/strong&gt;: Who is going to use it? How are they going to use it?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Constraints&lt;/strong&gt;: Amount of traffic, amount of data, scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write oriented, etc.)?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;High level architecture design&lt;/strong&gt;: Application service layer, different services required, data storage layer?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constraints&lt;/strong&gt;: Amount of traffic, amount of data, the scale of the system (e.g. requests per second, requests types, data written per second, data read per second), special system requirements (e.g. multi-threading, read or write-oriented, etc.)?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; High-level architecture design&lt;/strong&gt;: Application service layer, different services required, data storage layer?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Understanding bottlenecks&lt;/strong&gt;: Do we need a load balancer and many instances behind it to handle user requests? Is data large enough so that you need to distribute your database on multiple machines? What are the downsides from doing that?&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;User interface&lt;/strong&gt;: Is this a full web app, with a web interface? Or just a RESTful API?&lt;/li&gt;
 &lt;/ul&gt;
@@ -35,8 +35,8 @@
 &lt;p&gt;&lt;strong&gt;Load balancers&lt;/strong&gt; are a principal part of any architecture, as their role is to distribute load across a set of nodes responsible for servicing requests. Their main purpose is to handle a lot of simultaneous connections and route those connections to one of the request nodes, allowing the system to scale to service more requests by just adding nodes.&lt;/p&gt;
 &lt;p&gt;Load balancers also provide the critical function of being able to test the health of a node, such that if a node is unresponsive or over-loaded, taking advantage of the redundancy of different nodes in your system.&lt;/p&gt;
 &lt;h3&gt;Queues and Asynchronous requests&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Queues&lt;/strong&gt; are a common way to bring asynchrony into you system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps achieving performance and availability.&lt;/p&gt;
-&lt;p&gt;A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing abstraction of a client's request and its response.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Queues&lt;/strong&gt; are a common way to bring asynchrony into your system, for instance, in the cases when some tasks (e.g. writes) may take a long time. This helps to achieve performance and availability.&lt;/p&gt;
+&lt;p&gt;A queue is as simple as it sounds: a task comes in, is added to the queue and then workers pick up the next task, providing an abstraction of a client's request and its response.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Back to my end-to-end Application&lt;/h1&gt;
 &lt;p&gt;A good way to illustrate system design is looking at a real end-to-end application deployed at AWS. &lt;/p&gt;
@@ -83,7 +83,7 @@
 
 
 &lt;p&gt;Now, all you need is a couple of commands (such as &lt;code&gt;terraform apply&lt;/code&gt;) and your system would be up and running. &lt;/p&gt;
-&lt;p&gt;This was a high-level overview of how you would start designing and implementing real world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
+&lt;p&gt;This was a high-level overview of how you would start designing and implementing real-world end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. Pretty awesome to live in 2019.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
 &lt;ul&gt;
@@ -95,6 +95,5 @@
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;
-Aloha,
-Mia
+Aloha, bt3
 &lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 15 Apr 2018 09:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2018-04-15:system-designing-with-end-to-end-applications-in-aws.html</guid><category>aws</category><category>scalability</category><category>queues</category><category>lambda</category><category>sqs</category><category>mobgodb</category></item></channel></rss>

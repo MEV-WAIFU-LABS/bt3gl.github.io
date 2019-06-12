@@ -110,8 +110,8 @@
 	<a href="./tag/wireshark.html"><i class="icon-tag"></i>Wireshark</a>
 	<a href="./tag/ftp.html"><i class="icon-tag"></i>FTP</a>
 </footer><!-- /.post-info -->                </div>
-                <p>The purpose of this problem is to teach about the need of encrypting your data. The <a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>  protocol sends clear text over the wire, <em>i.e</em>  the  data is transmitted without any encryption.
- <a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol">SSH/Secure File Transfer Protocol</a> is a network protocol providing secure file transfer. Using SFTP, instead of FTP, would avoid to find the flag in this problem in the way we did.</p>
+                <p>The purpose of this problem is to teach about the need for encrypting your data. The <a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>  protocol sends clear text over the wire, <em>i.e</em> the data is transmitted without any encryption.
+ <a href="http://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol">SSH/Secure File Transfer Protocol</a> is a network protocol providing secure file transfer. Using SFTP, instead of FTP, would avoid finding the flag in this problem in the way we did.</p>
 <p>This is the second forensics problem and it starts with the following text:</p>
 <blockquote>
 <p>well seriously, why not?</p>
@@ -120,7 +120,7 @@
 </blockquote>
 <hr />
 <h2>Analyzing the PCAP File</h2>
-<p>Now let's search for the flag! We open the <a href="http://en.wikipedia.org/wiki/Pcap">pcap</a> file in <a href="https://www.wireshark.org/">Wireshark</a> (an open-source packet analyzer). There are several things that we could search for in this file, for instance we could look for FTP transactions or we could search for strings such as <em>password</em> or <em>flag</em>. We show both approaches.</p>
+<p>Now let's search for the flag! We open the <a href="http://en.wikipedia.org/wiki/Pcap">pcap</a> file in <a href="https://www.wireshark.org/">Wireshark</a> (an open-source packet analyzer). There are several things that we could search for in this file, for instance, we could look for FTP transactions or we could search for strings such as <em>password</em> or <em>flag</em>. We show both approaches.</p>
 <h2>Solution 1: Searching for the string <em>flag</em></h2>
 <h4>Going in the Wrong Way</h4>
 <p>So the first thing I did was searching for the string <em>password</em>:</p>
@@ -131,7 +131,7 @@
 </ol>
 <p>Clicking on <em>Follow TCP Stream</em> gives:
 <img alt="cyber" src="http://i.imgur.com/c61P5Aj.png" /></p>
-<p>Nope. This is a misleading information!</p>
+<p>Nope. This is misleading information!</p>
 <hr />
 <h4>But We Were Almost There!</h4>
 <p>Now, if we search for <em>flag</em> we actually find something:</p>
@@ -151,12 +151,12 @@
 
 <p>Cool, we found a few packets:
 <img alt="cyber" src="http://i.imgur.com/cWhiXZD.png" /></p>
-<p>We don't need to scroll down too much to find a packet with  a string flag on it! Awesome.</p>
+<p>We don't need to scroll down too much to find a packet with a string flag on it! Awesome.</p>
 <hr />
 <h2>Extracting the File</h2>
 <p>Once we find the packet with any of the methods above, we right-click it selecting <em>Follow TCP Stream</em>. This leads to:</p>
 <p><img alt="cyber" src="http://i.imgur.com/LZTse2s.png" /></p>
-<p>The file <em>flag.png</em> is our flag. To extract it we  click in the <em>Save as</em> button, then in the terminal we can use the command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
+<p>The file <em>flag.png</em> is our flag. To extract it we  click in the <em>Save as</em> button, then in the terminal, we can use the command <a href="http://en.wikipedia.org/wiki/File_(command)">file</a>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>file s.whatever
 s.whatever: Zip archive data, at least v2.0 to extract
 </pre></div>

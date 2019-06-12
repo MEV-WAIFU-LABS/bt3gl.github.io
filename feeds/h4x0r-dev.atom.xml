@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/h4x0r-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2015-10-02T00:00:00-04:00</updated><entry><title>Introducing Threat Intel</title><link href="http://bt3gl.github.io/introducing-threat-intel.html" rel="alternate"></link><updated>2015-10-02T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-10-02:introducing-threat-intel.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/bt3gl/threat_intel"&gt;Threat intel 🍒&lt;/a&gt; is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/h4x0r-dev.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2015-10-02T00:00:00-04:00</updated><entry><title>Introducing Threat Intel</title><link href="http://bt3gl.github.io/introducing-threat-intel.html" rel="alternate"></link><updated>2015-10-02T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-10-02:introducing-threat-intel.html</id><summary type="html">&lt;p&gt;&lt;a href="https://github.com/bt3gl/threat_intel"&gt;Threat Intel 🍒&lt;/a&gt; is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;OpenDNS Investigate API&lt;/li&gt;
 &lt;li&gt;VirusTotal API v2.0&lt;/li&gt;
@@ -43,7 +43,7 @@ to save you the bandwidth for the multiple calls about the same domains or IPs:&
 &lt;h4&gt;Domain categorization&lt;/h4&gt;
 &lt;p&gt;Calls &lt;code&gt;domains/categorization/?showLabels&lt;/code&gt; Investigate API endpoint.
 It takes a list (or any other Python enumerable) of domains and returns
-the categories associated with this domains by OpenDNS along with a [-1, 0, 1] score, where -1 is a malicious status.&lt;/p&gt;
+the categories associated with these domains by OpenDNS along with a [-1, 0, 1] score, where -1 is a malicious status.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;bibikun.ru&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;investigate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;categorization&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -90,7 +90,7 @@ associated with each domain.&lt;/p&gt;
 
 &lt;h4&gt;Co-occurrences for a domain&lt;/h4&gt;
 &lt;p&gt;Calls &lt;code&gt;recommendations/name/&lt;/code&gt; Investigate API endpoint.
-Use this method to find out a list of co-occurence domains (domains that are being accessed by the same users within a small window of time) to the one given in a list, or any other Python enumerable.&lt;/p&gt;
+Use this method to find out a list of co-occurrence domains (domains that are being accessed by the same users within a small window of time) to the one given in a list, or any other Python enumerable.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;bibikun.ru&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;investigate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cooccurrences&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -220,7 +220,7 @@ Use this method to find out related domains to the IP addresses given in a list,
 &lt;h4&gt;WHOIS information for a domain&lt;/h4&gt;
 &lt;h5&gt;WHOIS information for an email&lt;/h5&gt;
 &lt;p&gt;Calls &lt;code&gt;whois/emails/{email}&lt;/code&gt; Investigate API endpoint.&lt;/p&gt;
-&lt;p&gt;Use this method to see WHOIS information for the email address. (For now the OpenDNS API will only return at most 500 results)&lt;/p&gt;
+&lt;p&gt;Use this method to see WHOIS information for the email address. (For now, the OpenDNS API will only return at most 500 results)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;emails&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;dns-admin@google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;investigate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;whois_emails&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;emails&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -246,7 +246,7 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;h5&gt;WHOIS information for a nameserver&lt;/h5&gt;
 &lt;p&gt;Calls &lt;code&gt;whois/nameservers/{nameserver}&lt;/code&gt; Investigate API endpoint.&lt;/p&gt;
-&lt;p&gt;Use this method to see WHOIS information for the nameserver. (For now the OpenDNS API will only return at most 500 results)&lt;/p&gt;
+&lt;p&gt;Use this method to see WHOIS information for the nameserver. (For now, the OpenDNS API will only return at most 500 results)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;nameservers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ns2.google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;investigate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;whois_nameservers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nameservers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -364,7 +364,7 @@ possible to query for the reports about:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;VirusTotal API calls allow to squeeze a list of file hashes or URLs into a single HTTP call.
+&lt;p&gt;VirusTotal API calls allow squeezing a list of file hashes or URLs into a single HTTP call.
 Depending on the API version you are using (public or private) you may need to tune the maximum number
 of the resources (file hashes or URLs) that could be passed in a single API call.
 You can do it with the &lt;code&gt;resources_per_req&lt;/code&gt; parameter:&lt;/p&gt;
@@ -375,7 +375,7 @@ You can do it with the &lt;code&gt;resources_per_req&lt;/code&gt; parameter:&lt;
 &lt;p&gt;When using the public API your standard request rate allows you too put maximum 4 resources per request.
 With private API you are able to put up to 25 resources per call. That is also the default value if you
 don't pass the &lt;code&gt;resources_per_req&lt;/code&gt; parameter.&lt;/p&gt;
-&lt;p&gt;Of course when calling the API wrapper methods in the &lt;code&gt;VirusTotalApi&lt;/code&gt; class you can pass as many resources
+&lt;p&gt;Of course, when calling the API wrapper methods in the &lt;code&gt;VirusTotalApi&lt;/code&gt; class you can pass as many resources
 as you want and the wrapper will take care of producing as many API calls as necessary to satisfy the request rate.&lt;/p&gt;
 &lt;p&gt;Similarly to OpenDNS API wrapper, you can also specify the file name where the responses will be cached:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;VirusTotalApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;VIRUSTOTAL-API-KEY-HERE&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cache_file_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/tmp/cache.virustotal.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -482,8 +482,8 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):&l
 &lt;h4&gt;Hash rescan endpoint&lt;/h4&gt;
 &lt;p&gt;Calls &lt;code&gt;file/rescan&lt;/code&gt; VirusTotal API endpoint. Use to rescan a previously submitted file.
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
-&lt;h4&gt;Hash behaviour endpoint&lt;/h4&gt;
-&lt;p&gt;Calls &lt;code&gt;file/behaviour&lt;/code&gt; VirusTotal API endpoint. Use to get a report about the behaviour of the file when executed in a sandboxed environment (Cuckoo sandbox).
+&lt;h4&gt;Hash behavior endpoint&lt;/h4&gt;
+&lt;p&gt;Calls &lt;code&gt;file/behaviour&lt;/code&gt; VirusTotal API endpoint. Use to get a report about the behavior of the file when executed in a sandboxed environment (Cuckoo sandbox).
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
     &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -573,7 +573,7 @@ Pass a list or any other Python enumerable containing the IP addresses:&lt;/p&gt
 
 
 &lt;h4&gt;URL live feed endpoint&lt;/h4&gt;
-&lt;p&gt;Calls &lt;code&gt;url/distribution&lt;/code&gt; VirusTotal API endpoint. Use to get a live a feed with the latest URLs submitted to VirusTotal.&lt;/p&gt;
+&lt;p&gt;Calls &lt;code&gt;url/distribution&lt;/code&gt; VirusTotal API endpoint. Use to get a live feed with the latest URLs submitted to VirusTotal.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_url_distribution&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -591,14 +591,14 @@ Pass a list or any other Python enumerable containing the IP addresses:&lt;/p&gt
 
 
 &lt;h4&gt;File date endpoint&lt;/h4&gt;
-&lt;p&gt;Calls &lt;code&gt;file/clusters&lt;/code&gt; VirusTotal API endpoint. Use to list simililarity clusters for a given time frame.&lt;/p&gt;
+&lt;p&gt;Calls &lt;code&gt;file/clusters&lt;/code&gt; VirusTotal API endpoint. Use to list similarity clusters for a given time frame.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_clusters&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr /&gt;
 &lt;h3&gt;ShadowServer API&lt;/h3&gt;
-&lt;p&gt;&lt;a href="http://shadowserver.org/"&gt;ShadowServer&lt;/a&gt; provides and &lt;a href="http://bin-test.shadowserver.org/"&gt;API&lt;/a&gt; that allows to test
+&lt;p&gt;&lt;a href="http://shadowserver.org/"&gt;ShadowServer&lt;/a&gt; provides an &lt;a href="http://bin-test.shadowserver.org/"&gt;API&lt;/a&gt; that allows to test
 the hashes against a list of known software applications.&lt;/p&gt;
 &lt;p&gt;To use the ShadowServer API wrapper import &lt;code&gt;ShadowServerApi&lt;/code&gt; class from &lt;code&gt;threat_intel.shadowserver&lt;/code&gt; module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;threat_intel.shadowserver&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ShadowServerApi&lt;/span&gt;

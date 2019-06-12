@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/socket.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-16T00:00:00-05:00</updated><entry><title>Black Hat Python: Building a UDP Scanner</title><link href="http://bt3gl.github.io/black-hat-python-building-a-udp-scanner.html" rel="alternate"></link><updated>2014-12-16T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-16:black-hat-python-building-a-udp-scanner.html</id><summary type="html">&lt;p&gt;When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.&lt;/p&gt;
-&lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing, but what if you don't have Wireshark available to monitor a network traffic?&lt;/p&gt;
-&lt;p&gt;Again, Python comes with several solutions and today I'm going  through the steps to build a &lt;strong&gt;UDP Host discovery tool&lt;/strong&gt;. First, we are going to see how we deal with &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt; to  write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.&lt;/p&gt;
-&lt;p&gt;The cool thing about &lt;strong&gt;raw sockets&lt;/strong&gt; is that they allow access to low-level networking information. For example, we can use it to check &lt;strong&gt;IP&lt;/strong&gt; and &lt;strong&gt;ICMP&lt;/strong&gt; headers, which are in the layer 3 of the OSI model (the network layer).&lt;/p&gt;
+&lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?&lt;/p&gt;
+&lt;p&gt;Again, Python comes with several solutions and today I'm going through the steps to build a &lt;strong&gt;UDP Host discovery tool&lt;/strong&gt;. First, we are going to see how we deal with &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt; to write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.&lt;/p&gt;
+&lt;p&gt;The cool thing about &lt;strong&gt;raw sockets&lt;/strong&gt; is that they allow access to low-level networking information. For example, we can use it to check &lt;strong&gt;IP&lt;/strong&gt; and &lt;strong&gt;ICMP&lt;/strong&gt; headers, which are in layer 3 of the OSI model (the network layer).&lt;/p&gt;
 &lt;p&gt;The cool thing about using &lt;strong&gt;UDP datagrams&lt;/strong&gt; is that, differently from &lt;strong&gt;TCP&lt;/strong&gt;, they do not bring much overhead when sent across an entire subnet (remember the TCP &lt;a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml"&gt;handshaking&lt;/a&gt;). All we need to do is wait for the &lt;strong&gt;ICMP&lt;/strong&gt; responses saying whether the hosts are available or closed (unreachable).
 Remember that ICMP is essentially a special control protocol that issues error reports and can control the behavior of machines in data transfer.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Writing a Packet Sniffer&lt;/h2&gt;
 &lt;p&gt;We start with a  very simple task: with Python's  &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket&lt;/a&gt; library, we will write a very simple packet sniffer.&lt;/p&gt;
-&lt;p&gt;In this sniffer we create a raw socket and then we bind it to the public interface. The interface should be in &lt;strong&gt;promiscuous mode&lt;/strong&gt;, which means that every packet that the network card sees is captured, even those that are not destined to the host.&lt;/p&gt;
-&lt;p&gt;One detail to remember is that things are slightly different if we are using Windows: in this case we need to send a &lt;a href="http://en.wikipedia.org/wiki/Ioctl"&gt;IOCTL&lt;/a&gt; package to set the interface to &lt;strong&gt;promiscuous mode&lt;/strong&gt;. In addition, while Linux needs to use ICMP, Windows allow us to sniff the incoming packets independently of the protocol:&lt;/p&gt;
+&lt;p&gt;In this sniffer, we create a raw socket and then we bind it to the public interface. The interface should be in &lt;strong&gt;promiscuous mode&lt;/strong&gt;, which means that every packet that the network card sees is captured, even those that are not destined to the host.&lt;/p&gt;
+&lt;p&gt;One detail to remember is that things are slightly different if we are using Windows: in this case, we need to send a &lt;a href="http://en.wikipedia.org/wiki/Ioctl"&gt;IOCTL&lt;/a&gt; package to set the interface to &lt;strong&gt;promiscuous mode&lt;/strong&gt;. In addition, while Linux needs to use ICMP, Windows allows us to sniff the incoming packets independently of the protocol:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
@@ -186,7 +186,7 @@ ICMP -&amp;gt; Type:3, Code:3
 &lt;h2&gt;Writing the Scanner&lt;/h2&gt;
 &lt;h3&gt;Installing netaddr&lt;/h3&gt;
 &lt;p&gt;We are ready to write our full scanner. But, first, let's install &lt;a href="https://pypi.python.org/pypi/netaddr"&gt;netaddr&lt;/a&gt;, which is a Python library for representing and manipulating network addresses.&lt;/p&gt;
-&lt;p&gt;Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem, since we want to be able to use a subnet mask such as 192.168.1.0/24.&lt;/p&gt;
+&lt;p&gt;Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem since we want to be able to use a subnet mask such as 192.168.1.0/24.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install netaddr
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -285,11 +285,11 @@ Host up: 192.168.1.114
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="socket"></category><category term="sniffing"></category><category term="UDP"></category><category term="netaddr"></category><category term="ICMP"></category><category term="scanner"></category><category term="packet_header"></category></entry><entry><title>Black Hat Python: The Paramiko Module</title><link href="http://bt3gl.github.io/black-hat-python-the-paramiko-module.html" rel="alternate"></link><updated>2014-12-13T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-13:black-hat-python-the-paramiko-module.html</id><summary type="html">&lt;p&gt;This is the second post based on my readings from &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;. Yesterday I talked about Python's &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket module&lt;/a&gt; and today I'm talking about the &lt;a href="http://www.paramiko.org/"&gt;paramiko&lt;/a&gt; module.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Paramiko&lt;/strong&gt; is awesome!!! It uses my dear &lt;a href="https://www.dlitz.net/software/pycrypto/"&gt;PyCrypto&lt;/a&gt; to give us access to the &lt;a href="http://en.wikipedia.org/wiki/SSH2"&gt;SSH2 protocol&lt;/a&gt;, and it has a flexible and easy to use API.&lt;/p&gt;
-&lt;p&gt;You are going to see it with your own eyes: in this post we will see code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
+&lt;p&gt;You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;Shall we start?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A Simple SSH Client&lt;/h2&gt;
-&lt;p&gt;The first program we are going to write is a SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
+&lt;p&gt;The first program we are going to write is an SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
 &lt;p&gt;But before we start, make sure you have  &lt;strong&gt;paramiko&lt;/strong&gt; installed in our environment:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install paramiko
 &lt;/pre&gt;&lt;/div&gt;
@@ -419,7 +419,7 @@ Host up: 192.168.1.114
 &lt;p&gt;What if we also control the SSH server and we are able to send commands to our SSH client? This is exactly what we are going to do now: we are going to write a &lt;strong&gt;class&lt;/strong&gt; for this server (with a little help of the &lt;strong&gt;socket&lt;/strong&gt; module) and then we will be able to &lt;strong&gt;reverse the shell&lt;/strong&gt;!&lt;/p&gt;
 &lt;p&gt;As a note, this script is based in some of the &lt;a href="https://github.com/paramiko/paramiko/blob/master/demo"&gt;paramiko demos&lt;/a&gt; and we specifically use the key from their demo files (&lt;a href="https://github.com/paramiko/paramiko/blob/master/demos/test_rsa.key"&gt;download here&lt;/a&gt;).&lt;/p&gt;
 &lt;h3&gt;The SSH Server&lt;/h3&gt;
-&lt;p&gt;In our server script, we first  create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
+&lt;p&gt;In our server script, we first create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HOST_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;paramiko&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RSAKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;test_rsa.key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;USERNAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;buffy&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;killvampires&amp;#39;&lt;/span&gt;
@@ -444,7 +444,7 @@ Host up: 192.168.1.114
 &lt;li&gt;Once a connection is established (the client tried to connect to the server and the socket accepted the connection), it creates a &lt;strong&gt;paramiko&lt;/strong&gt; &lt;a href="http://docs.paramiko.org/en/1.15/api/transport.html"&gt;Transport&lt;/a&gt; object for this socket. In paramiko there are two main communication methods: &lt;em&gt;Transport&lt;/em&gt;, which makes and maintains the encrypted connection, and &lt;em&gt;Channel&lt;/em&gt;, which is like a socket for sending/receiving data over the encrypted session (the other three are Client, Message, and Packetizer).&lt;/li&gt;
 &lt;li&gt;The program instantiates a &lt;strong&gt;Server&lt;/strong&gt; object and starts the paramiko session with it.&lt;/li&gt;
 &lt;li&gt;Authentication is attempted. If it is successful, we get a &lt;strong&gt;ClientConnected&lt;/strong&gt; message.&lt;/li&gt;
-&lt;li&gt;The server starts a loop where it will keep getting  input commands from the user and issuing it in the client. This is our reversed  shell!&lt;/li&gt;
+&lt;li&gt;The server starts a loop where it will keep getting input commands from the user and issuing it in the client. This is our reversed shell!&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;paramiko&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;getopt&lt;/span&gt;
@@ -601,7 +601,7 @@ Welcome to Buffy&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s SSH
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now we can send any command from the server side to run  in the client: we have a reversed shell!&lt;/p&gt;
+&lt;p&gt;Now we can send any command from the server side to run in the client: we have a reversed shell!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Listening &lt;span class="k"&gt;for &lt;/span&gt;connection ...
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Connection Established!
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Authenticated!
@@ -627,8 +627,8 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
-&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which  contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
+&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post, I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
 &lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
@@ -662,7 +662,7 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;p&gt;The simplicity of this script relies in making the following assumptions about the sockets:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;our &lt;em&gt;connection will always succeed&lt;/em&gt;,&lt;/li&gt;
-&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as oppose to servers that expect to send data and then wait for response), and&lt;/li&gt;
+&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as opposed to servers that expect to send data and then wait for response), and&lt;/li&gt;
 &lt;li&gt;the server will always send us data back in a &lt;em&gt;short time&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let's run this script (notice that we get &lt;em&gt;Moved Permanently&lt;/em&gt; because Google  issues HTTPS connections):&lt;/p&gt;
@@ -691,9 +691,9 @@ The document has moved
 &lt;p&gt;Simple like that.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Server&lt;/h2&gt;
-&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
-&lt;p&gt;First we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending a &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
-&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections  to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
+&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this, we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
+&lt;p&gt;First, we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending an &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
+&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
 &lt;p&gt;At this point, the program creates a thread object for the function &lt;strong&gt;handle_client&lt;/strong&gt; which we mentioned above:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
@@ -773,7 +773,7 @@ ACK
 
 &lt;hr /&gt;
 &lt;h2&gt;A UDP Server&lt;/h2&gt;
-&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there is no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there are no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 
 &lt;span class="n"&gt;BIND_IP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;
@@ -970,7 +970,7 @@ ACK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file, or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;client_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_socket&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;UPLOAD&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;EXECUTE&lt;/span&gt;
@@ -1075,10 +1075,10 @@ Transfer-Encoding: chunked
 &lt;p&gt;Cool, huh?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Proxy&lt;/h2&gt;
-&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based softwares (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
+&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
 &lt;p&gt;To create a proxy we need to verify if we need to &lt;em&gt;first initiate a connection&lt;/em&gt; to the remote side. This will request data before going into our main loop and some server daemons expect you to do this first (for instance, FTP servers send a banner first).  We call this information &lt;strong&gt;receive_first&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;The Main Function&lt;/h3&gt;
-&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
+&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First, we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
@@ -1194,7 +1194,7 @@ Transfer-Encoding: chunked
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to  perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;request_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c"&gt;# perform packet modifications&lt;/span&gt;
     &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39; Yaeah!&amp;#39;&lt;/span&gt;
@@ -1219,7 +1219,7 @@ Transfer-Encoding: chunked
 
 
 &lt;h3&gt;Firing Up our Proxy&lt;/h3&gt;
-&lt;p&gt;Now we just need to run our script with some server. For example, for a FTP server at the standard port 21:&lt;/p&gt;
+&lt;p&gt;Now we just need to run our script with some server. For example, for an FTP server at the standard port 21:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo ./tcp_proxy.py localhost 21 ftp.target 21 True
 &lt;span class="o"&gt;[&lt;/span&gt;*&lt;span class="o"&gt;]&lt;/span&gt; Listening on localhost:21
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
@@ -1228,7 +1228,7 @@ Transfer-Encoding: chunked
 
 &lt;hr /&gt;
 &lt;h2&gt;Extra Stuff: The socket Object Methods&lt;/h2&gt;
-&lt;p&gt;Additionally, let's  take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
+&lt;p&gt;Additionally, let's take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;socket.accept()&lt;/strong&gt;: Accept a connection.&lt;/p&gt;
@@ -1364,11 +1364,11 @@ Transfer-Encoding: chunked
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This client script simply makes &lt;a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"&gt;AES&lt;/a&gt; encrypted packets  for a given host and port (the arguments), with the class &lt;strong&gt;EncryptedStream&lt;/strong&gt;. It then sends the packets and prints out any received stream.&lt;/p&gt;
+&lt;p&gt;This client script simply makes &lt;a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard"&gt;AES&lt;/a&gt; encrypted packets for a given host and port (the arguments), with the class &lt;strong&gt;EncryptedStream&lt;/strong&gt;. It then sends the packets and prints out any received stream.&lt;/p&gt;
 &lt;p&gt;The snippet also shows an example of a client packet, with some request options (which we will see the response later in the network dump).&lt;/p&gt;
 &lt;h3&gt;The Server File&lt;/h3&gt;
 &lt;p&gt;The second file was the &lt;strong&gt;server.py&lt;/strong&gt; script, which is basically a &lt;a href="http://redis.io/"&gt;Redis&lt;/a&gt; like database (hence, the &lt;em&gt;nosql&lt;/em&gt; title). Unlike SQL databases, Redis &lt;em&gt;maps keys to types of values&lt;/em&gt;. In this challenge, the idea was to recover an entry that had the key &lt;strong&gt;flag&lt;/strong&gt; returning the value of the flag.&lt;/p&gt;
-&lt;p&gt;In the script below, besides creating this database, functions such as: &lt;strong&gt;AES decrypting&lt;/strong&gt; (encryption), &lt;strong&gt;MD5&lt;/strong&gt; (hashing), and &lt;strong&gt;hex&lt;/strong&gt; (enconding) are implemented using Python's library:&lt;/p&gt;
+&lt;p&gt;In the script below, besides creating this database, functions such as: &lt;strong&gt;AES decrypting&lt;/strong&gt; (encryption), &lt;strong&gt;MD5&lt;/strong&gt; (hashing), and &lt;strong&gt;hex&lt;/strong&gt; (encoding) are implemented using Python's library:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;hashlib&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;signal&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Crypto.Cipher&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AES&lt;/span&gt;
 
@@ -1504,7 +1504,7 @@ Transfer-Encoding: chunked
 &lt;li&gt;We send the invalid command and a command without an argument: &lt;code&gt;edisStore...\nGET&lt;/code&gt; (this will get the last valid argument (&lt;em&gt;flag&lt;/em&gt;), returning us the flag!).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Redis"></category><category term="Python"></category><category term="NoSQL"></category><category term="ECB"></category><category term="AES"></category><category term="PyCrypto"></category><category term="socket"></category><category term="Wireshark"></category></entry><entry><title>CSAW CTF 2014 - Cryptography 200 - Psifer School</title><link href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200-psifer-school.html" rel="alternate"></link><updated>2014-09-21T00:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-21:csaw-ctf-2014-cryptography-200-psifer-school.html</id><summary type="html">&lt;p&gt;This is the first crypto-problem, and it was supposed to be the easiest one. For this reason I was expecting simple cryptographic algorithms, which turned out to be true.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Redis"></category><category term="Python"></category><category term="NoSQL"></category><category term="ECB"></category><category term="AES"></category><category term="PyCrypto"></category><category term="socket"></category><category term="Wireshark"></category></entry><entry><title>CSAW CTF 2014 - Cryptography 200 - Psifer School</title><link href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200-psifer-school.html" rel="alternate"></link><updated>2014-09-21T00:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-21:csaw-ctf-2014-cryptography-200-psifer-school.html</id><summary type="html">&lt;p&gt;This is the first crypto-problem, and it was supposed to be the easiest one. For this reason, I was expecting simple cryptographic algorithms, which turned out to be true.&lt;/p&gt;
 &lt;p&gt;The problem starts with the following text:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There's no heartbleed here. Why don't we use these ciphers?&lt;/p&gt;
@@ -1530,7 +1530,7 @@ Transfer-Encoding: chunked
 &lt;p&gt;This text gives a cipher &lt;code&gt;wkh dqvzhu wr wklv vwdjh lv vxshuvlpsoh&lt;/code&gt; and the hint &lt;em&gt;a famous ancient roman would be proud&lt;/em&gt;. That's all we need to decipher it!&lt;/p&gt;
 &lt;h4&gt;Frequency Analysis&lt;/h4&gt;
 &lt;p&gt;The famous roman is &lt;strong&gt;Caesar&lt;/strong&gt;, and &lt;a href="http://en.wikipedia.org/wiki/Caesar_cipher"&gt;his cryptographic scheme&lt;/a&gt; is one of the simplest possible. This cipher is also known as  &lt;strong&gt;rotation cipher&lt;/strong&gt;, because all we do is rotating the letters by some value (the &lt;strong&gt;key&lt;/strong&gt;). A modern version of it is called &lt;strong&gt;ROT13&lt;/strong&gt;, meaning &lt;strong&gt;rotation by 13 places&lt;/strong&gt;. This is a simple letter substitution cipher which replaces each letter with the 13th letter after it in the alphabet. In this case, we say that the &lt;em&gt;key is 13&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In our problem, we don't know the key. However there is a method to circumvent it: we can count how many times each letter appears in the text and then we use some previous knowledge about the frequency of each letter in the English words. For example, in the English language, &lt;em&gt;e&lt;/em&gt;, &lt;em&gt;t&lt;/em&gt;, &lt;em&gt;a&lt;/em&gt;, &lt;em&gt;o&lt;/em&gt;, and &lt;em&gt;n&lt;/em&gt; are frequent letters while &lt;em&gt;z&lt;/em&gt; or &lt;em&gt;v&lt;/em&gt; are not. This means that we can analyse the frequency of each character to determine what's the most probable rotation key.&lt;/p&gt;
+&lt;p&gt;In our problem, we don't know the key. However, there is a method to circumvent it: we can count how many times each letter appears in the text and then we use some previous knowledge about the frequency of each letter in the English words. For example, in the English language, &lt;em&gt;e&lt;/em&gt;, &lt;em&gt;t&lt;/em&gt;, &lt;em&gt;a&lt;/em&gt;, &lt;em&gt;o&lt;/em&gt;, and &lt;em&gt;n&lt;/em&gt; are frequent letters while &lt;em&gt;z&lt;/em&gt; or &lt;em&gt;v&lt;/em&gt; is not. This means that we can analyze the frequency of each character to determine what's the most probable rotation key.&lt;/p&gt;
 &lt;p&gt;To count the frequency of characters in our cipher, we write a snippet that creates a counter &lt;a href="https://docs.python.org/2/tutorial/datastructures.html#dictionaries"&gt;dictionary (hash table)&lt;/a&gt; with all the (lowercase) characters as the dictionary's keys. Note that we could have used Python's &lt;a href="https://docs.python.org/2/library/collections.html#collections.Counter"&gt;Counter() data-structure&lt;/a&gt; as well. We then iterate through each character in the message, counting their frequency, and returning a sorted list of these values:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;string&lt;/span&gt;
 
@@ -1551,7 +1551,7 @@ Transfer-Encoding: chunked
 &lt;h4&gt;Deciphering the Cipher&lt;/h4&gt;
 &lt;p&gt;Using a &lt;a href="http://en.wikipedia.org/wiki/Letter_frequency"&gt;well-known table of word frequency values&lt;/a&gt;, we write a snippet that does the following:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;First, for each of the 26 letters, we subtract its known frequency value from the  frequency obtained from our message.&lt;/li&gt;
+&lt;li&gt;First, for each of the 26 letters, we subtract its known frequency value from the frequency obtained from our message.&lt;/li&gt;
 &lt;li&gt;Second, we find what is the minimum value from those subtractions. The closest value is the most probable value for the rotation key.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;freq_word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;freq_eng&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1574,14 +1574,14 @@ Transfer-Encoding: chunked
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Once we have the key, we just plug it  back to the cipher algorithm, inverting the rotation to the other side, with &lt;code&gt;cipher(msg, -best_rotation)&lt;/code&gt;. In this cipher function, we iterate through all the character in the message, checking whether it's a letter or a special character. If it is the former case we perform the following operations:&lt;/p&gt;
+&lt;p&gt;Once we have the key, we just plug it back to the cipher algorithm, inverting the rotation to the other side, with &lt;code&gt;cipher(msg, -best_rotation)&lt;/code&gt;. In this cipher function, we iterate through all the character in the message, checking whether it's a letter or a special character. If it is the former case we perform the following operations:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;We start getting the integer representing the &lt;a href="http://en.wikipedia.org/wiki/Unicode"&gt;Unicode&lt;/a&gt; code point of the character.&lt;/li&gt;
 &lt;li&gt;To get its position in the alphabet and we subtract it from the Unicode value of &lt;em&gt;a&lt;/em&gt;, given by &lt;strong&gt;ord('a')&lt;/strong&gt; (this is 97).&lt;/li&gt;
 &lt;li&gt;We add the key value to it to get the (absolute) shift position.&lt;/li&gt;
-&lt;li&gt;Now we need to remember that this cipher is a ring, &lt;em&gt;i.e&lt;/em&gt;, adding more stuff should always lead to a &lt;em&gt;spot&lt;/em&gt; within the 26 letters in the alphabet. That's why we apply a &lt;a href="http://en.wikipedia.org/wiki/Modulo_operation"&gt;module&lt;/a&gt; operation to this number to get the &lt;em&gt;relative&lt;/em&gt; position in the letter's table.&lt;/li&gt;
+&lt;li&gt;Now we need to remember that this cipher is a ring, &lt;em&gt;i.e&lt;/em&gt;, adding more stuff should always lead to a &lt;em&gt;spot&lt;/em&gt; within the 26 letters in the alphabet. That's why we apply an &lt;a href="http://en.wikipedia.org/wiki/Modulo_operation"&gt;module&lt;/a&gt; operation to this number to get the &lt;em&gt;relative&lt;/em&gt; position in the letter's table.&lt;/li&gt;
 &lt;li&gt;Finally, we just need the value of the shift to the Unicode of &lt;em&gt;a&lt;/em&gt; to get the position of the character in the cipher.&lt;/li&gt;
-&lt;li&gt;Remember we are using &lt;em&gt;-key&lt;/em&gt;, so instead of making a new cipher we are using the same steps to rotate the cipher to the other side to recover the message.&lt;/li&gt;
+&lt;li&gt;Remember we are using &lt;em&gt;-key&lt;/em&gt;, so instead of making a new cipher, we are using the same steps to rotate the cipher to the other side to recover the message.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cipher&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c"&gt;# Make the cipher&lt;/span&gt;
@@ -1602,7 +1602,7 @@ Transfer-Encoding: chunked
 &lt;p&gt;Netcating several times can return other similar answers such as &lt;strong&gt;hopeyouautomate&lt;/strong&gt; or &lt;strong&gt;easypeesy&lt;/strong&gt; or &lt;strong&gt;notveryhard&lt;/strong&gt;. They are all correct.&lt;/p&gt;
 &lt;h4&gt;Automating the Response&lt;/h4&gt;
 &lt;p&gt;To advance forward, we need to send one of the above answers to the socket. However, we only &lt;strong&gt;have 10 seconds&lt;/strong&gt; to do this! It's clear that we need to automate this problem with a script.&lt;/p&gt;
-&lt;p&gt;We can do this in many ways. In Python, for example, we can use the libraries &lt;a href="https://docs.python.org/2/library/telnetlib.html"&gt;telnetlib&lt;/a&gt; or &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; or even writing our &lt;a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py"&gt;own netcat script&lt;/a&gt;. We will use the former  for this exploit. Let us create a telnet connection with:&lt;/p&gt;
+&lt;p&gt;We can do this in many ways. In Python, for example, we can use the libraries &lt;a href="https://docs.python.org/2/library/telnetlib.html"&gt;telnetlib&lt;/a&gt; or &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; or even writing our &lt;a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py"&gt;own netcat script&lt;/a&gt;. We will use the former for this exploit. Let us create a telnet connection with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;telnetlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Telnet&lt;/span&gt;
 
 &lt;span class="n"&gt;PORT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;12345&lt;/span&gt;
@@ -1621,7 +1621,7 @@ Transfer-Encoding: chunked
 
 
 &lt;p&gt;Here &lt;code&gt;socket.AF_UNIX, socket.AF_INET, socket.AF_INET6&lt;/code&gt; are constants that represent the address (and protocol) families. The constants &lt;code&gt;socket.SOCK_STREAM, socket.SOCK_DGRAM, socket.SOCK_RAW, socket.SOCK_RDM, socket.SOCK_SEQPACKET&lt;/code&gt;represent the socket types.&lt;/p&gt;
-&lt;p&gt;To read the socket stream we would use commands such as &lt;code&gt;s.recv(2048)&lt;/code&gt; and for writing we could use &lt;code&gt;s.sendall(answer)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To read the socket stream we would use commands such as &lt;code&gt;s.recv(2048)&lt;/code&gt; and for writing, we could use &lt;code&gt;s.sendall(answer)&lt;/code&gt;.&lt;/p&gt;
 &lt;h4&gt;Decrypting and Sending the Answer&lt;/h4&gt;
 &lt;p&gt;Now, back to our problem. After creating the telnet connection, we read whatever comes in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;tn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;psifer text: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1656,13 +1656,13 @@ not length that matters.&lt;/p&gt;
 &lt;p&gt;We start looping over the length of our message, where for each iteration we create a blank list with the size of the message. This is a bit &lt;em&gt;space-expensive&lt;/em&gt; and it should be optimized if we needed to scale for larger problems. It's fine for our current problem.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;We start a second loop, which will tell us about the shifts. This loop iterates again in the length of the message, this time adding the current character to the list we've created before and updating a pointer to the pacing value given in the first loop. Notice that we have a loop inside another, so this solutions has &lt;em&gt;O(n^2) runtime&lt;/em&gt; and it also should be optimized for larger problems.&lt;/p&gt;
+&lt;p&gt;We start a second loop, which will tell us about the shifts. This loop iterates again in the length of the message, this time adding the current character to the list we've created before and updated a pointer to the pacing value given in the first loop. Notice that we have a loop inside another, so this solution has &lt;em&gt;O(n^2) runtime&lt;/em&gt; and it also should be optimized for larger problems.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Inside this second loop, we check whether the pacing pointer is larger than the length of the message, and if this is the case, we register it in a shift counter. The former pointer receives the value of this shift. This is the end of the second loop.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Back to the first loop, we add all the characters so far from our list into a the message string. But when should we stop doing this? Until we make sure that had a rotation that produces real words. I tried a few of common words, and 'you' worked just fine!&lt;/p&gt;
+&lt;p&gt;Back to the first loop, we add all the characters so far from our list into the message string. But when should we stop doing this? Until we make sure that had a rotation that produces real words. I tried a few common words, and 'you' worked just fine!&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -1717,7 +1717,7 @@ Last one.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Reading it carefully give us thee last answer for the flag: &lt;strong&gt;NORMALWORD&lt;/strong&gt;. Sweet!&lt;/p&gt;
+&lt;p&gt;Reading it carefully give us the last answer for the flag: &lt;strong&gt;NORMALWORD&lt;/strong&gt;. Sweet!&lt;/p&gt;
 &lt;h2&gt;Final Words&lt;/h2&gt;
 &lt;p&gt;If you like this solution, take a look at my  &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-CSAW-CTF/cryptography/crypto-200"&gt;exploit for this problem&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;

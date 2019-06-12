@@ -26,7 +26,7 @@ Welcome to Scapy &lt;span class="o"&gt;(&lt;/span&gt;2.2.0&lt;span class="o"&gt;
 &lt;hr /&gt;
 &lt;h1&gt;&lt;a name="intro"&gt;&lt;/a&gt; Scapy 101&lt;/h1&gt;
 &lt;h2&gt;A Simple Packet and its Headers&lt;/h2&gt;
-&lt;p&gt;The basic unit in a  network communication is the &lt;em&gt;packet&lt;/em&gt;.  So let's create one!&lt;/p&gt;
+&lt;p&gt;The basic unit in network communication is the &lt;em&gt;packet&lt;/em&gt;.  So let's create one!&lt;/p&gt;
 &lt;p&gt;Scapy builds packets by the &lt;em&gt;layers&lt;/em&gt; and then by the &lt;em&gt;fields&lt;/em&gt; in each layer. Each layer is nested inside the parent layer, represented by the &lt;strong&gt;&amp;lt;&lt;/strong&gt; and &lt;strong&gt;&amp;gt;&lt;/strong&gt; brackets.&lt;/p&gt;
 &lt;p&gt;Let's start by specifying the packet's source IP and then its destination IP. This type of information goes in the &lt;strong&gt;IP header&lt;/strong&gt;, which is a &lt;em&gt;layer 3 protocol&lt;/em&gt; in the &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;0SI model&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;IP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;192.168.1.114&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -86,7 +86,7 @@ Welcome to Scapy &lt;span class="o"&gt;(&lt;/span&gt;2.2.0&lt;span class="o"&gt;
 &lt;p&gt;In another hand, Scapy's method &lt;a href="http://www.secdev.org/projects/scapy/doc/usage.html#sending-packets"&gt;sendp&lt;/a&gt; works in the &lt;em&gt;layer 2&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;sendp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Ether&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ip&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tcp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;Sent&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;packets&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Sent&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;packet&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -223,7 +223,7 @@ Sent 3 packets, received 3 packets. 100.0% hits.
 
 
 &lt;p&gt;However, running the snippet above will not work.&lt;/p&gt;
-&lt;p&gt;The reason is that crafting TCP sessions with Scapy circumvents the native TCP/IP stack. Since the host is unaware that Scapy is sending packets, the native host would receive an unsolicited SYN/ACK that is not associated with any known open session/socket. This would result in the host reseting the connection when receiving the SYN/ACK.&lt;/p&gt;
+&lt;p&gt;The reason is that crafting TCP sessions with Scapy circumvents the native TCP/IP stack. Since the host is unaware that Scapy is sending packets, the native host would receive an unsolicited SYN/ACK that is not associated with any known open session/socket. This would result in the host resetting the connection when receiving the SYN/ACK.&lt;/p&gt;
 &lt;p&gt;One solution is to use the host's firewall with &lt;a href="http://en.wikipedia.org/wiki/Iptables"&gt;iptables&lt;/a&gt; to block the outbound resets. For example, to drop all outbound packets that are TCP and destined for IP 192.168.1.25 from 192.168.1.114 to destination port 80, examining the flag bits, we can run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo iptables -A OUTPUT -p tcp -d 192.168.1.25 -s 192.168.1.114 --dport 80 --tcp-flags RST -j DROP
 &lt;/pre&gt;&lt;/div&gt;
@@ -337,7 +337,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Scapy has also commands for network-based attack such as &lt;a href="http://www.secdev.org/projects/scapy/doc/usage.html#tcp-traceroute"&gt;arpcachepoison  and srpflood&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Scapy has also commands for a network-based attack such as &lt;a href="http://www.secdev.org/projects/scapy/doc/usage.html#tcp-traceroute"&gt;arpcachepoison and srpflood&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Additionally, we can use Scapy to re-create a packet that has been sniffed or received. The method &lt;strong&gt;command()&lt;/strong&gt; returns a string of the commands necessary for this task.&lt;/p&gt;
 &lt;h3&gt;Plotting&lt;/h3&gt;
 &lt;p&gt;If you have &lt;a href="http://www.gnuplot.info/"&gt;GnuPlot&lt;/a&gt; installed, you can use the plot functionality with Scapy. It's pretty neat.&lt;/p&gt;
@@ -373,19 +373,19 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Running this script when loading load some mail client (such as &lt;a href="https://www.mozilla.org/en-US/thunderbird/"&gt;Thunderbird&lt;/a&gt;) will allow us to see the login information, if they are sent to the server as plain text.&lt;/p&gt;
+&lt;p&gt;Running this script when loading load some mail client (such as &lt;a href="https://www.mozilla.org/en-US/thunderbird/"&gt;Thunderbird&lt;/a&gt;) will allow us to see the login information if they are sent to the server as plain text.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;&lt;a name="arp"&gt;&lt;/a&gt; ARP Cache Poisoning&lt;/h2&gt;
-&lt;p&gt;I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;ARP cache poisoning using command line arpspoof&lt;/a&gt; in my guide about Wireshark. Here we are going to see how to implement similar tool using Scapy.&lt;/p&gt;
-&lt;p&gt;ARP cache poisoning works by convincing a target machine that we are the gateway, and then convincing the gateway that all traffic should pass through our machine.&lt;/p&gt;
+&lt;p&gt;I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;ARP cache poisoning using command line arpspoof&lt;/a&gt; in my guide about Wireshark. Here we are going to see how to implement a similar tool using Scapy.&lt;/p&gt;
+&lt;p&gt;ARP cache poisoning works by convincing a target machine that we are the gateway and then convincing the gateway that all traffic should pass through our machine.&lt;/p&gt;
 &lt;p&gt;Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.&lt;/p&gt;
-&lt;p&gt;The best way to test this is using a Windows virtual machine (take a look in &lt;a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html"&gt;this guide I wrote&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The best way to test this is by using a Windows virtual machine (take a look in &lt;a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html"&gt;this guide I wrote&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Before the attack, go to the Windows box, open the terminal (&lt;code&gt;cmd&lt;/code&gt;) and check the IP and gateway IP address with&lt;code&gt;ipconfig&lt;/code&gt;. Then check the associated  ARP cache entry MAC address with &lt;code&gt;arp -a&lt;/code&gt;. We are going to use the former information and we will see the ARP data being changed:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ME069uS.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Following is our ARP poisoning script (based on &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;). The script does the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Define constant values, set our interface card, and turn off output.&lt;/p&gt;
+&lt;p&gt;Define constant values, set our interface card, and turn off the output.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Resolve the gateway and target MAC address.&lt;/p&gt;
@@ -496,7 +496,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;To run it, we need to tell the local host machine (Kali Linux) to forward packets along both the gateway and the target IP address:&lt;/p&gt;
+&lt;p&gt;To run it, we need to tell the local host machine (Kali Linux) to forward packets along with both the gateway and the target IP address:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;echo &lt;/span&gt;1 /proc/sys/net/ipv4/ip_foward
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -532,7 +532,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 
 
 &lt;h3&gt;Analyzing PCAP Files&lt;/h3&gt;
-&lt;p&gt;Based in one of the examples from &lt;a href=""&gt;Black Hat Python&lt;/a&gt; we are going to analyze images from HTTP traffic dumped in a PCAP file. We can do this with the library &lt;a href="http://opencv.org/"&gt;opencv&lt;/a&gt;. We also need to install &lt;a href="http://www.numpy.org/"&gt;numpy&lt;/a&gt; and &lt;a href="http://www.scipy.org/"&gt;scipy&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Based on one of the examples from &lt;a href=""&gt;Black Hat Python&lt;/a&gt; we are going to analyze images from HTTP traffic dumped in a PCAP file. We can do this with the library &lt;a href="http://opencv.org/"&gt;opencv&lt;/a&gt;. We also need to install &lt;a href="http://www.numpy.org/"&gt;numpy&lt;/a&gt; and &lt;a href="http://www.scipy.org/"&gt;scipy&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install numpy
 &lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install scipy
 &lt;span class="nv"&gt;$ &lt;/span&gt;sudo yum install opencv-python
@@ -542,7 +542,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 &lt;p&gt;To try to detect images that contain human faces, first either create or download some PCAP files with these images. Some dump sources:
 &lt;a href="http://wiki.wireshark.org/SampleCaptures"&gt;here&lt;/a&gt;, &lt;a href="http://www.netresec.com/?page=PcapFiles"&gt;here&lt;/a&gt;, &lt;a href="http://www.pcapr.net/home"&gt;here&lt;/a&gt;, and &lt;a href="http://www.pcapr.net/browse?q=facebook+AND+png"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The following script does the following:&lt;/p&gt;
-&lt;p&gt;1) The function &lt;strong&gt;http_assembler&lt;/strong&gt; takes a PCAP and separates each TCP session in a dictionary. Then it loops in these section using the HTTP filter (which is the same as &lt;em&gt;Follow the TCP stream&lt;/em&gt; in Wireshark). After the HTTP data is assembled, it parses the headers with the &lt;strong&gt;get_http_headers&lt;/strong&gt; function and send to the &lt;strong&gt;extract_image&lt;/strong&gt; function. If the image header are returned, it saves the image and try to detect faces with the function &lt;strong&gt;face_detect&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;1) The function &lt;strong&gt;http_assembler&lt;/strong&gt; takes a PCAP and separates each TCP session in a dictionary. Then it loops in these sections using the HTTP filter (which is the same as &lt;em&gt;Follow the TCP stream&lt;/em&gt; in Wireshark). After the HTTP data is assembled, it parses the headers with the &lt;strong&gt;get_http_headers&lt;/strong&gt; function and send to the &lt;strong&gt;extract_image&lt;/strong&gt; function. If the image header are returned, it saves the image and try to detect faces with the function &lt;strong&gt;face_detect&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;http_assembler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PCAP&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;carved_images&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;faces_detected&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
     &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rdpcap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PCAP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -594,7 +594,7 @@ WARNING: No route found &lt;span class="k"&gt;for &lt;/span&gt;IPv6 destination 
 
 
 &lt;ol&gt;
-&lt;li&gt;The &lt;strong&gt;extract_image&lt;/strong&gt; function determine whether an image is in a HTTP response by checking by the &lt;strong&gt;'Content-Type'&lt;/strong&gt; string.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;extract_image&lt;/strong&gt; function determines whether an image is in a HTTP response by checking by the &lt;strong&gt;'Content-Type'&lt;/strong&gt; string.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;extract_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;http_payload&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;image_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
@@ -652,16 +652,16 @@ Detected: 16 faces
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="scapy"></category><category term="Book"></category><category term="traceroute"></category><category term="PCAP"></category><category term="ARP_poisining"></category><category term="sniffing"></category><category term="Wireshark"></category><category term="packet_header"></category></entry><entry><title>Black Hat Python: Building a UDP Scanner</title><link href="http://bt3gl.github.io/black-hat-python-building-a-udp-scanner.html" rel="alternate"></link><updated>2014-12-16T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-16:black-hat-python-building-a-udp-scanner.html</id><summary type="html">&lt;p&gt;When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.&lt;/p&gt;
-&lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing, but what if you don't have Wireshark available to monitor a network traffic?&lt;/p&gt;
-&lt;p&gt;Again, Python comes with several solutions and today I'm going  through the steps to build a &lt;strong&gt;UDP Host discovery tool&lt;/strong&gt;. First, we are going to see how we deal with &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt; to  write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.&lt;/p&gt;
-&lt;p&gt;The cool thing about &lt;strong&gt;raw sockets&lt;/strong&gt; is that they allow access to low-level networking information. For example, we can use it to check &lt;strong&gt;IP&lt;/strong&gt; and &lt;strong&gt;ICMP&lt;/strong&gt; headers, which are in the layer 3 of the OSI model (the network layer).&lt;/p&gt;
+&lt;p&gt;A few weeks ago, I talked about &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;how to use Wireshark&lt;/a&gt; for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?&lt;/p&gt;
+&lt;p&gt;Again, Python comes with several solutions and today I'm going through the steps to build a &lt;strong&gt;UDP Host discovery tool&lt;/strong&gt;. First, we are going to see how we deal with &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt; to write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.&lt;/p&gt;
+&lt;p&gt;The cool thing about &lt;strong&gt;raw sockets&lt;/strong&gt; is that they allow access to low-level networking information. For example, we can use it to check &lt;strong&gt;IP&lt;/strong&gt; and &lt;strong&gt;ICMP&lt;/strong&gt; headers, which are in layer 3 of the OSI model (the network layer).&lt;/p&gt;
 &lt;p&gt;The cool thing about using &lt;strong&gt;UDP datagrams&lt;/strong&gt; is that, differently from &lt;strong&gt;TCP&lt;/strong&gt;, they do not bring much overhead when sent across an entire subnet (remember the TCP &lt;a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml"&gt;handshaking&lt;/a&gt;). All we need to do is wait for the &lt;strong&gt;ICMP&lt;/strong&gt; responses saying whether the hosts are available or closed (unreachable).
 Remember that ICMP is essentially a special control protocol that issues error reports and can control the behavior of machines in data transfer.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Writing a Packet Sniffer&lt;/h2&gt;
 &lt;p&gt;We start with a  very simple task: with Python's  &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket&lt;/a&gt; library, we will write a very simple packet sniffer.&lt;/p&gt;
-&lt;p&gt;In this sniffer we create a raw socket and then we bind it to the public interface. The interface should be in &lt;strong&gt;promiscuous mode&lt;/strong&gt;, which means that every packet that the network card sees is captured, even those that are not destined to the host.&lt;/p&gt;
-&lt;p&gt;One detail to remember is that things are slightly different if we are using Windows: in this case we need to send a &lt;a href="http://en.wikipedia.org/wiki/Ioctl"&gt;IOCTL&lt;/a&gt; package to set the interface to &lt;strong&gt;promiscuous mode&lt;/strong&gt;. In addition, while Linux needs to use ICMP, Windows allow us to sniff the incoming packets independently of the protocol:&lt;/p&gt;
+&lt;p&gt;In this sniffer, we create a raw socket and then we bind it to the public interface. The interface should be in &lt;strong&gt;promiscuous mode&lt;/strong&gt;, which means that every packet that the network card sees is captured, even those that are not destined to the host.&lt;/p&gt;
+&lt;p&gt;One detail to remember is that things are slightly different if we are using Windows: in this case, we need to send a &lt;a href="http://en.wikipedia.org/wiki/Ioctl"&gt;IOCTL&lt;/a&gt; package to set the interface to &lt;strong&gt;promiscuous mode&lt;/strong&gt;. In addition, while Linux needs to use ICMP, Windows allows us to sniff the incoming packets independently of the protocol:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 
@@ -838,7 +838,7 @@ ICMP -&amp;gt; Type:3, Code:3
 &lt;h2&gt;Writing the Scanner&lt;/h2&gt;
 &lt;h3&gt;Installing netaddr&lt;/h3&gt;
 &lt;p&gt;We are ready to write our full scanner. But, first, let's install &lt;a href="https://pypi.python.org/pypi/netaddr"&gt;netaddr&lt;/a&gt;, which is a Python library for representing and manipulating network addresses.&lt;/p&gt;
-&lt;p&gt;Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem, since we want to be able to use a subnet mask such as 192.168.1.0/24.&lt;/p&gt;
+&lt;p&gt;Netaddr supports the ability to work with IPv4 and IPv6 addresses and subnets MAC addresses, among others. This is very useful for our problem since we want to be able to use a subnet mask such as 192.168.1.0/24.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install netaddr
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -937,11 +937,11 @@ Host up: 192.168.1.114
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="socket"></category><category term="sniffing"></category><category term="UDP"></category><category term="netaddr"></category><category term="ICMP"></category><category term="scanner"></category><category term="packet_header"></category></entry><entry><title>Black Hat Python: The Paramiko Module</title><link href="http://bt3gl.github.io/black-hat-python-the-paramiko-module.html" rel="alternate"></link><updated>2014-12-13T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-13:black-hat-python-the-paramiko-module.html</id><summary type="html">&lt;p&gt;This is the second post based on my readings from &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;. Yesterday I talked about Python's &lt;a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html"&gt;socket module&lt;/a&gt; and today I'm talking about the &lt;a href="http://www.paramiko.org/"&gt;paramiko&lt;/a&gt; module.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Paramiko&lt;/strong&gt; is awesome!!! It uses my dear &lt;a href="https://www.dlitz.net/software/pycrypto/"&gt;PyCrypto&lt;/a&gt; to give us access to the &lt;a href="http://en.wikipedia.org/wiki/SSH2"&gt;SSH2 protocol&lt;/a&gt;, and it has a flexible and easy to use API.&lt;/p&gt;
-&lt;p&gt;You are going to see it with your own eyes: in this post we will see code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
+&lt;p&gt;You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;github repo&lt;/a&gt;)!&lt;/p&gt;
 &lt;p&gt;Shall we start?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A Simple SSH Client&lt;/h2&gt;
-&lt;p&gt;The first program we are going to write is a SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
+&lt;p&gt;The first program we are going to write is an SSH client that makes a connection to some available SSH server, and then runs a single command that we send to it.&lt;/p&gt;
 &lt;p&gt;But before we start, make sure you have  &lt;strong&gt;paramiko&lt;/strong&gt; installed in our environment:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install paramiko
 &lt;/pre&gt;&lt;/div&gt;
@@ -1071,7 +1071,7 @@ Host up: 192.168.1.114
 &lt;p&gt;What if we also control the SSH server and we are able to send commands to our SSH client? This is exactly what we are going to do now: we are going to write a &lt;strong&gt;class&lt;/strong&gt; for this server (with a little help of the &lt;strong&gt;socket&lt;/strong&gt; module) and then we will be able to &lt;strong&gt;reverse the shell&lt;/strong&gt;!&lt;/p&gt;
 &lt;p&gt;As a note, this script is based in some of the &lt;a href="https://github.com/paramiko/paramiko/blob/master/demo"&gt;paramiko demos&lt;/a&gt; and we specifically use the key from their demo files (&lt;a href="https://github.com/paramiko/paramiko/blob/master/demos/test_rsa.key"&gt;download here&lt;/a&gt;).&lt;/p&gt;
 &lt;h3&gt;The SSH Server&lt;/h3&gt;
-&lt;p&gt;In our server script, we first  create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
+&lt;p&gt;In our server script, we first create a class &lt;strong&gt;Server&lt;/strong&gt; that issues a new thread event, checking whether the session is valid, and performing authentication. Notice that for simplicity we are hard-coding the values for username, password and host key, which is never a good practice:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;HOST_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;paramiko&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;RSAKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;test_rsa.key&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;USERNAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;buffy&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;killvampires&amp;#39;&lt;/span&gt;
@@ -1096,7 +1096,7 @@ Host up: 192.168.1.114
 &lt;li&gt;Once a connection is established (the client tried to connect to the server and the socket accepted the connection), it creates a &lt;strong&gt;paramiko&lt;/strong&gt; &lt;a href="http://docs.paramiko.org/en/1.15/api/transport.html"&gt;Transport&lt;/a&gt; object for this socket. In paramiko there are two main communication methods: &lt;em&gt;Transport&lt;/em&gt;, which makes and maintains the encrypted connection, and &lt;em&gt;Channel&lt;/em&gt;, which is like a socket for sending/receiving data over the encrypted session (the other three are Client, Message, and Packetizer).&lt;/li&gt;
 &lt;li&gt;The program instantiates a &lt;strong&gt;Server&lt;/strong&gt; object and starts the paramiko session with it.&lt;/li&gt;
 &lt;li&gt;Authentication is attempted. If it is successful, we get a &lt;strong&gt;ClientConnected&lt;/strong&gt; message.&lt;/li&gt;
-&lt;li&gt;The server starts a loop where it will keep getting  input commands from the user and issuing it in the client. This is our reversed  shell!&lt;/li&gt;
+&lt;li&gt;The server starts a loop where it will keep getting input commands from the user and issuing it in the client. This is our reversed shell!&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;paramiko&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;getopt&lt;/span&gt;
@@ -1253,7 +1253,7 @@ Welcome to Buffy&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s SSH
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Now we can send any command from the server side to run  in the client: we have a reversed shell!&lt;/p&gt;
+&lt;p&gt;Now we can send any command from the server side to run in the client: we have a reversed shell!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Listening &lt;span class="k"&gt;for &lt;/span&gt;connection ...
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Connection Established!
 &lt;span class="o"&gt;[&lt;/span&gt;+&lt;span class="o"&gt;]&lt;/span&gt; Authenticated!
@@ -1279,8 +1279,8 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;li&gt;&lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programing, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
-&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which  contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="paramiko"></category><category term="SSH"></category><category term="PyCrypto"></category><category term="getopt"></category><category term="threading"></category><category term="socket"></category><category term="Book"></category></entry><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
+&lt;p&gt;I have been wanting to write about Python's network resources for a while and now this is my chance! In this first post, I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's really nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
 &lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
@@ -1314,7 +1314,7 @@ Enter &lt;span class="nb"&gt;command&lt;/span&gt;:
 &lt;p&gt;The simplicity of this script relies in making the following assumptions about the sockets:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;our &lt;em&gt;connection will always succeed&lt;/em&gt;,&lt;/li&gt;
-&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as oppose to servers that expect to send data and then wait for response), and&lt;/li&gt;
+&lt;li&gt;the &lt;em&gt;server is always waiting for us to send data first&lt;/em&gt; (as opposed to servers that expect to send data and then wait for response), and&lt;/li&gt;
 &lt;li&gt;the server will always send us data back in a &lt;em&gt;short time&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let's run this script (notice that we get &lt;em&gt;Moved Permanently&lt;/em&gt; because Google  issues HTTPS connections):&lt;/p&gt;
@@ -1343,9 +1343,9 @@ The document has moved
 &lt;p&gt;Simple like that.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Server&lt;/h2&gt;
-&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
-&lt;p&gt;First we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending a &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
-&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections  to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
+&lt;p&gt;Let's move on and write a &lt;em&gt;multi-threaded&lt;/em&gt; TCP server. For this, we will use Python's &lt;a href="https://docs.python.org/2/library/threading.html"&gt;threading&lt;/a&gt; module.&lt;/p&gt;
+&lt;p&gt;First, we define the IP address and port that we want the server to listen on.  We then define a &lt;strong&gt;handle_client&lt;/strong&gt; function that starts a thread to handle client connections. The function takes the client socket and gets data from the client, sending an &lt;strong&gt;ACK&lt;/strong&gt; message.&lt;/p&gt;
+&lt;p&gt;The main function for our server, &lt;strong&gt;tcp_server&lt;/strong&gt;, creates a server socket and starts listening on the port and IP (we set the maximum backlog of connections to 5). Then it starts a loop waiting for when a client connects. When this happens,  it receives the client socket (the client variables go to the &lt;strong&gt;addr&lt;/strong&gt; variable).&lt;/p&gt;
 &lt;p&gt;At this point, the program creates a thread object for the function &lt;strong&gt;handle_client&lt;/strong&gt; which we mentioned above:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
@@ -1425,7 +1425,7 @@ ACK
 
 &lt;hr /&gt;
 &lt;h2&gt;A UDP Server&lt;/h2&gt;
-&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there is no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Below is an example of a very simple  UDP server. Notice that there are no &lt;strong&gt;listen&lt;/strong&gt; or &lt;strong&gt;accept&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 
 &lt;span class="n"&gt;BIND_IP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;
@@ -1622,7 +1622,7 @@ ACK
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file, or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;threading&lt;/strong&gt; function calls &lt;strong&gt;client_handler&lt;/strong&gt; which will either upload a file or execute a command (in a special shell named &lt;em&gt;NETCAT&lt;/em&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;client_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client_socket&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;UPLOAD&lt;/span&gt;
     &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;EXECUTE&lt;/span&gt;
@@ -1727,10 +1727,10 @@ Transfer-Encoding: chunked
 &lt;p&gt;Cool, huh?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Proxy&lt;/h2&gt;
-&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based softwares (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
+&lt;p&gt;A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run &lt;a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html"&gt;Wireshark&lt;/a&gt; or you cannot load drivers or tools in the machine you are exploiting).&lt;/p&gt;
 &lt;p&gt;To create a proxy we need to verify if we need to &lt;em&gt;first initiate a connection&lt;/em&gt; to the remote side. This will request data before going into our main loop and some server daemons expect you to do this first (for instance, FTP servers send a banner first).  We call this information &lt;strong&gt;receive_first&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;The Main Function&lt;/h3&gt;
-&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
+&lt;p&gt;So let us start with our &lt;strong&gt;main&lt;/strong&gt; function. First, we define the usage, which should have four more arguments together with  &lt;strong&gt;receive_first&lt;/strong&gt;. Then we check these arguments to variables and start a listening socket:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;threading&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
@@ -1846,7 +1846,7 @@ Transfer-Encoding: chunked
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to  perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;response_handler&lt;/strong&gt; function is used to modify the packet contents from the inbound traffic (for example, to perform fuzzing, test for authentication, etc). The function &lt;strong&gt;request_handler&lt;/strong&gt; does the same for outbound traffic:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;request_handler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c"&gt;# perform packet modifications&lt;/span&gt;
     &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39; Yaeah!&amp;#39;&lt;/span&gt;
@@ -1871,7 +1871,7 @@ Transfer-Encoding: chunked
 
 
 &lt;h3&gt;Firing Up our Proxy&lt;/h3&gt;
-&lt;p&gt;Now we just need to run our script with some server. For example, for a FTP server at the standard port 21:&lt;/p&gt;
+&lt;p&gt;Now we just need to run our script with some server. For example, for an FTP server at the standard port 21:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo ./tcp_proxy.py localhost 21 ftp.target 21 True
 &lt;span class="o"&gt;[&lt;/span&gt;*&lt;span class="o"&gt;]&lt;/span&gt; Listening on localhost:21
 &lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;
@@ -1880,7 +1880,7 @@ Transfer-Encoding: chunked
 
 &lt;hr /&gt;
 &lt;h2&gt;Extra Stuff: The socket Object Methods&lt;/h2&gt;
-&lt;p&gt;Additionally, let's  take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
+&lt;p&gt;Additionally, let's take a quick look to all the methods available with the &lt;strong&gt;socket&lt;/strong&gt; object from the &lt;strong&gt;socket&lt;/strong&gt; module. I think it's useful to have an idea of this list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;socket.accept()&lt;/strong&gt;: Accept a connection.&lt;/p&gt;
@@ -1965,9 +1965,9 @@ Transfer-Encoding: chunked
 &lt;li&gt;&lt;a href="http://beej.us/guide/bgnet/output/html/multipage/index.html"&gt;A Guide to Network Programming in C++&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="netcat"></category><category term="socket"></category><category term="threading"></category><category term="subprocess"></category><category term="UDP"></category><category term="TCP"></category><category term="Book"></category><category term="getopt"></category><category term="proxy"></category></entry><entry><title>Wiresharking for Fun or Profit</title><link href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html" rel="alternate"></link><updated>2014-11-12T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-12:wiresharking-for-fun-or-profit.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; is an open source &lt;strong&gt;network packet analyzer&lt;/strong&gt; that allows live  traffic analysis, with support to several  protocols.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="netcat"></category><category term="socket"></category><category term="threading"></category><category term="subprocess"></category><category term="UDP"></category><category term="TCP"></category><category term="Book"></category><category term="getopt"></category><category term="proxy"></category></entry><entry><title>Wiresharking for Fun or Profit</title><link href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html" rel="alternate"></link><updated>2014-11-12T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-12:wiresharking-for-fun-or-profit.html</id><summary type="html">&lt;p&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; is an open source &lt;strong&gt;network packet analyzer&lt;/strong&gt; that allows live traffic analysis, with support to several protocols.&lt;/p&gt;
 &lt;p&gt;Wireshark also allows &lt;strong&gt;network forensic&lt;/strong&gt;, being very useful for CTFs for example (check my writeups for the  &lt;a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html"&gt;D-CTF Quals 2014&lt;/a&gt; and for the CSAW Quals 2014 in &lt;a href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html"&gt;Networking&lt;/a&gt; and &lt;a href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html"&gt;Forensics&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;In this blog post I introduce Wireshark and I talk about my favorite features.&lt;/p&gt;
+&lt;p&gt;In this blog post, I introduce Wireshark and I talk about my favorite features.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;The Network Architecture&lt;/h1&gt;
 &lt;p&gt;Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.&lt;/p&gt;
@@ -2001,13 +2001,13 @@ Transfer-Encoding: chunked
 &lt;h2&gt;Data Encapsulation&lt;/h2&gt;
 &lt;p&gt;The way the protocols on different layers of the OSI model communicate is through &lt;em&gt;data encapsulation&lt;/em&gt;, where each layer in the stack adds a header or footer to the packet.&lt;/p&gt;
 &lt;p&gt;The encapsulation protocol creates a &lt;a href="http://en.wikipedia.org/wiki/Protocol_data_unit"&gt;protocol data unit&lt;/a&gt; (PDU),  including the data with all header and footer information added to it. What we call &lt;em&gt;packet&lt;/em&gt; is the complete PDU.&lt;/p&gt;
-&lt;p&gt;For instance, in Wireshark we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the &lt;em&gt;display filter&lt;/em&gt; is &lt;strong&gt;tcp.pdu.time&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;For instance, in Wireshark, we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the &lt;em&gt;display filter&lt;/em&gt; is &lt;strong&gt;tcp.pdu.time&lt;/strong&gt;).&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Switches and Routers&lt;/h2&gt;
 &lt;p&gt;There are four primary ways to capture traffic from a target device on a
 &lt;strong&gt;switched&lt;/strong&gt; network: using a &lt;strong&gt;hub&lt;/strong&gt;, using a &lt;strong&gt;tap&lt;/strong&gt;, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /&gt;&lt;/p&gt;
-&lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
+&lt;p&gt;All of the techniques for switched network are available on &lt;strong&gt;routed&lt;/strong&gt; networks as well. However, for routers, the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Types of Traffic Packets&lt;/h2&gt;
@@ -2061,7 +2061,7 @@ router.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fragment offset&lt;/strong&gt;:  identification of whether a packet is a fragment.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Time to Live&lt;/strong&gt;: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created, and generally is decremented by 1 every time the packet is forwarded by a router.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time to Live&lt;/strong&gt;: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created and generally is decremented by 1 every time the packet is forwarded by a router.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Protocol&lt;/strong&gt;: identification of the type of packet coming next in the sequence.&lt;/p&gt;
@@ -2115,7 +2115,7 @@ router.&lt;/p&gt;
 &lt;p&gt;To make this work, the router replies response with a &lt;em&gt;double-headed packet&lt;/em&gt;, containing a copy of the IP header and the data that was sent in the original echo request.&lt;/p&gt;
 &lt;p&gt;PS: Check out  this post from Julia Evans on how to create a simple &lt;a href="http://jvns.ca/blog/2013/10/31/day-20-scapy-and-traceroute/"&gt;&lt;em&gt;Traceroute in 15 lines of code using Python's Scapy&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;The Transmission Control Protocol (Layer 4)&lt;/h3&gt;
-&lt;p&gt;Provides a reliable flow of data between two hosts with a &lt;strong&gt;three-way handshake&lt;/strong&gt;. The purpose is to allow the transmitting host to ensure that the destination host is up, and let the transmitting host check the availability of the port as well.&lt;/p&gt;
+&lt;p&gt;Provides a reliable flow of data between two hosts with a &lt;strong&gt;three-way handshake&lt;/strong&gt;. The purpose is to allow the transmitting host to ensure that the destination host is up and let the transmitting host check the availability of the port as well.&lt;/p&gt;
 &lt;p&gt;This handshake works as  follows:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Host A sends an initial packet with no data but with the synchronize (SYN) flag and the initial sequence number and &lt;a href="http://en.wikipedia.org/wiki/Maximum_segment_size"&gt;maximum segment size&lt;/a&gt; (MSS) for the communication process.&lt;/li&gt;
@@ -2264,7 +2264,7 @@ a network, it would be assigned an address by hand.&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Capture filters&lt;/strong&gt;: specified when packets are being captured. This method is good for performance of large captures.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Display filters&lt;/strong&gt;: applied to an existing set of collected packets. This method gives more versatility since you have the entire data available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;In the following sessions I  show several examples of capture and display  filters.&lt;/p&gt;
+&lt;p&gt;In the following sessions, I  show several examples of capture and display  filters.&lt;/p&gt;
 &lt;h3&gt;Capture Filters by Host Address and Name&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Traffic associated with a host's IPV4 address (also works for a IPv6 network).&lt;/li&gt;
@@ -2582,7 +2582,7 @@ a network, it would be assigned an address by hand.&lt;/p&gt;
 &lt;h3&gt;Operating System Fingerprint&lt;/h3&gt;
 &lt;p&gt;Technique to determine the operating system on a system without have access to it.&lt;/p&gt;
 &lt;p&gt;In  &lt;strong&gt;Passive Fingerprinting&lt;/strong&gt;, an attacker can use certain fields within packets sent from the target to craft a stealthy fingerprint.&lt;/p&gt;
-&lt;p&gt;This is possible due the lack of specificity by protocol's &lt;a href="http://en.wikipedia.org/wiki/Request_for_Comments"&gt;RFCs&lt;/a&gt;: although the various fields contained in the TCP, UDP and IP headers are very specific, no default values are defined for these fields.&lt;/p&gt;
+&lt;p&gt;This is possible due the lack of specificity by protocol's &lt;a href="http://en.wikipedia.org/wiki/Request_for_Comments"&gt;RFCs&lt;/a&gt;: although the various fields contained in the TCP, UDP, and IP headers are very specific, no default values are defined for these fields.&lt;/p&gt;
 &lt;p&gt;For instance, the following header values can help one to distinguish between several operating systems:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;IP, Initial Time to Live&lt;/strong&gt;:&lt;ul&gt;
