@@ -112,10 +112,10 @@
 <p><a href="http://www.raspberrypi.org/help/noobs-setup">You can either install NOOBS and then choose your OS</a>.</p>
 <p><a href="http://fedoraproject.org/wiki/FedoraARMInstaller">Or you can download the Fedora ARM Installer and the OS image you prefer</a>.</p>
 <h2>Network Setup</h2>
-<p>The easiest way is to connect your Pi in the network is through an ethernet interface. Connecting the cable should be allow the connection directly as long as your network router allows DHCP.</p>
-<p>In addition, you can also setup a wireless connect, which requires your router to be broadcasting the SSID. At Raspbian, there is a WiFi configuration icon. Type wlan0 adapter and scan. After connecting in your network you will also be able to see the IP of your Pi.</p>
+<p>The easiest way is to connect your Pi in the network is through an ethernet interface. Connecting the cable should be allowed the connection directly as long as your network router allows DHCP.</p>
+<p>In addition, you can also setup wireless connect, which requires your router to be broadcasting the SSID. At Raspbian, there is a WiFi configuration icon. Type wlan0 adapter and scan. After connecting in your network you will also be able to see the IP of your Pi.</p>
 <h2>Input/Output Setup</h2>
-<p>The easiest way to connect to your Pi is by a HDMI cable to a monitor and an USB keyboard. Another options is through a console cable or a SSH connection.</p>
+<p>The easiest way to connect to your Pi is by an HDMI cable to a monitor and a USB keyboard. Another option is through a console cable or an SSH connection.</p>
 <h2>Connection through a Console Cable (3.3V logic levels)</h2>
 <p>The connections are to the outside pin connections of the GPIO header:</p>
 <div class="highlight"><pre><span class="n">The</span> <span class="n">red</span> <span class="n">lead</span> <span class="n">should</span> <span class="n">be</span> <span class="n">connected</span> <span class="n">to</span> <span class="mi">5</span><span class="n">V</span><span class="p">.</span>
@@ -139,12 +139,12 @@
 </pre></div>
 
 
-<p>Find the Pi's IP by:</p>
+<p>Find Pi's IP by:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">ifconfig</span>
 </pre></div>
 
 
-<p>From your Linux PC (using "pi" as user):</p>
+<p>From your Linux PC (using "pi" as the user):</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">PI</span><span class="o">-</span><span class="n">IP</span> <span class="o">-</span><span class="n">l</span> <span class="n">pi</span>
 </pre></div>
 
@@ -233,7 +233,7 @@
 
 
 <h3>Firewall Configuration</h3>
-<p>We insert an iptables rules to allow NAT (network address translation):</p>
+<p>We insert an iptables rule to allow NAT (network address translation):</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">A</span> <span class="n">POSTROUTING</span> <span class="o">-</span><span class="n">o</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">j</span> <span class="n">MASQUERADE</span>
 <span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">o</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
 <span class="err">$</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">A</span> <span class="n">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span> <span class="o">-</span><span class="n">o</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">m</span> <span class="n">state</span> <span class="o">--</span><span class="n">state</span> <span class="n">RELATED</span><span class="p">,</span><span class="n">ESTABLISHED</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
@@ -371,7 +371,7 @@
 </pre></div>
 
 
-<p>Check that the iptables are right with:</p>
+<p>Check that the iptables is right with:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">t</span> <span class="n">nat</span> <span class="o">-</span><span class="n">L</span>
 </pre></div>
 

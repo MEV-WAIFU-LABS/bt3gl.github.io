@@ -110,8 +110,8 @@
 <p>We will use a web interface to access data in our database:</p>
 <ul>
 <li>
-<p>Log in with your root login/password (set in the installation above): <code>http://localhost/phpmyadmin</code>.
-The left hand column contains a list of all of the databases you currently have.</p>
+<p>Login with your root login/password (set in the installation above): <code>http://localhost/phpmyadmin</code>.
+The left-hand column contains a list of all of the databases you currently have.</p>
 <ul>
 <li>mysql: contains information about the MySQL database server.</li>
 <li>information_schema: contains information about all of the other databases on your computer.</li>
@@ -230,7 +230,7 @@ The left hand column contains a list of all of the databases you currently have.
 
 
 <h2>The Model-View-Controller Pattern (MVC)</h2>
-<p>In high level, the flow of a web app is:</p>
+<p>In a high level, the flow of a web app is:</p>
 <ul>
 <li>User request to view a certain page by typing a URL in the browser.</li>
 <li>The app determines what needs to be displayed.</li>
@@ -247,7 +247,7 @@ The left hand column contains a list of all of the databases you currently have.
 <h3>Controllers: Workhorses</h3>
 <p>Determine what objects to retrieve and how to organize them.</p>
 <p>Handle user request, retrieve proper information, and pass it to the proper view.</p>
-<p>Different request are handled by different controller actions.</p>
+<p>Different request is handled by different controller actions.</p>
 <h3>Views: What the User Sees</h3>
 <p>Responsible for the presentation layer, the actual visual display.</p>
 <p>Each individual page within a web app has its own view.
@@ -290,7 +290,7 @@ In the case of controllers, each action is frequently associated with a URL.</p>
 <p>For example:
 <code>http://localhost/APP_NAME/index.php/welcome/index/</code></p>
 <h3>Configuring our app to use the Database</h3>
-<p>CI has a built-in support for interacting with a database.
+<p>CI has built-in support for interacting with a database.
 In our application, the database configuration file is store at application/config/database.php</p>
 <p>To connect our app to the MySQL database, update this file to:</p>
 <div class="highlight"><pre><span class="err">$</span><span class="n">db</span><span class="p">[</span><span class="err">&#39;</span><span class="k">default</span><span class="err">&#39;</span><span class="p">][</span><span class="err">&#39;</span><span class="n">hostname</span><span class="err">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="err">&#39;</span><span class="n">localhost</span><span class="err">&#39;</span><span class="p">;</span>

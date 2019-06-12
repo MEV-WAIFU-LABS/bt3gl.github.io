@@ -114,11 +114,11 @@
 	<a href="./tag/iframe.html"><i class="icon-tag"></i>iframe</a>
 	<a href="./tag/sqli.html"><i class="icon-tag"></i>SQLi</a>
 </footer><!-- /.post-info -->                </div>
-                <p>Although nomenclatures don't help  much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.</p>
+                <p>Although nomenclatures don't help much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.</p>
 <p>In addition to this list, you can check some specific web exploration older posts: <a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html">Exploiting the web in 20 lessons</a> and <a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html">D-Camp CTF 2014</a>.</p>
 <h1>Vulnerabilities to Web Applications</h1>
 <h2>Cross-site Scripting (XSS)</h2>
-<p>XSS is caused by <strong>insufficient input validation or output escaping</strong>. This can allow an attacker to insert HTML markup or scripts in a vulnerable website. The injected  code will have plenty of access in this site, and in many cases, to the HTTP cookies stored by the client.</p>
+<p>XSS is caused by <strong>insufficient input validation or output escaping</strong>. This can allow an attacker to insert HTML markup or scripts in a vulnerable website. The injected code will have plenty of access in this site, and in many cases, to the HTTP cookies stored by the client.</p>
 <p>HTML has five characters that are reserved:</p>
 <ul>
 <li>
@@ -131,12 +131,12 @@
 <p>and <strong>ampersand</strong>.</p>
 </li>
 </ul>
-<p>The ampersand should never appear in most HTML sections. Both angle brackets should not be used inside a tag, unless  properly quoted. Quote characters inside a tag can also be harmless in text.</p>
+<p>The ampersand should never appear in most HTML sections. Both angle brackets should not be used inside a tag, unless properly quoted. Quote characters inside a tag can also be harmless in text.</p>
 <p>To allow these characters to appear in problematic locations, an encoding based in an ampersand-prefixed and a semicolon-terminated scheme is used: the <a href="http://www.w3schools.com/html/html_entities.asp">Entity Encoding</a>.</p>
 <h3>Non-Persistent Attack:</h3>
 <p>XSS non-persistent attacks consist on getting users to click a link with attacker's script. A typical scenario is the following:</p>
 <ol>
-<li>The target website perform  query searches that are not sanitized. For example, the query could accept scripts on it. A simple example to check this vulnerability is by verifying whether the alert box with the message <strong>Pwnd</strong> is displayed:</li>
+<li>The target website perform query searches that are not sanitized. For example, the query could accept scripts on it. A simple example to check this vulnerability is by verifying whether the alert box with the message <strong>Pwnd</strong> is displayed:</li>
 </ol>
 <div class="highlight"><pre><span class="nx">http</span><span class="p">:</span><span class="c1">//website.org?q=&lt;script%20type=&#39;text/javascript&#39;&gt;alert(&#39;Pwnd!&#39;);&lt;/script&gt;</span>
 </pre></div>
@@ -165,7 +165,7 @@
 <p>When anyone loads the page with that post, the script runs, and the attacker is able to hijack the victim's section.</p>
 </li>
 </ol>
-<p>Additionally, in <em>password managers</em>, there is a risk of  amplification of XSS bugs. In the web applications that use <em><a href="https://www.owasp.org/index.php/HttpOnly">httponly</a></em> cookies, a successful exploitation of an XSS flaw may give the attacker a transient access to the user's account (and password).</p>
+<p>Additionally, in <em>password managers</em>, there is a risk of amplification of XSS bugs. In the web applications that use <em><a href="https://www.owasp.org/index.php/HttpOnly">httponly</a></em> cookies, a successful exploitation of an XSS flaw may give the attacker a transient access to the user's account (and password).</p>
 <h3>Attempts of mitigation:</h3>
 <ul>
 <li>
@@ -190,10 +190,10 @@
 <hr />
 <h2>Cross Script Inclusion (XSSI)</h2>
 <p>XSSI comes with the failure to secure sensitive JSON-like responses against being loaded on third-party sites via <code>&lt;script src=..&gt;</code>, and leaking user-specific information in the response. It a risk whenever ambient authority credentials (such as cookies) are used by the server to generate user-specific JavaScript code.</p>
-<p>For instance, JSON is a JavaScript syntax structure  to keep in-place object serialization.  The curly bracket <strong>{</strong> is assumed to be the beginning of the object. Overloading curly  brackets means that JSON blocks will not be recognized properly in standalone statements.</p>
+<p>For instance, JSON is a JavaScript syntax structure to keep in-place object serialization.  The curly bracket <strong>{</strong> is assumed to be the beginning of the object. Overloading curly brackets means that JSON blocks will not be recognized properly in standalone statements.</p>
 <hr />
 <h2>Cross-site Request Forgery (CSRF, XSRF)</h2>
-<p>CSRF allows attackers to execute actions using the credentials of another user without that user's knowledge or consent. It is  the failure to verify that a particular state-changing HTTP request received by the <strong>server-side</strong> portion of the application was initiated from the expected <strong>client-side</strong> origin. Any third-party website loaded in the browser can perform actions in behalf of the victim.</p>
+<p>CSRF allows attackers to execute actions using the credentials of another user without that user's knowledge or consent. It is the failure to verify that a particular state-changing HTTP request received by the <strong>server-side</strong> portion of the application was initiated from the expected <strong>client-side</strong> origin. Any third-party website loaded in the browser can perform actions in behalf of the victim.</p>
 <p>On cross-domain navigation, the browser includes any ambient credentials. To the server, a request originating from its own client-side code will appear as the same as the request from a rogue third-party site and  it might be granted the same privilege.</p>
 <h3>Examples of exploitation:</h3>
 <ul>
@@ -251,14 +251,14 @@
 </ul>
 <hr />
 <h2>Cookie Forcing/Injection</h2>
-<p>Possibility of blindly injecting HTTP cookies into the context of an otherwise impenetrable web application due to issues in how the mechanism is designed and implemented in  browsers. There are special concern to HTTPS applications.</p>
+<p>Possibility of blindly injecting HTTP cookies into the context of an otherwise impenetrable web application due to issues in how the mechanism is designed and implemented in browsers. There are special concern to HTTPS applications.</p>
 <h3>Examples of exploitation:</h3>
 <ul>
 <li>Cookie stuffing: deleting cookies belonging to another applications by overflowing the cookie jar.</li>
 </ul>
 <hr />
 <h2>Denial-of-Service (DoS)</h2>
-<p>Any opportunity of the attacker to bring down a browser or server, or make the use of a targeted application  more difficult.</p>
+<p>Any opportunity of the attacker to bring down a browser or server, or make the use of a targeted application more difficult.</p>
 <h3>DoS and amplification attacks</h3>
 <p>DNS resolvers are attractive targets to attackers who exploit the resolvers' large response-to-request size ratio to gain additional free bandwidth. Resolvers that support EDNS0 (Extension Mechanisms for DNS) are especially vulnerable because of the substantially larger packet size that they can return.</p>
 <h3>Examples of exploitation:</h3>
@@ -352,10 +352,10 @@
 <p>If used without a qualifier or prefixed with a <em>local</em> (LFI), the term is synonymous to read-related directory traversal. Remote file inclusion (RFI) is an alternative way to exploit file-inclusion vulnerabilities by specifying a URL rather than a valid file path. In some languages, a common API opens local files and fetches remote URLS, which might supplies the ability of retrieving attacker's files.</p>
 <hr />
 <h2>Format String Vulnerability</h2>
-<p>Several libraries accept templates (format strings) followed by a set of parameters that the function is expected to insert into the template at predefined locations. For example,  C has functions such as <em>printf</em>, <em>syslog</em>, etc. The vulnerability is caused by permitting attackers to supply the template to one of these functions. This can lead to  data leaks and code execution.</p>
+<p>Several libraries accept templates (format strings) followed by a set of parameters that the function is expected to insert into the template at predefined locations. For example,  C has functions such as <em>printf</em>, <em>syslog</em>, etc. The vulnerability is caused by permitting attackers to supply the template to one of these functions. This can lead to data leaks and code execution.</p>
 <hr />
 <h2>Integer Overflow</h2>
-<p>Vulnerability specific to languages with no range checking. The flaw is caused by the developer failing to detect that an integer exceeded the maximum possible value and rolled back to zero, to a large negative integer, or to some hardware-specific  result.</p>
+<p>Vulnerability specific to languages with no range checking. The flaw is caused by the developer failing to detect that an integer exceeded the maximum possible value and rolled back to zero, to a large negative integer, or to some hardware-specific result.</p>
 <p>Integer underflow is the opposite effect: crossing the minimum value and rolling over to a very large positive integer.</p>
 <hr />
 <h2>Pointer Management Vulnerabilities</h2>

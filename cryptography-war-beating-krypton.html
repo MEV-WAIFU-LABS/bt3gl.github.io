@@ -117,7 +117,7 @@
                 <p><img alt="cyber" src="http://i.imgur.com/nZqQILK.png" /></p>
 <p><a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">Continuing to talk about</a> the <a href="http://overthewire.org/wargames/">Wargames</a>, today I'll briefly go through <a href="http://overthewire.org/wargames/krypton/">Krypton</a>, the cryptography episode.</p>
 <p>The problems are very straightforward and very similar to those from the last <a href="https://ctf.isis.poly.edu/">CSAW CTF</a> (<a href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200.html">see my post here</a>).</p>
-<p><strong>Disclaimer</strong>: if you haven't played WarGames but you are planing to, PLEASE DON'T READY ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.</p>
+<p><strong>Disclaimer</strong>: if you haven't played WarGames but you are planning to, PLEASE DON'T READ ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.</p>
 <h2>Level 0: Base64 Transformation</h2>
 <p>This level starts with:</p>
 <blockquote>
@@ -125,7 +125,7 @@
     S1JZUFRPTklTR1JFQVQ=
 Use this password to log in to krypton.labs.overthewire.org with username krypton1 using SSH. You can the files for other levels in /krypton/.</p>
 </blockquote>
-<p><a href="http://en.wikipedia.org/wiki/Base64">Base64</a> is just a way to represent binary data in ASCII, by translating it into a radix-64. Linux provides a built-in Base64 enconder/decoder tool, so all we need to do is:</p>
+<p><a href="http://en.wikipedia.org/wiki/Base64">Base64</a> is just a way to represent binary data in ASCII, by translating it into a radix-64. Linux provides a built-in Base64 encoder/decoder tool, so all we need to do is:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">base64</span> <span class="o">-</span><span class="n">d</span> <span class="n">KRYPTON0</span><span class="p">.</span><span class="n">txt</span>
 </pre></div>
 
@@ -134,7 +134,7 @@ Use this password to log in to krypton.labs.overthewire.org with username krypto
 <h2>Level 1: Classic Caesar Cypher</h2>
 <p>The second level starts with:</p>
 <blockquote>
-<p>The password for level 2 is in the file ‘krypton2’. It is ‘encrypted’ using a simple rotation. It is also in non standard ciphertext format. When using alpha characters for cipher text it is normal to group the letters into 5 letter clusters, regardless of word boundaries. This helps obfuscate any patterns. This file has kept the plain text word boundaries and carried them to the cipher text. Enjoy!</p>
+<p>The password for level 2 is in the file ‘krypton2’. It is ‘encrypted’ using a simple rotation. It is also in non-standard ciphertext format. When using alpha characters for ciphertext it is normal to group the letters into 5 letter clusters, regardless of word boundaries. This helps obfuscate any patterns. This file has kept the plain text word boundaries and carried them to the ciphertext. Enjoy!</p>
 </blockquote>
 <p>This is the classic <a href="http://en.wikipedia.org/wiki/Caesar_cipher">Caesar Cypher</a> (they really love this thing :).</p>
 <p>In the Caesar’s cipher, the letters in the plaintext are shifted by a fixed number of elements down the alphabet. For example, if the shift is 3, A becomes D , B becomes E , and so on. Once we run out of letters, we circle back to A.</p>
@@ -158,7 +158,7 @@ A Caesar cipher shifts the alphabet by a set number.  For example:</p>
 <p>plain:  a b c d e f g h i j k ...
 cipher: G H I J K L M N O P Q ...</p>
 <p>In this example, the letter 'a' in plaintext is replaced by a 'G' in the ciphertext so, for example, the plaintext 'bad' becomes 'HGJ' in ciphertext.</p>
-<p>The password for level 3 is in the file krypton3.  It is in 5 letter group ciphertext.  It is encrypted with a Caesar Cipher.  Without any  further information, this cipher text may be difficult to break.  You do not have direct access to the key, however you do have access to a program  that will encrypt anything you wish to give it using the key.  If you think logically, this is completely easy.</p>
+<p>The password for level 3 is in the file krypton3.  It is in 5 letter group ciphertext.  It is encrypted with a Caesar Cipher.  Without any  further information, this ciphertext may be difficult to break.  You do not have direct access to the key, however you do have access to a program  that will encrypt anything you wish to give it using the key.  If you think logically, this is completely easy.</p>
 </blockquote>
 <p>First, we make a file filled with the alphabet, so we can test  the binary:</p>
 <div class="highlight"><pre><span class="nv">$ </span>ln -s /krypton/krypton2/keyfile.dat keyfile.dat
@@ -278,7 +278,7 @@ So, we get a ciphertext of:</p>
 <p>VFZFK SOPKS ELTUL VGUCH KR
 This level is a Vigenère Cipher. You have intercepted two longer, english language messages. You also have a key piece of information. You know the key length!</p>
 </blockquote>
-<p>This is a classical case of <a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenere cipher</a>, which  is a variation on the Caesar’s cipher. In this case, one uses multiple shift amounts according to a keyword.</p>
+<p>This is a classic case of <a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">Vigenere cipher</a>, which  is a variation on the Caesar’s cipher. In this case, one uses multiple shift amounts according to a keyword.</p>
 <p>To solve this we use the <a href="http://smurfoncrack.com/pygenere/pygenere.py">pygenere</a> library in Python. First we need to find the key:</p>
 <div class="highlight"><pre><span class="n">import</span> <span class="n">sys</span>
 <span class="n">from</span> <span class="n">pygenere</span> <span class="n">import</span> <span class="n">Vigenere</span><span class="p">,</span> <span class="n">VigCrack</span>
@@ -343,7 +343,7 @@ ETIREDANDLAYDOWNUPONTHEGRASSANDFELLASLEEPWITHTHEWOODMANANDTHESCARECROWKEEPINGWAT
 <h2>Level 5: Vigenere Cipher II</h2>
 <p>The sixth level starts with:</p>
 <blockquote>
-<p>Frequency analysis can break a known key length as well.  Lets try one last polyalphabetic cipher, but this time the key length is unknown.</p>
+<p>Frequency analysis can break a known key length as well.  Let's try one last polyalphabetic cipher, but this time the key length is unknown.</p>
 </blockquote>
 <p>This is another example of Vigenere Cipher. Using the same method as before we first get the key and then the password.</p>
 <hr />

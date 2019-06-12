@@ -127,10 +127,10 @@
 <p>Notice that arguments and environment variables get a special place in the top of the Stack (higher address).</p>
 <p>Although the <a href="http://en.wikipedia.org/wiki/Heap_(data_structure)">Heap</a> can be also fun to play with, for the purpose of these games, we will concentrate in the <strong>Stack</strong>. Remember, the <a href="https://stackoverflow.com/questions/664744/what-is-the-direction-of-stack-growth-in-most-modern-systems">direction of which the Stack grows</a> is system-dependent.</p>
 <h3>What's the Stack</h3>
-<p>A Stack is an <em>abstract data type</em> that has the property that the last object placed will be the first object removed. This is also known as <em>last-in/first-out queue</em> or <em>LIFO</em>.Two of the most important operations in a Stack are <em>push</em> and <em>pop</em>.</p>
+<p>A Stack is an <em>abstract data type</em> that has the property that the last object placed will be the first object removed. This is also known as <em>last-in/first-out queue</em> or <em>LIFO</em>. Two of the most important operations in a Stack are <em>push</em> and <em>pop</em>.</p>
 <p>You can think of a stack of books: the only way to reach the book in the bottom (the first book that was pushed) is by popping every book on the top. To learn how to write a Stack in Python, take a look at my notes on <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/blob/master/book/book_second_edition.pdf">Python &amp; Algorithms</a>. I also made the source code available: <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/tree/master/src/abstract_structures/Stacks">here are some examples</a>.</p>
 <p>The memory Stack frame  is a collection of (stack) frames. Every time a process calls a function, it  alters the flow of control.  In this case, a new frame needs to be added and the Stack grows downward (lower memory address).</p>
-<p>If you think about it, a Stack is the perfect object for a process: the process can push a  function (its arguments, code, etc.) into the Stack, then, in the end, it pops everything, back to where it started.</p>
+<p>If you think about it, a Stack is a perfect object for a process: the process can push a  function (its arguments, code, etc.) into the Stack, then, in the end, it pops everything, back to where it started.</p>
 <h3>Buffer Overflows in the Stack</h3>
 <p>Buffer overflows happen when we give a buffer more information than it is meant to hold.  For example, the <strong>standard C library</strong> has several functions for copying or appending strings with no bounds checking: <code>strcat()</code>, <code>strcpy()</code>, <code>sprintf()</code>, <code>vsprintf()</code>, <code>gets()</code>, and <code>scanf()</code>. These functions can  easily overflow a buffer if there the input is not validated first.</p>
 <p>To  better understand this subject, I recommend the classic <a href="http://insecure.org/stf/smashStack.html">Smashing the Stack for Fun or Profit</a> from <a href="http://en.wikipedia.org/wiki/Elias_Levy">Aleph One</a> , which was published in 1996 in the <a href="http://www.phrack.org/">Phrack magazine</a> number 49.</p>
@@ -143,7 +143,7 @@
 </pre></div>
 
 
-<p>The two first lines are the prologue. In the first line of this code, the (old) <strong>frame pointer</strong> (ebp) is pushed onto the top of the Stack (lowest memory). Then, the current <strong>esp</strong> is copied into the <strong>stack frame base pointer</strong> (ebp), making it the new frame pointer.  In the last line, the space is allocated for the local variables, subtracting their size from esp (remember that memory can only be addressed in multiples of the word size, for example 4 bytes, or 32 bits).</p>
+<p>The two first lines are the prologue. In the first line of this code, the (old) <strong>frame pointer</strong> (ebp) is pushed onto the top of the Stack (lowest memory). Then, the current <strong>esp</strong> is copied into the <strong>stack frame base pointer</strong> (ebp), making it the new frame pointer.  In the last line, space is allocated for the local variables, subtracting their size from esp (remember that memory can only be addressed in multiples of the word size, for example 4 bytes, or 32 bits).</p>
 <p>After this point, the Assembly code will show each operation step in the program. We will learn more about this  during the challenges. It's a good skill to understand the basics of Assembly, but this is outside the context of this review. Check out  this <a href="http://www.drpaulcarter.com/pcasm/">nice Assembly guide</a> if you need to. Also, <a href="http://darkdust.net/files/GDB%20Cheat%20Sheet.pdf">this cheat sheet</a> is awesome.</p>
 <p>Ah, by  the way, you can look to the Assembly output in a C program by  using the flag <code>-S</code>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gcc -S -o example1.s example1.c
@@ -156,14 +156,14 @@
 <p>In each of Narnia's levels we are able to <a href="http://www.thegeekstuff.com/2011/10/c-program-to-an-executable/">run a binary and read its C code</a>. The objective is to figure out from the code what vulnerability can be used to allow us to read the password of the next level (located in a folder under <code>/etc</code> in the server).</p>
 <h3>Your Weapons</h3>
 <h4>Memory and Exploits Representation</h4>
-<p>When it comes to memory addresses, it's fundamental to understand <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadecimal representation</a>. You can print an HEX into <a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a> with Python:</p>
+<p>When it comes to memory addresses, it's fundamental to understand <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadecimal representation</a>. You can print a HEX into <a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a> with Python:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&#39;print &quot;</span><span class="se">\x41</span><span class="s">&quot;&#39;</span>
 <span class="n">A</span>
 </pre></div>
 
 
 <p>Remember that Narnia's severs are <a href="http://en.wikipedia.org/wiki/X86">x86</a>, so they have <a href="http://en.wikipedia.org/wiki/Endianness">little-endian</a> representation. This means that an address <code>0xffffd546</code> is actually written as <code>\x46\xd5\xff\xff</code>.</p>
-<p>Most of the exploit we deliver in Narnia are in form of input strings. Python with the flag, <code>-c</code>, is really handy to craft what we need:</p>
+<p>Most of the exploit we deliver in Narnia is in form of input strings. Python with the flag, <code>-c</code>, is really handy to craft what we need:</p>
 <div class="highlight"><pre><span class="nv">$ </span>python -c <span class="s1">&#39;print &quot;A&quot;*20&#39;</span>
 AAAAAAAAAAAAAAAAAAAA
 </pre></div>
@@ -221,7 +221,7 @@ AAAAAAAAAAAAAAAAAAAA
 
 <ul>
 <li>
-<p>To run the program: <code>(gdb) r</code>. We also can use <code>c</code> to continue to run it after breakpoint.  We can  use <code>n</code> for next program line. We can print things using <code>p</code>.</p>
+<p>To run the program: <code>(gdb) r</code>. We also can use <code>c</code> to continue to run it after the breakpoint.  We can  use <code>n</code> for the next program line. We can print things using <code>p</code>.</p>
 </li>
 <li>
 <p>To examine some memory address, we can use <code>(gdb) x/nfu A</code>, where <strong>A</strong> is the address (<em>e.g.</em>, <code>`$esp</code>), n is the number of units to print, f is the format character, and u is the unit.</p>
@@ -290,7 +290,7 @@ int main<span class="o">(){</span>
 </pre></div>
 
 
-<p>The program receives an input from the user and save it in a buffer variable of size 20. Then, it checks if the <em>val</em> is equal to a different value of what it was declared:</p>
+<p>The program receives an input from the user and saves it in a buffer variable of size 20. Then, it checks if the <em>val</em> is equal to a different value of what it was declared:</p>
 <div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">val</span><span class="o">==</span><span class="mh">0xdeadbeef</span><span class="p">)</span>
         <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
 </pre></div>
@@ -364,7 +364,7 @@ val: 0xdeadbeef
 <p>Yay, the exploit worked!</p>
 <h3>Step 4: Getting Access to the Shell</h3>
 <p>We  were able to get access to our shell, but it closed too fast, when the program execution ended.</p>
-<p>We need to create a way to read the password before we loose the  control to the shell. A good way is pipelining some command that  waits for an input, such as <code>tail</code> or <code>cat</code>.</p>
+<p>We need to create a way to read the password before we loose the  control to the shell. A good way is pipelining some command that  waits for input, such as <code>tail</code> or <code>cat</code>.</p>
 <p>It turns out that only <code>cat</code> actually prints the output:</p>
 <div class="highlight"><pre>narnia0@melinda:/narnia<span class="nv">$ </span><span class="o">(</span>python -c<span class="s1">&#39;print &quot;A&quot;*20 + &quot;\xef\xbe\xad\xde&quot;&#39;</span>; cat<span class="o">)</span> | /narnia/narnia0
 Correct val<span class="err">&#39;</span>s value from 0x41414141 -&gt; 0xdeadbeef!
@@ -560,7 +560,7 @@ narnia2
 
 
 <p>This function copies an input string  to a <em>buf</em>, using <code>strcpy()</code> (instead of safer <code>strncpy()</code>).  Since there is no bounds checking,  <em>buf</em> overflows to the higher address  in the Stack if the input is larger than 128 bytes.</p>
-<p>In this problem we will use overflow to take control of the return address of the main function, which is right after <em>buf</em>. We will overwrite this to any address we want, for example to the address of a beautiful crafted exploit.</p>
+<p>In this problem we will use overflow to take control of the return address of the main function, which is right after <em>buf</em>. We will overwrite this to any address we want, for example to the address of a beautifully crafted exploit.</p>
 <h3>Step 2: Finding the Frame Size</h3>
 <p>To find where the returning address of this function is located, we use <em>gdb</em>:</p>
 <div class="highlight"><pre>narnia2@melinda:/narnia<span class="nv">$ </span>gdb ./narnia2
@@ -760,12 +760,12 @@ int main<span class="o">(</span>int argc, char **argv<span class="o">){</span>
 
 <p>The previous example showed the first byte after overflowing <em>ifile</em>. This last example ends in the last possible byte in the array. Once we overflow <em>ifile</em>, it skips  the checking, going straight to check whether <em>ofile</em> is a valid name. Awesome!</p>
 <h3>Step 3: Writing and Applying the Exploit</h3>
-<p>We want two things happening in <em>ifile</em>: first, to read the password file, then to overflows <em>ofile</em>, making it to point to a file we have access to read.</p>
-<p>The best way to put all of this in one input name is creating a symbolic link with the following rules:</p>
+<p>We want two things happening in <em>ifile</em>: first, to read the password file, then to overflows <em>ofile</em>, making it point to a file we have access to read.</p>
+<p>The best way to put all of this in one input name is by creating a symbolic link with the following rules:</p>
 <ol>
 <li>Point to <em>/etc/narnia_pass/narnia4</em>.</li>
 <li>Fill the 32 bytes of the <em>ifile</em> array with junk.</li>
-<li>End with a some file name which we  had created before, and we have permission to read (we can just use <code>touch</code> to create an empty file).</li>
+<li>End with some file name which we  had created before, and we have permission to read (we can just use <code>touch</code> to create an empty file).</li>
 </ol>
 <p>The result, for a file name <em>out</em>, is:</p>
 <div class="highlight"><pre><span class="nv">$ </span>ln -s /etc/narnia_pass/narnia4 <span class="k">$(</span>python -c <span class="s2">&quot;print &#39;A&#39;*32 + &#39;out&#39;&quot;</span><span class="k">)</span>
@@ -808,13 +808,13 @@ int main<span class="o">(</span>int argc,char **argv<span class="o">){</span>
 
 
 <p>This binary does three things: first, it creates a buffer array of size 256, then it makes all of the system environment variables equal to zero, and then it copies whatever user input it had to the buffer.</p>
-<p>The reason why this code clears  the environment variables is to avoid the possibility of us placing a shellcode exploit to them  (like we did in the Level 2).</p>
+<p>The reason why this code clears  the environment variables is to avoid the possibility of us placing a shellcode exploit to them  (like we did in Level 2).</p>
 <h3>Step 2: Outlining the Attack</h3>
 <p>To exploit this binary we are going to overwrite our <strong>return address</strong> like in  level 2, but this time we can't use an external address to point to. However, since our Stack is executable, we can place the shellcode in the Stack. The steps we follow are:</p>
 <ol>
 <li>Find out the size of the Stack.  Just having the return address won't help  since we can't point it to anywhere outside the code.</li>
 <li>Create a shellcode with the return address minus some value we define so that the return address points to somewhere inside the Stack.</li>
-<li>Fill the beginning of the Stack with a lots of <a href="http://en.wikipedia.org/wiki/NOP">NOPs</a> (No Operations, used to pad/align bytes or to delay time), which in the x86 CPU family is represented with <code>0x90</code>. If the pointer hits these places, it just keeps advancing until it finds our shell.</li>
+<li>Fill the beginning of the Stack with lots of <a href="http://en.wikipedia.org/wiki/NOP">NOPs</a> (No Operations, used to pad/align bytes or to delay time), which in the x86 CPU family is represented with <code>0x90</code>. If the pointer hits these places, it just keeps advancing until it finds our shell.</li>
 <li>To make everything fit right in the Stack frame, we pad the end of the shell code with junk.
 .</li>
 </ol>
@@ -894,7 +894,7 @@ Stack level 0, frame at 0xffffd5e0:
 
 
 <h3>Step 4: Writing and Applying the Exploit</h3>
-<p>We know that the Stack has size of 272 bytes and that the return address is <strong>0xffffd5dc</strong>.  If we add the return address, it sums to 276.</p>
+<p>We know that the Stack has a size of 272 bytes and that the return address is <strong>0xffffd5dc</strong>.  If we add the return address, it sums to 276.</p>
 <p>Now we have some freedom to choose where to place our shellcode. Let's say, we place it somewhere in the middle, say, at the position 134. In the memory, we get: <code>0xffffd5cc - 134 = 0xffffd546</code>.</p>
 <p>Since 276 minus 134 is 142, if we point the return address to   <strong>0xffffd546</strong>, it will go to the 142th position in the Stack and execute whatever is there. We want to make sure that the return address will always end in the shellcode address and for this reason we fill the addresses around with NOPs.</p>
 <p>We will borrow the shellcode from the previous levels, which has size of 25 bytes:</p>

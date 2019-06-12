@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/javascript.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-01T04:20:00-04:00</updated><entry><title>A Closer Look at Chrome's Security: Understanding V8</title><link href="http://bt3gl.github.io/a-closer-look-at-chromes-security-understanding-v8.html" rel="alternate"></link><updated>2014-11-01T04:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-01:a-closer-look-at-chromes-security-understanding-v8.html</id><summary type="html">&lt;p&gt;&lt;a href="http://blogoscoped.com/google-chrome/"&gt;In 2008, Google released a sandbox-oriented browser&lt;/a&gt;, that was assembled from several different code libraries from Google and third parties (for instance, it borrowed a rendering machinery from the open-source  &lt;a href="https://www.webkit.org/"&gt;Webkit layout engine&lt;/a&gt;, later changing it to a forked version, &lt;a href="http://en.wikipedia.org/wiki/Blink_(layout_engine)"&gt;Blink&lt;/a&gt;).  Six years later, Chrome has became the preferred browser for &lt;a href="http://en.wikipedia.org/wiki/File:Usage_share_of_web_browsers_(Source_StatCounter).svg"&gt;half of users in the Internet&lt;/a&gt;. This is enough reason to investigate further how security is dealt in this engine. With this motivation in mind, I summarize the main features of Chrome and its &lt;a href="http://www.chromium.org/Home"&gt;Chromium Project&lt;/a&gt;, describing the pristine way of processing JavaScript with the &lt;strong&gt;V8 JavaScript virtual machine&lt;/strong&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/javascript.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-01T04:20:00-04:00</updated><entry><title>A Closer Look at Chrome's Security: Understanding V8</title><link href="http://bt3gl.github.io/a-closer-look-at-chromes-security-understanding-v8.html" rel="alternate"></link><updated>2014-11-01T04:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-01:a-closer-look-at-chromes-security-understanding-v8.html</id><summary type="html">&lt;p&gt;&lt;a href="http://blogoscoped.com/google-chrome/"&gt;In 2008, Google released a sandbox-oriented browser&lt;/a&gt;, that was assembled from several different code libraries from Google and third parties (for instance, it borrowed a rendering machinery from the open-source  &lt;a href="https://www.webkit.org/"&gt;Webkit layout engine&lt;/a&gt;, later changing it to a forked version, &lt;a href="http://en.wikipedia.org/wiki/Blink_(layout_engine)"&gt;Blink&lt;/a&gt;).  Six years later, Chrome has become the preferred browser for &lt;a href="http://en.wikipedia.org/wiki/File:Usage_share_of_web_browsers_(Source_StatCounter).svg"&gt;half of the users on the Internet&lt;/a&gt;. This is enough reason to investigate further how security is dealt with in this engine. With this motivation in mind, I summarize the main features of Chrome and its &lt;a href="http://www.chromium.org/Home"&gt;Chromium Project&lt;/a&gt;, describing the pristine way of processing JavaScript with the &lt;strong&gt;V8 JavaScript virtual machine&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;They way computers talk...&lt;/h2&gt;
 &lt;p&gt;In mainstream computer languages, a &lt;a href="http://www.openbookproject.net/thinkcs/python/english2e/ch01.html"&gt;source code in a &lt;strong&gt;high level language&lt;/strong&gt; is transformed to a &lt;strong&gt;low level language&lt;/strong&gt;&lt;/a&gt; (a machine or assembly language)  by either being &lt;strong&gt;compiled&lt;/strong&gt; or &lt;strong&gt;interpreted&lt;/strong&gt; . This is &lt;a href="https://www.youtube.com/watch?v=_C5AHaS1mOA"&gt;a very simple concept&lt;/a&gt; but it is a fundamental one!&lt;/p&gt;
 &lt;h3&gt;Compilers and Interpreters&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Compilers&lt;/strong&gt;  produce  an intermediate form called &lt;strong&gt;code object&lt;/strong&gt;, which is like machine code but augmented with symbols tables  to make executable blocks (library files, with file objects). A linker is used to finally combine them to form executables.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Interpreters&lt;/strong&gt; execute instructions without compiling into machine language first. They are first translated into a lower level intermediate representations such as &lt;strong&gt;byte code&lt;/strong&gt; or &lt;strong&gt;abstract syntax trees&lt;/strong&gt; (ASTs). Then they are interpreted by a  &lt;strong&gt;virtual machine&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;The truth is that things are generally mixed.  For example, when you type some instruction in  Python's REPL, &lt;a href="http://akaptur.com/blog/2013/11/17/introduction-to-the-python-interpreter-3/"&gt;the language executes four steps&lt;/a&gt;: &lt;em&gt;lexing&lt;/em&gt; (breaks the code into pieces), &lt;em&gt;parsing&lt;/em&gt; (generates an AST with those pieces - it is the syntax analysis), &lt;em&gt;compiling&lt;/em&gt; (converts the AST into code objects - which are attributes of the function objects), and &lt;em&gt;interpreting&lt;/em&gt; (executes the code objects).&lt;/p&gt;
-&lt;p&gt;In Python, byte-compiled code, in form of &lt;strong&gt;.pyc&lt;/strong&gt; files, is used by the compiler to speed-up the start-up time (load time) for short programs that use a lot of standard modules. And, by the way, byte codes are attributes of the code object so to see them, you just need to call &lt;code&gt;func_code&lt;/code&gt; (code object) and &lt;code&gt;co_code&lt;/code&gt;(bytecode)[1]:&lt;/p&gt;
+&lt;p&gt;In Python, byte-compiled code, in the form of &lt;strong&gt;.pyc&lt;/strong&gt; files, is used by the compiler to speed-up the start-up time (load time) for short programs that use a lot of standard modules. And, by the way, byte codes are attributes of the code object so to see them, you just need to call &lt;code&gt;func_code&lt;/code&gt; (code object) and &lt;code&gt;co_code&lt;/code&gt;(bytecode)[1]:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;some_function&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;return&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
@@ -15,10 +15,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;On the other hand, traditional JavaScript code is represented as a bytecode or an AST, and then executed in a &lt;em&gt;virtual machine&lt;/em&gt; or further compiled into machine code. When JavaScript interprets code, it executes roughly the following steps: &lt;em&gt;parsing&lt;/em&gt; and &lt;em&gt;preprocessing&lt;/em&gt;, &lt;em&gt;scope analysis&lt;/em&gt;, and &lt;em&gt;bytecode or translation to native&lt;/em&gt;. Just a note: the JavaScript engine represents bytecode using &lt;a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Internals/Bytecode"&gt;SpiderMonkey&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;On the other hand, traditional JavaScript code is represented as bytecode or an AST, and then executed in a &lt;em&gt;virtual machine&lt;/em&gt; or further compiled into machine code. When JavaScript interprets code, it executes roughly the following steps: &lt;em&gt;parsing&lt;/em&gt; and &lt;em&gt;preprocessing&lt;/em&gt;, &lt;em&gt;scope analysis&lt;/em&gt;, and &lt;em&gt;bytecode or translation to native&lt;/em&gt;. Just a note: the JavaScript engine represents bytecode using &lt;a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Internals/Bytecode"&gt;SpiderMonkey&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;So we see that when modern languages choose the way they compile or interpret code, they are trading off with the speed they want things to run. Since browsers are preoccupied with delivering content the faster they can,  this is a fundamental concept.&lt;/p&gt;
 &lt;h3&gt;Method JITs and Tracing JITs&lt;/h3&gt;
-&lt;p&gt;To speed things up, instead of having the code being parsed and then executed (&lt;a href="http://en.wikipedia.org/wiki/Ahead-of-time_compilation"&gt;one at time&lt;/a&gt;),  &lt;strong&gt;dynamic translators&lt;/strong&gt;  (&lt;em&gt;Just-in-time&lt;/em&gt; translators, or JIT) can be used. JITs &lt;em&gt;translate intermediate representation into machine language  at runtime&lt;/em&gt;. They have the efficiency of running native code with the cost of startup time plus increased memory (when the bytecode or AST are first compiled).&lt;/p&gt;
+&lt;p&gt;To speed things up, instead of having the code being parsed and then executed (&lt;a href="http://en.wikipedia.org/wiki/Ahead-of-time_compilation"&gt;one at a time&lt;/a&gt;),  &lt;strong&gt;dynamic translators&lt;/strong&gt;  (&lt;em&gt;Just-in-time&lt;/em&gt; translators, or JIT) can be used. JITs &lt;em&gt;translate intermediate representation into machine language  at runtime&lt;/em&gt;. They have the efficiency of running native code with the cost of startup time plus increased memory (when the bytecode or AST are first compiled).&lt;/p&gt;
 &lt;p&gt;Engines have different policies on code generation, which can roughly be grouped into types: &lt;strong&gt;tracing&lt;/strong&gt; and &lt;strong&gt;method&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Method JITs&lt;/strong&gt; emit native code for every block (method) of code and update references dynamically. Method JITs can implement an &lt;em&gt;inline cache&lt;/em&gt; for rewriting type lookups at runtime.&lt;/p&gt;
 &lt;p&gt;In &lt;strong&gt;tracing JITs&lt;/strong&gt;, native code is only emitted when a certain block (method) is considered &lt;em&gt;important&lt;/em&gt;. An example is given by traditional JavaScript: if you load a script with functions that are never used, they are never compiled. Additionally, in JavaScript a  &lt;em&gt;cache&lt;/em&gt; is usually implemented due to the nature of its &lt;em&gt;dynamic typing system&lt;/em&gt;.&lt;/p&gt;
@@ -28,7 +28,7 @@
 &lt;p&gt;JavaScript's integration with &lt;a href="http://en.wikipedia.org/wiki/Netscape_Navigator"&gt;Netscape Navigator&lt;/a&gt; in the mid-90s made it easier for developers to access HTML page elements such as &lt;em&gt;forms&lt;/em&gt;, &lt;em&gt;frames&lt;/em&gt;, and &lt;em&gt;images&lt;/em&gt;. This was essential for JavaScript's accession to become the most popular scripting engine for the web.&lt;/p&gt;
 &lt;p&gt;However, the language's high dynamical behavior (that I'm briefly discussing here) came with a price: in the mid-2000s browsers had very slow  implementations that did not scale with code size or &lt;em&gt;object allocation&lt;/em&gt;. Issues such as &lt;em&gt;memory leaks&lt;/em&gt; when running web apps were becoming mainstream. It was clear that things would only get worse and a new JavaScript engine was a need.&lt;/p&gt;
 &lt;h3&gt;JavaScript's Structure&lt;/h3&gt;
-&lt;p&gt;In JavaScript, every object has a &lt;em&gt;prototype&lt;/em&gt;, and the prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype.&lt;/p&gt;
+&lt;p&gt;In JavaScript, every object has a &lt;em&gt;prototype&lt;/em&gt;, and a prototype is also an object. All JavaScript objects inherit their properties and methods from their prototype.&lt;/p&gt;
 &lt;p&gt;So, for example, supposing an application that has an object &lt;em&gt;Point&lt;/em&gt; (borrowed from the &lt;a href="https://developers.google.com/v8/design"&gt;official documentation&lt;/a&gt;):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;Point&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nx"&gt;y&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
         &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -49,7 +49,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;In the above implementation, we would have two different Point objects that do not share any structure. This is because JavaScript is &lt;strong&gt;classless&lt;/strong&gt;: you create  new objects on the fly and dynamically add or remove proprieties. Functions can move from an object to another. Objects with same type can appear in the same sites in the program with no constraints.&lt;/p&gt;
+&lt;p&gt;In the above implementation, we would have two different Point objects that do not share any structure. This is because JavaScript is &lt;strong&gt;classless&lt;/strong&gt;: you create  new objects on the fly and dynamically add or remove proprieties. Functions can move from an object to another. Objects with the same type can appear in the same sites in the program with no constraints.&lt;/p&gt;
 &lt;p&gt;Furthermore, to store their object proprieties, most JavaScript engines use a &lt;em&gt;dictionary-like data structure&lt;/em&gt;. Each property access demands a dynamic lookup to resolve their location in memory. This contrasts  &lt;em&gt;static&lt;/em&gt; languages such as Java, where instance variables are located at fixed offsets determined by the compiler (due to the &lt;em&gt;fixed&lt;/em&gt; object layout by the &lt;em&gt;object's class&lt;/em&gt;). In this case, access is given by a simple memory load or store (a single instruction).&lt;/p&gt;
 &lt;h3&gt;JavaScript's Garbage Collection&lt;/h3&gt;
 &lt;p&gt;Garbage collection is a form of &lt;em&gt;automatic memory management&lt;/em&gt;: an attempt to reclaim the memory occupied by objects that are not being used any longer (&lt;em&gt;i.e.&lt;/em&gt;, if an object loses its reference, the object's memory has to be reclaimed).&lt;/p&gt;
@@ -62,7 +62,7 @@
 &lt;p&gt;&lt;strong&gt;Double free bugs&lt;/strong&gt;: when the program tries to free a region of memory that it had already freed.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Memory leaks&lt;/strong&gt;: when the program fails to free memory occupied by an object that had became unreachable, leading to memory exhaustion.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Memory leaks&lt;/strong&gt;: when the program fails to free memory occupied by an object that had become unreachable, leading to memory exhaustion.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;As one could guess, JavaScript has automatic memory management. Actually, the core design flaw of traditional JavaScript engines is &lt;strong&gt;bad garbage collection behavior&lt;/strong&gt;. The problem is that JavaScript engines do not know exactly where all the pointers are, and they will search through the entire execution stack to see what data looks like pointers (for instance, integers can look like a pointer to an address in the heap).&lt;/p&gt;
@@ -94,7 +94,7 @@
 &lt;p&gt;When property &lt;code&gt;y&lt;/code&gt; is added, V8 follows the hidden class transition from &lt;strong&gt;C1&lt;/strong&gt; to &lt;strong&gt;C2&lt;/strong&gt; and writes the value of &lt;code&gt;y&lt;/code&gt; at the offset specified by &lt;strong&gt;C2&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Instead of having a generic lookup for a propriety, V8  generates an efficient machine code to search the propriety. The machine code generated for accessing &lt;code&gt;x&lt;/code&gt; is something like this:&lt;/p&gt;
+&lt;p&gt;Instead of having a generic lookup for propriety, V8  generates efficient machine code to search the propriety. The machine code generated for accessing &lt;code&gt;x&lt;/code&gt; is something like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# ebx = the point object&lt;/span&gt;
 &lt;span class="n"&gt;cmp&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ebx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;offset&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;cached&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="n"&gt;jne&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kr"&gt;inline&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt; &lt;span class="n"&gt;miss&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -122,9 +122,9 @@
 &lt;p&gt;&lt;strong&gt;Megamorphic&lt;/strong&gt;: Like the initialized stub (since it always does runtime lookup) except that it never replaces itself.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;In conclusion, the combination of using hidden classes to access properties with inline caching (plus  machine code generation) does optimize in cases where  type of objects are frequently created and accessed in a similar way. This greatly improves the speed at which most JavaScript code can be executed.&lt;/p&gt;
+&lt;p&gt;In conclusion, the combination of using hidden classes to access properties with inline caching (plus  machine code generation) does optimize in cases where the type of objects are frequently created and accessed in a similar way. This greatly improves the speed at which most JavaScript code can be executed.&lt;/p&gt;
 &lt;h3&gt;V8's Efficient Garbage Collecting&lt;/h3&gt;
-&lt;p&gt;In V8, a &lt;strong&gt;precise garbage collection&lt;/strong&gt; is used. &lt;em&gt;Every pointer's location are known on the execution stack&lt;/em&gt;, so V8 is able to implement incremental garbage collection. V8 can migrate an object to another place and just rewire the pointer.&lt;/p&gt;
+&lt;p&gt;In V8, a &lt;strong&gt;precise garbage collection&lt;/strong&gt; is used. &lt;em&gt;Every pointer's location is known on the execution stack&lt;/em&gt;, so V8 is able to implement incremental garbage collection. V8 can migrate an object to another place and just rewire the pointer.&lt;/p&gt;
 &lt;p&gt;In summary, &lt;a href="https://developers.google.com/v8/design#garb_coll"&gt;V8's garbage collection&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;1.&lt;/span&gt; &lt;span class="n"&gt;stops&lt;/span&gt; &lt;span class="n"&gt;program&lt;/span&gt; &lt;span class="n"&gt;execution&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;performing&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;garbage&lt;/span&gt; &lt;span class="n"&gt;collection&lt;/span&gt; &lt;span class="n"&gt;cycle&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 
@@ -143,12 +143,12 @@
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="V8"></category><category term="JIT"></category><category term="JavaScript"></category><category term="garbage_collection"></category><category term="cache"></category><category term="bytecode"></category><category term="Chrome"></category><category term="Python"></category></entry><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
+&lt;p&gt;I divide the exploits into two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
 &lt;p&gt;Let the game begin.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;No scripting required here, Dude!&lt;/h2&gt;
 &lt;h3&gt;Level 0 and 1: Simple source code inspection&lt;/h3&gt;
-&lt;p&gt;The first two levels starts with a simple HTML page. No hints.&lt;/p&gt;
+&lt;p&gt;The first two levels start with a simple HTML page. No hints.&lt;/p&gt;
 &lt;p&gt;Obviously, the first thing we do is ti take a look  at the source code.&lt;/p&gt;
 &lt;p&gt;In the 0th level, the password is straight from the there.&lt;/p&gt;
 &lt;p&gt;In the first level, we need to  disable  &lt;strong&gt;JavaScript&lt;/strong&gt; so you can right click it:&lt;/p&gt;
@@ -190,9 +190,9 @@
 &lt;p&gt;Looking at the content of  the folder &lt;em&gt;/s3cr3t/&lt;/em&gt; revels:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Index&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s3cr3t&lt;/span&gt;
 
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;   &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;        &lt;span class="o"&gt;-&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;   &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;   &lt;span class="mi"&gt;40&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;    &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;         &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;    &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;    &lt;span class="mi"&gt;40&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -401,7 +401,7 @@ Output:
 
 
 &lt;p&gt;We know our way now.&lt;/p&gt;
-&lt;p&gt;We then have this XOR function that take an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;We then have this XOR function that takes an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nv"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -612,7 +612,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Back in Burp, we go to &lt;em&gt;Proxy --&amp;gt; Intercept&lt;/em&gt; and mark it ON:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
-&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload out exploit.&lt;/p&gt;
+&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload our exploit.&lt;/p&gt;
 &lt;p&gt;Before we forward this request to the server, we open it in Burp and we change the name of the random string in &lt;em&gt;jpg&lt;/em&gt; to our &lt;em&gt;php&lt;/em&gt; exploit:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The browser will return the link for the file:&lt;/p&gt;
@@ -699,7 +699,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We want to inject stuff in the middle to make this query do &lt;em&gt;more things&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; in the end of everything. This can be represented by:&lt;/p&gt;
+&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; at the end of everything. This can be represented by:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;OR&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -721,7 +721,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;h3&gt;Level 15: SQL Injection II&lt;/h3&gt;
 &lt;p&gt;This level starts with a  form to check the existence of some username:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
-&lt;p&gt;The source code is almost equal to the previous level, with exception of this part:&lt;/p&gt;
+&lt;p&gt;The source code is almost equal to the previous level, with the exception of this part:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
 &lt;span class="cm"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
@@ -756,7 +756,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We can't just modify the query to return a record because it won't accept &lt;strong&gt;"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;However, the additional information about the table's proprieties are enough for us! We are going to brute force it!&lt;/p&gt;
+&lt;p&gt;However, additional information about the table's proprieties is enough for us! We are going to brute force it!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
 &lt;p&gt;If we check the existence of the users &lt;em&gt;nata15&lt;/em&gt; or &lt;em&gt;natas17&lt;/em&gt;, we get:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -944,7 +944,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;p&gt;What other ways we can have binary indicator?&lt;/p&gt;
 &lt;p&gt;We can play with time!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
-&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an inject command in the end of our former exploits:&lt;/p&gt;
+&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an injected command at the end of our former exploits:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SUBSTRING&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="n"&gt;LIKE&lt;/span&gt; &lt;span class="n"&gt;BINARY&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SLEEP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1076,7 +1076,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;So, in resume, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
+&lt;p&gt;So, in summary, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
 &lt;p&gt;If the SESSION_ID is the admin session ID, the password for the next is shown.&lt;/p&gt;
 &lt;p&gt;After that, it calls PHP's &lt;a href="http://php.net/manual/en/function.session-start.php"&gt;session_starts()&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The session ID is given by the variable &lt;em&gt;PHPSESSID&lt;/em&gt;, and that's what we are going to brute force to get our password.&lt;/p&gt;
@@ -1183,7 +1183,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And we get our password in the 501th attempt. Awesome.&lt;/p&gt;
+&lt;p&gt;And we get our password in the 501st attempt. Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;That's it. The &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits"&gt;source code is available&lt;/a&gt; as usual.&lt;/p&gt;
 &lt;p&gt;Hack all the things!&lt;/p&gt;

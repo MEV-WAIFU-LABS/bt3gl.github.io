@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/xor.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-16T06:01:00-04:00</updated><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
+&lt;p&gt;I divide the exploits into two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
 &lt;p&gt;Let the game begin.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;No scripting required here, Dude!&lt;/h2&gt;
 &lt;h3&gt;Level 0 and 1: Simple source code inspection&lt;/h3&gt;
-&lt;p&gt;The first two levels starts with a simple HTML page. No hints.&lt;/p&gt;
+&lt;p&gt;The first two levels start with a simple HTML page. No hints.&lt;/p&gt;
 &lt;p&gt;Obviously, the first thing we do is ti take a look  at the source code.&lt;/p&gt;
 &lt;p&gt;In the 0th level, the password is straight from the there.&lt;/p&gt;
 &lt;p&gt;In the first level, we need to  disable  &lt;strong&gt;JavaScript&lt;/strong&gt; so you can right click it:&lt;/p&gt;
@@ -48,9 +48,9 @@
 &lt;p&gt;Looking at the content of  the folder &lt;em&gt;/s3cr3t/&lt;/em&gt; revels:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Index&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s3cr3t&lt;/span&gt;
 
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;   &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;        &lt;span class="o"&gt;-&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;   &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;   &lt;span class="mi"&gt;40&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;    &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;         &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;    &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;    &lt;span class="mi"&gt;40&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -259,7 +259,7 @@ Output:
 
 
 &lt;p&gt;We know our way now.&lt;/p&gt;
-&lt;p&gt;We then have this XOR function that take an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;We then have this XOR function that takes an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nv"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -470,7 +470,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Back in Burp, we go to &lt;em&gt;Proxy --&amp;gt; Intercept&lt;/em&gt; and mark it ON:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
-&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload out exploit.&lt;/p&gt;
+&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload our exploit.&lt;/p&gt;
 &lt;p&gt;Before we forward this request to the server, we open it in Burp and we change the name of the random string in &lt;em&gt;jpg&lt;/em&gt; to our &lt;em&gt;php&lt;/em&gt; exploit:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The browser will return the link for the file:&lt;/p&gt;
@@ -557,7 +557,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We want to inject stuff in the middle to make this query do &lt;em&gt;more things&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; in the end of everything. This can be represented by:&lt;/p&gt;
+&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; at the end of everything. This can be represented by:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;OR&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -579,7 +579,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;h3&gt;Level 15: SQL Injection II&lt;/h3&gt;
 &lt;p&gt;This level starts with a  form to check the existence of some username:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
-&lt;p&gt;The source code is almost equal to the previous level, with exception of this part:&lt;/p&gt;
+&lt;p&gt;The source code is almost equal to the previous level, with the exception of this part:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
 &lt;span class="cm"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
@@ -614,7 +614,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We can't just modify the query to return a record because it won't accept &lt;strong&gt;"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;However, the additional information about the table's proprieties are enough for us! We are going to brute force it!&lt;/p&gt;
+&lt;p&gt;However, additional information about the table's proprieties is enough for us! We are going to brute force it!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
 &lt;p&gt;If we check the existence of the users &lt;em&gt;nata15&lt;/em&gt; or &lt;em&gt;natas17&lt;/em&gt;, we get:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -802,7 +802,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;p&gt;What other ways we can have binary indicator?&lt;/p&gt;
 &lt;p&gt;We can play with time!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
-&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an inject command in the end of our former exploits:&lt;/p&gt;
+&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an injected command at the end of our former exploits:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SUBSTRING&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="n"&gt;LIKE&lt;/span&gt; &lt;span class="n"&gt;BINARY&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SLEEP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -934,7 +934,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;So, in resume, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
+&lt;p&gt;So, in summary, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
 &lt;p&gt;If the SESSION_ID is the admin session ID, the password for the next is shown.&lt;/p&gt;
 &lt;p&gt;After that, it calls PHP's &lt;a href="http://php.net/manual/en/function.session-start.php"&gt;session_starts()&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The session ID is given by the variable &lt;em&gt;PHPSESSID&lt;/em&gt;, and that's what we are going to brute force to get our password.&lt;/p&gt;
@@ -1041,7 +1041,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And we get our password in the 501th attempt. Awesome.&lt;/p&gt;
+&lt;p&gt;And we get our password in the 501st attempt. Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;That's it. The &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits"&gt;source code is available&lt;/a&gt; as usual.&lt;/p&gt;
 &lt;p&gt;Hack all the things!&lt;/p&gt;

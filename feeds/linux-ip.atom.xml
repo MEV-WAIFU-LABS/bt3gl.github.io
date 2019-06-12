@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/linux-ip.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-06-21T02:00:00-04:00</updated><entry><title>Getting your Public IP from the Terminal</title><link href="http://bt3gl.github.io/getting-your-public-ip-from-the-terminal.html" rel="alternate"></link><updated>2014-06-21T02:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-06-21:getting-your-public-ip-from-the-terminal.html</id><summary type="html">&lt;p&gt;Public IPv4 addresses are assigned by &lt;a href="https://en.wikipedia.org/?title=InterNIC"&gt;NIC&lt;/a&gt; and belongs to &lt;a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing"&gt;CIDR blocks&lt;/a&gt; that are unique to the entire internet. &lt;/p&gt;
-&lt;p&gt;In this little post I show many ways to find your public IP address form the Linux terminal. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/linux-ip.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-06-21T02:00:00-04:00</updated><entry><title>Getting your Public IP from the Terminal</title><link href="http://bt3gl.github.io/getting-your-public-ip-from-the-terminal.html" rel="alternate"></link><updated>2014-06-21T02:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-06-21:getting-your-public-ip-from-the-terminal.html</id><summary type="html">&lt;p&gt;Public IPv4 addresses are assigned by &lt;a href="https://en.wikipedia.org/?title=InterNIC"&gt;NIC&lt;/a&gt; and belong to &lt;a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing"&gt;CIDR blocks&lt;/a&gt; that are unique to the entire internet. &lt;/p&gt;
+&lt;p&gt;In this little post, I show many ways to find your public IP address form the Linux terminal. &lt;/p&gt;
 &lt;h3&gt;Using Curl&lt;/h3&gt;
 &lt;p&gt;You can simply curl it from IP websites:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; curl ifconfig.me
@@ -14,7 +14,7 @@
 
 &lt;p&gt;Other destination that also works: ipinfo.io/ip. Curling ipinfo.io is also great to get information about the Geographical Location of a provided IP address.&lt;/p&gt;
 &lt;h3&gt;Using wget&lt;/h3&gt;
-&lt;p&gt;Similary to curl:&lt;/p&gt;
+&lt;p&gt;Similarly to curl:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget http://observebox.com/ip -O - -q ; &lt;span class="nb"&gt;echo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/unicode.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-10T04:20:00-05:00</updated><entry><title>The Ultimate Linux Guide for Hackers ;)</title><link href="http://bt3gl.github.io/the-ultimate-linux-guide-for-hackers.html" rel="alternate"></link><updated>2014-11-10T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-10:the-ultimate-linux-guide-for-hackers.html</id><summary type="html">&lt;p&gt;Being a Linux user is, above all, a &lt;em&gt;life style&lt;/em&gt;. Interestingly, more and more people have been joining this community, keeping it dynamic and organic.&lt;/p&gt;
-&lt;p&gt;Linux has been in my life since my high school  years  and  I'm still constantly inspired by the fact that it has not lost any of its appeal. There is always something new or deeper to be learned. Linux is &lt;em&gt;the&lt;/em&gt; tool for those who choose to spend their excess of curiosity flying around bytes.&lt;/p&gt;
+&lt;p&gt;Linux has been in my life since my high school years and  I'm still constantly inspired by the fact that it has not lost any of its appeals. There is always something new or deeper to be learned. Linux is &lt;em&gt;the&lt;/em&gt; tool for those who choose to spend their excess of curiosity flying around bytes.&lt;/p&gt;
 &lt;p&gt;With the novice in mind, this blog post is my introduction to the Linux machinery, containing some of my favorite tricks. I hope you enjoy this exciting adventure of taking control of &lt;em&gt;The Machine&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer I&lt;/strong&gt;: Keep in mind that the truly way for mastering Linux is making the &lt;strong&gt;man&lt;/strong&gt; and &lt;strong&gt;help&lt;/strong&gt; pages in the command line your best friends:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;man&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;COMMAND&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -141,7 +141,7 @@
 &lt;p&gt;&lt;strong&gt;usr/src&lt;/strong&gt;: source code, usually for the Linux kernel.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;usr/local&lt;/strong&gt;: data and programs specific to the local machine,  things that apply to computer rather than things provided by the operating system go.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;usr/local&lt;/strong&gt;: data and programs specific to the local machine,  things that apply to a computer rather than things provided by the operating system go.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -157,13 +157,13 @@
 &lt;p&gt;There exist files provided by the operating system that do not represent any physical device, but provide a way to access special features:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;/dev/null&lt;/strong&gt; ignores everything written to it. It's convenient for discarding unwanted output.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/dev/null&lt;/strong&gt; ignores everything written to it. It's convenient for discarding the unwanted output.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;/dev/zero&lt;/strong&gt; contains an &lt;em&gt;infinite&lt;/em&gt; number of zero bytes, which can be useful for creating files of a specified length.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;/dev/urandom&lt;/strong&gt; and &lt;strong&gt;/dev/random&lt;/strong&gt; contain infinite stream of operating-system-generated random numbers, available to any application that wants to read them. The difference between them is that the second guarantees strong randomness (it will wait until enough is available) and so it should used for encryption, while the former can be used for games.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/dev/urandom&lt;/strong&gt; and &lt;strong&gt;/dev/random&lt;/strong&gt; contain an infinite stream of operating-system-generated random numbers, available to any application that wants to read them. The difference between them is that the second guarantees strong randomness (it will wait until enough is available) and so it should be used for encryption, while the former can be used for games.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -198,7 +198,7 @@
 
 
 &lt;ul&gt;
-&lt;li&gt;For instance, we might be interested on &lt;strong&gt;checking whether you are using the latest Kernel&lt;/strong&gt;. You can do this by checking whether the outputs of the following commands match:&lt;/li&gt;
+&lt;li&gt;For instance, we might be interested in &lt;strong&gt;checking whether you are using the latest Kernel&lt;/strong&gt;. You can do this by checking whether the outputs of the following commands match:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;qa&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;V&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;uname&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;
@@ -216,7 +216,7 @@
 &lt;h2&gt;Processes&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;A running program is called &lt;strong&gt;process&lt;/strong&gt;. Each process has a &lt;strong&gt;owner&lt;/strong&gt; (in the same sense as when we talk about file permissions below).&lt;/p&gt;
+&lt;p&gt;A running program is called &lt;strong&gt;process&lt;/strong&gt;. Each process has an &lt;strong&gt;owner&lt;/strong&gt; (in the same sense as when we talk about file permissions below).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;You can find out which programs are running with the &lt;strong&gt;ps&lt;/strong&gt; command. This also gives the &lt;strong&gt;process ID&lt;/strong&gt; or &lt;strong&gt;PID&lt;/strong&gt;, which is a unique long-term identity for the process (different copies of a given program will have separate PIDs).&lt;/p&gt;
@@ -335,7 +335,7 @@
 
 &lt;h3&gt;nice and renice&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Finally, you can change processes priority using &lt;code&gt;nice&lt;/code&gt; (runs a program with modified scheduling priority) and &lt;code&gt;renice&lt;/code&gt;(alter priority of running processes).&lt;/li&gt;
+&lt;li&gt;Finally, you can change processes priority using &lt;code&gt;nice&lt;/code&gt; (runs a program with modified scheduling priority) and &lt;code&gt;renice&lt;/code&gt;(alter the priority of running processes).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Environment Variables&lt;/h2&gt;
@@ -371,7 +371,7 @@
 
 
 &lt;ul&gt;
-&lt;li&gt;The &lt;strong&gt;PATH&lt;/strong&gt; (search path) is the list of directories that the shell look in to try to find a particular command. For example, when you type &lt;code&gt;ls&lt;/code&gt; it will look at &lt;code&gt;/bin/ls&lt;/code&gt;. The path is stored in the variable &lt;strong&gt;PATH&lt;/strong&gt;, which is a list of directory names separated by colons and it's coded inside &lt;strong&gt;./bashrc&lt;/strong&gt;. To export a new path you can do:&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;PATH&lt;/strong&gt; (search path) is the list of directories that the shell looks in to try to find a particular command. For example, when you type &lt;code&gt;ls&lt;/code&gt; it will look at &lt;code&gt;/bin/ls&lt;/code&gt;. The path is stored in the variable &lt;strong&gt;PATH&lt;/strong&gt;, which is a list of directory names separated by colons and it's coded inside &lt;strong&gt;./bashrc&lt;/strong&gt;. To export a new path you can do:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;export&lt;/span&gt; &lt;span class="n"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;/&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -662,14 +662,14 @@
 
 &lt;h3&gt;locate&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;To find files by name (using database):&lt;/li&gt;
+&lt;li&gt;To find files by name (using a database):&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;locate&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
-&lt;li&gt;To test if a a file exist:&lt;/li&gt;
+&lt;li&gt;To test if a a file exists:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;test&lt;/span&gt; &lt;span class="na"&gt;-f&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -760,7 +760,7 @@
 
 &lt;h3&gt;cut&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;cut&lt;/strong&gt; selects particular fields (columns) from a structured text files (or particular characters from each line of any text file). The flag &lt;strong&gt;-d&lt;/strong&gt; specifies what delimiter should be used to divide columns (default is tab), the flag &lt;strong&gt;-f&lt;/strong&gt; specifies which field or fields to print and in what order:&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;cut&lt;/strong&gt; selects particular fields (columns) from structured text files (or particular characters from each line of any text file). The flag &lt;strong&gt;-d&lt;/strong&gt; specifies what delimiter should be used to divide columns (default is tab), the flag &lt;strong&gt;-f&lt;/strong&gt; specifies which field or fields to print and in what order:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;cut&lt;/span&gt; &lt;span class="na"&gt;-d&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class="na"&gt;-f&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;FILENAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -785,7 +785,7 @@
 &lt;h2&gt;Creating Files and Directories&lt;/h2&gt;
 &lt;h3&gt;mkdir&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;mkdir&lt;/strong&gt; creates a directory. An useful flag is &lt;strong&gt;-p&lt;/strong&gt; which creates  the entire path of directories (in case they don't exist):&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mkdir&lt;/strong&gt; creates a directory. A useful flag is &lt;strong&gt;-p&lt;/strong&gt; which creates  the entire path of directories (in case they don't exist):&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;mkdir&lt;/span&gt; &lt;span class="na"&gt;-p&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;DIRNAME&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -987,7 +987,7 @@
 
 &lt;h3&gt;tcptrack&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;tcptrack&lt;/strong&gt; displays information about TCP connections it sees on a network and display bandwidth usage on some interface by a host.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tcptrack&lt;/strong&gt; displays information about TCP connections it sees on a network and displays bandwidth usage on some interface by a host.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;tcptrack&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="n"&gt;eth0&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1153,18 +1153,18 @@
 &lt;hr /&gt;
 &lt;h2&gt;Awk and Sed&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;awk&lt;/strong&gt;  is a pattern scanning tool while &lt;strong&gt;sed&lt;/strong&gt; is a stream editor for filtering and transform text. While these tools are extremely powerful, if you have knowledge of any very high level languages such as Python or Ruby, you  don't necessary need to learn them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;awk&lt;/strong&gt;  is a pattern scanning tool while &lt;strong&gt;sed&lt;/strong&gt; is a stream editor for filtering and transform text. While these tools are extremely powerful, if you have knowledge of any very high level languages such as Python or Ruby, you  don't necessarily need to learn them.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;sed&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Let's say we want  to replace every occurrence of &lt;em&gt;mysql&lt;/em&gt; and with MySQL (Linux is case sensitive), and then save the new file to &lt;FILENAME&gt;. We can write an one-line command that says  "search for the word mysql and replace it with the word MySQL":&lt;/li&gt;
+&lt;li&gt;Let's say we want  to replace every occurrence of &lt;em&gt;mysql&lt;/em&gt; and with MySQL (Linux is case sensitive), and then save the new file to &lt;FILENAME&gt;. We can write a one-line command that says  "search for the word mysql and replace it with the word MySQL":&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;sed&lt;/span&gt; &lt;span class="nb"&gt;s&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;mysql&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;MySQL&lt;/span&gt;&lt;span class="p"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;g&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILEORIGIN&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;FILEDEST&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;ul&gt;
-&lt;li&gt;To replace any instances of period followed by any number of spaces with a period followed by a single space in every file in this directory:&lt;/li&gt;
+&lt;li&gt;To replace any instances of a period followed by any number of spaces with a period followed by a single space in every file in this directory:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sed&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="err"&gt;*/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1254,7 +1254,7 @@
 &lt;p&gt;Historically, &lt;strong&gt;tar&lt;/strong&gt; stood for tape archive and was used to archive files to a magnetic tape. Today &lt;strong&gt;tar&lt;/strong&gt; is used to allow you to create or extract files from an archive file, often called a &lt;strong&gt;tarball&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Additionally you can add &lt;em&gt;file compression&lt;/em&gt;, which works by finding redundancies in a file (like repeated strings) and creating more concise representation of the file's content. The most common compression programs are &lt;strong&gt;gzip&lt;/strong&gt; and &lt;strong&gt;bzip2&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Additionally you can add &lt;em&gt;file compression&lt;/em&gt;, which works by finding redundancies in a file (like repeated strings) and creating a more concise representation of the file's content. The most common compression programs are &lt;strong&gt;gzip&lt;/strong&gt; and &lt;strong&gt;bzip2&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;When issuing &lt;strong&gt;tar&lt;/strong&gt;, the flag &lt;strong&gt;f&lt;/strong&gt; must be the last option. No hyphen is needed. You can add &lt;strong&gt;v&lt;/strong&gt; as verbose.&lt;/p&gt;
@@ -1346,7 +1346,7 @@
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;For example, if one runs &lt;code&gt;$ dd if=/dev/zero of=trash &amp;amp; sleep 10; rm trash&lt;/code&gt;, the available disk space on the system will continue to go downward (since more  contents gets written into the file by which &lt;strong&gt;dd&lt;/strong&gt; is sending its output).&lt;/p&gt;
+&lt;p&gt;For example, if one runs &lt;code&gt;$ dd if=/dev/zero of=trash &amp;amp; sleep 10; rm trash&lt;/code&gt;, the available disk space on the system will continue to go downward (since more  contents get written into the file by which &lt;strong&gt;dd&lt;/strong&gt; is sending its output).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;However, the file can't be seen everywhere in the system! Only  killing the &lt;strong&gt;dd&lt;/strong&gt; process will cause this space to be reclaimed.&lt;/p&gt;
@@ -1412,7 +1412,7 @@
 &lt;p&gt;Unlike text files on other operating systems, Linux files do not end with a special end-of-file character.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Linux text files were traditionally always interpreted as &lt;strong&gt;ASCII&lt;/strong&gt;. In ASCII, each character is a single byte, the ASCII standard as such defines exactly &lt;strong&gt;128 characters&lt;/strong&gt; from &lt;strong&gt;ASCII 0 to ASCII 127&lt;/strong&gt;. Some of them are non-printable (such as newline). The printable starts at &lt;strong&gt;32&lt;/strong&gt;. In that case, &lt;strong&gt;ISO 8859&lt;/strong&gt; standards were  extensions to ASCII where the character positions &lt;strong&gt;128 to 255&lt;/strong&gt; are given foreign-language interpretation.&lt;/p&gt;
+&lt;p&gt;Linux text files were traditionally always interpreted as &lt;strong&gt;ASCII&lt;/strong&gt;. In ASCII, each character is a single byte, the ASCII standard as such defines exactly &lt;strong&gt;128 characters&lt;/strong&gt; from &lt;strong&gt;ASCII 0 to ASCII 127&lt;/strong&gt;. Some of them are non-printable (such as a newline). The printable starts at &lt;strong&gt;32&lt;/strong&gt;. In that case, &lt;strong&gt;ISO 8859&lt;/strong&gt; standards were  extensions to ASCII where the character positions &lt;strong&gt;128 to 255&lt;/strong&gt; are given a foreign-language interpretation.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Nowadays, Linux files are most often interpreted as &lt;strong&gt;UTF-8&lt;/strong&gt;, which is an encoding of &lt;strong&gt;Unicode&lt;/strong&gt;, a character set standard able to represent a very large number of languages.&lt;/p&gt;
@@ -1477,7 +1477,7 @@ ZEfgQvpY4ixePt
 &lt;hr /&gt;
 &lt;h2&gt;Most Common words plus Frequency&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;We can use the commands we learned to build a script that print the most common words plus their frequency:&lt;/li&gt;
+&lt;li&gt;We can use the commands we learned to build a script that prints the most common words plus their frequency:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;tr -cs A-Za-z &amp;#39;\n&amp;#39; |
 tr A-Z a-z |

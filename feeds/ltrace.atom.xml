@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/ltrace.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-09T01:30:00-04:00</updated><entry><title>Cryptography War: Beating Krypton</title><link href="http://bt3gl.github.io/cryptography-war-beating-krypton.html" rel="alternate"></link><updated>2014-10-09T01:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-09:cryptography-war-beating-krypton.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/nZqQILK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;Continuing to talk about&lt;/a&gt; the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I'll briefly go through &lt;a href="http://overthewire.org/wargames/krypton/"&gt;Krypton&lt;/a&gt;, the cryptography episode.&lt;/p&gt;
 &lt;p&gt;The problems are very straightforward and very similar to those from the last &lt;a href="https://ctf.isis.poly.edu/"&gt;CSAW CTF&lt;/a&gt; (&lt;a href="http://bt3gl.github.io/csaw-ctf-2014-cryptography-200.html"&gt;see my post here&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: if you haven't played WarGames but you are planing to, PLEASE DON'T READY ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: if you haven't played WarGames but you are planning to, PLEASE DON'T READ ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.&lt;/p&gt;
 &lt;h2&gt;Level 0: Base64 Transformation&lt;/h2&gt;
 &lt;p&gt;This level starts with:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -10,7 +10,7 @@
     S1JZUFRPTklTR1JFQVQ=
 Use this password to log in to krypton.labs.overthewire.org with username krypton1 using SSH. You can the files for other levels in /krypton/.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Base64"&gt;Base64&lt;/a&gt; is just a way to represent binary data in ASCII, by translating it into a radix-64. Linux provides a built-in Base64 enconder/decoder tool, so all we need to do is:&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Base64"&gt;Base64&lt;/a&gt; is just a way to represent binary data in ASCII, by translating it into a radix-64. Linux provides a built-in Base64 encoder/decoder tool, so all we need to do is:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;base64&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;KRYPTON0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -19,7 +19,7 @@ Use this password to log in to krypton.labs.overthewire.org with username krypto
 &lt;h2&gt;Level 1: Classic Caesar Cypher&lt;/h2&gt;
 &lt;p&gt;The second level starts with:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The password for level 2 is in the file ‘krypton2’. It is ‘encrypted’ using a simple rotation. It is also in non standard ciphertext format. When using alpha characters for cipher text it is normal to group the letters into 5 letter clusters, regardless of word boundaries. This helps obfuscate any patterns. This file has kept the plain text word boundaries and carried them to the cipher text. Enjoy!&lt;/p&gt;
+&lt;p&gt;The password for level 2 is in the file ‘krypton2’. It is ‘encrypted’ using a simple rotation. It is also in non-standard ciphertext format. When using alpha characters for ciphertext it is normal to group the letters into 5 letter clusters, regardless of word boundaries. This helps obfuscate any patterns. This file has kept the plain text word boundaries and carried them to the ciphertext. Enjoy!&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This is the classic &lt;a href="http://en.wikipedia.org/wiki/Caesar_cipher"&gt;Caesar Cypher&lt;/a&gt; (they really love this thing :).&lt;/p&gt;
 &lt;p&gt;In the Caesar’s cipher, the letters in the plaintext are shifted by a fixed number of elements down the alphabet. For example, if the shift is 3, A becomes D , B becomes E , and so on. Once we run out of letters, we circle back to A.&lt;/p&gt;
@@ -43,7 +43,7 @@ A Caesar cipher shifts the alphabet by a set number.  For example:&lt;/p&gt;
 &lt;p&gt;plain:  a b c d e f g h i j k ...
 cipher: G H I J K L M N O P Q ...&lt;/p&gt;
 &lt;p&gt;In this example, the letter 'a' in plaintext is replaced by a 'G' in the ciphertext so, for example, the plaintext 'bad' becomes 'HGJ' in ciphertext.&lt;/p&gt;
-&lt;p&gt;The password for level 3 is in the file krypton3.  It is in 5 letter group ciphertext.  It is encrypted with a Caesar Cipher.  Without any  further information, this cipher text may be difficult to break.  You do not have direct access to the key, however you do have access to a program  that will encrypt anything you wish to give it using the key.  If you think logically, this is completely easy.&lt;/p&gt;
+&lt;p&gt;The password for level 3 is in the file krypton3.  It is in 5 letter group ciphertext.  It is encrypted with a Caesar Cipher.  Without any  further information, this ciphertext may be difficult to break.  You do not have direct access to the key, however you do have access to a program  that will encrypt anything you wish to give it using the key.  If you think logically, this is completely easy.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;First, we make a file filled with the alphabet, so we can test  the binary:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ln -s /krypton/krypton2/keyfile.dat keyfile.dat
@@ -163,7 +163,7 @@ So, we get a ciphertext of:&lt;/p&gt;
 &lt;p&gt;VFZFK SOPKS ELTUL VGUCH KR
 This level is a Vigenère Cipher. You have intercepted two longer, english language messages. You also have a key piece of information. You know the key length!&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;This is a classical case of &lt;a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher"&gt;Vigenere cipher&lt;/a&gt;, which  is a variation on the Caesar’s cipher. In this case, one uses multiple shift amounts according to a keyword.&lt;/p&gt;
+&lt;p&gt;This is a classic case of &lt;a href="http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher"&gt;Vigenere cipher&lt;/a&gt;, which  is a variation on the Caesar’s cipher. In this case, one uses multiple shift amounts according to a keyword.&lt;/p&gt;
 &lt;p&gt;To solve this we use the &lt;a href="http://smurfoncrack.com/pygenere/pygenere.py"&gt;pygenere&lt;/a&gt; library in Python. First we need to find the key:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;
 &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;pygenere&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Vigenere&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;VigCrack&lt;/span&gt;
@@ -228,7 +228,7 @@ ETIREDANDLAYDOWNUPONTHEGRASSANDFELLASLEEPWITHTHEWOODMANANDTHESCARECROWKEEPINGWAT
 &lt;h2&gt;Level 5: Vigenere Cipher II&lt;/h2&gt;
 &lt;p&gt;The sixth level starts with:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Frequency analysis can break a known key length as well.  Lets try one last polyalphabetic cipher, but this time the key length is unknown.&lt;/p&gt;
+&lt;p&gt;Frequency analysis can break a known key length as well.  Let's try one last polyalphabetic cipher, but this time the key length is unknown.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This is another example of Vigenere Cipher. Using the same method as before we first get the key and then the password.&lt;/p&gt;
 &lt;hr /&gt;

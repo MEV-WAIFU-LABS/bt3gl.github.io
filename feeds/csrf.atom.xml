@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/csrf.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-31T06:30:00-04:00</updated><entry><title>A List of Common Web Vulnerabilities</title><link href="http://bt3gl.github.io/a-list-of-common-web-vulnerabilities.html" rel="alternate"></link><updated>2014-10-31T06:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-31:a-list-of-common-web-vulnerabilities.html</id><summary type="html">&lt;p&gt;Although nomenclatures don't help  much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/csrf.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-10-31T06:30:00-04:00</updated><entry><title>A List of Common Web Vulnerabilities</title><link href="http://bt3gl.github.io/a-list-of-common-web-vulnerabilities.html" rel="alternate"></link><updated>2014-10-31T06:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-31:a-list-of-common-web-vulnerabilities.html</id><summary type="html">&lt;p&gt;Although nomenclatures don't help much when you are facing a security problem, I am keeping this list for a systematic organization. It is constantly been updated.&lt;/p&gt;
 &lt;p&gt;In addition to this list, you can check some specific web exploration older posts: &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Exploiting the web in 20 lessons&lt;/a&gt; and &lt;a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html"&gt;D-Camp CTF 2014&lt;/a&gt;.&lt;/p&gt;
 &lt;h1&gt;Vulnerabilities to Web Applications&lt;/h1&gt;
 &lt;h2&gt;Cross-site Scripting (XSS)&lt;/h2&gt;
-&lt;p&gt;XSS is caused by &lt;strong&gt;insufficient input validation or output escaping&lt;/strong&gt;. This can allow an attacker to insert HTML markup or scripts in a vulnerable website. The injected  code will have plenty of access in this site, and in many cases, to the HTTP cookies stored by the client.&lt;/p&gt;
+&lt;p&gt;XSS is caused by &lt;strong&gt;insufficient input validation or output escaping&lt;/strong&gt;. This can allow an attacker to insert HTML markup or scripts in a vulnerable website. The injected code will have plenty of access in this site, and in many cases, to the HTTP cookies stored by the client.&lt;/p&gt;
 &lt;p&gt;HTML has five characters that are reserved:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -16,12 +16,12 @@
 &lt;p&gt;and &lt;strong&gt;ampersand&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The ampersand should never appear in most HTML sections. Both angle brackets should not be used inside a tag, unless  properly quoted. Quote characters inside a tag can also be harmless in text.&lt;/p&gt;
+&lt;p&gt;The ampersand should never appear in most HTML sections. Both angle brackets should not be used inside a tag, unless properly quoted. Quote characters inside a tag can also be harmless in text.&lt;/p&gt;
 &lt;p&gt;To allow these characters to appear in problematic locations, an encoding based in an ampersand-prefixed and a semicolon-terminated scheme is used: the &lt;a href="http://www.w3schools.com/html/html_entities.asp"&gt;Entity Encoding&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Non-Persistent Attack:&lt;/h3&gt;
 &lt;p&gt;XSS non-persistent attacks consist on getting users to click a link with attacker's script. A typical scenario is the following:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;The target website perform  query searches that are not sanitized. For example, the query could accept scripts on it. A simple example to check this vulnerability is by verifying whether the alert box with the message &lt;strong&gt;Pwnd&lt;/strong&gt; is displayed:&lt;/li&gt;
+&lt;li&gt;The target website perform query searches that are not sanitized. For example, the query could accept scripts on it. A simple example to check this vulnerability is by verifying whether the alert box with the message &lt;strong&gt;Pwnd&lt;/strong&gt; is displayed:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//website.org?q=&amp;lt;script%20type=&amp;#39;text/javascript&amp;#39;&amp;gt;alert(&amp;#39;Pwnd!&amp;#39;);&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -50,7 +50,7 @@
 &lt;p&gt;When anyone loads the page with that post, the script runs, and the attacker is able to hijack the victim's section.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Additionally, in &lt;em&gt;password managers&lt;/em&gt;, there is a risk of  amplification of XSS bugs. In the web applications that use &lt;em&gt;&lt;a href="https://www.owasp.org/index.php/HttpOnly"&gt;httponly&lt;/a&gt;&lt;/em&gt; cookies, a successful exploitation of an XSS flaw may give the attacker a transient access to the user's account (and password).&lt;/p&gt;
+&lt;p&gt;Additionally, in &lt;em&gt;password managers&lt;/em&gt;, there is a risk of amplification of XSS bugs. In the web applications that use &lt;em&gt;&lt;a href="https://www.owasp.org/index.php/HttpOnly"&gt;httponly&lt;/a&gt;&lt;/em&gt; cookies, a successful exploitation of an XSS flaw may give the attacker a transient access to the user's account (and password).&lt;/p&gt;
 &lt;h3&gt;Attempts of mitigation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -75,10 +75,10 @@
 &lt;hr /&gt;
 &lt;h2&gt;Cross Script Inclusion (XSSI)&lt;/h2&gt;
 &lt;p&gt;XSSI comes with the failure to secure sensitive JSON-like responses against being loaded on third-party sites via &lt;code&gt;&amp;lt;script src=..&amp;gt;&lt;/code&gt;, and leaking user-specific information in the response. It a risk whenever ambient authority credentials (such as cookies) are used by the server to generate user-specific JavaScript code.&lt;/p&gt;
-&lt;p&gt;For instance, JSON is a JavaScript syntax structure  to keep in-place object serialization.  The curly bracket &lt;strong&gt;{&lt;/strong&gt; is assumed to be the beginning of the object. Overloading curly  brackets means that JSON blocks will not be recognized properly in standalone statements.&lt;/p&gt;
+&lt;p&gt;For instance, JSON is a JavaScript syntax structure to keep in-place object serialization.  The curly bracket &lt;strong&gt;{&lt;/strong&gt; is assumed to be the beginning of the object. Overloading curly brackets means that JSON blocks will not be recognized properly in standalone statements.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Cross-site Request Forgery (CSRF, XSRF)&lt;/h2&gt;
-&lt;p&gt;CSRF allows attackers to execute actions using the credentials of another user without that user's knowledge or consent. It is  the failure to verify that a particular state-changing HTTP request received by the &lt;strong&gt;server-side&lt;/strong&gt; portion of the application was initiated from the expected &lt;strong&gt;client-side&lt;/strong&gt; origin. Any third-party website loaded in the browser can perform actions in behalf of the victim.&lt;/p&gt;
+&lt;p&gt;CSRF allows attackers to execute actions using the credentials of another user without that user's knowledge or consent. It is the failure to verify that a particular state-changing HTTP request received by the &lt;strong&gt;server-side&lt;/strong&gt; portion of the application was initiated from the expected &lt;strong&gt;client-side&lt;/strong&gt; origin. Any third-party website loaded in the browser can perform actions in behalf of the victim.&lt;/p&gt;
 &lt;p&gt;On cross-domain navigation, the browser includes any ambient credentials. To the server, a request originating from its own client-side code will appear as the same as the request from a rogue third-party site and  it might be granted the same privilege.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
 &lt;ul&gt;
@@ -136,14 +136,14 @@
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Cookie Forcing/Injection&lt;/h2&gt;
-&lt;p&gt;Possibility of blindly injecting HTTP cookies into the context of an otherwise impenetrable web application due to issues in how the mechanism is designed and implemented in  browsers. There are special concern to HTTPS applications.&lt;/p&gt;
+&lt;p&gt;Possibility of blindly injecting HTTP cookies into the context of an otherwise impenetrable web application due to issues in how the mechanism is designed and implemented in browsers. There are special concern to HTTPS applications.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cookie stuffing: deleting cookies belonging to another applications by overflowing the cookie jar.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Denial-of-Service (DoS)&lt;/h2&gt;
-&lt;p&gt;Any opportunity of the attacker to bring down a browser or server, or make the use of a targeted application  more difficult.&lt;/p&gt;
+&lt;p&gt;Any opportunity of the attacker to bring down a browser or server, or make the use of a targeted application more difficult.&lt;/p&gt;
 &lt;h3&gt;DoS and amplification attacks&lt;/h3&gt;
 &lt;p&gt;DNS resolvers are attractive targets to attackers who exploit the resolvers' large response-to-request size ratio to gain additional free bandwidth. Resolvers that support EDNS0 (Extension Mechanisms for DNS) are especially vulnerable because of the substantially larger packet size that they can return.&lt;/p&gt;
 &lt;h3&gt;Examples of exploitation:&lt;/h3&gt;
@@ -237,10 +237,10 @@
 &lt;p&gt;If used without a qualifier or prefixed with a &lt;em&gt;local&lt;/em&gt; (LFI), the term is synonymous to read-related directory traversal. Remote file inclusion (RFI) is an alternative way to exploit file-inclusion vulnerabilities by specifying a URL rather than a valid file path. In some languages, a common API opens local files and fetches remote URLS, which might supplies the ability of retrieving attacker's files.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Format String Vulnerability&lt;/h2&gt;
-&lt;p&gt;Several libraries accept templates (format strings) followed by a set of parameters that the function is expected to insert into the template at predefined locations. For example,  C has functions such as &lt;em&gt;printf&lt;/em&gt;, &lt;em&gt;syslog&lt;/em&gt;, etc. The vulnerability is caused by permitting attackers to supply the template to one of these functions. This can lead to  data leaks and code execution.&lt;/p&gt;
+&lt;p&gt;Several libraries accept templates (format strings) followed by a set of parameters that the function is expected to insert into the template at predefined locations. For example,  C has functions such as &lt;em&gt;printf&lt;/em&gt;, &lt;em&gt;syslog&lt;/em&gt;, etc. The vulnerability is caused by permitting attackers to supply the template to one of these functions. This can lead to data leaks and code execution.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Integer Overflow&lt;/h2&gt;
-&lt;p&gt;Vulnerability specific to languages with no range checking. The flaw is caused by the developer failing to detect that an integer exceeded the maximum possible value and rolled back to zero, to a large negative integer, or to some hardware-specific  result.&lt;/p&gt;
+&lt;p&gt;Vulnerability specific to languages with no range checking. The flaw is caused by the developer failing to detect that an integer exceeded the maximum possible value and rolled back to zero, to a large negative integer, or to some hardware-specific result.&lt;/p&gt;
 &lt;p&gt;Integer underflow is the opposite effect: crossing the minimum value and rolling over to a very large positive integer.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Pointer Management Vulnerabilities&lt;/h2&gt;

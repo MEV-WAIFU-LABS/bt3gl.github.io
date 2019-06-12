@@ -28,11 +28,11 @@
 &lt;p&gt;In this single command, Skaffold:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;builds container images (locally or remotely),&lt;/li&gt;
-&lt;li&gt;pushes container images if target is not local cluster,&lt;/li&gt;
+&lt;li&gt;pushes container images if the target is not local cluster,&lt;/li&gt;
 &lt;li&gt;updates Kubernetes manifests with image tags,&lt;/li&gt;
 &lt;li&gt;deploys your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
 &lt;li&gt;streams logs from the pods,&lt;/li&gt;
-&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and  then repeat 1-5.&lt;/li&gt;
+&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and then repeat 1-5.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Cool, right? :)&lt;/p&gt;
 &lt;hr /&gt;

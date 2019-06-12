@@ -108,7 +108,7 @@
                 <p><img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px" /></p>
 <p><em>Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.</em></p>
 <p>Hi Everyone!</p>
-<p>In this post, I  show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>, a framework that provides you high level classes for <strong>tracking</strong>, <strong>scene understanding</strong> and <strong>rendering</strong>. More specifically, ARKit is a session based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.</p>
+<p>In this post, I  show how neat is to write an AR iOS application with <a href="https://developer.apple.com/arkit/">ARKit</a>, a framework that provides you high-level classes for <strong>tracking</strong>, <strong>scene understanding</strong> and <strong>rendering</strong>. More specifically, ARKit is a session based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.</p>
 <p>This app runs an ARKit world tracking session with content displayed in a <a href="https://developer.apple.com/documentation/spriteKit">SpriteKit</a> 2D view. Every session has a scene that will render the virtual objects in the real world, accessed by means of the iOS device sensors.</p>
 <p>But, before everything, I recommend you to watch <a href="https://developer.apple.com/videos/play/wwdc2017/602/">WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'</a>. It gives a nice overview of ARKit's capabilities.</p>
 <h2>The source code for AR_PostMalone the following structure:</h2>
@@ -128,7 +128,7 @@
 <li><code>Main.storyboard</code>.</li>
 </ul>
 <h3><code>Scene.swift</code></h3>
-<p>Anchors are 3D points that correspond real world features that ARKit detects. Anchors are created in this class, together with the Sprite scene (Scene.sks). The class <code>Scene</code> controls how the App is operating within the scenes. Rendering brings tracking and scene understanding together with your content.</p>
+<p>Anchors are 3D points that correspond real-world features that ARKit detects. Anchors are created in this class, together with the Sprite scene (Scene.sks). The class <code>Scene</code> controls how the App is operating within the scenes. Rendering brings tracking and scene understanding together with your content.</p>
 <p>For our App, we are:</p>
 <ul>
 <li>Defining the method <code>touchesBegan</code>, where we define what happens when we click the scene.</li>
@@ -138,7 +138,7 @@
 <li>An ARAnchor uses a 4×4 matrix represents the combined position, rotation or orientation, and scale of an object in three-dimensional space (as in <code>var translation = matrix_identity_float4x4</code>).</li>
 </ul>
 <h3><code>ViewController.swift</code></h3>
-<p>This view is managed by the class ViewController, which inherents from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
+<p>This view is managed by the class ViewController, which inherits from <code>ARSKViewDelegate</code> so that we can create a <code>sceneView</code> variable. This class has methods for:</p>
 <ul>
 <li>
 <p>Views</p>
@@ -172,7 +172,7 @@
 <p><strong>Field of view</strong>: measured in degrees, is the extent of the observable world that is seen at any given moment (humans have a FOV of around 180°, but most HMDs offer between 50 and 110°).</p>
 </li>
 <li>
-<p><strong>Latency</strong>: In VR, a 20 millisecond latency is considered low and acceptable for a comfortable experience.</p>
+<p><strong>Latency</strong>: In VR, a 20-millisecond latency is considered low and acceptable for a comfortable experience.</p>
 </li>
 <li>
 <p><strong>Haptics</strong>: recreate the sense of touch by applying forces, vibrations, or motions to the user, through feedback devices (example, vibrating game controllers).</p>

@@ -16,7 +16,7 @@
 &lt;h2&gt;4. Reduce the number of HTTP Requests&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;If your JS code is small enough, you can have it inline.&lt;/li&gt;
-&lt;li&gt;Reduce the number of third party plugins and frameworks.&lt;/li&gt;
+&lt;li&gt;Reduce the number of third-party plugins and frameworks.&lt;/li&gt;
 &lt;li&gt;Have less code.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;5. Clean up your JS and CSS&lt;/h2&gt;
@@ -32,7 +32,7 @@
 &lt;li&gt;Use responsive images in HTML with &lt;strong&gt;&lt;em&gt;srcset&lt;/em&gt;&lt;/strong&gt; and sizes attributes to serve different scaled images, based on the size of the display.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;8.  Render Blocking Resources blocking the DOM&lt;/h2&gt;
-&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provides a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
 &lt;p&gt;Here some tips for DOM resources:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -75,7 +75,7 @@
 
 
 &lt;h2&gt;14. HTTP/2&lt;/h2&gt;
-&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs a SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
+&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs an SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
 &lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
 &lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
@@ -86,7 +86,7 @@
 
 
 &lt;h2&gt;16. Enable Gzip Compression&lt;/h2&gt;
-&lt;p&gt;Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enable in the &lt;code&gt;.htaccess&lt;/code&gt; file (Apache) or &lt;code&gt;nginx.conf&lt;/code&gt; (Nginx).&lt;/p&gt;
+&lt;p&gt;Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enabled in the &lt;code&gt;.htaccess&lt;/code&gt; file (Apache) or &lt;code&gt;nginx.conf&lt;/code&gt; (Nginx).&lt;/p&gt;
 &lt;h2&gt;17. Optimizing Video&lt;/h2&gt;
 &lt;p&gt;Matching the file type to the optimal platform reduces playback issues:&lt;/p&gt;
 &lt;ul&gt;

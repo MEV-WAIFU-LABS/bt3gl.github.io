@@ -28,11 +28,11 @@
 &lt;p&gt;In this single command, Skaffold:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;builds container images (locally or remotely),&lt;/li&gt;
-&lt;li&gt;pushes container images if target is not local cluster,&lt;/li&gt;
+&lt;li&gt;pushes container images if the target is not local cluster,&lt;/li&gt;
 &lt;li&gt;updates Kubernetes manifests with image tags,&lt;/li&gt;
 &lt;li&gt;deploys your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
 &lt;li&gt;streams logs from the pods,&lt;/li&gt;
-&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and  then repeat 1-5.&lt;/li&gt;
+&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and then repeat 1-5.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Cool, right? :)&lt;/p&gt;
 &lt;hr /&gt;
@@ -252,7 +252,7 @@ Plus several cool stuff has been written in Go, such as &lt;a href="https://www.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. 
+&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise, the option is simply toggled. 
 This option is specific to one window, so it won’t change the way your other sessions or windows operate.
  When you’re done, toggle it off again by repeating the command.&lt;/p&gt;
 &lt;h2&gt;Resizing Panes&lt;/h2&gt;

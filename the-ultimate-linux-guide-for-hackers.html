@@ -101,7 +101,7 @@
       Mon 10 November 2014 </abbr>
 
 <span class="label"> Category</span>
-<a href="./category/lifeuniverseeverything.html"><i class="icon-folder-open"></i>Life,Universe,Everything</a>
+<a href="./category/life.html"><i class="icon-folder-open"></i>life</a>
 
 
 <span class="label">Tags</span>
@@ -115,7 +115,7 @@
 	<a href="./tag/stripe.html"><i class="icon-tag"></i>Stripe</a>
 </footer><!-- /.post-info -->                </div>
                 <p>Being a Linux user is, above all, a <em>life style</em>. Interestingly, more and more people have been joining this community, keeping it dynamic and organic.</p>
-<p>Linux has been in my life since my high school  years  and  I'm still constantly inspired by the fact that it has not lost any of its appeal. There is always something new or deeper to be learned. Linux is <em>the</em> tool for those who choose to spend their excess of curiosity flying around bytes.</p>
+<p>Linux has been in my life since my high school years and  I'm still constantly inspired by the fact that it has not lost any of its appeals. There is always something new or deeper to be learned. Linux is <em>the</em> tool for those who choose to spend their excess of curiosity flying around bytes.</p>
 <p>With the novice in mind, this blog post is my introduction to the Linux machinery, containing some of my favorite tricks. I hope you enjoy this exciting adventure of taking control of <em>The Machine</em>.</p>
 <p><strong>Disclaimer I</strong>: Keep in mind that the truly way for mastering Linux is making the <strong>man</strong> and <strong>help</strong> pages in the command line your best friends:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">man</span> <span class="o">&lt;</span><span class="nb">COMMAND</span><span class="o">&gt;</span>
@@ -256,7 +256,7 @@
 <p><strong>usr/src</strong>: source code, usually for the Linux kernel.</p>
 </li>
 <li>
-<p><strong>usr/local</strong>: data and programs specific to the local machine,  things that apply to computer rather than things provided by the operating system go.</p>
+<p><strong>usr/local</strong>: data and programs specific to the local machine,  things that apply to a computer rather than things provided by the operating system go.</p>
 </li>
 </ul>
 </li>
@@ -272,13 +272,13 @@
 <p>There exist files provided by the operating system that do not represent any physical device, but provide a way to access special features:</p>
 <ul>
 <li>
-<p><strong>/dev/null</strong> ignores everything written to it. It's convenient for discarding unwanted output.</p>
+<p><strong>/dev/null</strong> ignores everything written to it. It's convenient for discarding the unwanted output.</p>
 </li>
 <li>
 <p><strong>/dev/zero</strong> contains an <em>infinite</em> number of zero bytes, which can be useful for creating files of a specified length.</p>
 </li>
 <li>
-<p><strong>/dev/urandom</strong> and <strong>/dev/random</strong> contain infinite stream of operating-system-generated random numbers, available to any application that wants to read them. The difference between them is that the second guarantees strong randomness (it will wait until enough is available) and so it should used for encryption, while the former can be used for games.</p>
+<p><strong>/dev/urandom</strong> and <strong>/dev/random</strong> contain an infinite stream of operating-system-generated random numbers, available to any application that wants to read them. The difference between them is that the second guarantees strong randomness (it will wait until enough is available) and so it should be used for encryption, while the former can be used for games.</p>
 </li>
 </ul>
 </li>
@@ -313,7 +313,7 @@
 
 
 <ul>
-<li>For instance, we might be interested on <strong>checking whether you are using the latest Kernel</strong>. You can do this by checking whether the outputs of the following commands match:</li>
+<li>For instance, we might be interested in <strong>checking whether you are using the latest Kernel</strong>. You can do this by checking whether the outputs of the following commands match:</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">qa</span> <span class="n">kernel</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">V</span> <span class="o">|</span> <span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span>
 <span class="err">$</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span>
@@ -331,7 +331,7 @@
 <h2>Processes</h2>
 <ul>
 <li>
-<p>A running program is called <strong>process</strong>. Each process has a <strong>owner</strong> (in the same sense as when we talk about file permissions below).</p>
+<p>A running program is called <strong>process</strong>. Each process has an <strong>owner</strong> (in the same sense as when we talk about file permissions below).</p>
 </li>
 <li>
 <p>You can find out which programs are running with the <strong>ps</strong> command. This also gives the <strong>process ID</strong> or <strong>PID</strong>, which is a unique long-term identity for the process (different copies of a given program will have separate PIDs).</p>
@@ -450,7 +450,7 @@
 
 <h3>nice and renice</h3>
 <ul>
-<li>Finally, you can change processes priority using <code>nice</code> (runs a program with modified scheduling priority) and <code>renice</code>(alter priority of running processes).</li>
+<li>Finally, you can change processes priority using <code>nice</code> (runs a program with modified scheduling priority) and <code>renice</code>(alter the priority of running processes).</li>
 </ul>
 <hr />
 <h2>Environment Variables</h2>
@@ -486,7 +486,7 @@
 
 
 <ul>
-<li>The <strong>PATH</strong> (search path) is the list of directories that the shell look in to try to find a particular command. For example, when you type <code>ls</code> it will look at <code>/bin/ls</code>. The path is stored in the variable <strong>PATH</strong>, which is a list of directory names separated by colons and it's coded inside <strong>./bashrc</strong>. To export a new path you can do:</li>
+<li>The <strong>PATH</strong> (search path) is the list of directories that the shell looks in to try to find a particular command. For example, when you type <code>ls</code> it will look at <code>/bin/ls</code>. The path is stored in the variable <strong>PATH</strong>, which is a list of directory names separated by colons and it's coded inside <strong>./bashrc</strong>. To export a new path you can do:</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">export</span> <span class="n">PATH</span><span class="o">=</span><span class="nv">$PATH</span><span class="p">:</span><span class="o">/&lt;</span><span class="nx">DIRECTORY</span><span class="o">&gt;</span>
 </pre></div>
@@ -777,14 +777,14 @@
 
 <h3>locate</h3>
 <ul>
-<li>To find files by name (using database):</li>
+<li>To find files by name (using a database):</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">locate</span> <span class="o">&lt;</span><span class="nb">FILENAME</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <ul>
-<li>To test if a a file exist:</li>
+<li>To test if a a file exists:</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">test</span> <span class="na">-f</span> <span class="o">&lt;</span><span class="nb">FILENAME</span><span class="o">&gt;</span>
 </pre></div>
@@ -875,7 +875,7 @@
 
 <h3>cut</h3>
 <ul>
-<li><strong>cut</strong> selects particular fields (columns) from a structured text files (or particular characters from each line of any text file). The flag <strong>-d</strong> specifies what delimiter should be used to divide columns (default is tab), the flag <strong>-f</strong> specifies which field or fields to print and in what order:</li>
+<li><strong>cut</strong> selects particular fields (columns) from structured text files (or particular characters from each line of any text file). The flag <strong>-d</strong> specifies what delimiter should be used to divide columns (default is tab), the flag <strong>-f</strong> specifies which field or fields to print and in what order:</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">cut</span> <span class="na">-d</span> <span class="s1">&#39; &#39;</span> <span class="na">-f</span> <span class="mi">2</span> <span class="o">&lt;</span><span class="nb">FILENAME</span><span class="o">&gt;</span>
 </pre></div>
@@ -900,7 +900,7 @@
 <h2>Creating Files and Directories</h2>
 <h3>mkdir</h3>
 <ul>
-<li><strong>mkdir</strong> creates a directory. An useful flag is <strong>-p</strong> which creates  the entire path of directories (in case they don't exist):</li>
+<li><strong>mkdir</strong> creates a directory. A useful flag is <strong>-p</strong> which creates  the entire path of directories (in case they don't exist):</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">mkdir</span> <span class="na">-p</span> <span class="o">&lt;</span><span class="nx">DIRNAME</span><span class="o">&gt;</span>
 </pre></div>
@@ -1102,7 +1102,7 @@
 
 <h3>tcptrack</h3>
 <ul>
-<li><strong>tcptrack</strong> displays information about TCP connections it sees on a network and display bandwidth usage on some interface by a host.</li>
+<li><strong>tcptrack</strong> displays information about TCP connections it sees on a network and displays bandwidth usage on some interface by a host.</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span>  <span class="n">tcptrack</span> <span class="o">-</span><span class="n">i</span> <span class="n">eth0</span>
 </pre></div>
@@ -1268,18 +1268,18 @@
 <hr />
 <h2>Awk and Sed</h2>
 <ul>
-<li><strong>awk</strong>  is a pattern scanning tool while <strong>sed</strong> is a stream editor for filtering and transform text. While these tools are extremely powerful, if you have knowledge of any very high level languages such as Python or Ruby, you  don't necessary need to learn them.</li>
+<li><strong>awk</strong>  is a pattern scanning tool while <strong>sed</strong> is a stream editor for filtering and transform text. While these tools are extremely powerful, if you have knowledge of any very high level languages such as Python or Ruby, you  don't necessarily need to learn them.</li>
 </ul>
 <h3>sed</h3>
 <ul>
-<li>Let's say we want  to replace every occurrence of <em>mysql</em> and with MySQL (Linux is case sensitive), and then save the new file to <FILENAME>. We can write an one-line command that says  "search for the word mysql and replace it with the word MySQL":</li>
+<li>Let's say we want  to replace every occurrence of <em>mysql</em> and with MySQL (Linux is case sensitive), and then save the new file to <FILENAME>. We can write a one-line command that says  "search for the word mysql and replace it with the word MySQL":</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="nx">sed</span> <span class="nb">s</span><span class="p">/</span><span class="nx">mysql</span><span class="p">/</span><span class="nx">MySQL</span><span class="p">/</span><span class="nx">g</span> <span class="o">&lt;</span><span class="nx">FILEORIGIN</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&lt;</span><span class="nx">FILEDEST</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <ul>
-<li>To replace any instances of period followed by any number of spaces with a period followed by a single space in every file in this directory:</li>
+<li>To replace any instances of a period followed by any number of spaces with a period followed by a single space in every file in this directory:</li>
 </ul>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="err">&#39;</span><span class="n">s</span><span class="o">/</span><span class="err">\</span><span class="p">.</span> <span class="err">*/</span><span class="p">.</span> <span class="o">/</span><span class="n">g</span><span class="err">&#39;</span> <span class="o">*</span>
 </pre></div>
@@ -1369,7 +1369,7 @@
 <p>Historically, <strong>tar</strong> stood for tape archive and was used to archive files to a magnetic tape. Today <strong>tar</strong> is used to allow you to create or extract files from an archive file, often called a <strong>tarball</strong>.</p>
 </li>
 <li>
-<p>Additionally you can add <em>file compression</em>, which works by finding redundancies in a file (like repeated strings) and creating more concise representation of the file's content. The most common compression programs are <strong>gzip</strong> and <strong>bzip2</strong>.</p>
+<p>Additionally you can add <em>file compression</em>, which works by finding redundancies in a file (like repeated strings) and creating a more concise representation of the file's content. The most common compression programs are <strong>gzip</strong> and <strong>bzip2</strong>.</p>
 </li>
 <li>
 <p>When issuing <strong>tar</strong>, the flag <strong>f</strong> must be the last option. No hyphen is needed. You can add <strong>v</strong> as verbose.</p>
@@ -1461,7 +1461,7 @@
 </ol>
 </li>
 <li>
-<p>For example, if one runs <code>$ dd if=/dev/zero of=trash &amp; sleep 10; rm trash</code>, the available disk space on the system will continue to go downward (since more  contents gets written into the file by which <strong>dd</strong> is sending its output).</p>
+<p>For example, if one runs <code>$ dd if=/dev/zero of=trash &amp; sleep 10; rm trash</code>, the available disk space on the system will continue to go downward (since more  contents get written into the file by which <strong>dd</strong> is sending its output).</p>
 </li>
 <li>
 <p>However, the file can't be seen everywhere in the system! Only  killing the <strong>dd</strong> process will cause this space to be reclaimed.</p>
@@ -1527,7 +1527,7 @@
 <p>Unlike text files on other operating systems, Linux files do not end with a special end-of-file character.</p>
 </li>
 <li>
-<p>Linux text files were traditionally always interpreted as <strong>ASCII</strong>. In ASCII, each character is a single byte, the ASCII standard as such defines exactly <strong>128 characters</strong> from <strong>ASCII 0 to ASCII 127</strong>. Some of them are non-printable (such as newline). The printable starts at <strong>32</strong>. In that case, <strong>ISO 8859</strong> standards were  extensions to ASCII where the character positions <strong>128 to 255</strong> are given foreign-language interpretation.</p>
+<p>Linux text files were traditionally always interpreted as <strong>ASCII</strong>. In ASCII, each character is a single byte, the ASCII standard as such defines exactly <strong>128 characters</strong> from <strong>ASCII 0 to ASCII 127</strong>. Some of them are non-printable (such as a newline). The printable starts at <strong>32</strong>. In that case, <strong>ISO 8859</strong> standards were  extensions to ASCII where the character positions <strong>128 to 255</strong> are given a foreign-language interpretation.</p>
 </li>
 <li>
 <p>Nowadays, Linux files are most often interpreted as <strong>UTF-8</strong>, which is an encoding of <strong>Unicode</strong>, a character set standard able to represent a very large number of languages.</p>
@@ -1592,7 +1592,7 @@ ZEfgQvpY4ixePt
 <hr />
 <h2>Most Common words plus Frequency</h2>
 <ul>
-<li>We can use the commands we learned to build a script that print the most common words plus their frequency:</li>
+<li>We can use the commands we learned to build a script that prints the most common words plus their frequency:</li>
 </ul>
 <div class="highlight"><pre>tr -cs A-Za-z &#39;\n&#39; |
 tr A-Z a-z |

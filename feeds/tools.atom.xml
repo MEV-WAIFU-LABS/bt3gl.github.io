@@ -84,7 +84,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise the option is simply toggled. 
+&lt;p&gt;You can optionally add on or off to specify which state you want; otherwise, the option is simply toggled. 
 This option is specific to one window, so it won’t change the way your other sessions or windows operate.
  When you’re done, toggle it off again by repeating the command.&lt;/p&gt;
 &lt;h2&gt;Resizing Panes&lt;/h2&gt;

