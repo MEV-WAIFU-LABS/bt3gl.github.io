@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Pipelines in Python</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Data Pipelines in Python">
+                                        Data Pipelines in Python
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-02-16T04:19:00">
+      Sat 16 February 2019 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/ai-ml.html"><i class="icon-folder-open"></i>AI & ML</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/python.html"><i class="icon-tag"></i>python</a>
+	<a href="./tag/data.html"><i class="icon-tag"></i>data</a>
+	<a href="./tag/airflow.html"><i class="icon-tag"></i>airflow</a>
+	<a href="./tag/etl.html"><i class="icon-tag"></i>etl</a>
+	<a href="./tag/luigi.html"><i class="icon-tag"></i>luigi</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /></p>
+<p>Almost every day I have a new idea for a Machine Learning model or problem. The field is just getting bigger and more accessible. As I started a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for any  research dump on Data Pipelines</a> (PR your contribution!), in this post I add my little summary on how it goes for Python.</p>
+<p>To continue to get value out of machine learning models one needs an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
+<p>Machine learning involves tasks that includes data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model.</p>
+<p>Examples:</p>
+<ul>
+<li>
+<p>a movie dataset from external source on internet: bring it to S3 and upload it into Dynamo DB. The data can be ingested as a one time full-load as a batch or as a real-time stream of data.</p>
+</li>
+<li>
+<p>There may be a need to do both batch and stream or just a batch or a stream. The data can be full-loaded of data into Dynamo DB and then stream new records into Kinesis stream using the Lambda function as a source simulator.</p>
+</li>
+<li>
+<p>One can create a schema on the data stored in S3 and DynamoDB and perform ETL on the data to prepare it for the machine learning process.</p>
+</li>
+<li>
+<p>If one has an AWS S3 data lake ready, one can use Amazon Sagemaker for model training and inference.</p>
+</li>
+</ul>
+<h2>ETL: Extract, Transform, and Load</h2>
+<p>These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:</p>
+<ul>
+<li>Extract: sensors wait for upstream data sources.</li>
+<li>Transform: business logic is applied (e.g. filtering, grouping, and aggregation to translate raw data into analysis-ready datasets).</li>
+<li>Load: processed data is transported to a final destination.</li>
+</ul>
+<h3>Airflow</h3>
+<p><a href="https://github.com/apache/airflow">Apache Airflow</a> was a tool <a href="https://medium.com/airbnb-engineering/airflow-a-workflow-management-platform-46318b977fd8">developed by Airbnb in 2014 and later open-sourced</a>. It is a platform to programmatically author, schedule, and monitor workflows. When workflows are defined as code, they become more maintainable, versionable, testable, and collaborative.</p>
+<p>Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.</p>
+<p>The key concepts are as follows:</p>
+<ul>
+<li>DAG: a directed acyclic graph object that ties together all the tasks in a cohesive workflow and dictates the execution frequency (i.e. schedule).</li>
+<li>task: a unit of work to be executed that should be both atomic and idempotent. In Airflow there are two types of tasks: Operators and Sensors.</li>
+<li>operator: a specific type of work to be executed.</li>
+<li>sensor: a blocking task that runs until a condition is met or until it times out.</li>
+</ul>
+<p>Airflow's architecture has the following components:</p>
+<ul>
+<li>job definitions (in source control).</li>
+<li>CLI: to test, run, backfill, describe and clear parts of your DAGs.</li>
+<li>web application: to explore your DAGs definition, their dependencies, progress, metadata and logs (built in Flask).</li>
+<li>metadata repository (in MySQL or Postgres): keeps track of task job statuses.</li>
+<li>array of workers: runs jobs task instances in a distributed fashion.</li>
+<li>scheduler: fires up the task instances that are ready.</li>
+</ul>
+<p>Here is <a href="https://gist.github.com/robert8138/c6e492d00cd7b7e7626670ba2ed32e6a">a very simple toy example of an Airflow job</a> that simply prints the date in bash every day after waiting for one second to pass, after the execution date is reached:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>  <span class="c"># Import the DAG class</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.sensors</span> <span class="kn">import</span> <span class="n">TimeDeltaSensor</span>
+
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;owner&#39;</span><span class="p">:</span> <span class="s">&#39;you&#39;</span><span class="p">,</span>
+    <span class="s">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="n">dag_id</span><span class="o">=</span><span class="s">&#39;anatomy_of_a_dag&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">&quot;This describes my DAG&quot;</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>   <span class="c"># This is a daily DAG.</span>
+
+<span class="c"># t0 and t1 are examples of tasks created by instantiating operators</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">TimeDeltaSensor</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;wait_a_second&#39;</span><span class="p">,</span>
+    <span class="n">delta</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;print_date_in_bash&#39;</span><span class="p">,</span>
+    <span class="n">bash_command</span><span class="o">=</span><span class="s">&#39;date&#39;</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+
+<span class="n">t1</span><span class="o">.</span><span class="n">set_upstream</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Luigi</h3>
+<ul>
+<li><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization etc. It also comes with Hadoop support built in.</li>
+<li>The basic unit of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. </li>
+<li>All tasks can be feed into a final table (e.g. on Redshift) into one file.</li>
+</ul>
+<p>Here is <a href="https://towardsdatascience.com/data-pipelines-luigi-airflow-everything-you-need-to-know-18dc741449b7">an example of a simple workflow in Luigi</a>:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">luigi</span>
+
+<span class="k">class</span> <span class="nc">WritePipelineTask</span><span class="p">(</span><span class="n">luigi</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_one.txt&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;pipeline&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">AddMyTask</span><span class="p">(</span><span class="n">luigi</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_two.txt&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">requires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">WritePipelineTask</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="n">decorated_line</span> <span class="o">=</span> <span class="s">&quot;My &quot;</span><span class="o">+</span><span class="n">line</span>
+            <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">decorated_line</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>Airflow vs. Luigi</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Airflow</th>
+<th>Luigi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>web dashboard</td>
+<td>very nice</td>
+<td>minimal</td>
+</tr>
+<tr>
+<td>Built in scheduler</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Separates output data and task state</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>calendar scheduling</td>
+<td>yes</td>
+<td>no, use cron</td>
+</tr>
+<tr>
+<td>parallelism</td>
+<td>yes, workers</td>
+<td>threads per workers</td>
+</tr>
+<tr>
+<td>finds new deployed tasks</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>persists state</td>
+<td>yes, to db</td>
+<td>sort of</td>
+</tr>
+<tr>
+<td>sync tasks to workers</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>scheduling</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h2>Learning References</h2>
+<ul>
+<li><a href="https://github.com/davidyakobovitch/data_science_resources">Data science resources</a>.</li>
+<li><a href="https://github.com/instacart/lore">Lorte data pipelining</a>.</li>
+<li><a href="https://github.com/apache/incubator-airflow">Incubator Airflow data pipelining</a></li>
+<li><a href="https://www.udemy.com/airflow-basic-for-beginners/">Udemy's Airflow for Beginners</a>.</li>
+<li><a href="https://github.com/jghoman/awesome-apache-airflow">Awesome Airflow Resources</a>.</li>
+<li><a href="https://github.com/rolanddb/airflow-on-kubernetes">Airflow in Kubernetes</a>.</li>
+<li><a href="https://github.com/astronomer/astronomer">Astronomer: Airflow as a Service</a>.</li>
+<li><a href="https://github.com/aws-samples/data-pipeline-samples/tree/master/samples">Data pipeline samples</a>.</li>
+<li><a href="GoogleCloudPlatform/DataflowTemplates">GCP Dataflow templates</a>.</li>
+</ul>
+<hr />
+<h2>Classic Big Data Pipelines</h2>
+<p>Major constituents of a big data analytic pipeline:</p>
+<ul>
+<li>The messaging system</li>
+<li>Distribution of messages to various nodes for further processing.</li>
+<li>Analytic processing, to derive inferences from data (e.g. application of machine learning of data).</li>
+<li>Data storage system for storing results.</li>
+<li>Interfaces or consumption of results data (e.g. visualization tools, alerts, etc).</li>
+</ul>
+<p>Additionally:</p>
+<ul>
+<li>
+<p>Real-time tracking and keeping results accurately up to date can be satisfied by building a lambda architecture. Lambda architecture takes advantage of both batch and stream-processing methods. It attempts to balance throughput, latency and fault-tolerance by using batch processing, while simultaneously using real-time stream processing to provide views of data.</p>
+</li>
+<li>
+<p>Component parts can be dynamically managed using Docker. Along with docker-compose file and/or skaffold, multi-containers application can be orchestred and the service configuration can be versioned for easy deploy.</p>
+</li>
+</ul>
+<h2>Messaging Platforms</h2>
+<ul>
+<li>Stream processing allows processing data in real time (optimizing latency of batch processing and of stream processing. </li>
+</ul>
+<h4>Apache Kafka Clusters</h4>
+<ul>
+<li>Kafka is a high-throughput, distributed, publish-subscribe messaging system. </li>
+<li>Data can be ingested from multiple sources into Kafka, before passing it to compute and storage systems.</li>
+<li>Kafka provides two mechanisms: Producer and Listener. The API writes the data to the producer, ensuring it handles high volume and high frequency data.</li>
+<li>Another advantage of using Kafka is the  mapping of use cases of each queue. The designer can design the queues to be separated by use cases, thus keeping the processing logic to a required minimum. We need not write unnecessary code to handle those use cases, which will never arrive in a queue.</li>
+<li>One can add a secondary Kafka sub-system, predictive modeling with Apache Spark, and Elasticsearch.</li>
+</ul>
+<h4>Kinesis Firehouse</h4>
+<h2>Compute Engines/Ingestion</h2>
+<h4>Apache Spark</h4>
+<ul>
+<li>Spark Streaming can be used here to ensure that messages received are spread out on the cluster and processed efficiently. </li>
+<li>Other notable advantages of this is that a processing time window can be configured as needed.</li>
+<li>Fast and scalable solution as it employs in memory architecture.</li>
+<li>Spark is a faster faster than Hadoop's MapReduce architecture.</li>
+</ul>
+<h4>Hadoop MapReduce</h4>
+<ul>
+<li>Hadoop Distributed File System (HDFS) is a  popular data storage system.</li>
+<li>Distributed File Systems are client/server-based application that allows clients to access and process data stored on the server as if it were on their own computer.</li>
+</ul>
+<h2>Data Warehouse/Stores</h2>
+<h3>Redshift</h3>
+<ul>
+<li>SQL interfaces, and the ease to process petabytes of data.</li>
+<li>Easy to maintain database that is optimized for analytical queries such as joins and aggregations</li>
+</ul>
+<h4>S3 or any  Cloud Filesystems</h4>
+<ul>
+<li>Underline data lake, backups, redundancy.</li>
+</ul>
+<h4>Hive</h4>
+<h4>RDS</h4>
+<h4>EMR</h4>
+<h2>Analytics and visualizations</h2>
+<h4>Periscope Data</h4>
+<ul>
+<li>A lightweight analytics tool where you can write SQL to create charts. It's a full featured dashboard tool.</li>
+<li>Periscope can connect to data sources (e.g. Redshift) easily as they are both cloud solutions.</li>
+</ul>
+<h4>Analytics and visualizations Learning References:</h4>
+<ul>
+<li><a href="https://mode.com/sql-tutorial/introduction-to-sql/">Introduction to SQL</a>.</li>
+<li><a href="https://www.khanacademy.org/computing/computer-programming/sql">Khan's SQL course</a>.</li>
+</ul>
+<h2>Alerting</h2>
+<h4>Elastalert</h4>
+<hr />
+<h3>Learning References</h3>
+<ul>
+<li><a href="https://github.com/binhnguyennus/awesome-scalability">Awesome Scalability: a lot of articles and resources on the subject</a>.</li>
+</ul>
+<h4>Enterprise Solutions</h4>
+<ul>
+<li><a href="https://medium.com/netflix-techblog/evolution-of-the-netflix-data-pipeline-da246ca36905">Netflix data pipeline</a>.</li>
+<li><a href="https://www.youtube.com/channel/UC00QATOrSH4K2uOljTnnaKw">Netlix data videos</a>.</li>
+<li><a href="https://engineeringblog.yelp.com/2016/07/billions-of-messages-a-day-yelps-real-time-data-pipeline.html">Yelp data pipeline</a>.</li>
+<li><a href="https://engineering.gusto.com/building-a-data-informed-culture/">Gusto data pipeline</a>.</li>
+<li><a href="https://medium.com/@samson_hu/building-analytics-at-500px-92e9a7005c83.">500px data pipeline</a></li>
+<li><a href="https://blog.twitter.com/engineering/en_us/topics/insights/2018/ml-workflows.html">Twitter data pipeline</a>.</li>
+<li><a href="https://medium.com/@zhaojunzhang/building-data-infrastructure-in-coursera-15441ebe18c2">Coursera data pipeline</a>.</li>
+<li><a href="https://blog.cloudflare.com/how-cloudflare-analyzes-1m-dns-queries-per-second/">Cloudfare data pipeline</a>.</li>
+<li><a href="https://engineering.pandora.com/apache-airflow-at-pandora-1d7a844d68ee">Pandora data pipeline</a>.</li>
+<li><a href="https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d">Heroku data pipeline</a>.</li>
+<li><a href="https://www.zillow.com/data-science/airflow-at-zillow/">Zillow data pipeline</a>.</li>
+<li><a href="https://medium.com/airbnb-engineering/https-medium-com-jonathan-parks-scaling-erf-23fd17c91166">Airbnb data pipeline</a>.</li>
+<li><a href="https://medium.com/walmartlabs/how-we-built-a-data-pipeline-with-lambda-architecture-using-spark-spark-streaming-9d3b4b4555d3">Walmart data pipeline</a>.</li>
+<li><a href="https://robinhood.engineering/why-robinhood-uses-airflow-aed13a9a90c8">Robinwood data pipeline</a>.</li>
+<li><a href="https://eng.lyft.com/running-apache-airflow-at-lyft-6e53bb8fccff">Lyft data pipeline</a>.</li>
+<li><a href="https://speakerdeck.com/vananth22/operating-data-pipeline-with-airflow-at-slack">Slack data pipeline</a>.</li>
+<li><a href="https://medium.com/@RemindEng/beyond-a-redshift-centric-data-model-1e5c2b542442">Remind data pipeline</a>.</li>
+<li><a href="https://medium.com/wish-engineering/scaling-analytics-at-wish-619eacb97d16">Wish data pipeline</a>.</li>
+<li><a href="https://databricks.com/blog/2017/03/31/delivering-personalized-shopping-experience-apache-spark-databricks.html">Databrick data pipeline</a>.</li>
+</ul>
+<h4>Courses &amp; Videos</h4>
+<ul>
+<li><a href="https://www.coursera.org/lecture/big-data-integration-processing/big-data-processing-pipelines-c4Wyd">Coursera's Big Data Pipeline course</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=3JYDT8lap5U">Industrial Machine Learning Talk</a>.</li>
+</ul>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
