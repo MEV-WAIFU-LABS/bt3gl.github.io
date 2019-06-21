@@ -45,7 +45,7 @@
 &lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>8 Reasons why Go is Awesome</title><link href="http://bt3gl.github.io/8-reasons-why-go-is-awesome.html" rel="alternate"></link><updated>2018-01-12T06:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-12:8-reasons-why-go-is-awesome.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /&gt;&lt;/p&gt;
@@ -165,8 +165,8 @@ Plus several cool stuff has been written in Go, such as &lt;a href="https://www.
 &lt;li&gt;Check &lt;a href="https://www.reddit.com/r/golang"&gt;Reddit's channel&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Watch some &lt;a href="https://www.youtube.com/channel/UC_BzFbxG2za3bp5NRRRXJSw"&gt;JustForFunc videos&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.digitalocean.com/community/tutorials/understanding-data-types-in-go"&gt;Understanding Data Types in Go&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.
-&amp;amp;* &lt;a href="https://www.reddit.com/r/golang/comments/c2rgrf/gothamgo_2017_internals_of_the_go_linker_by/"&gt;Jessie Frazelle on Internals of the Go Linker&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@hackintoshrao/deep-learning-in-go-f13e586f7d8a"&gt;Tensorflow in Go&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/golang/comments/c2rgrf/gothamgo_2017_internals_of_the_go_linker_by/"&gt;Jessie Frazelle on Internals of the Go Linker&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="golang"></category><category term="algorithms"></category><category term="awesome"></category></entry><entry><title>tmux shortcuts &amp; cheatsheet</title><link href="http://bt3gl.github.io/tmux-shortcuts-cheatsheet.html" rel="alternate"></link><updated>2015-11-02T07:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-11-02:tmux-shortcuts-cheatsheet.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/tmux.jpg" width="390px" /&gt;&lt;/p&gt;
