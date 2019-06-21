@@ -199,7 +199,7 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 &lt;p&gt;All requests to *.somesite.com go to its DNS sever.&lt;/p&gt;
 &lt;h3&gt;Cross-site Scripting in Logs&lt;/h3&gt;
 &lt;p&gt;Cross-site scripting occurs when HTML runs in somebody else's browser.&lt;/p&gt;
-&lt;p&gt;For example, you can set the user-agent to &lt;img src="http://somesite.com/img.jpg"&gt; and then watch the DNS server.&lt;/p&gt;
+&lt;p&gt;For example, you can set the user-agent to &lt;code&gt;&amp;lt;img src="http://somesite.com/img.jpg"&amp;gt;&lt;/code&gt; and then watch the DNS server.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;HTTP Request is sent to a vulnerable server.&lt;/li&gt;
 &lt;li&gt;HTML is returned.&lt;/li&gt;
@@ -225,8 +225,7 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 
 &lt;p&gt;Results: data theft, shell access, arbitrary read.&lt;/p&gt;
 &lt;h3&gt;XXE&lt;/h3&gt;
-&lt;p&gt;XXE: returns to XML external entity attacks&lt;/p&gt;
-&lt;p&gt;XXE lets you include files from filesystem&lt;/p&gt;
+&lt;p&gt;XXE: returns to XML external entity attacks and lets you include files from filesystem.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!ENTITY xxe SYSTEM &amp;quot;file:///etc/passwd&amp;quot;&amp;gt;&lt;/span&gt;]&amp;gt;
 &lt;span class="nt"&gt;&amp;lt;foo&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;xxe;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;/foo&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

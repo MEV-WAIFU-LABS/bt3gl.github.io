@@ -308,7 +308,7 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 <p>All requests to *.somesite.com go to its DNS sever.</p>
 <h3>Cross-site Scripting in Logs</h3>
 <p>Cross-site scripting occurs when HTML runs in somebody else's browser.</p>
-<p>For example, you can set the user-agent to <img src="http://somesite.com/img.jpg"> and then watch the DNS server.</p>
+<p>For example, you can set the user-agent to <code>&lt;img src="http://somesite.com/img.jpg"&gt;</code> and then watch the DNS server.</p>
 <ol>
 <li>HTTP Request is sent to a vulnerable server.</li>
 <li>HTML is returned.</li>
@@ -334,8 +334,7 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 
 <p>Results: data theft, shell access, arbitrary read.</p>
 <h3>XXE</h3>
-<p>XXE: returns to XML external entity attacks</p>
-<p>XXE lets you include files from filesystem</p>
+<p>XXE: returns to XML external entity attacks and lets you include files from filesystem.</p>
 <div class="highlight"><pre><span class="cp">&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot;&gt;</span>]&gt;
 <span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xxe;</span>&gt;<span class="nt">&lt;/foo&gt;</span>
 </pre></div>
