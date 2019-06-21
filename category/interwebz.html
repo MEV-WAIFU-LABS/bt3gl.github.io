@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>chmod +x singularity.sh - interwebz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="../theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="../theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="../theme/css/font-awesome.css" rel="stylesheet">
+    <link href="../theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="../theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="../theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../theme/images/apple-touch-icon-114x114.png">
+
+    <link href="../feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="../index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="../authors.html">Who is this Replicant</a></li>
+                                <li><a href="../archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="../some-dns-stuff.html">Some DNS stuff...</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2016-02-12T06:00:00">
+      Fri 12 February 2016 </abbr>
+
+<span class="label"> Category</span>
+<a href="../category/interwebz.html"><i class="icon-folder-open"></i>interwebz</a>
+
+
+<span class="label">Tags</span>
+	<a href="../tag/h4x0r.html"><i class="icon-tag"></i>h4x0r</a>
+	<a href="../tag/dns.html"><i class="icon-tag"></i>dns</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p><img alt="cyberpunk" height="270px" src="./cyberpunk/w3.jpg" width="390px" /></p>
+<h2>DNS Recursive requests</h2>
+<p>Where did my packet go?</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nb">nslookup</span> <span class="na">-q</span><span class="o">=</span><span class="nx">mx</span> <span class="o">&lt;</span><span class="nx">website</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>???????</p>
+<div class="highlight"><pre><span class="mf">192.168.0.1</span> <span class="o">=&gt;</span> <span class="mf">8.8.8.8</span> <span class="o">=&gt;</span> <span class="n">X</span><span class="p">.</span><span class="n">root</span><span class="o">-</span><span class="n">servers</span><span class="p">.</span><span class="n">net</span> <span class="o">=&gt;</span>  <span class="n">Authoritative</span> <span class="n">server</span> <span class="o">==&gt;</span> <span class="o">?</span>
+</pre></div>
+
+
+<p>There are lots of different record types:</p>
+<h3>A: Get an IP address</h3>
+<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t A www.google.com
+; <span class="o">(</span>1 server ...</pre></div>
+                        <a class="btn primary xsmall" href="../some-dns-stuff.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="../theme/js/jquery-1.7.2.min.js"></script>
+    <script src="../theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
