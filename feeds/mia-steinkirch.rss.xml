@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/mia-steinkirch.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 02 Apr 2017 05:00:00 -0400</lastBuildDate><item><title>Skaffold is a Kool K8s Tool!</title><link>http://bt3gl.github.io/skaffold-is-a-kool-k8s-tool.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/mia-steinkirch.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 02 Apr 2018 05:00:00 -0400</lastBuildDate><item><title>Skaffold is a Kool K8s Tool!</title><link>http://bt3gl.github.io/skaffold-is-a-kool-k8s-tool.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command-line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;It runs as a binary in your local machine (e.g. &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
+&lt;li&gt;It runs as a binary in your local machine (e.g., &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
 &lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apiVersion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;skaffold&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1beta9&lt;/span&gt;
@@ -44,13 +44,13 @@
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 02 Apr 2017 05:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2017-04-02:skaffold-is-a-kool-k8s-tool.html</guid><category>docker</category><category>microservices</category><category>skaffold</category></item><item><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link>http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px" /&gt;&lt;/p&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 02 Apr 2018 05:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2018-04-02:skaffold-is-a-kool-k8s-tool.html</guid><category>docker</category><category>microservices</category><category>skaffold</category></item><item><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link>http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
 &lt;h2&gt;How Amigo Works&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; For each attribute in a project, Amigo creates an updated report. &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iii)&lt;/strong&gt; Amigo checks the previous report for differences (verifying when the data was modified). If there is a diff, Amigo logs the report for this diff.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;iv)&lt;/strong&gt; Amigo saves the resources data in a database and then it checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt;, reporting everything that violates those rules.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iv)&lt;/strong&gt; Amigo saves the resources data in a database, and then it checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt;, reporting everything that violates those rules.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;v)&lt;/strong&gt; The &lt;strong&gt;science&lt;/strong&gt; generated by Amigo can be fed into ELK.&lt;/p&gt;
 &lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
 &lt;h3&gt;Setting a Virtual Environment&lt;/h3&gt;
@@ -65,7 +65,7 @@
 
 
 &lt;h3&gt;Creating a Service Account&lt;/h3&gt;
-&lt;p&gt;This should be done once, for the first time you run Amigo:&lt;/p&gt;
+&lt;p&gt;It should be done once, for the first time you run Amigo:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
@@ -86,7 +86,7 @@
 &lt;p&gt;You can also check whether env variable &lt;code&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; is pointing to the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3&gt;Setting the Config file&lt;/h3&gt;
 &lt;p&gt;Copy &lt;code&gt;config.yaml_example&lt;/code&gt; to &lt;code&gt;config.yaml&lt;/code&gt; and customize it.&lt;/p&gt;
-&lt;p&gt;In the bottom of this file you are able to edit the attributes that you want to report on:&lt;/p&gt;
+&lt;p&gt;In the bottom of this file you can edit the attributes that you want to report on:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;### Attributes to inspect&lt;/span&gt;
 &lt;span class="nl"&gt;gcp_attributes:&lt;/span&gt;
     &lt;span class="nl"&gt;compute:&lt;/span&gt;
@@ -111,7 +111,7 @@
 
 
 &lt;h3&gt;Alerting with Amigo&lt;/h3&gt;
-&lt;p&gt;Relevant reports (e.g. diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g. &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
+&lt;p&gt;Relevant reports (e.g., diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g., &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Creating Custom rules&lt;/h2&gt;
 &lt;h3&gt;Firewalls Resource&lt;/h3&gt;
@@ -235,20 +235,20 @@
 &lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 17 Dec 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</guid></item><item><title>Quick &amp; Dirty iOS ARKit with "Post Malone Balloon"</title><link>http://bt3gl.github.io/quick-dirty-ios-arkit-with-post-malone-balloon.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
-&lt;p&gt;In this post, I  show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high-level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt; and &lt;strong&gt;rendering&lt;/strong&gt;. More specifically, ARKit is a session based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.&lt;/p&gt;
-&lt;p&gt;This app runs an ARKit world tracking session with content displayed in a &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt; 2D view. Every session has a scene that will render the virtual objects in the real world, accessed by means of the iOS device sensors.&lt;/p&gt;
+&lt;p&gt;In this post, I  show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high-level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt;, and &lt;strong&gt;rendering&lt;/strong&gt;. More specifically, ARKit is a session-based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.&lt;/p&gt;
+&lt;p&gt;This app runs an ARKit world tracking session with content displayed in a &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt; 2D view. Every session has a scene that will render the virtual objects in the real world, accessed using the iOS device sensors.&lt;/p&gt;
 &lt;p&gt;But, before everything, I recommend you to watch &lt;a href="https://developer.apple.com/videos/play/wwdc2017/602/"&gt;WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'&lt;/a&gt;. It gives a nice overview of ARKit's capabilities.&lt;/p&gt;
 &lt;p&gt;Ah, btw, the source code for this project is &lt;a href="https://github.com/bt3gl/AR_PostMalone"&gt;available for you at github&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;The source code for AR_PostMalone the following structure:&lt;/h2&gt;
 &lt;h3&gt;&lt;code&gt;Info.plist&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;An information property list file is a XML file that contains essential configuration information for a bundled executable. Example of the information you want to add is:&lt;/p&gt;
+&lt;p&gt;An information property list file is an XML file that contains essential configuration information for a bundled executable. Example of the information you want to add is:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The name of your app (&lt;code&gt;&amp;lt;string&amp;gt;PostMaloneBalloon&amp;lt;/string&amp;gt;&lt;/code&gt;).&lt;/li&gt;
 &lt;li&gt;Camera usage (&lt;code&gt;&amp;lt;key&amp;gt;NSCameraUsageDescription&amp;lt;/key&amp;gt;&lt;/code&gt;).&lt;/li&gt;
 &lt;li&gt;Frameworks you need (&lt;code&gt;&amp;lt;key&amp;gt;UIRequiredDeviceCapabilities&amp;lt;/key&amp;gt;&lt;/code&gt; with &lt;code&gt;&amp;lt;string&amp;gt;armv7&amp;lt;/string&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;string&amp;gt;arkit&amp;lt;/string&amp;gt;&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;Assets.xcassets&lt;/code&gt; directory&lt;/h3&gt;
-&lt;p&gt;This is where you place assets such as the images used in your App (Post Malone head) and icons. A file &lt;code&gt;Content.json&lt;/code&gt; is placed inside every directory to describe the assets.&lt;/p&gt;
+&lt;p&gt;Where you place assets such as the images used in your App (Post Malone head) and icons. A file &lt;code&gt;Content.json&lt;/code&gt; is placed inside every directory to describe the assets.&lt;/p&gt;
 &lt;h3&gt;&lt;code&gt;Base.lproj&lt;/code&gt; directory&lt;/h3&gt;
 &lt;p&gt;Contains two &lt;a href="https://www.raywenderlich.com/160521/storyboards-tutorial-ios-11-part-1"&gt;story board files&lt;/a&gt;:&lt;/p&gt;
 &lt;ul&gt;
@@ -256,14 +256,14 @@
 &lt;li&gt;&lt;code&gt;Main.storyboard&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;Scene.swift&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Anchors are 3D points that correspond real-world features that ARKit detects. Anchors are created in this class, together with the Sprite scene (Scene.sks). The class &lt;code&gt;Scene&lt;/code&gt; controls how the App is operating within the scenes. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
+&lt;p&gt;Anchors are 3D points that correspond to real-world features that ARKit detects. Anchors are created in this class, together with the Sprite scene (Scene.sks). The class &lt;code&gt;Scene&lt;/code&gt; controls how the App is operating within the scenes. Rendering brings tracking and scene understanding together with your content.&lt;/p&gt;
 &lt;p&gt;For our App, we are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Defining the method &lt;code&gt;touchesBegan&lt;/code&gt;, where we define what happens when we click the scene.&lt;/li&gt;
 &lt;li&gt;The sequence of movements is defined by &lt;code&gt;let sequence = SKAction.sequence([popSound, moveDown, moveDownFloating, moveToBottom])&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;When you touch the scene, a Post Malone Balloon head appears and starts to behave as a balloon (&lt;code&gt;moveDownFloating = ((arc4random() % 2)==0) ? moveLeftDown : moveRightDown&lt;/code&gt;).&lt;/li&gt;
 &lt;li&gt;The balloon either pops (&lt;code&gt;let popSound = SKAction.playSoundFileNamed("pop", waitForCompletion: false)&lt;/code&gt;) or fades after a second (&lt;code&gt;fadeOut = SKAction.fadeOut(withDuration: 1.0)&lt;/code&gt;).&lt;/li&gt;
-&lt;li&gt;An ARAnchor uses a 4×4 matrix represents the combined position, rotation or orientation, and scale of an object in three-dimensional space (as in &lt;code&gt;var translation = matrix_identity_float4x4&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;An ARAnchor uses a 4×4 matrix that represents the combined position, rotation or orientation, and scale of an object in three-dimensional space (as in &lt;code&gt;var translation = matrix_identity_float4x4&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;ViewController.swift&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;This view is managed by the class ViewController, which inherits from &lt;code&gt;ARSKViewDelegate&lt;/code&gt; so that we can create a &lt;code&gt;sceneView&lt;/code&gt; variable. This class has methods for:&lt;/p&gt;
@@ -286,7 +286,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;AppDelegate.swift&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;This is where we call the class &lt;code&gt;AppDelegate&lt;/code&gt;, which responds for &lt;code&gt;UIApplicationMain&lt;/code&gt;. In this class we create a variable that will work as the window UI and we have UI methods for:&lt;/p&gt;
+&lt;p&gt;This is where we call the class &lt;code&gt;AppDelegate&lt;/code&gt;, which responds for &lt;code&gt;UIApplicationMain&lt;/code&gt;. In this class, we create a variable that will work as the window UI and we have UI methods for:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;See if the application is about to move from active to inactive state (for example, pause ongoing tasks).&lt;/li&gt;
 &lt;li&gt;Release shared resources and  save user data.&lt;/li&gt;
@@ -309,7 +309,7 @@
 &lt;p&gt;&lt;strong&gt;Stitching&lt;/strong&gt;: the process of combining multiple video sources with overlapping fields of view to produce a fully immersive 360°. &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Visual Inertial Odometry&lt;/strong&gt;: ARKit analyzes the phone camera and motion data in order to keep track of the world around i
+&lt;p&gt;&lt;strong&gt;Visual Inertial Odometry&lt;/strong&gt;: ARKit analyzes the phone camera and motion data in order to keep track of the world around the
 ARSession object that manages the motion tracking and image processing.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 16 Dec 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-12-16:quick-dirty-ios-arkit-with-post-malone-balloon.html</guid></item><item><title>Spin up a Node.JS Server in Kubernetes in 10 Minutes</title><link>http://bt3gl.github.io/spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px" /&gt;&lt;/p&gt;
