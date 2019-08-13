@@ -9,27 +9,26 @@
 &lt;h3&gt;OpenDNS Investigate API&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://investigate.opendns.com/"&gt;OpenDNS Investigate&lt;/a&gt; provides an API that
 allows querying for:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;categorization&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Security&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt; &lt;span class="n"&gt;about&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Co&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;occurrences&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Related&lt;/span&gt; &lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Domains&lt;/span&gt; &lt;span class="n"&gt;related&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;IP&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Domain&lt;/span&gt; &lt;span class="n"&gt;tagging&lt;/span&gt; &lt;span class="n"&gt;dates&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;DNS&lt;/span&gt; &lt;span class="n"&gt;RR&lt;/span&gt; &lt;span class="n"&gt;history&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;email&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;nameserver&lt;/span&gt;
-    &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Historical&lt;/span&gt; &lt;span class="n"&gt;WHOIS&lt;/span&gt; &lt;span class="n"&gt;information&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;domain&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Latest&lt;/span&gt; &lt;span class="n"&gt;malicious&lt;/span&gt; &lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;IP&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;Domain categorization&lt;/li&gt;
+&lt;li&gt;Security information about a domain&lt;/li&gt;
+&lt;li&gt;Co-occurrences for a domain&lt;/li&gt;
+&lt;li&gt;Related domains for a domain&lt;/li&gt;
+&lt;li&gt;Domains related to an IP&lt;/li&gt;
+&lt;li&gt;Domain tagging dates for a domain&lt;/li&gt;
+&lt;li&gt;DNS RR history for a domain&lt;/li&gt;
+&lt;li&gt;WHOIS information&lt;/li&gt;
+&lt;li&gt;WHOIS information for an email&lt;/li&gt;
+&lt;li&gt;WHOIS information for a nameserver&lt;/li&gt;
+&lt;li&gt;Historical WHOIS information for a domain&lt;/li&gt;
+&lt;li&gt;Latest malicious domains for an IP&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;To use the Investigate API wrapper import &lt;code&gt;InvestigateApi&lt;/code&gt; class from &lt;code&gt;threat_intel.opendns&lt;/code&gt; module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;threat_intel.opendns&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;InvestigateApi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;To initialize the API wrapper you need the API key:&lt;/p&gt;
+&lt;p&gt;To initialize the API wrapper, you need the API key:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;investigate&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;InvestigateApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;INVESTIGATE-API-KEY-HERE&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -51,16 +50,16 @@ the categories associated with these domains by OpenDNS along with a [-1, 0, 1] 
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search Engines&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[]},&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search Engines&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[]},&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;bibikun.ru&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Malware&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search Engines&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[]},&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Search Engines&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[]},&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;bibikun.ru&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;content_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;security_categories&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Malware&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h4&gt;Security information about a domain&lt;/h4&gt;
 &lt;p&gt;Calls &lt;code&gt;security/name/&lt;/code&gt; Investigate API endpoint.
-It takes any Python enumerable with domains, e.g. list, and returns several security parameters
+It takes any Python enumerable with domains, e.g., list, and returns several security parameters
 associated with each domain.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;domains&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;bibikun.ru&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;investigate&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;security&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;domains&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -69,21 +68,21 @@ associated with each domain.&lt;/p&gt;
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;found&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;handlings&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;domaintagging&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00032008666962131285&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;blocked&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00018876906157154347&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;whitelisted&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00019697641207465407&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;expired&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.462205150933176e-05&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;normal&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.9992695458052232&lt;/span&gt;
-    &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;dga_score&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;rip_score&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;found&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;handlings&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;domaintagging&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00032008666962131285&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;blocked&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00018876906157154347&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;whitelisted&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.00019697641207465407&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;expired&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.462205150933176e-05&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;normal&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.9992695458052232&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;dga_score&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;rip_score&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 
-    &lt;span class="p"&gt;..&lt;/span&gt;
+ &lt;span class="p"&gt;..&lt;/span&gt;
 
-  &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -98,13 +97,13 @@ Use this method to find out a list of co-occurrence domains (domains that are be
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;found&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;pfs2&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;www.howtoforge.de&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.14108563836506008&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;found&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;pfs2&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;www.howtoforge.de&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.14108563836506008&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -120,11 +119,11 @@ Use this method to find out a list of related domains (domains that have been fr
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;tb1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-        &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;t.co&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;11.0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="p"&gt;]&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;tb1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="err"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;t.co&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;11.0&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="p"&gt;]&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -140,14 +139,14 @@ Use this method to find out a list of related domains (domains that have been fr
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Malware&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;period&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Current&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Malware&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;period&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="mi"&gt;2013&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;Current&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 
-    &lt;span class="p"&gt;..&lt;/span&gt;
+ &lt;span class="p"&gt;..&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -163,21 +162,21 @@ Use this method to find out related domains to domains given in a list, or any o
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;features&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;geo_distance_mean&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;locations&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-            &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="s1"&gt;&amp;#39;lat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;59.89440155029297&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="s1"&gt;&amp;#39;lon&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.26420021057129&lt;/span&gt;
-            &lt;span class="p"&gt;}&lt;/span&gt;
-                    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;rips&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;is_subdomain&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;False&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;ttls_mean&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;86400&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;non_routable&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;False&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;features&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;geo_distance_mean&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;locations&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;lat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;59.89440155029297&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;lon&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;30.26420021057129&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;rips&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;is_subdomain&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;False&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;ttls_mean&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;86400&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;non_routable&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;False&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -193,25 +192,25 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;rrs&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;rr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;000189.com.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;rr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;008.no-ip.net.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;rrs&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;rr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;000189.com.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3600&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;8.8.8.8&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;A&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;rr&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;008.no-ip.net.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 
-    &lt;span class="nx"&gt;..&lt;/span&gt;
+ &lt;span class="nx"&gt;..&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -228,18 +227,18 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;dns-admin@google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;totalResults&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;moreDataAvailable&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;domains&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-            &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="s2"&gt;&amp;quot;domain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0emm.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="s2"&gt;&amp;quot;current&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
-            &lt;span class="p"&gt;},&lt;/span&gt;
-            &lt;span class="nx"&gt;..&lt;/span&gt;
-        &lt;span class="cp"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;dns-admin@google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;totalResults&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;moreDataAvailable&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;domains&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;domain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;0emm.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;current&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="nx"&gt;..&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -254,18 +253,18 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;ns2.google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;totalResults&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;moreDataAvailable&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;domains&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-            &lt;span class="p"&gt;{&lt;/span&gt;
-                &lt;span class="s2"&gt;&amp;quot;domain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;46645.biz&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                &lt;span class="s2"&gt;&amp;quot;current&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
-            &lt;span class="p"&gt;},&lt;/span&gt;
-            &lt;span class="nx"&gt;..&lt;/span&gt;
-        &lt;span class="cp"&gt;]&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;ns2.google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;totalResults&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;moreDataAvailable&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;true&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;limit&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;500&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;domains&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;domain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;46645.biz&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;current&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="nx"&gt;..&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -280,14 +279,14 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;administrativeContactFax&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;whoisServers&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;addresses&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;1600 amphitheatre parkway&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;please contact contact-admin@google.com, 1600 amphitheatre parkway&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;2400 e. bayshore pkwy&amp;quot;&lt;/span&gt;
-    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;administrativeContactFax&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;whoisServers&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;addresses&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;1600 amphitheatre parkway&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;please contact contact-admin@google.com, 1600 amphitheatre parkway&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;2400 e. bayshore pkwy&amp;quot;&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -302,18 +301,18 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;5esb.biz&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;
-        &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registrantFaxExt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;administrativeContactPostalCode&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;656448&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;zoneContactCity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;addresses&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;
-                &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nan qu hua yuan xiao he&amp;#39;&lt;/span&gt;
-            &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-            &lt;span class="o"&gt;..&lt;/span&gt;
-        &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-        &lt;span class="o"&gt;..&lt;/span&gt;
-    &lt;span class="o"&gt;]&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;5esb.biz&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registrantFaxExt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;administrativeContactPostalCode&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;656448&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;zoneContactCity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;addresses&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="err"&gt;[&lt;/span&gt;
+ &lt;span class="nx"&gt;u&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nan qu hua yuan xiao he&amp;#39;&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -328,13 +327,13 @@ Use this method to find out related domains to the IP addresses given in a list,
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="cp"&gt;[&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;7ltd.biz&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;co0s.ru&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;t0link.in&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="cp"&gt;]&lt;/span&gt;
+ &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;7ltd.biz&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;co0s.ru&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;&amp;#39;t0link.in&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -344,22 +343,21 @@ Use this method to find out related domains to the IP addresses given in a list,
 &lt;p&gt;&lt;a href="https://www.virustotal.com/"&gt;VirusTotal&lt;/a&gt; provides an
 &lt;a href="https://www.virustotal.com/en/documentation/public-api/"&gt;API&lt;/a&gt; that makes it
 possible to query for the reports about:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Domains&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;URLs&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;IPs&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="n"&gt;hashes&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="n"&gt;Upload&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Live&lt;/span&gt; &lt;span class="n"&gt;Feed&lt;/span&gt;
-&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Advanced&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;ul&gt;
+&lt;li&gt;Domains&lt;/li&gt;
+&lt;li&gt;URLs&lt;/li&gt;
+&lt;li&gt;IPs&lt;/li&gt;
+&lt;li&gt;File hashes&lt;/li&gt;
+&lt;li&gt;File Upload&lt;/li&gt;
+&lt;li&gt;Live Feed&lt;/li&gt;
+&lt;li&gt;Advanced search&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;To use the VirusTotal API wrapper import &lt;code&gt;VirusTotalApi&lt;/code&gt; class from &lt;code&gt;threat_intel.virustotal&lt;/code&gt; module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;threat_intel.virustotal&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;VirusTotalApi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;To initialize the API wrapper you need the API key:&lt;/p&gt;
+&lt;p&gt;To initialize the API wrapper, you need the API key:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;VirusTotalApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;VIRUSTOTAL-API-KEY-HERE&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -375,7 +373,7 @@ You can do it with the &lt;code&gt;resources_per_req&lt;/code&gt; parameter:&lt;
 &lt;p&gt;When using the public API your standard request rate allows you too put maximum 4 resources per request.
 With private API you are able to put up to 25 resources per call. That is also the default value if you
 don't pass the &lt;code&gt;resources_per_req&lt;/code&gt; parameter.&lt;/p&gt;
-&lt;p&gt;Of course, when calling the API wrapper methods in the &lt;code&gt;VirusTotalApi&lt;/code&gt; class you can pass as many resources
+&lt;p&gt;Of course, when calling the API wrapper methods in the &lt;code&gt;VirusTotalApi&lt;/code&gt; class, you can pass as many resources
 as you want and the wrapper will take care of producing as many API calls as necessary to satisfy the request rate.&lt;/p&gt;
 &lt;p&gt;Similarly to OpenDNS API wrapper, you can also specify the file name where the responses will be cached:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;VirusTotalApi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;VIRUSTOTAL-API-KEY-HERE&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cache_file_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/tmp/cache.virustotal.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -392,18 +390,18 @@ Pass a list or any other Python enumerable containing the domains:&lt;/p&gt;
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;undetected_referrer_samples&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;56&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;sha256&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;e3c1aea1352362e4b5c008e16b03810192d12a4f1cc71245f5a75e796c719c69&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;baidu.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;undetected_referrer_samples&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;56&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;sha256&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;e3c1aea1352362e4b5c008e16b03810192d12a4f1cc71245f5a75e796c719c69&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 
-    &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -418,24 +416,24 @@ Pass a list or any other Python enumerable containing the URL addresses:&lt;/p&g
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s"&gt;&amp;quot;http://www.google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;permalink&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;https://www.virustotal.com/url/dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf/analysis/1423344006/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;resource&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.google.com/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;2015-02-07 21:20:06&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;scan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf-1423344006&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Scan finished, scan information embedded in this object&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;filescan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;scans&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="s"&gt;&amp;quot;CLEAN MX&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;quot;detected&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;clean site&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;..&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;http://www.google.com&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;permalink&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;https://www.virustotal.com/url/dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf/analysis/1423344006/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;resource&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.google.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;http://www.google.com/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;2015-02-07 21:20:06&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;scan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;dd014af5ed6b38d9130e3f466f850e46d21b951199d53a18ef29ee9341614eaf-1423344006&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Scan finished, scan information embedded in this object&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;filescan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;62&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;scans&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;CLEAN MX&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;detected&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;clean site&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;..&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -453,8 +451,8 @@ Submit a url or any other Python enumerable containing the URL addresses:&lt;/p&
 &lt;p&gt;Calls &lt;code&gt;file/report&lt;/code&gt; VirusTotal API endpoint.
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_reports&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -463,15 +461,15 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):&l
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;resource&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;The requested resource is not among the finished, queued or pending scans&amp;quot;&lt;/span&gt;
-  &lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;scan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;52d3df0ed60c46f336c131bf2ca454f73bafdc4b04dfa2aea80746f5ba9e6d1c-1423261860&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;sha1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;4d1740485713a2ab3a4f5822a01f645fe8387f92&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;resource&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;The requested resource is not among the finished, queued or pending scans&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;scan_id&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;52d3df0ed60c46f336c131bf2ca454f73bafdc4b04dfa2aea80746f5ba9e6d1c-1423261860&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;sha1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;4d1740485713a2ab3a4f5822a01f645fe8387f92&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 
  &lt;span class="p"&gt;..&lt;/span&gt;
 
@@ -486,8 +484,8 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):&l
 &lt;p&gt;Calls &lt;code&gt;file/behaviour&lt;/code&gt; VirusTotal API endpoint. Use to get a report about the behavior of the file when executed in a sandboxed environment (Cuckoo sandbox).
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_behaviour&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -498,8 +496,8 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):&l
 &lt;p&gt;Calls &lt;code&gt;file/network-traffic&lt;/code&gt; VirusTotal API endpoint. Use to get the dump of the network traffic generated by the file when executed.
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_network_traffic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -510,8 +508,8 @@ You can request the file reports passing a list of hashes (md5, sha1 or sha2):&l
 &lt;p&gt;Calls &lt;code&gt;file/download&lt;/code&gt; VirusTotal API endpoint. Use to download a file by its hash.
 You can request the file reports passing a list of hashes (md5, sha1 or sha2):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_download&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -528,46 +526,46 @@ Pass a list or any other Python enumerable containing the IP addresses:&lt;/p&gt
 
 &lt;p&gt;will result in:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;90.156.201.27&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;asn&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;25532&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;country&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;RU&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;as_owner&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.masterhost autonomous system&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IP address found in dataset&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;resolutions&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;last_resolved&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2013-04-01 00:00:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;027.ru&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;last_resolved&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2015-01-20 00:00:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;600volt.ru&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;90.156.201.27&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;asn&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;25532&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;country&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;RU&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;response_code&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;as_owner&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.masterhost autonomous system&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;verbose_msg&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;IP address found in dataset&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;resolutions&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;last_resolved&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2013-04-01 00:00:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;027.ru&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;last_resolved&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2015-01-20 00:00:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;hostname&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;600volt.ru&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
 
-      &lt;span class="nx"&gt;..&lt;/span&gt;
+ &lt;span class="nx"&gt;..&lt;/span&gt;
 
-    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;detected_urls&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://shop.albione.ru/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2014-04-06 11:18:17&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;},&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://www.orlov.ru/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2014-03-05 09:13:31&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
-  &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;detected_urls&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="cp"&gt;[&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://shop.albione.ru/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2014-04-06 11:18:17&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;},&lt;/span&gt;
+ &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://www.orlov.ru/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;positives&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;total&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;scan_date&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2014-03-05 09:13:31&amp;quot;&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="cp"&gt;]&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
 
-  &lt;span class="s2"&gt;&amp;quot;198.51.132.80&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+ &lt;span class="s2"&gt;&amp;quot;198.51.132.80&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
 
-    &lt;span class="o"&gt;..&lt;/span&gt;
+ &lt;span class="o"&gt;..&lt;/span&gt;
 
-  &lt;span class="p"&gt;}&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -579,7 +577,7 @@ Pass a list or any other Python enumerable containing the IP addresses:&lt;/p&gt
 
 
 &lt;h4&gt;Hash live feed endpoint&lt;/h4&gt;
-&lt;p&gt;Calls &lt;code&gt;file/distribution&lt;/code&gt; VirusTotal API endpoint. Use to get a live a feed with the latest Hashes submitted to VirusTotal.&lt;/p&gt;
+&lt;p&gt;Calls &lt;code&gt;file/distribution&lt;/code&gt; VirusTotal API endpoint. Use to get a live feed with the latest Hashes submitted to VirusTotal.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;vt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_file_distribution&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -618,8 +616,8 @@ the hashes against a list of known software applications.&lt;/p&gt;
 &lt;p&gt;To check whether the hashes are on the ShadowServer list of known hashes,
 call &lt;code&gt;get_bin_test&lt;/code&gt; method and pass enumerable with the hashes you want to test:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;99017f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s"&gt;&amp;quot;88817f6eebbac24f351415dd410d522d&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 
 &lt;span class="n"&gt;ss&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_bin_test&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;file_hashes&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;

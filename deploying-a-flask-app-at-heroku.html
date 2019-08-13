@@ -106,11 +106,11 @@
 
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /></p>
-<p>I was playing with Flask and I wrote my own <a href="https://anti-social.herokuapp.com/">Anti-Social Network</a>. </p>
-<p>Heroku platform is very flexible and it supports several programming languages. To
+<p>I was playing with Flask, and I wrote my own <a href="https://anti-social.herokuapp.com/">Anti-Social Network</a>. </p>
+<p>Heroku platform is very flexible, and it supports several programming languages. To
 deploy an application to Heroku, use Git to push the application to Heroku’s server.</p>
 <h1>Running in a Production Server</h1>
-<p>Heroku does not provide a web server but it expects it to start their own servers and listen on the port number set in environment variable PORT. Flask will perform very poorly because it was not designed to run in a production environment. To ameliorate this, you may use a production-ready web server such as Gunicorn.</p>
+<p>Heroku does not provide a web server, but it expects it to start their own servers and listen on the port number set in environment variable PORT. Flask will perform very poorly because it was not designed to run in a production environment. To improve this, you may use a production-ready web server such as Gunicorn.</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">gunicorn</span>
 </pre></div>
 
@@ -123,7 +123,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 <p>Gunicorn uses port 8000 instead of 5000.</p>
 <h1>Heroku Setting Up</h1>
 <h3>Create an account at Heroku.com</h3>
-<p>If you haven't done it yet. Remember: you will be able to keep up to five applications running (you can always delete them if you need).</p>
+<p>If you haven't done it yet, remember: you will be able to keep up to five applications running (you can always delete them if you need).</p>
 <h3>Install Git and Heroku Toolbelt</h3>
 <p>You can find instructions at Heroku.com.</p>
 <p>For example, if you are in an AWS EC2 Ubuntu instance, you can use:</p>
@@ -150,7 +150,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 </pre></div>
 
 
-<p>The public and private keys will be at <code>~/.ssh</code>. I recommend always backup your keys. Never share your private key.</p>
+<p>The public and private keys will be at <code>~/.ssh</code>. I always recommend backup your keys. Never share your private key.</p>
 <h3>Creating a Git Repository</h3>
 <p>Heroku's push/commits work just like Git. But instead of using the "origin" you use "heroku" (you can verify this later at .git/refs/remotes/). In other words, your project's control version (development) is done by using:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span> <span class="p">(</span><span class="n">or</span> <span class="n">any</span> <span class="n">branch</span> <span class="n">you</span> <span class="n">like</span><span class="p">)</span>
@@ -162,7 +162,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 </pre></div>
 
 
-<p>In the root of your project, go ahead and create a Git repository, commit, add, push:</p>
+<p>In the root of your project, go ahead, and create a Git repository, commit, add, push:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">init</span>
 <span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="o">-</span><span class="n">A</span>
 <span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;First commit&quot;</span>
@@ -208,7 +208,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 
 <p>(if this is how you run your application).</p>
-<p>In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that starts the web server. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.</p>
+<p>In the Procfile, each line has a task name, a colon, and the command that runs the task. We use web here because Heroku recognizes it as the task that starts the webserver. Heroku gives this task a PORT environment variable, and set it to the port in which the application needs to listen for requests.</p>
 <h3>Using Foreman to Emulate Heroku</h3>
 <p>The Heroku Toolbelt includes Foreman, used to run the app locally through the Procfile for testing purposes. The environment variables set at Heroku must be defined locally. Just create a file var.env with this information:</p>
 <div class="highlight"><pre><span class="n">FLASK_CONFIG</span><span class="o">=</span><span class="n">heroku</span>
@@ -226,15 +226,15 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 <h3>Configuring Logging</h3>
 <p>In Heroku, logs are written to stdout or stderr. In my app, I added the logging configuration to a class in my app's <code>config.py</code> file:</p>
 <div class="highlight"><pre><span class="n">class</span> <span class="n">HerokuConfig</span><span class="p">(</span><span class="n">ProductionConfig</span><span class="p">)</span><span class="o">:</span>
-    <span class="err">@</span><span class="n">classmethod</span>
-    <span class="n">def</span> <span class="n">init_app</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span><span class="o">:</span>
-        <span class="n">ProductionConfig</span><span class="p">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+ <span class="err">@</span><span class="n">classmethod</span>
+ <span class="n">def</span> <span class="n">init_app</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span><span class="o">:</span>
+ <span class="n">ProductionConfig</span><span class="p">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-    <span class="n">import</span> <span class="n">logging</span>
-    <span class="n">from</span> <span class="n">logging</span> <span class="n">import</span> <span class="n">StreamHandler</span>
-    <span class="n">file_handler</span> <span class="o">=</span> <span class="n">StreamHandler</span><span class="p">()</span>
-    <span class="n">file_handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">WARNING</span><span class="p">)</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+ <span class="n">import</span> <span class="n">logging</span>
+ <span class="n">from</span> <span class="n">logging</span> <span class="n">import</span> <span class="n">StreamHandler</span>
+ <span class="n">file_handler</span> <span class="o">=</span> <span class="n">StreamHandler</span><span class="p">()</span>
+ <span class="n">file_handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">WARNING</span><span class="p">)</span>
+ <span class="n">app</span><span class="p">.</span><span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
 </pre></div>
 
 

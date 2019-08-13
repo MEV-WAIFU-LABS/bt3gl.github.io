@@ -106,14 +106,14 @@
 
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /></p>
-<p>In this tutorial I walk through all the steps to setup a Tor proxy in a Raspberry Pi (Model B). This work was based on some of tutorials from Adafruit.</p>
+<p>In this tutorial, I walk through all the steps to set up a Tor proxy in a Raspberry Pi (Model B). This work was based on some of the tutorials from Adafruit.</p>
 <h1>Setting Up a Raspberry Pi</h1>
 <h2>Installing an Operating System in the SD card</h2>
 <p><a href="http://www.raspberrypi.org/help/noobs-setup">You can either install NOOBS and then choose your OS</a>.</p>
 <p><a href="http://fedoraproject.org/wiki/FedoraARMInstaller">Or you can download the Fedora ARM Installer and the OS image you prefer</a>.</p>
 <h2>Network Setup</h2>
-<p>The easiest way is to connect your Pi in the network is through an ethernet interface. Connecting the cable should be allowed the connection directly as long as your network router allows DHCP.</p>
-<p>In addition, you can also setup wireless connect, which requires your router to be broadcasting the SSID. At Raspbian, there is a WiFi configuration icon. Type wlan0 adapter and scan. After connecting in your network you will also be able to see the IP of your Pi.</p>
+<p>The easiest way is to connect your Pi in the network is through an Ethernet interface. Connecting the cable should be allowed the connection directly as long as your network router enable DHCP.</p>
+<p>Also, you can also set up wireless connect, which requires your router to be broadcasting the SSID. At Raspbian, there is a WiFi configuration icon. Type wlan0 adapter and scan. After connecting in your network you will also be able to see the IP of your Pi.</p>
 <h2>Input/Output Setup</h2>
 <p>The easiest way to connect to your Pi is by an HDMI cable to a monitor and a USB keyboard. Another option is through a console cable or an SSH connection.</p>
 <h2>Connection through a Console Cable (3.3V logic levels)</h2>
@@ -134,7 +134,7 @@
 
 <p>In Windows, you can use a terminal emulation such as Putty and the drivers from this (link)[http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&amp;pcid=41]. Verify the number of the COM serial port in the Device manager and connect with speed 115200.</p>
 <h2>SSH Connection</h2>
-<p>You need to enable SSH in the Pi:</p>
+<p>You need to enable SSH on the Pi:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">sudo</span> <span class="n">raspi</span><span class="o">-</span><span class="n">config</span>
 </pre></div>
 
@@ -187,8 +187,8 @@
 <span class="n">allow</span><span class="o">-</span><span class="n">hotplug</span> <span class="n">wlan0</span>
 
 <span class="n">iface</span> <span class="n">wlan0</span> <span class="n">inet</span> <span class="k">static</span>
-  <span class="n">address</span> <span class="mf">192.168.42.1</span>
-  <span class="n">netmask</span> <span class="mf">255.255.255.0</span>
+ <span class="n">address</span> <span class="mf">192.168.42.1</span>
+ <span class="n">netmask</span> <span class="mf">255.255.255.0</span>
 </pre></div>
 
 

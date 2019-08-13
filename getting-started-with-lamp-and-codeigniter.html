@@ -112,16 +112,18 @@
 <li>
 <p>Login with your root login/password (set in the installation above): <code>http://localhost/phpmyadmin</code>.
 The left-hand column contains a list of all of the databases you currently have.</p>
-<ul>
-<li>mysql: contains information about the MySQL database server.</li>
-<li>information_schema: contains information about all of the other databases on your computer.</li>
-</ul>
+</li>
+<li>
+<p>mysql: contains information about the MySQL database server.</p>
+</li>
+<li>
+<p>information_schema: contains information about all of the other databases on your computer.</p>
 </li>
 <li>
 <p>In the Databases interface you are presented with a list of all of the databases.</p>
 </li>
 <li>Above that list there should be a form labeled “Create new database” with a text field.</li>
-<li>Create tables within. Chose the types of your data.  Every table should always have an id column (auto-incrementing integer, meaning that each new record will be automatically assigned an id value, starting at 1). You can do this by selecting A_I checkbox.</li>
+<li>Create tables within. Chose the types of your data. Every table should always have an id column (auto-incrementing integer, meaning that each new record will be automatically assigned an id value, starting at 1). You can do this by selecting A_I checkbox.</li>
 <li>Add some data (using insert). The database is located at 
 <code>/var/lib/mysql</code>.</li>
 </ul>
@@ -169,8 +171,8 @@ The left-hand column contains a list of all of the databases you currently have.
 <p>Functions:</p>
 <div class="highlight"><pre><span class="o">&lt;?</span> <span class="nx">php</span>
 <span class="kd">function</span> <span class="nx">print_this</span><span class="p">(</span><span class="nx">$name</span><span class="p">){</span>
-    <span class="nx">echo</span> <span class="s1">&#39;Print this &#39;</span> <span class="p">.</span> <span class="nx">$name</span> <span class="p">.</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
-    <span class="k">return</span> <span class="s1">&#39;nice printing&#39;</span><span class="p">;</span>
+ <span class="nx">echo</span> <span class="s1">&#39;Print this &#39;</span> <span class="p">.</span> <span class="nx">$name</span> <span class="p">.</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+ <span class="k">return</span> <span class="s1">&#39;nice printing&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nx">extra_print</span> <span class="o">=</span> <span class="nx">print_this</span><span class="p">(</span><span class="s1">&#39;aaaaa&#39;</span><span class="p">);</span>
 <span class="nx">print</span><span class="p">(</span><span class="nx">extra_print</span><span class="p">);</span>
@@ -203,12 +205,12 @@ The left-hand column contains a list of all of the databases you currently have.
 
 <p>Multi-arrays:</p>
 <div class="highlight"><pre><span class="err">$</span><span class="n">cars</span> <span class="o">=</span> <span class="n">array</span>
-  <span class="p">(</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-  <span class="n">array</span><span class="p">(</span><span class="s">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
-  <span class="p">);</span>
+ <span class="p">(</span>
+ <span class="n">array</span><span class="p">(</span><span class="s">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+ <span class="n">array</span><span class="p">(</span><span class="s">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
+ <span class="n">array</span><span class="p">(</span><span class="s">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+ <span class="n">array</span><span class="p">(</span><span class="s">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+ <span class="p">);</span>
 </pre></div>
 
 
@@ -259,14 +261,14 @@ Views contain HTML code and PHP (if this is the backend language) to inject obje
 
 <h2>Frameworks</h2>
 <p>The basis/foundation of your web app.</p>
-<p>For PHP, we can download CodeIgniter, rename to our project name, copy it to the /var/ww folder and open it in the localhost/folder. We can modify the files for our app now.</p>
+<p>For PHP, we can download CodeIgniter, rename to our project name, copy it to the /var/www folder, and open it in the localhost/folder. We can modify the files for our app now.</p>
 <p>If you get the 403 forbidden error, check the permissions and then type:</p>
 <div class="highlight"><pre><span class="n">restorecon</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
 </pre></div>
 
 
 <p>(restorecon is used to reset the security context (type) (extended attributes) on one or more files).</p>
-<p>The use guide can be seen at 
+<p>The user guide can be seen at 
 <code>http://localhost/APP_NAME/user_guide/</code></p>
 <h3>CodeIgniter Basics</h3>
 <p>The system folder contains all of the inner-working.
@@ -323,7 +325,7 @@ In our application, the database configuration file is store at application/conf
 </pre></div>
 
 
-<p>In this snippet we query our database by order, using ascending order.</p>
+<p>In this snippet, we query our database by order, using ascending order.</p>
 <hr />
 <p>Enjoy! This article was originally posted <a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter">here</a>.</p>
                 </div><!-- /.entry-content -->

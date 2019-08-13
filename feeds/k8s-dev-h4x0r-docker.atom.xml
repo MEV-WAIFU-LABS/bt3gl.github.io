@@ -5,7 +5,7 @@
 &lt;p&gt;In this guide, I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in Kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
 &lt;p&gt;First, you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
-&lt;p&gt;Make sure you have all the auths right, for instance, I do the following:&lt;/p&gt;
+&lt;p&gt;Make sure you have all the auths right; for instance, I do the following:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Create an auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
@@ -52,12 +52,12 @@
 &lt;p&gt;In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. &lt;/p&gt;
 &lt;p&gt;The system that images for distribution is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt;), you can now deploy the image with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;  &lt;span class="n"&gt;node_example_kube_config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yaml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;node_example_kube_config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yaml&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After that, you are able to create the service with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;expose&lt;/span&gt; &lt;span class="n"&gt;deployment&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;expose&lt;/span&gt; &lt;span class="n"&gt;deployment&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

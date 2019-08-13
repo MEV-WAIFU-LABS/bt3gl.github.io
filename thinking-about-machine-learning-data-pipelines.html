@@ -112,7 +112,7 @@
 	<a href="./tag/luigi.html"><i class="icon-tag"></i>luigi</a>
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="270px" src="./cyberpunk/data_pip.png" width="390px" /></p>
-<p>Machine learning involves tasks that include data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model and hosting the model. Additionally, to get value out of machine learning models we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
+<p>Machine learning involves tasks that include data sourcing, data ingestion, data transformation, pre-processing data for use in training, training a model, and hosting the model. Additionally, to get value out of machine learning models, we need an architecture and process in place to repeatedly and consistently train new models and retrain existing models with new data.</p>
 <p>For example, for a movie dataset from an external source on the internet:</p>
 <ul>
 <li>
@@ -128,12 +128,12 @@
 <p>If we have an <strong>AWS S3 data lake</strong> ready, we could use <strong>Amazon Sagemaker for model training and inference</strong>.</p>
 </li>
 </ul>
-<p>As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for my personal research (dumps...) on Data Pipelines</a> (PR your contribution!), in this post I add my little intro on the topic.</p>
+<p>As I start a little <a href="https://github.com/bt3gl/Data-Pipelines">github repo for my personal research (dumps...) on Data Pipelines</a> (PR your contribution!), in this post, I add my little intro on the topic.</p>
 <h2>ETL: Extract, Transform, and Load</h2>
 <p>These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:</p>
 <ul>
 <li><strong>Extract</strong>: sensors wait for upstream data sources.</li>
-<li><strong>Transform</strong>: business logic is applied (e.g. filtering, grouping, and aggregation to translate raw data into analysis-ready datasets).</li>
+<li><strong>Transform</strong>: business logic is applied (e.g., filtering, grouping, and aggregation to translate raw data into analysis-ready datasets).</li>
 <li><strong>Load</strong>: processed data is transported to a final destination.</li>
 </ul>
 <h3>Airflow</h3>
@@ -141,8 +141,8 @@
 <p>You can use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The Airflow scheduler executes your tasks on an array of workers while following the specified dependencies. Rich command line utilities make performing complex surgeries on DAGs a snap. The rich user interface makes it easy to visualize pipelines running in production, monitor progress, and troubleshoot issues when needed.</p>
 <p>The key concepts are:</p>
 <ul>
-<li>DAG: a directed acyclic graph object that ties together all the tasks in a cohesive workflow and dictates the execution frequency (i.e. schedule).</li>
-<li>task: a unit of work to be executed that should be both atomic and idempotent. In Airflow there are two types of tasks: Operators and Sensors.</li>
+<li>DAG: a directed acyclic graph object that ties together all the tasks in a cohesive workflow and dictates the execution frequency (i.e., schedule).</li>
+<li>task: a unit of work to be executed that should be both atomic and idempotent. In Airflow, there are two types of tasks: Operators and Sensors.</li>
 <li>operator: a specific type of work to be executed.</li>
 <li>sensor: a blocking task that runs until a condition is met or until it times out.</li>
 </ul>
@@ -150,75 +150,75 @@
 <ul>
 <li>job definitions (in source control).</li>
 <li>CLI: to test, run, backfill, describe and clear parts of your DAGs.</li>
-<li>web application: to explore your DAGs definition, their dependencies, progress, metadata, and logs (built in Flask).</li>
+<li>web application: to explore your DAGs definition, their dependencies, progress, metadata, and logs (built-in Flask).</li>
 <li>metadata repository (in MySQL or Postgres): keeps track of task job statuses.</li>
 <li>array of workers: runs jobs task instances in a distributed fashion.</li>
 <li>scheduler: fires up the task instances that are ready.</li>
 </ul>
 <p>Here is <a href="https://gist.github.com/robert8138/c6e492d00cd7b7e7626670ba2ed32e6a">a very simple toy example of an Airflow job</a> that simply prints the date in bash every day after waiting for one second to pass, after the execution date is reached:</p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span>  <span class="c"># Import the DAG class</span>
+<span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DAG</span> <span class="c"># Import the DAG class</span>
 <span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
 <span class="kn">from</span> <span class="nn">airflow.operators.sensors</span> <span class="kn">import</span> <span class="n">TimeDeltaSensor</span>
 
 <span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;owner&#39;</span><span class="p">:</span> <span class="s">&#39;you&#39;</span><span class="p">,</span>
-    <span class="s">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-    <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+ <span class="s">&#39;owner&#39;</span><span class="p">:</span> <span class="s">&#39;you&#39;</span><span class="p">,</span>
+ <span class="s">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+ <span class="s">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
 <span class="p">}</span>
 
 <span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
-    <span class="n">dag_id</span><span class="o">=</span><span class="s">&#39;anatomy_of_a_dag&#39;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s">&quot;This describes my DAG&quot;</span><span class="p">,</span>
-    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
-    <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>   <span class="c"># This is a daily DAG.</span>
+ <span class="n">dag_id</span><span class="o">=</span><span class="s">&#39;anatomy_of_a_dag&#39;</span><span class="p">,</span>
+ <span class="n">description</span><span class="o">=</span><span class="s">&quot;This describes my DAG&quot;</span><span class="p">,</span>
+ <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+ <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c"># This is a daily DAG.</span>
 
 <span class="c"># t0 and t1 are examples of tasks created by instantiating operators</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">TimeDeltaSensor</span><span class="p">(</span>
-    <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;wait_a_second&#39;</span><span class="p">,</span>
-    <span class="n">delta</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+ <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;wait_a_second&#39;</span><span class="p">,</span>
+ <span class="n">delta</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+ <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
 
 <span class="n">t1</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
-    <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;print_date_in_bash&#39;</span><span class="p">,</span>
-    <span class="n">bash_command</span><span class="o">=</span><span class="s">&#39;date&#39;</span><span class="p">,</span>
-    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
+ <span class="n">task_id</span><span class="o">=</span><span class="s">&#39;print_date_in_bash&#39;</span><span class="p">,</span>
+ <span class="n">bash_command</span><span class="o">=</span><span class="s">&#39;date&#39;</span><span class="p">,</span>
+ <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">)</span>
 
 <span class="n">t1</span><span class="o">.</span><span class="n">set_upstream</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 
 
 <h3>Luigi</h3>
-<p><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization, etc. It also comes with Hadoop support built in.</p>
-<p>The basic units of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g. on Redshift) into one file.</p>
+<p><a href="https://github.com/spotify/luigi">Luigi data pipelining</a> is Spotify's Python module that helps you build complex pipelines of batch jobs. It handles dependency resolution, workflow management, visualization, etc. It also comes with Hadoop support built-in.</p>
+<p>The basic units of Luigi are task classes that model an atomic ETL operation, in three parts: a requirements part that includes pointers to other tasks that need to run before this task, the data transformation step, and the output. All tasks can be feed into a final table (e.g., on Redshift) into one file.</p>
 <p>Here is <a href="https://towardsdatascience.com/data-pipelines-luigi-airflow-everything-you-need-to-know-18dc741449b7">an example of a simple workflow in Luigi</a>:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">luigi</span>
 
 <span class="k">class</span> <span class="nc">WritePipelineTask</span><span class="p">(</span><span class="n">luigi</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_one.txt&quot;</span><span class="p">)</span>
+ <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+ <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_one.txt&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
-            <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;pipeline&quot;</span><span class="p">)</span>
+ <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+ <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+ <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;pipeline&quot;</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">AddMyTask</span><span class="p">(</span><span class="n">luigi</span><span class="o">.</span><span class="n">Task</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_two.txt&quot;</span><span class="p">)</span>
+ <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+ <span class="k">return</span> <span class="n">luigi</span><span class="o">.</span><span class="n">LocalTarget</span><span class="p">(</span><span class="s">&quot;data/output_two.txt&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">requires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">WritePipelineTask</span><span class="p">()</span>
+ <span class="k">def</span> <span class="nf">requires</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+ <span class="k">return</span> <span class="n">WritePipelineTask</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
-            <span class="n">line</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+ <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+ <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">input</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">input_file</span><span class="p">:</span>
+ <span class="n">line</span> <span class="o">=</span> <span class="n">input_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
-            <span class="n">decorated_line</span> <span class="o">=</span> <span class="s">&quot;My &quot;</span><span class="o">+</span><span class="n">line</span>
-            <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">decorated_line</span><span class="p">)</span>
+ <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">()</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_file</span><span class="p">:</span>
+ <span class="n">decorated_line</span> <span class="o">=</span> <span class="s">&quot;My &quot;</span><span class="o">+</span><span class="n">line</span>
+ <span class="n">output_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">decorated_line</span><span class="p">)</span>
 </pre></div>
 
 

@@ -117,56 +117,56 @@
 	<a href="./tag/ettercap.html"><i class="icon-tag"></i>Ettercap</a>
 	<a href="./tag/arpspoof.html"><i class="icon-tag"></i>arpspoof</a>
 </footer><!-- /.post-info -->                </div>
-                <p><a href="https://www.wireshark.org/">Wireshark</a> is an open source <strong>network packet analyzer</strong> that allows live traffic analysis, with support to several protocols.</p>
-<p>Wireshark also allows <strong>network forensic</strong>, being very useful for CTFs for example (check my writeups for the  <a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html">D-CTF Quals 2014</a> and for the CSAW Quals 2014 in <a href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html">Networking</a> and <a href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html">Forensics</a>).</p>
-<p>In this blog post, I introduce Wireshark and I talk about my favorite features.</p>
+                <p><a href="https://www.wireshark.org/">Wireshark</a> is an open-source <strong>network packet analyzer</strong> that allows live traffic analysis, with support to several protocols.</p>
+<p>Wireshark also allows <strong>network forensic</strong>, being handy for CTFs for example (check my writeups for the <a href="http://bt3gl.github.io/exploring-d-ctf-quals-2014s-exploits.html">D-CTF Quals 2014</a> and for the CSAW Quals 2014 in <a href="http://bt3gl.github.io/csaw-ctf-2014-networking-100-big-data.html">Networking</a> and <a href="http://bt3gl.github.io/csaw-ctf-2014-forensics-200-why-not-sftp.html">Forensics</a>).</p>
+<p>In this blog post, I introduce Wireshark, and I talk about my favorite features.</p>
 <hr />
 <h1>The Network Architecture</h1>
-<p>Before we are able to understand and analyze network traffic packets, we must have an insight of how the network stack works.</p>
+<p>Before we can understand and analyze network traffic packets, we must have an insight into how the network stack works.</p>
 <h2>The OSI Model</h2>
-<p>The <a href="http://en.wikipedia.org/wiki/OSI_model">Open Systems Interconnection</a> (OSI) model  was published in 1983 and is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.</p>
+<p>The <a href="http://en.wikipedia.org/wiki/OSI_model">Open Systems Interconnection</a> (OSI) model was published in 1983 and is a conceptual model that characterizes and standardizes the internal functions of a communication system by partitioning it into abstraction layers.</p>
 <p><img alt="cyber" src="http://i.imgur.com/dZyiOTX.png" /></p>
-<p>Protocols are separated according to their function and the hierarchy makes it easier to understand network communication:</p>
+<p>Protocols are separated according to their function, and the hierarchy makes it easier to understand network communication:</p>
 <h3>Layer 1: Physical Layer</h3>
 <p>Represents the physical and electrical medium through which the network data is transferred.</p>
 <p>It comprehends all hardware, hubs, network adapters, cable, etc.</p>
 <h3>Layer 2: Data Link Layer</h3>
 <p>Provides the means of <em>transporting data</em> across a physical network. Bridges and switches are the physical devices in this layer.</p>
 <p>It is responsible for providing an addressing scheme that can be used to identify physical devices: the <a href="http://en.wikipedia.org/wiki/MAC_address">MAC address</a>.</p>
-<p>Examples of protocols in this layer are: <a href="http://en.wikipedia.org/wiki/Ethernet">Ethernet</a>, <a href="http://en.wikipedia.org/wiki/Token_ring">Token Ring</a>, <a href="http://en.wikipedia.org/wiki/AppleTalk">AppleTalk</a>,  and <a href="http://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface">Fiber Distributed Data Interface</a> (FDDI).</p>
+<p>Examples of protocols in this layer are: <a href="http://en.wikipedia.org/wiki/Ethernet">Ethernet</a>, <a href="http://en.wikipedia.org/wiki/Token_ring">Token Ring</a>, <a href="http://en.wikipedia.org/wiki/AppleTalk">AppleTalk</a>, and <a href="http://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface">Fiber Distributed Data Interface</a> (FDDI).</p>
 <h3>Layer 3: Network Layer</h3>
 <p>Responsible for routing data between physical networks, assigning the <em>logical addressing</em> of network hosts. It also handles <em>packet fragmentation</em> and <em>error detection</em>.</p>
 <p>Routers and their <em>routing tables</em> belong to this layer. Examples of protocols are: <a href="http://en.wikipedia.org/wiki/Internet_Protocol">Internet Protocol</a> (IP), <a href="http://en.wikipedia.org/wiki/Internetwork_Packet_Exchange">Internetwork Packet Exchange</a>, and the <a href="http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol">Internet Control Message Protocol</a> (ICMP).</p>
 <h3>Layer 4: Transport Layer</h3>
-<p>Provides the <em>flow control</em> of data between two hosts.  Many firewalls and proxy servers operate at this layer.</p>
+<p>Provides the <em>flow control</em> of data between two hosts. Many firewalls and proxy servers operate at this layer.</p>
 <p>Examples of protocol are: <a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> and <a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a>.</p>
 <h3>Layer 5: Session Layer</h3>
-<p>Responsible for the <em>session</em> between two computers, managing operations such as gracefully terminating  connections. It can also  establish whether a connection is <a href="http://en.wikipedia.org/wiki/Duplex_%28telecommunications%29">duplex or half-duplex</a>.</p>
+<p>Responsible for the <em>session</em> between two computers, managing operations such as gracefully terminating connections. It can also establish whether a connection is <a href="http://en.wikipedia.org/wiki/Duplex_%28telecommunications%29">duplex or half-duplex</a>.</p>
 <p>Examples of Protocols are: <a href="http://en.wikipedia.org/wiki/NetBIOS">NetBIOS</a> and <a href="http://en.wikipedia.org/wiki/NWLink">NWLink</a>.</p>
 <h3>Layer 6: Presentation Layer</h3>
-<p>Transforms the received data into a format that can be read by the application layer, such as enconding/decoding and several forms of encryption/decryption for securing the data.</p>
+<p>Transforms the received data into a format that can be read by the application layer, such as encoding/decoding and several forms of encryption/decryption for securing the data.</p>
 <p>Examples of protocols are: <a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a>, <a href="http://en.wikipedia.org/wiki/Moving_Picture_Experts_Group">MPEG</a>, <a href="http://en.wikipedia.org/wiki/JPEG">JPEG</a>, and <a href="http://en.wikipedia.org/wiki/MIDI">MIDI</a>.</p>
 <h3>Layer 7: Application Layer</h3>
-<p>Provides the details for end users to access network resources.</p>
+<p>Provides the details for end-users to access network resources.</p>
 <p>Examples of protocols are: <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a>, <a href="http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a>, <a href="http://en.wikipedia.org/wiki/File_Transfer_Protocol">FTP</a>, and <a href="http://en.wikipedia.org/wiki/Telnet">Telnet</a>.</p>
 <hr />
 <h2>Data Encapsulation</h2>
 <p>The way the protocols on different layers of the OSI model communicate is through <em>data encapsulation</em>, where each layer in the stack adds a header or footer to the packet.</p>
-<p>The encapsulation protocol creates a <a href="http://en.wikipedia.org/wiki/Protocol_data_unit">protocol data unit</a> (PDU),  including the data with all header and footer information added to it. What we call <em>packet</em> is the complete PDU.</p>
-<p>For instance, in Wireshark, we can track the sequence number where a higher layer PDU starts and stops. This allows us to  measure how long it took to transfer a PDU (the <em>display filter</em> is <strong>tcp.pdu.time</strong>).</p>
+<p>The encapsulation protocol creates a <a href="http://en.wikipedia.org/wiki/Protocol_data_unit">protocol data unit</a> (PDU), including the data with all header and footer information added to it. What we call <em>packet</em> is the complete PDU.</p>
+<p>For instance, in Wireshark, we can track the sequence number where a higher layer PDU starts and stops. This allows us to measure how long it took to transfer a PDU (the <em>display filter</em> is <strong>tcp.pdu.time</strong>).</p>
 <hr />
 <h2>Switches and Routers</h2>
 <p>There are four primary ways to capture traffic from a target device on a
-<strong>switched</strong> network: using a <strong>hub</strong>, using a <strong>tap</strong>, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by the reference [1]:</p>
+<strong>switched</strong> network: using a <strong>hub</strong>, using a <strong>tap</strong>, by port mirroring, or by ARP spoofing/cache poisoning. The first two obviously require a hub or a tap. Port mirroring requires forwarding capability from the switch. A great way to decide which method to use was borrowed by reference [1]:</p>
 <p><img alt="cyber" src="http://i.imgur.com/aRUfmsp.png" /></p>
-<p>All of the techniques for switched network are available on <strong>routed</strong> networks as well. However, for routers, the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
+<p>All of the techniques for a switched network are available on <strong>routed</strong> networks as well. However, for routers, the sniffer placement becomes more relevant since a device's broadcast domain extends only until it reaches a
 router.</p>
 <hr />
 <h2>Types of Traffic Packets</h2>
 <p>There are three types of traffic packets within a network:</p>
 <ul>
 <li>
-<p><strong>Broadcast packet</strong>: sent to all ports on the network segment. Broadcast MAC address is  <em>ff:ff:ff:ff:ff:ff</em> (layer 2) or the highest possible IP address (layer 3).</p>
+<p><strong>Broadcast packet</strong>: sent to all ports on the network segment. Broadcast MAC address is <em>ff:ff:ff:ff:ff:ff</em> (layer 2) or the highest possible IP address (layer 3).</p>
 </li>
 <li>
 <p><strong>Multicast packet</strong>: sent from a single source to multiple destinations, to simplify the process using as little as bandwidth as possible.</p>
@@ -177,10 +177,10 @@ router.</p>
 </ul>
 <hr />
 <h2>Common Protocols by Layer</h2>
-<h3>The Address Resolution Protocol   (Layer 2)</h3>
-<p>Both <strong>logical</strong> and <strong>physical addresses</strong> are used for communication on a network. Logical addresses allows communication between multiple networks (indirectly connected devices). Physical addresses allow communication on a single network (devices that are  connected to each other with a switch for example).</p>
+<h3>The Address Resolution Protocol (Layer 2)</h3>
+<p>Both <strong>logical</strong> and <strong>physical addresses</strong> are used for communication on a network. Logical addresses allow communication between multiple networks (indirectly connected devices). Physical addresses allow communication on a single network (devices that are connected to each other with a switch, for example).</p>
 <p><a href="http://en.wikipedia.org/wiki/Address_Resolution_Protocol">ARP</a> is the protocol used to determine which <a href="http://en.wikipedia.org/wiki/MAC_address">MAC address</a> (physical address such as 00:09:5B:01:02:03 and belonging to layer 2) corresponds to a particular IP address (logical addresses such as 10.100.20.1, belonging to layer 3).</p>
-<p>The ARP resolution process uses two packets (<em>ARP request</em> and  <em>ARP response</em>) to find the matching MAC address, sending a <strong>broadcast</strong> packet to every device in the domain, and waiting for the response of the  correct client. This works because  a switch uses a MAC table to know through which port to send the traffic.</p>
+<p>The ARP resolution process uses two packets (<em>ARP request</em> and <em>ARP response</em>) to find the matching MAC address, sending a <strong>broadcast</strong> packet to every device in the domain, and waiting for the response of the correct client. This works because a switch uses a MAC table to know through which port to send the traffic.</p>
 <p>In Wireshark, ARP is easily spotted with sentences such as <strong>"Who has 192.168.11/ Tell 192.168.1.1"</strong>. Additionally, you can see the ARP table in your device with:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">arp</span> <span class="o">-</span><span class="n">a</span>
 </pre></div>
@@ -188,32 +188,32 @@ router.</p>
 
 <h3>The Internet Protocol (Layer 3)</h3>
 <p>Every interface on an Internet must have a unique Internet address. An IP has the task of delivering packets between hosts based on the IP addresses in the packet headers.</p>
-<p><a href="http://en.wikipedia.org/wiki/IPv4">IPv4</a> addresses are 32-bit addresses used to uniquely identify devices connected in a network. They are represented by the dotted-quad notation with four sets of 8 bits, represented by  decimal numbers between 0 and 255.</p>
+<p><a href="http://en.wikipedia.org/wiki/IPv4">IPv4</a> addresses are 32-bit addresses used to identify devices connected in a network uniquely. They are represented by the dotted-quad notation with four sets of 8 bits, represented by decimal numbers between 0 and 255.</p>
 <p>In addition, an IP address consists of two parts: a <strong>network address</strong> and a <strong>host address</strong>. The network address identifies the <em>local area network</em> (LAN), and the host address identifies the device on that network.</p>
-<p>The determination of these two parts is given by another set of addressing information, the <strong>network mask</strong> (netmask or subnet mask), which is also 32 bit longs. In the netmask, every bit set to 1 identifies the portion of the IP address that belongs to the network address. Remaining bits set to 0 identify the host address:</p>
+<p>The determination of these two parts is given by another set of addressing information, the <strong>network mask</strong> (netmask or subnet mask), which is also 32-bit longs. In the netmask, every bit set to 1 identifies the portion of the IP address that belongs to the network address. Remaining bits set to 0 identify the host address:</p>
 <p><img alt="cyber" src="http://i.imgur.com/a7Evq9z.png" /></p>
-<p>Additionally, the IP packet header contain informations such as:</p>
+<p>Additionally, the IP packet header contains information such as:</p>
 <ul>
 <li>
-<p><strong>Version</strong>: version of IP used.</p>
+<p><strong>Version</strong>: the version of IP used.</p>
 </li>
 <li>
-<p><strong>Header Length</strong>:  length of the IP header.</p>
+<p><strong>Header Length</strong>: length of the IP header.</p>
 </li>
 <li>
 <p><strong>Type of Service</strong>: flag used by routers to prioritize traffic.</p>
 </li>
 <li>
-<p><strong>Total length</strong>:  length of the IP header and the data in the packet.</p>
+<p><strong>Total length</strong>: length of the IP header and the data in the packet.</p>
 </li>
 <li>
 <p><strong>Identification</strong>: identification of a packet or sequence of fragmented packets.</p>
 </li>
 <li>
-<p><strong>Fragment offset</strong>:  identification of whether a packet is a fragment.</p>
+<p><strong>Fragment offset</strong>: identification of whether a packet is a fragment.</p>
 </li>
 <li>
-<p><strong>Time to Live</strong>: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created and generally is decremented by 1 every time the packet is forwarded by a router.</p>
+<p><strong>Time to Live</strong>: definition of the lifetime of the packet, measured in hops/seconds through routers. A TTL is defined when a packet is created and generally is decremented by one every time the packet is forwarded by a router.</p>
 </li>
 <li>
 <p><strong>Protocol</strong>: identification of the type of packet coming next in the sequence.</p>
@@ -236,7 +236,7 @@ router.</p>
 </ul>
 <h3>The Internet Control Message Protocol (Layer 3)</h3>
 <p>ICMP is the utility protocol of TCP/IP responsible for providing information about the availability of devices, services, or routes on a network.</p>
-<p>Examples of services that use ICMP are  <strong>ping</strong>:</p>
+<p>Examples of services that use ICMP are <strong>ping</strong>:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">ping</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
 <span class="n">PING</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span> <span class="p">(</span><span class="mf">74.125.228.210</span><span class="p">)</span> <span class="mi">56</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="n">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="p">.</span>
 <span class="mi">64</span> <span class="n">bytes</span> <span class="n">from</span> <span class="n">iad23s23</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">f18</span><span class="mf">.1e100</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">74.125.228.210</span><span class="p">)</span><span class="o">:</span> <span class="n">icmp_seq</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">53</span> <span class="n">time</span><span class="o">=</span><span class="mf">21.5</span> <span class="n">ms</span>
@@ -245,42 +245,42 @@ router.</p>
 </pre></div>
 
 
-<p>and <strong>traceroute</strong> (Windows sends ICMP packets,  Linux sends UDP):</p>
+<p>and <strong>traceroute</strong> (Windows sends ICMP packets, Linux sends UDP):</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">traceroute</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
 <span class="n">traceroute</span> <span class="n">to</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span> <span class="p">(</span><span class="mf">173.194.46.84</span><span class="p">),</span> <span class="mi">30</span> <span class="n">hops</span> <span class="n">max</span><span class="p">,</span> <span class="mi">60</span> <span class="n">byte</span> <span class="n">packets</span>
- <span class="mi">1</span>  <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>
- <span class="mi">2</span>  <span class="mf">67.59.254.85</span> <span class="p">(</span><span class="mf">67.59.254.85</span><span class="p">)</span>  <span class="mf">30.078</span> <span class="n">ms</span>  <span class="mf">30.452</span> <span class="n">ms</span>  <span class="mf">30.766</span> <span class="n">ms</span>
- <span class="mi">3</span>  <span class="mf">67.59.255.137</span> <span class="p">(</span><span class="mf">67.59.255.137</span><span class="p">)</span>  <span class="mf">33.889</span> <span class="n">ms</span> <span class="mf">67.59.255.129</span> <span class="p">(</span><span class="mf">67.59.255.129</span><span class="p">)</span>  <span class="mf">33.426</span> <span class="n">ms</span> <span class="mf">67.59.255.137</span> <span class="p">(</span><span class="mf">67.59.255.137</span><span class="p">)</span>  <span class="mf">34.007</span> <span class="n">ms</span>
- <span class="mi">4</span>  <span class="n">rtr101</span><span class="p">.</span><span class="n">wan</span><span class="p">.</span><span class="n">hcvlny</span><span class="p">.</span><span class="n">cv</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.109</span><span class="p">)</span>  <span class="mf">34.004</span> <span class="n">ms</span> <span class="mi">451</span><span class="n">be075</span><span class="p">.</span><span class="n">cst</span><span class="p">.</span><span class="n">lightpath</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.117</span><span class="p">)</span>  <span class="mf">32.743</span> <span class="n">ms</span> <span class="n">rtr102</span><span class="p">.</span><span class="n">wan</span><span class="p">.</span><span class="n">hcvlny</span><span class="p">.</span><span class="n">cv</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.125</span><span class="p">)</span>  <span class="mf">33.951</span> <span class="n">ms</span>
- <span class="mi">5</span>  <span class="mf">64.15.3.222</span> <span class="p">(</span><span class="mf">64.15.3.222</span><span class="p">)</span>  <span class="mf">34.972</span> <span class="n">ms</span> <span class="mf">64.15.0.218</span> <span class="p">(</span><span class="mf">64.15.0.218</span><span class="p">)</span>  <span class="mf">35.187</span> <span class="n">ms</span>  <span class="mf">35.120</span> <span class="n">ms</span>
- <span class="mi">6</span>  <span class="o">*</span> <span class="mf">72.14.215.203</span> <span class="p">(</span><span class="mf">72.14.215.203</span><span class="p">)</span>  <span class="mf">29.225</span> <span class="n">ms</span>  <span class="mf">29.646</span> <span class="n">ms</span>
- <span class="mi">7</span>  <span class="mf">209.85.248.242</span> <span class="p">(</span><span class="mf">209.85.248.242</span><span class="p">)</span>  <span class="mf">29.361</span> <span class="n">ms</span> <span class="mf">209.85.245.116</span> <span class="p">(</span><span class="mf">209.85.245.116</span><span class="p">)</span>  <span class="mf">39.780</span> <span class="n">ms</span>  <span class="mf">42.108</span> <span class="n">ms</span>
- <span class="mi">8</span>  <span class="mf">209.85.249.212</span> <span class="p">(</span><span class="mf">209.85.249.212</span><span class="p">)</span>  <span class="mf">33.220</span> <span class="n">ms</span> <span class="mf">209.85.252.242</span> <span class="p">(</span><span class="mf">209.85.252.242</span><span class="p">)</span>  <span class="mf">33.500</span> <span class="n">ms</span>  <span class="mf">33.786</span> <span class="n">ms</span>
- <span class="mi">9</span>  <span class="mf">216.239.50.248</span> <span class="p">(</span><span class="mf">216.239.50.248</span><span class="p">)</span>  <span class="mf">53.231</span> <span class="n">ms</span>  <span class="mf">57.314</span> <span class="n">ms</span> <span class="mf">216.239.46.215</span> <span class="p">(</span><span class="mf">216.239.46.215</span><span class="p">)</span>  <span class="mf">52.140</span> <span class="n">ms</span>
-<span class="mi">10</span>  <span class="mf">216.239.50.237</span> <span class="p">(</span><span class="mf">216.239.50.237</span><span class="p">)</span>  <span class="mf">52.022</span> <span class="n">ms</span> <span class="mf">209.85.254.241</span> <span class="p">(</span><span class="mf">209.85.254.241</span><span class="p">)</span>  <span class="mf">48.517</span> <span class="n">ms</span>  <span class="mf">48.075</span> <span class="n">ms</span>
-<span class="mi">11</span>  <span class="mf">209.85.243.55</span> <span class="p">(</span><span class="mf">209.85.243.55</span><span class="p">)</span>  <span class="mf">56.220</span> <span class="n">ms</span>  <span class="mf">45.359</span> <span class="n">ms</span>  <span class="mf">44.934</span> <span class="n">ms</span>
-<span class="mi">12</span>  <span class="n">ord08s11</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">f20</span><span class="mf">.1e100</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">173.194.46.84</span><span class="p">)</span>  <span class="mf">43.184</span> <span class="n">ms</span>  <span class="mf">39.770</span> <span class="n">ms</span>  <span class="mf">45.095</span> <span class="n">ms</span>
+ <span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span>
+ <span class="mi">2</span> <span class="mf">67.59.254.85</span> <span class="p">(</span><span class="mf">67.59.254.85</span><span class="p">)</span> <span class="mf">30.078</span> <span class="n">ms</span> <span class="mf">30.452</span> <span class="n">ms</span> <span class="mf">30.766</span> <span class="n">ms</span>
+ <span class="mi">3</span> <span class="mf">67.59.255.137</span> <span class="p">(</span><span class="mf">67.59.255.137</span><span class="p">)</span> <span class="mf">33.889</span> <span class="n">ms</span> <span class="mf">67.59.255.129</span> <span class="p">(</span><span class="mf">67.59.255.129</span><span class="p">)</span> <span class="mf">33.426</span> <span class="n">ms</span> <span class="mf">67.59.255.137</span> <span class="p">(</span><span class="mf">67.59.255.137</span><span class="p">)</span> <span class="mf">34.007</span> <span class="n">ms</span>
+ <span class="mi">4</span> <span class="n">rtr101</span><span class="p">.</span><span class="n">wan</span><span class="p">.</span><span class="n">hcvlny</span><span class="p">.</span><span class="n">cv</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.109</span><span class="p">)</span> <span class="mf">34.004</span> <span class="n">ms</span> <span class="mi">451</span><span class="n">be075</span><span class="p">.</span><span class="n">cst</span><span class="p">.</span><span class="n">lightpath</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.117</span><span class="p">)</span> <span class="mf">32.743</span> <span class="n">ms</span> <span class="n">rtr102</span><span class="p">.</span><span class="n">wan</span><span class="p">.</span><span class="n">hcvlny</span><span class="p">.</span><span class="n">cv</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">65.19.107.125</span><span class="p">)</span> <span class="mf">33.951</span> <span class="n">ms</span>
+ <span class="mi">5</span> <span class="mf">64.15.3.222</span> <span class="p">(</span><span class="mf">64.15.3.222</span><span class="p">)</span> <span class="mf">34.972</span> <span class="n">ms</span> <span class="mf">64.15.0.218</span> <span class="p">(</span><span class="mf">64.15.0.218</span><span class="p">)</span> <span class="mf">35.187</span> <span class="n">ms</span> <span class="mf">35.120</span> <span class="n">ms</span>
+ <span class="mi">6</span> <span class="o">*</span> <span class="mf">72.14.215.203</span> <span class="p">(</span><span class="mf">72.14.215.203</span><span class="p">)</span> <span class="mf">29.225</span> <span class="n">ms</span> <span class="mf">29.646</span> <span class="n">ms</span>
+ <span class="mi">7</span> <span class="mf">209.85.248.242</span> <span class="p">(</span><span class="mf">209.85.248.242</span><span class="p">)</span> <span class="mf">29.361</span> <span class="n">ms</span> <span class="mf">209.85.245.116</span> <span class="p">(</span><span class="mf">209.85.245.116</span><span class="p">)</span> <span class="mf">39.780</span> <span class="n">ms</span> <span class="mf">42.108</span> <span class="n">ms</span>
+ <span class="mi">8</span> <span class="mf">209.85.249.212</span> <span class="p">(</span><span class="mf">209.85.249.212</span><span class="p">)</span> <span class="mf">33.220</span> <span class="n">ms</span> <span class="mf">209.85.252.242</span> <span class="p">(</span><span class="mf">209.85.252.242</span><span class="p">)</span> <span class="mf">33.500</span> <span class="n">ms</span> <span class="mf">33.786</span> <span class="n">ms</span>
+ <span class="mi">9</span> <span class="mf">216.239.50.248</span> <span class="p">(</span><span class="mf">216.239.50.248</span><span class="p">)</span> <span class="mf">53.231</span> <span class="n">ms</span> <span class="mf">57.314</span> <span class="n">ms</span> <span class="mf">216.239.46.215</span> <span class="p">(</span><span class="mf">216.239.46.215</span><span class="p">)</span> <span class="mf">52.140</span> <span class="n">ms</span>
+<span class="mi">10</span> <span class="mf">216.239.50.237</span> <span class="p">(</span><span class="mf">216.239.50.237</span><span class="p">)</span> <span class="mf">52.022</span> <span class="n">ms</span> <span class="mf">209.85.254.241</span> <span class="p">(</span><span class="mf">209.85.254.241</span><span class="p">)</span> <span class="mf">48.517</span> <span class="n">ms</span> <span class="mf">48.075</span> <span class="n">ms</span>
+<span class="mi">11</span> <span class="mf">209.85.243.55</span> <span class="p">(</span><span class="mf">209.85.243.55</span><span class="p">)</span> <span class="mf">56.220</span> <span class="n">ms</span> <span class="mf">45.359</span> <span class="n">ms</span> <span class="mf">44.934</span> <span class="n">ms</span>
+<span class="mi">12</span> <span class="n">ord08s11</span><span class="o">-</span><span class="n">in</span><span class="o">-</span><span class="n">f20</span><span class="mf">.1e100</span><span class="p">.</span><span class="n">net</span> <span class="p">(</span><span class="mf">173.194.46.84</span><span class="p">)</span> <span class="mf">43.184</span> <span class="n">ms</span> <span class="mf">39.770</span> <span class="n">ms</span> <span class="mf">45.095</span> <span class="n">ms</span>
 </pre></div>
 
 
 <p>The way traceroute works is by sending an echo request that has a particular feature in the IP header: <strong>the TTL is 1</strong>. This means that the packet will be dropped at the first hop. The second packet goes through the first hop and then is dropped in the second hop (TTL is 2), and so on.</p>
 <p>To make this work, the router replies response with a <em>double-headed packet</em>, containing a copy of the IP header and the data that was sent in the original echo request.</p>
-<p>PS: Check out  this post from Julia Evans on how to create a simple <a href="http://jvns.ca/blog/2013/10/31/day-20-scapy-and-traceroute/"><em>Traceroute in 15 lines of code using Python's Scapy</em></a>.</p>
+<p>PS: Check out this post from Julia Evans on how to create a simple <a href="http://jvns.ca/blog/2013/10/31/day-20-scapy-and-traceroute/"><em>Traceroute in 15 lines of code using Python's Scapy</em></a>.</p>
 <h3>The Transmission Control Protocol (Layer 4)</h3>
 <p>Provides a reliable flow of data between two hosts with a <strong>three-way handshake</strong>. The purpose is to allow the transmitting host to ensure that the destination host is up and let the transmitting host check the availability of the port as well.</p>
-<p>This handshake works as  follows:</p>
+<p>This handshake works as follows:</p>
 <ol>
 <li>Host A sends an initial packet with no data but with the synchronize (SYN) flag and the initial sequence number and <a href="http://en.wikipedia.org/wiki/Maximum_segment_size">maximum segment size</a> (MSS) for the communication process.</li>
 <li>Host B responds with a synchronize and acknowledge (SYN + ACK) flag, with its initial sequence number.</li>
 <li>Host A sends an acknowledge (ACK) packet.</li>
 </ol>
-<p>When the communication is done, a <strong>TCP teardown</strong> process is used to gracefully end a connection between two devices. The process involves four packets:</p>
+<p>When the communication is done, a <strong>TCP teardown</strong> process is used to end a connection between two devices gracefully. The process involves four packets:</p>
 <ol>
 <li>Host A sends a packet with FIN and ACK flags.</li>
 <li>Host B sends an ACK packet and then a FIN/ACK packet.</li>
 <li>Host A sends an ACK packet.</li>
 </ol>
-<p>Sometimes, however, connections can end abruptly (for example due to a potential attacker issuing a port scan). In these cases, TCP resets packets with a RST flag are used. This indicates that a connection was closed abruptly or a connection attempt was refused.</p>
+<p>Sometimes, however, connections can end abruptly (for example, due to a potential attacker issuing a port scan). In these cases, TCP resets packets with an RST flag are used. This indicates that a connection was closed abruptly or a connection attempt was refused.</p>
 <p>Furthermore, when communicating with TCP, 65,535 ports are available. We typically divide them into two groups:</p>
 <ul>
 <li>
@@ -297,15 +297,15 @@ router.</p>
 <li><strong>Sequence number</strong>: identify a TCP segment.</li>
 <li><strong>Acknowledgment Number</strong>: sequence number to be expected in the next packet from the other device.</li>
 <li><strong>Flags</strong>: URG, ACK, PSH, RST, SYN, FIN flags for identifying the type of TCP packet being transmitted.</li>
-<li><strong>Windows size</strong>:  size of the TCP receiver buffer in bytes.</li>
+<li><strong>Windows size</strong>: the size of the TCP receiver buffer in bytes.</li>
 <li><strong>Checksum</strong>: ensure the contents of the TCP header.</li>
-<li><strong>Urgent Pointer</strong>:  examined for additional instructions where the CPU should be reading the data within the packet.</li>
+<li><strong>Urgent Pointer</strong>: examined for additional instructions where the CPU should be reading the data within the packet.</li>
 <li><strong>Options</strong>: optional fields.</li>
 </ul>
 <h3>The User Datagram Protocol (Layer 4)</h3>
 <p>While TCP is designed for reliable data delivery, UDP focus on speed. UDP sends packets of data called <strong>datagrams</strong> from one host to another, with no guarantee that they reach the other end.</p>
-<p>Unlike TCP, UDP does not formally establish and terminate a connection between hosts. For this reason, it usually relies on built-in reliability services (for example protocols such as DNS and DHCP).</p>
-<p>The UDP header  has fewer fields than TCP:</p>
+<p>Unlike TCP, UDP does not formally establish and terminate a connection between hosts. For this reason, it usually relies on built-in reliability services (for example, protocols such as DNS and DHCP).</p>
+<p>The UDP header has fewer fields than TCP:</p>
 <ul>
 <li><strong>Source Port</strong>.</li>
 <li><strong>Destination Port</strong>.</li>
@@ -313,38 +313,38 @@ router.</p>
 <li><strong>Checksum</strong>.</li>
 </ul>
 <h3>The Dynamic Host Configuration Protocol (Layer 7)</h3>
-<p>In the beginning of the Internet, when a device needed to communicate over
+<p>At the beginning of the Internet, when a device needed to communicate over
 a network, it would be assigned an address by hand.</p>
-<p>As the Internet grown, the <strong>Bootstrap Protocol</strong> (BOOTP) was created,   automatically assigning addresses to  devices. Later, BOOTP was replaced by DHCP.</p>
+<p>As the Internet has grown, the <strong>Bootstrap Protocol</strong> (BOOTP) was created, automatically assigning addresses to devices. Later, BOOTP was replaced by DHCP.</p>
 <h3>The Hypertext Transfer Protocol (Layer 7)</h3>
-<p>HTTP is the mechanism that allows browsers to connect to web servers to view web pages.  HTTP packets are built on the top of TCP and they are identified by one of the eight different request methods.</p>
+<p>HTTP is the mechanism that allows browsers to connect to web servers to view web pages. HTTP packets are built on the top of TCP, and they are identified by one of the eight different request methods.</p>
 <hr />
 <h1>Analyzing Packets in Wireshark</h1>
 <p>In Wireshark, the entire process of network sniffing can be divided into three steps:</p>
 <ol>
 <li>
-<p><strong>Collection</strong>:   transferring the selected network interface into promiscuous mode so it can capture raw binary data.</p>
+<p><strong>Collection</strong>: transferring the selected network interface into promiscuous mode so it can capture raw binary data.</p>
 </li>
 <li>
-<p><strong>Conversion</strong>:  chunks of collected binary are converted into readable form.</p>
+<p><strong>Conversion</strong>: chunks of collected binary are converted into readable form.</p>
 </li>
 <li>
 <p><strong>Analysis</strong>: processing of the protocol type, communication channel, port number, protocol headers, etc.</p>
 </li>
 </ol>
 <h2>Collecting Packets</h2>
-<p>Network traffic sniffing is only possible if the <strong> network interface</strong> (NIC) is transfered to <strong>promiscuous mode</strong>. This allows the transfer of all received traffic  to the CPU (instead of processing frames that the interface was intended to receive). If the NIC is not set to promiscuous mode, packets that are not destined to that controller are discarded.</p>
+<p>Network traffic sniffing is only possible if the <strong> network interface</strong> (NIC) is transferred to <strong>promiscuous mode</strong>. This allows the transfer of all received traffic to the CPU (instead of processing frames that the interface was intended to receive). If the NIC is not set to promiscuous mode, packets that are not destined to that controller are discarded.</p>
 <h2>Wireshark main's GUI</h2>
 <p>The Wireshark main's GUI is composed of four parts:</p>
 <ul>
 <li><strong>Capture's options</strong>.</li>
 <li><strong>Packet List</strong>: list all packets in the capture file. It can be edited to display packet number, relative time, source, destination, protocol, etc.</li>
-<li><strong>Packet details</strong>: hierarchal display of information about a single packet.</li>
+<li><strong>Packet details</strong>: the hierarchal display of information about a single packet.</li>
 <li><strong>Packet Bytes</strong>: a packet in its raw, unprocessed form.</li>
 </ul>
 <p>To start capturing packets, all you need to do is to choose the network interface. You may also edit a <em>capture filter</em> prior to the packet collection.</p>
 <h2>Color Scheme</h2>
-<p>The packet list panel displays  several type of traffic by (configurable) colors. For instance:</p>
+<p>The packet list panel displays several types of traffic by (configurable) colors. For instance:</p>
 <ul>
 <li>green is TCP (and consequently HTTP),</li>
 <li>dark blue is DNS,</li>
@@ -359,33 +359,33 @@ a network, it would be assigned an address by hand.</p>
 <p><strong>Statistics -&gt; IO Graphs</strong>: Allows to graph throughput of data. For instance, you can use graphs to find peaks in the data, discover performance bottlenecks in individual protocols, and compare data streams. Filtering is available in this interface (for example, to show ARP and DHCP traffic).</p>
 </li>
 <li>
-<p><strong>Statistics -&gt; TCP -&gt; Stream Graph -&gt; Round Trip Time Graph</strong>:  Allows to  plot <strong>round-trip times</strong> (RTT) for a given capture file. This is the time it takes for an acknowledgment to be received from a sent packet.</p>
+<p><strong>Statistics -&gt; TCP -&gt; Stream Graph -&gt; Round Trip Time Graph</strong>: Allows to plot <strong>round-trip times</strong> (RTT) for a given capture file. This is the time it takes for an acknowledgment to be received from a sent packet.</p>
 </li>
 <li>
-<p><strong>Statistics -&gt; Flow Graph</strong>: Timeline-based representation of communication statistics (based on time intervals). It allows the visualization of connections and the flow of data over time.  A flow graph contains a column-based view of a connection between hosts and organizes the traffic. This analysis can show slow points or bottlenecks and determine if there is any latency.</p>
+<p><strong>Statistics -&gt; Flow Graph</strong>: Timeline-based representation of communication statistics (based on time intervals). It allows the visualization of connections and the flow of data over time. A flow graph contains a column-based view of a connection between hosts and organizes the traffic. This analysis can show slow points or bottlenecks and determine if there is any latency.</p>
 </li>
 <li>
 <p><strong>Statistics -&gt; Summary</strong>: Returns a report about the entire process by features such as interface, capture duration and number, and size of packets.</p>
 </li>
 <li>
-<p><strong>Statistics -&gt; Protocol Hierarchy</strong>: Shows statistical information of different protocols  in a <em>nodal form</em>.  It arranges the protocols according to its layers, presenting them in percentage form. For example, if you know that your network usually gets 15%  ARP traffic, if you see a value such as 50%, you know something is wrong.</p>
+<p><strong>Statistics -&gt; Protocol Hierarchy</strong>: Shows statistical information of different protocols in a <em>nodal form</em>. It arranges the protocols according to its layers, presenting them in percentage form. For example, if you know that your network usually gets 15% ARP traffic, if you see a value such as 50%, you know something is wrong.</p>
 </li>
 <li>
 <p><strong>Statistics -&gt; Conversations</strong>: Shows the address of the endpoints involved in the conversation.</p>
 </li>
 <li>
-<p><strong>Statistics -&gt; Endpoints</strong>: Similar to conversations, reflecting the statistics of traffic to and from an IP address. For example, for TCP, it can look like  <strong>SYN, SYN/ACK, SYN</strong>.</p>
+<p><strong>Statistics -&gt; Endpoints</strong>: Similar to conversations, reflecting the statistics of traffic to and from an IP address. For example, for TCP, it can look like <strong>SYN, SYN/ACK, SYN</strong>.</p>
 </li>
 <li>
 <p><strong>Edit-&gt; Finding Packet or CTRL-F</strong>: Finds packets that match to some criteria. There are three options:</p>
-<ul>
-<li><em>Display filter</em>:  expression-based filter (for example <strong>not ip</strong>, <strong>ip addr==192.168.0.10</strong>,  or <strong>arp</strong>).</li>
+</li>
+<li><em>Display filter</em>: expression-based filter (for example <strong>not ip</strong>, <strong>ip addr==192.168.0.10</strong>, or <strong>arp</strong>).</li>
 <li><em>Hex value</em>: packets with a hexadecimal (for example 00:ff, ff:ff).</li>
-<li><em>String</em>:  packets with a text string (for example admin or workstation).</li>
-</ul>
+<li>
+<p><em>String</em>: packets with a text string (for example admin or workstation).</p>
 </li>
 <li>
-<p><strong>Right click -&gt; Follow TCP Stream</strong>: Reassembles TCP streams into an  readable format (instead of having the data being in small chunks). The text displayed in <em>red</em> to signifies traffic from the source to the destination, and in  <em>blue</em> identifies traffic in the opposite direction. If you know the stream number (value to be followed to get various data packets), you can also use the following filter for the same purpose:</p>
+<p><strong>Right click -&gt; Follow TCP Stream</strong>: Reassembles TCP streams into a readable format (instead of having the data being in small chunks). The text displayed in <em>red</em> to signifies traffic from the source to the destination, and in <em>blue</em> identifies traffic in the opposite direction. If you know the stream number (value to be followed to get various data packets), you can also use the following filter for the same purpose:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span class="nx">tcp.stream</span> <span class="nb">eq</span> <span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span>
@@ -393,18 +393,18 @@ a network, it would be assigned an address by hand.</p>
 
 
 <ul>
-<li><strong>Right click -&gt; Mark Packet or CTRL+M</strong>: Helps to organization of relevant packets.</li>
+<li><strong>Right click -&gt; Mark Packet or CTRL+M</strong>: Helps to the organization of relevant packets.</li>
 </ul>
 <hr />
 <h2>Filters</h2>
 <h3>The Berkeley Packet Filter Syntax</h3>
-<p>Wireshark's filtering is a very powerful feature. It uses the <a href="http://en.wikipedia.org/wiki/Berkeley_Packet_Filter">Berkeley Packet Filter</a> (BFP) syntax.  The syntax corresponds to an <strong>expression</strong> which is made of one more <strong>primitives</strong>. These primitives can have  one or more <strong>qualifier</strong>, which are defined below:</p>
+<p>Wireshark's filtering is a very powerful feature. It uses the <a href="http://en.wikipedia.org/wiki/Berkeley_Packet_Filter">Berkeley Packet Filter</a> (BFP) syntax. The syntax corresponds to an <strong>expression</strong> which is made of one more <strong>primitives</strong>. These primitives can have one or more <strong>qualifier</strong>, which are defined below:</p>
 <ul>
-<li><strong>Type</strong>:  ID name or number (for example: <strong>host</strong>, <strong>net</strong>, <strong>port</strong>).</li>
+<li><strong>Type</strong>: ID name or number (for example: <strong>host</strong>, <strong>net</strong>, <strong>port</strong>).</li>
 <li><strong>Dir</strong>: transfer direction to or from the ID name or number (for example: <strong>src</strong> and <strong>dst</strong>).</li>
 <li><strong>Proto</strong>: restricts the match to a particular protocol (for example: <strong>ether</strong>, <strong>ip</strong>, <strong>tcp</strong>, <strong>udp</strong>, or <strong>http</strong>)</li>
 </ul>
-<p>A example of primitive is:</p>
+<p>An example of primitive is:</p>
 <div class="highlight"><pre><span class="n">dst</span> <span class="n">host</span> <span class="mf">192.168.0.10</span>
 </pre></div>
 
@@ -413,13 +413,13 @@ a network, it would be assigned an address by hand.</p>
 <h3>Types of Filters</h3>
 <p>Packages can be filtering in two ways:</p>
 <ul>
-<li><strong>Capture filters</strong>: specified when packets are being captured. This method is good for performance of large captures.</li>
+<li><strong>Capture filters</strong>: specified when packets are being captured. This method is good for the performance of large captures.</li>
 <li><strong>Display filters</strong>: applied to an existing set of collected packets. This method gives more versatility since you have the entire data available.</li>
 </ul>
-<p>In the following sessions, I  show several examples of capture and display  filters.</p>
+<p>In the following sessions, I show several examples of capture and display filters.</p>
 <h3>Capture Filters by Host Address and Name</h3>
 <ul>
-<li>Traffic associated with a host's IPV4 address (also works for a IPv6 network).</li>
+<li>Traffic associated with a host's IPV4 address (also works for an IPv6 network).</li>
 </ul>
 <div class="highlight"><pre><span class="n">host</span> <span class="mf">172.16.16.150</span>
 </pre></div>
@@ -461,7 +461,7 @@ a network, it would be assigned an address by hand.</p>
 
 
 <ul>
-<li>Only  traffic to or from IP address 173.15.2.1</li>
+<li>Only traffic to or from IP address 173.15.2.1</li>
 </ul>
 <div class="highlight"><pre><span class="n">host</span> <span class="mf">173.15.2.1</span>
 </pre></div>
@@ -517,9 +517,9 @@ a network, it would be assigned an address by hand.</p>
 </pre></div>
 
 
-<h3>Capture Filters by  Protocols</h3>
+<h3>Capture Filters by Protocols</h3>
 <ul>
-<li>Capture only unicast traffic (useful to get rid of noise on the network):</li>
+<li>Capture only unicast traffic (useful to get rid of the noise on the network):</li>
 </ul>
 <div class="highlight"><pre><span class="n">not</span> <span class="n">broadcast</span> <span class="n">and</span> <span class="n">not</span> <span class="n">multicast</span>
 </pre></div>
@@ -560,7 +560,7 @@ a network, it would be assigned an address by hand.</p>
 </pre></div>
 
 
-<h3>Capture Filters  by Packet's  Properties</h3>
+<h3>Capture Filters by Packet's Properties</h3>
 <ul>
 <li>TCP packets with SYN flag set:</li>
 </ul>
@@ -578,7 +578,7 @@ a network, it would be assigned an address by hand.</p>
 <ul>
 <li>HTTP GET requests (bytes 'G','E','T' are hex values 47, 45, 54):</li>
 </ul>
-<div class="highlight"><pre><span class="n">port</span> <span class="mi">80</span> <span class="n">and</span> <span class="n">tcp</span><span class="p">[((</span><span class="n">tcp</span><span class="p">[</span><span class="mi">12</span><span class="o">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xf0</span> <span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>  <span class="p">)</span><span class="o">:</span><span class="mi">4</span> <span class="p">]</span> <span class="o">=</span> <span class="mh">0x47455420</span>
+<div class="highlight"><pre><span class="n">port</span> <span class="mi">80</span> <span class="n">and</span> <span class="n">tcp</span><span class="p">[((</span><span class="n">tcp</span><span class="p">[</span><span class="mi">12</span><span class="o">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xf0</span> <span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="p">)</span><span class="o">:</span><span class="mi">4</span> <span class="p">]</span> <span class="o">=</span> <span class="mh">0x47455420</span>
 </pre></div>
 
 
@@ -620,9 +620,9 @@ a network, it would be assigned an address by hand.</p>
 </pre></div>
 
 
-<h3>Display Filters by  Protocols</h3>
+<h3>Display Filters by Protocols</h3>
 <ul>
-<li>Drops  arp, icmp, dns, or whatever other protocols may be background noise:</li>
+<li>Drops arp, icmp, dns, or whatever other protocols may be background noise:</li>
 </ul>
 <div class="highlight"><pre><span class="o">!</span><span class="p">(</span><span class="n">arp</span> <span class="n">or</span> <span class="n">icmp</span> <span class="n">or</span> <span class="n">dns</span><span class="p">)</span>
 </pre></div>
@@ -642,7 +642,7 @@ a network, it would be assigned an address by hand.</p>
 </pre></div>
 
 
-<h3>Display Filters  by Packet's  Properties</h3>
+<h3>Display Filters by Packet's Properties</h3>
 <ul>
 <li>Displays all HTTP GET requests:</li>
 </ul>
@@ -710,7 +710,7 @@ a network, it would be assigned an address by hand.</p>
 <h1>Using Wireshak for Security</h1>
 <h2>Some Reconnaissance Tips</h2>
 <h3>Network Scan with SYN</h3>
-<p>A  TCP SYN scan is fast and reliable  method to scan ports and services in a network. It is also less noisy than other scanning techniques.</p>
+<p>A TCP SYN scan is a fast and reliable method to scan ports and services in a network. It is also less noisy than other scanning techniques.</p>
 <p>Basically, it relies on the three-way handshake process to determine which ports are open on a target host:</p>
 <ol>
 <li>
@@ -718,53 +718,41 @@ a network, it would be assigned an address by hand.</p>
 </li>
 <li>
 <p>Once this packet is received by the victim, the following response will be observed:</p>
-<ul>
+</li>
 <li>
 <p><strong>Open ports</strong>: replies with a TCP SYN/ACK packet (three times). Then the attacker knows that port is open and a service is listening on it.</p>
 </li>
 <li>
-<p><strong>Closed ports, not filtered</strong>: the attacker receives a RST response.</p>
+<p><strong>Closed ports, not filtered</strong>: the attacker receives an RST response.</p>
 </li>
 <li>
 <p><strong>Filtered ports</strong> (by a firewall, for example): the attacker does not receive any response.</p>
 </li>
-</ul>
-</li>
 </ol>
 <h3>Operating System Fingerprint</h3>
-<p>Technique to determine the operating system on a system without have access to it.</p>
-<p>In  <strong>Passive Fingerprinting</strong>, an attacker can use certain fields within packets sent from the target to craft a stealthy fingerprint.</p>
-<p>This is possible due the lack of specificity by protocol's <a href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs</a>: although the various fields contained in the TCP, UDP, and IP headers are very specific, no default values are defined for these fields.</p>
+<p>A technique to determine the operating system on a system without having access to it.</p>
+<p>In <strong>Passive Fingerprinting</strong>, an attacker can use certain fields within packets sent from the target to craft a stealthy fingerprint.</p>
+<p>This is possible due to the lack of specificity by protocol's <a href="http://en.wikipedia.org/wiki/Request_for_Comments">RFCs</a>: although the various fields contained in the TCP, UDP, and IP headers are very specific, no default values are defined for these fields.</p>
 <p>For instance, the following header values can help one to distinguish between several operating systems:</p>
 <ul>
-<li><strong>IP, Initial Time to Live</strong>:<ul>
+<li><strong>IP, Initial Time to Live</strong>:</li>
 <li>64 for Linux, Mac OS</li>
 <li>128 for Windows</li>
 <li>255 for Cisco IOS</li>
-</ul>
-</li>
-<li><strong>IP, Don't Fragment Flag</strong>:<ul>
+<li><strong>IP, Don't Fragment Flag</strong>:</li>
 <li>Set for Linux, Mac OS, Windows</li>
 <li>Not set for Cisco IOS</li>
-</ul>
-</li>
-<li><strong>TCP, Max Segment Size</strong>:<ul>
+<li><strong>TCP, Max Segment Size</strong>:</li>
 <li>1440 for Windows</li>
 <li>1460 for Mac OS 10, Linux</li>
-</ul>
-</li>
-<li><strong>TCP, Window Size</strong>:<ul>
+<li><strong>TCP, Window Size</strong>:</li>
 <li>2920-5840 for Linux</li>
-<li>4128 for Cisco  IOS</li>
+<li>4128 for Cisco IOS</li>
 <li>65535 for for Mac OS 10</li>
 <li>variable for Windows</li>
-</ul>
-</li>
-<li><strong>TCP, StackOK</strong>:<ul>
+<li><strong>TCP, StackOK</strong>:</li>
 <li>Set for Linux, Windowns</li>
 <li>Not set for Cisco IOS, Mac OS 10</li>
-</ul>
-</li>
 </ul>
 <p>Note: A nice tool using operating system fingerprinting techniques is <a href="http://lcamtuf.coredump.cx/p0f3/">p0f</a>.</p>
 <p>In <strong>Active Fingerprinting</strong>, the attacker actively sends crafted packets to the victim whose replies reveal the OS. This can be done with <a href="http://nmap.org/">Nmap</a>.</p>
@@ -776,14 +764,14 @@ a network, it would be assigned an address by hand.</p>
 </pre></div>
 
 
-<p>This will give a view of any malicious DNS request done without the knowledge of the user. An example is a case where a  visited website has a hidden <strong>iframe</strong> with some malicious script inside.</p>
+<p>This will give a view of any malicious DNS request done without the knowledge of the user. An example is a case where a visited website has a hidden <strong>iframe</strong> with some malicious script inside.</p>
 <h3>HTTP GET Headers</h3>
-<p>Look for different HTTP streams that have flown during the network activity:  HTML, JavaScript,  image traffic, 302 redirections, non-HTTP streams, Java Archive downloads, etc. A possible filter is:</p>
+<p>Look for different HTTP streams that have flown during the network activity: HTML, JavaScript, image traffic, 302 redirections, non-HTTP streams, Java Archive downloads, etc. A possible filter is:</p>
 <div class="highlight"><pre><span class="n">http</span>
 </pre></div>
 
 
-<p>You can also look at different GET requests  with:</p>
+<p>You can also look at different GET requests with:</p>
 <div class="highlight"><pre><span class="n">tcp</span> <span class="n">contains</span> <span class="s">&quot;GET&quot;</span>
 </pre></div>
 
@@ -793,36 +781,36 @@ a network, it would be assigned an address by hand.</p>
 <hr />
 <h2>ARP Cache Poisoning</h2>
 <h3>Sniffing</h3>
-<p>ARP cache poisoning  allows tapping into the wire with Wireshark. This can be used for good or for evil.</p>
+<p>ARP cache poisoning allows tapping into the wire with Wireshark. This can be used for good or for evil.</p>
 <p>The way this works is the following: all devices on a network communicate with each other on layer 3 using IP addresses. Because switches operate on layer 2 they only see MAC addresses, which are usually cached.</p>
-<p>When a MAC address is not in the cache list, ARP broadcasts a packet asking which IP address owns some MAC address. The destination machine replies to the packet with its MAC address via an ARP reply (as we have learned above). So,  at this point, the transmitting computer has the data link layer addressing the information it needs to communicate with the remote computer. This information is then stored into the ARP cache.</p>
-<p>An attacker can spoof this process by  sending ARP messages to an Ethernet switch or router with fake MAC  addresses in order to intercept the traffic of another computer.</p>
-<p>In Linux, ARP spoofing can be done with <a href="http://www.irongeek.com/i.php?page=security/arpspoof">arpspoof or Ettercap</a>. For instance, if  your wlan0 is at 192.168.0.10 and the router is at 192.168.0.1, you can run:</p>
+<p>When a MAC address is not in the cache list, ARP broadcasts a packet asking which IP address owns some MAC address. The destination machine replies to the packet with its MAC address via an ARP reply (as we have learned above). So, at this point, the transmitting computer has the data link layer addressing the information it needs to communicate with the remote computer. This information is then stored into the ARP cache.</p>
+<p>An attacker can spoof this process by sending ARP messages to an Ethernet switch or router with fake MAC addresses in order to intercept the traffic of another computer.</p>
+<p>In Linux, ARP spoofing can be done with <a href="http://www.irongeek.com/i.php?page=security/arpspoof">arpspoof or Ettercap</a>. For instance, if your wlan0 is at 192.168.0.10 and the router is at 192.168.0.1, you can run:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">arpspoof</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlan0</span> <span class="o">-</span><span class="n">t</span> <span class="mf">192.168.0.10</span> <span class="mf">192.168.0.1</span>
 </pre></div>
 
 
 <p>If you are in Windows, ARP cache poising can be crafted using <a href="http://www.oxid.it/cain.html">Cain &amp; Abel</a>.</p>
 <h3>Denial-of-Service</h3>
-<p>In  networks with very high demand, when you reroute traffic, everything  transmitted and received by the target system must first go through your analyzer system. This makes  your analyzer the bottleneck in the communication process and being suitable to cause <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">DoS</a>.</p>
-<p>You might be able avoid all the traffic going through your analyzer system by using a feature called <a href="http://www.cisco.com/web/services/news/ts_newsletter/tech/chalktalk/archives/200903.html">asymmetric routing</a>.</p>
+<p>In networks with very high demand, when you reroute traffic, everything transmitted and received by the target system must first go through your analyzer system. This makes your analyzer the bottleneck in the communication process and is suitable to cause <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack">DoS</a>.</p>
+<p>You might be able to avoid all the traffic going through your analyzer system by using a feature called <a href="http://www.cisco.com/web/services/news/ts_newsletter/tech/chalktalk/archives/200903.html">asymmetric routing</a>.</p>
 <hr />
 <h2>Wireless Sniffing</h2>
 <h3>The 802.11 Spectrum</h3>
 <p>The unique difference when capturing traffic from a <strong>wireless local area network</strong> (WLAN) is that the wireless spectrum is a <strong>shared medium</strong> (unlike wired networks, where each client has it own cable to the switch).</p>
-<p>A single WLAN occupy a portion of the <a href="http://en.wikipedia.org/wiki/IEEE_802.11">802.11 spectrum</a>, allowing multiple systems to operate in the same physical medium. In the US, 11 channels are available and a WLAN can operate only one channel at time (and so the sniffing).</p>
+<p>A single WLAN occupy a portion of the <a href="http://en.wikipedia.org/wiki/IEEE_802.11">802.11 spectra</a>, allowing multiple systems to operate in the same physical medium. In the US, 11 channels are available, and a WLAN can operate only one channel at a time (and so the sniffing).</p>
 <p>However, a technique called <strong>channel hopping</strong> allows quick change between channels to collect data. A tool to perform this is <a href="https://www.kismetwireless.net/">kismet</a>, which can hop up to 10 channels/second.</p>
-<h3>Wireless NIC  modes</h3>
+<h3>Wireless NIC modes</h3>
 <p>Wireless network cards can have four modes:</p>
 <ul>
 <li>
 <p><strong>Managed</strong>: when the wireless client connects directly to a wireless access point (WAP).</p>
 </li>
 <li>
-<p><strong>ad hoc mode</strong>:   devices connect directly to each other, sharing the responsibility of  a WAP.</p>
+<p><strong>ad hoc mode</strong>: devices connect directly to each other, sharing the responsibility of a WAP.</p>
 </li>
 <li>
-<p><strong>Master mode</strong>: the NIC works with specialized software to allow the computer act as a WAP for other devices.</p>
+<p><strong>Master mode</strong>: the NIC works with specialized software to allow the computer to act as a WAP for other devices.</p>
 </li>
 <li>
 <p><strong>Monitor</strong>: used to stop transmitting and receiving data, and start listening to the packets flying in the air.</p>
@@ -849,7 +837,7 @@ a network, it would be assigned an address by hand.</p>
 <ul>
 <li><a href="http://wiki.wireshark.org/">Wireshark wiki</a>.</li>
 <li><a href="http://wiki.wireshark.org/">Practical Packet Analysis</a>.</li>
-<li><a href="https://github.com/ashdnazg/pyreshark">Wireshark plugin  for writing dissectors in Python</a>.</li>
+<li><a href="https://github.com/ashdnazg/pyreshark">Wireshark plugin for writing dissectors in Python</a>.</li>
 <li><a href="https://lilithlela.cyberguerrilla.org/?p=76081">Using Wireshark to check for DNS Leaks</a>.</li>
 <li><a href="http://www.netresec.com/?page=PcapFiles">Publicly available PCAP files</a>.</li>
 <li><a href="http://contagiodump.blogspot.se/2013/08/deepend-research-list-of-malware-pcaps.html">Malware PCAP files</a>.</li>

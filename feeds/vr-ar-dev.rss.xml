@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/vr-ar-dev.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 07 Dec 2016 00:00:00 -0500</lastBuildDate><item><title>To All the AR &amp; VR Groms Out There</title><link>http://bt3gl.github.io/to-all-the-ar-vr-groms-out-there.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
-&lt;p&gt;I am sharing a compilation of some of VR &amp;amp; AR resources that I have been learning and reading from. Enjoy and please let me know if you have something nice that I have not included here.&lt;/p&gt;
+&lt;p&gt;I am sharing a compilation of some of VR &amp;amp; AR resources that I have been learning and reading from. Enjoy, and please let me know if you have something nice that I have not included here.&lt;/p&gt;
 &lt;h1&gt;&lt;a href="https://en.wikipedia.org/wiki/Augmented_reality"&gt;Augmented Reality&lt;/a&gt;&lt;/h1&gt;
 &lt;h2&gt;AR Platforms&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://developer.apple.com/arkit/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;:  Apple’s developer portal for ARKit.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://developers.google.com/ar/"&gt;ARCore Developer Portal (Google)&lt;/a&gt;:  Google’s developer portal for ARCore.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/arkit/"&gt;ARKit Developer Portal (Apple)&lt;/a&gt;: Apple’s developer portal for ARKit.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developers.google.com/ar/"&gt;ARCore Developer Portal (Google)&lt;/a&gt;: Google’s developer portal for ARCore.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://developers.facebook.com/docs/ar-studio"&gt;AR Studio (Facebook)&lt;/a&gt;: Facebook's tools.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://viromedia.com/viroar"&gt;ViroAR for ARKit and ARCore&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;

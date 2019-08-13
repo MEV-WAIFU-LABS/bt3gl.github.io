@@ -7,7 +7,7 @@
 
 
 &lt;p&gt;???????&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;192.168.0.1&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mf"&gt;8.8.8.8&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;servers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;  &lt;span class="n"&gt;Authoritative&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;==&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mf"&gt;192.168.0.1&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mf"&gt;8.8.8.8&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;servers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;net&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Authoritative&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="o"&gt;==&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -23,16 +23,16 @@
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;www.google.com.            IN  A
+;www.google.com.            IN  A
 
 ;; ANSWER SECTION:
-www.google.com.     151 IN  A   167.206.12.84
+www.google.com.     151 IN  A   167.206.12.84
 ....
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 46 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 13:55:31 EDT 2014
-;; MSG SIZE  rcvd: 299
+;; MSG SIZE rcvd: 299
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -47,15 +47,15 @@ www.google.com.     151 IN  A   167.206.12.84
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;www.google.com.            IN  AAAA
+;www.google.com.            IN  AAAA
 
 ;; ANSWER SECTION:
-www.google.com.     299 IN  AAAA    2607:f8b0:4006:80a::1011
+www.google.com.     299 IN  AAAA    2607:f8b0:4006:80a::1011
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 31 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 13:55:44 EDT 2014
-;; MSG SIZE  rcvd: 71
+;; MSG SIZE rcvd: 71
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -71,15 +71,15 @@ www.google.com.     299 IN  AAAA    2607:f8b0:4006:80a::1011
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;www.google.com.            IN  MX
+;www.google.com.            IN  MX
 
 ;; AUTHORITY SECTION:
-google.com.     41  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+google.com.     41  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 29 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 13:57:48 EDT 2014
-;; MSG SIZE  rcvd: 93
+;; MSG SIZE rcvd: 93
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -96,15 +96,15 @@ google.com.     41  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;www.google.com.            IN  CNAME
+;www.google.com.            IN  CNAME
 
 ;; AUTHORITY SECTION:
-google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 30 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 13:58:23 EDT 2014
-;; MSG SIZE  rcvd: 93
+;; MSG SIZE rcvd: 93
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -122,15 +122,15 @@ google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;www.google.com.            IN  TXT
+;www.google.com.            IN  TXT
 
 ;; AUTHORITY SECTION:
-google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
+google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1800 1209600 300
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 29 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 13:59:01 EDT 2014
-;; MSG SIZE  rcvd: 93
+;; MSG SIZE rcvd: 93
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -159,7 +159,7 @@ google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A query for ANY works because the TYPE of record is returned:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt; dig @8.8.8.8 -t ANY google.com
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;dig @8.8.8.8 -t ANY google.com
 
 ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.9.4-P2-RedHat-9.9.4-15.P2.fc20 &amp;lt;&amp;lt;&amp;gt;&amp;gt; @8.8.8.8 -t ANY google.com
 ; &lt;span class="o"&gt;(&lt;/span&gt;1 server found&lt;span class="o"&gt;)&lt;/span&gt;
@@ -171,32 +171,32 @@ google.com.     59  IN  SOA ns1.google.com. dns-admin.google.com. 1568903 7200 1
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 512
 ;; QUESTION SECTION:
-;google.com.            IN  ANY
+;google.com.            IN  ANY
 
 ;; ANSWER SECTION:
-google.com.     299 IN  A   167.206.10.221
+google.com.     299 IN  A   167.206.10.221
 ...
-google.com.     21599   IN  SOA ns1.google.com. dns-admin.google.com. 2014021800 7200 1800 1209600 300
-google.com.     3599    IN  TXT &lt;span class="s2"&gt;&amp;quot;v=spf1 include:_spf.google.com ip4:216.73.93.70/31 ip4:216.73.93.72/31 ~all&amp;quot;&lt;/span&gt;
-google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
+google.com.     21599   IN  SOA ns1.google.com. dns-admin.google.com. 2014021800 7200 1800 1209600 300
+google.com.     3599    IN  TXT &lt;span class="s2"&gt;&amp;quot;v=spf1 include:_spf.google.com ip4:216.73.93.70/31 ip4:216.73.93.72/31 ~all&amp;quot;&lt;/span&gt;
+google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 ...
 
 ;; Query &lt;span class="nb"&gt;time&lt;/span&gt;: 30 msec
 ;; SERVER: 8.8.8.8#53&lt;span class="o"&gt;(&lt;/span&gt;8.8.8.8&lt;span class="o"&gt;)&lt;/span&gt;
 ;; WHEN: Mon Sep 29 15:14:48 EDT 2014
-;; MSG SIZE  rcvd: 640
+;; MSG SIZE rcvd: 640
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;hr /&gt;
 &lt;h2&gt;Reverse DNS&lt;/h2&gt;
-&lt;p&gt;Works identically, but has a record of type of PTR (and special way of formatting the IP address backwards).&lt;/p&gt;
+&lt;p&gt;Works identically, but has a record of the type of PTR (and particular way of formatting the IP address backward).&lt;/p&gt;
 &lt;p&gt;How frequently is it trusted?&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;Security&lt;/h2&gt;
 &lt;h3&gt;Recon with DNS&lt;/h3&gt;
 &lt;p&gt;DNS is allowed off every network. Most traffic gets blocked by firewalls, but not the internet. DNS traffic foes through the router.&lt;/p&gt;
-&lt;p&gt;All requests to *.somesite.com go to its DNS sever.&lt;/p&gt;
+&lt;p&gt;All requests to *.somesite.com go to its DNS server.&lt;/p&gt;
 &lt;h3&gt;Cross-site Scripting in Logs&lt;/h3&gt;
 &lt;p&gt;Cross-site scripting occurs when HTML runs in somebody else's browser.&lt;/p&gt;
 &lt;p&gt;For example, you can set the user-agent to &lt;code&gt;&amp;lt;img src="http://somesite.com/img.jpg"&amp;gt;&lt;/code&gt; and then watch the DNS server.&lt;/p&gt;
@@ -225,7 +225,7 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 
 &lt;p&gt;Results: data theft, shell access, arbitrary read.&lt;/p&gt;
 &lt;h3&gt;XXE&lt;/h3&gt;
-&lt;p&gt;XXE: returns to XML external entity attacks and lets you include files from filesystem.&lt;/p&gt;
+&lt;p&gt;XXE: returns to XML external entity attacks and lets you include files from the filesystem.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!ENTITY xxe SYSTEM &amp;quot;file:///etc/passwd&amp;quot;&amp;gt;&lt;/span&gt;]&amp;gt;
 &lt;span class="nt"&gt;&amp;lt;foo&amp;gt;&lt;/span&gt;&lt;span class="ni"&gt;&amp;amp;xxe;&lt;/span&gt;&amp;gt;&lt;span class="nt"&gt;&amp;lt;/foo&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -245,21 +245,21 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Even if there is a firewall, and a weird filesystem, and the file isn't send back to the user, you can still detect XXE!&lt;/p&gt;
+&lt;p&gt;Even if there is a firewall, and a weird filesystem and the file isn't send back to the user, you can still detect XXE!&lt;/p&gt;
 &lt;h3&gt;Gopher&lt;/h3&gt;
-&lt;p&gt;If you ask a server to do a request for:&lt;/p&gt;
+&lt;p&gt;If you ask a server to make a request for:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;gopher:&lt;/span&gt;&lt;span class="c1"&gt;//internal-ip:25/AHELO%0AMAIL+FROM...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Meaning that, if you can get a service to fetch an arbitrary gopher://URL, such as through XXE, you can attack back-end services.&lt;/p&gt;
+&lt;p&gt;If you can get a service to fetch an arbitrary gopher://URL, such as through XXE, you can attack back-end services.&lt;/p&gt;
 &lt;p&gt;Having to use DNS to exploit this is unlikely.&lt;/p&gt;
 &lt;h2&gt;PHP bad fopen()&lt;/h2&gt;
 &lt;p&gt;Very similar to XXE.&lt;/p&gt;
 &lt;p&gt;Old versions of PHP allowed Internet links (http://...) in fopen()&lt;/p&gt;
 &lt;p&gt;Arbitrary file read, gopher:// issues again.&lt;/p&gt;
 &lt;h3&gt;Shell injection&lt;/h3&gt;
-&lt;p&gt;Simply inject a DNS lookup into every field&lt;/p&gt;
+&lt;p&gt;Simply inject a DNS lookup into every field.&lt;/p&gt;
 &lt;p&gt;Full server access&lt;/p&gt;
 &lt;h3&gt;DNS Lookups&lt;/h3&gt;
 &lt;p&gt;Untrusted.&lt;/p&gt;
@@ -278,17 +278,17 @@ google.com.     599 IN  MX  40 alt3.aspmx.l.google.com.
 
 
 &lt;h3&gt;DNS Re-binding&lt;/h3&gt;
-&lt;p&gt;First we look at how you can smuggle untrusted data to a protected server.
+&lt;p&gt;First, we look at how you can smuggle untrusted data to a protected server.
 Then how to smuggle data off a protected server to the attack.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;The user ends up a the page evil. They look it up via DNS.&lt;/p&gt;
+&lt;p&gt;The user ends up at a evil page. They look it up via DNS.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The user is sent to an evil server.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;While there, a session is created (authentication, cookies, etc)&lt;/p&gt;
+&lt;p&gt;While there, a session is created (authentication, cookies, etc.)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The session refreshes, with another DNS lookup&lt;/p&gt;
@@ -300,7 +300,7 @@ Then how to smuggle data off a protected server to the attack.&lt;/p&gt;
 &lt;p&gt;The session eventually refreshes, triggering another DNS lookup&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Any cookies/local storage/etc can be accessed. The browser thinks its the same origin.&lt;/p&gt;
+&lt;p&gt;Any cookies/local storage/etc. can be accessed. The browser thinks its the same origin.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;This show two attacks:&lt;/p&gt;
@@ -311,5 +311,5 @@ Then how to smuggle data off a protected server to the attack.&lt;/p&gt;
 &lt;p&gt;Advice:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Look at you DNS traffic, keep an eye for anomalies&lt;/li&gt;
-&lt;li&gt;A spike in traffic can mean a dns backdoor or some malware.. ☠️&lt;/li&gt;
+&lt;li&gt;A spike in traffic can mean a DNS backdoor or some malware. ☠️&lt;/li&gt;
 &lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Wed, 12 Feb 2014 06:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2014-02-12:some-dns-stuff.html</guid><category>h4x0r</category><category>dns</category></item></channel></rss>

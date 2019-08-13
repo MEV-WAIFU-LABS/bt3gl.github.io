@@ -109,15 +109,15 @@
 	<a href="./tag/gpg.html"><i class="icon-tag"></i>GPG</a>
 </footer><!-- /.post-info -->                </div>
                 <p><a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Pretty Good Privacy</a> (PGP) is a model that provides cryptographic privacy and authentication for data communication. It was created by <a href="http://en.wikipedia.org/wiki/Phil_Zimmermann">Phil Zimmermann</a> in 1991. Today, PGP is a <a href="http://en.wikipedia.org/wiki/PGP_Corporation">company</a> that sells a proprietary encryption program, <a href="http://www.openpgp.org/">OpenPGP</a> is the open protocol that defines how PGP encryption works, and <a href="https://www.gnupg.org/">GnuGP</a> is the free software.</p>
-<p>The distribution of PGP keys can be done using the concept of <a href="http://en.wikipedia.org/wiki/Web_of_trust">web of trust</a>. This is a decentralized way of establishing the authenticity of a public key and its owner. If you want a cute (ludic) picture of the web of trust, check <a href="https://twitter.com/doctorow">Cory Doctorow</a>'s book <a href="http://craphound.com/littlebrother/">Little Brother</a>.</p>
-<p>Almost 15 years after its creation, <a href="https://firstlook.org/theintercept/2014/10/28/smuggling-snowden-secrets/">PGP continues to be <em>pretty good</em></a>. But there is still a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">need for new solutions</a> (and they appear to be <a href="http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html">coming soon</a>). Perhaps the main issue with PGP is its persistence. If one key is compromised, any message from the past can be read.  That's where the concept of <a href="http://en.wikipedia.org/wiki/Forward_secrecy">perfect forward secrecy </a> comes in play, but this is a subject to another post. Meanwhile, I wrote this tutorial and I hope you find it fun.</p>
-<h3>I. Creating  GPG keys</h3>
-<p>Simply type the following in the terminal:</p>
+<p>The distribution of PGP keys can be done using the concept of <a href="http://en.wikipedia.org/wiki/Web_of_trust">web of trust</a>. It is a decentralized way of establishing the authenticity of a public key and its owner. If you want a cute (ludic) picture of the web of trust, check <a href="https://twitter.com/doctorow">Cory Doctorow</a>'s book <a href="http://craphound.com/littlebrother/">Little Brother</a>.</p>
+<p>Almost 15 years after its creation, <a href="https://firstlook.org/theintercept/2014/10/28/smuggling-snowden-secrets/">PGP continues to be <em>pretty good</em></a>. But there is still a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">need for new solutions</a> (and they appear to be <a href="http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html">coming soon</a>). Perhaps the main issue with PGP is its persistence. If one key is compromised, any message from the past can be read. That's where the concept of <a href="http://en.wikipedia.org/wiki/Forward_secrecy">perfect forward secrecy </a> comes in play, but this is a subject to another post. Meanwhile, I wrote this tutorial, and I hope you find it fun.</p>
+<h3>I. Creating GPG keys</h3>
+<p>Type the following in the terminal:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --gen-key
 </pre></div>
 
 
-<p>Chose <a href="http://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> with  4096 bits long and expiration up to 5 years. Use a <a href="https://www.eff.org/wp/defending-privacy-us-border-guide-travelers-carrying-digital-devices#passphrase">strong passphrase</a> (keep it safe since it cannot be recovered).</p>
+<p>Chose <a href="http://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> with 4096 bits long and expiration up to 5 years. Use a <a href="https://www.eff.org/wp/defending-privacy-us-border-guide-travelers-carrying-digital-devices#passphrase">strong passphrase</a> (keep it safe since it cannot be recovered).</p>
 <h3>II. Backup your Private Key</h3>
 <p>Save it with your soul:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --export-secret-keys --armor YOUR_EMAIL &gt; YOUR_NAME-privkey.asc
@@ -127,7 +127,7 @@
 <h3>III. Sharing your key</h3>
 <p>There are several ways you can share or publish your public key:</p>
 <h4>By sharing the key's fingerprint</h4>
-<p>The key's fingerprint is the same as its signature. Each PGP key has a unique fingerprint that allows you to confirm to others that they have received your actual public key without tampering. A fingerprint is a more convenient way to uniquely represent a key.</p>
+<p>The key's fingerprint is the same as its signature. Each PGP key has a unique fingerprint that allows you to confirm to others that they have received your actual public key without tampering. A fingerprint is a more convenient way to represent a key uniquely.</p>
 <p>To check the fingerprint of any key that you have in your keyring, type:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --fingerprint EMAIL
 </pre></div>
@@ -135,17 +135,17 @@
 
 <h4>By sending the ASCII file</h4>
 <p>You can copy your key to a file to be shared:</p>
-<div class="highlight"><pre><span class="nv">$ </span>gpg --export --armor  YOUR_EMAIL &gt; YOUR_NAME-pubkey.asc
+<div class="highlight"><pre><span class="nv">$ </span>gpg --export --armor YOUR_EMAIL &gt; YOUR_NAME-pubkey.asc
 </pre></div>
 
 
-<h4>By  publishing it in a public key server</h4>
-<p>You can export your key to the <a href="keys.gnupg.net">GnuPG public key server</a>. For this,  use your key's name (the hexadecimal number in front of the key):</p>
+<h4>By publishing it in a public key server</h4>
+<p>You can export your key to the <a href="keys.gnupg.net">GnuPG public key server</a>. For this, use your key's name (the hexadecimal number in front of the key):</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --send-key KEY_NAME
 </pre></div>
 
 
-<p>You can also export it to  <a href="pgp.mit.edu">pgp.mit.edu</a>:</p>
+<p>You can also export it to <a href="pgp.mit.edu">pgp.mit.edu</a>:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --keyserver hkp://pgp.mit.edu --send-key KEY_NAME
 </pre></div>
 
@@ -159,7 +159,7 @@
 
 
 <h4>By Public Key Server</h4>
-<p>To search for someone's key in the public key server,  type:</p>
+<p>To search for someone's key in the public key server, type:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --search-keys NAME
 </pre></div>
 
@@ -168,16 +168,16 @@
 <h3>V. Signing a key: The Web of Trust</h3>
 <p>Signing a key tells your software that you trust the key that you have been provided (you have verified that it is associated with the person in question).</p>
 <p>To sign a key type:</p>
-<div class="highlight"><pre><span class="nv">$ </span>gpg --sign-key  PERSON_EMAIL
+<div class="highlight"><pre><span class="nv">$ </span>gpg --sign-key PERSON_EMAIL
 </pre></div>
 
 
-<p>You should allow the person whose key you are signing to enjoy the advantages of your trusted relationship. This is done by sending her back the signed key:</p>
+<p>You should allow the person whose key you are signing to enjoy the advantages of your trusted relationship, done by sending her back the signed key:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --export --armor PERSON_EMAIL
 </pre></div>
 
 
-<p>When you received a similar <em>trusted</em> key, you can import it  into your GPG database:</p>
+<p>When you received a similar <em>trusted</em> key, you can import it into your GPG database:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --import FILENAME
 </pre></div>
 
@@ -188,8 +188,8 @@
 </pre></div>
 
 
-<h4>To  edit a key (for example, the expiration date):</h4>
-<div class="highlight"><pre><span class="nv">$ </span> gpg --edit KEY_NAME
+<h4>To edit a key (for example, the expiration date):</h4>
+<div class="highlight"><pre><span class="nv">$ </span>gpg --edit KEY_NAME
 </pre></div>
 
 
@@ -214,9 +214,9 @@
 </pre></div>
 
 
-<h3>VII. Encrypting and Decryptying Messages</h3>
+<h3>VII. Encrypting and Decrypting Messages</h3>
 <p>With someone's <strong>public key</strong>, you can <strong>encrypt</strong> messages that can only be decrypted with her secret key. You can also <strong>verify signatures</strong> that was generated with her secret key.</p>
-<p>In the other hand, with your secret key you can <strong>decrypt</strong> messages that were encrypted using your public key. You can also and  <strong>sign messages</strong>.</p>
+<p>On the other hand, with your secret key, you can <strong>decrypt</strong> messages that were encrypted using your public key. You can also and <strong>sign messages</strong>.</p>
 <p>With GPG, you encrypt messages using the <code>--encrypt</code> flag.</p>
 <p>The command below encrypts the message signing with your private key (to guarantee that is coming from you). It also generates the message in a text format, instead of raw bytes:</p>
 <div class="highlight"><pre><span class="nv">$ </span>gpg --encrypt --sign --armor -r PERSON_EMAIL FILE_TO_BE_ENCRYPTED
@@ -247,11 +247,11 @@
 
 <hr />
 <h2>Final Comments</h2>
-<p>If you prefer a GUI instead of the command line, I strongly recommend  <a href="https://apps.fedoraproject.org/packages/seahorse/bugs">seahorse</a>. It makes really easy to manage all your keys (not only OpenPGP) and passwords.</p>
-<p>Another nice (alpha) project is <a href="https://keybase.io/">keybase.io</a>. It's kind of a web of trust social network, where you can sign your key with your public profiles. Check <a href="https://keybase.io/bt3">mine here</a>. Encryption and decryption can be done in the command line with their <a href="https://keybase.io/docs/command_line">node.js</a> application. I don't trust uploading my private key anywhere, but I do think that the idea is better than a simple public key server.</p>
-<p>Finally, a word about browser plugins. Although there are several of them to encrypt webmail with OpenPGP,  such as <a href="https://chrome.google.com/webstore/detail/mymail-crypt-for-gmail/jcaobjhdnlpmopmjhijplpjhlplfkhba?hl=en-US">mymail-crypt</a> or  <a href="https://www.mailvelope.com/">Mailvelope</a>, I particularly don't recommend this solution if your message is very sensitive.</p>
+<p>If you prefer a GUI instead of the command line, I strongly recommend <a href="https://apps.fedoraproject.org/packages/seahorse/bugs">seahorse</a>. It makes it really easy to manage all your keys (not only OpenPGP) and passwords.</p>
+<p>Another nice (alpha) project is <a href="https://keybase.io/">keybase.io</a>. It's a web of trust social network, where you can sign your key with your public profiles. Check <a href="https://keybase.io/bt3">mine here</a>. Encryption and decryption can be done in the command line with their <a href="https://keybase.io/docs/command_line">node.js</a> application. I don't trust uploading my private key anywhere, but I do think that the idea is better than a simple public key server.</p>
+<p>Finally, a word about browser plugins: although there are several of them to encrypt webmail with OpenPGP, such as <a href="https://chrome.google.com/webstore/detail/mymail-crypt-for-gmail/jcaobjhdnlpmopmjhijplpjhlplfkhba?hl=en-US">mymail-crypt</a> or <a href="https://www.mailvelope.com/">Mailvelope</a>, I particularly don't recommend this solution if your message is very sensitive.</p>
 <p>If you are serious about ensuring your long-term privacy, the safest way to go is to use a text editor to write your email message, encrypting the message outside of the web browser, and then cutting and pasting into your webmail interface. This will guarantee that only the recipient will be able to read your email.</p>
-<p>If you really need something in your browser,  the creator of <a href="https://crypto.cat/">Cryptocat</a> recently released <a href="https://minilock.io/">minilock</a>. This tool uses <a href="http://en.wikipedia.org/wiki/Curve25519">Curve25519 elliptic curve cryptography</a> (the same as in Cryptocat) so that the public keys are much shorter (and easier to share). Remember,  it's a new app, so it might not yet be the best choice for the high-stakes environment (but it's worth keeping tabs on this project).</p>
+<p>If you really need something in your browser, the creator of <a href="https://crypto.cat/">Cryptocat</a> recently released <a href="https://minilock.io/">minilock</a>. This tool uses <a href="http://en.wikipedia.org/wiki/Curve25519">Curve25519 elliptic curve cryptography</a> (the same as in Cryptocat) so that the public keys are much shorter (and easier to share). Remember, it's a new app, so it might not yet be the best choice for the high-stakes environment (but it's worth keeping tabs on this project).</p>
 <hr />
 <h2>Further Readings</h2>
 <ul>

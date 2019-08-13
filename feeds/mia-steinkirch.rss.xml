@@ -235,7 +235,7 @@
 &lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 17 Dec 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</guid></item><item><title>Quick &amp; Dirty iOS ARKit with "Post Malone Balloon"</title><link>http://bt3gl.github.io/quick-dirty-ios-arkit-with-post-malone-balloon.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/post_1.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Augmented reality (AR) describes user experiences that add 2D or 3D elements to the live view from a device’s camera in a way that makes those elements appear to inhabit the real world.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Hi Everyone!&lt;/p&gt;
-&lt;p&gt;In this post, I  show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high-level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt;, and &lt;strong&gt;rendering&lt;/strong&gt;. More specifically, ARKit is a session-based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.&lt;/p&gt;
+&lt;p&gt;In this post, I show how neat is to write an AR iOS application with &lt;a href="https://developer.apple.com/arkit/"&gt;ARKit&lt;/a&gt;, a framework that provides you high-level classes for &lt;strong&gt;tracking&lt;/strong&gt;, &lt;strong&gt;scene understanding&lt;/strong&gt;, and &lt;strong&gt;rendering&lt;/strong&gt;. More specifically, ARKit is a session-based framework. This means that everything will happen in a concrete session. Sessions are a way of encapsulating the logic and data contained within a defined period of the applications activity. It relates the virtual objects with the real world by means of the Tracking.&lt;/p&gt;
 &lt;p&gt;This app runs an ARKit world tracking session with content displayed in a &lt;a href="https://developer.apple.com/documentation/spriteKit"&gt;SpriteKit&lt;/a&gt; 2D view. Every session has a scene that will render the virtual objects in the real world, accessed using the iOS device sensors.&lt;/p&gt;
 &lt;p&gt;But, before everything, I recommend you to watch &lt;a href="https://developer.apple.com/videos/play/wwdc2017/602/"&gt;WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'&lt;/a&gt;. It gives a nice overview of ARKit's capabilities.&lt;/p&gt;
 &lt;p&gt;Ah, btw, the source code for this project is &lt;a href="https://github.com/bt3gl/AR_PostMalone"&gt;available for you at github&lt;/a&gt;.&lt;/p&gt;
@@ -268,28 +268,24 @@
 &lt;h3&gt;&lt;code&gt;ViewController.swift&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;This view is managed by the class ViewController, which inherits from &lt;code&gt;ARSKViewDelegate&lt;/code&gt; so that we can create a &lt;code&gt;sceneView&lt;/code&gt; variable. This class has methods for:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Views&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;Views&lt;/li&gt;
 &lt;li&gt;Scaling and placing the view.&lt;/li&gt;
 &lt;li&gt;View when it loads (and load the pre-defined scene from &lt;a href="https://developer.apple.com/documentation/spritekit/skscene"&gt;SKScene&lt;/a&gt;).&lt;/li&gt;
 &lt;li&gt;View to appear and disappear.&lt;/li&gt;
-&lt;li&gt;Run.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;Run.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Sessions&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;Session interrupted.&lt;/li&gt;
 &lt;li&gt;Session ended.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h3&gt;&lt;code&gt;AppDelegate.swift&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;This is where we call the class &lt;code&gt;AppDelegate&lt;/code&gt;, which responds for &lt;code&gt;UIApplicationMain&lt;/code&gt;. In this class, we create a variable that will work as the window UI and we have UI methods for:&lt;/p&gt;
+&lt;p&gt;This is where we call the class &lt;code&gt;AppDelegate&lt;/code&gt;, which responds for &lt;code&gt;UIApplicationMain&lt;/code&gt;. In this class, we create a variable that will work as the window UI, and we have UI methods for:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;See if the application is about to move from active to inactive state (for example, pause ongoing tasks).&lt;/li&gt;
-&lt;li&gt;Release shared resources and  save user data.&lt;/li&gt;
+&lt;li&gt;Release shared resources and save user data.&lt;/li&gt;
 &lt;li&gt;Change from the background to the active state.&lt;/li&gt;
 &lt;li&gt;Restart any tasks that were paused while the application was inactive.&lt;/li&gt;
 &lt;li&gt;Termination actions for when the application is about to terminate (for example, to save data if appropriate).&lt;/li&gt;
@@ -318,7 +314,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;p&gt;In this guide, I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in Kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
 &lt;p&gt;First, you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
-&lt;p&gt;Make sure you have all the auths right, for instance, I do the following:&lt;/p&gt;
+&lt;p&gt;Make sure you have all the auths right; for instance, I do the following:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Create an auth token and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
@@ -365,12 +361,12 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;p&gt;In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. &lt;/p&gt;
 &lt;p&gt;The system that images for distribution is called a &lt;strong&gt;container registry&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Using a &lt;code&gt;yaml&lt;/code&gt; Kubernetes files (for example, the one inside &lt;code&gt;node_server_example/&lt;/code&gt;), you can now deploy the image with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;  &lt;span class="n"&gt;node_example_kube_config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yaml&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;node_example_kube_config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yaml&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;After that, you are able to create the service with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;expose&lt;/span&gt; &lt;span class="n"&gt;deployment&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;expose&lt;/span&gt; &lt;span class="n"&gt;deployment&lt;/span&gt; &lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;test&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -422,7 +418,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;li&gt;&lt;a href="https://loader.io/"&gt;Loader&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;3. Use Performance Tools&lt;/h2&gt;
-&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc).&lt;/p&gt;
+&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc.).&lt;/p&gt;
 &lt;p&gt;Additionally, check &lt;a href="https://developers.google.com/speed/"&gt;Google's performance resources&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;4. Reduce the number of HTTP Requests&lt;/h2&gt;
 &lt;ul&gt;
@@ -435,35 +431,31 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;li&gt;Remove unnecessary characters (whitespace, new line, comments).&lt;/li&gt;
 &lt;li&gt;Some useful tools are &lt;a href="https://www.npmjs.com/package/gulp-uglify"&gt;grunt ugligy&lt;/a&gt; and &lt;a href="https://www.npmjs.com/package/gulp-clean-css"&gt;gulp-clean-css&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;6.  Avoid Redirects&lt;/h2&gt;
+&lt;h2&gt;6. Avoid Redirects&lt;/h2&gt;
 &lt;p&gt;301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.&lt;/p&gt;
 &lt;h2&gt;7. Image Optimization&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Use compression tools such as &lt;a href="https://github.com/toy/image_optim"&gt;image_optim&lt;/a&gt;, &lt;a href="https://tinypng.com/"&gt;tinypgn&lt;/a&gt;, &lt;a href="https://pngmini.com/"&gt;pngmini&lt;/a&gt;, &lt;a href="https://www.jpegmini.com"&gt;jpegmini&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Use responsive images in HTML with &lt;strong&gt;&lt;em&gt;srcset&lt;/em&gt;&lt;/strong&gt; and sizes attributes to serve different scaled images, based on the size of the display.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;8.  Render Blocking Resources blocking the DOM&lt;/h2&gt;
-&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
+&lt;h2&gt;8. Render Blocking Resources blocking the DOM&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render-blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
 &lt;p&gt;Here some tips for DOM resources:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;CSS&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;CSS&lt;/li&gt;
 &lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Concatenate all CSS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
-&lt;li&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;JavaScript&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;&lt;em&gt;async&lt;/em&gt;&lt;/strong&gt; tag allows the script to be downloaded in the background without blocking.&lt;/li&gt;
 &lt;li&gt;Move JS scripts to the bottom of the page, right before the &lt;/body&gt; tag.&lt;/li&gt;
 &lt;li&gt;Concatenate all JS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;9. Reduce Latency with a CDN.&lt;/h2&gt;
 &lt;p&gt;You can test the latency of your website by using sending out ICMP packets to its address (by ping in your terminal or &lt;a href="https://tools.keycdn.com/ping"&gt;UI tools&lt;/a&gt;).&lt;/p&gt;
@@ -486,7 +478,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 
 
 &lt;h2&gt;14. HTTP/2&lt;/h2&gt;
-&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs an SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
+&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2, one needs an SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
 &lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
 &lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
@@ -505,7 +497,7 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;p&gt;&lt;code&gt;.mp4&lt;/code&gt; is a good quality video with a small file size and is the recommended format for YouTube and Vimeo.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;.mov&lt;/code&gt; is a high quality video with a large file size. This file type doesn't play on windows without the help of VLC.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.mov&lt;/code&gt; is a high-quality video with a large file size. This file type doesn't play on windows without the help of VLC.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;.wmv&lt;/code&gt; is a good quality video with a large file size. It is also hard to play this format on Mac machines unless you have VLC.&lt;/p&gt;
@@ -514,6 +506,6 @@ ARSession object that manages the motion tracking and image processing.&lt;/p&g
 &lt;p&gt;&lt;code&gt;.flv&lt;/code&gt; is a small file size, but need extra steps to bring up the quality. This format doesn’t play natively on most Mac and Windows machines.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
+&lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance, &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open-source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
-&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 12 Dec 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-12-12:18-tips-for-website-performance.html</guid></item></channel></rss>
+&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline, which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Mon, 12 Dec 2016 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-12-12:18-tips-for-website-performance.html</guid></item></channel></rss>

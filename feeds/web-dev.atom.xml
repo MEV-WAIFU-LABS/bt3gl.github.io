@@ -11,7 +11,7 @@
 &lt;li&gt;&lt;a href="https://loader.io/"&gt;Loader&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;3. Use Performance Tools&lt;/h2&gt;
-&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc).&lt;/p&gt;
+&lt;p&gt;You can check how fast in seconds you want your site to load, on certain connection speed, with this &lt;a href="http://www.performancebudget.io/"&gt;free Budget Calculator tool&lt;/a&gt;, depending on the number of resources (HTML, images, JS, CSS, fonts, etc.).&lt;/p&gt;
 &lt;p&gt;Additionally, check &lt;a href="https://developers.google.com/speed/"&gt;Google's performance resources&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;4. Reduce the number of HTTP Requests&lt;/h2&gt;
 &lt;ul&gt;
@@ -24,35 +24,31 @@
 &lt;li&gt;Remove unnecessary characters (whitespace, new line, comments).&lt;/li&gt;
 &lt;li&gt;Some useful tools are &lt;a href="https://www.npmjs.com/package/gulp-uglify"&gt;grunt ugligy&lt;/a&gt; and &lt;a href="https://www.npmjs.com/package/gulp-clean-css"&gt;gulp-clean-css&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;6.  Avoid Redirects&lt;/h2&gt;
+&lt;h2&gt;6. Avoid Redirects&lt;/h2&gt;
 &lt;p&gt;301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.&lt;/p&gt;
 &lt;h2&gt;7. Image Optimization&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Use compression tools such as &lt;a href="https://github.com/toy/image_optim"&gt;image_optim&lt;/a&gt;, &lt;a href="https://tinypng.com/"&gt;tinypgn&lt;/a&gt;, &lt;a href="https://pngmini.com/"&gt;pngmini&lt;/a&gt;, &lt;a href="https://www.jpegmini.com"&gt;jpegmini&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Use responsive images in HTML with &lt;strong&gt;&lt;em&gt;srcset&lt;/em&gt;&lt;/strong&gt; and sizes attributes to serve different scaled images, based on the size of the display.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;8.  Render Blocking Resources blocking the DOM&lt;/h2&gt;
-&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
+&lt;h2&gt;8. Render Blocking Resources blocking the DOM&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;&lt;em&gt;Document Object Model&lt;/em&gt;&lt;/strong&gt; is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render-blocking resources should get to the client as soon and as quickly as possible.&lt;/p&gt;
 &lt;p&gt;Here some tips for DOM resources:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;CSS&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;CSS&lt;/li&gt;
 &lt;li&gt;Use &lt;a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path"&gt;media queries&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Concatenate all CSS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
-&lt;li&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;
+&lt;p&gt;Check &lt;a href="https://github.com/postcss/autoprefixer"&gt;Autoprefixer &lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;JavaScript&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;The &lt;strong&gt;&lt;em&gt;async&lt;/em&gt;&lt;/strong&gt; tag allows the script to be downloaded in the background without blocking.&lt;/li&gt;
 &lt;li&gt;Move JS scripts to the bottom of the page, right before the &lt;/body&gt; tag.&lt;/li&gt;
 &lt;li&gt;Concatenate all JS files in one.&lt;/li&gt;
 &lt;li&gt;Remove extra spaces, characters, comments, etc.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;9. Reduce Latency with a CDN.&lt;/h2&gt;
 &lt;p&gt;You can test the latency of your website by using sending out ICMP packets to its address (by ping in your terminal or &lt;a href="https://tools.keycdn.com/ping"&gt;UI tools&lt;/a&gt;).&lt;/p&gt;
@@ -75,7 +71,7 @@
 
 
 &lt;h2&gt;14. HTTP/2&lt;/h2&gt;
-&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2 one needs an SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
+&lt;p&gt;HTTP/2 comes with a huge performance benefit. To enable HTTP/2, one needs an SSL certificate and a server that supports HTTP/2.&lt;/p&gt;
 &lt;h2&gt;15. Hotlink Protection&lt;/h2&gt;
 &lt;p&gt;Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a &lt;code&gt;.htaccess&lt;/code&gt; file (Apache):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RewriteEngine&lt;/span&gt; &lt;span class="n"&gt;On&lt;/span&gt;
@@ -94,7 +90,7 @@
 &lt;p&gt;&lt;code&gt;.mp4&lt;/code&gt; is a good quality video with a small file size and is the recommended format for YouTube and Vimeo.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;code&gt;.mov&lt;/code&gt; is a high quality video with a large file size. This file type doesn't play on windows without the help of VLC.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.mov&lt;/code&gt; is a high-quality video with a large file size. This file type doesn't play on windows without the help of VLC.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;.wmv&lt;/code&gt; is a good quality video with a large file size. It is also hard to play this format on Mac machines unless you have VLC.&lt;/p&gt;
@@ -103,6 +99,6 @@
 &lt;p&gt;&lt;code&gt;.flv&lt;/code&gt; is a small file size, but need extra steps to bring up the quality. This format doesn’t play natively on most Mac and Windows machines.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open source video transcoder.&lt;/p&gt;
+&lt;p&gt;There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance, &lt;a href="https://handbrake.fr/"&gt;Handbrake&lt;/a&gt;, is a useful open-source video transcoder.&lt;/p&gt;
 &lt;h2&gt;18. Automate&lt;/h2&gt;
-&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;Have a &lt;a href="https://en.wikipedia.org/wiki/Continuous_delivery"&gt;Continuous Delivery&lt;/a&gt; pipeline, which includes profiling and performance analysis of acceptance and load tests.&lt;/p&gt;</summary></entry></feed>

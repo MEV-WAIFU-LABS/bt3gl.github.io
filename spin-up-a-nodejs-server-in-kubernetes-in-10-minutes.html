@@ -111,7 +111,7 @@
 <p>In this guide, I show you how to spin a quick <code>Node.js</code> server in Kubernetes and to grasp some of its main concepts. <a href="https://github.com/bt3gl/k8s_security">Here is the source code</a>.</p>
 <h3>Install kubectl</h3>
 <p>First, you will need to install <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> in your machine.</p>
-<p>Make sure you have all the auths right, for instance, I do the following:</p>
+<p>Make sure you have all the auths right; for instance, I do the following:</p>
 <ol>
 <li>Create an auth token and move to <code>~/.kube</code></li>
 <li>Create a config file and move to <code>~/.kube</code></li>
@@ -158,12 +158,12 @@
 <p>In a real production system, we’ll want to build images in one place, then run these images in the Kubernetes cluster. </p>
 <p>The system that images for distribution is called a <strong>container registry</strong>.</p>
 <p>Using a <code>yaml</code> Kubernetes files (for example, the one inside <code>node_server_example/</code>), you can now deploy the image with:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span>  <span class="n">node_example_kube_config</span><span class="p">.</span><span class="n">yaml</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">kubectl</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">node_example_kube_config</span><span class="p">.</span><span class="n">yaml</span>
 </pre></div>
 
 
 <p>After that, you are able to create the service with:</p>
-<div class="highlight"><pre><span class="err">$</span>  <span class="n">kubectl</span> <span class="n">expose</span> <span class="n">deployment</span> <span class="n">node</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">test</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">kubectl</span> <span class="n">expose</span> <span class="n">deployment</span> <span class="n">node</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">test</span>
 </pre></div>
 
 

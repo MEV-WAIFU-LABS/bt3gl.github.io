@@ -106,9 +106,8 @@
 
 </footer><!-- /.post-info -->                </div>
                 <p><img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px" /></p>
-<p>Hey Everyone!</p>
-<p>The VR world has a lot of <a href="https://reactjs.org/">React</a> and there are so many things I have been learning and I want to share with you! I am starting to write a series of posts diving into React and I am dumping all the things in <a href="https://github.com/bt3gl/Everything_React">this GitHub repository</a>.</p>
-<p>Today I am showing how easy is to start with React in 5 minutes.</p>
+<p>The VR world has a lot of <a href="https://reactjs.org/">React</a>, and there are so many things I have been learning, and I want to share with you! I am starting to write a series of posts diving into React, and I am dumping all the things in <a href="https://github.com/bt3gl/Everything_React">this GitHub repository</a>.</p>
+<p>Today I am showing how easy it is to start with React in 5 minutes.</p>
 <h3>What's React?</h3>
 <p>From <a href="https://reactjs.org/tutorial/tutorial.html#what-is-react">React's documentation</a>: <strong>"React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.</strong></p>
 <h3>Some Concepts</h3>
@@ -116,14 +115,14 @@
 <p>Everything in React is a component, and these usually take the form of JavaScript classes.</p>
 <p>Starting with <code>React.Component</code>, the <code>render</code> method returns a description of what you want to see on the screen, returning a <code>React element</code>, which is a lightweight description of what to render.</p>
 <h3>JSX</h3>
-<p>React developers use a syntax called <code>JSX</code> which makes these structures easier. For example,  the <code>&lt;div /&gt;</code> syntax is transformed at build time to <code>React.createElement('div')</code>. You can put any JavaScript expressions within braces inside JSX!</p>
+<p>React developers use a syntax called <code>JSX</code> which makes these structures easier. For example, the <code>&lt;div /&gt;</code> syntax is transformed at build time to <code>React.createElement('div')</code>. You can put any JavaScript expressions within braces inside JSX!</p>
 <h4>Data</h4>
-<p>There are two types of data in React:</p>
+<p>There are two types of data for React:</p>
 <ul>
 <li>state: private and can be changed from within the component itself.</li>
 <li>props: external, and not controlled by the component itself.</li>
 </ul>
-<p>A component can change its internal state directly but it can not change its props directly.</p>
+<p>A component can change its internal state directly, but it can not change its props directly.</p>
 <h3>OK, Just Show me React Already!</h3>
 <p>OK!</p>
 <ol>
@@ -163,7 +162,7 @@
 </li>
 <li><code>public</code>: where our static assets go, like our favicon. It also keeps the project's HTML file. Because React is all JavaScript, you only really need the HTML file to update the head (like title and meta tags).</li>
 <li>
-<p><code>src</code> is where our application actually lives. I’d recommend exploring all these files, to get a sense of how they work together.</p>
+<p><code>src</code> is where our application actually lives.</p>
 </li>
 <li>
 <p>Go to <code>src</code> and edit <code>App.js</code> (and <code>App.css</code>) to add things you want React to render:</p>
@@ -174,20 +173,20 @@
 <span class="k">import</span> <span class="s1">&#39;./App.css&#39;</span><span class="p">;</span>
 
 <span class="nb">class</span> <span class="nx">App</span> <span class="nx">extends</span> <span class="nb">Component</span> <span class="p">{</span>
-  <span class="nb">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nb">div</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="k">header</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-header&quot;</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="nb">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-logo&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span> <span class="o">/&gt;</span>
-          <span class="o">&lt;</span><span class="nx">h1</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-title&quot;</span><span class="o">&gt;</span><span class="nx">Welcome</span> <span class="k">to</span> <span class="nx">React</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
-        <span class="o">&lt;/</span><span class="k">header</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">p</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-intro&quot;</span><span class="o">&gt;</span>
-          <span class="nx">HELLO</span> <span class="nx">THERE</span><span class="o">!</span>
-          <span class="o">&lt;</span><span class="nb">code</span><span class="o">&gt;</span><span class="nb">src</span><span class="p">/</span><span class="nx">App.js</span><span class="o">&lt;/</span><span class="nb">code</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="nb">save</span> <span class="k">to</span> <span class="nx">reload.</span>
-        <span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
+ <span class="nb">render</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="p">(</span>
+ <span class="o">&lt;</span><span class="nb">div</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="k">header</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-header&quot;</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="nb">img</span> <span class="n">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-logo&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span> <span class="o">/&gt;</span>
+ <span class="o">&lt;</span><span class="nx">h1</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-title&quot;</span><span class="o">&gt;</span><span class="nx">Welcome</span> <span class="k">to</span> <span class="nx">React</span><span class="o">&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="k">header</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="nx">p</span> <span class="n">className</span><span class="o">=</span><span class="s2">&quot;App-intro&quot;</span><span class="o">&gt;</span>
+ <span class="nx">HELLO</span> <span class="nx">THERE</span><span class="o">!</span>
+ <span class="o">&lt;</span><span class="nb">code</span><span class="o">&gt;</span><span class="nb">src</span><span class="p">/</span><span class="nx">App.js</span><span class="o">&lt;/</span><span class="nb">code</span><span class="o">&gt;</span> <span class="ow">and</span> <span class="nb">save</span> <span class="k">to</span> <span class="nx">reload.</span>
+ <span class="o">&lt;/</span><span class="nx">p</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="nb">div</span><span class="o">&gt;</span>
+ <span class="p">);</span>
+ <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nx">export</span> <span class="nb">default</span> <span class="nx">App</span><span class="p">;</span>
