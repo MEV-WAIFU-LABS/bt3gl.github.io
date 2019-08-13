@@ -223,8 +223,4 @@
 &lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from the command line:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;netsh firewall &lt;span class="nb"&gt;set &lt;/span&gt;opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry></feed>

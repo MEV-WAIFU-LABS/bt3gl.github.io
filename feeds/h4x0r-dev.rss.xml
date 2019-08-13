@@ -637,8 +637,4 @@ call &lt;code&gt;get_bin_test&lt;/code&gt; method and pass enumerable with the h
 &lt;p&gt;Go to town with &lt;code&gt;make&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;tox&lt;/span&gt;
 &lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 02 Oct 2015 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2015-10-02:introducing-threat-intel.html</guid></item></channel></rss>
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 02 Oct 2015 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2015-10-02:introducing-threat-intel.html</guid></item></channel></rss>

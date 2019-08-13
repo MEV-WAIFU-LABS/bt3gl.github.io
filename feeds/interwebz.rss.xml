@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/interwebz.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 12 Feb 2016 06:00:00 -0500</lastBuildDate><item><title>Some DNS stuff...</title><link>http://bt3gl.github.io/some-dns-stuff.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w3.png" width="390px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/interwebz.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 12 Feb 2014 06:00:00 -0500</lastBuildDate><item><title>Some DNS stuff...</title><link>http://bt3gl.github.io/some-dns-stuff.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w3.png" width="390px" /&gt;&lt;/p&gt;
 &lt;h2&gt;DNS Recursive requests&lt;/h2&gt;
 &lt;p&gt;Where did my packet go?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="nb"&gt;nslookup&lt;/span&gt; &lt;span class="na"&gt;-q&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nx"&gt;mx&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;website&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -312,6 +312,4 @@ Then how to smuggle data off a protected server to the attack.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Look at you DNS traffic, keep an eye for anomalies&lt;/li&gt;
 &lt;li&gt;A spike in traffic can mean a dns backdoor or some malware.. ☠️&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;aloha, mia&lt;/strong&gt;*&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 12 Feb 2016 06:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2016-02-12:some-dns-stuff.html</guid><category>h4x0r</category><category>dns</category></item></channel></rss>
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Wed, 12 Feb 2014 06:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2014-02-12:some-dns-stuff.html</guid><category>h4x0r</category><category>dns</category></item></channel></rss>

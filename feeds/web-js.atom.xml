@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-js.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-06-01T00:00:00-04:00</updated><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><updated>2017-06-01T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-06-01:getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/web-js.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2016-06-01T00:00:00-04:00</updated><entry><title>Getting Started with React Development in 5 Minutes</title><link href="http://bt3gl.github.io/getting-started-with-react-development-in-5-minutes.html" rel="alternate"></link><updated>2016-06-01T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2016-06-01:getting-started-with-react-development-in-5-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/5.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Hey Everyone!&lt;/p&gt;
 &lt;p&gt;The VR world has a lot of &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt; and there are so many things I have been learning and I want to share with you! I am starting to write a series of posts diving into React and I am dumping all the things in &lt;a href="https://github.com/bt3gl/Everything_React"&gt;this GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Today I am showing how easy is to start with React in 5 minutes.&lt;/p&gt;
@@ -95,6 +95,4 @@
 &lt;li&gt;&lt;a href="https://reactjs.org/tutorial/tutorial.html"&gt;React Tutorial&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.fullstackreact.com/30-days-of-react/"&gt;30 Days of React&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.robinwieruch.de/the-road-to-learn-react/."&gt;The Road to Learn React&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;/ul&gt;</summary></entry></feed>

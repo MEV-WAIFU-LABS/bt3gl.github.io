@@ -139,6 +139,4 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://noncombatant.org/2014/03/11/privacy-and-security-settings-in-chrome/"&gt;Privacy And Security Settings in Chrome&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;[1] When the Python interpreter is invoked with the &lt;code&gt;-O&lt;/code&gt; flag, optimized code is generated and stored in &lt;strong&gt;&lt;em&gt;.pyo&lt;/em&gt;&lt;/strong&gt; files. The optimizer removes assert statements.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="V8"></category><category term="JIT"></category><category term="JavaScript"></category><category term="garbage_collection"></category><category term="cache"></category><category term="bytecode"></category><category term="Chrome"></category><category term="Python"></category></entry></feed>
+&lt;p&gt;[1] When the Python interpreter is invoked with the &lt;code&gt;-O&lt;/code&gt; flag, optimized code is generated and stored in &lt;strong&gt;&lt;em&gt;.pyo&lt;/em&gt;&lt;/strong&gt; files. The optimizer removes assert statements.&lt;/p&gt;</summary><category term="V8"></category><category term="JIT"></category><category term="JavaScript"></category><category term="garbage_collection"></category><category term="cache"></category><category term="bytecode"></category><category term="Chrome"></category><category term="Python"></category></entry></feed>

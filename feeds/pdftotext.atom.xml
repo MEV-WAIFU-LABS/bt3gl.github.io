@@ -134,6 +134,4 @@ flag&lt;span class="o"&gt;{&lt;/span&gt;security_through_obscurity&lt;span class
 
 
 &lt;p&gt;As a note, there are several other PDF forensics tools that are worth to be mentioned: &lt;a href="http://esec-lab.sogeti.com/pages/Origami"&gt;Origami&lt;/a&gt; (pdfextract extracts JavaScript from PDF files), &lt;a href="http://blog.zeltser.com/post/3235995383/pdf-stream-dumper-malicious-file-analysis"&gt;PDF Stream Dumper&lt;/a&gt; (several PDF analysis tools), &lt;a href="http://blog.zeltser.com/post/6780160077/peepdf-malicious-pdf-analysis"&gt;Peepdf&lt;/a&gt; (command-line shell for examining PDF), &lt;a href="https://github.com/9b/pdfxray_lite"&gt;PDF X-RAY Lite&lt;/a&gt; (creates an HTML report with decoded file structure and contents), &lt;a href="http://blog.zeltser.com/post/12615013257/extracting-swf-from-pdf-using-swf-mastah"&gt;SWF mastah&lt;/a&gt; (extracts SWF objects), &lt;a href="for examining and decoding structure and content of PDF files"&gt;Pyew&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="pdf-parser"></category><category term="pdftotext"></category></entry></feed>

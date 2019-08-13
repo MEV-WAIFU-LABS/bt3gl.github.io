@@ -84,181 +84,6 @@
       <div class="row">
         <div class="span9" id="content">
         <div class="article">
-                <h1><a href="./ouroboros-statement.html">Ouroboros Statement</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2016-07-15T00:00:00">
-      Fri 15 July 2016 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/statements.html"><i class="icon-folder-open"></i>Statements</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>I was seven when I first saw the <em>shiny beige box</em>. When my uncle finally let me touch the black screen, I was astounded with the list of unfathomable keys that “help” would print. My parents were getting divorced and my reality had just become <strong>40 megabytes of the most ...</strong></p>
-                        <a class="btn primary xsmall" href="./ouroboros-statement.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./some-dns-stuff.html">Some DNS stuff...</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2016-02-12T06:00:00">
-      Fri 12 February 2016 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/interwebz.html"><i class="icon-folder-open"></i>interwebz</a>
-
-
-<span class="label">Tags</span>
-	<a href="./tag/h4x0r.html"><i class="icon-tag"></i>h4x0r</a>
-	<a href="./tag/dns.html"><i class="icon-tag"></i>dns</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="cyberpunk" height="270px" src="./cyberpunk/w3.png" width="390px" /></p>
-<h2>DNS Recursive requests</h2>
-<p>Where did my packet go?</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="nb">nslookup</span> <span class="na">-q</span><span class="o">=</span><span class="nx">mx</span> <span class="o">&lt;</span><span class="nx">website</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>???????</p>
-<div class="highlight"><pre><span class="mf">192.168.0.1</span> <span class="o">=&gt;</span> <span class="mf">8.8.8.8</span> <span class="o">=&gt;</span> <span class="n">X</span><span class="p">.</span><span class="n">root</span><span class="o">-</span><span class="n">servers</span><span class="p">.</span><span class="n">net</span> <span class="o">=&gt;</span>  <span class="n">Authoritative</span> <span class="n">server</span> <span class="o">==&gt;</span> <span class="o">?</span>
-</pre></div>
-
-
-<p>There are lots of different record types:</p>
-<h3>A: Get an IP address</h3>
-<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t A www.google.com
-; <span class="o">(</span>1 server ...</pre></div>
-                        <a class="btn primary xsmall" href="./some-dns-stuff.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./deploying-suricata-with-chef.html">Deploying Suricata with Chef</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-12-01T00:00:00">
-      Tue 01 December 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/dev-infra-chef-h4x0r.html"><i class="icon-folder-open"></i>dev, infra, chef, h4x0r</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="cyberpunk" height="300px" src="./cyberpunk/17.jpg" width="400px" /></p>
-<p><strong>Continuous delivery</strong> is a software development practice where code changes (in source control) are automatically:</p>
-<ul>
-<li>built (run build and unit tests), known as <strong>continuous integration</strong>,</li>
-<li>tested (deploy to test environments, run all the tests), known as <strong>continuous testing</strong>, and</li>
-<li>prepared for a release (deploy to production environment), known as <strong>continuous ...</strong></li></ul>
-                        <a class="btn primary xsmall" href="./deploying-suricata-with-chef.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./tmux-shortcuts-cheatsheet.html">tmux shortcuts & cheatsheet</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-11-02T07:00:00">
-      Mon 02 November 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/software.html"><i class="icon-folder-open"></i>software</a>
-
-
-<span class="label">Tags</span>
-	<a href="./tag/tmux.html"><i class="icon-tag"></i>tmux</a>
-	<a href="./tag/tools.html"><i class="icon-tag"></i>tools</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="cyberpunk" height="270px" src="./cyberpunk/tmux.jpg" width="390px" /></p>
-<p>If you are not using <a href="https://github.com/tmux/tmux">tmux</a> yet, you are missing it out!</p>
-<p>Here some shortcuts and configs to help you to start.</p>
-<h2>Starting Sessions</h2>
-<p>start new:</p>
-<div class="highlight"><pre><span class="n">tmux</span>
-</pre></div>
-
-
-<p>start new with session name:</p>
-<div class="highlight"><pre><span class="n">tmux</span> <span class="n">new</span> <span class="o">-</span><span class="n">s</span> <span class="n">myname</span>
-</pre></div>
-
-
-<p>attach</p>
-<div class="highlight"><pre>    <span class="n">tmux</span> <span class="n">a</span>  <span class="err">#</span>  <span class="p">(</span><span class="n">or</span> <span class="n">at</span><span class="p">,</span> <span class="n">or</span> <span class="n">attach</span><span class="p">)</span>
-</pre></div>
-
-
-<p>attach to named</p>
-<div class="highlight"><pre><span class="n">tmux</span> <span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">myname ...</span></pre></div>
-                        <a class="btn primary xsmall" href="./tmux-shortcuts-cheatsheet.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./introducing-threat-intel.html">Introducing Threat Intel</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-10-02T00:00:00">
-      Fri 02 October 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/h4x0r-dev.html"><i class="icon-folder-open"></i>h4x0r, dev</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><a href="https://github.com/bt3gl/threat_intel">Threat Intel 🍒</a> is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:</p>
-<ul>
-<li>OpenDNS Investigate API</li>
-<li>VirusTotal API v2.0</li>
-<li>ShadowServer API</li>
-</ul>
-<hr />
-<h3>OpenDNS Investigate API</h3>
-<p><a href="https://investigate.opendns.com/">OpenDNS ...</a></p>
-                        <a class="btn primary xsmall" href="./introducing-threat-intel.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./a-tor-proxy-in-a-raspberry-pi.html">A Tor Proxy in a Raspberry Pi</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-03-29T00:00:00">
-      Sun 29 March 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /></p>
-<p>In this tutorial I walk through all the steps to setup a Tor proxy in a Raspberry Pi (Model B). This work was based on some of tutorials from Adafruit.</p>
-<h1>Setting Up a Raspberry Pi</h1>
-<h2>Installing an Operating System in the SD card</h2>
-<p><a href="http://www.raspberrypi.org/help/noobs-setup">You can either install NOOBS and then ...</a></p>
-                        <a class="btn primary xsmall" href="./a-tor-proxy-in-a-raspberry-pi.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./deploying-a-flask-app-at-heroku.html">Deploying a Flask App at Heroku</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-03-21T00:00:00">
-      Sat 21 March 2015 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /></p>
-<p>I was playing with Flask and I wrote my own <a href="https://anti-social.herokuapp.com/">Anti-Social Network</a>. </p>
-<p>Heroku platform is very flexible and it supports several programming languages. To
-deploy an application to Heroku, use Git to push the application to Heroku’s server.</p>
-<h1>Running in a Production Server</h1>
-<p>Heroku does not provide a web ...</p>
-                        <a class="btn primary xsmall" href="./deploying-a-flask-app-at-heroku.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
                 <h1><a href="./functional-python-stuff-super-quick.html">Functional Python Stuff Super Quick</a></h1>
                 <div class="well small"><footer class="post-info">
 <abbr class="published" title="2015-03-01T00:00:00">
@@ -297,43 +122,221 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
         </div>
         <hr />
         <div class="article">
-                <h1><a href="./getting-started-with-lamp-and-codeigniter.html">Getting started with LAMP and CodeIgniter</a></h1>
+                <h1><a href="./8-reasons-why-go-is-awesome.html">8 Reasons why Go is Awesome</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-02-25T00:00:00">
-      Wed 25 February 2015 </abbr>
+<abbr class="published" title="2015-01-12T06:00:00">
+      Mon 12 January 2015 </abbr>
 
 <span class="label"> Category</span>
-<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+<a href="./category/software.html"><i class="icon-folder-open"></i>software</a>
 
 
+<span class="label">Tags</span>
+	<a href="./tag/golang.html"><i class="icon-tag"></i>golang</a>
+	<a href="./tag/algorithms.html"><i class="icon-tag"></i>algorithms</a>
+	<a href="./tag/awesome.html"><i class="icon-tag"></i>awesome</a>
 </footer><!-- /.post-info --></div>
-                <div class="summary"><p>LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.</p>
-<h2>Building a MySQL Database</h2>
-<p>We will use a web interface to access data in our database:</p>
-<ul>
-<li>
-<p>Login with your root login/password ...</p></li></ul>
-                        <a class="btn primary xsmall" href="./getting-started-with-lamp-and-codeigniter.html">more ...</a>
+                <div class="summary"><p><img alt="cyberpunk" height="270px" src="./cyberpunk/w1.jpg" width="390px" /></p>
+<p>Go is a programming language developed by Google, introduced to the public in 2009. Go's developers had the goal of creating a language based on the syntax of the C programming language, elimination some "garbage" of older languages (such as C++) while containing many features of modern languages.</p>
+<h3>1 ...</h3>
+                        <a class="btn primary xsmall" href="./8-reasons-why-go-is-awesome.html">more ...</a>
                 </div>
         </div>
         <hr />
         <div class="article">
-                <h1><a href="./javascript-crash-course.html">JavaScript: Crash Course</a></h1>
+                <h1><a href="./python-algorithms-just-for-you.html">Python & Algorithms Just For You</a></h1>
                 <div class="well small"><footer class="post-info">
-<abbr class="published" title="2015-02-15T00:00:00">
-      Sun 15 February 2015 </abbr>
+<abbr class="published" title="2015-01-02T00:00:00">
+      Fri 02 January 2015 </abbr>
 
 <span class="label"> Category</span>
-<a href="./category/devops.html"><i class="icon-folder-open"></i>DevOps</a>
+<a href="./category/h4x0r-dev-python.html"><i class="icon-folder-open"></i>h4x0r, dev, python</a>
 
 
 </footer><!-- /.post-info --></div>
-                <div class="summary"><h1>Installing &amp; Setting up</h1>
-<p>JavaScript (JS) is a dynamic computer programming language. Install <a href="https://developer.chrome.com/devtools/index">Google Dev Tools</a> to proceed. </p>
-<h1>JavaScript 101</h1>
-<p>To include your example.js in an HTML page (usually placed right before </body> will guarantee that elements are defined when the script is executed):</p>
-<div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;/path/to/example.js&quot;</span><span class="nt">&gt;&lt;/script ...</span></pre></div>
-                        <a class="btn primary xsmall" href="./javascript-crash-course.html">more ...</a>
+                <div class="summary"><p><img alt="cyberpunk" height="300px" src="./cyberpunk/26.jpg" width="400px" /></p>
+<p>Do you want to learn Python? Do you want to learn algorithms by solving the exercises from <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8&amp;qid=1529209451&amp;sr=8-1&amp;keywords=cracking+the+coding+interviews">Cracking the Code Interview</a>?</p>
+<p>You got it! Check out <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures">an entire (free) book that I wrote for that</a>!</p>
+<p><strong><em>Update</em></strong>: This book has been bought by <a href="http://www.hanbit.co.kr/">Hanbit</a>, to be published in Korean!</p>
+                        <a class="btn primary xsmall" href="./python-algorithms-just-for-you.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./black-hat-python-infinite-possibilities-with-the-scapy-module.html">Black Hat Python: Infinite possibilities with the Scapy Module</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-22T00:00:00">
+      Mon 22 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/networking.html"><i class="icon-folder-open"></i>Networking</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
+	<a href="./tag/scapy.html"><i class="icon-tag"></i>scapy</a>
+	<a href="./tag/book.html"><i class="icon-tag"></i>Book</a>
+	<a href="./tag/traceroute.html"><i class="icon-tag"></i>traceroute</a>
+	<a href="./tag/pcap.html"><i class="icon-tag"></i>PCAP</a>
+	<a href="./tag/arp_poisining.html"><i class="icon-tag"></i>ARP_poisining</a>
+	<a href="./tag/sniffing.html"><i class="icon-tag"></i>sniffing</a>
+	<a href="./tag/wireshark.html"><i class="icon-tag"></i>Wireshark</a>
+	<a href="./tag/packet_header.html"><i class="icon-tag"></i>packet_header</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>This is a review about one of my favorites libraries in Python: <a href="http://www.secdev.org/projects/scapy/">Scapy</a>, which is a very powerful <strong>packet manipulation</strong> resource.</p>
+<p><strong>Scapy</strong>  is able to forge and decode packets of several protocols, send and capture them, match requests and replies, and much more. It can be used to handle most ...</p>
+                        <a class="btn primary xsmall" href="./black-hat-python-infinite-possibilities-with-the-scapy-module.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./black-hat-python-building-a-udp-scanner.html">Black Hat Python: Building a UDP Scanner</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-16T00:00:00">
+      Tue 16 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/networking.html"><i class="icon-folder-open"></i>Networking</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
+	<a href="./tag/socket.html"><i class="icon-tag"></i>socket</a>
+	<a href="./tag/sniffing.html"><i class="icon-tag"></i>sniffing</a>
+	<a href="./tag/udp.html"><i class="icon-tag"></i>UDP</a>
+	<a href="./tag/netaddr.html"><i class="icon-tag"></i>netaddr</a>
+	<a href="./tag/icmp.html"><i class="icon-tag"></i>ICMP</a>
+	<a href="./tag/scanner.html"><i class="icon-tag"></i>scanner</a>
+	<a href="./tag/packet_header.html"><i class="icon-tag"></i>packet_header</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.</p>
+<p>A few weeks ago, I talked about <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">how to use Wireshark</a> for packet sniffing ...</p>
+                        <a class="btn primary xsmall" href="./black-hat-python-building-a-udp-scanner.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./black-hat-python-the-paramiko-module.html">Black Hat Python: The Paramiko Module</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-13T00:00:00">
+      Sat 13 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/networking.html"><i class="icon-folder-open"></i>Networking</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
+	<a href="./tag/paramiko.html"><i class="icon-tag"></i>paramiko</a>
+	<a href="./tag/ssh.html"><i class="icon-tag"></i>SSH</a>
+	<a href="./tag/pycrypto.html"><i class="icon-tag"></i>PyCrypto</a>
+	<a href="./tag/getopt.html"><i class="icon-tag"></i>getopt</a>
+	<a href="./tag/threading.html"><i class="icon-tag"></i>threading</a>
+	<a href="./tag/socket.html"><i class="icon-tag"></i>socket</a>
+	<a href="./tag/book.html"><i class="icon-tag"></i>Book</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>This is the second post based on my readings from <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>. Yesterday I talked about Python's <a href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html">socket module</a> and today I'm talking about the <a href="http://www.paramiko.org/">paramiko</a> module.</p>
+<p><strong>Paramiko</strong> is awesome!!! It uses my dear <a href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> to give us access to the <a href="http://en.wikipedia.org/wiki/SSH2">SSH2 protocol</a>, and it has a ...</p>
+                        <a class="btn primary xsmall" href="./black-hat-python-the-paramiko-module.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./black-hat-python-networking-the-socket-module.html">Black Hat Python Networking: The Socket Module</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-10T00:00:00">
+      Wed 10 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/networking.html"><i class="icon-folder-open"></i>Networking</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
+	<a href="./tag/netcat.html"><i class="icon-tag"></i>netcat</a>
+	<a href="./tag/socket.html"><i class="icon-tag"></i>socket</a>
+	<a href="./tag/threading.html"><i class="icon-tag"></i>threading</a>
+	<a href="./tag/subprocess.html"><i class="icon-tag"></i>subprocess</a>
+	<a href="./tag/udp.html"><i class="icon-tag"></i>UDP</a>
+	<a href="./tag/tcp.html"><i class="icon-tag"></i>TCP</a>
+	<a href="./tag/book.html"><i class="icon-tag"></i>Book</a>
+	<a href="./tag/getopt.html"><i class="icon-tag"></i>getopt</a>
+	<a href="./tag/proxy.html"><i class="icon-tag"></i>proxy</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>Last week I got my copy of <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>, the new <a href="https://twitter.com/jms_dot_py">Justin Seitz</a>'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!</p>
+<p>I have been wanting to write about Python's network resources for a while and now this is my chance ...</p>
+                        <a class="btn primary xsmall" href="./black-hat-python-networking-the-socket-module.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./lots-of-astrophysics-for-you.html">Lots of Astrophysics for You!</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-02T00:00:00">
+      Tue 02 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/astro-science.html"><i class="icon-folder-open"></i>astro, science</a>
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p><img alt="cyberpunk" height="300px" src="./cyberpunk/23.jpg" width="400px" /></p>
+<p>I wrote so much code during my Ph.D.! Some of them were protected or cannot be shared, but some are free (as in free beer).</p>
+<p>If you like astrophysics, check out some of my IDL and Python work:</p>
+<ul>
+<li>
+<p><a href="https://github.com/bt3gl/MFits-Astrophysical-Analyzer">MFits, The Astrophysical Analyzer</a>: Package to calculate five distinct fits on ...</p></li></ul>
+                        <a class="btn primary xsmall" href="./lots-of-astrophysics-for-you.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./on-redis-aes-encryption-in-the-9447s-ctf.html">On Redis & AES Encryption in the 9447's CTF</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-01T02:00:00">
+      Mon 01 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/cryptography.html"><i class="icon-folder-open"></i>Cryptography</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
+	<a href="./tag/redis.html"><i class="icon-tag"></i>Redis</a>
+	<a href="./tag/python.html"><i class="icon-tag"></i>Python</a>
+	<a href="./tag/nosql.html"><i class="icon-tag"></i>NoSQL</a>
+	<a href="./tag/ecb.html"><i class="icon-tag"></i>ECB</a>
+	<a href="./tag/aes.html"><i class="icon-tag"></i>AES</a>
+	<a href="./tag/pycrypto.html"><i class="icon-tag"></i>PyCrypto</a>
+	<a href="./tag/socket.html"><i class="icon-tag"></i>socket</a>
+	<a href="./tag/wireshark.html"><i class="icon-tag"></i>Wireshark</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>During this last weekend, the <a href="https://9447.plumbing/home">9447 CTF</a> took place. One of the <em>misc</em> problems was called <strong>NoSQL</strong> and had the following description, together with an attachment with three files:</p>
+<div class="highlight"><pre>    <span class="n">Hey</span><span class="p">,</span> <span class="n">I</span> <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">understand</span> <span class="n">how</span> <span class="n">SQL</span> <span class="n">works</span> <span class="n">so</span> <span class="n">I</span> <span class="n">made</span> <span class="n">my</span> <span class="n">own</span> <span class="n">NoSQL</span> <span class="n">startup</span><span class="p">.</span> <span class="n">And</span> <span class="n">OpenSSL</span> <span class="n">is</span> <span class="n">bloody</span> <span class="n">crap</span><span class="p">.</span>
+
+    <span class="nl">ip ...</span></pre></div>
+                        <a class="btn primary xsmall" href="./on-redis-aes-encryption-in-the-9447s-ctf.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="./deploying-suricata-with-chef.html">Deploying Suricata with Chef</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-12-01T00:00:00">
+      Mon 01 December 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/dev-infra-chef-h4x0r.html"><i class="icon-folder-open"></i>dev, infra, chef, h4x0r</a>
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p><img alt="cyberpunk" height="300px" src="./cyberpunk/17.jpg" width="400px" /></p>
+<p><strong>Continuous delivery</strong> is a software development practice where code changes (in source control) are automatically:</p>
+<ul>
+<li>built (run build and unit tests), known as <strong>continuous integration</strong>,</li>
+<li>tested (deploy to test environments, run all the tests), known as <strong>continuous testing</strong>, and</li>
+<li>prepared for a release (deploy to production environment), known as <strong>continuous ...</strong></li></ul>
+                        <a class="btn primary xsmall" href="./deploying-suricata-with-chef.html">more ...</a>
                 </div>
         </div>
         <hr />

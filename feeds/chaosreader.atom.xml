@@ -51,8 +51,4 @@
 &lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Edited: If you had decided to use &lt;em&gt;chaosreader&lt;/em&gt; to process the pcapng file instead, the solution &lt;a href="http://evandrix.github.io/ctf/2014-csaw-networking-100-bigdata.html"&gt;from this write-up&lt;/a&gt; is also cool:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for &lt;/span&gt;f in pcap.pcapng-chaosreader/*.html; &lt;span class="k"&gt;do &lt;/span&gt;cat &lt;span class="s2"&gt;&amp;quot;${f}&amp;quot;&lt;/span&gt; | w3m -dump -T text/html &lt;span class="s2"&gt;&amp;quot;${f}&amp;quot;&lt;/span&gt;; &lt;span class="k"&gt;done&lt;/span&gt; | egrep &lt;span class="s2"&gt;&amp;quot;flag{&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="Chaosreader"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="Wireshark"></category><category term="Chaosreader"></category></entry></feed>

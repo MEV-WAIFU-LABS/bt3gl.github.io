@@ -223,11 +223,7 @@
 &lt;li&gt;Now a special one: Windows! One of the trivia questions in this CTF. How to disable the Windows XP Firewall from the command line:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;netsh firewall &lt;span class="nb"&gt;set &lt;/span&gt;opmode &lt;span class="nv"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;DISABLE.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry><entry><title>The Sharif University CTF 2014</title><link href="http://bt3gl.github.io/the-sharif-university-ctf-2014.html" rel="alternate"></link><updated>2014-09-26T04:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-26:the-sharif-university-ctf-2014.html</id><summary type="html">&lt;p&gt;It looked like a fun CTF, but I did not have the chance to play for too long. I managed to solve a few problems in the morning and the solutions are below.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category><category term="RFI"></category><category term="SQL_injection"></category><category term="LFI"></category><category term="RCE"></category><category term="PHP"></category><category term="CMS"></category><category term="ApPHP"></category><category term="unoconv"></category><category term="ColdFusion"></category><category term="Buffer_Overflow"></category><category term="Steganography"></category><category term="Wireshark"></category><category term="ExifTool"></category><category term="netsh"></category><category term="CTF"></category><category term="scapy"></category><category term="RIPS"></category><category term="Heartbleed"></category><category term="nmap"></category></entry><entry><title>The Sharif University CTF 2014</title><link href="http://bt3gl.github.io/the-sharif-university-ctf-2014.html" rel="alternate"></link><updated>2014-09-26T04:20:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-09-26:the-sharif-university-ctf-2014.html</id><summary type="html">&lt;p&gt;It looked like a fun CTF, but I did not have the chance to play for too long. I managed to solve a few problems in the morning and the solutions are below.&lt;/p&gt;
 &lt;h2&gt;Avatar: Steganography&lt;/h2&gt;
 &lt;p&gt;The challenge starts with:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -357,6 +353,4 @@ We should blow up the bridge at midnight
 
 &lt;p&gt;This gives us our flag:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/sA7JPrl.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Aloha, bt3&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Steganography"></category><category term="jad"></category><category term="OutGuess"></category></entry></feed>
+&lt;p&gt;&lt;strong&gt; Hack all the things! &lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="Steganography"></category><category term="jad"></category><category term="OutGuess"></category></entry></feed>
