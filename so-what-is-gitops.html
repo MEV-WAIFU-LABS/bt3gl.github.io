@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>So, What is GitOps?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to So, What is GitOps?">
+                                        So, What is GitOps?
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2019-08-22T09:00:00">
+      Thu 22 August 2019 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/infra.html"><i class="icon-folder-open"></i>infra</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/k8s.html"><i class="icon-tag"></i>k8s</a>
+	<a href="./tag/scalability.html"><i class="icon-tag"></i>scalability</a>
+	<a href="./tag/gitops.html"><i class="icon-tag"></i>gitops</a>
+	<a href="./tag/flux.html"><i class="icon-tag"></i>flux</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/container.png" width="390px" /></p>
+<p>In general, there are two ways to deploy infrastructure changes:</p>
+<ul>
+<li><strong>Procedural way</strong>: telling some tool what to do, e.g.: <a href="https://www.ansible.com/">Ansible</a> (a glorified SSH). This is also known as a <em>push model</em>.</li>
+<li><strong>Declarative way</strong>: telling some tool what you want to have done, also known as <em>infrastructure as code</em>, e.g.: <a href="https://www.terraform.io/">Terraform</a> and <a href="https://www.pulumi.com/">Pulumi</a>.</li>
+</ul>
+<p><strong>GitOps</strong> is a term created by <a href="https://www.weave.works/technologies/gitops/">WeWorks</a> and works by using Git as a source of truth for <em>declarative</em> infrastructure and applications. Automated CI/CD pipelines roll out changes to your infrastructure after commits are pushed and approved in Git. This model is becoming a popular operating way for building applications on Kubernetes. </p>
+<p><img alt="cyberpunk" height="270px" src="./cyberpunk/gitiops1.png" width="390px" /></p>
+<p>In GitOps you only push code. The developer interacts with the source control, which triggers the CI/CD tool (e.g. <a href="https://jenkins.io/">Jenkins</a> or <a href="https://circleci.com">CicleCI</a>), and this pushes the docker image to the container register (e.g. <a href="https://hub.docker.com/">docker hub</a>). So you can see the Docker image as an artifact and to deploy this image, you have a different <strong>config repository</strong> which contains the k8s manifests. The CI/CD tool sends a pull request, and when it is merged, a <strong>magic pod</strong> in the k8s cluster pulls the image to the cluster (similar to <code>kubectl apply</code>, the popular <a href="https://kubernetes.io/docs/reference/kubectl/kubectl/">k8s management tool</a>, or even <code>helm update</code>, another popular <a href="https://helm.sh/">production tool</a>). </p>
+<p>Everything is controlled through pull requests. You push code, not containers. </p>
+<p>Wait, but what is this <strong>magic pod</strong>? Glad you ask: the magic is performed by a tool called <a href="https://github.com/fluxcd/flux">Flux</a>, which automatically ensures that the state of a cluster matches the config in Git. It uses an operator in the cluster to trigger deployments inside Kubernetes, which means you don't need a separate CI/CD tool. It monitors all relevant image repositories, detects new images, triggers deployments, and updates the desired running configuration based on that.</p>
+<p>So, ultimately, the key advantages of GitOps models are: increased productivity and stabilities, higher reliability, and standardization. But mostly, no more manual <code>kubectl</code> commands anymore!</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
