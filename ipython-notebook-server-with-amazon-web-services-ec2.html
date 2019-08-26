@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>iPython Notebook server with Amazon Web Services (EC2)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to iPython Notebook server with Amazon Web Services (EC2)">
+                                        iPython Notebook server with Amazon Web Services (EC2)
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2015-08-22T09:00:00">
+      Sat 22 August 2015 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/tips.html"><i class="icon-folder-open"></i>tips</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/aws.html"><i class="icon-tag"></i>aws</a>
+	<a href="./tag/notebooks.html"><i class="icon-tag"></i>notebooks</a>
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/container.png" width="390px" /></p>
+<h1>AWS Console and EC2 Instance Launch.</h1>
+<ul>
+<li>Log in at the <a href="http://aws.amazon.com/console/">AWS Console</a>.</li>
+<li>We're going to use the <em>Classic Wizard</em> for the Instance Creation.</li>
+<li>The free tier is only eligible for the <em>T1 Micro</em>.  You can use all the defaults.</li>
+<li>The Wizard is going to ask you to create a public key (or use an existing one if this isn't your first time). </li>
+<li>The <em>Security Group</em> step is a crucial step. This step can only be configured when you launch the instance! Under the Create New Security Group:</li>
+</ul>
+<h1>Setting Security Groups</h1>
+<ul>
+<li>You should have  these rules:</li>
+</ul>
+<div class="highlight"><pre>   <span class="o">*</span> <span class="n">SSH</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span><span class="o">:</span> <span class="mf">0.0.0.0</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> 
+
+   <span class="o">*</span> <span class="n">HTTPS</span><span class="p">(</span><span class="mi">443</span><span class="p">)</span><span class="o">:</span> <span class="mf">0.0.0.0</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> 
+
+   <span class="o">*</span> <span class="mi">8888</span><span class="o">:</span> <span class="mf">0.0.0.0</span><span class="o">/</span><span class="mf">0.</span> 
+</pre></div>
+
+
+<p>Where 0.0.0.0/0 means access from <em>ANY</em> outside I.P. address. We will use port 8888 for our iPython Notebook server. </p>
+<ul>
+<li>Launch and SSH to the Instance!</li>
+</ul>
+<h1>Setting up your Python Environment</h1>
+<p>Set up your python environment with <a href="http://continuum.io/downloads.html">Anaconda</a>. Use <code>wget</code> to download the Anaconda installer to your server:</p>
+<p><img alt="Run Anaconda" src="https://dl.dropbox.com/u/550268/iPython%20Gist/RunAnaconda.png" /></p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.0-Linux-x86_64.sh</span>
+</pre></div>
+
+
+<p>(or get from here: http://continuum.io/downloads)</p>
+<ul>
+<li>make the bash script executable:</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="n">anaconda_script_</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+
+
+<ul>
+<li>Run the Bash script. </li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">anaconda_script_</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Anaconda will install everything in a folder in your home directory.</p>
+</li>
+<li>
+<p>After a few minutes, the install will finish and will ask you to put the folder that was just created at the top of your $PATH. Make sure to reload your .bashrc:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span>
+</pre></div>
+
+
+<ul>
+<li>You can double-check which Python you are using by calling: </li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">which</span> <span class="n">python</span>
+</pre></div>
+
+
+<h1>Setting up iPython Notebook</h1>
+<ul>
+<li>From anywhere type:</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">ipython</span> <span class="n">profile</span> <span class="n">create</span> <span class="n">nbserver</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Next, we're going to create a password for your notebook server. I'm going to do everything from within iPython right now. You can access the shell commands by prepending your commands with "!". Some commands like "cd" and "ls" don't need an "!" in front. It's pretty awesome. See "Magic Functions" in the resources section.</p>
+</li>
+<li>
+<p>The output of passwd() is going to be used in the notebook configuration file later. So save/remember it!</p>
+</li>
+</ul>
+<p><img alt="Make Password" src="https://dl.dropbox.com/u/550268/iPython%20Gist/MakePassword.png" /></p>
+<ul>
+<li>Up next we're going to create a directory in our home folder called "certificates". In this folder we're going to save a self-signed SSL certificate:</li>
+</ul>
+<p><img alt="Create SSL Certificate" src="https://dl.dropbox.com/u/550268/iPython%20Gist/CreateSSLCert.png" /></p>
+<ul>
+<li>We're going to need the name of the certificate and the absolute path for the notebook configuration file.</li>
+</ul>
+<p><img alt="Cert" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SSLCertPath.png" /></p>
+<ul>
+<li>
+<p>Last, but not least, it's time to modify our ipython_notebook_config.py file.</p>
+</li>
+<li>
+<p>Cruise over to ~/.ipython/profile_nbserver/ and open up the ipython_notebook_config.py file.</p>
+</li>
+</ul>
+<p><img alt="Notebook Config" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ModifyConfig.png" /></p>
+<ul>
+<li>Uncomment each of them, one by one and save.</li>
+</ul>
+<h1>Launching you iPython Notebook</h1>
+<ul>
+<li>From anywhere run the following: </li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">ipython</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">profile</span><span class="o">=</span><span class="n">nbserver</span>
+</pre></div>
+
+
+<p><img alt="Server up" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ServerUp.png" /></p>
+<ul>
+<li>If you're successful, you should have an output like the above! </li>
+</ul>
+<h2>Logging in to your Notebook from the Browser</h2>
+<ul>
+<li>To log in via the browser, we need the Public DNS for our sever. Cruise over to your AWS Console and select your instance from the Instances page. Under description you should find this:</li>
+</ul>
+<p><img alt="Public DNS" src="https://dl.dropbox.com/u/550268/iPython%20Gist/AmazonPublicDNS.png" /></p>
+<ul>
+<li>
+<p>Using your public DNS go to your fav browser and type:
+   https://your-Instance's-public-DNS:8888
+Do not forget the https!</p>
+</li>
+<li>
+<p>If successful you'll get a warning about the self-signed certificate. It's ok! Click <strong>Continue</strong>.</p>
+</li>
+</ul>
+<p><img alt="Chrome Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ChromeSSLWarning.png" />
+<img alt="Safari Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SafariSSLWarning.png" /></p>
+<ul>
+<li>You're in! Enter your password, create a notebook, and start doing... stuff!</li>
+</ul>
+<p><img alt="In!" src="https://dl.dropbox.com/u/550268/iPython%20Gist/in%21.png" /></p>
+<h2>Set up IPython Notebook to start automatically</h2>
+<ul>
+<li>
+<p>So that you don't have to log in to SSH to get IPython Notebook running, you can set up to start it for you.</p>
+</li>
+<li>
+<p>Find the path of ipython:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">which</span> <span class="n">ipython</span>
+</pre></div>
+
+
+<ul>
+<li>Add this line to the file: /etc/rc.local:</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">where</span><span class="o">/</span><span class="n">ipython</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">profile</span> <span class="n">nbserver</span> <span class="o">--</span><span class="n">pylab</span> <span class="kr">inline</span>
+</pre></div>
+
+
+<ul>
+<li>Now you should be able to reboot, and you should be able to access your IPython Notebook as before. Type reboot into the command-line. 
+This will boot you out of SSH, but you should be able to reconnect in a few minutes. After the server has had time to reboot, 
+you should see if you can access your IPython Notebook server.</li>
+</ul>
+<h1>Final Notes</h1>
+<ul>
+<li>
+<p>Remember to always check the SSL signature before typing your password in. If you don't, then it is possible that there is a (wo)man-in-the-Middle attack going on.</p>
+</li>
+<li>
+<p>Associate an <a href="http://aws.amazon.com/articles/1346">Elastic IP</a> to your instance. Now you've got a static IP no matter what kind of instance you start. Use your Elastic IP and set up forwarding from a domain that you own. Instead of having a random IP address, you can access your notebook via a memorable domain name. </p>
+</li>
+</ul>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
