@@ -26,7 +26,6 @@
 &lt;/ul&gt;
 &lt;h1&gt;Setting up your Python Environment&lt;/h1&gt;
 &lt;p&gt;Set up your python environment with &lt;a href="http://continuum.io/downloads.html"&gt;Anaconda&lt;/a&gt;. Use &lt;code&gt;wget&lt;/code&gt; to download the Anaconda installer to your server:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Run Anaconda" src="https://dl.dropbox.com/u/550268/iPython%20Gist/RunAnaconda.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;wget&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.0-Linux-x86_64.sh&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -80,27 +79,21 @@
 &lt;li&gt;
 &lt;p&gt;The output of passwd() is going to be used in the notebook configuration file later. So save/remember it!&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Make Password" src="https://dl.dropbox.com/u/550268/iPython%20Gist/MakePassword.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Up next we're going to create a directory in our home folder called "certificates". In this folder we're going to save a self-signed SSL certificate:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Create SSL Certificate" src="https://dl.dropbox.com/u/550268/iPython%20Gist/CreateSSLCert.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;We're going to need the name of the certificate and the absolute path for the notebook configuration file.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Cert" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SSLCertPath.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Up next we're going to create a directory in our home folder called "certificates". In this folder we're going to save a self-signed SSL certificate:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We're going to need the name of the certificate and the absolute path for the notebook configuration file.&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Last, but not least, it's time to modify our ipython_notebook_config.py file.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Cruise over to ~/.ipython/profile_nbserver/ and open up the ipython_notebook_config.py file.&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Notebook Config" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ModifyConfig.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Uncomment each of them, one by one and save.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Uncomment each of them, one by one and save.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Launching you iPython Notebook&lt;/h1&gt;
 &lt;ul&gt;
@@ -110,16 +103,14 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="Server up" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ServerUp.png" /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;If you're successful, you should have an output like the above! &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Logging in to your Notebook from the Browser&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;To log in via the browser, we need the Public DNS for our sever. Cruise over to your AWS Console and select your instance from the Instances page. Under description you should find this:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Public DNS" src="https://dl.dropbox.com/u/550268/iPython%20Gist/AmazonPublicDNS.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To log in via the browser, we need the Public DNS for our sever. Cruise over to your AWS Console and select your instance from the Instances page. Under description you should find this:&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Using your public DNS go to your fav browser and type:
    https://your-Instance's-public-DNS:8888
@@ -128,13 +119,10 @@ Do not forget the https!&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;If successful you'll get a warning about the self-signed certificate. It's ok! Click &lt;strong&gt;Continue&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You're in! Enter your password, create a notebook, and start doing... stuff!&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="Chrome Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ChromeSSLWarning.png" /&gt;
-&lt;img alt="Safari Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SafariSSLWarning.png" /&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;You're in! Enter your password, create a notebook, and start doing... stuff!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt="In!" src="https://dl.dropbox.com/u/550268/iPython%20Gist/in%21.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;Set up IPython Notebook to start automatically&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -151,7 +139,7 @@ Do not forget the https!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Add this line to the file: /etc/rc.local:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;where&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;ipython&lt;/span&gt; &lt;span class="n"&gt;notebook&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="n"&gt;nbserver&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;pylab&lt;/span&gt; &lt;span class="kr"&gt;inline&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;where&amp;gt;&lt;/span&gt;ipython notebook --profile nbserver --pylab inline
 &lt;/pre&gt;&lt;/div&gt;
 
 

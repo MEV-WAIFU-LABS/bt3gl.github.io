@@ -135,7 +135,6 @@
 </ul>
 <h1>Setting up your Python Environment</h1>
 <p>Set up your python environment with <a href="http://continuum.io/downloads.html">Anaconda</a>. Use <code>wget</code> to download the Anaconda installer to your server:</p>
-<p><img alt="Run Anaconda" src="https://dl.dropbox.com/u/550268/iPython%20Gist/RunAnaconda.png" /></p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">wget</span> <span class="n">http</span><span class="o">:</span><span class="c1">//09c8d0b2229f813c1b93-c95ac804525aac4b6dba79b00b39d1d3.r79.cf1.rackcdn.com/Anaconda-2.0.0-Linux-x86_64.sh</span>
 </pre></div>
 
@@ -189,27 +188,21 @@
 <li>
 <p>The output of passwd() is going to be used in the notebook configuration file later. So save/remember it!</p>
 </li>
-</ul>
-<p><img alt="Make Password" src="https://dl.dropbox.com/u/550268/iPython%20Gist/MakePassword.png" /></p>
-<ul>
-<li>Up next we're going to create a directory in our home folder called "certificates". In this folder we're going to save a self-signed SSL certificate:</li>
-</ul>
-<p><img alt="Create SSL Certificate" src="https://dl.dropbox.com/u/550268/iPython%20Gist/CreateSSLCert.png" /></p>
-<ul>
-<li>We're going to need the name of the certificate and the absolute path for the notebook configuration file.</li>
-</ul>
-<p><img alt="Cert" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SSLCertPath.png" /></p>
-<ul>
+<li>
+<p>Up next we're going to create a directory in our home folder called "certificates". In this folder we're going to save a self-signed SSL certificate:</p>
+</li>
+<li>
+<p>We're going to need the name of the certificate and the absolute path for the notebook configuration file.</p>
+</li>
 <li>
 <p>Last, but not least, it's time to modify our ipython_notebook_config.py file.</p>
 </li>
 <li>
 <p>Cruise over to ~/.ipython/profile_nbserver/ and open up the ipython_notebook_config.py file.</p>
 </li>
-</ul>
-<p><img alt="Notebook Config" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ModifyConfig.png" /></p>
-<ul>
-<li>Uncomment each of them, one by one and save.</li>
+<li>
+<p>Uncomment each of them, one by one and save.</p>
+</li>
 </ul>
 <h1>Launching you iPython Notebook</h1>
 <ul>
@@ -219,16 +212,14 @@
 </pre></div>
 
 
-<p><img alt="Server up" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ServerUp.png" /></p>
 <ul>
 <li>If you're successful, you should have an output like the above! </li>
 </ul>
 <h2>Logging in to your Notebook from the Browser</h2>
 <ul>
-<li>To log in via the browser, we need the Public DNS for our sever. Cruise over to your AWS Console and select your instance from the Instances page. Under description you should find this:</li>
-</ul>
-<p><img alt="Public DNS" src="https://dl.dropbox.com/u/550268/iPython%20Gist/AmazonPublicDNS.png" /></p>
-<ul>
+<li>
+<p>To log in via the browser, we need the Public DNS for our sever. Cruise over to your AWS Console and select your instance from the Instances page. Under description you should find this:</p>
+</li>
 <li>
 <p>Using your public DNS go to your fav browser and type:
    https://your-Instance's-public-DNS:8888
@@ -237,13 +228,10 @@ Do not forget the https!</p>
 <li>
 <p>If successful you'll get a warning about the self-signed certificate. It's ok! Click <strong>Continue</strong>.</p>
 </li>
+<li>
+<p>You're in! Enter your password, create a notebook, and start doing... stuff!</p>
+</li>
 </ul>
-<p><img alt="Chrome Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/ChromeSSLWarning.png" />
-<img alt="Safari Warning" src="https://dl.dropbox.com/u/550268/iPython%20Gist/SafariSSLWarning.png" /></p>
-<ul>
-<li>You're in! Enter your password, create a notebook, and start doing... stuff!</li>
-</ul>
-<p><img alt="In!" src="https://dl.dropbox.com/u/550268/iPython%20Gist/in%21.png" /></p>
 <h2>Set up IPython Notebook to start automatically</h2>
 <ul>
 <li>
@@ -260,7 +248,7 @@ Do not forget the https!</p>
 <ul>
 <li>Add this line to the file: /etc/rc.local:</li>
 </ul>
-<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">where</span><span class="o">/</span><span class="n">ipython</span> <span class="n">notebook</span> <span class="o">--</span><span class="n">profile</span> <span class="n">nbserver</span> <span class="o">--</span><span class="n">pylab</span> <span class="kr">inline</span>
+<div class="highlight"><pre><span class="nt">&lt;where&gt;</span>ipython notebook --profile nbserver --pylab inline
 </pre></div>
 
 
