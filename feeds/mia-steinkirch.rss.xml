@@ -22,9 +22,9 @@
 &lt;h2&gt;Infrastructure&lt;/h2&gt;
 &lt;p&gt;Setup production &amp;amp; stage servers.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Setup these servers using whatever kind of [infrastructure}(https://github.com/bt3gl/Data-Pipelines) your company uses, like: &lt;a href="https://github.com/bt3gl/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
+&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/bt3gl/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
 &lt;li&gt;Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.&lt;/li&gt;
-&lt;li&gt;Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elastic search / SOLR&lt;/li&gt;
+&lt;li&gt;Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elasticsearch.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Logging and Monitoring&lt;/h2&gt;
 &lt;ul&gt;
