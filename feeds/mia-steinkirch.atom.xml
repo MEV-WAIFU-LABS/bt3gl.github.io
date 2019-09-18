@@ -40,7 +40,7 @@
 &lt;li&gt;Do regular security maintenance on all the infrastructure.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;--&lt;/p&gt;
-&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😎.&lt;/p&gt;
+&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😅.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</summary></entry><entry><title>Skaffold is a Kool K8s Tool!</title><link href="http://bt3gl.github.io/skaffold-is-a-kool-k8s-tool.html" rel="alternate"></link><updated>2018-01-09T05:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-09:skaffold-is-a-kool-k8s-tool.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command-line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
 &lt;ul&gt;
