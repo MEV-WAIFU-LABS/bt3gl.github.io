@@ -40,7 +40,8 @@
 &lt;li&gt;Do regular security maintenance on all the infrastructure.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;--&lt;/p&gt;
-&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😎.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 10 Feb 2018 02:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2018-02-10:so-what-is-a-devops-engineer.html</guid></item><item><title>A Tor Proxy in a Raspberry Pi</title><link>http://bt3gl.github.io/a-tor-proxy-in-a-raspberry-pi.html</link><description>&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😎.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 10 Feb 2018 02:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2018-02-10:so-what-is-a-devops-engineer.html</guid></item><item><title>A Tor Proxy in a Raspberry Pi</title><link>http://bt3gl.github.io/a-tor-proxy-in-a-raspberry-pi.html</link><description>&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
 &lt;p&gt;In this tutorial, I walk through all the steps to set up a Tor proxy in a Raspberry Pi (Model B). This work was based on some of the tutorials from Adafruit.&lt;/p&gt;
 &lt;h1&gt;Setting Up a Raspberry Pi&lt;/h1&gt;
 &lt;h2&gt;Installing an Operating System in the SD card&lt;/h2&gt;

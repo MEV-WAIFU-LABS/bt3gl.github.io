@@ -40,7 +40,8 @@
 &lt;li&gt;Do regular security maintenance on all the infrastructure.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;--&lt;/p&gt;
-&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😎.&lt;/p&gt;</summary></entry><entry><title>A Tor Proxy in a Raspberry Pi</title><link href="http://bt3gl.github.io/a-tor-proxy-in-a-raspberry-pi.html" rel="alternate"></link><updated>2015-03-29T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-29:a-tor-proxy-in-a-raspberry-pi.html</id><summary type="html">&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😎.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</summary></entry><entry><title>A Tor Proxy in a Raspberry Pi</title><link href="http://bt3gl.github.io/a-tor-proxy-in-a-raspberry-pi.html" rel="alternate"></link><updated>2015-03-29T00:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2015-03-29:a-tor-proxy-in-a-raspberry-pi.html</id><summary type="html">&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
 &lt;p&gt;In this tutorial, I walk through all the steps to set up a Tor proxy in a Raspberry Pi (Model B). This work was based on some of the tutorials from Adafruit.&lt;/p&gt;
 &lt;h1&gt;Setting Up a Raspberry Pi&lt;/h1&gt;
 &lt;h2&gt;Installing an Operating System in the SD card&lt;/h2&gt;
