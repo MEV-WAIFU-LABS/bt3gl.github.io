@@ -84,6 +84,38 @@
       <div class="row">
         <div class="span9" id="content">
         <div class="article">
+                <h1><a href="./csaw-ctf-2014-reverse-engineering-100-eggshells.html">CSAW CTF 2014 - Reverse Engineering 100: "eggshells"</a></h1>
+                <div class="well small"><footer class="post-info">
+<abbr class="published" title="2014-09-22T09:20:00">
+      Mon 22 September 2014 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/reverse-engineering.html"><i class="icon-folder-open"></i>Reverse Engineering</a>
+
+
+<span class="label">Tags</span>
+	<a href="./tag/ctf.html"><i class="icon-tag"></i>CTF</a>
+	<a href="./tag/csaw.html"><i class="icon-tag"></i>CSAW</a>
+	<a href="./tag/uncompyle2.html"><i class="icon-tag"></i>uncompyle2</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>This is the first exploitation problem and it starts with the following text:</p>
+<blockquote>
+<p>I trust people on the Internet all the time, do you?</p>
+<p>Written by ColdHeat</p>
+<p>eggshells-master.zip</p>
+</blockquote>
+<h2>Unzipping and Analyzing the Files</h2>
+<p>Let’s unzip the provided zip file:</p>
+<div class="highlight"><pre><span class="nv">$ </span>unzip eggshells-master.zip
+</pre></div>
+
+
+<p>This creates a directory called <em>eggshells-master ...</em></p>
+                        <a class="btn primary xsmall" href="./csaw-ctf-2014-reverse-engineering-100-eggshells.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
                 <h1><a href="./csaw-ctf-2014-networking-100-big-data.html">CSAW CTF 2014 - Networking 100: "Big Data"</a></h1>
                 <div class="well small"><footer class="post-info">
 <abbr class="published" title="2014-09-22T08:20:00">
@@ -305,40 +337,6 @@
 <p>To include your example.js in an HTML page (usually placed right before </body> will guarantee that elements are defined when the script is executed):</p>
 <div class="highlight"><pre><span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;/path/to/example.js&quot;</span><span class="nt">&gt;&lt;/script ...</span></pre></div>
                         <a class="btn primary xsmall" href="./javascript-crash-course.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="./some-dns-stuff.html">Some DNS stuff...</a></h1>
-                <div class="well small"><footer class="post-info">
-<abbr class="published" title="2014-02-12T06:00:00">
-      Wed 12 February 2014 </abbr>
-
-<span class="label"> Category</span>
-<a href="./category/interwebz.html"><i class="icon-folder-open"></i>interwebz</a>
-
-
-<span class="label">Tags</span>
-	<a href="./tag/h4x0r.html"><i class="icon-tag"></i>h4x0r</a>
-	<a href="./tag/dns.html"><i class="icon-tag"></i>dns</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p><img alt="cyberpunk" height="270px" src="./cyberpunk/w3.png" width="390px" /></p>
-<h2>DNS Recursive requests</h2>
-<p>Where did my packet go?</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="nb">nslookup</span> <span class="na">-q</span><span class="o">=</span><span class="nx">mx</span> <span class="o">&lt;</span><span class="nx">website</span><span class="o">&gt;</span>
-</pre></div>
-
-
-<p>???????</p>
-<div class="highlight"><pre><span class="mf">192.168.0.1</span> <span class="o">=&gt;</span> <span class="mf">8.8.8.8</span> <span class="o">=&gt;</span> <span class="n">X</span><span class="p">.</span><span class="n">root</span><span class="o">-</span><span class="n">servers</span><span class="p">.</span><span class="n">net</span> <span class="o">=&gt;</span> <span class="n">Authoritative</span> <span class="n">server</span> <span class="o">==&gt;</span> <span class="o">?</span>
-</pre></div>
-
-
-<p>There are lots of different record types:</p>
-<h3>A: Get an IP address</h3>
-<div class="highlight"><pre><span class="nv">$ </span>dig @8.8.8.8 -t A www.google.com
-; <span class="o">(</span>1 server ...</pre></div>
-                        <a class="btn primary xsmall" href="./some-dns-stuff.html">more ...</a>
                 </div>
         </div>
         <hr />

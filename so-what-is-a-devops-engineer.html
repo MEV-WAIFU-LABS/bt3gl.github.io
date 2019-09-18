@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>So... What is a DevOps Engineer?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to So... What is a DevOps Engineer?">
+                                        So... What is a DevOps Engineer?
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2018-02-10T02:00:00">
+      Sat 10 February 2018 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/devops.html"><i class="icon-folder-open"></i>Devops</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/444.jpeg" width="400px" /></p>
+<p>I have been working with several startups in the past couple of years, and what I like the most is the fact that I can wear several hats! One of my favorites is the <a href="(https://en.wikipedia.org/wiki/DevOps)">DevOps</a> one. But... what is DevOps thing really?</p>
+<p><strong>DevOps</strong> is a set of software development practices that combine software development (Dev) and information-technology operations (Ops) to shorten the systems-development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives.</p>
+<p>And that describes it pretty well, but let's try and boil it down and talk about what kind of tasks you would be doing and what kind of technologies and software you would use. Now, this is going to be from my personal experience, yours might differ, but the basic principles should be there.</p>
+<p>These are the tasks for a DevOps engineer:</p>
+<h2>Local development</h2>
+<p>Create a local development platform.</p>
+<ul>
+<li>Set up a local development environment in a Virtual machine (like Virtualbox with Vagrant).</li>
+<li>Set up Docker &amp; Docker compose for developers to copy and run and develop their applications in.</li>
+<li>Set up a skeleton of one of the applications/frameworks that the Developers work with to develop in.</li>
+<li>Document the above setup and make it easy to get started, preferably with one, or a few commands.</li>
+<li>Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile <a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles">dotfile</a> (e.g. <code>~/.zshrc</code>).</li>
+</ul>
+<h2>CI</h2>
+<ul>
+<li>Setup CI servers and deploy jobs to make it super easy to deploy, with as little hands-on for each deploy as possible, using tools like: Jenkins and CircleCI.</li>
+<li>Setup test servers that run tests when the CI deployjob runs at every commit or before a deployment for example.</li>
+<li>Setup security checks in CI deployjobs and scan Docker containers for vulnerabilities.</li>
+</ul>
+<h2>Infrastructure</h2>
+<p>Setup production &amp; stage servers.</p>
+<ul>
+<li>Setup these servers using whatever kind of [infrastructure}(https://github.com/bt3gl/Data-Pipelines) your company uses, like: <a href="https://github.com/bt3gl/Intro_to_Kubernetes">Kubernetes</a>, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.</li>
+<li>Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.</li>
+<li>Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elastic search / SOLR</li>
+</ul>
+<h2>Logging and Monitoring</h2>
+<ul>
+<li>Setup servers for aggregated Logging using something like ELK Stack.</li>
+<li>Setup monitoring for your infrastructure with tools like Prometheus and <a href="https://github.com/bt3gl/awesome-grafana">Grafana</a>.</li>
+<li>Setup monitoring for your applications with tools like ElastAlert and Pingdom.</li>
+<li>Integrate everything with Slack.</li>
+</ul>
+<h2>Other</h2>
+<ul>
+<li>Setup backups for files and databases in Cronjobs.</li>
+<li>Setup mailservers.</li>
+<li>Do regular security maintenance on all the infrastructure.</li>
+</ul>
+<p>Once you have everything set, you can sit back and enjoy the view 😎.</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
