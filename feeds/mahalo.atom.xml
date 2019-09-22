@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/mahalo.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://bt3gl.github.io/mahalo-and-farewell.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/mahalo.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://bt3gl.github.io/mahalo-and-farewell.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.&lt;/em&gt; - Henri Bergson&lt;/p&gt;
 &lt;h3&gt;Hi there, folks 👋🏼&lt;/h3&gt;
 &lt;p&gt;As life advances, and we adapt to these changes, I realized that I don't feel compelled to write tutorials and how-to posts anymore 🍕. In the past few years, I have been working in many environments, from big corporations to small startups. And as seniority changes, and I spend my time on more complex and private projects, I decided that it's time to say goodbye to &lt;strong&gt;&lt;a href="http://marinasteinkirch.com"&gt;chmod a+x singularity&lt;/a&gt;&lt;/strong&gt;. &lt;/p&gt;
@@ -9,11 +9,14 @@
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/gJ6t8Ogstfc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;Funny how I had texts on AI and C++ and Java back then... Certain things don't change (but &lt;strong&gt;MP3s&lt;/strong&gt; do 🤣).&lt;/p&gt;
-&lt;p&gt;Then I created another website when &lt;strong&gt;&lt;a href="http://marinasteinkirch.com/projects_page/index.html"&gt;I was in college&lt;/a&gt;&lt;/strong&gt;,  and then when I was in &lt;strong&gt;&lt;a href="http://www.astro.sunysb.edu/steinkirch/index.html"&gt;my Ph.D.&lt;/a&gt;&lt;/strong&gt; (so many papers in this one!). &lt;/p&gt;
+&lt;p&gt;Then I created another website when &lt;strong&gt;&lt;a href="http://marinasteinkirch.com/projects_page/index.html"&gt;I was in college&lt;/a&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/w2.png" width="400px" /&gt;&lt;/p&gt;
+&lt;p&gt;And then when I was in &lt;strong&gt;&lt;a href="http://www.astro.sunysb.edu/steinkirch/index.html"&gt;my Ph.D.&lt;/a&gt;&lt;/strong&gt; (so many papers in this one!). &lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/w1.png" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Finally, I wrote &lt;strong&gt;singularity.sh&lt;/strong&gt;, and I feel like my journey has ended with style 👾.&lt;/p&gt;
 &lt;p&gt;Thank you all for following my work, for reading my posts, and for cheering my story. It has been an honor to be here.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; ️- ️ ♥️ Mia or Marina or Bt3gl or bt3 or bytegirl ♥️&lt;/strong&gt;&lt;/p&gt;
-&lt;h4&gt;Ps: In case you already miss me, here a list of the posts that I had the most fun writing:&lt;/h4&gt;
+&lt;h4&gt;Ps: In case you already miss me, here a list of posts that I had the most fun writing:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://marinasteinkirch.com/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html"&gt;Introducing Amigo, a tool to manage Google Cloud Platform Security&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://marinasteinkirch.com/wiresharking-for-fun-or-profit.html"&gt;Wireshark for fun or profit&lt;/a&gt;.&lt;/li&gt;
