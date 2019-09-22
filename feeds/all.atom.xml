@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://bt3gl.github.io/mahalo-and-farewell.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Droning the World</title><link href="http://bt3gl.github.io/droning-the-world.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:droning-the-world.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px" /&gt;&lt;/p&gt;
+&lt;p&gt;2018 was a prime nomadic time for me. And droning time as well 💁🏼‍♀️. &lt;/p&gt;
+&lt;p&gt;Here some of the art I created this year.&lt;/p&gt;
+&lt;p&gt;Hope you enjoy, let me know which one is your favorite!&lt;/p&gt;
+&lt;h1&gt;Tiny Jaws (Maui)&lt;/h1&gt;
+&lt;iframe title="vimeo-player" src="https://player.vimeo.com/video/297056325" width="640" height="360" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Haleiwa Dreams (Oahu)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/272116715" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Life is all about you &amp;amp; Not at all about (California, Mammoth Moutains)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/285146753" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Hawai’i Aerial Reel (Oahu)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/280851784" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Surf &amp;amp; Chill in Malibu&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/271743314" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Go Skateboarding Day w/ Sierra Prescott (Los Angeles)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/274809384" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;Santa Monica Daze (Los Angeles)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/272891738" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h1&gt;It’s Summer in the Pipe! (Oahu)&lt;/h1&gt;
+&lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</summary></entry><entry><title>Mahalo and Farewell</title><link href="http://bt3gl.github.io/mahalo-and-farewell.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.&lt;/em&gt; - Henri Bergson&lt;/p&gt;
 &lt;h3&gt;Hi there, folks 👋🏼&lt;/h3&gt;
 &lt;p&gt;As life advances, and we adapt to these changes, I realized that I don't feel compelled to write tutorials and how-to posts anymore 🍕. In the past few years, I have been working in many environments, from big corporations to small startups. And as seniority changes, and I spend my time on more complex and private projects, I decided that it's time to say goodbye to &lt;strong&gt;&lt;a href="http://marinasteinkirch.com"&gt;chmod a+x singularity&lt;/a&gt;&lt;/strong&gt;. &lt;/p&gt;
@@ -132,192 +158,4 @@
 &lt;/ul&gt;
 &lt;p&gt;--&lt;/p&gt;
 &lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😅.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</summary></entry><entry><title>Introducing Amigo, a tool to manage Google Cloud Platform Security</title><link href="http://bt3gl.github.io/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html" rel="alternate"></link><updated>2016-12-17T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2016-12-17:introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px" /&gt;&lt;/p&gt;
-&lt;p&gt;I wrote a tool called &lt;a href="https://github.com/bt3gl/Amigo-Google-Cloud-Platform-Security"&gt;Amigo&lt;/a&gt; that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!&lt;/p&gt;
-&lt;h2&gt;How Amigo Works&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;i)&lt;/strong&gt; Amigo retrieves the GCP project list and their attributes (defined in a &lt;code&gt;config.yaml&lt;/code&gt; file).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;ii)&lt;/strong&gt; For each attribute in a project, Amigo creates an updated report. &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;iii)&lt;/strong&gt; Amigo checks the previous report for differences (verifying when the data was modified). If there is a diff, Amigo logs the report for this diff.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;iv)&lt;/strong&gt; Amigo saves the resources data in a database, and then it checks the custom rules specified in &lt;code&gt;rules.yaml&lt;/code&gt;, reporting everything that violates those rules.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;v)&lt;/strong&gt; The &lt;strong&gt;science&lt;/strong&gt; generated by Amigo can be fed into ELK.&lt;/p&gt;
-&lt;h2&gt;Setting up and Running Amigo&lt;/h2&gt;
-&lt;h3&gt;Setting a Virtual Environment&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Installing Amigo&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Creating a Service Account&lt;/h3&gt;
-&lt;p&gt;It should be done once, for the first time you run Amigo:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Create a project and a service account at &lt;a href="https://console.cloud.google.com/iam-admin/serviceaccounts"&gt;https://console.cloud.google.com/iam-admin/serviceaccounts&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Add the IAM roles &lt;strong&gt;Security Reviewer&lt;/strong&gt; and &lt;strong&gt;Viewer permissions&lt;/strong&gt; to the service account.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Download the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt; to a safe directory (e.g. your home directory). If amigo runs in other machines (or other people in the same organization is running Amigo), this key can be shared (and step 1. and 2. do not need to be repeated).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3&gt;Setting gcloud&lt;/h3&gt;
-&lt;p&gt;Install &lt;a href="https://cloud.google.com/sdk/downloads"&gt;gcloud SDK&lt;/a&gt; and authenticate with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;gcloud&lt;/span&gt; &lt;span class="n"&gt;auth&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;login&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You can also check whether env variable &lt;code&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/code&gt; is pointing to the &lt;strong&gt;Service Account JSON credential file&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3&gt;Setting the Config file&lt;/h3&gt;
-&lt;p&gt;Copy &lt;code&gt;config.yaml_example&lt;/code&gt; to &lt;code&gt;config.yaml&lt;/code&gt; and customize it.&lt;/p&gt;
-&lt;p&gt;In the bottom of this file you can edit the attributes that you want to report on:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;### Attributes to inspect&lt;/span&gt;
-&lt;span class="nl"&gt;gcp_attributes:&lt;/span&gt;
-    &lt;span class="nl"&gt;compute:&lt;/span&gt;
-        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;firewalls&lt;/span&gt;
-        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;networks&lt;/span&gt;
-        &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;snapshots&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Setting the Rules file&lt;/h3&gt;
-&lt;p&gt;Inspect &lt;code&gt;rules.yaml&lt;/code&gt; either removing or adding rules that should be searched in the reports.&lt;/p&gt;
-&lt;h3&gt;Running Amigo&lt;/h3&gt;
-&lt;p&gt;Run amigo with:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;amigo&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;This retrieves the data from GCP and generates JSON reports. These reports will be saved where is &lt;code&gt;reports_dir&lt;/code&gt; in the config file.&lt;/p&gt;
-&lt;p&gt;It is advised to watch for STERR and STDOUT in the &lt;code&gt;log_file&lt;/code&gt; file defined in &lt;code&gt;config.yaml&lt;/code&gt; (default to &lt;code&gt;amigo_log.txt&lt;/code&gt;):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;tail&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="n"&gt;amigo_log&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Alerting with Amigo&lt;/h3&gt;
-&lt;p&gt;Relevant reports (e.g., diff reports) are generated inside the directory defined as &lt;code&gt;results_dir&lt;/code&gt;, in the file &lt;code&gt;results.log&lt;/code&gt; (e.g., &lt;code&gt;/log/amigo.log&lt;/code&gt;). This is a JSON file that can be fed to ELK.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;Creating Custom rules&lt;/h2&gt;
-&lt;h3&gt;Firewalls Resource&lt;/h3&gt;
-&lt;p&gt;Firewall reports have this format:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#firewall&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/global/networks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;direction&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;INGRESS&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;sourceRanges&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;0.0.0.0/0&amp;quot;&lt;/span&gt;
-  &lt;span class="cp"&gt;]&lt;/span&gt;,
-  &amp;quot;name&amp;quot;: &amp;quot;default-allow-icmp&amp;quot;,
-  &amp;quot;priority&amp;quot;: 65534,
-  &amp;quot;allowed&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
-    &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="s2"&gt;&amp;quot;IPProtocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;icmp&amp;quot;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="cp"&gt;]&lt;/span&gt;,
-  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
-  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
-  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/firewalls/default-allow-icmp&amp;quot;,
-  &amp;quot;description&amp;quot;: &amp;quot;Allow ICMP from anywhere&amp;quot;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Networks Resource&lt;/h3&gt;
-&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#network&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Default network for the project&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;subnetworks&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/regions/&amp;lt;region&amp;gt;/subnetworks/default&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="cp"&gt;]&lt;/span&gt;,
-  &amp;quot;autoCreateSubnetworks&amp;quot;: true,
-  &amp;quot;routingConfig&amp;quot;: {
-    &amp;quot;routingMode&amp;quot;: &amp;quot;REGIONAL&amp;quot;
-  },
-  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;Time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
-  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
-  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/networks/default&amp;quot;,
-  &amp;quot;name&amp;quot;: &amp;quot;default&amp;quot;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Snapshots Resource&lt;/h3&gt;
-&lt;p&gt;Snapshot reports have this format:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#snapshot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;storageBytes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;sourceDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;name&amp;gt;/zones/us-central1-c/disks/deployhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;storageBytesStatus&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;UP_TO_DATE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;labelFingerprint&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;code&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;sourceDiskId&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;diskSizeGb&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;size&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;licenses&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/centos-cloud/global/licenses/centos-7&amp;quot;&lt;/span&gt;
-  &lt;span class="cp"&gt;]&lt;/span&gt;,
-  &amp;quot;creationTimestamp&amp;quot;: &lt;span class="nt"&gt;&amp;lt;time&lt;/span&gt; &lt;span class="na"&gt;stamp&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;,
-  &amp;quot;id&amp;quot;: &lt;span class="nt"&gt;&amp;lt;ID&amp;gt;&lt;/span&gt;,
-  &amp;quot;selfLink&amp;quot;: &amp;quot;https://www.googleapis.com/compute/v1/projects/&lt;span class="nt"&gt;&amp;lt;name&amp;gt;&lt;/span&gt;/global/snapshots/snapshot-1-deployhost&amp;quot;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Instance Template Resource&lt;/h3&gt;
-&lt;p&gt;Instance Template reports have this format:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#instanceTemplate&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;properties&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;machineType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="k"&gt;type&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-      &lt;span class="s2"&gt;&amp;quot;items&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;items&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="cp"&gt;]&lt;/span&gt;
-    },
-    &amp;quot;disks&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;deviceName&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;persistent-disk-0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#attachedDisk&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;initializeParams&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-          &lt;span class="s2"&gt;&amp;quot;sourceImage&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;global/images/&amp;lt;name&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-          &lt;span class="s2"&gt;&amp;quot;diskType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;pd-standard&amp;quot;&lt;/span&gt;
-        &lt;span class="p"&gt;},&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;autoDelete&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;boot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;READ_WRITE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;interface&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;SCSI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PERSISTENT&amp;quot;&lt;/span&gt;
-      &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="cp"&gt;]&lt;/span&gt;,
-    &amp;quot;scheduling&amp;quot;: {
-      &amp;quot;automaticRestart&amp;quot;: true,
-      &amp;quot;preemptible&amp;quot;: false,
-      &amp;quot;onHostMaintenance&amp;quot;: &amp;quot;MIGRATE&amp;quot;
-    },
-    &amp;quot;serviceAccounts&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
-      &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s2"&gt;&amp;quot;scopes&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;[&lt;/span&gt;
-          &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/auth/compute.readonly&amp;quot;&lt;/span&gt;
-        &lt;span class="cp"&gt;]&lt;/span&gt;,
-        &amp;quot;email&amp;quot;: &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt;&lt;span class="na"&gt;-account-email&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-      }
-    ],
-    &amp;quot;metadata&amp;quot;: {
-      &amp;quot;items&amp;quot;: &lt;span class="cp"&gt;[&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;metadata&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="s2"&gt;&amp;quot;kind&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compute#metadata&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-  &lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;creationTimestamp&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;2017-11-14T12:24:00.744-08:00&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;ID&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;selfLink&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.googleapis.com/compute/v1/projects/&amp;lt;project-name&amp;gt;/global/instanceTemplates/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nb"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</summary></entry></feed>
