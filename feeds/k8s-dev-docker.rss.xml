@@ -72,7 +72,7 @@
 &lt;p&gt;Overlays enable us to take the base YAML and selectively change pieces of it.  &lt;/p&gt;
 &lt;p&gt;In this example, we’re going to create an overlay that includes a patch to change the Services to NodePort type services.&lt;/p&gt;
 &lt;p&gt;The overlay should not be in the same directory as the base files, and in this case, we are using &lt;code&gt;$BASE/overlays/dev&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;From &lt;code&gt;victoria&lt;/code&gt; root directory, run:&lt;/p&gt;
+&lt;p&gt;From your root directory, run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;OVERLAY_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;pwd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;overlays&lt;/span&gt;
 &lt;span class="n"&gt;DEV_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;OVERLAY_HOME&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
 &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;DEV_HOME&lt;/span&gt;

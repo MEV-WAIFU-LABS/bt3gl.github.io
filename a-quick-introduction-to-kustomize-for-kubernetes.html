@@ -178,7 +178,7 @@
 <p>Overlays enable us to take the base YAML and selectively change pieces of it.  </p>
 <p>In this example, we’re going to create an overlay that includes a patch to change the Services to NodePort type services.</p>
 <p>The overlay should not be in the same directory as the base files, and in this case, we are using <code>$BASE/overlays/dev</code>.</p>
-<p>From <code>victoria</code> root directory, run:</p>
+<p>From your root directory, run:</p>
 <div class="highlight"><pre><span class="n">OVERLAY_HOME</span><span class="o">=</span><span class="p">(</span><span class="err">$</span><span class="n">pwd</span><span class="p">)</span><span class="o">/</span><span class="n">overlays</span>
 <span class="n">DEV_HOME</span><span class="o">=</span><span class="err">$</span><span class="n">OVERLAY_HOME</span><span class="o">/</span><span class="n">dev</span>
 <span class="n">cd</span> <span class="err">$</span><span class="n">DEV_HOME</span>
