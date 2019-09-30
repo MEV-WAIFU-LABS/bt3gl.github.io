@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/vpc.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-11-11T09:00:00-05:00</updated><entry><title>Setting up a VPC with CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><updated>2017-11-11T09:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-11:setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
+&lt;p&gt;In this post I will show how to setup a VPC using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;this instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: If you are starting from a blank project with &lt;code&gt;cdk init app --language=python&lt;/code&gt; instead, you will we need to manually install resources, such as &lt;code&gt;pip install aws_cdk.aws_ec2&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Define You VPC&lt;/h3&gt;
+&lt;p&gt;Define how you want your VPC in the file &lt;code&gt;vpc_example/vpc_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;aws_cdk&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;VpcExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;vpc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Vpc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MiaVPCTest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cidr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10.0.0.0/16&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_azs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Create synthesized CloudFormation template&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;synth&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can check what changes this introduces into your AWS account:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;Deploy to AWS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These are the resources that will be created with this command:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vpc" src="https://github.com/bt3gl/AWS_Resources/blob/master/CDK_examples/VPC_example/imgs/vpc.png" /&gt;&lt;/p&gt;
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;destroy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry></feed>

@@ -104,7 +104,60 @@
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>So, What is GitOps?</title><link href="http://bt3gl.github.io/so-what-is-gitops.html" rel="alternate"></link><updated>2017-09-22T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-09-22:so-what-is-gitops.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/container.png" width="390px" /&gt;&lt;/p&gt;
+&lt;/ul&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>Setting up a VPC with CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><updated>2017-11-11T09:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-11:setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
+&lt;p&gt;In this post I will show how to setup a VPC using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;this instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: If you are starting from a blank project with &lt;code&gt;cdk init app --language=python&lt;/code&gt; instead, you will we need to manually install resources, such as &lt;code&gt;pip install aws_cdk.aws_ec2&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Define You VPC&lt;/h3&gt;
+&lt;p&gt;Define how you want your VPC in the file &lt;code&gt;vpc_example/vpc_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;aws_cdk&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;VpcExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;vpc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Vpc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MiaVPCTest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cidr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10.0.0.0/16&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_azs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Create synthesized CloudFormation template&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;synth&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can check what changes this introduces into your AWS account:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;Deploy to AWS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These are the resources that will be created with this command:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vpc" src="https://github.com/bt3gl/AWS_Resources/blob/master/CDK_examples/VPC_example/imgs/vpc.png" /&gt;&lt;/p&gt;
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;destroy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>So, What is GitOps?</title><link href="http://bt3gl.github.io/so-what-is-gitops.html" rel="alternate"></link><updated>2017-09-22T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-09-22:so-what-is-gitops.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/container.png" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;In general, there are two ways to deploy infrastructure changes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Procedural way&lt;/strong&gt;: telling some tool what to do, e.g.: &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; (a glorified SSH). This is also known as a &lt;em&gt;push model&lt;/em&gt;.&lt;/li&gt;
@@ -116,47 +169,4 @@
 &lt;p&gt;To deploy that Docker image, you have a different &lt;strong&gt;config repository&lt;/strong&gt; which contains the k8s manifests. The CI/CD tool sends a pull request, and when it is merged, a &lt;strong&gt;magic pod&lt;/strong&gt; in the k8s cluster pulls the image to the cluster (similar to &lt;code&gt;kubectl apply&lt;/code&gt;, the popular &lt;a href="https://kubernetes.io/docs/reference/kubectl/kubectl/"&gt;k8s management tool&lt;/a&gt;, or even &lt;code&gt;helm update&lt;/code&gt;, another popular &lt;a href="https://helm.sh/"&gt;k8s production tool&lt;/a&gt;). &lt;/p&gt;
 &lt;p&gt;Everything is controlled through pull requests. You push code, not containers. &lt;/p&gt;
 &lt;p&gt;Wait, but what is this &lt;strong&gt;magic pod&lt;/strong&gt;? Glad you ask: the magic is performed by a tool called &lt;a href="https://github.com/fluxcd/flux"&gt;Flux&lt;/a&gt;, which automatically ensures that the state of a cluster matches the config in Git. It uses an operator in the cluster to trigger deployments inside Kubernetes, which means you don't need a separate CI/CD tool. It monitors all relevant image repositories, detects new images, triggers deployments, and updates the desired running configuration based on that.&lt;/p&gt;
-&lt;p&gt;So, ultimately, the key advantages of GitOps models are: increased productivity and stabilities, higher reliability, and standardization. But mostly, no more manual &lt;code&gt;kubectl&lt;/code&gt; commands anymore!&lt;/p&gt;</summary><category term="k8s"></category><category term="scalability"></category><category term="gitops"></category><category term="flux"></category></entry><entry><title>So, What is a DevOps Engineer?</title><link href="http://bt3gl.github.io/so-what-is-a-devops-engineer.html" rel="alternate"></link><updated>2017-02-10T02:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-02-10:so-what-is-a-devops-engineer.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/444.jpeg" width="400px" /&gt;&lt;/p&gt;
-&lt;p&gt;Rad thing about working in startup engineering teams is that you can wear several hats. Let us talk about the &lt;a href="(https://en.wikipedia.org/wiki/DevOps)"&gt;DevOps&lt;/a&gt; 🎩 today.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;DevOps is a set of software development practices that combine software development (Dev) and information-technology operations (Ops) to shorten the systems-development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives.&lt;/em&gt; - Wikipedia&lt;/p&gt;
-&lt;p&gt;And that describes it pretty well, but what kind of tasks would you be doing and what kind of technologies and software would you use? &lt;/p&gt;
-&lt;p&gt;Now, this is going to be from my personal experience, yours might differ, but the basic principles should be there.&lt;/p&gt;
-&lt;p&gt;These are the tasks for a DevOps engineer:&lt;/p&gt;
-&lt;h2&gt;Local development&lt;/h2&gt;
-&lt;p&gt;Create a local development platform.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Set up a local development environment in a Virtual machine (like Virtualbox with Vagrant).&lt;/li&gt;
-&lt;li&gt;Set up Docker &amp;amp; Docker compose for developers to copy and run and develop their applications in.&lt;/li&gt;
-&lt;li&gt;Set up a skeleton of one of the applications/frameworks that the Developers work with to develop in.&lt;/li&gt;
-&lt;li&gt;Document the above setup and make it easy to get started, preferably with one, or a few commands.&lt;/li&gt;
-&lt;li&gt;Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile &lt;a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles"&gt;dotfile&lt;/a&gt; (e.g. &lt;code&gt;~/.zshrc&lt;/code&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;CI&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup CI servers and deploy jobs to make it super easy to deploy, with as little hands-on for each deploy as possible, using tools like: Jenkins and CircleCI.&lt;/li&gt;
-&lt;li&gt;Setup test servers that run tests when the CI deployjob runs at every commit or before a deployment for example.&lt;/li&gt;
-&lt;li&gt;Setup security checks in CI deployjobs and scan Docker containers for vulnerabilities.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Infrastructure&lt;/h2&gt;
-&lt;p&gt;Setup production &amp;amp; stage servers.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/bt3gl/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
-&lt;li&gt;Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.&lt;/li&gt;
-&lt;li&gt;Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elasticsearch.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Logging and Monitoring&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup servers for aggregated Logging using something like ELK Stack.&lt;/li&gt;
-&lt;li&gt;Setup monitoring for your infrastructure with tools like Prometheus and &lt;a href="https://github.com/bt3gl/awesome-grafana"&gt;Grafana&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Setup monitoring for your applications with tools like ElastAlert and Pingdom.&lt;/li&gt;
-&lt;li&gt;Integrate everything with Slack.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Other&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Setup backups for files and databases in Cronjobs.&lt;/li&gt;
-&lt;li&gt;Setup mailservers.&lt;/li&gt;
-&lt;li&gt;Do regular security maintenance on all the infrastructure.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;--&lt;/p&gt;
-&lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😅.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;So, ultimately, the key advantages of GitOps models are: increased productivity and stabilities, higher reliability, and standardization. But mostly, no more manual &lt;code&gt;kubectl&lt;/code&gt; commands anymore!&lt;/p&gt;</summary><category term="k8s"></category><category term="scalability"></category><category term="gitops"></category><category term="flux"></category></entry></feed>
