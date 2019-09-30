@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/ai-ml.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 08 Oct 2016 00:00:00 -0400</lastBuildDate><item><title>Studies in AI &amp; Pixels &amp; Waves - #12</title><link>http://bt3gl.github.io/studies-in-ai-pixels-waves-12.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/12.jpg" width="400px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/ai-ml.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 08 Oct 2016 00:00:00 -0400</lastBuildDate><item><title>Studies in Machine Learning &amp; AI - #12</title><link>http://bt3gl.github.io/studies-in-machine-learning-ai-12.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/12.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;h1&gt;In the Archives&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1610.03017"&gt;Fully Character-Level Neural Machine Translation without Explicit Segmentation&lt;/a&gt;.&lt;/li&gt;
@@ -19,7 +19,7 @@
 &lt;li&gt;&lt;a href="http://musicinformationretrieval.com/"&gt;Notes on Music Information Retrieval&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.wzchen.com/data-science-books/"&gt;16+ Free Data Science Books&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://pandora.app.box.com/s/mny69tb561esr4h4jb1hkfbqs07axpse/1/8959434374/75446836406/1"&gt;Inside Pandora The Explore-Exploit Dilemma in Recommendation&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 08 Oct 2016 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2016-10-08:studies-in-ai-pixels-waves-12.html</guid></item><item><title>Studies in Machine Learning &amp; AI - #11</title><link>http://bt3gl.github.io/studies-in-machine-learning-ai-11.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/11.gif" width="400px" /&gt;&lt;/p&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 08 Oct 2016 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2016-10-08:studies-in-machine-learning-ai-12.html</guid></item><item><title>Studies in Machine Learning &amp; AI - #11</title><link>http://bt3gl.github.io/studies-in-machine-learning-ai-11.html</link><description>&lt;p&gt;&lt;img alt="cyber" height="300px" src="./cyberpunk/11.gif" width="400px" /&gt;&lt;/p&gt;
 &lt;h1&gt;In the Archives&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://arxiv.org/abs/1609.05521"&gt;Playing FPS Games with Deep Reinforcement Learning&lt;/a&gt;.&lt;/li&gt;
