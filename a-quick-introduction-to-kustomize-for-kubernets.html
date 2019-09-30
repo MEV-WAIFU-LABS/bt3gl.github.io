@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A quick introduction to Kustomize for Kubernets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to A quick introduction to Kustomize for Kubernets">
+                                        A quick introduction to Kustomize for Kubernets
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2017-01-13T00:00:00">
+      Fri 13 January 2017 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/k8s-dev-h4x0r-docker.html"><i class="icon-folder-open"></i>k8s, dev, h4x0r, docker</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/1.jpg" width="400px" /></p>
+<p><a href="https://kustomize.io/">Kustomize</a> is a tool that lets you create an entire Kubernetes application out of individual pieces — without touching the YAML for the individual components.</p>
+<p>Kustomize traverses a Kubernetes manifest to add, remove or update configuration options without forking. It is available both as a standalone binary and as a native feature of kubectl.</p>
+<p>Kustomize enables you to do that by creating a file that ties everything together, or optionally includes “overrides” for individual parameters.</p>
+<p>In this example, I shown how to use Kustomize to setup a Wordpress Kubernetes clusters. The source code is available <a href="https://github.com/bt3gl/Learning_Kubernetes/tree/master/kustomize-example">here</a>.</p>
+<h3>Set Minukube</h3>
+<p>For this demo, you can use a local Kubernetes cluster that can be provided by <a href="https://github.com/kubernetes/minikube">minikube</a>. Install minikube following <a href="instructions">this</a>.</p>
+<p>Start your cluster:</p>
+<div class="highlight"><pre><span class="n">minikube</span> <span class="n">start</span>
+</pre></div>
+
+
+<h3>Install Kustomize</h3>
+<div class="highlight"><pre><span class="n">brew</span> <span class="n">install</span> <span class="n">kustomize</span>
+<span class="n">kustomize</span> <span class="n">version</span>
+</pre></div>
+
+
+<h3>Deploying Wordpress</h3>
+<p>To run WordPress, it's necessary to connect WordPress with a MySQL database and access the service name of MySQL database from WordPress container.</p>
+<p>Set the base directory:</p>
+<div class="highlight"><pre><span class="n">KUSTOM_HOME</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span>
+<span class="n">BASE</span><span class="o">=</span><span class="err">$</span><span class="n">KUSTOM_HOME</span><span class="o">/</span><span class="n">base</span>
+</pre></div>
+
+
+<p>Deploy Wordpress:</p>
+<div class="highlight"><pre><span class="n">WORDPRESS_HOME</span><span class="o">=</span><span class="err">$</span><span class="n">BASE</span><span class="o">/</span><span class="n">wordpress</span>
+<span class="n">cd</span> <span class="err">$</span><span class="n">WORDPRESS_HOME</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">WORDPRESS_HOME</span>
+</pre></div>
+
+
+<p>Deploy MySQL:</p>
+<div class="highlight"><pre><span class="n">MYSQL_HOME</span><span class="o">=</span><span class="err">$</span><span class="n">BASE</span><span class="o">/</span><span class="n">mysql</span>
+<span class="n">cd</span> <span class="err">$</span><span class="n">MYSQL_HOME</span>
+<span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">MYSQL_HOME</span>
+</pre></div>
+
+
+<p>In each of these two directories, you should see three resources YAML files, and they are the elements of each individual deployment:</p>
+<ul>
+<li><code>deployment.yaml</code></li>
+<li><code>kustomization.yaml</code></li>
+<li><code>service.yaml</code></li>
+</ul>
+<p>In the next step, we will use Kustomize to deploy everything by combining these files into a single file. But before we move on, let's clean up the individual deployments:</p>
+<div class="highlight"><pre><span class="n">kubectl</span> <span class="n">delete</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">WORDPRESS_HOME</span>
+<span class="n">kubectl</span> <span class="n">delete</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">MYSQL_HOME</span>
+</pre></div>
+
+
+<p>The way Kustomize connects these two directories is by adding the following in their
+<code>kustomization.yaml</code> files:</p>
+<div class="highlight"><pre><span class="n">commonLabels</span><span class="o">:</span>
+  <span class="n">app</span><span class="o">:</span> <span class="n">my</span><span class="o">-</span><span class="n">wordpress</span>
+</pre></div>
+
+
+<p>Now we can use Kustomize to build the new YAML. The output from Kustomize is the concatenation of YAML documents for all the resources we specified, with the common labels added, which can be piped directly to <code>kubectl</code>:</p>
+<div class="highlight"><pre><span class="n">kustomize</span> <span class="n">build</span> <span class="err">$</span><span class="n">BASE</span> <span class="o">|</span> <span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span>
+</pre></div>
+
+
+<p>Now, you can check that the services are up (you should see <code>mysql</code> and <code>wordpress</code>):</p>
+<div class="highlight"><pre><span class="n">kubectl</span> <span class="n">get</span> <span class="n">services</span>
+</pre></div>
+
+
+<h3>Applying Overlays</h3>
+<p>Overlays enable us to take the base YAML and selectively change pieces of it.  </p>
+<p>In this example, we’re going to create an overlay that includes a patch to change the Services to NodePort type services.</p>
+<p>The overlay should not be in the same directory as the base files, and in this case, we are using <code>$BASE/overlays/dev</code>.</p>
+<p>From <code>victoria</code> root directory, run:</p>
+<div class="highlight"><pre><span class="n">OVERLAY_HOME</span><span class="o">=</span><span class="p">(</span><span class="err">$</span><span class="n">pwd</span><span class="p">)</span><span class="o">/</span><span class="n">overlays</span>
+<span class="n">DEV_HOME</span><span class="o">=</span><span class="err">$</span><span class="n">OVERLAY_HOME</span><span class="o">/</span><span class="n">dev</span>
+<span class="n">cd</span> <span class="err">$</span><span class="n">DEV_HOME</span>
+</pre></div>
+
+
+<p>Now you can apply the overlay changes with:</p>
+<div class="highlight"><pre><span class="n">kubectl</span> <span class="n">apply</span> <span class="o">-</span><span class="n">k</span> <span class="err">$</span><span class="n">DEV_HOME</span>
+</pre></div>
+
+
+<h2>Cleaning app</h2>
+<p>To clean up the resources created from this exercise:</p>
+<div class="highlight"><pre><span class="n">kubectl</span> <span class="n">delete</span> <span class="o">-</span><span class="n">f</span> <span class="err">$</span><span class="n">BASE</span>
+<span class="n">minikube</span> <span class="n">stop</span>
+</pre></div>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
