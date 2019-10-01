@@ -59,7 +59,121 @@
 &lt;iframe src="https://player.vimeo.com/video/272891738" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;h2&gt;It’s Summer in the Pipe! (Oahu)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</summary></entry><entry><title>Skaffold is a Kool K8s Tool!</title><link href="http://bt3gl.github.io/skaffold-is-a-kool-k8s-tool.html" rel="alternate"></link><updated>2018-01-09T05:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-09:skaffold-is-a-kool-k8s-tool.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</summary></entry><entry><title>Setting up a PostgreSQL RDS instance using CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html" rel="alternate"></link><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-08-11:setting-up-a-postgresql-rds-instance-using-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;this instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Define You RDS DB&lt;/h3&gt;
+&lt;p&gt;Add any constant variable in &lt;code&gt;cdk.json&lt;/code&gt; and then define how you want your RDS instance in &lt;code&gt;postgre_sql_example/postgre_sql_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PostgreSqlExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Database&lt;/span&gt; &lt;span class="n"&gt;Instance&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DatabaseInstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;examplepostgresdbinstance&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+            &lt;span class="n"&gt;master_username&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;master_username&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;rds&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DatabaseInstanceEngine&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POSTGRES&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance_class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;InstanceType&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;InstanceClass&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;BURSTABLE2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;InstanceSize&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MICRO&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; 
+            &lt;span class="n"&gt;vpc&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vpc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;auto_minor_version_upgrade&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;auto_minor_version_upgrade&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;availability_zone&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;availability_zone&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;database_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;database_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;enable_performance_insights&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;enable_performance_insights&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;storage_encrypted&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;storage_encrypted&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;multi_az&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;multi_az&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;backup_retention&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;backup_retention&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="n"&gt;monitoring_interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;monitoring_interval&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+         &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Create synthesized CloudFormation templates&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;synth&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can check what changes are introduced into your current AWS resources with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;If everything looks OK, deploy with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;destroy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Setting up a VPC with CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-08-11:setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
+&lt;p&gt;In this post I show how to setup a VPC using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;this instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note: If you are starting from a blank project with &lt;code&gt;cdk init app --language=python&lt;/code&gt; instead, you will we need to manually install resources, such as &lt;code&gt;pip install aws_cdk.aws_ec2&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Define You VPC&lt;/h3&gt;
+&lt;p&gt;Define how you want your VPC in the file &lt;code&gt;vpc_example/vpc_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;aws_cdk&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;
+
+&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;VpcExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;vpc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Vpc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MiaVPCTest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cidr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10.0.0.0/16&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_azs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Create synthesized CloudFormation template&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;synth&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can check what changes this introduces into your AWS account:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;Deploy to AWS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These are the resources that will be created with this command:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vpc" src="./cyberpunk/vpc.png" /&gt;&lt;/p&gt;
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;destroy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Skaffold is a Kool K8s Tool!</title><link href="http://bt3gl.github.io/skaffold-is-a-kool-k8s-tool.html" rel="alternate"></link><updated>2018-01-09T05:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-01-09:skaffold-is-a-kool-k8s-tool.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command-line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It runs as a binary in your local machine (e.g., &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
@@ -104,69 +218,4 @@
 &lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry><entry><title>Setting up a VPC with CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><updated>2017-11-11T09:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-11-11:setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
-&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
-&lt;p&gt;In this post I will show how to setup a VPC using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
-&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;this instructions&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;
-&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;venv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
-&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Note: If you are starting from a blank project with &lt;code&gt;cdk init app --language=python&lt;/code&gt; instead, you will we need to manually install resources, such as &lt;code&gt;pip install aws_cdk.aws_ec2&lt;/code&gt;.&lt;/p&gt;
-&lt;h3&gt;Define You VPC&lt;/h3&gt;
-&lt;p&gt;Define how you want your VPC in the file &lt;code&gt;vpc_example/vpc_example_stack.py&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;aws_cdk&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;
-
-&lt;span class="n"&gt;class&lt;/span&gt; &lt;span class="n"&gt;VpcExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-
-    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;None&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;super&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-        &lt;span class="n"&gt;vpc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Vpc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;MiaVPCTest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cidr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;10.0.0.0/16&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_azs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Create synthesized CloudFormation template&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;synth&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You can check what changes this introduces into your AWS account:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;diff&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
-&lt;p&gt;Deploy to AWS:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;These are the resources that will be created with this command:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="vpc" src="https://github.com/bt3gl/AWS_Resources/blob/master/CDK_examples/VPC_example/imgs/vpc.png" /&gt;&lt;/p&gt;
-&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Clean up&lt;/h3&gt;
-&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cdk&lt;/span&gt; &lt;span class="n"&gt;destroy&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AWS&lt;/span&gt; &lt;span class="n"&gt;PROFILE&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>So, What is GitOps?</title><link href="http://bt3gl.github.io/so-what-is-gitops.html" rel="alternate"></link><updated>2017-09-22T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2017-09-22:so-what-is-gitops.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/container.png" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;In general, there are two ways to deploy infrastructure changes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Procedural way&lt;/strong&gt;: telling some tool what to do, e.g.: &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; (a glorified SSH). This is also known as a &lt;em&gt;push model&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Declarative way&lt;/strong&gt;: telling some tool what you want to have done, also known as &lt;em&gt;infrastructure as code&lt;/em&gt;, e.g.: &lt;a href="https://www.terraform.io/"&gt;Terraform&lt;/a&gt; and &lt;a href="https://www.pulumi.com/"&gt;Pulumi&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;GitOps&lt;/strong&gt; is a term created by &lt;a href="https://www.weave.works/technologies/gitops/"&gt;WeWorks&lt;/a&gt; and works by using Git as a source of truth for &lt;em&gt;declarative&lt;/em&gt; infrastructure and applications. Automated CI/CD pipelines roll out changes to your infrastructure after commits are pushed and approved in Git. This model is becoming a popular operating way for building applications on Kubernetes. &lt;/p&gt;
-&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/gitiops1.png" width="390px" /&gt;&lt;/p&gt;
-&lt;p&gt;In GitOps you only push code. The developer interacts with the source control, which triggers the CI/CD tool (e.g. &lt;a href="https://jenkins.io/"&gt;Jenkins&lt;/a&gt; or &lt;a href="https://circleci.com"&gt;CicleCI&lt;/a&gt;), and this pushes the docker image to the container register (e.g. &lt;a href="https://hub.docker.com/"&gt;docker hub&lt;/a&gt;). So you can see the Docker image as an artifact! &lt;/p&gt;
-&lt;p&gt;To deploy that Docker image, you have a different &lt;strong&gt;config repository&lt;/strong&gt; which contains the k8s manifests. The CI/CD tool sends a pull request, and when it is merged, a &lt;strong&gt;magic pod&lt;/strong&gt; in the k8s cluster pulls the image to the cluster (similar to &lt;code&gt;kubectl apply&lt;/code&gt;, the popular &lt;a href="https://kubernetes.io/docs/reference/kubectl/kubectl/"&gt;k8s management tool&lt;/a&gt;, or even &lt;code&gt;helm update&lt;/code&gt;, another popular &lt;a href="https://helm.sh/"&gt;k8s production tool&lt;/a&gt;). &lt;/p&gt;
-&lt;p&gt;Everything is controlled through pull requests. You push code, not containers. &lt;/p&gt;
-&lt;p&gt;Wait, but what is this &lt;strong&gt;magic pod&lt;/strong&gt;? Glad you ask: the magic is performed by a tool called &lt;a href="https://github.com/fluxcd/flux"&gt;Flux&lt;/a&gt;, which automatically ensures that the state of a cluster matches the config in Git. It uses an operator in the cluster to trigger deployments inside Kubernetes, which means you don't need a separate CI/CD tool. It monitors all relevant image repositories, detects new images, triggers deployments, and updates the desired running configuration based on that.&lt;/p&gt;
-&lt;p&gt;So, ultimately, the key advantages of GitOps models are: increased productivity and stabilities, higher reliability, and standardization. But mostly, no more manual &lt;code&gt;kubectl&lt;/code&gt; commands anymore!&lt;/p&gt;</summary><category term="k8s"></category><category term="scalability"></category><category term="gitops"></category><category term="flux"></category></entry></feed>
+&lt;/ul&gt;</summary><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry></feed>

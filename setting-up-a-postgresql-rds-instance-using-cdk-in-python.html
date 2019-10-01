@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Setting up a VPC with CDK in Python</title>
+    <title>Setting up a PostgreSQL RDS instance using CDK in Python</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mia Steinkirch">
@@ -89,8 +89,8 @@
                         <h1>
                                 <a href=""
                                         rel="bookmark"
-                                        title="Permalink to Setting up a VPC with CDK in Python">
-                                        Setting up a VPC with CDK in Python
+                                        title="Permalink to Setting up a PostgreSQL RDS instance using CDK in Python">
+                                        Setting up a PostgreSQL RDS instance using CDK in Python
                                 </a>
                         </h1>
                 </header>
@@ -101,14 +101,13 @@
       Sat 11 August 2018 </abbr>
 
 <span class="label"> Category</span>
-<a href="./category/vpc.html"><i class="icon-folder-open"></i>vpc</a>
+<a href="./category/cdk.html"><i class="icon-folder-open"></i>cdk</a>
 
 
 </footer><!-- /.post-info -->                </div>
-                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /></p>
-<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html">AWS CDK</a> is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.</p>
-<p>You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.</p>
-<p>In this post I show how to setup a VPC using CDK in Python. The code is available <a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example">here</a>.</p>
+                <p><img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpeg" width="390px" /></p>
+<p>In <a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html">a previous post</a>, I advocated that <a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html">AWS CDK</a> is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.</p>
+<p>Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available <a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples">here</a>.</p>
 <h3>Install AWS CDK</h3>
 <p>Follow <a href="https://github.com/aws/aws-cdk#at-a-glance">this instructions</a>.</p>
 <h3>Create a virtual environment and install dependencies:</h3>
@@ -118,38 +117,47 @@
 </pre></div>
 
 
-<p>Note: If you are starting from a blank project with <code>cdk init app --language=python</code> instead, you will we need to manually install resources, such as <code>pip install aws_cdk.aws_ec2</code>.</p>
-<h3>Define You VPC</h3>
-<p>Define how you want your VPC in the file <code>vpc_example/vpc_example_stack.py</code>:</p>
-<div class="highlight"><pre><span class="n">from</span> <span class="n">aws_cdk</span> <span class="n">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">aws_ec2</span>
-
-<span class="n">class</span> <span class="n">VpcExampleStack</span><span class="p">(</span><span class="n">core</span><span class="p">.</span><span class="n">Stack</span><span class="p">)</span><span class="o">:</span>
+<h3>Define You RDS DB</h3>
+<p>Add any constant variable in <code>cdk.json</code> and then define how you want your RDS instance in <code>postgre_sql_example/postgre_sql_example_stack.py</code>:</p>
+<div class="highlight"><pre><span class="n">class</span> <span class="n">PostgreSqlExampleStack</span><span class="p">(</span><span class="n">core</span><span class="p">.</span><span class="n">Stack</span><span class="p">)</span><span class="o">:</span>
 
     <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">scope</span><span class="o">:</span> <span class="n">core</span><span class="p">.</span><span class="n">Construct</span><span class="p">,</span> <span class="n">id</span><span class="o">:</span> <span class="n">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">None</span><span class="o">:</span>
         <span class="n">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="n">vpc</span> <span class="o">=</span> <span class="n">aws_ec2</span><span class="p">.</span><span class="n">Vpc</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="s">&quot;MiaVPCTest&quot;</span><span class="p">,</span> <span class="n">cidr</span><span class="o">=</span><span class="s">&quot;10.0.0.0/16&quot;</span><span class="p">,</span> <span class="n">max_azs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="err">#</span> <span class="n">Database</span> <span class="n">Instance</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">rds</span><span class="p">.</span><span class="n">DatabaseInstance</span><span class="p">(</span><span class="n">self</span><span class="p">,</span>
+            <span class="err">&#39;</span><span class="n">examplepostgresdbinstance</span><span class="err">&#39;</span><span class="p">,</span> 
+            <span class="n">master_username</span><span class="o">=</span><span class="n">master_username</span><span class="p">,</span>
+            <span class="n">engine</span><span class="o">=</span><span class="n">rds</span><span class="p">.</span><span class="n">DatabaseInstanceEngine</span><span class="p">.</span><span class="n">POSTGRES</span><span class="p">,</span> <span class="n">instance_class</span><span class="o">=</span><span class="n">ec2</span><span class="p">.</span><span class="n">InstanceType</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">ec2</span><span class="p">.</span><span class="n">InstanceClass</span><span class="p">.</span><span class="n">BURSTABLE2</span><span class="p">,</span> <span class="n">ec2</span><span class="p">.</span><span class="n">InstanceSize</span><span class="p">.</span><span class="n">MICRO</span><span class="p">),</span> 
+            <span class="n">vpc</span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">vpc</span><span class="p">,</span>
+            <span class="n">auto_minor_version_upgrade</span><span class="o">=</span><span class="n">auto_minor_version_upgrade</span><span class="p">,</span>
+            <span class="n">availability_zone</span><span class="o">=</span><span class="n">availability_zone</span><span class="p">,</span>
+            <span class="n">database_name</span><span class="o">=</span><span class="n">database_name</span><span class="p">,</span>
+            <span class="n">enable_performance_insights</span><span class="o">=</span><span class="n">enable_performance_insights</span><span class="p">,</span>
+            <span class="n">storage_encrypted</span><span class="o">=</span><span class="n">storage_encrypted</span><span class="p">,</span>
+            <span class="n">multi_az</span><span class="o">=</span><span class="n">multi_az</span><span class="p">,</span>
+            <span class="n">backup_retention</span><span class="o">=</span><span class="n">backup_retention</span><span class="p">,</span>
+            <span class="n">monitoring_interval</span><span class="o">=</span><span class="n">monitoring_interval</span><span class="p">,</span>
+         <span class="p">)</span>
 </pre></div>
 
 
-<h3>Create synthesized CloudFormation template</h3>
+<h3>Create synthesized CloudFormation templates</h3>
 <div class="highlight"><pre><span class="n">cdk</span> <span class="n">synth</span>
 </pre></div>
 
 
-<p>You can check what changes this introduces into your AWS account:</p>
+<p>You can check what changes are introduced into your current AWS resources with:</p>
 <div class="highlight"><pre><span class="n">cdk</span> <span class="n">diff</span> <span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">AWS</span> <span class="n">PROFILE</span><span class="o">&gt;</span>
 </pre></div>
 
 
 <h3>Deploy to AWS</h3>
-<p>Deploy to AWS:</p>
+<p>If everything looks OK, deploy with:</p>
 <div class="highlight"><pre><span class="n">cdk</span> <span class="n">deploy</span> <span class="o">--</span><span class="n">profile</span> <span class="o">&lt;</span><span class="n">AWS</span> <span class="n">PROFILE</span><span class="o">&gt;</span>
 </pre></div>
 
 
-<p>These are the resources that will be created with this command:</p>
-<p><img alt="vpc" src="./cyberpunk/vpc.png" /></p>
 <p>To check all the stacks in the app:</p>
 <div class="highlight"><pre><span class="n">cdk</span> <span class="n">ls</span>
 </pre></div>

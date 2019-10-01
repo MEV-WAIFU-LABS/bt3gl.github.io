@@ -84,8 +84,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Cleaning app&lt;/h2&gt;
-&lt;p&gt;To clean up the resources created from this exercise:&lt;/p&gt;
+&lt;h3&gt;Cleaning up&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;kubectl&lt;/span&gt; &lt;span class="n"&gt;delete&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;BASE&lt;/span&gt;
 &lt;span class="n"&gt;minikube&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 13 Jan 2017 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2017-01-13:a-quick-introduction-to-kustomize-for-kubernetes.html</guid></item></channel></rss>
