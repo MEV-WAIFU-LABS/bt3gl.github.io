@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/all.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://bt3gl.github.io/mahalo-and-farewell.html" rel="alternate"></link><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-12-31:mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.&lt;/em&gt; - Henri Bergson&lt;/p&gt;
-&lt;h3&gt;Hi there, folks 👋🏼&lt;/h3&gt;
-&lt;p&gt;In the past years, I have been improving my software skills, working in many environments, from big corporations to small startups. And with seniority, I have been spending most of my time on complex and private projects. At this point it's clear for me that it's time to say goodbye to &lt;strong&gt;&lt;a href="http://marinasteinkirch.com"&gt;chmod a+x singularity.sh&lt;/a&gt;&lt;/strong&gt;. &lt;/p&gt;
-&lt;h4&gt;But it's fun to look back and think about our journeys!&lt;/h4&gt;
+&lt;p&gt;In the past years, since I graduate from my Ph.D., I had the opportunity of working in many different software projects and environments. From larger companies to small startups, these experiences have been fantastic! As I advance in my software career, it's clear that it's time to say goodbye to &lt;strong&gt;&lt;a href="http://marinasteinkirch.com"&gt;chmod a+x singularity.sh&lt;/a&gt;&lt;/strong&gt;. &lt;/p&gt;
+&lt;h4&gt;But it's fun to look back and think about our journeys! So let's do this...&lt;/h4&gt;
 &lt;p&gt;I started this website in 2014 when I was about to graduate from &lt;strong&gt;&lt;a href="http://www.astro.sunysb.edu/steinkirch/index.html"&gt;my Ph.D. in Physics in Stony Brook&lt;/a&gt;&lt;/strong&gt;. Those were the days when I was so so thirsty about learning everything about computers! I wrote an entire book on &lt;strong&gt;&lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures"&gt;Python &amp;amp; Algorithms&lt;/a&gt;&lt;/strong&gt;, and I was playing &lt;strong&gt;&lt;a href="https://ctftime.org/stats/2014"&gt;CTF intensively and top 30 at CTFTimes.org&lt;/a&gt;&lt;/strong&gt;. I had that 🔥 to learn everything and write about everything (hence the &lt;strong&gt;&lt;a href="http://marinasteinkirch.com/archives.html"&gt;variety of topics that this blog has&lt;/a&gt;&lt;/strong&gt; 😅). &lt;/p&gt;
-&lt;p&gt;Creating nerdy websites has been a trend in my life. I wrote &lt;strong&gt;&lt;a href="https://web.archive.org/web/20070808185215/http://fly.to/bytegirl"&gt;my first Flash website when I was 11&lt;/a&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;I guess every new moment in my life I wanted to have a new website 😃 I wrote &lt;strong&gt;&lt;a href="https://web.archive.org/web/20070808185215/http://fly.to/bytegirl"&gt;my first Flash website when I was 11, it was called http://fly.to/bytegirl&lt;/a&gt;&lt;/strong&gt;:&lt;/p&gt;
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/gJ6t8Ogstfc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;p&gt;Funny how I had texts on AI and C++ and Java back then... Certain things don't change (but &lt;strong&gt;MP3s&lt;/strong&gt; do 🤣).&lt;/p&gt;
@@ -14,9 +13,10 @@
 &lt;p&gt;And then when I was in &lt;strong&gt;&lt;a href="http://www.astro.sunysb.edu/steinkirch/index.html"&gt;my Ph.D.&lt;/a&gt;&lt;/strong&gt; (so many papers in this one!): &lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyberpunk" height="400px" src="./cyberpunk/w1.png" width="500px" /&gt;&lt;/p&gt;
 &lt;p&gt;Finally, I wrote &lt;strong&gt;singularity.sh&lt;/strong&gt;, and I feel like my journey has ended with style 👾.&lt;/p&gt;
-&lt;p&gt;Thank you all for following my work, for reading my posts, and for cheering my story. It has been an honor to be here.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; ️- ️ ♥️ Mia or Marina or bt3gl or bt3 or bytegirl ♥️&lt;/strong&gt;&lt;/p&gt;
-&lt;h4&gt;Ps: here a list of posts that I had lots of fun writing:&lt;/h4&gt;
+&lt;p&gt;Thank you all for following my work, for reading my posts, and for cheering my story. It has been an honor to be here. If you are interested in continue to follow my journey, please add me at &lt;a href="https://medium.com/@miavonsteinkirch"&gt;medium&lt;/a&gt; or &lt;a href="https://www.instagram.com/innermost.limits.of.pure.fun"&gt;instagram&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Mahalo,&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;️ Mia (aka bytegirl or bt3) ♥️&lt;/strong&gt;&lt;/p&gt;
+&lt;h4&gt;Oh, before I leave, here is a list of posts that I enjoyed the most:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://marinasteinkirch.com/introducing-amigo-a-tool-to-manage-google-cloud-platform-security.html"&gt;Introducing Amigo, a tool to manage Google Cloud Platform Security&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://marinasteinkirch.com/wiresharking-for-fun-or-profit.html"&gt;Wireshark for fun or profit&lt;/a&gt;.&lt;/li&gt;
