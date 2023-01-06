@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://singularity.miavonsteinkirch.com/" rel="alternate"></link><link href="http://singularity.miavonsteinkirch.com/feeds/all.atom.xml" rel="self"></link><id>http://singularity.miavonsteinkirch.com/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://singularity.miavonsteinkirch.com/mahalo-and-farewell.html" rel="alternate"></link><published>2018-12-31T00:00:00-05:00</published><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2018-12-31:/mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.&lt;/em&gt; - Henri Bergson&lt;/p&gt;
+&lt;/ul&gt;</content><category term="mahalo"></category></entry><entry><title>Droning the World</title><link href="http://singularity.miavonsteinkirch.com/droning-the-world.html" rel="alternate"></link><published>2018-12-29T00:00:00-05:00</published><updated>2018-12-29T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2018-12-29:/droning-the-world.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you; it should change you. It leaves marks on your memory, on your consciousness, on your heart, and on your body. You take something with …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;"Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you; it should change you. It leaves marks on your memory, on your consciousness, on your heart, and on your body. You take something with you. Hopefully, you leave something good behind."&lt;/em&gt; – Anthony Bourdain&lt;/p&gt;
+&lt;p&gt;2018 was a prime nomadic time for me. And droning time as well 💁🏼‍♀️. &lt;/p&gt;
+&lt;p&gt;Here some of the art I created this year.&lt;/p&gt;
+&lt;p&gt;Hope you enjoy, let me know which one is your favorite!&lt;/p&gt;
+&lt;h2&gt;Tiny Jaws (Maui)&lt;/h2&gt;
+&lt;iframe title="vimeo-player" src="https://player.vimeo.com/video/297056325" width="640" height="360" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Haleiwa Dreams (Oahu)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/272116715" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Life is all about you &amp;amp; Not at all about (California, Mammoth Moutains)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/285146753" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Hawai’i Aerial Reel (Oahu)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/280851784" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Surf &amp;amp; Chill in Malibu&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/271743314" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Go Skateboarding Day w/ Sierra Prescott (Los Angeles)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/274809384" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;Santa Monica Daze (Los Angeles)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/272891738" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2&gt;It’s Summer in the Pipe! (Oahu)&lt;/h2&gt;
+&lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</content><category term="droning"></category></entry><entry><title>Setting up a PostgreSQL RDS instance using CDK in Python</title><link href="http://singularity.miavonsteinkirch.com/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html" rel="alternate"></link><published>2018-08-11T09:00:00-04:00</published><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2018-08-11:/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available &lt;a href="https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;theses instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Define You RDS DB&lt;/h3&gt;
+&lt;p&gt;Add any constant variable in &lt;code&gt;cdk.json&lt;/code&gt; and then define how you want your RDS instance in &lt;code&gt;postgre_sql_example/postgre_sql_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;PostgreSqlExampleStack&lt;/span&gt;(&lt;span class="n"&gt;core&lt;/span&gt;.&lt;span class="n"&gt;Stack&lt;/span&gt;):
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="nb"&gt;self&lt;/span&gt;, &lt;span class="n"&gt;scope:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;.&lt;span class="n"&gt;Construct&lt;/span&gt;, &lt;span class="n"&gt;id:&lt;/span&gt; &lt;span class="n"&gt;str&lt;/span&gt;, **&lt;span class="n"&gt;kwargs&lt;/span&gt;) -&amp;gt; &lt;span class="n"&gt;None:&lt;/span&gt;
+        &lt;span class="n"&gt;super&lt;/span&gt;().&lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="nb"&gt;scope&lt;/span&gt;, &lt;span class="nb"&gt;id&lt;/span&gt;, **&lt;span class="n"&gt;kwargs&lt;/span&gt;)
+
+        &lt;span class="c1"&gt;# Database Instance&lt;/span&gt;
+        &lt;span class="n"&gt;instance&lt;/span&gt; = &lt;span class="n"&gt;rds&lt;/span&gt;.&lt;span class="n"&gt;DatabaseInstance&lt;/span&gt;(&lt;span class="nb"&gt;self&lt;/span&gt;,
+            &lt;span class="s"&gt;&amp;#39;examplepostgresdbinstance&amp;#39;&lt;/span&gt;, 
+            &lt;span class="n"&gt;master_username&lt;/span&gt;=&lt;span class="n"&gt;master_username&lt;/span&gt;,
+            &lt;span class="n"&gt;engine&lt;/span&gt;=&lt;span class="n"&gt;rds&lt;/span&gt;.&lt;span class="n"&gt;DatabaseInstanceEngine&lt;/span&gt;.&lt;span class="n"&gt;POSTGRES&lt;/span&gt;, &lt;span class="n"&gt;instance_class&lt;/span&gt;=&lt;span class="n"&gt;ec2&lt;/span&gt;.&lt;span class="n"&gt;InstanceType&lt;/span&gt;.&lt;span class="nb"&gt;of&lt;/span&gt;(&lt;span class="n"&gt;ec2&lt;/span&gt;.&lt;span class="n"&gt;InstanceClass&lt;/span&gt;.&lt;span class="n"&gt;BURSTABLE2&lt;/span&gt;, &lt;span class="n"&gt;ec2&lt;/span&gt;.&lt;span class="n"&gt;InstanceSize&lt;/span&gt;.&lt;span class="n"&gt;MICRO&lt;/span&gt;), 
+            &lt;span class="n"&gt;vpc&lt;/span&gt;=&lt;span class="nb"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;vpc&lt;/span&gt;,
+            &lt;span class="n"&gt;auto_minor_version_upgrade&lt;/span&gt;=&lt;span class="n"&gt;auto_minor_version_upgrade&lt;/span&gt;,
+            &lt;span class="n"&gt;availability_zone&lt;/span&gt;=&lt;span class="n"&gt;availability_zone&lt;/span&gt;,
+            &lt;span class="n"&gt;database_name&lt;/span&gt;=&lt;span class="n"&gt;database_name&lt;/span&gt;,
+            &lt;span class="n"&gt;enable_performance_insights&lt;/span&gt;=&lt;span class="n"&gt;enable_performance_insights&lt;/span&gt;,
+            &lt;span class="n"&gt;storage_encrypted&lt;/span&gt;=&lt;span class="n"&gt;storage_encrypted&lt;/span&gt;,
+            &lt;span class="n"&gt;multi_az&lt;/span&gt;=&lt;span class="n"&gt;multi_az&lt;/span&gt;,
+            &lt;span class="n"&gt;backup_retention&lt;/span&gt;=&lt;span class="n"&gt;backup_retention&lt;/span&gt;,
+            &lt;span class="n"&gt;monitoring_interval&lt;/span&gt;=&lt;span class="n"&gt;monitoring_interval&lt;/span&gt;,
+         )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Create synthesized CloudFormation templates&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk synth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can check what changes are introduced into your current AWS resources with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk diff --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;If everything looks OK, deploy with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk deploy --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk destroy --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="cdk"></category></entry><entry><title>Setting up a VPC with CDK in Python</title><link href="http://singularity.miavonsteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><published>2018-08-11T09:00:00-04:00</published><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2018-08-11:/setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
+&lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
+&lt;p&gt;In this post, I show how to set up a VPC using CDK in Python. The code is available &lt;a href="https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Install AWS CDK&lt;/h3&gt;
+&lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;these instructions&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note: If you are starting from a blank project with &lt;code&gt;cdk init app --language=python&lt;/code&gt; instead, you will we need to manually install resources, such as &lt;code&gt;pip install aws_cdk.aws_ec2&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Define You VPC&lt;/h3&gt;
+&lt;p&gt;Define how you want your VPC in the file &lt;code&gt;vpc_example/vpc_example_stack.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;aws_cdk&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;VpcExampleStack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Stack&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Construct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;vpc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;aws_ec2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Vpc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;MiaVPCTest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cidr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;10.0.0.0/16&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_azs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Create synthesized CloudFormation template&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk synth
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can check what changes this introduces into your AWS account:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk diff --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Deploy to AWS&lt;/h3&gt;
+&lt;p&gt;Deploy to AWS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk deploy --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;These are the resources that will be created with this command:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vpc" src="./cyberpunk/vpc.png"&gt;&lt;/p&gt;
+&lt;p&gt;To check all the stacks in the app:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Clean up&lt;/h3&gt;
+&lt;p&gt;To destroy/remove all the newly created resources, run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cdk destroy --profile &amp;lt;AWS PROFILE&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="vpc"></category></entry><entry><title>Skaffold is a Kool K8s Tool!</title><link href="http://singularity.miavonsteinkirch.com/skaffold-is-a-kool-k8s-tool.html" rel="alternate"></link><published>2018-01-09T05:00:00-05:00</published><updated>2018-01-09T05:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2018-01-09:/skaffold-is-a-kool-k8s-tool.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command-line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It runs as a binary in your local machine (e.g., &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/w2.jpeg" width="390px"&gt;&lt;/p&gt;
+&lt;p&gt;I recently found out about &lt;a href="https://skaffold.dev/"&gt;Skaffold&lt;/a&gt;, a command-line tool &lt;a href="https://www.infoq.com/news/2018/03/skaffold-kubernetes"&gt;recently released by Google&lt;/a&gt;, and designed to make local Kubernetes development very easy, allowing for iterative local development against a Kubernetes cluster. It's really cool, check this out:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It runs as a binary in your local machine (e.g., &lt;a href="https://formulae.brew.sh/formula/skaffold"&gt;easy install with brew&lt;/a&gt;, etc.).&lt;/li&gt;
+&lt;li&gt;It uses &lt;code&gt;yaml&lt;/code&gt; configuration to describe how your application should be built: you specify the Docker images for your service(s) and Skaffold will tag them and push them to any valid Docker image repository.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;apiVersion&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;skaffold&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1beta9&lt;/span&gt;
+&lt;span class="n"&gt;kind&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Config&lt;/span&gt;
+&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;artifacts&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;gcr&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;io&lt;/span&gt;&lt;span class="sr"&gt;/k8s-skaffold/s&lt;/span&gt;&lt;span class="n"&gt;kaffold&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;
+&lt;span class="n"&gt;deploy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;kubectl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;manifests&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;k8s&lt;/span&gt;&lt;span class="o"&gt;-*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;These images are ingested into your Kubernetes manifest and used to deploy changes to the clusters for every code change.&lt;/li&gt;
+&lt;li&gt;Skaffold &lt;strong&gt;watches your local development directory for filesystem changes&lt;/strong&gt; and automatically builds and deploy your application to any local or remote Kubernetes cluster.&lt;/li&gt;
+&lt;li&gt;It is integrated to &lt;code&gt;kubectl&lt;/code&gt; and &lt;a href="https://cloud.google.com/gcp"&gt;GCP&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Skaffold not only works on your laptop as a dev tool, it also lets you reuse the same &lt;code&gt;skaffold.yaml&lt;/code&gt; file to do deployments to your clusters in your continuous deployment system.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In resume, Skaffold makes development very easy: all you need to do is run &lt;code&gt;skaffold dev&lt;/code&gt; (local dev workflow: &lt;a href="https://kubernetes.io/docs/setup/minikube/"&gt;Minikube&lt;/a&gt;, etc.) or &lt;code&gt;skaffold run&lt;/code&gt; (continuous dev workflow: &lt;a href="https://jenkins.io/"&gt;Jenkins&lt;/a&gt;, &lt;a href="https://travis-ci.org/"&gt;Travis CI&lt;/a&gt;, etc.) to start the entire process, creating Kubernetes pod(s) in a cluster with the Docker images of your application.&lt;/p&gt;
+&lt;p&gt;In this single command, Skaffold:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;builds container images (locally or remotely),&lt;/li&gt;
+&lt;li&gt;pushes container images if the target is not local cluster,&lt;/li&gt;
+&lt;li&gt;updates Kubernetes manifests with image tags,&lt;/li&gt;
+&lt;li&gt;deploys your application with &lt;code&gt;kubectl apply&lt;/code&gt;,&lt;/li&gt;
+&lt;li&gt;streams logs from the pods,&lt;/li&gt;
+&lt;li&gt;watches for changes in the source code and Kubernetes manifests, and then repeat 1-5.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3&gt;Some learning references&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/"&gt;Official documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://cloud.google.com/blog/products/gcp/introducing-skaffold-easy-and-repeatable-kubernetes-development?hl=is"&gt;Skaffold &amp;amp; GCP documentation&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold"&gt;Github repository with examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://skaffold.dev/docs/references/yaml/"&gt;Skaffold Yaml References&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples"&gt;Skaffold examples&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ahmetb/skaffold-from-laptop-to-cloud"&gt;Skaffold: From code on your laptop to cloud&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://ahmet.im/blog/skaffold/"&gt;Skaffold: happy Kubernetes workflows&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.bejarano.io/how-to-write-great-container-images.html"&gt;How to write great container images&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="software"></category><category term="docker"></category><category term="microservices"></category><category term="skaffold"></category></entry></feed>

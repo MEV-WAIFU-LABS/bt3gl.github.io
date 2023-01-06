@@ -5,5 +5,5 @@ clean:
 	rm -rf *pyc
 	rm -rf __pycache__/
 copy:
-	cp -r output/* ../bt3gl.github.io/ 
+	cp -r output/* ../singularity.miavonsteinkirch.com/ 
 

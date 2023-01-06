@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/k8s-dev-h4x0r-docker.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2016-12-13T00:00:00-05:00</updated><entry><title>Spin up a Node.JS Server in Kubernetes in 10 Minutes</title><link href="http://bt3gl.github.io/spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html" rel="alternate"></link><updated>2016-12-13T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2016-12-13:spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px" /&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://singularity.miavonsteinkirch.com/" rel="alternate"></link><link href="http://singularity.miavonsteinkirch.com/feeds/k8s-dev-h4x0r-docker.atom.xml" rel="self"></link><id>http://singularity.miavonsteinkirch.com/</id><updated>2016-12-13T00:00:00-05:00</updated><entry><title>Spin up a Node.JS Server in Kubernetes in 10 Minutes</title><link href="http://singularity.miavonsteinkirch.com/spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html" rel="alternate"></link><updated>2016-12-13T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:singularity.miavonsteinkirch.com,2016-12-13:spin-up-a-nodejs-server-in-kubernetes-in-10-minutes.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/13.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Hey everyone!&lt;/p&gt;
 &lt;p&gt;I wrote this quick guide to help you to get started with k8s in 10 min.&lt;/p&gt;
-&lt;p&gt;In this guide, I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in Kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/Learning_Kubernetes"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this guide, I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in Kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/mvonsteinkirch/Learning_Kubernetes"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
 &lt;p&gt;First, you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
 &lt;p&gt;Make sure you have all the auths right; for instance, I do the following:&lt;/p&gt;
@@ -11,7 +11,7 @@
 &lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3&gt;Spinning up a Hello World node server in docker&lt;/h3&gt;
-&lt;p&gt;Download &lt;a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
+&lt;p&gt;Download &lt;a href="https://github.com/mvonsteinkirch/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

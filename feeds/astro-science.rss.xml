@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/astro-science.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 02 Dec 2014 00:00:00 -0500</lastBuildDate><item><title>Lots of Astrophysics for You!</title><link>http://bt3gl.github.io/lots-of-astrophysics-for-you.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/23.jpg" width="400px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://singularity.miavonsteinkirch.com/</link><description></description><atom:link href="http://singularity.miavonsteinkirch.com/feeds/astro-science.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 02 Dec 2014 00:00:00 -0500</lastBuildDate><item><title>Lots of Astrophysics for You!</title><link>http://singularity.miavonsteinkirch.com/lots-of-astrophysics-for-you.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/23.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;I wrote so much code during my Ph.D.! Some of them were protected or cannot be shared, but some are free (as in free beer).&lt;/p&gt;
 &lt;p&gt;If you like astrophysics, check out some of my IDL and Python work:&lt;/p&gt;
 &lt;ul&gt;
@@ -18,4 +18,4 @@
 &lt;li&gt;
 &lt;p&gt;&lt;a href="https://github.com/mvonsteinkirch/Calculating_the_Diameter_of_Sun"&gt;Calculating the Diameter of the Sun&lt;/a&gt;: IDL Source code for data reduction and analysis. Here we analyze interferometric radio data from the Sun to be able to obtain its angular diameter.&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Tue, 02 Dec 2014 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2014-12-02:lots-of-astrophysics-for-you.html</guid></item></channel></rss>
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Tue, 02 Dec 2014 00:00:00 -0500</pubDate><guid>tag:singularity.miavonsteinkirch.com,2014-12-02:lots-of-astrophysics-for-you.html</guid></item></channel></rss>

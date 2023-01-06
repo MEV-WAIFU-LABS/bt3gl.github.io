@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>18 Tips for Website Performance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mia Steinkirch">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="./theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 11pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-4 {
+        font-size: 8pt;
+     }
+     }
+    </style>
+    <link href="./theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+    <link href="./theme/css/font-awesome.css" rel="stylesheet">
+    <link href="./theme/css/pygments.css" rel="stylesheet">
+
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="./theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/apple-touch-icon-114x114.png">
+
+    <link href="./feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="chmod +x singularity.sh ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html">chmod +x singularity.sh </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="./authors.html">Who is this Replicant</a></li>
+                                <li><a href="./archives.html">Old Musing</a></li>
+                                <li>
+                                      <a href="https://github.com/mvonsteinkirch">The Language Within
+                                      <!--<i class="icon-github-sign icon-large" ></i>-->
+                                      </a></li>
+                                <li><a href="http://singularity.miavonsteinkirch.com/projects_page/index.html">Bygone Playful Times
+                                      </a></li>
+                                <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
+                                     </a></li>
+                          
+                          
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 18 Tips for Website Performance">
+                                        18 Tips for Website Performance
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<abbr class="published" title="2016-12-12T00:00:00">
+      Mon 12 December 2016 </abbr>
+
+<span class="label"> Category</span>
+<a href="./category/web-dev.html"><i class="icon-folder-open"></i>web, dev</a>
+
+
+</footer><!-- /.post-info -->                </div>
+                <p><img alt="cyberpunk" height="300px" src="./cyberpunk/16.jpg" width="400px" /></p>
+<h2>1. Test your Website’s Speed</h2>
+<p>Use a website speed test tool to analyze the overall speed of your website. For instance, <a href="https://tools.keycdn.com/speed">KeyCDN’s website speed test tool</a> or <a href="http://www.webpagetest.org/">WebPageTest</a> can useful (and they both support HTTP/2). You could also use a <a href="https://www.ej-technologies.com/products/jprofiler/overview.html">JavaScript</a> profiler.</p>
+<h2>2. Load Test Your Site</h2>
+<p>Load test your website to check for any bottlenecks. Some cool tools for this task:</p>
+<ul>
+<li><a href="https://www.blitz.io/">Blirz</a></li>
+<li><a href="https://wondernetwork.com/loadtesting">Wonder Network</a></li>
+<li><a href="https://loadimpact.com/">Load Impact</a></li>
+<li><a href="https://loader.io/">Loader</a></li>
+</ul>
+<h2>3. Use Performance Tools</h2>
+<p>You can check how fast in seconds you want your site to load, on certain connection speed, with this <a href="http://www.performancebudget.io/">free Budget Calculator tool</a>, depending on the number of resources (HTML, images, JS, CSS, fonts, etc.).</p>
+<p>Additionally, check <a href="https://developers.google.com/speed/">Google's performance resources</a>.</p>
+<h2>4. Reduce the number of HTTP Requests</h2>
+<ul>
+<li>If your JS code is small enough, you can have it inline.</li>
+<li>Reduce the number of third-party plugins and frameworks.</li>
+<li>Have less code.</li>
+</ul>
+<h2>5. Clean up your JS and CSS</h2>
+<ul>
+<li>Remove unnecessary characters (whitespace, new line, comments).</li>
+<li>Some useful tools are <a href="https://www.npmjs.com/package/gulp-uglify">grunt ugligy</a> and <a href="https://www.npmjs.com/package/gulp-clean-css">gulp-clean-css</a>.</li>
+</ul>
+<h2>6. Avoid Redirects</h2>
+<p>301 redirects will damage the performance of your website because they generate additional round trip times (RTT) before the browser even starts to load other assets.</p>
+<h2>7. Image Optimization</h2>
+<ul>
+<li>Use compression tools such as <a href="https://github.com/toy/image_optim">image_optim</a>, <a href="https://tinypng.com/">tinypgn</a>, <a href="https://pngmini.com/">pngmini</a>, <a href="https://www.jpegmini.com">jpegmini</a>.</li>
+<li>Use responsive images in HTML with <strong><em>srcset</em></strong> and sizes attributes to serve different scaled images, based on the size of the display.</li>
+</ul>
+<h2>8. Render Blocking Resources blocking the DOM</h2>
+<p>The <strong><em>Document Object Model</em></strong> is a programming interface for HTML and XML documents that provide a structured representation (node tree) of a document, defining ways it can be accessed and manipulated using scripting languages such as Javascript. To ensure that the DOM loads in a responsive time, render-blocking resources should get to the client as soon and as quickly as possible.</p>
+<p>Here some tips for DOM resources:</p>
+<ul>
+<li>CSS</li>
+<li>Use <a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path">media queries</a>.</li>
+<li>Concatenate all CSS files in one.</li>
+<li>Remove extra spaces, characters, comments, etc.</li>
+<li>
+<p>Check <a href="https://github.com/postcss/autoprefixer">Autoprefixer </a>.</p>
+</li>
+<li>
+<p>JavaScript</p>
+</li>
+<li>The <strong><em>async</em></strong> tag allows the script to be downloaded in the background without blocking.</li>
+<li>Move JS scripts to the bottom of the page, right before the </body> tag.</li>
+<li>Concatenate all JS files in one.</li>
+<li>Remove extra spaces, characters, comments, etc.</li>
+</ul>
+<h2>9. Reduce Latency with a CDN.</h2>
+<p>You can test the latency of your website by using sending out ICMP packets to its address (by ping in your terminal or <a href="https://tools.keycdn.com/ping">UI tools</a>).</p>
+<p>Content Delivery Networks are servers that maintain cached copies of the content of a website (images, CSS, JS, fonts), so that they can be retrieved from the closest physical location for reduced latency. Here some nice guides for <a href="https://www.keycdn.com/support/google-cloud-storage-cdn-integration/">google cloud storage</a> and <a href="https://www.keycdn.com/support/aws-s3-cdn-integration/">AWS S3</a>.</p>
+<h2>10. Time to first byte (TTFB)</h2>
+<p>TTFB is the measurement of the responsiveness of a web server, as the time that takes for the browser to start receiving information after it has requested it from the server.</p>
+<p>TTFB is calculated as <strong>HTTP request time + Process request time + HTTP response time</strong>, and can be check at the <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome Dev Tools</a> (the green bar).</p>
+<h2>11. Browser Cache</h2>
+<p>Let the browser cache some data (with a max-age of a week) by using HTTP headers such as <strong><em>Cache-control</em></strong> and <strong><em>Expires</em></strong>.</p>
+<h2>12. Prefetching</h2>
+<p>DNS prefetching can be a good solution to resolve domain names before a user follows a link. It's implemented in the <strong><em>HEADER</em></strong> session with:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s">&quot;dns-prefetch&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;//www.example.com&quot;</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2>13. Preconnecting</h2>
+<p>With the <strong><em>preconnect</em></strong> label, the browser can set up early connections (such as DNS lookup, TLS negotiation, etc.) before an HTTP request is sent to the server. This can be implemented with:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">link</span> <span class="n">href</span><span class="o">=</span><span class="err">&#39;</span><span class="n">https</span><span class="o">:</span><span class="c1">//CDNHOST.com&#39; rel=&#39;preconnect&#39; crossorigin&gt;</span>
+</pre></div>
+
+
+<h2>14. HTTP/2</h2>
+<p>HTTP/2 comes with a huge performance benefit. To enable HTTP/2, one needs an SSL certificate and a server that supports HTTP/2.</p>
+<h2>15. Hotlink Protection</h2>
+<p>Hotlink protection is given by restricting HTTP referrers so that one can prevent others from embedding assets on other websites (protecting site's bandwidth). To use it, one needs to place the code below in a <code>.htaccess</code> file (Apache):</p>
+<div class="highlight"><pre><span class="n">RewriteEngine</span> <span class="n">On</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="n">http</span><span class="o">:</span><span class="c1">//(.+\.)?domain\.com/ [NC]</span>
+<span class="n">RewriteCond</span> <span class="o">%</span><span class="p">{</span><span class="n">HTTP_REFERER</span><span class="p">}</span> <span class="o">!^</span><span class="err">$</span>
+<span class="n">RewriteRule</span> <span class="p">.</span><span class="o">*</span><span class="err">\</span><span class="p">.(</span><span class="n">jpe</span><span class="o">?</span><span class="n">g</span><span class="o">|</span><span class="n">gif</span><span class="o">|</span><span class="n">bmp</span><span class="o">|</span><span class="n">png</span><span class="p">)</span><span class="err">$</span> <span class="n">http</span><span class="o">:</span><span class="c1">//i.imgur.com/DONT_DISPLAY.gif [L]</span>
+</pre></div>
+
+
+<h2>16. Enable Gzip Compression</h2>
+<p>Gzip compresses web pages, CSS, and JS code at the server level, before sending them over to the browser, to optimize the website performance. This is enabled in the <code>.htaccess</code> file (Apache) or <code>nginx.conf</code> (Nginx).</p>
+<h2>17. Optimizing Video</h2>
+<p>Matching the file type to the optimal platform reduces playback issues:</p>
+<ul>
+<li>
+<p><code>.mp4</code> is a good quality video with a small file size and is the recommended format for YouTube and Vimeo.</p>
+</li>
+<li>
+<p><code>.mov</code> is a high-quality video with a large file size. This file type doesn't play on windows without the help of VLC.</p>
+</li>
+<li>
+<p><code>.wmv</code> is a good quality video with a large file size. It is also hard to play this format on Mac machines unless you have VLC.</p>
+</li>
+<li>
+<p><code>.flv</code> is a small file size, but need extra steps to bring up the quality. This format doesn’t play natively on most Mac and Windows machines.</p>
+</li>
+</ul>
+<p>There are plenty of programs that will reformat videos, rearranging file settings for faster playback, which helps them stream more smoothly across a multitude of devices. For instance, <a href="https://handbrake.fr/">Handbrake</a>, is a useful open-source video transcoder.</p>
+<h2>18. Automate</h2>
+<p>Have a <a href="https://en.wikipedia.org/wiki/Continuous_delivery">Continuous Delivery</a> pipeline, which includes profiling and performance analysis of acceptance and load tests.</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+
+      </div><!--/row-->
+
+
+
+      <footer>
+        <address id="about">
+
+        </address><!-- /#about -->
+
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+    <script src="./theme/js/jquery-1.7.2.min.js"></script>
+    <script src="./theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

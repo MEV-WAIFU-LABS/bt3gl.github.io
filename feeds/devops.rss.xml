@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/devops.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 10 Feb 2017 02:00:00 -0500</lastBuildDate><item><title>So, What is a DevOps Engineer?</title><link>http://bt3gl.github.io/so-what-is-a-devops-engineer.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/444.jpeg" width="400px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://singularity.miavonsteinkirch.com/</link><description></description><atom:link href="http://singularity.miavonsteinkirch.com/feeds/devops.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 10 Feb 2017 02:00:00 -0500</lastBuildDate><item><title>So, What is a DevOps Engineer?</title><link>http://singularity.miavonsteinkirch.com/so-what-is-a-devops-engineer.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/444.jpeg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Rad thing about working in startup engineering teams is that you can wear several hats. Let us talk about the &lt;a href="(https://en.wikipedia.org/wiki/DevOps)"&gt;DevOps&lt;/a&gt; 🎩 today.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;DevOps is a set of software development practices that combine software development (Dev) and information-technology operations (Ops) to shorten the systems-development life cycle while delivering features, fixes, and updates frequently in close alignment with business objectives.&lt;/em&gt; - Wikipedia&lt;/p&gt;
 &lt;p&gt;And that describes it pretty well, but what kind of tasks would you be doing and what kind of technologies and software would you use? &lt;/p&gt;
@@ -12,7 +12,7 @@
 &lt;li&gt;Set up Docker &amp;amp; Docker compose for developers to copy and run and develop their applications in.&lt;/li&gt;
 &lt;li&gt;Set up a skeleton of one of the applications/frameworks that the Developers work with to develop in.&lt;/li&gt;
 &lt;li&gt;Document the above setup and make it easy to get started, preferably with one, or a few commands.&lt;/li&gt;
-&lt;li&gt;Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile &lt;a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles"&gt;dotfile&lt;/a&gt; (e.g. &lt;code&gt;~/.zshrc&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile &lt;a href="https://github.com/mvonsteinkirch/Shell-Scripts_and_Dotfiles"&gt;dotfile&lt;/a&gt; (e.g. &lt;code&gt;~/.zshrc&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;CI&lt;/h2&gt;
 &lt;ul&gt;
@@ -23,14 +23,14 @@
 &lt;h2&gt;Infrastructure&lt;/h2&gt;
 &lt;p&gt;Setup production &amp;amp; stage servers.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/bt3gl/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
+&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/mvonsteinkirch/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/mvonsteinkirch/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
 &lt;li&gt;Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.&lt;/li&gt;
 &lt;li&gt;Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elasticsearch.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Logging and Monitoring&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Setup servers for aggregated Logging using something like ELK Stack.&lt;/li&gt;
-&lt;li&gt;Setup monitoring for your infrastructure with tools like Prometheus and &lt;a href="https://github.com/bt3gl/awesome-grafana"&gt;Grafana&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Setup monitoring for your infrastructure with tools like Prometheus and &lt;a href="https://github.com/mvonsteinkirch/awesome-grafana"&gt;Grafana&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Setup monitoring for your applications with tools like ElastAlert and Pingdom.&lt;/li&gt;
 &lt;li&gt;Integrate everything with Slack.&lt;/li&gt;
 &lt;/ul&gt;
@@ -42,7 +42,7 @@
 &lt;/ul&gt;
 &lt;p&gt;--&lt;/p&gt;
 &lt;p&gt;Once you have everything set, you can sit back and enjoy the view 😅.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 10 Feb 2017 02:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2017-02-10:so-what-is-a-devops-engineer.html</guid></item><item><title>A Tor Proxy in a Raspberry Pi</title><link>http://bt3gl.github.io/a-tor-proxy-in-a-raspberry-pi.html</link><description>&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/lol.png" width="400px" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Fri, 10 Feb 2017 02:00:00 -0500</pubDate><guid>tag:singularity.miavonsteinkirch.com,2017-02-10:so-what-is-a-devops-engineer.html</guid></item><item><title>A Tor Proxy in a Raspberry Pi</title><link>http://singularity.miavonsteinkirch.com/a-tor-proxy-in-a-raspberry-pi.html</link><description>&lt;p&gt;&lt;img alt="tor" height="250px" src="./cyberpunk/tor.jpg" width="350px" /&gt;&lt;/p&gt;
 &lt;p&gt;In this tutorial, I walk through all the steps to set up a Tor proxy in a Raspberry Pi (Model B). This work was based on some of the tutorials from Adafruit.&lt;/p&gt;
 &lt;h1&gt;Setting Up a Raspberry Pi&lt;/h1&gt;
 &lt;h2&gt;Installing an Operating System in the SD card&lt;/h2&gt;
@@ -342,7 +342,7 @@
 
 &lt;p&gt;That's it! Browser safe!&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/m3excg/a-tor-proxy-in-a-raspberry-pi"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 29 Mar 2015 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2015-03-29:a-tor-proxy-in-a-raspberry-pi.html</guid></item><item><title>Deploying a Flask App at Heroku</title><link>http://bt3gl.github.io/deploying-a-flask-app-at-heroku.html</link><description>&lt;p&gt;&lt;img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /&gt;&lt;/p&gt;
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/m3excg/a-tor-proxy-in-a-raspberry-pi"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 29 Mar 2015 00:00:00 -0400</pubDate><guid>tag:singularity.miavonsteinkirch.com,2015-03-29:a-tor-proxy-in-a-raspberry-pi.html</guid></item><item><title>Deploying a Flask App at Heroku</title><link>http://singularity.miavonsteinkirch.com/deploying-a-flask-app-at-heroku.html</link><description>&lt;p&gt;&lt;img alt="antisocial" height="250px" src="./cyberpunk/anti-social.png" width="350px" /&gt;&lt;/p&gt;
 &lt;p&gt;I was playing with Flask, and I wrote my own &lt;a href="https://anti-social.herokuapp.com/"&gt;Anti-Social Network&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Heroku platform is very flexible, and it supports several programming languages. To
 deploy an application to Heroku, use Git to push the application to Heroku’s server.&lt;/p&gt;
@@ -499,7 +499,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 
 &lt;p&gt;That's it! The app should be running at &lt;code&gt;&amp;lt; app-name &amp;gt;.herokuapp.com&lt;/code&gt;.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/pstm1w/deploying-a-flask-app-at-heroku"&gt;here&lt;/a&gt;, and it has over 43k views!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 21 Mar 2015 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2015-03-21:deploying-a-flask-app-at-heroku.html</guid></item><item><title>Functional Python Stuff Super Quick</title><link>http://bt3gl.github.io/functional-python-stuff-super-quick.html</link><description>&lt;h3&gt;Python has &lt;strong&gt;First Class Functions&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/pstm1w/deploying-a-flask-app-at-heroku"&gt;here&lt;/a&gt;, and it has over 43k views!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sat, 21 Mar 2015 00:00:00 -0400</pubDate><guid>tag:singularity.miavonsteinkirch.com,2015-03-21:deploying-a-flask-app-at-heroku.html</guid></item><item><title>Functional Python Stuff Super Quick</title><link>http://singularity.miavonsteinkirch.com/functional-python-stuff-super-quick.html</link><description>&lt;h3&gt;Python has &lt;strong&gt;First Class Functions&lt;/strong&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;create_adder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;adder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
@@ -522,7 +522,7 @@ deploy an application to Heroku, use Git to push the application to Heroku’s s
 &lt;h3&gt;Python has Built-in &lt;strong&gt;Higher Order Functions&lt;/strong&gt;&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add_10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;   &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;   &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 01 Mar 2015 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2015-03-01:functional-python-stuff-super-quick.html</guid></item><item><title>Getting started with LAMP and CodeIgniter</title><link>http://bt3gl.github.io/getting-started-with-lamp-and-codeigniter.html</link><description>&lt;p&gt;LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 01 Mar 2015 00:00:00 -0500</pubDate><guid>tag:singularity.miavonsteinkirch.com,2015-03-01:functional-python-stuff-super-quick.html</guid></item><item><title>Getting started with LAMP and CodeIgniter</title><link>http://singularity.miavonsteinkirch.com/getting-started-with-lamp-and-codeigniter.html</link><description>&lt;p&gt;LAMP is an acronym for a model of web service solution stacks: Linux, the Apache HTTP Server, the MySQL relational database management system, and the PHP programming language.&lt;/p&gt;
 &lt;h2&gt;Building a MySQL Database&lt;/h2&gt;
 &lt;p&gt;We will use a web interface to access data in our database:&lt;/p&gt;
 &lt;ul&gt;
@@ -744,4 +744,4 @@ In our application, the database configuration file is store at application/conf
 
 &lt;p&gt;In this snippet, we query our database by order, using ascending order.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Tue, 25 Feb 2014 00:00:00 -0500</pubDate><guid>tag:bt3gl.github.io,2014-02-25:getting-started-with-lamp-and-codeigniter.html</guid></item></channel></rss>
+&lt;p&gt;Enjoy! This article was originally posted &lt;a href="https://coderwall.com/p/5ltrxq/lamp-and-codeigniter"&gt;here&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Tue, 25 Feb 2014 00:00:00 -0500</pubDate><guid>tag:singularity.miavonsteinkirch.com,2014-02-25:getting-started-with-lamp-and-codeigniter.html</guid></item></channel></rss>

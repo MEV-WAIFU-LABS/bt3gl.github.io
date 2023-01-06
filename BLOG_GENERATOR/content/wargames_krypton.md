@@ -17,11 +17,11 @@ The problems are very straightforward and very similar to those from the last [C
 
 
 [Cryptol]: http://www.cryptol.net/
-[Continuing to talk about]: http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html
+[Continuing to talk about]: http://singularity.miavonsteinkirch.com/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html
 [Wargames]: http://overthewire.org/wargames/
 [Krypton]: http://overthewire.org/wargames/krypton/
 [CSAW CTF]: https://ctf.isis.poly.edu/
-[see my post here]: http://bt3gl.github.io/csaw-ctf-2014-cryptography-200.html
+[see my post here]: http://singularity.miavonsteinkirch.com/csaw-ctf-2014-cryptography-200.html
 
 
 ## Level 0: Base64 Transformation

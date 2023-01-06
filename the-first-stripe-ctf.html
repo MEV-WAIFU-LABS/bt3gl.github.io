@@ -65,7 +65,7 @@
                                       <a href="https://github.com/mvonsteinkirch">The Language Within
                                       <!--<i class="icon-github-sign icon-large" ></i>-->
                                       </a></li>
-                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                <li><a href="http://singularity.miavonsteinkirch.com/projects_page/index.html">Bygone Playful Times
                                       </a></li>
                                 <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
                                      </a></li>
@@ -124,7 +124,7 @@
 </footer><!-- /.post-info -->                </div>
                 <p>Although I did not have the chance of playing in either of the <a href="https://stripe.com/blog/capture-the-flag">three</a> <a href="https://stripe.com/blog/capture-the-flag-20">Stripe</a> <a href="https://stripe.com/blog/ctf3-launch">CTFs</a>, I was quite enthralled when I took a look at the problems. I decided to solve them anyway, and I am writing this series of writeups.</p>
 <p>This post is about the first <a href="https://stripe.com/">Stripe</a> CTF, which <a href="https://stripe.com/blog/capture-the-flag-wrap-up">happened at the beginning of 2012</a>. I was able to fully reproduce the game by using a <a href="http://www.janosgyerik.com/hacking-contest-on-a-live-cd/">Live CD Image</a>. Other options were <a href="https://stripe.com/blog/capture-the-flag-wrap-up">direct download and BitTorrent</a>.</p>
-<p>This CTF was composed of 6 levels, and its style was very similar to other Wargames I've talked about before in this blog (for instance, check <a href="http://overthewire.org/wargames/">OverTheWire's</a> <a href="http://bt3gl.github.io/exploiting-the-web-in-20-lessons-natas.html">Natas</a>, <a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">Narnia</a>, and <a href="http://bt3gl.github.io/cryptography-war-beating-krypton.html">Krypton</a>).</p>
+<p>This CTF was composed of 6 levels, and its style was very similar to other Wargames I've talked about before in this blog (for instance, check <a href="http://overthewire.org/wargames/">OverTheWire's</a> <a href="http://singularity.miavonsteinkirch.com/exploiting-the-web-in-20-lessons-natas.html">Natas</a>, <a href="http://singularity.miavonsteinkirch.com/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">Narnia</a>, and <a href="http://singularity.miavonsteinkirch.com/cryptography-war-beating-krypton.html">Krypton</a>).</p>
 <hr />
 <h2>Level 1: Environment Variables</h2>
 <p>When I booted the image, I got this first message:</p>
@@ -311,7 +311,7 @@ chmod +x date
 
 
 <h3>Description of the Exploit</h3>
-<p>To understand this problem we need to understand the <a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">design of the stack frame</a>. With this in mind, the exploit is crafted as follows:</p>
+<p>To understand this problem we need to understand the <a href="http://singularity.miavonsteinkirch.com/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">design of the stack frame</a>. With this in mind, the exploit is crafted as follows:</p>
 <p>1) We input a malicious index that is negative (so it pass the bound checking) to have a shell running <code>system("/bin/sh");</code> (which will be able to read password of level3 because it will have its <a href="http://en.wikipedia.org/wiki/User_identifier_(Unix)">UID</a>).</p>
 <p>2) We first need to find the memory location before <strong>fns</strong> (which should be writable). We fire up <strong>gdb</strong> and search for the pointer to <strong>buf</strong>, which is right before <strong>fns</strong> (this is different each time due to <a href="http://en.wikipedia.org/wiki/Address_space_layout_randomization">ASLR</a>):</p>
 <div class="highlight"><pre><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">p</span> <span class="o">&amp;</span><span class="n">buf</span>
@@ -441,7 +441,7 @@ chmod +x date
 
 
 <h3>Writing the Shellcode in Assembly</h3>
-<p>Now we are able to reproduce the code in Assembly. This is important: Stripe's machine was 32-bit, and the Assembly instructions are different from 64-bit (for instance, check the 64-bit shellcode I showed <a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">here</a>).</p>
+<p>Now we are able to reproduce the code in Assembly. This is important: Stripe's machine was 32-bit, and the Assembly instructions are different from 64-bit (for instance, check the 64-bit shellcode I showed <a href="http://singularity.miavonsteinkirch.com/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html">here</a>).</p>
 <p>With an <strong>l</strong> added to the words, the above shellcode in 32-bit machines is:</p>
 <div class="highlight"><pre><span class="na">.text</span>
 <span class="na">.globl</span> <span class="no">_start</span>

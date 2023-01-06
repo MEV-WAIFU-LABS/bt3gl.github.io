@@ -1,7 +1,7 @@
 from fabric.api import *
 
 
-env.deploy_path = '../bt3gl.github.io/'
+env.deploy_path = '../singularity.miavonsteinkirch.com/'
 DEPLOY_PATH = env.deploy_path
 
 def clean():

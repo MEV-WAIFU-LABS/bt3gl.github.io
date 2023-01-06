@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://bt3gl.github.io/</link><description></description><atom:link href="http://bt3gl.github.io/feeds/h4x0r-infra.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 01 Nov 2015 00:00:00 -0400</lastBuildDate><item><title>Introducing my Grey Hacker Bag of Fun</title><link>http://bt3gl.github.io/introducing-my-grey-hacker-bag-of-fun.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/19.jpg" width="400px" /&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>chmod +x singularity.sh</title><link>http://singularity.miavonsteinkirch.com/</link><description></description><atom:link href="http://singularity.miavonsteinkirch.com/feeds/h4x0r-infra.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 01 Nov 2015 00:00:00 -0400</lastBuildDate><item><title>Introducing my Grey Hacker Bag of Fun</title><link>http://singularity.miavonsteinkirch.com/introducing-my-grey-hacker-bag-of-fun.html</link><description>&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/19.jpg" width="400px" /&gt;&lt;/p&gt;
 &lt;p&gt;Throughout my many years of hacking, I have been accumulating so many resources: books, scripts, tools, how-to, etc. I realized it's time to share them!&lt;/p&gt;
 &lt;p&gt;Please check out my &lt;a href="https://github.com/mvonsteinkirch/Gray-Hacker-Resources"&gt;gray hacker GitHub repo&lt;/a&gt;, where I have indexed everything by subject:&lt;/p&gt;
 &lt;ul&gt;
@@ -20,4 +20,4 @@
 &lt;li&gt;BOTNETS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;⚡️ Enjoy and let me know what you think!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update: Thank you, everyone, for the 800+ stars and 200+ forks! &amp;lt;3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 -0400</pubDate><guid>tag:bt3gl.github.io,2015-11-01:introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Update: Thank you, everyone, for the 800+ stars and 200+ forks! &amp;lt;3&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Mia Steinkirch</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 -0400</pubDate><guid>tag:singularity.miavonsteinkirch.com,2015-11-01:introducing-my-grey-hacker-bag-of-fun.html</guid></item></channel></rss>

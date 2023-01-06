@@ -65,7 +65,7 @@
                                       <a href="https://github.com/mvonsteinkirch">The Language Within
                                       <!--<i class="icon-github-sign icon-large" ></i>-->
                                       </a></li>
-                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                <li><a href="http://singularity.miavonsteinkirch.com/projects_page/index.html">Bygone Playful Times
                                       </a></li>
                                 <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
                                      </a></li>
@@ -254,7 +254,7 @@
 <p>This script pretty much gives away all the requests that you can issue to inspect the database.</p>
 <p>In addition, a crucial detail is to understand how the client encrypts the commands using the <a href="http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_.28ECB.29">electronic codebook (ECB)</a> block cipher type. In this type of operation the message is divided into blocks that are encrypted separately (<a href="https://www.dlitz.net/software/pycrypto/api/2.6/">PyCryptos's AES.MODE_ECB</a>).</p>
 <h3>The PCAP File</h3>
-<p>The last file was a <strong>pcap</strong> dump. When opening it with <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">Wireshark</a>, I verified it was really short, and the content was simply a <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">TCP handshake</a>. Right-clicking some packet and selecting <em>Follow TCP Stream</em> returned the dump of the connection suggested by the <strong>client.py</strong> script:</p>
+<p>The last file was a <strong>pcap</strong> dump. When opening it with <a href="http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html">Wireshark</a>, I verified it was really short, and the content was simply a <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">TCP handshake</a>. Right-clicking some packet and selecting <em>Follow TCP Stream</em> returned the dump of the connection suggested by the <strong>client.py</strong> script:</p>
 <p><img alt="cyber" src="http://i.imgur.com/2Y6aaW1.png" /></p>
 <p>However, we see that the database has already an entry for flag:</p>
 <div class="highlight"><pre><span class="p">[</span><span class="err">&#39;</span><span class="n">flag</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">&#39;</span><span class="n">example</span><span class="err">&#39;</span><span class="p">]</span>

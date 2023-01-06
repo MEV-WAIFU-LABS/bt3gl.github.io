@@ -538,7 +538,7 @@ endobj
 
 
 [MySQL database dump file]:http://dev.mysql.com/doc/refman/5.0/en/mysqldump-sql-format.html
-[CSAW CTF 2014 Forensic -Obscurity]: http://bt3gl.github.io/forensics-200-obscurity.html
+[CSAW CTF 2014 Forensic -Obscurity]: http://singularity.miavonsteinkirch.com/forensics-200-obscurity.html
 [online hex-decode]: http://ddecode.com/hexdecoder/
 [which we can just google]: http://phpxref.ftwr.co.uk/wordpress/wp-content/themes/twentythirteen/js/html5.js.source.html
 [Tailing]: http://en.wikipedia.org/wiki/Tail_(Unix)

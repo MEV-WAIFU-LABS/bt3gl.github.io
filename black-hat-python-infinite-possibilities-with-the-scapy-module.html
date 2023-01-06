@@ -65,7 +65,7 @@
                                       <a href="https://github.com/mvonsteinkirch">The Language Within
                                       <!--<i class="icon-github-sign icon-large" ></i>-->
                                       </a></li>
-                                <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
+                                <li><a href="http://singularity.miavonsteinkirch.com/projects_page/index.html">Bygone Playful Times
                                       </a></li>
                                 <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
                                      </a></li>
@@ -144,7 +144,7 @@ Welcome to Scapy <span class="o">(</span>2.2.0<span class="o">)</span>
 <h2>A Simple Packet and its Headers</h2>
 <p>The basic unit in network communication is the <em>packet</em>.  So let's create one!</p>
 <p>Scapy builds packets by the <em>layers</em> and then by the <em>fields</em> in each layer. Each layer is nested inside the parent layer, represented by the <strong>&lt;</strong> and <strong>&gt;</strong> brackets.</p>
-<p>Let's start by specifying the packet's source IP and then its destination IP. This type of information goes in the <strong>IP header</strong>, which is a <em>layer 3 protocol</em> in the <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">0SI model</a>:</p>
+<p>Let's start by specifying the packet's source IP and then its destination IP. This type of information goes in the <strong>IP header</strong>, which is a <em>layer 3 protocol</em> in the <a href="http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html">0SI model</a>:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">IP</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s">&quot;192.168.1.114&quot;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ip</span><span class="o">.</span><span class="n">dst</span><span class="o">=</span><span class="s">&quot;192.168.1.25&quot;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pritnt</span> <span class="n">ip</span>
@@ -492,10 +492,10 @@ WARNING: No route found <span class="k">for </span>IPv6 destination :: <span cla
 <p>Running this script when loading load some mail client (such as <a href="https://www.mozilla.org/en-US/thunderbird/">Thunderbird</a>) will allow us to see the login information if they are sent to the server as plain text.</p>
 <hr />
 <h2><a name="arp"></a> ARP Cache Poisoning</h2>
-<p>I talked about <a href="http://bt3gl.github.io/wiresharking-for-fun-or-profit.html">ARP cache poisoning using command line arpspoof</a> in my guide about Wireshark. Here we are going to see how to implement a similar tool using Scapy.</p>
+<p>I talked about <a href="http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html">ARP cache poisoning using command line arpspoof</a> in my guide about Wireshark. Here we are going to see how to implement a similar tool using Scapy.</p>
 <p>ARP cache poisoning works by convincing a target machine that we are the gateway and then convincing the gateway that all traffic should pass through our machine.</p>
 <p>Every machine in a network maintains an ARP cache that stores the recent MAC addresses that match to IP addresses on the local network. All we need to do is to poison this cache with controlled entries.</p>
-<p>The best way to test this is by using a Windows virtual machine (take a look in <a href="http://bt3gl.github.io/setting-up-a-playing-environment-with-virtual-machines.html">this guide I wrote</a>).</p>
+<p>The best way to test this is by using a Windows virtual machine (take a look in <a href="http://singularity.miavonsteinkirch.com/setting-up-a-playing-environment-with-virtual-machines.html">this guide I wrote</a>).</p>
 <p>Before the attack, go to the Windows box, open the terminal (<code>cmd</code>) and check the IP and gateway IP address with<code>ipconfig</code>. Then check the associated  ARP cache entry MAC address with <code>arp -a</code>. We are going to use the former information and we will see the ARP data being changed:</p>
 <p><img alt="cyber" src="http://i.imgur.com/ME069uS.png" /></p>
 <p>Following is our ARP poisoning script (based on <a href="http://www.nostarch.com/blackhatpython">Black Hat Python</a>). The script does the following steps:</p>
