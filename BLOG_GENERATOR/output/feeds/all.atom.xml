@@ -1,35 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://singularity-sh.vercel.app/" rel="alternate"></link><link href="http://singularity-sh.vercel.app/feeds/all.atom.xml" rel="self"></link><id>http://singularity-sh.vercel.app/</id><updated>2018-12-31T00:00:00-05:00</updated><entry><title>Mahalo and Farewell</title><link href="http://singularity-sh.vercel.app/mahalo-and-farewell.html" rel="alternate"></link><published>2018-12-31T00:00:00-05:00</published><updated>2018-12-31T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity-sh.vercel.app,2018-12-31:/mahalo-and-farewell.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/bt2.png" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;To exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.&lt;/em&gt; - Henri Bergson&lt;/p&gt;
-&lt;/ul&gt;</content><category term="mahalo"></category></entry><entry><title>Droning the World</title><link href="http://singularity-sh.vercel.app/droning-the-world.html" rel="alternate"></link><published>2018-12-29T00:00:00-05:00</published><updated>2018-12-29T00:00:00-05:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity-sh.vercel.app,2018-12-29:/droning-the-world.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;"Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you; it should change you. It leaves marks on your memory, on your consciousness, on your heart, and on your body. You take something with …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/sun.png" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;"Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you; it should change you. It leaves marks on your memory, on your consciousness, on your heart, and on your body. You take something with you. Hopefully, you leave something good behind."&lt;/em&gt; – Anthony Bourdain&lt;/p&gt;
-&lt;p&gt;2018 was a prime nomadic time for me. And droning time as well 💁🏼‍♀️. &lt;/p&gt;
-&lt;p&gt;Here some of the art I created this year.&lt;/p&gt;
-&lt;p&gt;Hope you enjoy, let me know which one is your favorite!&lt;/p&gt;
-&lt;h2&gt;Tiny Jaws (Maui)&lt;/h2&gt;
-&lt;iframe title="vimeo-player" src="https://player.vimeo.com/video/297056325" width="640" height="360" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Haleiwa Dreams (Oahu)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/272116715" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Life is all about you &amp;amp; Not at all about (California, Mammoth Moutains)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/285146753" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Hawai’i Aerial Reel (Oahu)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/280851784" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Surf &amp;amp; Chill in Malibu&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/271743314" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Go Skateboarding Day w/ Sierra Prescott (Los Angeles)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/274809384" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;Santa Monica Daze (Los Angeles)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/272891738" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;h2&gt;It’s Summer in the Pipe! (Oahu)&lt;/h2&gt;
-&lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</content><category term="droning"></category></entry><entry><title>Setting up a PostgreSQL RDS instance using CDK in Python</title><link href="http://singularity-sh.vercel.app/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html" rel="alternate"></link><published>2018-08-11T09:00:00-04:00</published><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia von Steinkirch</name></author><id>tag:singularity-sh.vercel.app,2018-08-11:/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpg" width="390px"&gt;&lt;/p&gt;
 &lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
 &lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpg" width="390px"&gt;&lt;/p&gt;
 &lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
