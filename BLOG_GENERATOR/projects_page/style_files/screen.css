@@ -1,0 +1,200 @@
+/*****************************************************************************/
+
+/*
+/* Common
+/*
+/*****************************************************************************/
+
+* {
+    margin: 1;
+    padding: 1;
+}
+html, body {
+    font: 14px courier, clean, sans-serif;
+    text-align: center;
+    /*background-image: url("../figs/peace.png");*/
+    background-repeat: no-repeat;
+    background-position: right;
+    color: #31B96E;
+}
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #616536;
+    line-height: 1.2em;
+}
+h2 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #A4E666;
+}
+h3 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #1B1112;
+}
+p {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/*****************************************************************************/
+/*
+/* Links
+/*
+/*****************************************************************************/
+
+a {
+    color: #616536;
+    font-weight: bold;
+}
+a:hover {
+    color: #A4E666;
+    font-weight: bold;
+}
+a:visited {
+    color: #1B1112;
+    font-weight: bold;
+}
+
+
+/*****************************************************************************/
+/*
+/* Lists
+/*
+/*****************************************************************************/
+
+ul.posts {
+    list-style-type: none;
+    margin: 1.5em 1.5em;*/
+}
+ul.subposts {
+    list-style-type: 0.5;
+}
+
+
+/*****************************************************************/
+/*
+/* Blocks First Page
+/*
+/******************************************************************/
+
+div {
+    display: block;
+}
+
+#first {
+    float: left;
+    height: 100%;
+    width: 20%;
+    margin: 6em 2em 4em 2em;
+}
+#second {
+    float: left;
+    height: 100%;
+    width: 50%;
+    margin: 2em 2em auto auto;
+}
+#third {
+    float: right;
+    width: 20%;
+    height: 100%;
+    margin: 2em 2em auto auto;
+}
+
+
+/*****************************************************************/
+/*
+/* Blocks Inside Page
+/*
+/******************************************************************/
+
+#first-in {
+    float: left;
+    width: 15%;
+    height: 100%;
+    margin: 2em 1em 2em 1em;
+}
+#second-in {
+    float: left;
+    width: 40%;
+    text-align: left;
+    margin: 2em auto auto auto;
+}
+#third-in {
+    text-align: left;
+    float: right;
+    width: 40%;
+    margin: 2em auto auto auto;
+}
+/*****************************************************************/
+
+/*
+/* Game of life stuff
+/*
+/******************************************************************/
+
+#game {
+    width: 80%;
+    height: 80%;
+}
+/*****************************************************************/
+
+/*
+/* Vimeo
+/*
+/******************************************************************/
+
+#badge-styles .vimeoBadge {
+    margin: 0;
+    padding: 0;
+    font: normal 11px verdana, sans-serif;
+}
+.vimeoBadge img {
+    border: 0;
+}
+.vimeoBadge a, .vimeoBadge a:link, .vimeoBadge a:visited, .vimeoBadge a:active {
+    text-decoration: none;
+    cursor: pointer;
+}
+.vimeoBadge #vimeo_badge_logo {
+    margin-top: 10px;
+    width: 57px;
+    height: 16px;
+}
+.vimeoBadge .credit {
+    font: normal 11px verdana, sans-serif;
+}
+.vimeoBadge .clip {
+    padding: 0;
+    float: left;
+    margin: 0 10px 10px 0;
+    line-height: 0;
+}
+.vimeoBadge.vertical .clip {
+    float: none;
+}
+.vimeoBadge .caption {
+    font: normal 11px verdana, sans-serif;
+    overflow: hidden;
+    width: auto;
+    height: 30px;
+}
+.vimeoBadge .clear {
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+.vimeoBadge .s160 {
+    width: 160px;
+}
+.vimeoBadge .s80 {
+    width: 80px;
+}
+.vimeoBadge .s100 {
+    width: 100px;
+}
+.vimeoBadge .s200 {
+    width: 200px;
+}

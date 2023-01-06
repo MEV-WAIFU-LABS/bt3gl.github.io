@@ -1,0 +1,124 @@
+/*****************************************************************************/
+
+/*
+/* Common
+/*
+/*****************************************************************************/
+ * {
+    margin: 5;
+    padding: 5;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-color: black;
+    width:70%;
+    font: 12px helvetica, arial, clean, sans-serif;
+    *font-size: small;
+    text-align: center;
+    color: #484848;
+    font-family: Monaco, "Courier New", monospace;
+}
+h1 {
+    font-size: 18px;
+    margin-bottom: 3em;
+    margin-top: 1em;
+    font-weight:bold
+}
+h2 {
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+h3 {
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+h4 {
+    font-size: 24px;
+    margin-bottom: 1em;
+}
+h5 {
+    font-size: 15px;
+    color: #66CCCC;
+    font-weight:bold;
+    text-decoration:underline;
+    margin-bottom: 0em;
+}
+p {
+    margin: 1.5em 0;
+}
+a {
+    color: #00CC99;
+    ;
+}
+a:hover {
+    color: white;
+}
+a:visited {
+    color: #CC6699;
+}
+/*****************************************************************************/
+
+/*
+/* Home
+/*
+/*****************************************************************************/
+ ul.posts {
+    margin: 2.5em 0;
+}
+ul.posts li {
+    line-height: 1.5em;
+    margin-bottom: 3.5em;
+}
+ul.subposts {
+    font-size: 11px
+}
+ul.subposts li {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+}
+/*****************************************************************************/
+
+/*
+/* About
+/*
+/*****************************************************************************/
+ #site-title {
+    font-size: 14px margin-bottom: 2em;
+    line-height: 1em;
+}
+#subsite-title {
+    margin-bottom: 2em;
+    line-height: 3em;
+}
+.about {
+    text-align: center;
+    width: 25em;
+    float: left;
+    margin-left: 2em;
+    margin-right: 5em;
+    margin-top: 3em;
+    line-height: 1.3em;
+}
+.site {
+    text-align: left;
+    width: 40em;
+    margin: 3em auto 2em auto;
+    line-height: 1.5em;
+    float: left;
+}
+.site2 {
+    text-align: left;
+    width: 40em;
+    margin: 3em auto 2em auto;
+    line-height: 1.5em;
+    float: left;
+}
+.site3 {
+    text-align: left;
+    width: 40em;
+    margin: 3em auto 2em auto;
+    line-height: 1.5em;
+    float:right;
+}

@@ -1,0 +1,2038 @@
+
+<h1> Topological Features for SNAP Data Sets (entire graphs) </h1> 
+
+
+<br>
+
+
+
+<!DOCTYPE html>
+<html><head><title>info</title><meta http-equiv="content-type" content="text/html; charset=UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=8;IE=9;chrome=1;" /><meta name='lsq' content='199'/><meta name='trixrows' content='92'/><meta name='trixr1' content='0'/><meta name='trixr2' content='92'/><meta name='trixdiv' content='20'/><meta name='trixcnt' content='5'/><meta name='trixlast' content='12'/><link rel=stylesheet href="/static/spreadsheets/client/css/3971517159-tiler_view_ltr.css" type="text/css"><style>html {overflow:visible};</style></head><body style='border:0px;margin:0px'><style>.tblGenFixed td {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border-top:0px none;border-left:0px none;border-bottom:1px solid #CCC;border-right:1px solid #CCC;} .dn {display:none} .tblGenFixed td.s37 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s36 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:;} .tblGenFixed td.s35 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s34 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:;} .tblGenFixed td.s33 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s32 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s31 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s30 {background-color:#c27ba0;font-family:arial,sans,sans-serif;font-size:90.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;border-left:1px solid #000000;} .tblGenFixed td.s38 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:1px solid #000000;} .tblGenFixed td.s29 {background-color:#b6d7a8;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s27 {background-color:#c27ba0;font-family:arial,sans,sans-serif;font-size:120.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s28 {background-color:#b6d7a8;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s9 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s25 {background-color:#efefef;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s26 {background-color:#efefef;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s23 {background-color:#d9d2e9;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s7 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s24 {background-color:#efefef;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;border-left:1px solid #CCC;} .tblGenFixed td.s8 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:;} .tblGenFixed td.s5 {background-color:#c27ba0;font-family:arial,sans,sans-serif;font-size:90.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;} .tblGenFixed td.s21 {background-color:white;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;border-left:1px solid #CCC;} .tblGenFixed td.s6 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s22 {background-color:#8e7cc3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s3 {background-color:#b6d7a8;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;text-decoration:none;text-align:center;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s4 {background-color:#b6d7a8;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s20 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s0 {background-color:white;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-top:1px solid #CCC;border-right:;border-bottom:;border-left:1px solid #CCC;} .tblGenFixed td.s2 {background-color:white;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;border-left:1px solid #CCC;} .tblGenFixed td.s1 {background-color:#c27ba0;font-family:arial,sans,sans-serif;font-size:120.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:center;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-top:1px solid #CCC;border-right:;border-bottom:;} .tblGenFixed td.s16 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s17 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:1px solid #000000;} .tblGenFixed td.s18 {background-color:white;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;border-left:1px solid #CCC;} .tblGenFixed td.s19 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;text-decoration:none;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s12 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s13 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:;} .tblGenFixed td.s14 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:;} .tblGenFixed td.s15 {background-color:#ffe599;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:bold;font-style:normal;color:#000000;text-decoration:none;text-align:left;vertical-align:bottom;direction:auto-ltr;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s10 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:;border-bottom:1px solid #000000;} .tblGenFixed td.s11 {background-color:#f3f3f3;font-family:arial,sans,sans-serif;font-size:100.0%;font-weight:normal;font-style:normal;color:#000000;text-decoration:none;text-align:right;vertical-align:bottom;direction:Context;white-space:normal;overflow:hidden;border-right:1px solid #000000;border-bottom:1px solid #000000;} </style><table dir='ltr' border=0 cellpadding=0 cellspacing=0 class='tblGenFixed' id='tblMain'><tr class='rShim'><td class='rShim' style='width:0;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:139px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:120px;'><td class='rShim' style='width:92px;'><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s0'><td  colspan=10 dir='ltr' class='s1'>INFORMATION NETWORKS - Before Normalization<td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s2'><td  class='s3'><td  dir='ltr' class='s4'>Nodes<td  dir='ltr' class='s4'>Edges<td  dir='ltr' class='s4'>Clustering Coeff.<td  dir='ltr' class='s4'>Number of Triangles<td  dir='ltr' class='s4'>Fraction Closed Triangles<td  dir='ltr' class='s4'>Diameter<td  dir='ltr' class='s4'>90% Eff. Diameter<td  dir='ltr' class='s4'>Assortativity<td  dir='ltr' class='s4'>Transitivity</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=2 dir='ltr' class='s5'>Citation<td  dir='ltr' class='s6'>citHepPh<td  class='s7'>12711<td  class='s7'>139981<td  class='s7'>0.2848<td  class='s7'>1276868<td  class='s7'>0.05377<td  class='s7'>12<td  class='s7'>5<td  class='s7'>-0.003<td  class='s8'>0.101</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>citHepTh<td  class='s10'>7464<td  class='s10'>116268<td  class='s10'>0.312<td  class='s10'>1478735<td  class='s10'>0.04331<td  class='s10'>13<td  class='s10'>5.3<td  class='s10'>0.002<td  class='s11'>0.133</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=4 dir='ltr' class='s5'>Meme<td  dir='ltr' class='s6'>social<td  class='s7'>360213<td  class='s7'>14102621<td  class='s7'>0.1887<td  class='s7'>83023455<td  class='s7'>0.0029<td  class='s7'>10<td  class='s7'>4.7<td  class='s7'>-0.138<td  class='s8'>0.102</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>retweet<td  class='s13'>13086<td  class='s13'>63537<td  class='s13'>0.0234<td  class='s13'>111100<td  class='s13'>0.0001<td  class='s13'>11<td  class='s13'>5.9<td  class='s13'>-0.021<td  class='s14'>0.044</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>reply<td  class='s13'>37366<td  class='s13'>30836<td  class='s13'>0.0051<td  class='s13'>198<td  class='s13'>0.0001<td  class='s13'>19<td  class='s13'>11.1<td  class='s13'>-0.044<td  class='s14'>0.012</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>mention<td  class='s10'>4786<td  class='s10'>20706<td  class='s10'>0.0944<td  class='s10'>88469<td  class='s10'>0.0002<td  class='s10'>11<td  class='s10'>7.2<td  class='s10'>-0.014<td  class='s11'>0.104</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=5 dir='ltr' class='s5'>Collaboration<td  dir='ltr' class='s6'>caAstroPh<td  class='s7'>17903<td  class='s7'>197031<td  class='s7'>0.6306<td  class='s7'>1351441<td  class='s7'>0.1345<td  class='s7'>14<td  class='s7'>5<td  class='s7'>0.205<td  class='s8'>0.318</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>caCondMat<td  class='s13'>21363<td  class='s13'>91342<td  class='s13'>0.6334<td  class='s13'>173361<td  class='s13'>0.107<td  class='s13'>14<td  class='s13'>6.5<td  class='s13'>0.135<td  class='s14'>0.264</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>caGrQc<td  class='s13'>4158<td  class='s13'>13428<td  class='s13'>0.5296<td  class='s13'>48260<td  class='s13'>0.3619<td  class='s13'>17<td  class='s13'>7.6<td  class='s13'>0.659<td  class='s14'>0.63</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>caHepPh<td  class='s13'>11204<td  class='s13'>117649<td  class='s13'>0.6115<td  class='s13'>3358499<td  class='s13'>0.3923<td  class='s13'>13<td  class='s13'>5.8<td  class='s13'>0.632<td  class='s14'>0.659</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>caHepTh<td  class='s10'>8638<td  class='s10'>24827<td  class='s10'>0.4714<td  class='s10'>28339<td  class='s10'>0.1168<td  class='s10'>17<td  class='s10'>7.4<td  class='s10'>0.267<td  class='s11'>0.284</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=3 dir='ltr' class='s5'>Comunication<td  dir='ltr' class='s6'>emailEuAll<td  class='s7'>34203<td  class='s7'>151930<td  class='s7'>0.0671<td  class='s7'>267313<td  class='s7'>0.001373<td  class='s7'>14<td  class='s7'>4.5<td  class='s7'>-0.21<td  class='s8'>0.028</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>emailEnron<td  class='s13'>33696<td  class='s13'>180811<td  class='s13'>0.497<td  class='s13'>727044<td  class='s13'>0.03015<td  class='s13'>11<td  class='s13'>4.8<td  class='s13'>-0.111<td  class='s14'>0.085</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>wikiTalk<td  class='s10'>111881<td  class='s10'>1477893<td  class='s10'>0.0526<td  class='s10'>9203519<td  class='s10'>0.001112<td  class='s10'>9<td  class='s10'>4<td  class='s10'>-0.085<td  class='s11'>0.001</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  dir='ltr' class='s5'>Online Comm.<td  dir='ltr' class='s15'>flickr<td  class='s16'>105722<td  class='s16'>2316668<td  class='s16'>0.0891<td  class='s16'>107987357<td  class='s16'>0.1828<td  class='s16'>9<td  class='s16'>4.8<td  class='s16'>0.144<td  class='s17'>0.203</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=4 dir='ltr' class='s5'>Products<td  dir='ltr' class='s6'>amazon0302<td  class='s7'>241761<td  class='s7'>1131217<td  class='s7'>0.4198<td  class='s7'>717719<td  class='s7'>0.09339<td  class='s7'>32<td  class='s7'>11<td  class='s7'>0.003<td  class='s8'>0.402</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>amazon0312<td  class='s13'>380167<td  class='s13'>3069889<td  class='s13'>0.4022<td  class='s13'>3686467<td  class='s13'>0.05991<td  class='s13'>18<td  class='s13'>7.6<td  class='s13'>-0.045<td  class='s14'>0.395</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>amazon0505<td  class='s13'>390304<td  class='s13'>3255816<td  class='s13'>0.4064<td  class='s13'>3951063<td  class='s13'>0.06068<td  class='s13'>20<td  class='s13'>7.6<td  class='s13'>-0.044<td  class='s14'>0.405</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>amazon0601<td  class='s10'>395234<td  class='s10'>3301092<td  class='s10'>0.4177<td  class='s10'>3986507<td  class='s10'>0.06206<td  class='s10'>21<td  class='s10'>7.6<td  class='s10'>-0.044<td  class='s11'>0.411</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=9 dir='ltr' class='s5'>Peer-to-Peer<td  dir='ltr' class='s6'>p2pGnutella04<td  class='s7'>4317<td  class='s7'>18742<td  class='s7'>0.0062<td  class='s7'>934<td  class='s7'>0.001807<td  class='s7'>9<td  class='s7'>5.4<td  class='s7'>-0.008<td  class='s8'>0.002</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella05<td  class='s13'>3234<td  class='s13'>13453<td  class='s13'>0.0072<td  class='s13'>1112<td  class='s13'>0.002546<td  class='s13'>9<td  class='s13'>5.3<td  class='s13'>-0.005<td  class='s14'>0.004</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella06<td  class='s13'>3226<td  class='s13'>13589<td  class='s13'>0.0067<td  class='s13'>1142<td  class='s13'>0.002717<td  class='s13'>10<td  class='s13'>5.3<td  class='s13'>-0.003<td  class='s14'>0.004</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella08<td  class='s13'>2068<td  class='s13'>9313<td  class='s13'>0.0109<td  class='s13'>2383<td  class='s13'>0.006983<td  class='s13'>9<td  class='s13'>5.5<td  class='s13'>-0.029<td  class='s14'>0.012</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella09<td  class='s13'>2624<td  class='s13'>10776<td  class='s13'>0.0095<td  class='s13'>2354<td  class='s13'>0.005789<td  class='s13'>10<td  class='s13'>5.6<td  class='s13'>-0.033<td  class='s14'>0.01</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella24<td  class='s13'>6352<td  class='s13'>22928<td  class='s13'>0.0055<td  class='s13'>986<td  class='s13'>0.001371<td  class='s13'>10<td  class='s13'>6.1<td  class='s13'>-0.006<td  class='s14'>0.002</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella25<td  class='s13'>5153<td  class='s13'>17695<td  class='s13'>0.0053<td  class='s13'>806<td  class='s13'>0.001516<td  class='s13'>10<td  class='s13'>6.3<td  class='s13'>-0.006<td  class='s14'>0.002</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>p2pGnutella30<td  class='s13'>8490<td  class='s13'>31706<td  class='s13'>0.0063<td  class='s13'>1590<td  class='s13'>0.001727<td  class='s13'>10<td  class='s13'>6.6<td  class='s13'>-0.021<td  class='s14'>0.002</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>p2pGnutella31<td  class='s10'>14149<td  class='s10'>50916<td  class='s10'>0.0055<td  class='s10'>2024<td  class='s10'>0.001294<td  class='s10'>11<td  class='s10'>6.7<td  class='s10'>-0.006<td  class='s11'>0.001</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=4 dir='ltr' class='s5'>Webgraphs<td  dir='ltr' class='s6'>webBerkStan<td  class='s7'>334857<td  class='s7'>4523232<td  class='s7'>0.5967<td  class='s7'>64690980<td  class='s7'>0.002746<td  class='s7'>514<td  class='s7'>9.9<td  class='s7'>-0.179<td  class='s8'>0.505</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>webGoogle<td  class='s13'>434818<td  class='s13'>3419124<td  class='s13'>0.5143<td  class='s13'>13391903<td  class='s13'>0.01911<td  class='s13'>21<td  class='s13'>8.1<td  class='s13'>-0.065<td  class='s14'>0.45</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>webNotreDame<td  class='s13'>53968<td  class='s13'>304685<td  class='s13'>0.2346<td  class='s13'>8910005<td  class='s13'>0.03104<td  class='s13'>46<td  class='s13'>9.4<td  class='s13'>-0.062<td  class='s14'>0.289</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>webStanford<td  class='s10'>150532<td  class='s10'>1576314<td  class='s10'>0.5976<td  class='s10'>11329473<td  class='s10'>0.002889<td  class='s10'>674<td  class='s10'>9.7<td  class='s10'>-0.122<td  class='s11'>0.355</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=2 dir='ltr' class='s5'>Wikipedia<td  dir='ltr' class='s6'>wikiVote<td  class='s7'>1300<td  class='s7'>39456<td  class='s7'>0.1409<td  class='s7'>608389<td  class='s7'>0.04564<td  class='s7'>7<td  class='s7'>3.8<td  class='s7'>-0.083<td  class='s8'>0.053</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>wikiTalk<td  class='s10'>111881<td  class='s10'>1477893<td  class='s10'>0.0526<td  class='s10'>9203519<td  class='s10'>0.001112<td  class='s10'>9<td  class='s10'>4<td  class='s10'>-0.085<td  class='s11'>0.001</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s18'><td  class='s19'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>MEAN<td  class='s23'>123,040.74<td  class='s23'>1,148,484.26<td  class='s23'>0.20<td  class='s23'>10,377,156.04<td  class='s23'>0.03<td  class='s23'>64.91<td  class='s23'>6.50<td  class='s23'>-0.05<td  class='s23'>0.16</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>SIGMA<td  class='s23'>155,066.25<td  class='s23'>1,452,109.07<td  class='s23'>0.22<td  class='s23'>25,201,465.46<td  class='s23'>0.04<td  class='s23'>168.92<td  class='s23'>2.05<td  class='s23'>0.07<td  class='s23'>0.19</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s24'><td  class='s25'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s24'><td  class='s25'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s24'><td  colspan=10 dir='ltr' class='s27'>TECHNOLOGICAL NETWORKS - Before Normalization<td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s2'><td  class='s28'><td  dir='ltr' class='s29'>Nodes<td  dir='ltr' class='s29'>Edges<td  dir='ltr' class='s29'>Clustering Coeff.<td  dir='ltr' class='s29'>Number of Triangles<td  dir='ltr' class='s29'>Fraction Closed Triangles<td  dir='ltr' class='s29'>Diameter<td  dir='ltr' class='s4'>90% Eff. Diameter<td  dir='ltr' class='s4'>Assortativity<td  dir='ltr' class='s4'>Transitivity</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=3 dir='ltr' class='s30'>Road<td  dir='ltr' class='s31'>roadNetCA<td  class='s7'>1957027<td  class='s7'>2760388<td  class='s7'>0.0464<td  class='s7'>120676<td  class='s7'>0.02097<td  class='s7'>849<td  class='s7'>520<td  class='s7'>0.126<td  class='s8'>0.06</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>roadNetPA<td  class='s13'>1087562<td  class='s13'>1541514<td  class='s13'>0.0465<td  class='s13'>67150<td  class='s13'>0.02062<td  class='s13'>786<td  class='s13'>530<td  class='s13'>0.123<td  class='s14'>0.059</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s33'>roadNetTX<td  class='s10'>1351137<td  class='s10'>1879201<td  class='s10'>0.047<td  class='s10'>82869<td  class='s10'>0.02091<td  class='s10'>1054<td  class='s10'>670<td  class='s10'>0.13<td  class='s11'>0.06</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=20 dir='ltr' class='s5'>Auto<td  dir='ltr' class='s6'>as20000001<td  class='s7'>6474<td  class='s7'>13895<td  class='s7'>0.2522<td  class='s7'>6584<td  class='s7'>0.003218<td  class='s7'>9<td  class='s7'>4.6<td  class='s7'>-0.17<td  class='s8'>0.01</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>asSkitter<td  class='s13'>1694616<td  class='s13'>11094209<td  class='s13'>0.2581<td  class='s13'>28769868<td  class='s13'>0.001802<td  class='s13'>25<td  class='s13'>6<td  class='s13'>-0.081<td  class='s14'>0.005</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>asCaida<td  class='s13'>26475<td  class='s13'>106762<td  class='s13'>0.2082<td  class='s13'>36365<td  class='s13'>0.002452<td  class='s13'>17<td  class='s13'>4.7<td  class='s13'>-0.204<td  class='s14'>0.008</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon1<td  class='s13'>10729<td  class='s13'>21999<td  class='s13'>0.2921<td  class='s13'>15834<td  class='s13'>0.00286<td  class='s13'>11<td  class='s13'>4.5<td  class='s13'>-0.186<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon2<td  class='s13'>10790<td  class='s13'>22469<td  class='s13'>0.2954<td  class='s13'>18237<td  class='s13'>0.00316<td  class='s13'>9<td  class='s13'>4.4<td  class='s13'>-0.194<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon3<td  class='s13'>10859<td  class='s13'>22747<td  class='s13'>0.2968<td  class='s13'>19108<td  class='s13'>0.003258<td  class='s13'>10<td  class='s13'>4.4<td  class='s13'>-0.193<td  class='s14'>0.01</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon4<td  class='s13'>10886<td  class='s13'>22493<td  class='s13'>0.294<td  class='s13'>17645<td  class='s13'>0.002991<td  class='s13'>10<td  class='s13'>4.4<td  class='s13'>-0.195<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon5<td  class='s13'>10943<td  class='s13'>22607<td  class='s13'>0.294<td  class='s13'>17597<td  class='s13'>0.002968<td  class='s13'>9<td  class='s13'>4.5<td  class='s13'>-0.195<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon6<td  class='s13'>11011<td  class='s13'>22677<td  class='s13'>0.2942<td  class='s13'>17598<td  class='s13'>0.002954<td  class='s13'>9<td  class='s13'>4.5<td  class='s13'>-0.196<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon7<td  class='s13'>11051<td  class='s13'>22724<td  class='s13'>0.2921<td  class='s13'>17677<td  class='s13'>0.002932<td  class='s13'>11<td  class='s13'>4.5<td  class='s13'>-0.196<td  class='s14'>0.009</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon8<td  class='s13'>10670<td  class='s13'>22002<td  class='s13'>0.297<td  class='s13'>17144<td  class='s13'>0.003121<td  class='s13'>9<td  class='s13'>4.4<td  class='s13'>-0.195<td  class='s14'>0.01</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon9<td  class='s13'>11174<td  class='s13'>23409<td  class='s13'>0.2964<td  class='s13'>19894<td  class='s13'>0.003233<td  class='s13'>9<td  class='s13'>4.4<td  class='s13'>-0.156<td  class='s14'>0.039</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon21<td  class='s13'>10900<td  class='s13'>31180<td  class='s13'>0.5009<td  class='s13'>82856<td  class='s13'>0.03855<td  class='s13'>9<td  class='s13'>4.3<td  class='s13'>-0.159<td  class='s14'>0.036</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon22<td  class='s13'>11461<td  class='s13'>32730<td  class='s13'>0.4943<td  class='s13'>89541<td  class='s13'>0.03701<td  class='s13'>9<td  class='s13'>4.3<td  class='s13'>-0.16<td  class='s14'>0.04</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon23<td  class='s13'>10981<td  class='s13'>30855<td  class='s13'>0.3463<td  class='s13'>78138<td  class='s13'>0.01235<td  class='s13'>11<td  class='s13'>4.3<td  class='s13'>-0.161<td  class='s14'>0.037</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon24<td  class='s13'>11019<td  class='s13'>31761<td  class='s13'>0.3476<td  class='s13'>88905<td  class='s13'>0.01361<td  class='s13'>8<td  class='s13'>4.2<td  class='s13'>-0.162<td  class='s14'>0.034</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon25<td  class='s13'>11080<td  class='s13'>31538<td  class='s13'>0.3496<td  class='s13'>82129<td  class='s13'>0.01248<td  class='s13'>9<td  class='s13'>4.3<td  class='s13'>-0.162<td  class='s14'>0.032</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon26<td  class='s13'>11113<td  class='s13'>31434<td  class='s13'>0.3472<td  class='s13'>78000<td  class='s13'>0.01177<td  class='s13'>9<td  class='s13'>4.2<td  class='s13'>-0.162<td  class='s14'>0.032</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s12'>Oregon27<td  class='s13'>11157<td  class='s13'>30943<td  class='s13'>0.3461<td  class='s13'>72182<td  class='s13'>0.01096<td  class='s13'>9<td  class='s13'>4.3<td  class='s13'>-0.163<td  class='s14'>0.035</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s9'>Oregon28<td  class='s10'>11260<td  class='s10'>31303<td  class='s10'>0.3465<td  class='s10'>72866<td  class='s10'>0.01089<td  class='s10'>9<td  class='s10'>4.2<td  class='s10'>-0.164<td  class='s11'>0.037</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s18'><td  class='s19'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>MEAN<td  class='s23'>274,364.13<td  class='s23'>776,123.48<td  class='s23'>0.29<td  class='s23'>1,299,515.78<td  class='s23'>0.01<td  class='s23'>126.09<td  class='s23'>78.67<td  class='s23'>-0.13<td  class='s23'>0.03</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>SIGMA<td  class='s23'>602,325.12<td  class='s23'>2,362,380.56<td  class='s23'>0.12<td  class='s23'>5,988,423.24<td  class='s23'>0.01<td  class='s23'>307.95<td  class='s23'>197.51<td  class='s23'>0.11<td  class='s23'>0.02</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s24'><td  class='s25'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'><td  class='s26'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s24'><td  colspan=10 dir='ltr' class='s27'>SCCIAL NETWORKS - Before Normalization<td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'><td style='display:none;'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s2'><td  class='s28'><td  dir='ltr' class='s29'>Nodes<td  dir='ltr' class='s29'>Edges<td  dir='ltr' class='s29'>Clustering Coeff.<td  dir='ltr' class='s29'>Number of Triangles<td  dir='ltr' class='s29'>Fraction Closed Triangles<td  dir='ltr' class='s29'>Diameter<td  dir='ltr' class='s4'>90% Eff. Diameter<td  dir='ltr' class='s4'>Assortativity<td  dir='ltr' class='s4'>Transitivity</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=8 dir='ltr' class='s30'>Social<td  dir='ltr' class='s31'>FACEBOOK<td  class='s7'>4039<td  class='s7'>88234<td  class='s7'>0.6055<td  class='s7'>1612010<td  class='s7'>0.2647<td  class='s7'>8<td  class='s7'>4.7<td  class='s20'><td  class='s34'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>GOOGLE<td  class='s13'>69501<td  class='s13'>9168660<td  class='s13'>0.4901<td  class='s13'>1073677742<td  class='s13'>0.6552<td  class='s13'>6<td  class='s13'>3<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>TWITTER<td  class='s13'>68413<td  class='s13'>1685163<td  class='s13'>0.5653<td  class='s13'>13082506<td  class='s13'>0.06415<td  class='s13'>7<td  class='s13'>4.5<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>EPINIONS<td  class='s13'>32223<td  class='s13'>443506<td  class='s13'>0.1378<td  class='s13'>1624481<td  class='s13'>0.0229<td  class='s13'>14<td  class='s13'>5<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>LIVEJOURNAL<td  class='s13'>3828682<td  class='s13'>65825429<td  class='s13'>0.2742<td  class='s13'>285730264<td  class='s13'>0.04266<td  class='s13'>16<td  class='s13'>6.5<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>POKEC<td  class='s13'>1304537<td  class='s13'>29183655<td  class='s13'>0.1094<td  class='s13'>32557458<td  class='s13'>0.01611<td  class='s13'>11<td  class='s13'>5.2<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>SLASHDOT<td  class='s13'>70355<td  class='s13'>888662<td  class='s13'>0.0555<td  class='s13'>551724<td  class='s13'>0.008184<td  class='s13'>10<td  class='s13'>4.7<td  class='s35'><td  class='s36'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s33'>SLASHDOT2<td  class='s10'>1300<td  class='s10'>39456<td  class='s10'>0.1409<td  class='s10'>608389<td  class='s10'>0.04564<td  class='s10'>7<td  class='s10'>3.8<td  class='s37'><td  class='s38'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=2 dir='ltr' class='s30'>Location<td  dir='ltr' class='s31'>locGowalla<td  class='s7'>196591<td  class='s7'>950327<td  class='s7'>0.2367<td  class='s7'>2273138<td  class='s7'>0.007952<td  class='s7'>14<td  class='s7'>5.7<td  class='s7'>-0.029<td  class='s8'>0.023</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s33'>locBrightkite<td  class='s10'>56739<td  class='s10'>212945<td  class='s10'>0.1723<td  class='s10'>494728<td  class='s10'>0.03979<td  class='s10'>16<td  class='s10'>6<td  class='s10'>0.011<td  class='s11'>0.111</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=4 dir='ltr' class='s30'>Signed<td  dir='ltr' class='s31'>socsignepinions<td  class='s7'>131828<td  class='s7'>841372<td  class='s7'>0.1279<td  class='s7'>4910076<td  class='s7'>0.02849<td  class='s7'>14<td  class='s7'>4.9<td  class='s7'>-0.064<td  class='s8'>0.074</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>socsignSlashdot081106<td  class='s13'>26996<td  class='s13'>337351<td  class='s13'>0.0549<td  class='s13'>548054<td  class='s13'>0.008153<td  class='s13'>11<td  class='s13'>4.7<td  class='s13'>-0.107<td  class='s14'>0.026</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>socsignSlashdot090216<td  class='s13'>27222<td  class='s13'>342747<td  class='s13'>0.0585<td  class='s13'>570569<td  class='s13'>0.007961<td  class='s13'>11<td  class='s13'>4.7<td  class='s13'>-0.108<td  class='s14'>0.025</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s33'>socsignSlashdot090221<td  class='s10'>27382<td  class='s10'>346652<td  class='s10'>0.0588<td  class='s10'>579565<td  class='s10'>0.007998<td  class='s10'>12<td  class='s10'>4.7<td  class='s10'>-0.109<td  class='s11'>0.026</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  rowspan=3 dir='ltr' class='s30'>Ground<td  dir='ltr' class='s31'>comYoutube<td  class='s7'>1134890<td  class='s7'>2987624<td  class='s7'>0.0808<td  class='s7'>3056386<td  class='s7'>0.002081<td  class='s7'>20<td  class='s7'>6.5<td  class='s7'>-0.037<td  class='s8'>0.006</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s32'>comDBLP<td  class='s13'>317080<td  class='s13'>1049866<td  class='s13'>0.6324<td  class='s13'>2224385<td  class='s13'>0.1283<td  class='s13'>21<td  class='s13'>8<td  class='s13'>0.267<td  class='s14'>0.306</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td style='display:none;'><td  dir='ltr' class='s33'>comAmazon<td  class='s10'>334863<td  class='s10'>925872<td  class='s10'>0.3967<td  class='s10'>667129<td  class='s10'>0.07925<td  class='s10'>44<td  class='s10'>15<td  class='s10'>-0.059<td  class='s11'>0.205</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s18'><td  class='s19'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'><td  class='s20'></tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>MEAN<td  class='s23'>448,978.88<td  class='s23'>6,783,383.59<td  class='s23'>0.25<td  class='s23'>83,809,917.88<td  class='s23'>0.08<td  class='s23'>14.24<td  class='s23'>5.74<td  class='s23'>-0.03<td  class='s23'>0.09</tr><tr dir='ltr'><td class=hd><p style='height:16px;'>.</td><td  class='s21'><td  dir='ltr' class='s22'>SIGMA<td  class='s23'>952,344.43<td  class='s23'>16,776,514.24<td  class='s23'>0.21<td  class='s23'>264,137,536.00<td  class='s23'>0.16<td  class='s23'>8.79<td  class='s23'>2.64<td  class='s23'>0.12<td  class='s23'>0.10</tr></table></body></html>
+
+
+
+<br>
+<br>
+
+
+
+
+<h1> Examples for Calculations before Normalization </h1>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Citation Network (cit-Heph)</big>  </b> </td>
+<tr><td>Size:</td><td>34546</td></tr>
+<tr><td>Order:</td><td>421578</td></tr>
+<tr><td>Assortativity:</td><td>-0.003</td></tr>
+<tr><td>Transitivity:</td><td>0.101</td></tr>
+<tr><td>Degree:</td><td>0.00071</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>34099</td></tr>
+<tr><td>Clique Number:</td><td>3</td></tr>
+<tr><td>Clustering:</td><td>0.847</td></tr>
+<tr><td>Eccentricity:</td><td>30.0</td></tr>
+<tr><td>Diameter:</td><td>49</td></tr>
+<tr><td>Closeness:</td><td>0.03999</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Collaboration Network (ca-AstroPh)</big>  </b> </td>
+<tr><td>Size:</td><td>18772</td></tr>
+<tr><td>Order:</td><td>198110</td></tr>
+<tr><td>Assortativity:</td><td>0.205</td></tr>
+<tr><td>Transitivity:</td><td>0.318</td></tr>
+<tr><td>Degree:</td><td>0.00112</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>215.0</td></tr>
+<tr><td>Number of Cliques:</td><td>36428</td></tr>
+<tr><td>Clique Number:</td><td>57</td></tr>
+<tr><td>Clustering:</td><td>0.681</td></tr>
+<tr><td>Eccentricity:</td><td>9.0</td></tr>
+<tr><td>Diameter:</td><td>14</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Peer to Peer Network (p2p-Gnutella04)</big>  </b> </td>
+
+<tr><td>Size:</td><td>10876</td></tr>
+<tr><td>Order:</td><td>39994</td></tr>
+<tr><td>Assortativity:</td><td>-0.008</td></tr>
+<tr><td>Transitivity:</td><td>0.002</td></tr>
+<tr><td>Degree:</td><td>0.00068</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>10876</td></tr>
+<tr><td>Clique Number:</td><td>1</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Wikipedia (wiki-Vote)</big>  </b> </td>
+<tr><td>Size:</td><td>7115</td></tr>
+<tr><td>Order:</td><td>103689</td></tr>
+<tr><td>Assortativity:</td><td>-0.083</td></tr>
+<tr><td>Transitivity:</td><td>0.053</td></tr>
+<tr><td>Degree:</td><td>0.0041</td></tr>
+<tr><td>Coreness:</td><td>15.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>8280</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.277</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>9</td></tr>
+<tr><td>Closeness:</td><td>0.07317</td></tr>
+<tr><td>Betweeness:</td><td>1e-05</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Product (amazon0302)</big>  </b> </td>
+<tr><td>Size:</td><td>262111</td></tr>
+<tr><td>Order:</td><td>1234877</td></tr>
+<tr><td>Assortativity:</td><td>0.003</td></tr>
+<tr><td>Transitivity:</td><td>0.402</td></tr>
+<tr><td>Degree:</td><td>4e-05</td></tr>
+<tr><td>Coreness:</td><td>6.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>210412</td></tr>
+<tr><td>Clique Number:</td><td>6</td></tr>
+<tr><td>Clustering:</td><td>0.599</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Road (as2000001)</big>  </b> </td>
+
+<tr><td>Size:</td><td>6474</td></tr>
+<tr><td>Order:</td><td>13895</td></tr>
+<tr><td>Assortativity:</td><td>-0.17</td></tr>
+<tr><td>Transitivity:</td><td>0.01</td></tr>
+<tr><td>Degree:</td><td>0.00066</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>3.0</td></tr>
+<tr><td>Number of Cliques:</td><td>9220</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.687</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>9</td></tr>
+<tr><td>Betweeness:</td><td>0.00042</td></tr>
+<tr><td>Closeness:</td><td>0.27657</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Social (facebook1)</big>  </b> </td>
+
+<tr><td>Size:</td><td>151</td></tr>
+<tr><td>Order:</td><td>1843</td></tr>
+<tr><td>Assortativity:</td><td>-0.078</td></tr>
+<tr><td>Transitivity:</td><td>0.578</td></tr>
+<tr><td>Degree:</td><td>0.16274</td></tr>
+<tr><td>Coreness:</td><td>16.0</td></tr>
+<tr><td>Number of Triangles:</td><td>244.0</td></tr>
+<tr><td>Number of Cliques:</td><td>2038</td></tr>
+<tr><td>Clique Number:</td><td>19</td></tr>
+<tr><td>Clustering:</td><td>0.727</td></tr>
+<tr><td>Eccentricity:</td><td>1.0</td></tr>
+<tr><td>Diameter:</td><td>2</td></tr>
+<tr><td>Betweeness:</td><td>0.00562</td></tr>
+<tr><td>Closeness:</td><td>0.54689</td></tr>
+<tr><td>Edge Connectivity:</td><td>2</td></tr>
+<tr><td>Node Connectivity:</td><td>11.121</td></tr>
+</table>
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Social (facebook2)</big>  </b> </td>
+
+<tr><td>Size:</td><td>334</td></tr>
+<tr><td>Order:</td><td>2852</td></tr>
+<tr><td>Assortativity:</td><td>-0.137</td></tr>
+<tr><td>Transitivity:</td><td>0.293</td></tr>
+<tr><td>Degree:</td><td>0.05128</td></tr>
+<tr><td>Coreness:</td><td>10.0</td></tr>
+<tr><td>Number of Triangles:</td><td>119.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1601</td></tr>
+<tr><td>Clique Number:</td><td>16</td></tr>
+<tr><td>Clustering:</td><td>0.682</td></tr>
+<tr><td>Eccentricity:</td><td>1.0</td></tr>
+<tr><td>Diameter:</td><td>2</td></tr>
+<tr><td>Betweeness:</td><td>0.00286</td></tr>
+<tr><td>Closeness:</td><td>0.51417</td></tr>
+<tr><td>Edge Connectivity:</td><td>2</td></tr>
+<tr><td>Node Connectivity:</td><td>6.365</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Social (facebook3)</big>  </b> </td>
+
+<tr><td>Size:</td><td>62</td></tr>
+<tr><td>Order:</td><td>331</td></tr>
+<tr><td>Assortativity:</td><td>-0.166</td></tr>
+<tr><td>Transitivity:</td><td>0.523</td></tr>
+<tr><td>Degree:</td><td>0.17504</td></tr>
+<tr><td>Coreness:</td><td>7.0</td></tr>
+<tr><td>Number of Triangles:</td><td>45.0</td></tr>
+<tr><td>Number of Cliques:</td><td>53</td></tr>
+<tr><td>Clique Number:</td><td>11</td></tr>
+<tr><td>Clustering:</td><td>0.811</td></tr>
+<tr><td>Eccentricity:</td><td>1.0</td></tr>
+<tr><td>Diameter:</td><td>2</td></tr>
+<tr><td>Betweeness:</td><td>0.01375</td></tr>
+<tr><td>Closeness:</td><td>0.5527</td></tr>
+<tr><td>Edge Connectivity:</td><td>2</td></tr>
+<tr><td>Node Connectivity:</td><td>3.731</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Social (facebook4)</big>  </b> </td>
+
+<tr><td>Size:</td><td>169</td></tr>
+<tr><td>Order:</td><td>1824</td></tr>
+<tr><td>Assortativity:</td><td>-0.146</td></tr>
+<tr><td>Transitivity:</td><td>0.412</td></tr>
+<tr><td>Degree:</td><td>0.12849</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>170.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1115</td></tr>
+<tr><td>Clique Number:</td><td>17</td></tr>
+<tr><td>Clustering:</td><td>0.63</td></tr>
+<tr><td>Eccentricity:</td><td>1.0</td></tr>
+<tr><td>Diameter:</td><td>2</td></tr>
+<tr><td>Betweeness:</td><td>0.00522</td></tr>
+<tr><td>Closeness:</td><td>0.53708</td></tr>
+<tr><td>Edge Connectivity:</td><td>2</td></tr>
+<tr><td>Node Connectivity:</td><td>11.813</td></tr>
+</table>
+
+
+<br>
+
+<br>
+<b><big><a href="http://astro.sunysb.edu/steinkirch/new/docs/twitter.pdf"> Twitter Analysis.</b></a></big>
+
+
+
+
+
+
+<br>
+
+
+<h1> Topological Features for SNAP Data Sets (Snowball Samples with N=3)</h1>
+
+
+<h2> Auto</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> as20000010<br> Sample 1</big>  </b> </td>
+<tr><td>Size:</td><td>6023</td></tr>
+<tr><td>Order:</td><td>12625</td></tr>
+<tr><td>Assortativity:</td><td>-0.188</td></tr>
+<tr><td>Transitivity:</td><td>0.009</td></tr>
+<tr><td>Degree:</td><td>0.0007</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>3.0</td></tr>
+<tr><td>Number of Cliques:</td><td>8524</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.702</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> as200000102<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>6095</td></tr>
+<tr><td>Order:</td><td>12825</td></tr>
+<tr><td>Assortativity:</td><td>-0.185</td></tr>
+<tr><td>Transitivity:</td><td>0.009</td></tr>
+<tr><td>Degree:</td><td>0.00069</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>3.0</td></tr>
+<tr><td>Number of Cliques:</td><td>8640</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.7</td></tr>
+</table>
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> as200000102<br> Sample 3</big>  </b> </td>
+<tr><td>Size:</td><td>6268</td></tr>
+<tr><td>Order:</td><td>13379</td></tr>
+<tr><td>Assortativity:</td><td>-0.177</td></tr>
+<tr><td>Transitivity:</td><td>0.01</td></tr>
+<tr><td>Degree:</td><td>0.00068</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>3.0</td></tr>
+<tr><td>Number of Cliques:</td><td>8929</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.692</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> as-skitter<br> Sample 1</big>  </b> </td>
+<tr><td>Size:</td><td>969131</td></tr>
+<tr><td>Order:</td><td>5532605</td></tr>
+<tr><td>Assortativity:</td><td>-0.129</td></tr>
+<tr><td>Transitivity:</td><td>0.004</td></tr>
+<tr><td>Degree:</td><td>1e-05</td></tr>
+<tr><td>Coreness:</td><td>5.0</td></tr>
+<tr><td>Number of Triangles:</td><td>52.0</td></tr>
+<tr><td>Number of Cliques:</td><td>24030948</td></tr>
+<tr><td>Clique Number:</td><td>58</td></tr>
+<tr><td>Clustering:</td><td>0.458</td></tr>
+</table>
+
+
+
+<br>
+
+
+<h2> Citation</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> cit-HepPh<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>2064</td></tr>
+<tr><td>Order:</td><td>7198</td></tr>
+<tr><td>Assortativity:</td><td>-0.102</td></tr>
+<tr><td>Transitivity:</td><td>0.053</td></tr>
+<tr><td>Degree:</td><td>0.00338</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>2062</td></tr>
+<tr><td>Clique Number:</td><td>2</td></tr>
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>7</td></tr>
+<tr><td>Closeness:</td><td>0.01071</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.00169045230285</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00048</td></tr>
+<tr><td>Square Clusttering:</td><td>0.33397</td></tr>
+</table>
+
+
+<br>
+
+
+<h2> Collaboration</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> ca-AstroPh<br> Sample 1</big>  </b> </td>
+
+
+<tr><td>Size:</td><td>6953</td></tr>
+<tr><td>Order:</td><td>24760</td></tr>
+<tr><td>Assortativity:</td><td>-0.308</td></tr>
+<tr><td>Transitivity:</td><td>0.116</td></tr>
+<tr><td>Degree:</td><td>0.00102</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>37.0</td></tr>
+<tr><td>Number of Cliques:</td><td>12156</td></tr>
+<tr><td>Clique Number:</td><td>53</td></tr>
+<tr><td>Clustering:</td><td>0.66</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.26355</td></tr>
+<tr><td>Betweeness:</td><td>0.00041</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> ca-AstroPh<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>16779</td></tr>
+<tr><td>Order:</td><td>185709</td></tr>
+<tr><td>Assortativity:</td><td>0.169</td></tr>
+<tr><td>Transitivity:</td><td>0.308</td></tr>
+<tr><td>Degree:</td><td>0.00132</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>230.0</td></tr>
+<tr><td>Number of Cliques:</td><td>37875</td></tr>
+<tr><td>Clique Number:</td><td>57</td></tr>
+<tr><td>Clustering:</td><td>0.649</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> ca-AstroPh<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>16508</td></tr>
+<tr><td>Order:</td><td>182135</td></tr>
+<tr><td>Assortativity:</td><td>0.162</td></tr>
+<tr><td>Transitivity:</td><td>0.304</td></tr>
+<tr><td>Degree:</td><td>0.00134</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>228.0</td></tr>
+<tr><td>Number of Cliques:</td><td>37965</td></tr>
+<tr><td>Clique Number:</td><td>57</td></tr>
+<tr><td>Clustering:</td><td>0.643</td></tr>
+
+</table>
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-CondMat<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>15488</td></tr>
+<tr><td>Order:</td><td>61823</td></tr>
+<tr><td>Assortativity:</td><td>0.025</td></tr>
+<tr><td>Transitivity:</td><td>0.217</td></tr>
+<tr><td>Degree:</td><td>0.00052</td></tr>
+<tr><td>Coreness:</td><td>4.0</td></tr>
+<tr><td>Number of Triangles:</td><td>22.0</td></tr>
+<tr><td>Number of Cliques:</td><td>17600</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.656</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-CondMat<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>2119</td></tr>
+<tr><td>Order:</td><td>3201</td></tr>
+<tr><td>Assortativity:</td><td>-0.343</td></tr>
+<tr><td>Transitivity:</td><td>0.075</td></tr>
+<tr><td>Degree:</td><td>0.00143</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>2139</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.669</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-CondMat<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>7335</td></tr>
+<tr><td>Order:</td><td>23016</td></tr>
+<tr><td>Assortativity:</td><td>-0.197</td></tr>
+<tr><td>Transitivity:</td><td>0.136</td></tr>
+<tr><td>Degree:</td><td>0.00086</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>15.0</td></tr>
+<tr><td>Number of Cliques:</td><td>9750</td></tr>
+<tr><td>Clique Number:</td><td>18</td></tr>
+<tr><td>Clustering:</td><td>0.678</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-GrQc<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>966</td></tr>
+<tr><td>Order:</td><td>1503</td></tr>
+<tr><td>Assortativity:</td><td>-0.379</td></tr>
+<tr><td>Transitivity:</td><td>0.098</td></tr>
+<tr><td>Degree:</td><td>0.00322</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>988</td></tr>
+<tr><td>Clique Number:</td><td>8</td></tr>
+<tr><td>Clustering:</td><td>0.629</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-GrQc<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>72</td></tr>
+<tr><td>Order:</td><td>121</td></tr>
+<tr><td>Assortativity:</td><td>-0.271</td></tr>
+<tr><td>Transitivity:</td><td>0.253</td></tr>
+<tr><td>Degree:</td><td>0.04734</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>3.0</td></tr>
+<tr><td>Number of Cliques:</td><td>59</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.671</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-GrQc<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>768</td></tr>
+<tr><td>Order:</td><td>1247</td></tr>
+<tr><td>Assortativity:</td><td>-0.303</td></tr>
+<tr><td>Transitivity:</td><td>0.105</td></tr>
+<tr><td>Degree:</td><td>0.00423</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>780</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.669</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-HepPh<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>7267</td></tr>
+<tr><td>Order:</td><td>88711</td></tr>
+<tr><td>Assortativity:</td><td>0.509</td></tr>
+<tr><td>Transitivity:</td><td>0.658</td></tr>
+<tr><td>Degree:</td><td>0.00336</td></tr>
+<tr><td>Coreness:</td><td>18.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1324.0</td></tr>
+<tr><td>Number of Cliques:</td><td>12588</td></tr>
+<tr><td>Clique Number:</td><td>239</td></tr>
+<tr><td>Clustering:</td><td>0.686</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-HepPh<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>5372</td></tr>
+<tr><td>Order:</td><td>71777</td></tr>
+<tr><td>Assortativity:</td><td>0.35</td></tr>
+<tr><td>Transitivity:</td><td>0.657</td></tr>
+<tr><td>Degree:</td><td>0.00498</td></tr>
+<tr><td>Coreness:</td><td>21.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1658.0</td></tr>
+<tr><td>Number of Cliques:</td><td>9868</td></tr>
+<tr><td>Clique Number:</td><td>239</td></tr>
+<tr><td>Clustering:</td><td>0.746</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+<br>
+
+<table border="1" style="width:400px">
+ <td><b><big> ca-HepPh<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>4653</td></tr>
+<tr><td>Order:</td><td>57688</td></tr>
+<tr><td>Assortativity:</td><td>0.231</td></tr>
+<tr><td>Transitivity:</td><td>0.659</td></tr>
+<tr><td>Degree:</td><td>0.00533</td></tr>
+<tr><td>Coreness:</td><td>19.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1683.0</td></tr>
+<tr><td>Number of Cliques:</td><td>6463</td></tr>
+<tr><td>Clique Number:</td><td>239</td></tr>
+<tr><td>Clustering:</td><td>0.764</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+
+
+<br>
+
+
+<h2> Communication</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> email-Enron<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>29940</td></tr>
+<tr><td>Order:</td><td>157784</td></tr>
+<tr><td>Assortativity:</td><td>-0.163</td></tr>
+<tr><td>Transitivity:</td><td>0.08</td></tr>
+<tr><td>Degree:</td><td>0.00035</td></tr>
+<tr><td>Coreness:</td><td>5.0</td></tr>
+<tr><td>Number of Triangles:</td><td>67.0</td></tr>
+<tr><td>Number of Cliques:</td><td>224789</td></tr>
+<tr><td>Clique Number:</td><td>20</td></tr>
+<tr><td>Clustering:</td><td>0.701</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> email-Enron<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>13361</td></tr>
+<tr><td>Order:</td><td>43642</td></tr>
+<tr><td>Assortativity:</td><td>-0.368</td></tr>
+<tr><td>Transitivity:</td><td>0.039</td></tr>
+<tr><td>Degree:</td><td>0.00049</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>30.0</td></tr>
+<tr><td>Number of Cliques:</td><td>54282</td></tr>
+<tr><td>Clique Number:</td><td>17</td></tr>
+<tr><td>Clustering:</td><td>0.755</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> email-Enron<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>31234</td></tr>
+<tr><td>Order:</td><td>165493</td></tr>
+<tr><td>Assortativity:</td><td>-0.146</td></tr>
+<tr><td>Transitivity:</td><td>0.082</td></tr>
+<tr><td>Degree:</td><td>0.00034</td></tr>
+<tr><td>Coreness:</td><td>5.0</td></tr>
+<tr><td>Number of Triangles:</td><td>66.0</td></tr>
+<tr><td>Number of Cliques:</td><td>226399</td></tr>
+<tr><td>Clique Number:</td><td>20</td></tr>
+<tr><td>Clustering:</td><td>0.705</td></tr>
+</table>
+
+
+
+
+
+<br>
+
+
+<h2> Ground</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>4443</td></tr>
+<tr><td>Order:</td><td>8298</td></tr>
+<tr><td>Assortativity:</td><td>-0.158</td></tr>
+<tr><td>Transitivity:</td><td>0.075</td></tr>
+<tr><td>Degree:</td><td>0.00084</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>6013</td></tr>
+<tr><td>Clique Number:</td><td>6</td></tr>
+<tr><td>Clustering:</td><td>0.461</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>105</td></tr>
+<tr><td>Order:</td><td>174</td></tr>
+<tr><td>Assortativity:</td><td>-0.438</td></tr>
+<tr><td>Transitivity:</td><td>0.232</td></tr>
+<tr><td>Degree:</td><td>0.03187</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>115</td></tr>
+<tr><td>Clique Number:</td><td>6</td></tr>
+<tr><td>Clustering:</td><td>0.466</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>1191</td></tr>
+<tr><td>Order:</td><td>1780</td></tr>
+<tr><td>Assortativity:</td><td>-0.243</td></tr>
+<tr><td>Transitivity:</td><td>0.051</td></tr>
+<tr><td>Degree:</td><td>0.00251</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1409</td></tr>
+<tr><td>Clique Number:</td><td>5</td></tr>
+<tr><td>Clustering:</td><td>0.467</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> DBLP<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>4032</td></tr>
+<tr><td>Order:</td><td>5275</td></tr>
+<tr><td>Assortativity:</td><td>-0.337</td></tr>
+<tr><td>Transitivity:</td><td>0.046</td></tr>
+<tr><td>Degree:</td><td>0.00065</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>3961</td></tr>
+<tr><td>Clique Number:</td><td>12</td></tr>
+<tr><td>Clustering:</td><td>0.693</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> DBLP<br> Sample 2</big>  </b> </td>
+<tr><td>Size:</td><td>2781</td></tr>
+<tr><td>Order:</td><td>4289</td></tr>
+<tr><td>Assortativity:</td><td>-0.313</td></tr>
+<tr><td>Transitivity:</td><td>0.215</td></tr>
+<tr><td>Degree:</td><td>0.00111</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>11.0</td></tr>
+<tr><td>Number of Cliques:</td><td>2716</td></tr>
+<tr><td>Clique Number:</td><td>39</td></tr>
+<tr><td>Clustering:</td><td>0.738</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> DBLP<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>4583</td></tr>
+<tr><td>Order:</td><td>8858</td></tr>
+<tr><td>Assortativity:</td><td>-0.39</td></tr>
+<tr><td>Transitivity:</td><td>0.245</td></tr>
+<tr><td>Degree:</td><td>0.00084</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>18.0</td></tr>
+<tr><td>Number of Cliques:</td><td>4510</td></tr>
+<tr><td>Clique Number:</td><td>44</td></tr>
+<tr><td>Clustering:</td><td>0.789</td></tr>
+<tr><td>Edge Connectivity:</td><td>1</td></tr>
+
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Youtube<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>284716</td></tr>
+<tr><td>Order:</td><td>669363</td></tr>
+<tr><td>Assortativity:</td><td>-0.108</td></tr>
+<tr><td>Transitivity:</td><td>0.003</td></tr>
+<tr><td>Degree:</td><td>2e-05</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>9.0</td></tr>
+<tr><td>Number of Cliques:</td><td>780342</td></tr>
+<tr><td>Clique Number:</td><td>16</td></tr>
+<tr><td>Clustering:</td><td>0.55</td></tr>
+
+</table>
+
+
+
+
+
+
+<br>
+
+
+<h2> Location</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-brightlike<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>42784</td></tr>
+<tr><td>Order:</td><td>273055</td></tr>
+<tr><td>Assortativity:</td><td>-0.054</td></tr>
+<tr><td>Transitivity:</td><td>0.085</td></tr>
+<tr><td>Degree:</td><td>0.0003</td></tr>
+<tr><td>Coreness:</td><td>8.0</td></tr>
+<tr><td>Number of Triangles:</td><td>22.0</td></tr>
+<tr><td>Number of Cliques:</td><td>184581</td></tr>
+<tr><td>Clique Number:</td><td>33</td></tr>
+<tr><td>Clustering:</td><td>0.329</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.08733</td></tr>
+<tr><td>Betweeness:</td><td>1e-05</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-brightlike<br> Sample 2</big>  </b> </td>
+
+
+<tr><td>Size:</td><td>46166</td></tr>
+<tr><td>Order:</td><td>308755</td></tr>
+<tr><td>Assortativity:</td><td>-0.03</td></tr>
+<tr><td>Transitivity:</td><td>0.101</td></tr>
+<tr><td>Degree:</td><td>0.00029</td></tr>
+<tr><td>Coreness:</td><td>9.0</td></tr>
+<tr><td>Number of Triangles:</td><td>27.0</td></tr>
+<tr><td>Number of Cliques:</td><td>250617</td></tr>
+<tr><td>Clique Number:</td><td>37</td></tr>
+<tr><td>Clustering:</td><td>0.362</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-brightlike<br> Sample 3</big>  </b> </td>
+
+
+<tr><td>Size:</td><td>6311</td></tr>
+<tr><td>Order:</td><td>11261</td></tr>
+<tr><td>Assortativity:</td><td>-0.145</td></tr>
+<tr><td>Transitivity:</td><td>0.004</td></tr>
+<tr><td>Degree:</td><td>0.00057</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>6427</td></tr>
+<tr><td>Clique Number:</td><td>8</td></tr>
+<tr><td>Clustering:</td><td>0.632</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-gowalla<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>173477</td></tr>
+<tr><td>Order:</td><td>1560798</td></tr>
+<tr><td>Assortativity:</td><td>-0.036</td></tr>
+<tr><td>Transitivity:</td><td>0.022</td></tr>
+<tr><td>Degree:</td><td>0.0001</td></tr>
+<tr><td>Coreness:</td><td>13.0</td></tr>
+<tr><td>Number of Triangles:</td><td>35.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1111079</td></tr>
+<tr><td>Clique Number:</td><td>29</td></tr>
+<tr><td>Clustering:</td><td>0.394</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-gowalla<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>174073</td></tr>
+<tr><td>Order:</td><td>1571413</td></tr>
+<tr><td>Assortativity:</td><td>-0.037</td></tr>
+<tr><td>Transitivity:</td><td>0.022</td></tr>
+<tr><td>Degree:</td><td>0.0001</td></tr>
+<tr><td>Coreness:</td><td>13.0</td></tr>
+<tr><td>Number of Triangles:</td><td>35.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1129261</td></tr>
+<tr><td>Clique Number:</td><td>29</td></tr>
+<tr><td>Clustering:</td><td>0.368</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> loc-gowalla<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>159164</td></tr>
+<tr><td>Order:</td><td>1357821</td></tr>
+<tr><td>Assortativity:</td><td>-0.043</td></tr>
+<tr><td>Transitivity:</td><td>0.02</td></tr>
+<tr><td>Degree:</td><td>0.00011</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>34.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1046409</td></tr>
+<tr><td>Clique Number:</td><td>21</td></tr>
+<tr><td>Clustering:</td><td>0.347</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+
+
+
+
+
+
+<br>
+
+
+<h2> Meme</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> higgs-mention<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>219</td></tr>
+<tr><td>Order:</td><td>301</td></tr>
+<tr><td>Assortativity:</td><td>-0.183</td></tr>
+<tr><td>Transitivity:</td><td>0.006</td></tr>
+<tr><td>Degree:</td><td>0.01261</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>216</td></tr>
+<tr><td>Clique Number:</td><td>2</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.01858</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.00630472120984</td></tr>
+<tr><td>Radius:</td><td>2</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00457</td></tr>
+<tr><td>Square Clusttering:</td><td>0.19647</td></tr>
+<tr><td>Communicability:</td><td>1.10044</td></tr>
+</table>
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> higgs-mention<br> Sample 2*</big>  </b> </td>
+
+
+<tr><td>Eccentricity:</td><td>0.0</td></tr>
+<tr><td>Diameter:</td><td>0</td></tr>
+<tr><td>Closeness:</td><td>0.35417</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.333333333333</td></tr>
+<tr><td>Radius:</td><td>0</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.25</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table>
+<small>* N=3 is clearly not enough for this graph. </small>
+
+<br>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> higgs-reply*<br> Sample 1</big>  </b> </td>
+
+
+<tr><td>Eccentricity:</td><td>0.0</td></tr>
+<tr><td>Diameter:</td><td>0</td></tr>
+<tr><td>Closeness:</td><td>0.5</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.5</td></tr>
+<tr><td>Radius:</td><td>0</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.5</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table>
+<small>* N=3 is clearly not enough for this graph. </small>
+<br>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> higgs-retweet<br> Sample 1</big>  </b> </td>
+
+
+<tr><td>Eccentricity:</td><td>2.0</td></tr>
+<tr><td>Diameter:</td><td>3</td></tr>
+<tr><td>Closeness:</td><td>0.01411</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.00438735177866</td></tr>
+<tr><td>Radius:</td><td>2</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00362</td></tr>
+<tr><td>Square Clusttering:</td><td>0.23569</td></tr>
+<tr><td>Communicability:</td><td>1.05598</td></tr>
+</table>
+
+
+
+
+<br>
+
+
+<h2> Online Communities</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Flickr<br> Sample 1*</big>  </b> </td>
+
+<tr><td>Size:</td><td>11</td></tr>
+<tr><td>Order:</td><td>10</td></tr>
+<tr><td>Transitivity:</td><td>0.0</td></tr>
+<tr><td>Degree:</td><td>0.18182</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>11</td></tr>
+<tr><td>Clique Number:</td><td>1</td></tr>
+<tr><td>Eccentricity:</td><td>0.0</td></tr>
+<tr><td>Diameter:</td><td>0</td></tr>
+<tr><td>Closeness:</td><td>0.12394</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.0909090909091</td></tr>
+<tr><td>Radius:</td><td>0</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.09091</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+
+</table>
+<small>* N=3 is clearly not enough for this graph. </small>
+<br>
+
+
+
+<br>
+
+
+<h2> Signed</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-sign-epinions<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>11583</td></tr>
+<tr><td>Order:</td><td>42651</td></tr>
+<tr><td>Assortativity:</td><td>-0.151</td></tr>
+<tr><td>Transitivity:</td><td>0.014</td></tr>
+<tr><td>Degree:</td><td>0.00064</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>12811</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.372</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.00738</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-sign-epinions<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>28773</td></tr>
+<tr><td>Order:</td><td>178358</td></tr>
+<tr><td>Assortativity:</td><td>-0.18</td></tr>
+<tr><td>Transitivity:</td><td>0.042</td></tr>
+<tr><td>Degree:</td><td>0.00043</td></tr>
+<tr><td>Coreness:</td><td>6.0</td></tr>
+<tr><td>Number of Triangles:</td><td>12.0</td></tr>
+<tr><td>Number of Cliques:</td><td>134586</td></tr>
+<tr><td>Clique Number:</td><td>16</td></tr>
+<tr><td>Clustering:</td><td>0.323</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-sign-epinions<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>57296</td></tr>
+<tr><td>Order:</td><td>541639</td></tr>
+<tr><td>Assortativity:</td><td>-0.105</td></tr>
+<tr><td>Transitivity:</td><td>0.052</td></tr>
+<tr><td>Degree:</td><td>0.00033</td></tr>
+<tr><td>Coreness:</td><td>10.0</td></tr>
+<tr><td>Number of Triangles:</td><td>11.0</td></tr>
+<tr><td>Number of Cliques:</td><td>213204</td></tr>
+<tr><td>Clique Number:</td><td>31</td></tr>
+<tr><td>Clustering:</td><td>0.263</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+<br>
+
+
+<h2> Webgraphs</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-BerkStan<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>151</td></tr>
+<tr><td>Order:</td><td>239</td></tr>
+<tr><td>Assortativity:</td><td>-0.273</td></tr>
+<tr><td>Transitivity:</td><td>0.056</td></tr>
+<tr><td>Degree:</td><td>0.0211</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>150</td></tr>
+<tr><td>Clique Number:</td><td>3</td></tr>
+<tr><td>Clustering:</td><td>0.478</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.08465</td></tr>
+<tr><td>Betweeness:</td><td>0.00141</td></tr>
+<tr><td>Node Connectivity:</td><td>0.074</td></tr>
+<tr><td>Density:</td><td>0.0105518763797</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00662</td></tr>
+<tr><td>Square Clusttering:</td><td>0.08824</td></tr>
+<tr><td>Communicability:</td><td>1.75756</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-BerkStan<br> Sample 2</big>  </b> </td>
+
+
+<tr><td>Size:</td><td>4234</td></tr>
+<tr><td>Order:</td><td>20219</td></tr>
+<tr><td>Assortativity:</td><td>-0.21</td></tr>
+<tr><td>Transitivity:</td><td>0.328</td></tr>
+<tr><td>Degree:</td><td>0.00226</td></tr>
+<tr><td>Coreness:</td><td>5.0</td></tr>
+<tr><td>Number of Triangles:</td><td>7.0</td></tr>
+<tr><td>Number of Cliques:</td><td>4064</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.844</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>10</td></tr>
+<tr><td>Closeness:</td><td>0.05577</td></tr>
+<tr><td>Betweeness:</td><td>1e-05</td></tr>
+</table>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-BerkStan<br> Sample 3</big>  </b> </td>
+
+
+<tr><td>Order:</td><td>34280</td></tr>
+<tr><td>Assortativity:</td><td>-0.379</td></tr>
+<tr><td>Transitivity:</td><td>0.04</td></tr>
+<tr><td>Degree:</td><td>0.00042</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>13199</td></tr>
+<tr><td>Clique Number:</td><td>10</td></tr>
+<tr><td>Clustering:</td><td>0.581</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-Google<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>5578</td></tr>
+<tr><td>Order:</td><td>16461</td></tr>
+<tr><td>Assortativity:</td><td>-0.046</td></tr>
+<tr><td>Transitivity:</td><td>0.201</td></tr>
+<tr><td>Degree:</td><td>0.00106</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>5081</td></tr>
+<tr><td>Clique Number:</td><td>17</td></tr>
+<tr><td>Clustering:</td><td>0.856</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-Google<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>723</td></tr>
+<tr><td>Order:</td><td>2697</td></tr>
+<tr><td>Assortativity:</td><td>-0.155</td></tr>
+<tr><td>Transitivity:</td><td>0.513</td></tr>
+<tr><td>Degree:</td><td>0.01033</td></tr>
+<tr><td>Coreness:</td><td>5.0</td></tr>
+<tr><td>Number of Triangles:</td><td>6.0</td></tr>
+<tr><td>Number of Cliques:</td><td>615</td></tr>
+<tr><td>Clique Number:</td><td>16</td></tr>
+<tr><td>Clustering:</td><td>0.896</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-Google<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>6200</td></tr>
+<tr><td>Order:</td><td>20518</td></tr>
+<tr><td>Assortativity:</td><td>-0.08</td></tr>
+<tr><td>Transitivity:</td><td>0.219</td></tr>
+<tr><td>Degree:</td><td>0.00107</td></tr>
+<tr><td>Coreness:</td><td>4.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>5739</td></tr>
+<tr><td>Clique Number:</td><td>18</td></tr>
+<tr><td>Clustering:</td><td>0.851</td></tr>
+
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> web-NotreDame<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>1</td></tr>
+<tr><td>Order:</td><td>0</td></tr>
+<tr><td>Size:</td><td>2740</td></tr>
+<tr><td>Order:</td><td>4396</td></tr>
+<tr><td>Assortativity:</td><td>-0.215</td></tr>
+<tr><td>Transitivity:</td><td>0.019</td></tr>
+<tr><td>Degree:</td><td>0.00117</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>2715</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.803</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+
+
+
+<br>
+
+
+<h2> Wikipedia</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> wiki-Talk<br> Sample 1*</big>  </b> </td>
+
+<tr><td>Size:</td><td>1</td></tr>
+<tr><td>Order:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>0.0</td></tr>
+<tr><td>Diameter:</td><td>0</td></tr>
+<tr><td>Closeness:</td><td>0.0</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.0</td></tr>
+<tr><td>Radius:</td><td>0</td></tr>
+<tr><td>Isolates:</td><td>[473750]</td></tr>
+<tr><td>Pagerank:</td><td>1.0</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table><small>* N=3 is clearly not enough for this graph. </small>
+<br>
+
+
+
+
+<br>
+
+
+<h2> Product</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>137</td></tr>
+<tr><td>Order:</td><td>374</td></tr>
+<tr><td>Assortativity:</td><td>0.093</td></tr>
+<tr><td>Transitivity:</td><td>0.355</td></tr>
+<tr><td>Degree:</td><td>0.04015</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>124</td></tr>
+<tr><td>Clique Number:</td><td>4</td></tr>
+<tr><td>Clustering:</td><td>0.571</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>7.0</td></tr>
+<tr><td>Diameter:</td><td>10</td></tr>
+<tr><td>Closeness:</td><td>0.08819</td></tr>
+<tr><td>Betweeness:</td><td>0.00115</td></tr>
+<tr><td>Node Connectivity:</td><td>0.078</td></tr>
+<tr><td>Density:</td><td>0.02007</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>0</td></tr>
+<tr><td>Pagerank:</td><td>0.0073</td></tr>
+<tr><td>Square Clusttering:</td><td>0.27053</td></tr>
+<tr><td>Communicability:</td><td>2.30099</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>46</td></tr>
+<tr><td>Order:</td><td>90</td></tr>
+<tr><td>Assortativity:</td><td>nan</td></tr>
+<tr><td>Transitivity:</td><td>0.25</td></tr>
+<tr><td>Degree:</td><td>0.08696</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>43</td></tr>
+<tr><td>Clique Number:</td><td>3</td></tr>
+<tr><td>Clustering:</td><td>0.567</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>3.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.1149</td></tr>
+<tr><td>Betweeness:</td><td>0.00909</td></tr>
+<tr><td>Node Connectivity:</td><td>0.154</td></tr>
+<tr><td>Density:</td><td>0.0434782608696</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.02174</td></tr>
+<tr><td>Square Clusttering:</td><td>0.67094</td></tr>
+<tr><td>Communicability:</td><td>1.66809</td></tr>
+
+
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>114</td></tr>
+<tr><td>Order:</td><td>233</td></tr>
+<tr><td>Assortativity:</td><td>0.006</td></tr>
+<tr><td>Transitivity:</td><td>0.224</td></tr>
+<tr><td>Degree:</td><td>0.03617</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>102</td></tr>
+<tr><td>Clique Number:</td><td>4</td></tr>
+<tr><td>Clustering:</td><td>0.625</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>11</td></tr>
+<tr><td>Closeness:</td><td>0.06766</td></tr>
+<tr><td>Betweeness:</td><td>0.00361</td></tr>
+<tr><td>Node Connectivity:</td><td>0.096</td></tr>
+<tr><td>Density:</td><td>0.01809</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>0</td></tr>
+<tr><td>Pagerank:</td><td>0.00877</td></tr>
+<tr><td>Square Clusttering:</td><td>0.26171</td></tr>
+<tr><td>Communicability:</td><td>2.14873</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>228</td></tr>
+<tr><td>Order:</td><td>589</td></tr>
+<tr><td>Assortativity:</td><td>0.096</td></tr>
+<tr><td>Transitivity:</td><td>0.273</td></tr>
+<tr><td>Degree:</td><td>0.02276</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>213</td></tr>
+<tr><td>Clique Number:</td><td>5</td></tr>
+<tr><td>Clustering:</td><td>0.625</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>7</td></tr>
+<tr><td>Closeness:</td><td>0.05004</td></tr>
+<tr><td>Betweeness:</td><td>0.00045</td></tr>
+<tr><td>Node Connectivity:</td><td>0.053</td></tr>
+<tr><td>Density:</td><td>0.01138</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>0</td></tr>
+<tr><td>Pagerank:</td><td>0.00439</td></tr>
+<tr><td>Square Clusttering:</td><td>1.38935</td></tr>
+<tr><td>Communicability:</td><td>4.64567</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>594</td></tr>
+<tr><td>Order:</td><td>1635</td></tr>
+<tr><td>Assortativity:</td><td>-0.006</td></tr>
+<tr><td>Transitivity:</td><td>0.318</td></tr>
+<tr><td>Degree:</td><td>0.00928</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>552</td></tr>
+<tr><td>Clique Number:</td><td>8</td></tr>
+<tr><td>Clustering:</td><td>0.699</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>9</td></tr>
+<tr><td>Closeness:</td><td>0.04272</td></tr>
+<tr><td>Betweeness:</td><td>0.0003</td></tr>
+<tr><td>Node Connectivity:</td><td>0.053</td></tr>
+<tr><td>Density:</td><td>0.00464</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>0</td></tr>
+<tr><td>Pagerank:</td><td>0.00168</td></tr>
+<tr><td>Square Clusttering:</td><td>1.19181</td></tr>
+<tr><td>Communicability:</td><td>15.00954</td></tr>
+</table>
+
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0302<br> Sample 3</big>  </b> </td>
+
+
+<tr><td>Size:</td><td>274</td></tr>
+<tr><td>Order:</td><td>617</td></tr>
+<tr><td>Assortativity:</td><td>-0.13</td></tr>
+<tr><td>Transitivity:</td><td>0.225</td></tr>
+<tr><td>Degree:</td><td>0.0165</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>269</td></tr>
+<tr><td>Clique Number:</td><td>4</td></tr>
+<tr><td>Clustering:</td><td>0.656</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.06323</td></tr>
+<tr><td>Betweeness:</td><td>0.00085</td></tr>
+<tr><td>Node Connectivity:</td><td>0.102</td></tr>
+<tr><td>Density:</td><td>0.00824844255501</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00365</td></tr>
+<tr><td>Square Clusttering:</td><td>0.59565</td></tr>
+<tr><td>Communicability:</td><td>5.88315</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0505<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>2068</td></tr>
+<tr><td>Order:</td><td>4904</td></tr>
+<tr><td>Assortativity:</td><td>0.014</td></tr>
+<tr><td>Transitivity:</td><td>0.185</td></tr>
+<tr><td>Degree:</td><td>0.00229</td></tr>
+<tr><td>Coreness:</td><td>2.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1984</td></tr>
+<tr><td>Clique Number:</td><td>8</td></tr>
+<tr><td>Clustering:</td><td>0.634</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>9.0</td></tr>
+<tr><td>Diameter:</td><td>15</td></tr>
+<tr><td>Closeness:</td><td>0.02331</td></tr>
+<tr><td>Betweeness:</td><td>8e-05</td></tr>
+<tr><td>Node Connectivity:</td><td>0.026</td></tr>
+<tr><td>Density:</td><td>0.00114725365629</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00048</td></tr>
+<tr><td>Square Clusttering:</td><td>1.05675</td></tr>
+<tr><td>Communicability:</td><td>5.1639</td></tr>
+</table>
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0505<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>47</td></tr>
+<tr><td>Order:</td><td>217</td></tr>
+<tr><td>Assortativity:</td><td>-0.063</td></tr>
+<tr><td>Transitivity:</td><td>0.583</td></tr>
+<tr><td>Degree:</td><td>0.20074</td></tr>
+<tr><td>Coreness:</td><td>6.0</td></tr>
+<tr><td>Number of Triangles:</td><td>7.0</td></tr>
+<tr><td>Number of Cliques:</td><td>41</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.703</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>2.0</td></tr>
+<tr><td>Diameter:</td><td>4</td></tr>
+<tr><td>Closeness:</td><td>0.19474</td></tr>
+<tr><td>Betweeness:</td><td>0.00611</td></tr>
+<tr><td>Node Connectivity:</td><td>0.777</td></tr>
+<tr><td>Density:</td><td>0.100370027752</td></tr>
+<tr><td>Radius:</td><td>2</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.02128</td></tr>
+<tr><td>Square Clusttering:</td><td>0.85058</td></tr>
+<tr><td>Communicability:</td><td>108.63246</td></tr>
+</table>
+
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0505<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>1250</td></tr>
+<tr><td>Order:</td><td>3487</td></tr>
+<tr><td>Assortativity:</td><td>0.034</td></tr>
+<tr><td>Transitivity:</td><td>0.267</td></tr>
+<tr><td>Degree:</td><td>0.00447</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1191</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.639</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>10.0</td></tr>
+<tr><td>Diameter:</td><td>18</td></tr>
+<tr><td>Closeness:</td><td>0.02974</td></tr>
+<tr><td>Betweeness:</td><td>0.00014</td></tr>
+<tr><td>Node Connectivity:</td><td>0.031</td></tr>
+<tr><td>Density:</td><td>0.00223346677342</td></tr>
+<tr><td>Radius:</td><td>5</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.0008</td></tr>
+<tr><td>Square Clusttering:</td><td>1.1431</td></tr>
+<tr><td>Communicability:</td><td>12.92312</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0601<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>243</td></tr>
+<tr><td>Order:</td><td>636</td></tr>
+<tr><td>Assortativity:</td><td>0.017</td></tr>
+<tr><td>Transitivity:</td><td>0.282</td></tr>
+<tr><td>Degree:</td><td>0.02163</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>1.0</td></tr>
+<tr><td>Number of Cliques:</td><td>230</td></tr>
+<tr><td>Clique Number:</td><td>5</td></tr>
+<tr><td>Clustering:</td><td>0.716</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.04271</td></tr>
+<tr><td>Betweeness:</td><td>0.00013</td></tr>
+<tr><td>Node Connectivity:</td><td>0.046</td></tr>
+<tr><td>Density:</td><td>0.0108152229364</td></tr>
+<tr><td>Radius:</td><td>2</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00412</td></tr>
+<tr><td>Square Clusttering:</td><td>0.67104</td></tr>
+<tr><td>Communicability:</td><td>8.53389</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0601<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>290</td></tr>
+<tr><td>Order:</td><td>1007</td></tr>
+<tr><td>Assortativity:</td><td>-0.084</td></tr>
+<tr><td>Transitivity:</td><td>0.334</td></tr>
+<tr><td>Degree:</td><td>0.02403</td></tr>
+<tr><td>Coreness:</td><td>4.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>274</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.655</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>7.0</td></tr>
+<tr><td>Diameter:</td><td>13</td></tr>
+<tr><td>Closeness:</td><td>0.07936</td></tr>
+<tr><td>Betweeness:</td><td>0.00197</td></tr>
+<tr><td>Node Connectivity:</td><td>0.165</td></tr>
+<tr><td>Density:</td><td>0.0120152726405</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00345</td></tr>
+<tr><td>Square Clusttering:</td><td>0.60652</td></tr>
+<tr><td>Communicability:</td><td>17.39929</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Amazon0601<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>155</td></tr>
+<tr><td>Order:</td><td>857</td></tr>
+<tr><td>Assortativity:</td><td>0.07</td></tr>
+<tr><td>Transitivity:</td><td>0.47</td></tr>
+<tr><td>Degree:</td><td>0.07181</td></tr>
+<tr><td>Coreness:</td><td>7.0</td></tr>
+<tr><td>Number of Triangles:</td><td>4.0</td></tr>
+<tr><td>Number of Cliques:</td><td>128</td></tr>
+<tr><td>Clique Number:</td><td>6</td></tr>
+<tr><td>Clustering:</td><td>0.709</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.11434</td></tr>
+<tr><td>Betweeness:</td><td>0.00156</td></tr>
+<tr><td>Node Connectivity:</td><td>0.239</td></tr>
+<tr><td>Density:</td><td>0.0359028068705</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00645</td></tr>
+<tr><td>Square Clusttering:</td><td>0.40058</td></tr>
+<tr><td>Communicability:</td><td>28.41051</td></tr>
+</table>
+
+
+
+
+<br>
+
+
+<h2> Road</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Ca<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>28</td></tr>
+<tr><td>Order:</td><td>29</td></tr>
+<tr><td>Assortativity:</td><td>-0.45</td></tr>
+<tr><td>Transitivity:</td><td>0.0</td></tr>
+<tr><td>Degree:</td><td>0.07672</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>29</td></tr>
+<tr><td>Clique Number:</td><td>2</td></tr>
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.23516</td></tr>
+<tr><td>Betweeness:</td><td>0.13146</td></tr>
+<tr><td>Node Connectivity:</td><td>1.032</td></tr>
+<tr><td>Density:</td><td>0.0767195767196</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.03571</td></tr>
+<tr><td>Square Clusttering:</td><td>0.04667</td></tr>
+<tr><td>Communicability:</td><td>2.54999</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Ca<br> Sample 2</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>7.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.21868</td></tr>
+<tr><td>Betweeness:</td><td>0.09578</td></tr>
+<tr><td>Node Connectivity:</td><td>1.27</td></tr>
+<tr><td>Density:</td><td>0.0585365853659</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.02439</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0923</td></tr>
+<tr><td>Communicability:</td><td>2.84337</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Ca<br> Sample 3</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>7</td></tr>
+<tr><td>Closeness:</td><td>0.27851</td></tr>
+<tr><td>Betweeness:</td><td>0.13006</td></tr>
+<tr><td>Node Connectivity:</td><td>1.186</td></tr>
+<tr><td>Density:</td><td>0.098814229249</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.04348</td></tr>
+<tr><td>Square Clusttering:</td><td>0.07578</td></tr>
+<tr><td>Communicability:</td><td>2.59892</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Pa<br> Sample 1</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.23684</td></tr>
+<tr><td>Betweeness:</td><td>0.15431</td></tr>
+<tr><td>Node Connectivity:</td><td>1.022</td></tr>
+<tr><td>Density:</td><td>0.0905797101449</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.04167</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>2.61325</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Pa<br> Sample 2</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>6.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.23684</td></tr>
+<tr><td>Betweeness:</td><td>0.15431</td></tr>
+<tr><td>Node Connectivity:</td><td>1.022</td></tr>
+<tr><td>Density:</td><td>0.0905797101449</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.04167</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>2.61325</td></tr>
+</table>
+
+
+
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Pa<br> Sample 3</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>7</td></tr>
+<tr><td>Closeness:</td><td>0.29736</td></tr>
+<tr><td>Betweeness:</td><td>0.10269</td></tr>
+<tr><td>Node Connectivity:</td><td>1.84</td></tr>
+<tr><td>Density:</td><td>0.110769230769</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.03846</td></tr>
+<tr><td>Square Clusttering:</td><td>0.15623</td></tr>
+<tr><td>Communicability:</td><td>3.42136</td></tr>
+</table>
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Tx<br> Sample 1</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>7.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.23218</td></tr>
+<tr><td>Betweeness:</td><td>0.09554</td></tr>
+<tr><td>Node Connectivity:</td><td>1.491</td></tr>
+<tr><td>Density:</td><td>0.0668563300142</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.02632</td></tr>
+<tr><td>Square Clusttering:</td><td>0.1076</td></tr>
+<tr><td>Communicability:</td><td>3.01214</td></tr>
+</table>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Tx<br> Sample 2</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.29372</td></tr>
+<tr><td>Betweeness:</td><td>0.11462</td></tr>
+<tr><td>Node Connectivity:</td><td>1.138</td></tr>
+<tr><td>Density:</td><td>0.0978260869565</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.04167</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0323</td></tr>
+<tr><td>Communicability:</td><td>2.86024</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> roadNet-Tx<br> Sample 3</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.30361</td></tr>
+<tr><td>Betweeness:</td><td>0.14276</td></tr>
+<tr><td>Node Connectivity:</td><td>1.0</td></tr>
+<tr><td>Density:</td><td>0.105263157895</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.05263</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>2.35578</td></tr>
+</table>
+
+
+
+
+<br>
+
+
+<h2> Peer-to-Perr</h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Gnutella04<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>1447</td></tr>
+<tr><td>Order:</td><td>1720</td></tr>
+<tr><td>Assortativity:</td><td>-0.007</td></tr>
+<tr><td>Transitivity:</td><td>0.001</td></tr>
+<tr><td>Degree:</td><td>0.00164</td></tr>
+<tr><td>Coreness:</td><td>1.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1447</td></tr>
+<tr><td>Clique Number:</td><td>1</td></tr>
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>7</td></tr>
+<tr><td>Closeness:</td><td>0.00312</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.000822037486821</td></tr>
+<tr><td>Radius:</td><td>3</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00069</td></tr>
+<tr><td>Square Clusttering:</td><td>1e-05</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Gnutella06<br> Sample 1*</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>0.0</td></tr>
+<tr><td>Diameter:</td><td>0</td></tr>
+<tr><td>Closeness:</td><td>0.09091</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.0909090909091</td></tr>
+<tr><td>Radius:</td><td>0</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.09091</td></tr>
+<tr><td>Square Clusttering:</td><td>0.0</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table><small>* N=3 is clearly not enough for this graph. </small>
+<br>
+
+
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Gnutella08<br> Sample 1*</big>  </b> </td>
+
+<tr><td>Eccentricity:</td><td>5.0</td></tr>
+<tr><td>Diameter:</td><td>8</td></tr>
+<tr><td>Closeness:</td><td>0.01918</td></tr>
+<tr><td>Betweeness:</td><td>0.0</td></tr>
+<tr><td>Node Connectivity:</td><td>0.0</td></tr>
+<tr><td>Density:</td><td>0.00216507308495</td></tr>
+<tr><td>Radius:</td><td>4</td></tr>
+<tr><td>Isolates:</td><td>[]</td></tr>
+<tr><td>Pagerank:</td><td>0.00148</td></tr>
+<tr><td>Square Clusttering:</td><td>0.00034</td></tr>
+<tr><td>Communicability:</td><td>1.0</td></tr>
+</table><small>* N=3 is clearly not enough for this graph. </small>
+
+
+
+<br>
+
+
+<h2> Social </h2>
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Wiki-Vote<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>2313</td></tr>
+<tr><td>Order:</td><td>51781</td></tr>
+<tr><td>Assortativity:</td><td>-0.07</td></tr>
+<tr><td>Transitivity:</td><td>0.054</td></tr>
+<tr><td>Degree:</td><td>0.01937</td></tr>
+<tr><td>Coreness:</td><td>23.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>3398</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.263</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Wiki-Vote<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>2315</td></tr>
+<tr><td>Order:</td><td>57572</td></tr>
+<tr><td>Assortativity:</td><td>-0.07</td></tr>
+<tr><td>Transitivity:</td><td>0.055</td></tr>
+<tr><td>Degree:</td><td>0.02149</td></tr>
+<tr><td>Coreness:</td><td>26.0</td></tr>
+<tr><td>Number of Triangles:</td><td>2.0</td></tr>
+<tr><td>Number of Cliques:</td><td>3480</td></tr>
+<tr><td>Clique Number:</td><td>7</td></tr>
+<tr><td>Clustering:</td><td>0.278</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>4.0</td></tr>
+<tr><td>Diameter:</td><td>9</td></tr>
+<tr><td>Closeness:</td><td>0.1948</td></tr>
+<tr><td>Betweeness:</td><td>0.0002</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> Wiki-Vote<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>1263</td></tr>
+<tr><td>Order:</td><td>4541</td></tr>
+<tr><td>Assortativity:</td><td>-0.087</td></tr>
+<tr><td>Transitivity:</td><td>0.012</td></tr>
+<tr><td>Degree:</td><td>0.0057</td></tr>
+<tr><td>Coreness:</td><td>3.0</td></tr>
+<tr><td>Number of Triangles:</td><td>0.0</td></tr>
+<tr><td>Number of Cliques:</td><td>1266</td></tr>
+<tr><td>Clique Number:</td><td>3</td></tr>
+<tr><td>Clustering:</td><td>0.526</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+<tr><td>Eccentricity:</td><td>3.0</td></tr>
+<tr><td>Diameter:</td><td>6</td></tr>
+<tr><td>Closeness:</td><td>0.02157</td></tr>
+<tr><td>Betweeness:</td><td>1e-05</td></tr>
+<tr><td>Node Connectivity:</td><td>0.003</td></tr>
+<tr><td>Density:</td><td>0.00285</td></tr>
+<tr><td>Radius:</td><td>2</td></tr>
+<tr><td>Isolates:</td><td>0</td></tr>
+<tr><td>Pagerank:</td><td>0.00079</td></tr>
+<tr><td>Square Clusttering:</td><td>0.02463</td></tr>
+<tr><td>Communicability:</td><td>1.12828</td></tr>
+</table>
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-Slashdot 1<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>71139</td></tr>
+<tr><td>Order:</td><td>704797</td></tr>
+<tr><td>Assortativity:</td><td>-0.085</td></tr>
+<tr><td>Transitivity:</td><td>0.023</td></tr>
+<tr><td>Degree:</td><td>0.00028</td></tr>
+<tr><td>Coreness:</td><td>12.0</td></tr>
+<tr><td>Number of Triangles:</td><td>16.0</td></tr>
+<tr><td>Number of Cliques:</td><td>599461</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.121</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-Slashdot 1<br> Sample 2</big>  </b> </td>
+
+<tr><td>Size:</td><td>81723</td></tr>
+
+<tr><td>Order:</td><td>938123</td></tr>
+<tr><td>Assortativity:</td><td>-0.054</td></tr>
+<tr><td>Transitivity:</td><td>0.024</td></tr>
+<tr><td>Degree:</td><td>0.00028</td></tr>
+<tr><td>Coreness:</td><td>15.0</td></tr>
+<tr><td>Number of Triangles:</td><td>14.0</td></tr>
+<tr><td>Number of Cliques:</td><td>678121</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.193</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+</table>
+
+
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-Slashdot 1<br> Sample 3</big>  </b> </td>
+
+<tr><td>Size:</td><td>81737</td></tr>
+<tr><td>Order:</td><td>938722</td></tr>
+<tr><td>Assortativity:</td><td>-0.054</td></tr>
+<tr><td>Transitivity:</td><td>0.024</td></tr>
+<tr><td>Degree:</td><td>0.00028</td></tr>
+<tr><td>Coreness:</td><td>15.0</td></tr>
+<tr><td>Number of Triangles:</td><td>14.0</td></tr>
+<tr><td>Number of Cliques:</td><td>678166</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.193</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+<br>
+<table border="1" style="width:400px">
+ <td><b><big> soc-Slashdot 2<br> Sample 1</big>  </b> </td>
+
+<tr><td>Size:</td><td>76243</td></tr>
+<tr><td>Order:</td><td>875779</td></tr>
+<tr><td>Assortativity:</td><td>-0.056</td></tr>
+<tr><td>Transitivity:</td><td>0.024</td></tr>
+<tr><td>Degree:</td><td>0.0003</td></tr>
+<tr><td>Coreness:</td><td>15.0</td></tr>
+<tr><td>Number of Triangles:</td><td>15.0</td></tr>
+<tr><td>Number of Cliques:</td><td>666308</td></tr>
+<tr><td>Clique Number:</td><td>26</td></tr>
+<tr><td>Clustering:</td><td>0.166</td></tr>
+<tr><td>Edge Connectivity:</td><td>0</td></tr>
+
+</table>
+
+
+
+
+
+
