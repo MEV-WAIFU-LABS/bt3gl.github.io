@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh - osquery, security, elastalert, docker</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/osquery-security-elastalert-docker.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2017-07-18T00:00:00-04:00</updated><entry><title>Introducing OsqueryX</title><link href="http://bt3gl.github.io/introducing-osqueryx.html" rel="alternate"></link><published>2017-07-18T00:00:00-04:00</published><updated>2017-07-18T00:00:00-04:00</updated><author><name>Marina von Steinkirch</name></author><id>tag:bt3gl.github.io,2017-07-18:/introducing-osqueryx.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/mvonsteinkirch/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Installing&lt;/h2&gt;
 &lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install
@@ -13,7 +13,7 @@
 
 
 &lt;h3&gt;Installation Notes …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/28.jpg" width="400px"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/bt3gl/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/mvonsteinkirch/osqueryx"&gt;osqueryX&lt;/a&gt; is a set of tools to manage security data collection and alerts from &lt;a href="https://osquery.io/"&gt;osquery&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Installing&lt;/h2&gt;
 &lt;p&gt;Clone this repo and bootstrap your environment running:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make install

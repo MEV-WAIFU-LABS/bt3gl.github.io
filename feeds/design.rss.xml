@@ -82,7 +82,7 @@
 
 
 &lt;p&gt;Now, all you need is a couple of commands (such as &lt;code&gt;terraform apply&lt;/code&gt;), and your system would be up and running. &lt;/p&gt;
-&lt;p&gt;This was a high-level overview of how you would start designing and implementing real-world, end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. If you would like to check the code, &lt;a href="https://github.com/bt3gl/AWS_Resources_By_Examples/tree/master/lambda_functions/sqs-sns_example"&gt;this is the repo in GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This was a high-level overview of how you would start designing and implementing real-world, end-to-end applications, where &lt;strong&gt;design meets code and infrastructure as a code&lt;/strong&gt;. If you would like to check the code, &lt;a href="https://github.com/mvonsteinkirch/AWS_Resources_By_Examples/tree/master/lambda_functions/sqs-sns_example"&gt;this is the repo in GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1&gt;Learning References&lt;/h1&gt;
 &lt;ul&gt;

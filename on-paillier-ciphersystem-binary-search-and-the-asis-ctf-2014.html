@@ -62,7 +62,7 @@
                                 <li><a href="./authors.html">Who is this Replicant</a></li>
                                 <li><a href="./archives.html">Old Musing</a></li>
                                 <li>
-                                      <a href="https://github.com/bt3gl">The Language Within
+                                      <a href="https://github.com/mvonsteinkirch">The Language Within
                                       <!--<i class="icon-github-sign icon-large" ></i>-->
                                       </a></li>
                                 <li><a href="http://bt3gl.github.io/projects_page/index.html">Bygone Playful Times
@@ -319,7 +319,7 @@ Tell us your choice:
 <h3>Finding out the Modulo</h3>
 <p>At this point we know that we cannot do anything in the Paillier system without knowing the modulo, <strong>n</strong>. Of course, this value was not given. However, from the recon we have learned that we can find it from the oracle.</p>
 <p>The exact value when the oracle cycles back to the beginning are our <strong>n</strong>. This value should not return any message since <strong>n%n = 0</strong>. So, we are looking for this <strong>None</strong> result.</p>
-<p>What's the 101 way to search for a number? <a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search</a>, of course! Adapting one of <a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching">my scripts</a>, I wrote the snippet below to look for this number.</p>
+<p>What's the 101 way to search for a number? <a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search</a>, of course! Adapting one of <a href="https://github.com/mvonsteinkirch/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching">my scripts</a>, I wrote the snippet below to look for this number.</p>
 <p>The only problem is, the secret has 614 chars and we cannot scan all the 1E614 integer numbers! However, the only way that adding two encrypted messages would work was if the module <strong>n</strong> lied at somewhere around 614/2. For this reason we set our low and high search values around 1E306 and 1E308:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">decimal</span>
 <span class="kn">import</span> <span class="nn">socket</span>
@@ -421,7 +421,7 @@ ASIS
 
 
 <p>Cool, right?</p>
-<p>If you think so, all scripts I mentioned are <a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier">here</a>.</p>
+<p>If you think so, all scripts I mentioned are <a href="https://github.com/mvonsteinkirch/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier">here</a>.</p>
 <p>Hack all the things! (:</p>
 <hr />
                 </div><!-- /.entry-content -->

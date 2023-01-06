@@ -12,7 +12,7 @@
 &lt;li&gt;Set up Docker &amp;amp; Docker compose for developers to copy and run and develop their applications in.&lt;/li&gt;
 &lt;li&gt;Set up a skeleton of one of the applications/frameworks that the Developers work with to develop in.&lt;/li&gt;
 &lt;li&gt;Document the above setup and make it easy to get started, preferably with one, or a few commands.&lt;/li&gt;
-&lt;li&gt;Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile &lt;a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles"&gt;dotfile&lt;/a&gt; (e.g. &lt;code&gt;~/.zshrc&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile &lt;a href="https://github.com/mvonsteinkirch/Shell-Scripts_and_Dotfiles"&gt;dotfile&lt;/a&gt; (e.g. &lt;code&gt;~/.zshrc&lt;/code&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;CI&lt;/h2&gt;
 &lt;ul&gt;
@@ -23,14 +23,14 @@
 &lt;h2&gt;Infrastructure&lt;/h2&gt;
 &lt;p&gt;Setup production &amp;amp; stage servers.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/bt3gl/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
+&lt;li&gt;Setup these servers using whatever kind of &lt;a href="https://github.com/mvonsteinkirch/Data-Pipelines"&gt;infrastructure&lt;/a&gt; your company uses, like: &lt;a href="https://github.com/mvonsteinkirch/Intro_to_Kubernetes"&gt;Kubernetes&lt;/a&gt;, OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.&lt;/li&gt;
 &lt;li&gt;Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.&lt;/li&gt;
 &lt;li&gt;Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elasticsearch.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Logging and Monitoring&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Setup servers for aggregated Logging using something like ELK Stack.&lt;/li&gt;
-&lt;li&gt;Setup monitoring for your infrastructure with tools like Prometheus and &lt;a href="https://github.com/bt3gl/awesome-grafana"&gt;Grafana&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Setup monitoring for your infrastructure with tools like Prometheus and &lt;a href="https://github.com/mvonsteinkirch/awesome-grafana"&gt;Grafana&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Setup monitoring for your applications with tools like ElastAlert and Pingdom.&lt;/li&gt;
 &lt;li&gt;Integrate everything with Slack.&lt;/li&gt;
 &lt;/ul&gt;

@@ -761,7 +761,7 @@ Tell us your choice:
 &lt;h3&gt;Finding out the Modulo&lt;/h3&gt;
 &lt;p&gt;At this point we know that we cannot do anything in the Paillier system without knowing the modulo, &lt;strong&gt;n&lt;/strong&gt;. Of course, this value was not given. However, from the recon we have learned that we can find it from the oracle.&lt;/p&gt;
 &lt;p&gt;The exact value when the oracle cycles back to the beginning are our &lt;strong&gt;n&lt;/strong&gt;. This value should not return any message since &lt;strong&gt;n%n = 0&lt;/strong&gt;. So, we are looking for this &lt;strong&gt;None&lt;/strong&gt; result.&lt;/p&gt;
-&lt;p&gt;What's the 101 way to search for a number? &lt;a href="http://en.wikipedia.org/wiki/Binary_search_algorithm"&gt;Binary search&lt;/a&gt;, of course! Adapting one of &lt;a href="https://github.com/bt3gl/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching"&gt;my scripts&lt;/a&gt;, I wrote the snippet below to look for this number.&lt;/p&gt;
+&lt;p&gt;What's the 101 way to search for a number? &lt;a href="http://en.wikipedia.org/wiki/Binary_search_algorithm"&gt;Binary search&lt;/a&gt;, of course! Adapting one of &lt;a href="https://github.com/mvonsteinkirch/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching"&gt;my scripts&lt;/a&gt;, I wrote the snippet below to look for this number.&lt;/p&gt;
 &lt;p&gt;The only problem is, the secret has 614 chars and we cannot scan all the 1E614 integer numbers! However, the only way that adding two encrypted messages would work was if the module &lt;strong&gt;n&lt;/strong&gt; lied at somewhere around 614/2. For this reason we set our low and high search values around 1E306 and 1E308:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;decimal&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
@@ -863,7 +863,7 @@ ASIS
 
 
 &lt;p&gt;Cool, right?&lt;/p&gt;
-&lt;p&gt;If you think so, all scripts I mentioned are &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you think so, all scripts I mentioned are &lt;a href="https://github.com/mvonsteinkirch/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hack all the things! (:&lt;/p&gt;
 &lt;hr /&gt;</summary><category term="CTF"></category><category term="Paillier"></category><category term="Python"></category><category term="Binary_Search"></category><category term="Oracle"></category><category term="Decimal"></category></entry><entry><title>Cryptography War: Beating Krypton</title><link href="http://bt3gl.github.io/cryptography-war-beating-krypton.html" rel="alternate"></link><updated>2014-10-09T01:30:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-10-09:cryptography-war-beating-krypton.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/nZqQILK.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://bt3gl.github.io/smashing-the-stack-for-fun-or-wargames-narnia-0-4.html"&gt;Continuing to talk about&lt;/a&gt; the &lt;a href="http://overthewire.org/wargames/"&gt;Wargames&lt;/a&gt;, today I'll briefly go through &lt;a href="http://overthewire.org/wargames/krypton/"&gt;Krypton&lt;/a&gt;, the cryptography episode.&lt;/p&gt;

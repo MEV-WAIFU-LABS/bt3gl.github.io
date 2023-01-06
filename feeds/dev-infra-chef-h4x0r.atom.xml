@@ -6,7 +6,7 @@
 &lt;li&gt;tested (deploy to test environments, run all the tests), known as &lt;strong&gt;continuous testing&lt;/strong&gt;, and&lt;/li&gt;
 &lt;li&gt;prepared for a release (deploy to production environment), known as &lt;strong&gt;continuous deployment&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;To understand the first steps of this pipeline, check out an example of a cookbook for &lt;a href="https://www.chef.io/chef/"&gt;Chef&lt;/a&gt;: how to write a &lt;a href="https://github.com/bt3gl/Chef_Example_for_Suricata/tree/master"&gt;Suricata cookbook&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To understand the first steps of this pipeline, check out an example of a cookbook for &lt;a href="https://www.chef.io/chef/"&gt;Chef&lt;/a&gt;: how to write a &lt;a href="https://github.com/mvonsteinkirch/Chef_Example_for_Suricata/tree/master"&gt;Suricata cookbook&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Further References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://aws.amazon.com/devops/continuous-delivery/"&gt;AWS CI guide&lt;/a&gt;.&lt;/li&gt;

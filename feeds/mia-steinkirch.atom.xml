@@ -31,7 +31,7 @@
 &lt;h2&gt;It’s Summer in the Pipe! (Oahu)&lt;/h2&gt;
 &lt;iframe src="https://player.vimeo.com/video/269465467" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen&gt;&lt;/iframe&gt;</summary></entry><entry><title>Setting up a PostgreSQL RDS instance using CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-postgresql-rds-instance-using-cdk-in-python.html" rel="alternate"></link><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-08-11:setting-up-a-postgresql-rds-instance-using-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1339.jpg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;In &lt;a href="https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html"&gt;a previous post&lt;/a&gt;, I advocated that &lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
-&lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available &lt;a href="https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install AWS CDK&lt;/h3&gt;
 &lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;theses instructions&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;
@@ -93,7 +93,7 @@
 &lt;/pre&gt;&lt;/div&gt;</summary></entry><entry><title>Setting up a VPC with CDK in Python</title><link href="http://bt3gl.github.io/setting-up-a-vpc-with-cdk-in-python.html" rel="alternate"></link><updated>2018-08-11T09:00:00-04:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2018-08-11:setting-up-a-vpc-with-cdk-in-python.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="270px" src="./cyberpunk/1338.jpeg" width="390px" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html"&gt;AWS CDK&lt;/a&gt; is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.&lt;/p&gt;
 &lt;p&gt;You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.&lt;/p&gt;
-&lt;p&gt;In this post, I show how to set up a VPC using CDK in Python. The code is available &lt;a href="https://github.com/bt3gl/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post, I show how to set up a VPC using CDK in Python. The code is available &lt;a href="https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples/VPC_example"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install AWS CDK&lt;/h3&gt;
 &lt;p&gt;Follow &lt;a href="https://github.com/aws/aws-cdk#at-a-glance"&gt;these instructions&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Create a virtual environment and install dependencies:&lt;/h3&gt;

@@ -16,7 +16,7 @@
 &lt;p&gt;If we have an &lt;strong&gt;AWS S3 data lake&lt;/strong&gt; ready, we could use &lt;strong&gt;Amazon Sagemaker for model training and inference&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;As I start a little &lt;a href="https://github.com/bt3gl/Data-Pipelines"&gt;github repo for my personal research (dumps...) on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post, I add my little intro on the topic.&lt;/p&gt;
+&lt;p&gt;As I start a little &lt;a href="https://github.com/mvonsteinkirch/Data-Pipelines"&gt;github repo for my personal research (dumps...) on Data Pipelines&lt;/a&gt; (PR your contribution!), in this post, I add my little intro on the topic.&lt;/p&gt;
 &lt;h2&gt;ETL: Extract, Transform, and Load&lt;/h2&gt;
 &lt;p&gt;These three conceptual steps are how most data pipelines are designed and structured, serving as a blueprint for how raw data is transformed to analysis-ready data:&lt;/p&gt;
 &lt;ul&gt;

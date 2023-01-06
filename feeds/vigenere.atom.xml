@@ -328,7 +328,7 @@ ETIREDANDLAYDOWNUPONTHEGRASSANDFELLASLEEPWITHTHEWOODMANANDTHESCARECROWKEEPINGWAT
 &lt;p&gt;Netcating several times can return other similar answers such as &lt;strong&gt;hopeyouautomate&lt;/strong&gt; or &lt;strong&gt;easypeesy&lt;/strong&gt; or &lt;strong&gt;notveryhard&lt;/strong&gt;. They are all correct.&lt;/p&gt;
 &lt;h4&gt;Automating the Response&lt;/h4&gt;
 &lt;p&gt;To advance forward, we need to send one of the above answers to the socket. However, we only &lt;strong&gt;have 10 seconds&lt;/strong&gt; to do this! It's clear that we need to automate this problem with a script.&lt;/p&gt;
-&lt;p&gt;We can do this in many ways. In Python, for example, we can use the libraries &lt;a href="https://docs.python.org/2/library/telnetlib.html"&gt;telnetlib&lt;/a&gt; or &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; or even writing our &lt;a href="https://github.com/bt3gl/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py"&gt;own netcat script&lt;/a&gt;. We will use the former for this exploit. Let us create a telnet connection with:&lt;/p&gt;
+&lt;p&gt;We can do this in many ways. In Python, for example, we can use the libraries &lt;a href="https://docs.python.org/2/library/telnetlib.html"&gt;telnetlib&lt;/a&gt; or &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; or even writing our &lt;a href="https://github.com/mvonsteinkirch/CTFs-and-Hacking-Scripts-and-Tutorials/blob/master/Tutorials/Useful_Scripts/netcat.py"&gt;own netcat script&lt;/a&gt;. We will use the former for this exploit. Let us create a telnet connection with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;telnetlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Telnet&lt;/span&gt;
 
 &lt;span class="n"&gt;PORT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;12345&lt;/span&gt;
@@ -445,5 +445,5 @@ Last one.&lt;/p&gt;
 
 &lt;p&gt;Reading it carefully give us the last answer for the flag: &lt;strong&gt;NORMALWORD&lt;/strong&gt;. Sweet!&lt;/p&gt;
 &lt;h2&gt;Final Words&lt;/h2&gt;
-&lt;p&gt;If you like this solution, take a look at my  &lt;a href="https://github.com/bt3gl/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-CSAW-CTF/cryptography/crypto-200"&gt;exploit for this problem&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you like this solution, take a look at my  &lt;a href="https://github.com/mvonsteinkirch/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-CSAW-CTF/cryptography/crypto-200"&gt;exploit for this problem&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hack all the things!&lt;/strong&gt;&lt;/p&gt;</summary><category term="CTF"></category><category term="CSAW"></category><category term="ROT13"></category><category term="telnet"></category><category term="socket"></category><category term="Vigenere"></category><category term="pygenere"></category><category term="Python"></category></entry></feed>

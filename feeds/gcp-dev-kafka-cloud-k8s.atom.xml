@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/gcp-dev-kafka-cloud-k8s.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2016-11-16T00:00:00-05:00</updated><entry><title>Introducing a GCP Pub/Sub Message Framework</title><link href="http://bt3gl.github.io/introducing-a-gcp-pubsub-message-framework.html" rel="alternate"></link><updated>2016-11-16T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2016-11-16:introducing-a-gcp-pubsub-message-framework.html</id><summary type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/21.jpg" width="400px" /&gt;&lt;/p&gt;
-&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;, I created this little &lt;a href="https://github.com/bt3gl/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To try to make sense of all the logs from different sources on &lt;a href="https://cloud.google.com/pubsub/docs/overview"&gt;GCP pub/sub&lt;/a&gt;, I created this little &lt;a href="https://github.com/mvonsteinkirch/GCP-Pub-Sub-Message-Framework"&gt;serverless framework&lt;/a&gt; that uses &lt;a href="https://kafka.apache.org/intro"&gt;Kafka streams&lt;/a&gt; for alerting correlation on &lt;a href="https://kubernetes.io/"&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 &lt;h2&gt;Installing Kubeless&lt;/h2&gt;
 &lt;p&gt;Follow &lt;a href="https://github.com/kubeless/kubeless"&gt;these instructions&lt;/a&gt;. Customize Kubeless config file at &lt;code&gt;kubeless-config.yaml&lt;/code&gt; and then run:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;kl&lt;/span&gt;
@@ -40,4 +40,4 @@
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Enjoy and let me know what you think! :)&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/bt3gl/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;PS: If you want to learn more about GCP, check my resources and labs &lt;a href="https://github.com/mvonsteinkirch/GCP_Studies_and_Labs"&gt;here&lt;/a&gt;.&lt;/p&gt;</summary></entry></feed>

@@ -61,7 +61,7 @@
 
 
 &lt;h2&gt;Panes (splits)&lt;/h2&gt;
-&lt;p&gt;Configs from my &lt;a href="https://github.com/bt3gl/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf"&gt;tmux.conf&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Configs from my &lt;a href="https://github.com/mvonsteinkirch/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf"&gt;tmux.conf&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;-&lt;/span&gt;  &lt;span class="nx"&gt;vertical&lt;/span&gt; &lt;span class="nb"&gt;split&lt;/span&gt;
 &lt;span class="o"&gt;|&lt;/span&gt;  &lt;span class="nx"&gt;horizontal&lt;/span&gt; &lt;span class="nb"&gt;split&lt;/span&gt;
 

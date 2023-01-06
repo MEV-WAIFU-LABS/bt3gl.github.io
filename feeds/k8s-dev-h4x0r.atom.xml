@@ -3,7 +3,7 @@
 &lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
 &lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="cyberpunk" height="300px" src="./cyberpunk/27.jpg" width="400px"&gt;&lt;/p&gt;
 &lt;p&gt;Hey everyone, I wrote this quick guide to help the junior engineers in my team at Etsy to get started with k8s, and I thought I could share with you.&lt;/p&gt;
-&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/bt3gl/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this guide I show you how to spin a quick &lt;code&gt;Node.js&lt;/code&gt; server in kubernetes and to grasp some of its main concepts. &lt;a href="https://github.com/mvonsteinkirch/k8s_security"&gt;Here is the source code&lt;/a&gt;.&lt;/p&gt;
 &lt;h3&gt;Install kubectl&lt;/h3&gt;
 &lt;p&gt;First you will need to install &lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/"&gt;kubectl&lt;/a&gt; in your machine.&lt;/p&gt;
 &lt;p&gt;Make sure you have all the auths right, for instance, I do the follow:&lt;/p&gt;
@@ -12,7 +12,7 @@
 &lt;li&gt;Create a config file and move to &lt;code&gt;~/.kube&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3&gt;Spinning up a Hello World node server in docker&lt;/h3&gt;
-&lt;p&gt;Download &lt;a href="https://github.com/bt3gl/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
+&lt;p&gt;Download &lt;a href="https://github.com/mvonsteinkirch/intro_to_k8s/tree/master/node_server_example"&gt;this code&lt;/a&gt; and build the image:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make build:
 &lt;/pre&gt;&lt;/div&gt;
 

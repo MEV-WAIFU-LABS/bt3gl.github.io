@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>chmod +x singularity.sh</title><link href="http://bt3gl.github.io/" rel="alternate"></link><link href="http://bt3gl.github.io/feeds/netcat.atom.xml" rel="self"></link><id>http://bt3gl.github.io/</id><updated>2014-12-10T00:00:00-05:00</updated><entry><title>Black Hat Python Networking: The Socket Module</title><link href="http://bt3gl.github.io/black-hat-python-networking-the-socket-module.html" rel="alternate"></link><updated>2014-12-10T00:00:00-05:00</updated><author><name>Mia Steinkirch</name></author><id>tag:bt3gl.github.io,2014-12-10:black-hat-python-networking-the-socket-module.html</id><summary type="html">&lt;p&gt;Last week I got my copy of &lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;, the new &lt;a href="https://twitter.com/jms_dot_py"&gt;Justin Seitz&lt;/a&gt;'s book. The compilation talks about network programming, web hacking, and Windows exploitation. All in Python!&lt;/p&gt;
 &lt;p&gt;In this first post, I discuss Python's &lt;a href="https://docs.python.org/2/library/socket.html"&gt;socket&lt;/a&gt; module, which contains all the tools to write &lt;a href="http://en.wikipedia.org/wiki/Transmission_Control_Protocol"&gt;TCP&lt;/a&gt;/&lt;a href="http://en.wikipedia.org/wiki/User_Datagram_Protocol"&gt;UDP&lt;/a&gt; clients and servers, including &lt;a href="http://en.wikipedia.org/wiki/Raw_socket"&gt;raw sockets&lt;/a&gt;. It's nice! &lt;strong&gt;T-1000&lt;/strong&gt; is loving it!&lt;/p&gt;
-&lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ah, by the way, all the source codes in this post are available at &lt;a href="https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources"&gt;my repo&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="cyber" src="http://i.imgur.com/l3iyyOO.jpg" /&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h2&gt;A TCP Client&lt;/h2&gt;
@@ -678,7 +678,7 @@ Transfer-Encoding: chunked
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://docs.python.org/2/library/socket.html"&gt;Python's Socket Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.nostarch.com/blackhatpython"&gt;Black Hat Python&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bt3gl/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources"&gt;My Gray hat repo&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/OffensivePython/Pinject/blob/master/pinject.py"&gt;A TCP Packet Injection tool&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/OffensivePython/PyProxy/blob/master/PyProxy.py"&gt;An asynchronous HTTP Proxy&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/OffensivePython/Sniffy/blob/master/Sniffy.py"&gt;A network sniffer at the Network Layer&lt;/a&gt;.&lt;/li&gt;
@@ -1068,7 +1068,7 @@ Transfer-Encoding: chunked
 &lt;p&gt;&lt;strong&gt;~/.bashrc&lt;/strong&gt; contains scripts and variables that are executed when Bash is invoked.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;It's a good experience to customize your &lt;strong&gt;~/.bashrc&lt;/strong&gt;. Just google for samples, or take a look at this &lt;a href="http://dotfiles.org"&gt;site dedicated for sharing dot-files&lt;/a&gt;, or at &lt;a href="https://github.com/bt3gl/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc"&gt;mine&lt;/a&gt;. Don't forget to &lt;code&gt;source&lt;/code&gt; your &lt;strong&gt;./bashrc&lt;/strong&gt; file every time you make a change (opening a new terminal has the same effect):&lt;/p&gt;
+&lt;p&gt;It's a good experience to customize your &lt;strong&gt;~/.bashrc&lt;/strong&gt;. Just google for samples, or take a look at this &lt;a href="http://dotfiles.org"&gt;site dedicated for sharing dot-files&lt;/a&gt;, or at &lt;a href="https://github.com/mvonsteinkirch/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc"&gt;mine&lt;/a&gt;. Don't forget to &lt;code&gt;source&lt;/code&gt; your &lt;strong&gt;./bashrc&lt;/strong&gt; file every time you make a change (opening a new terminal has the same effect):&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bashrc&lt;/span&gt;
