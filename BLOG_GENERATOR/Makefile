@@ -5,5 +5,5 @@ clean:
 	rm -rf *pyc
 	rm -rf __pycache__/
 copy:
-	cp -r output/* ../singularity.miavonsteinkirch.com/ 
+	cp -r output/* ../singularity-sh.vercel.app/ 
 

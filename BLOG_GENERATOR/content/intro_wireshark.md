@@ -8,7 +8,7 @@ Tags: Wireshark, ARP, OSI_Model, ARP_Cache_Poisining, ARP_spoofing, Kismet, Nmap
 
 [Wireshark](https://www.wireshark.org/) is an open-source **network packet analyzer** that allows live traffic analysis, with support to several protocols.
 
-Wireshark also allows **network forensic**, being handy for CTFs for example (check my writeups for the [D-CTF Quals 2014](http://singularity.miavonsteinkirch.com/exploring-d-ctf-quals-2014s-exploits.html) and for the CSAW Quals 2014 in [Networking](http://singularity.miavonsteinkirch.com/csaw-ctf-2014-networking-100-big-data.html) and [Forensics](http://singularity.miavonsteinkirch.com/csaw-ctf-2014-forensics-200-why-not-sftp.html)).
+Wireshark also allows **network forensic**, being handy for CTFs for example (check my writeups for the [D-CTF Quals 2014](http://singularity-sh.vercel.app/exploring-d-ctf-quals-2014s-exploits.html) and for the CSAW Quals 2014 in [Networking](http://singularity-sh.vercel.app/csaw-ctf-2014-networking-100-big-data.html) and [Forensics](http://singularity-sh.vercel.app/csaw-ctf-2014-forensics-200-why-not-sftp.html)).
 
 In this blog post, I introduce Wireshark, and I talk about my favorite features.
 

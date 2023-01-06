@@ -6,7 +6,7 @@ Tags: Python, socket, sniffing, UDP, netaddr, ICMP, scanner, packet_header
 
 When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.
 
-A few weeks ago, I talked about [how to use Wireshark](http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html) for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?
+A few weeks ago, I talked about [how to use Wireshark](http://singularity-sh.vercel.app/wiresharking-for-fun-or-profit.html) for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?
 
 Again, Python comes with several solutions and today I'm going through the steps to build a **UDP Host discovery tool**. First, we are going to see how we deal with [raw sockets](http://en.wikipedia.org/wiki/Raw_socket) to write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.
 
@@ -19,7 +19,7 @@ Remember that ICMP is essentially a special control protocol that issues error r
 
 ##  Writing a Packet Sniffer
 
-We start with a  very simple task: with Python's  [socket](http://singularity.miavonsteinkirch.com/black-hat-python-networking-the-socket-module.html) library, we will write a very simple packet sniffer.
+We start with a  very simple task: with Python's  [socket](http://singularity-sh.vercel.app/black-hat-python-networking-the-socket-module.html) library, we will write a very simple packet sniffer.
 
 In this sniffer, we create a raw socket and then we bind it to the public interface. The interface should be in **promiscuous mode**, which means that every packet that the network card sees is captured, even those that are not destined to the host.
 

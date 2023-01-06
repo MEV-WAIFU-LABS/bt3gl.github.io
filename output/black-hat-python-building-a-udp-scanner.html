@@ -65,7 +65,7 @@
                                       <a href="https://github.com/mvonsteinkirch">The Language Within
                                       <!--<i class="icon-github-sign icon-large" ></i>-->
                                       </a></li>
-                                <li><a href="http://singularity.miavonsteinkirch.com/projects_page/index.html">Bygone Playful Times
+                                <li><a href="http://singularity-sh.vercel.app/projects_page/index.html">Bygone Playful Times
                                       </a></li>
                                 <li><a href="http://www.astro.sunysb.edu/steinkirch/index.html">Universe and Everything Else
                                      </a></li>
@@ -115,14 +115,14 @@
 	<a href="./tag/packet_header.html"><i class="icon-tag"></i>packet_header</a>
 </footer><!-- /.post-info -->                </div>
                 <p>When it comes to the reconnaissance of some target network, the start point is undoubtedly on host discovering. This task might come together with the ability to sniff and parse the packets flying through the network.</p>
-<p>A few weeks ago, I talked about <a href="http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html">how to use Wireshark</a> for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?</p>
+<p>A few weeks ago, I talked about <a href="http://singularity-sh.vercel.app/wiresharking-for-fun-or-profit.html">how to use Wireshark</a> for packet sniffing, but what if you don't have Wireshark available to monitor network traffic?</p>
 <p>Again, Python comes with several solutions and today I'm going through the steps to build a <strong>UDP Host discovery tool</strong>. First, we are going to see how we deal with <a href="http://en.wikipedia.org/wiki/Raw_socket">raw sockets</a> to write a simple sniffer, which is able to view and decode network packets. Then we are going to multithread this process within a subnet, which will result in our scanner.</p>
 <p>The cool thing about <strong>raw sockets</strong> is that they allow access to low-level networking information. For example, we can use it to check <strong>IP</strong> and <strong>ICMP</strong> headers, which are in layer 3 of the OSI model (the network layer).</p>
 <p>The cool thing about using <strong>UDP datagrams</strong> is that, differently from <strong>TCP</strong>, they do not bring much overhead when sent across an entire subnet (remember the TCP <a href="http://www.inetdaemon.com/tutorials/internet/tcp/3-way_handshake.shtml">handshaking</a>). All we need to do is wait for the <strong>ICMP</strong> responses saying whether the hosts are available or closed (unreachable).
 Remember that ICMP is essentially a special control protocol that issues error reports and can control the behavior of machines in data transfer.</p>
 <hr />
 <h2>Writing a Packet Sniffer</h2>
-<p>We start with a  very simple task: with Python's  <a href="http://singularity.miavonsteinkirch.com/black-hat-python-networking-the-socket-module.html">socket</a> library, we will write a very simple packet sniffer.</p>
+<p>We start with a  very simple task: with Python's  <a href="http://singularity-sh.vercel.app/black-hat-python-networking-the-socket-module.html">socket</a> library, we will write a very simple packet sniffer.</p>
 <p>In this sniffer, we create a raw socket and then we bind it to the public interface. The interface should be in <strong>promiscuous mode</strong>, which means that every packet that the network card sees is captured, even those that are not destined to the host.</p>
 <p>One detail to remember is that things are slightly different if we are using Windows: in this case, we need to send a <a href="http://en.wikipedia.org/wiki/Ioctl">IOCTL</a> package to set the interface to <strong>promiscuous mode</strong>. In addition, while Linux needs to use ICMP, Windows allows us to sniff the incoming packets independently of the protocol:</p>
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>

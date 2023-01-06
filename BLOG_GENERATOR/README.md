@@ -16,9 +16,9 @@ pip install -r requirements.txt
 make html
 ```
 
-#### The content will be generate in ```output```, which can be copied to the website's repo with:
+which can be copied to the website's repo with:
 
 ```
-yes | cp -r output/* ../singularity.miavonsteinkirch.com/
+yes | cp -r output/* ../singularity-sh.vercel.app/
 ```
 

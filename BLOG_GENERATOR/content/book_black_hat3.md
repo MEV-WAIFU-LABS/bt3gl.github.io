@@ -3,7 +3,7 @@ Date: 2014-12-13
 Category: Networking
 Tags: Python, paramiko, SSH, PyCrypto, getopt, threading, socket, Book
 
-This is the second post based on my readings from [Black Hat Python](http://www.nostarch.com/blackhatpython). Yesterday I talked about Python's [socket module](http://singularity.miavonsteinkirch.com/black-hat-python-networking-the-socket-module.html) and today I'm talking about the [paramiko](http://www.paramiko.org/) module.
+This is the second post based on my readings from [Black Hat Python](http://www.nostarch.com/blackhatpython). Yesterday I talked about Python's [socket module](http://singularity-sh.vercel.app/black-hat-python-networking-the-socket-module.html) and today I'm talking about the [paramiko](http://www.paramiko.org/) module.
 
 **Paramiko** is awesome!!! It uses my dear [PyCrypto](https://www.dlitz.net/software/pycrypto/) to give us access to the [SSH2 protocol](http://en.wikipedia.org/wiki/SSH2), and it has a flexible and easy to use API.
 

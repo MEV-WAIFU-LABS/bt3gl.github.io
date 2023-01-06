@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'http://singularity.miavonsteinkirch.com'
+SITEURL = 'http://singularity-sh.vercel.app'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'

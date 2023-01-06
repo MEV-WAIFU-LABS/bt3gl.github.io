@@ -506,7 +506,7 @@ Cool, huh?
 
 ## A TCP Proxy
 
-A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run [Wireshark](http://singularity.miavonsteinkirch.com/wiresharking-for-fun-or-profit.html), or you cannot load drivers or tools in the machine you are exploiting).
+A TCP proxy can be very useful for forwarding traffic and when assessing network-based software (for example, when you cannot run [Wireshark](http://singularity-sh.vercel.app/wiresharking-for-fun-or-profit.html), or you cannot load drivers or tools in the machine you are exploiting).
 
 To create a proxy we need to verify if we need to *first initiate a connection* to the remote side. This will request data before going into our main loop, and some server daemons expect you to do this first (for instance, FTP servers send a banner first). We call this information **receive_first**.
 
@@ -736,7 +736,7 @@ Additionally, let's take a quick look to all the methods available with the **so
 
 -----
 
-** Fun, isn't it? Now check the next post about Python's [scapy module](http://singularity.miavonsteinkirch.com/black-hat-python-infinite-possibilities-with-the-scapy-module.html) and [paramiko module](http://singularity.miavonsteinkirch.com/black-hat-python-the-paramiko-module.html)!**
+** Fun, isn't it? Now check the next post about Python's [scapy module](http://singularity-sh.vercel.app/black-hat-python-infinite-possibilities-with-the-scapy-module.html) and [paramiko module](http://singularity-sh.vercel.app/black-hat-python-the-paramiko-module.html)!**
 
 ## Further References:
 

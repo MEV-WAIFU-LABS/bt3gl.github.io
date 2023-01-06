@@ -1,7 +1,7 @@
 from fabric.api import *
 
 
-env.deploy_path = '../singularity.miavonsteinkirch.com/'
+env.deploy_path = '../singularity-sh.vercel.app/'
 DEPLOY_PATH = env.deploy_path
 
 def clean():

@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Mia von Steinkirch'
 SITENAME = u'chmod +x singularity.sh'
-SITEURL = 'http://singularity.miavonsteinkirch.com'
+SITEURL = 'http://singularity-sh.vercel.app'
 PATH = 'content'
 TIMEZONE = 'America/New_York'
 DEFAULT_LANG = u'en'

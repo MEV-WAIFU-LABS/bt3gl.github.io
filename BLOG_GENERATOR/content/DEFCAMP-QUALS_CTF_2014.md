@@ -391,4 +391,4 @@ netsh firewall set opmode mode=DISABLE.
 [Exif]: http://en.wikipedia.org/wiki/Exchangeable_image_file_format
 [writeups]: https://github.com/ctfs/write-ups/tree/master/d-ctf-2014/misc-100
 [xxd]: http://linuxcommand.org/man_pages/xxd1.html
-[Natas post]: http://singularity.miavonsteinkirch.com/exploiting-the-web-in-20-lessons-natas.html
+[Natas post]: http://singularity-sh.vercel.app/exploiting-the-web-in-20-lessons-natas.html

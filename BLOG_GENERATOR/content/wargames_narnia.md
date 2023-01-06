@@ -175,7 +175,7 @@ EGG=0X41414141
 
 To understand more about environments variables in exploits, take a look into my [Shellshock guide].
 
-[Shellshock guide]: http://singularity.miavonsteinkirch.com/understanding-the-shellshock-vulnerability.html
+[Shellshock guide]: http://singularity-sh.vercel.app/understanding-the-shellshock-vulnerability.html
 
 
 #### Shell Commands
