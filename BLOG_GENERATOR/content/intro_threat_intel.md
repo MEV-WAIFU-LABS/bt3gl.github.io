@@ -2,7 +2,7 @@ Title: Introducing Threat Intel
 Date: 2015-10-02
 Category: h4x0r, dev
 
-[Threat Intel 🍒](https://github.com/mvonsteinkirch/threat_intel) is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:
+[Threat Intel 🍒](https://github.com/go-outside-labs/threat_intel) is a work I developed when I was at Yelp. It is a set of Threat Intelligence APIs that can be used by security developers and analysts for incident response. Additionally, it contains wrappers for:
 
 * OpenDNS Investigate API
 * VirusTotal API v2.0

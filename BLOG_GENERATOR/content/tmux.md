@@ -81,7 +81,7 @@ In tmux, hit the prefix `ctrl+b` (my modified prefix is ctrl+a) and then:
 
 ## Panes (splits) 
 
-Configs from my [tmux.conf](https://github.com/mvonsteinkirch/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf):
+Configs from my [tmux.conf](https://github.com/go-outside-labs/Shell-Scripts_and_Dotfiles/blob/master/configs/tmux.conf):
 
     -  vertical split
     |  horizontal split

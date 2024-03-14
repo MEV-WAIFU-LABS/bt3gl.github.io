@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = u'Mia von Steinkirch'
+AUTHOR = u'Mia Stein'
 SITENAME = u'chmod +x singularity.sh'
 SITEURL = 'http://singularity-sh.vercel.app'
 PATH = 'content'
@@ -11,7 +11,7 @@ DEFAULT_LANG = u'en'
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
-SOCIAL = (('GitHub', 'https://github.com/mvonsteinkirch'),)
+SOCIAL = (('GitHub', 'https://github.com/go-outside-labs'),)
 
 DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True

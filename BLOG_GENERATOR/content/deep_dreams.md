@@ -15,7 +15,7 @@ More specifically, in the task of image classification, the neurons have the fol
 * **the final layers** compose the complete interpretation (such as a dog), but in a [psychedelic way](https://www.reddit.com/r/deepdream/comments/3cawxb/what_are_deepdream_images_how_do_i_make_my_own/). 
 
 
-Google released the code of its [GoogLeNet model](https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet), which is trained trained on [ImageNet dataset](http://www.image-net.org/). I slightly adapted it [here](https://github.com/mvonsteinkirch/Machine-Learning-Resources/tree/master/Deep_Art/deepdream), adding some instructions on how one can play with it in an AWS GPU instance.
+Google released the code of its [GoogLeNet model](https://github.com/BVLC/caffe/tree/master/models/bvlc_googlenet), which is trained trained on [ImageNet dataset](http://www.image-net.org/). I slightly adapted it [here](https://github.com/go-outside-labs/Machine-Learning-Resources/tree/master/Deep_Art/deepdream), adding some instructions on how one can play with it in an AWS GPU instance.
 
 
 Examples of **deep dream** with the following layers:

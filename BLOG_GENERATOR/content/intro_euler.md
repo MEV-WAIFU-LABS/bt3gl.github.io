@@ -6,5 +6,5 @@ Category: dev, infra
 
 It was freezing outside, so I spent a week solving as much as [Project Euler](https://projecteuler.net/) exercises I could. Now, this was a fun time!
 
-Project Euler is a website dedicated to a series of computational and mathematics problems! Check out [my solutions here](https://github.com/mvonsteinkirch/Project-Euler) (but give a try yourself first!).
+Project Euler is a website dedicated to a series of computational and mathematics problems! Check out [my solutions here](https://github.com/go-outside-labs/Project-Euler) (but give a try yourself first!).
 

@@ -7,7 +7,7 @@ Last week I got my copy of [Black Hat Python](http://www.nostarch.com/blackhatpy
 
 In this first post, I discuss Python's [socket](https://docs.python.org/2/library/socket.html) module, which contains all the tools to write [TCP](http://en.wikipedia.org/wiki/Transmission_Control_Protocol)/[UDP](http://en.wikipedia.org/wiki/User_Datagram_Protocol) clients and servers, including [raw sockets](http://en.wikipedia.org/wiki/Raw_socket). It's nice! **T-1000** is loving it!
 
-Ah, by the way, all the source codes in this post are available at [my repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources).
+Ah, by the way, all the source codes in this post are available at [my repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources).
 
 ![cyber](http://i.imgur.com/l3iyyOO.jpg)
 
@@ -742,7 +742,7 @@ Additionally, let's take a quick look to all the methods available with the **so
 
 - [Python's Socket Documentation](https://docs.python.org/2/library/socket.html)
 - [Black Hat Python](http://www.nostarch.com/blackhatpython).
-- [My Gray hat repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources).
+- [My Gray hat repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources).
 - [A TCP Packet Injection tool](https://github.com/OffensivePython/Pinject/blob/master/pinject.py).
 - [An asynchronous HTTP Proxy](https://github.com/OffensivePython/PyProxy/blob/master/PyProxy.py).
 - [A network sniffer at the Network Layer](https://github.com/OffensivePython/Sniffy/blob/master/Sniffy.py).

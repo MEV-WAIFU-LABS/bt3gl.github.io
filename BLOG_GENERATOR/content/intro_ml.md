@@ -6,15 +6,15 @@ Category: ml, science, dnn
 
 At Apple, I had the chance to learn a lot of deep learning while working with the team that develops its DNN toolkit. Today I have open-sourced my **personal** studies:
 
-* [🚀 My Resources for AI, ML, and DNN](https://github.com/mvonsteinkirch/Machine-Learning-Resources).
-* [🛰 CUDA Studies for Deep Learning Problems](https://github.com/mvonsteinkirch/CUDA_Studies_For_Deep_Learning).
+* [🚀 My Resources for AI, ML, and DNN](https://github.com/go-outside-labs/Machine-Learning-Resources).
+* [🛰 CUDA Studies for Deep Learning Problems](https://github.com/go-outside-labs/CUDA_Studies_For_Deep_Learning).
 
 
 Additionally, when I was in my Ph.D. I had the pleasure of doing [some nice work on Machine Learning](http://singularity-sh.vercel.app/projects_page/html_files/ml.html) as well. Here is the open-sourced code for you:
 
 
-* [💎Advanced Machine Learning](https://github.com/mvonsteinkirch/Advanced-Machine-Learning).
-* [🍭 MLNet - Classifying Complex Networks with ML](https://github.com/mvonsteinkirch/MLNet-Classifying-Complex-Networks).
-* [🔋 NetClean - Complex Networks Data-Cleanser](https://github.com/mvonsteinkirch/NetClean-Complex-Networks-Data-Cleanser).
-* [🌺 NetAna - Complex Network Analysis Package](https://github.com/mvonsteinkirch/NetAna-Complex-Network-Analysis).
+* [💎Advanced Machine Learning](https://github.com/go-outside-labs/Advanced-Machine-Learning).
+* [🍭 MLNet - Classifying Complex Networks with ML](https://github.com/go-outside-labs/MLNet-Classifying-Complex-Networks).
+* [🔋 NetClean - Complex Networks Data-Cleanser](https://github.com/go-outside-labs/NetClean-Complex-Networks-Data-Cleanser).
+* [🌺 NetAna - Complex Network Analysis Package](https://github.com/go-outside-labs/NetAna-Complex-Network-Analysis).
 

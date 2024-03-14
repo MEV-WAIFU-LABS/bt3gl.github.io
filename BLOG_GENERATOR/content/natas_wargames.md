@@ -1442,5 +1442,5 @@ That's it. The [source code is available] as usual.
 
 Hack all the things!
 
-[source code is available]: https://github.com/mvonsteinkirch/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits
+[source code is available]: https://github.com/go-outside-labs/CTFs-Gray-Hacker-and-PenTesting/tree/master/Web_Exploits
 

@@ -12,7 +12,7 @@ Kustomize traverses a Kubernetes manifest to add, remove or update configuration
 
 Kustomize enables you to do that by creating a file that ties everything together, or optionally includes “overrides” for individual parameters.
 
-In this example, I setup a Wordpress Kubernetes cluster using Kustomize. The source code is available [here](https://github.com/mvonsteinkirch/Kubernetes-Resources/tree/master/kustomize-example).
+In this example, I setup a Wordpress Kubernetes cluster using Kustomize. The source code is available [here](https://github.com/go-outside-labs/Kubernetes-Resources/tree/master/kustomize-example).
 
 
 ### Set Minukube

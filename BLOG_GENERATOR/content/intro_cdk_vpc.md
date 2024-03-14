@@ -8,7 +8,7 @@ Category: vpc
 
 You choose your favorite language to code what resources (stacks) you want, and CDK synthetizes them to CloudFormation and helps you to deploy them to AWS.
 
-In this post, I show how to set up a VPC using CDK in Python. The code is available [here](https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples/VPC_example).
+In this post, I show how to set up a VPC using CDK in Python. The code is available [here](https://github.com/go-outside-labs/AWS_Resources/tree/master/CDK_examples/VPC_example).
 
 ### Install AWS CDK
 

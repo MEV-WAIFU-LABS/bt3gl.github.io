@@ -16,7 +16,7 @@ This app runs an ARKit world tracking session with content displayed in a [Sprit
 
 But, before everything, I recommend you to watch [WWDC 2017's 'Introducing ARKit: Augmented Reality for iOS'](https://developer.apple.com/videos/play/wwdc2017/602/). It gives a nice overview of ARKit's capabilities.
 
-Ah, btw, the source code for this project is [available for you at github](https://github.com/mvonsteinkirch/AR_PostMalone).
+Ah, btw, the source code for this project is [available for you at github](https://github.com/go-outside-labs/AR_PostMalone).
 
 
 ## The source code for AR_PostMalone the following structure:

@@ -7,7 +7,7 @@ Category: H4x0r, infra
 
 Throughout my many years of hacking, I have been accumulating so many resources: books, scripts, tools, how-to, etc. I realized it's time to share them!
 
-Please check out my [gray hacker GitHub repo](https://github.com/mvonsteinkirch/Gray-Hacker-Resources), where I have indexed everything by subject:
+Please check out my [gray hacker GitHub repo](https://github.com/go-outside-labs/Gray-Hacker-Resources), where I have indexed everything by subject:
 
 * CTFs and WARGAMES
 * CRYPTOGRAPHY

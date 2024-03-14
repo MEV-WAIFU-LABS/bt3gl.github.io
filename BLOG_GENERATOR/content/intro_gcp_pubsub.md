@@ -5,7 +5,7 @@ Category: gcp, dev, kafka, cloud, k8s
 ![cyberpunk](./cyberpunk/21.jpg){:height="300px" width="400px"}
 
 
-To try to make sense of all the logs from different sources on [GCP pub/sub](https://cloud.google.com/pubsub/docs/overview), I created this little [serverless framework](https://github.com/mvonsteinkirch/GCP-Pub-Sub-Message-Framework) that uses [Kafka streams](https://kafka.apache.org/intro) for alerting correlation on [Kubernetes](https://kubernetes.io/).
+To try to make sense of all the logs from different sources on [GCP pub/sub](https://cloud.google.com/pubsub/docs/overview), I created this little [serverless framework](https://github.com/go-outside-labs/GCP-Pub-Sub-Message-Framework) that uses [Kafka streams](https://kafka.apache.org/intro) for alerting correlation on [Kubernetes](https://kubernetes.io/).
 
 
 ## Installing Kubeless
@@ -62,5 +62,5 @@ $ kubectl logs <podname> --namespace=kubeless
 ***Enjoy and let me know what you think! :)***
 
 
-PS: If you want to learn more about GCP, check my resources and labs [here](https://github.com/mvonsteinkirch/GCP_Studies_and_Labs).
+PS: If you want to learn more about GCP, check my resources and labs [here](https://github.com/go-outside-labs/GCP_Studies_and_Labs).
 

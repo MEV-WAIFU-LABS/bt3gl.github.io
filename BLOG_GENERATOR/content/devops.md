@@ -25,7 +25,7 @@ Create a local development platform.
 * Set up Docker & Docker compose for developers to copy and run and develop their applications in.
 * Set up a skeleton of one of the applications/frameworks that the Developers work with to develop in.
 * Document the above setup and make it easy to get started, preferably with one, or a few commands.
-* Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile [dotfile](https://github.com/mvonsteinkirch/Shell-Scripts_and_Dotfiles) (e.g. `~/.zshrc`).
+* Pick a favorite shell (e.g., ZSH) and have scripts for all repetitive tasks and have aliases in your profile [dotfile](https://github.com/go-outside-labs/Shell-Scripts_and_Dotfiles) (e.g. `~/.zshrc`).
 
 ## CI
 
@@ -37,7 +37,7 @@ Create a local development platform.
 
 Setup production & stage servers.
 
-* Setup these servers using whatever kind of [infrastructure](https://github.com/mvonsteinkirch/Data-Pipelines) your company uses, like: [Kubernetes](https://github.com/mvonsteinkirch/Intro_to_Kubernetes), OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.
+* Setup these servers using whatever kind of [infrastructure](https://github.com/go-outside-labs/Data-Pipelines) your company uses, like: [Kubernetes](https://github.com/go-outside-labs/Intro_to_Kubernetes), OpenShift, and Amazon AWS (or Microsoft Azure, or GCP). Use tools such as Skaffold and AWS SAM.
 * Use automatic tools that define your infrastructure as code or configuration files to set up your servers: Terraform, Ansible, Puppet.
 * Configure the software needed for your applications to run like: Apache, Nginx, MySQL / MariaDB, Elasticsearch.
 
@@ -45,7 +45,7 @@ Setup production & stage servers.
 ## Logging and Monitoring
 
 * Setup servers for aggregated Logging using something like ELK Stack.
-* Setup monitoring for your infrastructure with tools like Prometheus and [Grafana](https://github.com/mvonsteinkirch/awesome-grafana).
+* Setup monitoring for your infrastructure with tools like Prometheus and [Grafana](https://github.com/go-outside-labs/awesome-grafana).
 * Setup monitoring for your applications with tools like ElastAlert and Pingdom.
 * Integrate everything with Slack.
 

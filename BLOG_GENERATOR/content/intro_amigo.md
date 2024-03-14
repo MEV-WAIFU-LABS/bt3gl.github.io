@@ -5,7 +5,7 @@ Category: GCP, dev, h4x0r, python
 ![cyberpunk](./cyberpunk/27.jpg){:height="300px" width="400px"}
 
 
-I wrote a tool called [Amigo](https://github.com/mvonsteinkirch/Amigo-Google-Cloud-Platform-Security) that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!
+I wrote a tool called [Amigo](https://github.com/go-outside-labs/Amigo-Google-Cloud-Platform-Security) that uses the GCP API to fetch an organization's project data and, with a set of customizable rules, searches for security risks!
 
 ## How Amigo Works
 

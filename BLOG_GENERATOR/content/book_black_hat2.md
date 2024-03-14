@@ -780,5 +780,5 @@ Really cool!
 - [Wifitap: PoC for communication over WiFi networks using traffic injection](http://sid.rstack.org/static/articles/w/i/f/Wifitap_EN_9613.html).
 - [SurfJack: hijack HTTP connections to steal cookies](https://code.google.com/p/surfjack/)
 - [Black Hat Python](http://www.nostarch.com/blackhatpython).
-- [My Gray hat repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources).
+- [My Gray hat repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources).
 

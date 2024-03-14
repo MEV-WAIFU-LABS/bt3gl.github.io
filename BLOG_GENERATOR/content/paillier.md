@@ -409,10 +409,10 @@ Hack all the things! (:
 ----
 
 [Paillier cryptosystem]: http://en.wikipedia.org/wiki/Paillier_cryptosystem
-[here]: https://github.com/mvonsteinkirch/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier
+[here]: https://github.com/go-outside-labs/CTFs-Gray-Hacker-and-PenTesting/tree/master/CTFs_and_WarGames/2014-ASIS-CTF/crypto_paillier
 [modulo]: http://en.wikipedia.org/wiki/Modulo_operation
 [oracle]: http://en.wikipedia.org/wiki/Oracle_machine
 [ASIS CTF]: http://asis-ctf.ir/home/
 [Binary search]:http://en.wikipedia.org/wiki/Binary_search_algorithm
-[my scripts]: https://github.com/mvonsteinkirch/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching
+[my scripts]: https://github.com/go-outside-labs/Python-and-Algorithms-and-Data-Structures/tree/master/src/searching_and_sorting/searching
 

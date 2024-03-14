@@ -7,7 +7,7 @@ This is the second post based on my readings from [Black Hat Python](http://www.
 
 **Paramiko** is awesome!!! It uses my dear [PyCrypto](https://www.dlitz.net/software/pycrypto/) to give us access to the [SSH2 protocol](http://en.wikipedia.org/wiki/SSH2), and it has a flexible and easy to use API.
 
-You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my [github repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources))!
+You are going to see it with your own eyes: in this post, we will see the code for SSH clients and servers, reverse shells, and tunnel connections, and it will be smooth and fun (and remember that my source codes are available in my [github repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources))!
 
 Shall we start?
 
@@ -375,5 +375,5 @@ Enter command:
 - [Paramikos reverse SSH tunneling](https://github.com/paramiko/paramiko/blob/master/demos/rforward.py).
 - [Ogre: port scanner and brute-force tool (from a friend I met at Hacker School)](https://github.com/tristanfisher/ogre/blob/master/ogre)
 - [Black Hat Python](http://www.nostarch.com/blackhatpython).
-- [My Gray hat repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources).
+- [My Gray hat repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources).
 

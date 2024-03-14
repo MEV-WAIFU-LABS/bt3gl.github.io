@@ -8,7 +8,7 @@ Category: VR, AR, dev
 Hi Everyone!
 
 
-I am sharing a compilation of some of VR & AR resources that I have been learning and reading from. If you enjoyed it, star and contribute to the [awesome AR and VR github repo](https://github.com/mvonsteinkirch/awesome_AR_and_VR) 😎!
+I am sharing a compilation of some of VR & AR resources that I have been learning and reading from. If you enjoyed it, star and contribute to the [awesome AR and VR github repo](https://github.com/go-outside-labs/awesome_AR_and_VR) 😎!
 
 
 

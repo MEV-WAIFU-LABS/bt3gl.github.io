@@ -343,7 +343,7 @@ $ export PATH=$PATH:/<DIRECTORY>
 
 * **~/.bashrc** contains scripts and variables that are executed when Bash is invoked.
 
-* It's a good experience to customize your **~/.bashrc**. Just google for samples, or take a look at this [site dedicated for sharing dot-files](http://dotfiles.org), or at [mine](https://github.com/mvonsteinkirch/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc). Don't forget to ```source``` your **./bashrc** file every time you make a change (opening a new terminal has the same effect):
+* It's a good experience to customize your **~/.bashrc**. Just google for samples, or take a look at this [site dedicated for sharing dot-files](http://dotfiles.org), or at [mine](https://github.com/go-outside-labs/Dotfiles-and-Bash-Examples/blob/master/configs/bashrc). Don't forget to ```source``` your **./bashrc** file every time you make a change (opening a new terminal has the same effect):
 
 ```
 $ source ~/.bashrc

@@ -64,8 +64,8 @@ If you think about it, a Stack is a perfect object for a process: the process ca
 
 
 
-[Python & Algorithms]: https://github.com/mvonsteinkirch/Python-and-Algorithms-and-Data-Structures/blob/master/book/book_second_edition.pdf
-[here are some examples]: https://github.com/mvonsteinkirch/Python-and-Algorithms-and-Data-Structures/tree/master/src/abstract_structures/Stacks
+[Python & Algorithms]: https://github.com/go-outside-labs/Python-and-Algorithms-and-Data-Structures/blob/master/book/book_second_edition.pdf
+[here are some examples]: https://github.com/go-outside-labs/Python-and-Algorithms-and-Data-Structures/tree/master/src/abstract_structures/Stacks
 
 
 

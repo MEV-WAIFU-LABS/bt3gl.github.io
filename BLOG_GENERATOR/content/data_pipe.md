@@ -18,7 +18,7 @@ For example, for a movie dataset from an external source on the internet:
 
 * If we have an **AWS S3 data lake** ready, we could use **Amazon Sagemaker for model training and inference**.
 
-As I start a little [github repo for my personal research (dumps...) on Data Pipelines](https://github.com/mvonsteinkirch/Data-Pipelines) (PR your contribution!), in this post, I add my little intro on the topic.
+As I start a little [github repo for my personal research (dumps...) on Data Pipelines](https://github.com/go-outside-labs/Data-Pipelines) (PR your contribution!), in this post, I add my little intro on the topic.
 
 
 ## ETL: Extract, Transform, and Load

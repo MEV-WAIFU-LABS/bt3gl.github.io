@@ -9,7 +9,7 @@ Hey everyone!
 
 I wrote this quick guide to help you to get started with k8s in 10 min.
 
-In this guide, I show you how to spin a quick ```Node.js``` server in Kubernetes and to grasp some of its main concepts. [Here is the source code](https://github.com/mvonsteinkirch/Learning_Kubernetes).
+In this guide, I show you how to spin a quick ```Node.js``` server in Kubernetes and to grasp some of its main concepts. [Here is the source code](https://github.com/go-outside-labs/Learning_Kubernetes).
 
 ### Install kubectl
 
@@ -23,7 +23,7 @@ Make sure you have all the auths right; for instance, I do the following:
 
 ### Spinning up a Hello World node server in docker
 
-Download [this code](https://github.com/mvonsteinkirch/intro_to_k8s/tree/master/node_server_example) and build the image:
+Download [this code](https://github.com/go-outside-labs/intro_to_k8s/tree/master/node_server_example) and build the image:
 
 ```
 $ make build:

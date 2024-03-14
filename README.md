@@ -23,7 +23,7 @@
 
 * years ago I used to have a blog at **[https://singularity.sh](https://web.archive.org/web/20180626032114/http://bt3gl.github.io/)**, writing about **hacking, ctfs, and machine learning**.
 * the blog died in 2018 when i took a break from tech to travel the world. now (2023), i re-deployed it to singularity-sh.vercel.app so i can keep the history and proof-of-og =).
-* you are free to use the design if you like, itit was generated with python pelican (check `BLOG_GENERATOR/` to reproduce/rebuild).
+* you are free to use the design if you like, it was generated with python pelican (check `BLOG_GENERATOR/` to reproduce/rebuild).
 
 <br>
 

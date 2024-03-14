@@ -13,7 +13,7 @@ Category: dev, infra, chef, h4x0r
 * prepared for a release (deploy to production environment), known as **continuous deployment**.
 
 
-To understand the first steps of this pipeline, check out an example of a cookbook for [Chef](https://www.chef.io/chef/): how to write a [Suricata cookbook](https://github.com/mvonsteinkirch/Chef_Example_for_Suricata/tree/master).
+To understand the first steps of this pipeline, check out an example of a cookbook for [Chef](https://www.chef.io/chef/): how to write a [Suricata cookbook](https://github.com/go-outside-labs/Chef_Example_for_Suricata/tree/master).
 
 
 ## Further References

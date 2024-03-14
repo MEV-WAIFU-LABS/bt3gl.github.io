@@ -116,7 +116,7 @@ resource "aws_s3_bucket" {
 
 Now, all you need is a couple of commands (such as `terraform apply`), and your system would be up and running. 
 
-This was a high-level overview of how you would start designing and implementing real-world, end-to-end applications, where **design meets code and infrastructure as a code**. If you would like to check the code, [this is the repo in GitHub](https://github.com/mvonsteinkirch/AWS_Resources_By_Examples/tree/master/lambda_functions/sqs-sns_example).
+This was a high-level overview of how you would start designing and implementing real-world, end-to-end applications, where **design meets code and infrastructure as a code**. If you would like to check the code, [this is the repo in GitHub](https://github.com/go-outside-labs/AWS_Resources_By_Examples/tree/master/lambda_functions/sqs-sns_example).
 
 
 ----------------------

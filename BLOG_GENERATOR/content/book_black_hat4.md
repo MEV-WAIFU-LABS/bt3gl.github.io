@@ -328,4 +328,4 @@ That's all, folks. Hope you had fun.
 
 - [Tutorial to learn netaddr](https://netaddr.readthedocs.org/en/latest/tutorial_01.html).
 - [Black Hat Python](http://www.nostarch.com/blackhatpython).
-- [My Gray hat repo](https://github.com/mvonsteinkirch/My-Gray-Hacker-Resources).
+- [My Gray hat repo](https://github.com/go-outside-labs/My-Gray-Hacker-Resources).

@@ -4,9 +4,9 @@ Category: cdk
 
 ![cyberpunk](./cyberpunk/1339.jpg){:height="270px" width="390px"}
 
-In [a previous post](https://marinasteinkirch.com/setting-up-a-vpc-with-cdk-in-python.html), I advocated that [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html) is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.
+In [a previous post](https://miastein.xyz/setting-up-a-vpc-with-cdk-in-python.html), I advocated that [AWS CDK](https://docs.aws.amazon.com/cdk/latest/guide/home.html) is a very neat way to write infrastructure as code, enabling you to create and provision AWS infrastructure deployments predictably and repeatedly.
 
-Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available [here](https://github.com/mvonsteinkirch/AWS_Resources/tree/master/CDK_examples).
+Today I show how to spin up a PostgreSQL RDS instance using CDK in Python. The code is available [here](https://github.com/go-outside-labs/AWS_Resources/tree/master/CDK_examples).
 
 ### Install AWS CDK
 
